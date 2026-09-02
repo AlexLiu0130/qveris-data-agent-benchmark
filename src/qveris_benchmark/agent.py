@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import json
 import os
-import time
 import urllib.request
+from types import MappingProxyType
 from urllib.parse import unquote, urlsplit
 from collections.abc import Callable, Mapping
 from dataclasses import dataclass, field
@@ -96,21 +96,11 @@ class ModelProfile:
 
 
 @dataclass(frozen=True)
-class ModelUsage:
-    """Provider-reported token usage; absent fields remain unknown."""
+class SemanticPlanReceipt:
+    """Validated plan plus the unmodified provider usage receipt, if supplied."""
 
-    prompt_tokens: int | None = None
-    completion_tokens: int | None = None
-    total_tokens: int | None = None
-
-
-@dataclass(frozen=True)
-class SemanticAgentResult:
     plan: SemanticPlan
-    usage: ModelUsage
-    latency_ms: float
-    model_id: str
-    reasoning_effort: str | None
+    raw_usage: Mapping[str, Any] | None
 
 
 def safe_manifest_projection(manifest: Manifest) -> dict[str, list[dict[str, Any]]]:
@@ -139,7 +129,7 @@ def _stdlib_post(url: str, headers: Mapping[str, str], body: bytes, timeout_seco
         return response.read()
 
 
-def _response_content(raw: bytes) -> tuple[str, ModelUsage]:
+def _response_content(raw: bytes) -> tuple[str, Mapping[str, Any] | None]:
     try:
         payload = json.loads(raw.decode("utf-8"))
     except (UnicodeDecodeError, json.JSONDecodeError) as exc:
@@ -152,13 +142,8 @@ def _response_content(raw: bytes) -> tuple[str, ModelUsage]:
     message = choices[0].get("message")
     if type(message) is not dict or type(message.get("content")) is not str:
         raise ValueError("model response has no string content")
-    usage_value = payload.get("usage")
-    usage = usage_value if type(usage_value) is dict else {}
-    return message["content"], ModelUsage(
-        prompt_tokens=usage.get("prompt_tokens") if type(usage.get("prompt_tokens")) is int else None,
-        completion_tokens=usage.get("completion_tokens") if type(usage.get("completion_tokens")) is int else None,
-        total_tokens=usage.get("total_tokens") if type(usage.get("total_tokens")) is int else None,
-    )
+    usage = payload.get("usage")
+    return message["content"], MappingProxyType(dict(usage)) if type(usage) is dict else None
 
 
 class SemanticAgent:
@@ -170,7 +155,7 @@ class SemanticAgent:
         self._profile = profile
         self._transport = transport
 
-    def plan(self, query: str, manifest: Manifest) -> SemanticAgentResult:
+    def plan(self, query: str, manifest: Manifest) -> SemanticPlanReceipt:
         if not query:
             raise ValueError("query must not be empty")
         request_body: dict[str, Any] = {
@@ -194,22 +179,17 @@ class SemanticAgent:
         headers = {"Content-Type": "application/json"}
         if self._profile.api_key:
             headers["Authorization"] = f"Bearer {self._profile.api_key}"
-        started = time.perf_counter()
         raw = self._transport(
             f"{self._profile.api_base.rstrip('/')}/chat/completions",
             headers,
             json.dumps(request_body, separators=(",", ":")).encode("utf-8"),
             self._profile.timeout_seconds,
         )
-        latency_ms = (time.perf_counter() - started) * 1000
         content, usage = _response_content(raw)
         plan = SemanticPlan.from_json(content)
         if plan.status is PlanStatus.READY:
             manifest.entry_for(plan)
-        return SemanticAgentResult(
+        return SemanticPlanReceipt(
             plan=plan,
-            usage=usage,
-            latency_ms=latency_ms,
-            model_id=self._profile.model_id,
-            reasoning_effort=self._profile.reasoning_effort,
+            raw_usage=usage,
         )

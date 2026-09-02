@@ -15,8 +15,8 @@ from .contracts import SemanticPlan
 METRIC_DEFINITIONS = {
     "semantic_exact": "1 only when status, semantic slots, tool alias, and arguments exactly match the case.",
     "data_accuracy": "Scored only for an independent oracle: 1 only when every declared field matches.",
-    "token_usage": "Provider-reported prompt, completion, and total tokens; unknown when absent.",
-    "e2e_ms": "Monotonic end-to-end elapsed milliseconds; model_network_ms, plan_gate_ms, and connector_ms are recorded phase measurements.",
+    "token_usage": "Derived from the raw agent usage receipt; cost is unknown without a harness pricing policy.",
+    "e2e_ms": "Monotonic end-to-end elapsed milliseconds; agent_call_ms, plan_gate_ms, and connector_ms are harness phase measurements.",
 }
 
 
@@ -24,6 +24,42 @@ METRIC_DEFINITIONS = {
 class SemanticScore:
     status_matches: bool
     exact: bool
+
+
+@dataclass(frozen=True)
+class TokenCostPolicy:
+    """Optional per-token pricing owned by scoring, never by the agent."""
+
+    input_cost_per_token: float | None = None
+    output_cost_per_token: float | None = None
+
+    def __post_init__(self) -> None:
+        for value in (self.input_cost_per_token, self.output_cost_per_token):
+            if value is not None and (type(value) not in (int, float) or isinstance(value, bool) or value < 0):
+                raise ValueError("token costs must be non-negative numbers or None")
+
+
+def derive_token_usage(receipt: Mapping[str, Any] | None, policy: TokenCostPolicy = TokenCostPolicy()) -> dict[str, Any]:
+    """Parse a provider receipt into benchmark metrics without estimating missing usage."""
+    raw = receipt or {}
+    input_tokens = _receipt_int(raw.get("prompt_tokens"))
+    output_tokens = _receipt_int(raw.get("completion_tokens"))
+    total_tokens = _receipt_int(raw.get("total_tokens"))
+    cost: float | str = "unknown"
+    if input_tokens is not None and output_tokens is not None and policy.input_cost_per_token is not None and policy.output_cost_per_token is not None:
+        cost = input_tokens * policy.input_cost_per_token + output_tokens * policy.output_cost_per_token
+    return {
+        "source": "provider_reported" if any(value is not None for value in (input_tokens, output_tokens, total_tokens)) else "unknown",
+        "input_tokens": input_tokens,
+        "output_tokens": output_tokens,
+        "total_tokens": total_tokens,
+        "cost": cost,
+    }
+
+
+def score_data_accuracy(matches: bool, *, comparable: bool) -> bool | str:
+    """Keep data-score admission in scoring; fake replay is never comparable."""
+    return matches if comparable else "not_scored"
 
 
 def score_semantics(
@@ -92,3 +128,7 @@ def _path_value(value: Mapping[str, Any], path: str) -> Any:
             raise ValueError("missing comparison field: %s" % path)
         current = current[part]
     return current
+
+
+def _receipt_int(value: Any) -> int | None:
+    return value if type(value) is int and value >= 0 else None

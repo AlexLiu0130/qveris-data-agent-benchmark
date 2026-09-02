@@ -79,9 +79,9 @@ class PaidPilotTests(unittest.TestCase):
         self.temp.cleanup()
 
     def write_approved(self, item=None, case_id="case-1", total=10, cases=None):
-        item = candidate() if item is None else item
-        cases = [{"case_id": case_id, "alias": item["alias"], "arguments": item["call_parameters"], "expected_cost": item["catalog_expected_credits"], "approval_id": "approval-1"}] if cases is None else cases
-        manifest = {"execution_policy": {"live_status": "approved_for_pilot", "approval_id": "approval-1", "connector_protocol_version": pilot.CONNECTOR_PROTOCOL_VERSION, "total_budget_credits": total}, "domains": {"quotes": {"primary_candidates": [item]}}}
+        items = [candidate() if item is None else item] if type(item) is not list else item
+        cases = [{"case_id": case_id, "alias": items[0]["alias"], "arguments": items[0]["call_parameters"], "expected_cost": items[0]["catalog_expected_credits"], "approval_id": "approval-1"}] if cases is None else cases
+        manifest = {"execution_policy": {"live_status": "approved_for_pilot", "approval_id": "approval-1", "connector_protocol_version": pilot.CONNECTOR_PROTOCOL_VERSION, "total_budget_credits": total}, "domains": {"quotes": {"primary_candidates": items}}}
         plan = {"approval_id": "approval-1", "manifest_hash": pilot.manifest_hash(manifest), "connector_protocol_version": pilot.CONNECTOR_PROTOCOL_VERSION, "cases": cases}
         manifest["execution_policy"]["approved_plan_hash"] = pilot.canonical_hash(plan)
         self.manifest.write_text(json.dumps(manifest), encoding="utf-8")
@@ -283,6 +283,87 @@ class PaidPilotTests(unittest.TestCase):
         self.assertEqual(pilot.run(self.args(), FakeOpener({"success": True, "actual_cost": 1}))["outcome"], "success")
         with self.assertRaisesRegex(pilot.PilotError, "do not resend"):
             pilot.run(self.args(idempotency_key="pilot-2"), FakeOpener({"success": True, "actual_cost": 1}))
+
+    def test_two_cases_in_one_plan_run_once_each_with_cumulative_budget(self):
+        first, second = candidate("quote-one", 24.2), candidate("quote-two", 1)
+        cases = [
+            {"case_id": "case-one", "alias": first["alias"], "arguments": first["call_parameters"], "expected_cost": 24.2, "approval_id": "approval-1"},
+            {"case_id": "case-two", "alias": second["alias"], "arguments": second["call_parameters"], "expected_cost": 1, "approval_id": "approval-1"},
+        ]
+        self.write_approved(item=[first, second], total=25.2, cases=cases)
+        out_of_order = FakeOpener({"success": True, "actual_cost": 1})
+        with self.assertRaisesRegex(pilot.PilotError, "prior plan case"):
+            pilot.run(self.args(case="case-two", idempotency_key="batch-two"), out_of_order)
+        first_opener, second_opener = FakeOpener({"success": True, "actual_cost": 24.2}), FakeOpener({"success": True, "actual_cost": 1})
+        self.assertEqual(pilot.run(self.args(case="case-one", idempotency_key="batch-one"), first_opener)["outcome"], "success")
+        self.assertEqual(pilot.run(self.args(case="case-two", idempotency_key="batch-two"), second_opener)["outcome"], "success")
+        third_opener = FakeOpener({"success": True, "actual_cost": 1})
+        with self.assertRaisesRegex(pilot.PilotError, "do not resend"):
+            pilot.run(self.args(case="case-one", idempotency_key="batch-three"), third_opener)
+        self.assertEqual(len(first_opener.calls), 1)
+        self.assertEqual(len(second_opener.calls), 1)
+        self.assertEqual(third_opener.calls, [])
+        self.assertEqual(out_of_order.calls, [])
+
+    def test_second_case_over_plan_budget_makes_zero_post(self):
+        first, second = candidate("quote-one", 24.2), candidate("quote-two", 1)
+        cases = [
+            {"case_id": "case-one", "alias": first["alias"], "arguments": first["call_parameters"], "expected_cost": 24.2, "approval_id": "approval-1"},
+            {"case_id": "case-two", "alias": second["alias"], "arguments": second["call_parameters"], "expected_cost": 1, "approval_id": "approval-1"},
+        ]
+        self.write_approved(item=[first, second], total=25, cases=cases)
+        self.assertEqual(pilot.run(self.args(case="case-one", idempotency_key="batch-one"), FakeOpener({"success": True, "actual_cost": 24.2}))["outcome"], "success")
+        opener = FakeOpener({"success": True, "actual_cost": 1})
+        with self.assertRaisesRegex(pilot.PilotError, "budget"):
+            pilot.run(self.args(case="case-two", idempotency_key="batch-two"), opener)
+        self.assertEqual(opener.calls, [])
+
+    def test_prior_actual_cost_above_expected_blocks_second_case_budget(self):
+        first, second = candidate("quote-one", 1), candidate("quote-two", 1)
+        cases = [
+            {"case_id": "case-one", "alias": first["alias"], "arguments": first["call_parameters"], "expected_cost": 1, "approval_id": "approval-1"},
+            {"case_id": "case-two", "alias": second["alias"], "arguments": second["call_parameters"], "expected_cost": 1, "approval_id": "approval-1"},
+        ]
+        self.write_approved(item=[first, second], total=2.5, cases=cases)
+        self.assertEqual(pilot.run(self.args(case="case-one", idempotency_key="batch-one"), FakeOpener({"success": True, "actual_cost": 2}))["outcome"], "success")
+        opener = FakeOpener({"success": True, "actual_cost": 1})
+        with self.assertRaisesRegex(pilot.PilotError, "budget"):
+            pilot.run(self.args(case="case-two", idempotency_key="batch-two"), opener)
+        self.assertEqual(opener.calls, [])
+
+    def test_second_receipt_uses_cumulative_actual_cost_for_budget_violation(self):
+        first, second = candidate("quote-one", 24.2), candidate("quote-two", 1)
+        cases = [
+            {"case_id": "case-one", "alias": first["alias"], "arguments": first["call_parameters"], "expected_cost": 24.2, "approval_id": "approval-1"},
+            {"case_id": "case-two", "alias": second["alias"], "arguments": second["call_parameters"], "expected_cost": 1, "approval_id": "approval-1"},
+        ]
+        self.write_approved(item=[first, second], total=25.2, cases=cases)
+        pilot.run(self.args(case="case-one", idempotency_key="batch-one"), FakeOpener({"success": True, "actual_cost": 24.2}))
+        violated = pilot.run(self.args(case="case-two", idempotency_key="batch-two"), FakeOpener({"success": True, "actual_cost": 2}))
+        terminal = [json.loads(line) for line in self.ledger.read_text(encoding="utf-8").splitlines()][-1]
+        self.assertEqual(violated["outcome"], "budget_violation")
+        self.assertEqual(terminal["actual_credits"], 2.0)
+        self.assertEqual(terminal["receipt_status"], "budget_violation")
+        self.ledger.unlink()
+        self.write_approved(item=[first, second], total=25.2, cases=cases)
+        pilot.run(self.args(case="case-one", idempotency_key="batch-one"), FakeOpener({"success": True, "actual_cost": 24.2}))
+        self.assertEqual(pilot.run(self.args(case="case-two", idempotency_key="batch-two"), FakeOpener({"success": True, "actual_cost": 1}))["outcome"], "success")
+
+    def test_non_successful_or_invalid_prior_receipt_blocks_second_case(self):
+        first, second = candidate("quote-one", 1), candidate("quote-two", 1)
+        cases = [
+            {"case_id": "case-one", "alias": first["alias"], "arguments": first["call_parameters"], "expected_cost": 1, "approval_id": "approval-1"},
+            {"case_id": "case-two", "alias": second["alias"], "arguments": second["call_parameters"], "expected_cost": 1, "approval_id": "approval-1"},
+        ]
+        for payload in ({"success": True}, {"success": False, "actual_cost": 1}, {"success": True, "actual_cost": 3}, TimeoutError(), {"success": True, "actual_cost": -1}, {"success": True, "actual_cost": float("nan")}):
+            with self.subTest(payload=payload):
+                self.ledger.unlink(missing_ok=True)
+                self.write_approved(item=[first, second], total=2, cases=cases)
+                pilot.run(self.args(case="case-one", idempotency_key="batch-one"), FakeOpener(payload))
+                opener = FakeOpener({"success": True, "actual_cost": 1})
+                with self.assertRaisesRegex(pilot.PilotError, "prior plan case"):
+                    pilot.run(self.args(case="case-two", idempotency_key="batch-two"), opener)
+                self.assertEqual(opener.calls, [])
 
     def test_cross_plan_same_case_is_rejected(self):
         self.assertEqual(pilot.run(self.args(), FakeOpener({"success": True, "actual_cost": 1}))["outcome"], "success")

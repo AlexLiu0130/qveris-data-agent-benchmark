@@ -64,9 +64,7 @@ class SemanticAgentTests(unittest.TestCase):
         result = agent.plan("price for ACME", manifest())
 
         self.assertEqual(result.plan.status, PlanStatus.READY)
-        self.assertEqual(result.usage.total_tokens, 18)
-        self.assertEqual(result.model_id, "kimi-k2.5")
-        self.assertIsNone(result.reasoning_effort)
+        self.assertEqual(dict(result.raw_usage or {}), {"prompt_tokens": 11, "completion_tokens": 7, "total_tokens": 18})
         self.assertEqual(len(transport.calls), 1)
         url, headers, body, timeout = transport.calls[0]
         self.assertEqual(url, "https://model.example/v1/chat/completions")
@@ -102,10 +100,12 @@ class SemanticAgentTests(unittest.TestCase):
 
     def test_missing_usage_is_unknown(self) -> None:
         agent, _ = self.make_agent('{"status":"REJECT","message":"unsupported"}')
-        usage = agent.plan("question", manifest()).usage
-        self.assertIsNone(usage.prompt_tokens)
-        self.assertIsNone(usage.completion_tokens)
-        self.assertIsNone(usage.total_tokens)
+        self.assertIsNone(agent.plan("question", manifest()).raw_usage)
+
+    def test_receipt_has_no_timing_scoring_or_billing_fields(self) -> None:
+        agent, _ = self.make_agent('{"status":"REJECT","message":"unsupported"}')
+        receipt = agent.plan("question", manifest())
+        self.assertEqual(set(receipt.__dataclass_fields__), {"plan", "raw_usage"})
 
     def test_missing_model_id_fails_closed(self) -> None:
         with self.assertRaises(ValueError):

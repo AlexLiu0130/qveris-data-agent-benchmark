@@ -60,9 +60,10 @@ class RunnerTests(unittest.TestCase):
         self.assertEqual(record["connector_outcome"], "success")
         self.assertTrue(record["fixture_response_match"])
         self.assertEqual(record["metrics"]["data_accuracy"], "not_scored")
-        self.assertEqual(record["usage"]["source"], "provider_reported")
+        self.assertEqual(record["agent_usage_receipt"], {"total_tokens": 9})
+        self.assertEqual(record["metrics"]["token_usage"]["source"], "provider_reported")
         self.assertEqual(record["validated_plan"]["tool_alias"], "quote")
-        self.assertEqual(set(("mode", "case_sha256", "manifest_sha256", "oracle_sha256", "model_network_ms", "plan_gate_ms", "connector_ms", "e2e_ms")) <= set(record), True)
+        self.assertEqual(set(("mode", "case_sha256", "manifest_sha256", "oracle_sha256", "agent_call_ms", "plan_gate_ms", "connector_ms", "e2e_ms")) <= set(record), True)
 
     def test_replay_fixture_is_self_check_not_data_accuracy(self):
         runner, _, _ = self.runner('{"status":"READY","domain":"realtime_quote","tool_alias":"quote","request":{"symbol":"ACME"}}')

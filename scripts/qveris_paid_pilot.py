@@ -8,6 +8,7 @@ import datetime as dt
 import fcntl
 import hashlib
 import json
+import math
 import os
 import re
 import socket
@@ -323,17 +324,24 @@ def append_ledger(fd: int, record: Mapping[str, Any]) -> None:
     os.fsync(fd)
 
 
-def _approved_total(records: list[Mapping[str, Any]], plan_hash: str, approval_id: str, connector_protocol_version: str, case_id: str, idempotency_key: str) -> float:
-    seen_cases: set[str] = set()
-    total = 0.0
+def _ensure_not_replayed(records: list[Mapping[str, Any]], case_id: str, idempotency_key: str) -> None:
     for record in records:
-        if record.get("plan_hash") == plan_hash or record["case_id"] == case_id or record["idempotency_key"] == idempotency_key:
-            raise PilotError("case, plan hash, or idempotency key was already planned; do not resend")
-        if record["record_type"] == "planned" and record.get("plan_hash") == plan_hash and record.get("approval_id") == approval_id and record.get("connector_protocol_version") == connector_protocol_version:
-            if record["case_id"] in seen_cases:
-                raise PilotError("pilot ledger contains duplicate planned case")
-            seen_cases.add(record["case_id"])
-            total += float(record["expected_credits"])
+        if record["case_id"] == case_id or record["idempotency_key"] == idempotency_key:
+            raise PilotError("case or idempotency key was already planned; do not resend")
+
+
+def _prior_actual_credits(records: list[Mapping[str, Any]], plan: Mapping[str, Any], plan_hash: str, case_id: str) -> float:
+    case_ids = [row["case_id"] for row in plan["cases"]]
+    total = 0.0
+    for prior_case in case_ids[:case_ids.index(case_id)]:
+        terminal = [record for record in records if record.get("plan_hash") == plan_hash and record["case_id"] == prior_case and record["record_type"] in {"settled", "uncertain"}]
+        if len(terminal) != 1:
+            raise PilotError("prior plan case lacks a unique terminal receipt")
+        receipt = terminal[0]
+        actual = receipt.get("actual_credits")
+        if receipt["record_type"] != "settled" or receipt.get("outcome") != "success" or receipt.get("receipt_status") != "reported" or type(actual) not in (int, float) or isinstance(actual, bool) or not math.isfinite(actual) or actual < 0:
+            raise PilotError("prior plan case did not complete with a valid successful receipt")
+        total += float(actual)
     return total
 
 
@@ -454,7 +462,9 @@ def run(args: argparse.Namespace, opener: Any | None = None) -> dict[str, Any]:
     if opener is None:
         opener = urllib.request.build_opener(NoRedirect(), urllib.request.HTTPSHandler(context=build_ssl_context()))
     with LockedLedger(args.ledger) as ledger:
-        if _approved_total(ledger.records, plan_hash, selected["approval_id"], plan["connector_protocol_version"], selected["case_id"], args.idempotency_key) + expected > total_budget:
+        _ensure_not_replayed(ledger.records, selected["case_id"], args.idempotency_key)
+        prior_actual = _prior_actual_credits(ledger.records, plan, plan_hash, selected["case_id"])
+        if prior_actual + expected > total_budget:
             raise PilotError("approved total budget would be exceeded")
         candidate = _candidates(manifest)[selected["alias"]]
         planned = {"record_type": "planned", "at": _now(), "case_id": selected["case_id"], "alias": selected["alias"], "tool_id": candidate["tool_id"], "arguments_hash": canonical_hash(selected["arguments"]), "expected_credits": expected, "approval_id": selected["approval_id"], "manifest_hash": checked_manifest_hash, "plan_hash": plan_hash, "connector_protocol_version": plan["connector_protocol_version"], "idempotency_key": args.idempotency_key}
@@ -467,7 +477,7 @@ def run(args: argparse.Namespace, opener: Any | None = None) -> dict[str, Any]:
         else:
             private_result, private_result_status = None, "not_json"
         actual, remaining = _receipt(payload)
-        budget_violation = actual is not None and actual > total_budget
+        budget_violation = actual is not None and math.isfinite(actual) and actual >= 0 and prior_actual + actual > total_budget
         outcome = "budget_violation" if budget_violation else ("receipt_missing" if response["outcome"] == "success" and actual is None else response["outcome"])
         if budget_violation:
             response["business_status"] = "budget_violation"

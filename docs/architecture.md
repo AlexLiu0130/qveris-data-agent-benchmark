@@ -14,7 +14,7 @@ The only allowed request path is:
 
 ~~~text
 Kimi/user input
-  → one semantic-model request
+  → one semantic-model request returning SemanticPlanReceipt
   → deterministic SemanticPlan validation
   → fake replay connector, or the separately controlled paid Execute script
   → validated structured result and score record
@@ -26,12 +26,12 @@ Search and Inspect are construction-time evidence activities. They are never run
 
 | Component | Contract |
 |---|---|
-| Semantic Agent | Makes one model request and returns one structured SemanticPlan only. It never receives QVeris credentials or provider Tool IDs. |
-| Deterministic validation | Strictly parses and validates the plan status, semantic fields, alias and typed request against the frozen Manifest. Invalid or non-READY plans do not execute. |
+| Semantic Agent | Makes one model request and returns SemanticPlanReceipt only: plan plus unmodified raw_usage. It never receives QVeris credentials or provider Tool IDs, and does not time, calculate token/cost or score. |
+| External Harness validation | Strictly parses and validates receipt.plan status, semantic fields, alias and typed request against the frozen Manifest. Invalid or non-READY plans do not execute. |
 | Fixed-alias connector | Resolves an allowed alias to its QVeris Tool ID. Core runner replay always uses the fake connector; QVeris Execute is only in the controlled paid script. |
-| Response/scoring path | Validates the returned structure, performs fixture self-check or oracle comparison when eligible, measures the four metrics and records the outcome. |
+| External Harness measurement/scoring | Measures agent_call_ms, connector and e2e time; derives usage/token cost policy from raw_usage; performs fixture self-check or eligible semantic/data scoring and records the outcome. |
 
-The semantic plan uses only READY, CLARIFY and REJECT. A READY plan names exactly one alias and its request. CLARIFY and REJECT do not reach QVeris Execute. The validation layer is deterministic; it must not coerce a type, guess missing parameters, switch aliases, or turn a rejected plan into a call.
+SemanticPlanReceipt has exactly plan and raw_usage. The plan uses only READY, CLARIFY and REJECT. A READY plan names exactly one alias and its request. CLARIFY and REJECT do not reach QVeris Execute. The external validation layer is deterministic; it must not coerce a type, guess missing parameters, switch aliases, or turn a rejected plan into a call.
 
 ## Runtime Manifest versus paid approval artifact
 
@@ -67,10 +67,10 @@ The four benchmark metrics are fixed names with separate meanings:
 
 | Metric | Definition | Boundary |
 |---|---|---|
-| semantic_exact | True only when plan status, semantic slots, alias and arguments exactly match the frozen case expectation. | A correct CLARIFY/REJECT can score semantically when it is the expected result. |
+| semantic_exact | External Harness compares receipt.plan status, semantic slots, alias and arguments to the frozen case expectation. | A correct CLARIFY/REJECT can score semantically when it is the expected result. |
 | data_accuracy | Oracle comparison of structured response fields according to the case rule, scored only by a future live runner with independent_source. | Core fake replay is always not_scored; smoke uses fixture_response_match and self_check, not data accuracy. |
-| token_usage | Provider-reported prompt, completion and total token counts. | Missing provider usage is reported as unknown, not estimated. |
-| e2e_ms | Monotonic end-to-end elapsed time. | model_network_ms, plan_gate_ms and connector_ms are retained as phase measurements; replay and live figures remain separate. |
+| token_usage | External Harness derives prompt, completion and total tokens from receipt.raw_usage. | Missing usage is unknown; token cost is unknown unless an approved Harness pricing policy exists. |
+| e2e_ms | External Harness records monotonic end-to-end elapsed time. | agent_call_ms and connector_ms are phase measurements; deterministic validation may be separately measured. Replay and live figures remain separate. |
 
 For realtime cases, a future comparable oracle must record capture time, session, as-of fields and the predeclared comparison window/tolerance. Historical and financial cases need frozen payload/oracle, period, unit/currency and provenance rules. These are unfinished benchmark assets, not properties inferred from a Tool name.
 
@@ -80,17 +80,21 @@ Tool selection is a construction-time decision, not a runtime agent action. Cand
 
 There is no fixed threshold or declared winner in this repository. In particular, Finnhub is not called “best”; the present evidence is insufficient to rank it against alternatives.
 
-## Current v3 evidence and limitation
+## Current v3–v5 evidence and limitation
 
-The current realtime pilot freezes alias rt_us_finnhub_quote_protocol_v3 to Tool ID finnhub_io_api.stock.quote and protocol qveris.execute.parameters.v1. The local review records one corrected-protocol VALID_RUN for a frozen AAPL request: HTTP 200, business success, actual 1 credit and 1211 ms.
+The v3 realtime pilot freezes alias rt_us_finnhub_quote_protocol_v3 to Tool ID finnhub_io_api.stock.quote and protocol qveris.execute.parameters.v1. The local review records one corrected-protocol valid business receipt.
 
 This only establishes a limited schema-qualified pilot observation. The review records missing or unproven response semantics for symbol, source, session, currency and timestamp meaning, so accuracy and freshness remain blocked. One observation cannot establish reliability, latency ranking, cross-provider superiority, an oracle, or a three-domain selection.
+
+The v4 Tiingo historical EOD pilot and v5 FMP as-reported income-statement pilot are likewise schema-qualified / accuracy-unverified. Their recorded responses do not establish independent oracle accuracy, provenance completeness, freshness or reliable ranking. The v5 Alpha Vantage income-statement response is incompatible with V1 data delivery because the allowed single Tool response does not embed the required financial-statement fields and V1 disallows an additional GET.
 
 Primary local evidence:
 
 - [approved v3 run plan](../benchmarks/pilot/approved-runtime-plan-v3.json);
 - [approved v3 manifest](../benchmarks/pilot/approved-runtime-manifest-v3.json);
 - [pilot independent review](tool-selection/pilot-plan-review.md).
+- [v4 Tiingo pilot](tool-selection/historical-pilot-v4.md);
+- [v5 financial pilot](tool-selection/financial-pilot-v5.md).
 
 ## Configuration and secrets
 

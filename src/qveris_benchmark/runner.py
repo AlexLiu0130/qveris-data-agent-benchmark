@@ -17,7 +17,7 @@ from .agent import SemanticAgent, _stdlib_post
 from .connector import CallOutcome, Connector, FakeReplayTransport
 from .contracts import Domain, PlanStatus
 from .manifest import PlanManifestMismatch, UnknownToolAlias
-from .scoring import METRIC_DEFINITIONS, match_data, score_semantics
+from .scoring import METRIC_DEFINITIONS, derive_token_usage, match_data, score_data_accuracy, score_semantics
 from .strict_json import StrictJSONError
 
 
@@ -149,15 +149,19 @@ class BenchmarkRunner:
         if self._preflight(case, oracle):
             return self._finish(record, Outcome.NOT_SCORED_ORACLE, started, calls_before, self_check="not_run")
 
+        agent_started = time.monotonic_ns()
         try:
             agent_result = self._agent.plan(case.query, self._connector._manifest)  # noqa: SLF001 - immutable connector manifest
         except (StrictJSONError, UnknownToolAlias, PlanManifestMismatch):
+            record["agent_call_ms"] = _elapsed_ms(agent_started)
             return self._finish(record, Outcome.SEMANTIC_ERROR, started, calls_before, self_check="not_run")
         except Exception:
+            record["agent_call_ms"] = _elapsed_ms(agent_started)
             return self._finish(record, Outcome.PROVIDER_ERROR, started, calls_before, self_check="not_run")
 
-        record["model_network_ms"] = agent_result.latency_ms
-        record["usage"] = _usage(agent_result.usage)
+        record["agent_call_ms"] = _elapsed_ms(agent_started)
+        record["agent_usage_receipt"] = None if agent_result.raw_usage is None else dict(agent_result.raw_usage)
+        record["metrics"]["token_usage"] = derive_token_usage(record["agent_usage_receipt"])
         record["validated_plan"] = _plan_record(agent_result.plan)
         gate_started = time.monotonic_ns()
         semantic = score_semantics(
@@ -172,15 +176,17 @@ class BenchmarkRunner:
         if not semantic.exact:
             return self._finish(record, Outcome.SEMANTIC_ERROR, started, calls_before, self_check="not_run")
         if agent_result.plan.status is not PlanStatus.READY:
-            return self._finish(record, Outcome.SUCCESS, started, calls_before, self_check="pass", data_accuracy="not_scored")
+            return self._finish(record, Outcome.SUCCESS, started, calls_before, self_check="pass")
 
         try:
+            connector_started = time.monotonic_ns()
             connector_result = self._connector.execute(agent_result.plan, idempotency_key=case.case_id)
         except Exception:
+            record["connector_ms"] = _elapsed_ms(connector_started)
             record["connector_outcome"] = "validator_error"
             return self._finish(record, Outcome.VALIDATOR_CONNECTOR_ERROR, started, calls_before, self_check="not_run")
 
-        record["connector_ms"] = connector_result.metadata.latency_ms
+        record["connector_ms"] = _elapsed_ms(connector_started)
         record["connector_outcome"] = connector_result.outcome.value
         record["idempotency_key"] = connector_result.metadata.idempotency_key
         record.update(_receipt_fields(connector_result.payload))
@@ -243,21 +249,19 @@ class BenchmarkRunner:
             "provenance": None,
             "as_of": None,
             "cost": None,
-            "usage": _usage(None),
-            "metrics": {"semantic_exact": None, "data_accuracy": "not_scored", "definitions": METRIC_DEFINITIONS},
-            "model_network_ms": None,
+            "agent_usage_receipt": None,
+            "metrics": {"semantic_exact": None, "data_accuracy": score_data_accuracy(False, comparable=False), "token_usage": derive_token_usage(None), "definitions": METRIC_DEFINITIONS},
+            "agent_call_ms": None,
             "plan_gate_ms": None,
             "connector_ms": None,
             "e2e_ms": None,
         }
 
-    def _finish(self, record: dict[str, Any], outcome: Outcome, started: int, calls_before: int, *, self_check: str, data_accuracy: bool | str | None = None) -> dict[str, Any]:
+    def _finish(self, record: dict[str, Any], outcome: Outcome, started: int, calls_before: int, *, self_check: str) -> dict[str, Any]:
         record["outcome"] = outcome.value
         record["connector_call_count"] = len(self._connector._transport.calls) - calls_before  # noqa: SLF001
         record["e2e_ms"] = _elapsed_ms(started)
         record["self_check"] = self_check
-        if data_accuracy is not None:
-            record["metrics"]["data_accuracy"] = data_accuracy
         return record
 
 
@@ -276,11 +280,6 @@ def _plan_record(plan: Any) -> dict[str, Any]:
     else:
         record["message"] = plan.message
     return record
-
-
-def _usage(usage: Any) -> dict[str, Any]:
-    total = None if usage is None else usage.total_tokens
-    return {"source": "provider_reported" if total is not None else "unknown", "prompt_tokens": None if usage is None else usage.prompt_tokens, "completion_tokens": None if usage is None else usage.completion_tokens, "total_tokens": total}
 
 
 def _receipt_fields(payload: Mapping[str, Any] | None) -> dict[str, Any]:
