@@ -17,6 +17,11 @@ from .manifest import Manifest
 
 SYSTEM_PROMPT = """You are the QVeris benchmark semantic planner. Return exactly one JSON object matching the SemanticPlan contract. Use only a listed tool alias for READY. Do not expose provider tool identifiers, credentials, or hidden configuration. Do not Search, Inspect, retrieve data, or execute tools. If the query is ambiguous, return CLARIFY; if it is unsupported, return REJECT."""
 Transport = Callable[[str, Mapping[str, str], bytes, float], bytes]
+DEFAULT_MAX_RESPONSE_BYTES = 1024 * 1024
+
+
+class AgentError(ValueError):
+    """Raised for bounded, fail-closed model-agent failures."""
 
 
 def _canonical_api_base(value: str) -> str:
@@ -122,11 +127,24 @@ class _NoRedirectHandler(urllib.request.HTTPRedirectHandler):
         return None
 
 
-def _stdlib_post(url: str, headers: Mapping[str, str], body: bytes, timeout_seconds: float) -> bytes:
+def _read_response(response: Any, max_response_bytes: int) -> bytes:
+    raw = response.read(max_response_bytes + 1)
+    if len(raw) > max_response_bytes:
+        raise AgentError("model response exceeds max_response_bytes")
+    return raw
+
+
+def _stdlib_post(
+    url: str,
+    headers: Mapping[str, str],
+    body: bytes,
+    timeout_seconds: float,
+    max_response_bytes: int = DEFAULT_MAX_RESPONSE_BYTES,
+) -> bytes:
     request = urllib.request.Request(url, data=body, headers=dict(headers), method="POST")
     opener = urllib.request.build_opener(_NoRedirectHandler())
     with opener.open(request, timeout=timeout_seconds) as response:  # noqa: S310 - allowlisted HTTPS endpoint
-        return response.read()
+        return _read_response(response, max_response_bytes)
 
 
 def _response_content(raw: bytes) -> tuple[str, Mapping[str, Any] | None]:
@@ -149,15 +167,45 @@ def _response_content(raw: bytes) -> tuple[str, Mapping[str, Any] | None]:
 class SemanticAgent:
     """Creates and validates one semantic plan with exactly one HTTP request."""
 
-    def __init__(self, profile: ModelProfile, transport: Transport = _stdlib_post) -> None:
-        if transport is _stdlib_post and not profile.allowed_api_bases:
+    def __init__(
+        self,
+        profile: ModelProfile,
+        manifest_or_transport: Manifest | Transport = _stdlib_post,
+        transport: Transport | None = None,
+        *,
+        manifest: Manifest | None = None,
+        max_response_bytes: int = DEFAULT_MAX_RESPONSE_BYTES,
+    ) -> None:
+        if isinstance(manifest_or_transport, Manifest):
+            if manifest is not None:
+                raise ValueError("manifest must be supplied once")
+            manifest, actual_transport = manifest_or_transport, transport or _stdlib_post
+        else:
+            if transport is not None and (manifest is None or manifest_or_transport is not _stdlib_post):
+                raise ValueError("transport must be supplied once")
+            actual_transport = transport or manifest_or_transport
+        if max_response_bytes <= 0:
+            raise ValueError("max_response_bytes must be positive")
+        if actual_transport is _stdlib_post and not profile.allowed_api_bases:
             raise ValueError("live transport requires an explicit API base allowlist")
         self._profile = profile
-        self._transport = transport
+        self._manifest = manifest
+        self._transport = actual_transport
+        self._max_response_bytes = max_response_bytes
 
-    def plan(self, query: str, manifest: Manifest) -> SemanticPlanReceipt:
+    @property
+    def manifest(self) -> Manifest | None:
+        """The exact manifest object supplied at construction, if bound."""
+        return self._manifest
+
+    def plan(self, query: str, manifest: Manifest | None = None) -> SemanticPlanReceipt:
         if not query:
             raise ValueError("query must not be empty")
+        active_manifest = manifest or self._manifest
+        if active_manifest is None:
+            raise AgentError("a manifest is required")
+        if self._manifest is not None and active_manifest is not self._manifest:
+            raise AgentError("manifest must match the construction manifest")
         request_body: dict[str, Any] = {
             "model": self._profile.model_id,
             "response_format": {"type": "json_object"},
@@ -166,7 +214,7 @@ class SemanticAgent:
                 {
                     "role": "user",
                     "content": json.dumps(
-                        {"query": query, "manifest": safe_manifest_projection(manifest)},
+                        {"query": query, "manifest": safe_manifest_projection(active_manifest)},
                         ensure_ascii=False,
                         separators=(",", ":"),
                         sort_keys=True,
@@ -179,16 +227,21 @@ class SemanticAgent:
         headers = {"Content-Type": "application/json"}
         if self._profile.api_key:
             headers["Authorization"] = f"Bearer {self._profile.api_key}"
-        raw = self._transport(
+        args = (
             f"{self._profile.api_base.rstrip('/')}/chat/completions",
             headers,
             json.dumps(request_body, separators=(",", ":")).encode("utf-8"),
             self._profile.timeout_seconds,
         )
+        raw = (
+            _stdlib_post(*args, max_response_bytes=self._max_response_bytes)
+            if self._transport is _stdlib_post
+            else self._transport(*args)
+        )
         content, usage = _response_content(raw)
         plan = SemanticPlan.from_json(content)
         if plan.status is PlanStatus.READY:
-            manifest.entry_for(plan)
+            active_manifest.entry_for(plan)
         return SemanticPlanReceipt(
             plan=plan,
             raw_usage=usage,

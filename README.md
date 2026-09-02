@@ -37,6 +37,22 @@ Agent 不在请求时运行 Search 或 Inspect，不调用多个 Tool，也不�
 
 Agent 只返回 SemanticPlanReceipt：SemanticPlan 的状态为 READY、CLARIFY 或 REJECT，加上模型原样返回的 raw_usage。Agent 不计时、不计算 token/费用、不评分。只有外部 Harness 的确定性 validation 通过 schema、状态、alias 和参数 allowlist 后，READY plan 才可以进入 connector。模型不接触 QVeris 或供应商凭据。
 
+## QVerisGet 公共合同（当前实现）
+
+QVerisGet 是当前最小的业务接口，而非完整 benchmark 模板。调用输入为 query、request_id 与 idempotency_key；后两者是安全的 opaque identifier。公共输出只有：
+
+~~~text
+request_id, status, tool_alias, payload, message
+~~~
+
+status 可为 SUCCESS、EMPTY、BLOCKED、FAILED、UNCERTAIN、CLARIFY、REJECT 或 SEMANTIC_ERROR。公共 response 不含 plan、usage、token、cost、latency、metrics、Tool ID、headers、key、idempotency 或 oracle。
+
+READY 路径恰有 1 次 Agent 调用与至多 1 次 connector 调用；CLARIFY、REJECT 和语义错误各有 1 次 Agent 调用、0 次 connector 调用。内部 trace_sink 接收 receipt、connector 结果与调用计数，供外部 Harness 做 metrics；它不是公共 response，sink 失败也不改变业务结果。
+
+Agent 与 connector 必须共享**同一个** runtime Manifest。response schema 必须是递归 closed object schema（object 均为 additionalProperties=false），且拒绝 secret、token、credential、header、key、Tool ID、idempotency 等敏感字段名。底层 Connector 的 LiveTransport 响应上限是 1 MiB；当前 QVerisGet 拒绝 LiveTransport。
+
+因此，可 allowlist 的真实模型只能配合 fake Tool connector 做语义联调，不等于 QVeris live-ready。真实 live activation 仍待固定 Tool、授权 adapter 与单独验证；后处理/转换/二次 Agent 调用继续 deferred。
+
 详细的 replay/live 边界、请求次数、指标和 Tool selection 规则见 [架构说明](docs/architecture.md)。
 
 ## 四项 benchmark 指标

@@ -5,7 +5,7 @@ import unittest
 
 sys.path.insert(0, str(pathlib.Path(__file__).parents[1] / "src"))
 
-from qveris_benchmark.agent import ModelProfile, SemanticAgent, _NoRedirectHandler
+from qveris_benchmark.agent import AgentError, ModelProfile, SemanticAgent, _NoRedirectHandler, _read_response
 from qveris_benchmark.contracts import AuthMode, Domain, PlanStatus
 from qveris_benchmark.manifest import TOOL_MANIFEST_SCHEMA_VERSION, Manifest, ToolManifestEntry, UnknownToolAlias
 from qveris_benchmark.strict_json import StrictJSONError
@@ -39,6 +39,16 @@ class FakeTransport:
         if self.usage is not None:
             response["usage"] = self.usage
         return json.dumps(response).encode()
+
+
+class FakeResponse:
+    def __init__(self, body: bytes) -> None:
+        self.body = body
+        self.read_limit: int | None = None
+
+    def read(self, limit: int) -> bytes:
+        self.read_limit = limit
+        return self.body
 
 
 class SemanticAgentTests(unittest.TestCase):
@@ -140,6 +150,28 @@ class SemanticAgentTests(unittest.TestCase):
 
     def test_redirect_handler_never_returns_a_redirect_request(self) -> None:
         self.assertIsNone(_NoRedirectHandler().redirect_request(None, None, None, None, None, None, None, None))
+
+    def test_bound_manifest_preserves_identity(self) -> None:
+        expected = manifest()
+        transport = FakeTransport('{"status":"REJECT","message":"unsupported"}')
+        agent = SemanticAgent(
+            ModelProfile("https://model.example/v1", "model", frozenset({"https://model.example/v1"})),
+            expected,
+            transport,
+        )
+        self.assertIs(agent.manifest, expected)
+        self.assertEqual(agent.plan("question").plan.status, PlanStatus.REJECT)
+
+    def test_response_at_limit_is_accepted(self) -> None:
+        response = FakeResponse(b"x" * 4)
+        self.assertEqual(_read_response(response, 4), b"x" * 4)
+        self.assertEqual(response.read_limit, 5)
+
+    def test_response_over_limit_is_rejected_before_parsing(self) -> None:
+        response = FakeResponse(b"x" * 5)
+        with self.assertRaisesRegex(AgentError, "^model response exceeds max_response_bytes$"):
+            _read_response(response, 4)
+        self.assertEqual(response.read_limit, 5)
 
     def test_kimi_and_openai_compatible_profiles_are_explicit(self) -> None:
         for api_base, model_id, reasoning_effort in (

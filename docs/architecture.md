@@ -33,6 +33,32 @@ Search and Inspect are construction-time evidence activities. They are never run
 
 SemanticPlanReceipt has exactly plan and raw_usage. The plan uses only READY, CLARIFY and REJECT. A READY plan names exactly one alias and its request. CLARIFY and REJECT do not reach QVeris Execute. The external validation layer is deterministic; it must not coerce a type, guess missing parameters, switch aliases, or turn a rejected plan into a call.
 
+## QVerisGet public contract
+
+QVerisGet is the current minimal business-facing interface, not a benchmark template. Its request contract is:
+
+~~~text
+get(query, request_id, idempotency_key)
+~~~
+
+query must be a non-empty, control-character-free string within the interface limit. request_id and idempotency_key are safe opaque identifiers. Its entire public result contract is:
+
+~~~text
+{request_id, status, tool_alias, payload, message}
+~~~
+
+status is one of SUCCESS, EMPTY, BLOCKED, FAILED, UNCERTAIN, CLARIFY, REJECT or SEMANTIC_ERROR. The public envelope intentionally excludes all metrics and execution internals: receipt/plan, usage, token, cost, latency, call count, Tool ID, idempotency key, headers, secrets and oracle data.
+
+A READY request has one Agent call and at most one connector call. CLARIFY, REJECT and SEMANTIC_ERROR each have one Agent call and zero connector calls. The private trace_sink receives receipt, connector result, reason and call counts for the external Harness; it must not change the public result if it fails.
+
+Agent and connector must share the exact same runtime Manifest instance. At QVerisGet construction, each response schema must be typed and closed recursively: every object has additionalProperties=false and every array has typed items. Schema keys that name or segment a secret, authorization, credential, token, cookie, header, key, Tool ID, execution ID or idempotency value are rejected. The underlying Connector LiveTransport enforces a 1 MiB maximum response; QVerisGet currently rejects LiveTransport before any request.
+
+## QVerisGet activation boundary
+
+An HTTPS-allowlisted live SemanticAgent may be paired with a fake replay connector for semantic integration only. This lets an external Harness observe a real model receipt without allowing a QVeris Tool call; it is not QVeris live-ready.
+
+Real QVeris activation remains deferred until a fixed Tool, an explicitly authorized live adapter and their separate verification are available. Post-processing, transforms and Agent fallback are also deferred: the current contract returns the validated payload or controlled status only.
+
 ## Runtime Manifest versus paid approval artifact
 
 The runtime Manifest is a frozen tool-manifest.v1 mapping from a benchmark-facing alias to a QVeris Tool ID plus its allowed domain, request schema and response expectation. The model sees the benchmark alias contract, not live credentials or arbitrary Tool methods.

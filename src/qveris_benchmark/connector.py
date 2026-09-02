@@ -18,6 +18,7 @@ from .manifest import Manifest, ToolManifestEntry
 
 
 DEFAULT_API_BASE = "https://qveris.ai/api/v1"
+DEFAULT_MAX_RESPONSE_BYTES = 1024 * 1024
 _BLOCKED_STATUSES = frozenset({"blocked", "denied", "forbidden", "rejected"})
 _EMPTY_FIELDS = ("data", "results", "items", "result")
 
@@ -36,6 +37,10 @@ class RequestValidationError(ValueError):
 
 class SchemaValidationError(ValueError):
     """Raised when a value or a manifest schema falls outside the supported subset."""
+
+
+class ResponseTooLargeError(ValueError):
+    """Raised before parsing when a live response exceeds the fixed byte limit."""
 
 
 @dataclass(frozen=True)
@@ -67,21 +72,32 @@ class ConnectorResult:
 class LiveTransport:
     """Low-level HTTP boundary; BenchmarkRunner accepts FakeReplayTransport only."""
 
+    def __init__(self, max_response_bytes: int = DEFAULT_MAX_RESPONSE_BYTES) -> None:
+        if type(max_response_bytes) is not int or max_response_bytes <= 0:
+            raise ValueError("max_response_bytes must be a positive integer")
+        self.max_response_bytes = max_response_bytes
+
     def post(
         self, url: str, body: bytes, headers: Mapping[str, str], timeout: float
     ) -> TransportResponse:
         request = Request(url, data=body, headers=dict(headers), method="POST")
         try:
             with urlopen(request, timeout=timeout) as response:  # nosec B310: URL is validated by Connector.
-                raw = response.read()
+                raw = self._read_limited(response)
                 return TransportResponse(response.status, _decode_object(raw))
         except HTTPError as exc:
-            return TransportResponse(exc.code, _decode_object(exc.read()), str(exc))
+            return TransportResponse(exc.code, _decode_object(self._read_limited(exc)), str(exc))
         except TimeoutError as exc:
             return TransportResponse(None, error=str(exc) or "timeout", timed_out=True)
         except URLError as exc:
             timed_out = isinstance(exc.reason, TimeoutError)
             return TransportResponse(None, error=str(exc.reason), timed_out=timed_out)
+
+    def _read_limited(self, response: Any) -> bytes:
+        raw = response.read(self.max_response_bytes + 1)
+        if len(raw) > self.max_response_bytes:
+            raise ResponseTooLargeError("response exceeds max_response_bytes")
+        return raw
 
 
 @dataclass
@@ -127,6 +143,14 @@ class Connector:
         self._timeout = timeout
         if isinstance(transport, LiveTransport) and not api_key:
             raise ValueError("api_key is required for live transport")
+
+    @property
+    def manifest(self) -> Manifest:
+        return self._manifest
+
+    @property
+    def is_live(self) -> bool:
+        return isinstance(self._transport, LiveTransport)
 
     def execute(self, plan: SemanticPlan, *, idempotency_key: str) -> ConnectorResult:
         if plan.status is not PlanStatus.READY:

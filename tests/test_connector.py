@@ -1,6 +1,7 @@
 import pathlib
 import sys
 import unittest
+from unittest.mock import patch
 
 sys.path.insert(0, str(pathlib.Path(__file__).parents[1] / "src"))
 
@@ -8,7 +9,9 @@ from qveris_benchmark.connector import (
     CallOutcome,
     Connector,
     FakeReplayTransport,
+    LiveTransport,
     RequestValidationError,
+    ResponseTooLargeError,
     TransportResponse,
 )
 from qveris_benchmark.contracts import AuthMode, Domain, SemanticPlan
@@ -70,6 +73,15 @@ class ConnectorTests(unittest.TestCase):
         with self.assertRaises(RequestValidationError):
             connector.execute(plan('{"symbol":1}'), idempotency_key="case-2")
         self.assertEqual(transport.calls, [])
+
+    def test_exposes_manifest_identity_and_live_status_without_key(self) -> None:
+        configured_manifest = manifest()
+        fake = Connector(configured_manifest, FakeReplayTransport({}))
+        live = Connector(configured_manifest, LiveTransport(), api_key="test-secret")
+        self.assertIs(fake.manifest, configured_manifest)
+        self.assertFalse(fake.is_live)
+        self.assertTrue(live.is_live)
+        self.assertFalse(hasattr(fake, "api_key"))
 
     def test_recursive_schema_rejects_nested_overreach_enum_and_range_before_post(self) -> None:
         request_schema = {
@@ -179,6 +191,30 @@ class ConnectorTests(unittest.TestCase):
         response = transport.post("https://qveris.ai/api/v1/tools/execute?tool_id=provider.quote", b"{}", {}, 1)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(transport.calls), 1)
+
+    def test_live_transport_rejects_response_larger_than_limit_before_parsing(self) -> None:
+        class OversizeResponse:
+            status = 200
+
+            def __init__(self) -> None:
+                self.read_limit = None
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *unused):
+                return False
+
+            def read(self, limit):
+                self.read_limit = limit
+                return b"x" * limit
+
+        response = OversizeResponse()
+        transport = LiveTransport(max_response_bytes=3)
+        with patch("qveris_benchmark.connector.urlopen", return_value=response):
+            with self.assertRaisesRegex(ResponseTooLargeError, "^response exceeds max_response_bytes$"):
+                transport.post("https://qveris.ai/api/v1/tools/execute?tool_id=quote", b"{}", {}, 1)
+        self.assertEqual(response.read_limit, 4)
 
 
 if __name__ == "__main__":
