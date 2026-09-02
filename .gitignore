@@ -1,0 +1,15 @@
+# Local secrets (keep the documented template)
+.env*
+!.env.example
+
+# Generated benchmark outputs
+results/raw/
+artifacts/raw/
+
+# Python caches and virtual environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
