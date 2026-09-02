@@ -1,6 +1,6 @@
 # QVeris Data Agent Benchmark
 
-一个受控的基础数据取数 benchmark：检验用户请求能否被一次模型语义规划正确映射为一个固定别名的 QVeris Tool Execute 调用，并产出可评分的结构化结果。
+一个受控的基础数据取数 benchmark：检验用户请求能否被一次模型语义规划正确映射为一个细分场景及其标准参数，并产出可评分的结构化结果。
 
 完整设计见 [架构说明](docs/architecture.md)。本仓库不是生产 Agent、搜索产品或数据分析产品。
 
@@ -15,8 +15,8 @@
 当前实现和证据范围更小：
 
 - 一个离线、3-case 的 synthetic replay fixture self-check（每个 Suite 一个 synthetic fixture case）；它输出 not_scored_oracle 和 self_check，而非 success 或数据准确率；
-- 一个受批准的 realtime Tool pilot，而不是三域 Tool selection 或 300-case benchmark；
-- v3 pilot 的固定别名为 rt_us_finnhub_quote_protocol_v3，对应 finnhub_io_api.stock.quote，并冻结 qveris.execute.parameters.v1 协议。
+- 一个 legacy narrow Manifest：保存 v6–v10 的三条已执行 Tool 候选及其兼容性/replay 约束；它不是当前交付的 runtime contract，也不是三域 Tool selection 或 300-case benchmark；
+- 历史 v3 realtime pilot 仅保留为 Tool curation 证据，不是当前 runtime alias 或 live-ready 声明。
 
 因此，仓库当前不能支持“已准确”“已交付”“已上线”或“Finnhub 最佳”的结论。
 
@@ -28,8 +28,8 @@
 用户/Kimi 输入
   → 单一模型的一次 SemanticPlanReceipt（plan + raw_usage）
   → 确定性 validation
-  → Manifest 固定 alias connector
-  → replay fake connector，或受控 paid 脚本的 QVeris Execute
+  → （目标）market × scenario Registry 的确定性 Router
+  → 当前 legacy alias connector 仅用于 replay/窄切片验证
   → 结构化结果与评分记录
 ~~~
 
@@ -47,11 +47,15 @@ request_id, status, tool_alias, payload, message
 
 status 可为 SUCCESS、EMPTY、BLOCKED、FAILED、UNCERTAIN、CLARIFY、REJECT 或 SEMANTIC_ERROR。公共 response 不含 plan、usage、token、cost、latency、metrics、Tool ID、headers、key、idempotency 或 oracle。
 
-READY 路径恰有 1 次 Agent 调用与至多 1 次 connector 调用；CLARIFY、REJECT 和语义错误各有 1 次 Agent 调用、0 次 connector 调用。内部 trace_sink 接收 receipt、connector 结果与调用计数，供外部 Harness 做 metrics；它不是公共 response，sink 失败也不改变业务结果。
+READY 路径恰有 1 次 Agent 调用与至多 1 次 connector 调用；CLARIFY、REJECT 和语义错误各有 1 次 Agent 调用、0 次 connector 调用。内部 trace_sink 仅接收安全 observation（plan 的 status/domain/tool_alias 摘要、allowlisted token 数值、outcome/reason code 与调用计数），供外部 Harness 做 metrics；它不是公共 response，sink 失败也不改变业务结果。
 
-Agent 与 connector 必须共享**同一个** runtime Manifest。response schema 必须是递归 closed object schema（object 均为 additionalProperties=false），且拒绝 secret、token、credential、header、key、Tool ID、idempotency 等敏感字段名。底层 Connector 的 LiveTransport 响应上限是 1 MiB；当前 QVerisGet 拒绝 LiveTransport。
+正式 runtime 将由 Agent 输出 `scenario_id` 与标准参数，再由 market × scenario Registry 确定性映射已冻结 Tool；Agent 不接触 Tool ID。历史窄切片记录中的 `quote.realtime.v1`、`price.history.v1`、`statement.financial.v1` 是 Finnhub、Tiingo、FMP 的三条候选证据，保留其 envelope/projection/receipt/cost gate 用于兼容性与真实调用验证；它们不是当前交付合同，也不能代表三个数据方向。
 
-因此，可 allowlist 的真实模型只能配合 fake Tool connector 做语义联调，不等于 QVeris live-ready。真实 live activation 仍待固定 Tool、授权 adapter 与单独验证；后处理/转换/二次 Agent 调用继续 deferred。
+新 Registry 尚未接入 runtime。若恢复 legacy 窄切片真实验证，目标设计是采用默认拒绝、需显式 permit 的验证适配层；受控 paid pilot 仍是独立的 Tool curation/admin 流程，不是正式 get runtime 的替代入口。
+
+目标验证适配层的响应上限应为 1 MiB；它只接受仓外、当前用户所有、普通非 symlink、0600 且内容与其冻结验证记录精确匹配的 permit，并默认拒绝。
+
+因此，可 allowlist 的真实模型只能配合 fake Tool connector 做语义联调，不等于 QVeris live-ready。正式 live activation 仍待完成按市场与细分场景的候选 Tool 真实调用、质量/延迟/稳定性排序并冻结 Registry；后处理/转换/二次 Agent 调用继续 deferred。
 
 详细的 replay/live 边界、请求次数、指标和 Tool selection 规则见 [架构说明](docs/architecture.md)。
 
@@ -72,15 +76,15 @@ Agent 与 connector 必须共享**同一个** runtime Manifest。response schema
 
 真实模型只能以显式 model_live_replay_data 模式配合 replay data 使用；它仍使用 fake connector，且模型 API base 必须位于 MODEL_API_BASE_ALLOWLIST。普通 replay 不接受外网模型 transport。
 
-QVeris live 只允许通过受控 paid pilot 脚本，不是 core runner 功能。脚本默认 dry-run；只有传入 --execute、仓库外且 owner-only 0600 的 approval digest 文件、并且该 digest 匹配冻结 plan hash 后，才可尝试一个 approved Execute POST。逐 Tool 仍需要当前 Inspect 证据、明确授权、真实业务成功与 receipt、实际费用和 as-of 验证；replay、HTTP 200 或目录记录均不能替代这些证据。
+受控 paid pilot 脚本是独立的 Tool curation/admin 流程，不是 core runner 或 get runtime 的替代入口。脚本默认 dry-run；只有传入 --execute、仓库外且 owner-only 0600 的 approval digest 文件、并且该 digest 匹配冻结 plan hash 后，才可尝试一个 approved Execute POST。逐 Tool 仍需要当前 Inspect 证据、明确授权、真实业务成功与 receipt、实际费用和 as-of 验证；replay、HTTP 200 或目录记录均不能替代这些证据。
 
-v3 realtime Tool pilot 的已记录证据仅表明：纠正为 parameters 协议后有一次有效业务回执。其响应仍缺少 symbol、source、session、currency 等准确性/新鲜度所需字段或合同证据；它不是实时准确、最低延迟、稳定性或 Finnhub 最佳的证明。[v3 计划](benchmarks/pilot/approved-runtime-plan-v3.json) 和 [独立复核](docs/tool-selection/pilot-plan-review.md) 是该有限结论的本地证据。
+v3 realtime Tool pilot 是已 superseded 的历史归档 curation 证据，非 runtime alias 或 live-ready 声明。它仅表明：纠正为 parameters 协议后有一次有效业务回执；其响应仍缺少 symbol、source、session、currency 等准确性/新鲜度所需字段或合同证据。相关已忽略的批准工件不构成可提交或可加载的当前合同。
 
 ## Tool selection
 
 候选 Tool 必须先通过准确性 gate：请求/响应 schema、域语义、provenance、as-of/时间口径、授权以及可比较 oracle 或相应 live 证据都应成立。通过该 gate 的候选，才按 latency 与 reliability 的 Pareto 前沿比较；不预设“最快”或“最可靠”的单一赢家。
 
-当前有限的 v3–v5 evidence 不构成三域 Tool selection：Tiingo 历史 EOD 与 FMP as-reported income statement 均仅为 schema-qualified / accuracy-unverified；Alpha Vantage income statement 在 V1 单 Tool、无额外 GET 的数据交付合同下不兼容。它们均未证明准确、稳定、最快或最佳。
+v3–v10 evidence 均只构成历史/窄切片候选证据：Tiingo 历史 EOD、FMP income statement 与 Finnhub quote 均未证明准确、稳定、最快或最佳；Alpha Vantage income statement 在单 Tool、无额外 GET 的数据交付约束下不兼容。正式 Tool 冻结必须在同一 market × scenario 下完成候选真实调用和可比排序后写入新的运行时 Registry。
 
 ## 本地运行
 
@@ -113,7 +117,7 @@ MODEL_REASONING_EFFORT=
 
 当前 replay CLI 不自动读取该文件，也不需要这些值。真实模型接入时，model provider/version/settings 必须作为被测 run 的冻结 profile 记录，且 MODEL_API_BASE 必须匹配 MODEL_API_BASE_ALLOWLIST；不得把模型、URL、header、凭据或 Tool ID 交给模型生成。
 
-runtime Manifest 的 schema 是 tool-manifest.v1；它与 paid approval artifact（approved runtime plan/manifest、approval digest）是两套不可互换的合同。前者只绑定 alias/schema/connector；后者才绑定外部 Execute 的批准范围和 plan hash。approved pilot artifacts 与 artifacts/ 均被 .gitignore 忽略，不能视为可提交、可移植或已发布证据。
+历史窄切片验证记录与 paid approval artifact（approved runtime plan/manifest、approval digest）是两套不可互换的历史/验证合同。前者绑定窄切片 alias/schema/receipt/cost/projection；后者才绑定外部 pilot 的批准范围和 plan hash。正式 runtime Registry 仍待按 market × scenario 冻结。approved pilot artifacts 与 artifacts/ 均被 .gitignore 忽略，不能视为可提交、可移植或已发布证据。
 
 不要提交 .env、.env.local、token、API key、raw response、receipt、approved pilot artifact 或结果工件。只在获得单独授权的受控环境设置外部凭据；不要为了运行 replay 填写 QVeris 密钥。
 

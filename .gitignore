@@ -4,6 +4,7 @@
 
 # Generated benchmark outputs
 results/raw/
+results.jsonl
 artifacts/raw/
 artifacts/private/
 artifacts/results/raw/
