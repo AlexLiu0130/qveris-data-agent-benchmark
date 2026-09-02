@@ -1,0 +1,1 @@
+{"domain":"historical_price","reference_kind":"replay_fixture","synthetic":true,"provenance":"synthetic replay fixture; not market data","response":{"success":true,"data":{"symbol":"SYNTHETIC_HISTORY","close":"synthetic_close_value"}},"expected":{"data":{"symbol":"SYNTHETIC_HISTORY","close":"synthetic_close_value"}}}

@@ -5,6 +5,13 @@
 # Generated benchmark outputs
 results/raw/
 artifacts/raw/
+artifacts/private/
+artifacts/results/raw/
+artifacts/tool-audit/
+
+# Approval and external decision artifacts
+benchmarks/pilot/approved-*.json
+benchmarks/pilot/*approval*digest*
 
 # Python caches and virtual environments
 __pycache__/

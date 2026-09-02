@@ -1,0 +1,1 @@
+{"domain":"realtime_quote","reference_kind":"replay_fixture","synthetic":true,"provenance":"synthetic replay fixture; not market data","response":{"success":true,"data":{"symbol":"SYNTHETIC_QUOTE","price":"synthetic_quote_value"}},"expected":{"data":{"symbol":"SYNTHETIC_QUOTE","price":"synthetic_quote_value"}}}

@@ -1,0 +1,1 @@
+{"domain":"financial_statement","reference_kind":"replay_fixture","synthetic":true,"provenance":"synthetic replay fixture; not financial data","response":{"success":true,"data":{"symbol":"SYNTHETIC_STATEMENT","revenue":"synthetic_revenue_value"}},"expected":{"data":{"symbol":"SYNTHETIC_STATEMENT","revenue":"synthetic_revenue_value"}}}
