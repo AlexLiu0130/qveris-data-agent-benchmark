@@ -1,0 +1,1746 @@
+{
+  "package_schema_version": "historical-blocked-package/v1",
+  "suite": "historical_price",
+  "status": "not_frozen",
+  "data_accuracy": "not_scored",
+  "purpose": "Candidate-case blocker inventory. This package deliberately contains no historical market values or frozen oracle records.",
+  "source_candidate": {
+    "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+    "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279",
+    "case_count": 100
+  },
+  "oracles": [],
+  "blocked_cases": [
+    {
+      "case_id": "hist-A股-01",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-A股-02",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-A股-03",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_adjustment",
+      "applicable_rejection_codes": [
+        "blocked_adjustment",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-A股-04",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-A股-05",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-A股-06",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-A股-07",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-A股-08",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_adjustment",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-A股-09",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "monthly_bucket_contract_missing"
+    },
+    {
+      "case_id": "hist-A股-10",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-A股-11",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-A股-12",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-A股-13",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_adjustment",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-A股-14",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-A股-15",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-A股-16",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-A股-17",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-A股-18",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_adjustment",
+      "applicable_rejection_codes": [
+        "blocked_adjustment",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-A股-19",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "monthly_bucket_contract_missing"
+    },
+    {
+      "case_id": "hist-A股-20",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-A股-21",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-A股-22",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-A股-23",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_adjustment",
+      "applicable_rejection_codes": [
+        "blocked_adjustment",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-A股-b01",
+      "case_type": "boundary",
+      "expected_status": "no_data",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "state_oracle_candidate",
+      "applicable_rejection_codes": [
+        "state_oracle_candidate"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "state_oracle_candidate": {
+        "expected_status": "no_data",
+        "calendar_evidence_status": "missing",
+        "policy_evidence_status": "missing",
+        "freeze_gate": "market calendar/session proof and a versioned historical_price status-policy decision"
+      }
+    },
+    {
+      "case_id": "hist-A股-b02",
+      "case_type": "boundary",
+      "expected_status": "unsupported",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "state_oracle_candidate",
+      "applicable_rejection_codes": [
+        "state_oracle_candidate"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "state_oracle_candidate": {
+        "expected_status": "unsupported",
+        "calendar_evidence_status": "missing",
+        "policy_evidence_status": "missing",
+        "freeze_gate": "market calendar/session proof and a versioned historical_price status-policy decision"
+      }
+    },
+    {
+      "case_id": "hist-A股-b03",
+      "case_type": "boundary",
+      "expected_status": "unsupported",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "state_oracle_candidate",
+      "applicable_rejection_codes": [
+        "state_oracle_candidate"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "state_oracle_candidate": {
+        "expected_status": "unsupported",
+        "calendar_evidence_status": "missing",
+        "policy_evidence_status": "missing",
+        "freeze_gate": "market calendar/session proof and a versioned historical_price status-policy decision"
+      }
+    },
+    {
+      "case_id": "hist-A股-b04",
+      "case_type": "boundary",
+      "expected_status": "needs_clarification",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "state_oracle_candidate",
+      "applicable_rejection_codes": [
+        "state_oracle_candidate"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "state_oracle_candidate": {
+        "expected_status": "needs_clarification",
+        "calendar_evidence_status": "missing",
+        "policy_evidence_status": "missing",
+        "freeze_gate": "market calendar/session proof and a versioned historical_price status-policy decision"
+      }
+    },
+    {
+      "case_id": "hist-A股-b05",
+      "case_type": "boundary",
+      "expected_status": "unsupported",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "state_oracle_candidate",
+      "applicable_rejection_codes": [
+        "state_oracle_candidate"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "state_oracle_candidate": {
+        "expected_status": "unsupported",
+        "calendar_evidence_status": "missing",
+        "policy_evidence_status": "missing",
+        "freeze_gate": "market calendar/session proof and a versioned historical_price status-policy decision"
+      }
+    },
+    {
+      "case_id": "hist-A股-b06",
+      "case_type": "boundary",
+      "expected_status": "no_data",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "state_oracle_candidate",
+      "applicable_rejection_codes": [
+        "state_oracle_candidate"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "state_oracle_candidate": {
+        "expected_status": "no_data",
+        "calendar_evidence_status": "missing",
+        "policy_evidence_status": "missing",
+        "freeze_gate": "market calendar/session proof and a versioned historical_price status-policy decision"
+      }
+    },
+    {
+      "case_id": "hist-港股-01",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-港股-02",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-港股-03",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_adjustment",
+      "applicable_rejection_codes": [
+        "blocked_adjustment",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-港股-04",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-港股-05",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-港股-06",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-港股-07",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-港股-08",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_adjustment",
+      "applicable_rejection_codes": [
+        "blocked_adjustment",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-港股-09",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "monthly_bucket_contract_missing"
+    },
+    {
+      "case_id": "hist-港股-10",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-港股-11",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-港股-12",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-港股-13",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_adjustment",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-港股-14",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-港股-15",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-港股-16",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-港股-17",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-港股-18",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_adjustment",
+      "applicable_rejection_codes": [
+        "blocked_adjustment",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-港股-19",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "monthly_bucket_contract_missing"
+    },
+    {
+      "case_id": "hist-港股-20",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-港股-21",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-港股-22",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-港股-b01",
+      "case_type": "boundary",
+      "expected_status": "no_data",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "state_oracle_candidate",
+      "applicable_rejection_codes": [
+        "state_oracle_candidate"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "state_oracle_candidate": {
+        "expected_status": "no_data",
+        "calendar_evidence_status": "missing",
+        "policy_evidence_status": "missing",
+        "freeze_gate": "market calendar/session proof and a versioned historical_price status-policy decision"
+      }
+    },
+    {
+      "case_id": "hist-港股-b02",
+      "case_type": "boundary",
+      "expected_status": "needs_clarification",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "state_oracle_candidate",
+      "applicable_rejection_codes": [
+        "state_oracle_candidate"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "state_oracle_candidate": {
+        "expected_status": "needs_clarification",
+        "calendar_evidence_status": "missing",
+        "policy_evidence_status": "missing",
+        "freeze_gate": "market calendar/session proof and a versioned historical_price status-policy decision"
+      }
+    },
+    {
+      "case_id": "hist-港股-b03",
+      "case_type": "boundary",
+      "expected_status": "unsupported",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "state_oracle_candidate",
+      "applicable_rejection_codes": [
+        "state_oracle_candidate"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "state_oracle_candidate": {
+        "expected_status": "unsupported",
+        "calendar_evidence_status": "missing",
+        "policy_evidence_status": "missing",
+        "freeze_gate": "market calendar/session proof and a versioned historical_price status-policy decision"
+      }
+    },
+    {
+      "case_id": "hist-港股-b04",
+      "case_type": "boundary",
+      "expected_status": "unsupported",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "state_oracle_candidate",
+      "applicable_rejection_codes": [
+        "state_oracle_candidate"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "state_oracle_candidate": {
+        "expected_status": "unsupported",
+        "calendar_evidence_status": "missing",
+        "policy_evidence_status": "missing",
+        "freeze_gate": "market calendar/session proof and a versioned historical_price status-policy decision"
+      }
+    },
+    {
+      "case_id": "hist-港股-b05",
+      "case_type": "boundary",
+      "expected_status": "needs_clarification",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "state_oracle_candidate",
+      "applicable_rejection_codes": [
+        "state_oracle_candidate"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "state_oracle_candidate": {
+        "expected_status": "needs_clarification",
+        "calendar_evidence_status": "missing",
+        "policy_evidence_status": "missing",
+        "freeze_gate": "market calendar/session proof and a versioned historical_price status-policy decision"
+      }
+    },
+    {
+      "case_id": "hist-港股-b06",
+      "case_type": "boundary",
+      "expected_status": "no_data",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "state_oracle_candidate",
+      "applicable_rejection_codes": [
+        "state_oracle_candidate"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "state_oracle_candidate": {
+        "expected_status": "no_data",
+        "calendar_evidence_status": "missing",
+        "policy_evidence_status": "missing",
+        "freeze_gate": "market calendar/session proof and a versioned historical_price status-policy decision"
+      }
+    },
+    {
+      "case_id": "hist-美股-01",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-02",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-03",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_adjustment",
+      "applicable_rejection_codes": [
+        "blocked_adjustment",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-04",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-05",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-06",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-07",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-08",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_adjustment",
+      "applicable_rejection_codes": [
+        "blocked_adjustment",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-09",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "monthly_bucket_contract_missing"
+    },
+    {
+      "case_id": "hist-美股-10",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-11",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-12",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-13",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_adjustment",
+      "applicable_rejection_codes": [
+        "blocked_adjustment",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-14",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-15",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-16",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-17",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-18",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_adjustment",
+      "applicable_rejection_codes": [
+        "blocked_adjustment",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-19",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "monthly_bucket_contract_missing"
+    },
+    {
+      "case_id": "hist-美股-20",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-21",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-22",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-23",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_adjustment",
+      "applicable_rejection_codes": [
+        "blocked_adjustment",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-美股-b01",
+      "case_type": "boundary",
+      "expected_status": "no_data",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "state_oracle_candidate",
+      "applicable_rejection_codes": [
+        "state_oracle_candidate"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "state_oracle_candidate": {
+        "expected_status": "no_data",
+        "calendar_evidence_status": "missing",
+        "policy_evidence_status": "missing",
+        "freeze_gate": "market calendar/session proof and a versioned historical_price status-policy decision"
+      }
+    },
+    {
+      "case_id": "hist-美股-b02",
+      "case_type": "boundary",
+      "expected_status": "unsupported",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "state_oracle_candidate",
+      "applicable_rejection_codes": [
+        "state_oracle_candidate"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "state_oracle_candidate": {
+        "expected_status": "unsupported",
+        "calendar_evidence_status": "missing",
+        "policy_evidence_status": "missing",
+        "freeze_gate": "market calendar/session proof and a versioned historical_price status-policy decision"
+      }
+    },
+    {
+      "case_id": "hist-美股-b03",
+      "case_type": "boundary",
+      "expected_status": "needs_clarification",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "state_oracle_candidate",
+      "applicable_rejection_codes": [
+        "state_oracle_candidate"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "state_oracle_candidate": {
+        "expected_status": "needs_clarification",
+        "calendar_evidence_status": "missing",
+        "policy_evidence_status": "missing",
+        "freeze_gate": "market calendar/session proof and a versioned historical_price status-policy decision"
+      }
+    },
+    {
+      "case_id": "hist-美股-b04",
+      "case_type": "boundary",
+      "expected_status": "unsupported",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "state_oracle_candidate",
+      "applicable_rejection_codes": [
+        "state_oracle_candidate"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "state_oracle_candidate": {
+        "expected_status": "unsupported",
+        "calendar_evidence_status": "missing",
+        "policy_evidence_status": "missing",
+        "freeze_gate": "market calendar/session proof and a versioned historical_price status-policy decision"
+      }
+    },
+    {
+      "case_id": "hist-美股-b05",
+      "case_type": "boundary",
+      "expected_status": "no_data",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "state_oracle_candidate",
+      "applicable_rejection_codes": [
+        "state_oracle_candidate"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "state_oracle_candidate": {
+        "expected_status": "no_data",
+        "calendar_evidence_status": "missing",
+        "policy_evidence_status": "missing",
+        "freeze_gate": "market calendar/session proof and a versioned historical_price status-policy decision"
+      }
+    },
+    {
+      "case_id": "hist-日本-01",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-日本-02",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-日本-03",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_adjustment",
+      "applicable_rejection_codes": [
+        "blocked_adjustment",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-日本-04",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-日本-b01",
+      "case_type": "boundary",
+      "expected_status": "unsupported",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "state_oracle_candidate",
+      "applicable_rejection_codes": [
+        "state_oracle_candidate"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "state_oracle_candidate": {
+        "expected_status": "unsupported",
+        "calendar_evidence_status": "missing",
+        "policy_evidence_status": "missing",
+        "freeze_gate": "market calendar/session proof and a versioned historical_price status-policy decision"
+      }
+    },
+    {
+      "case_id": "hist-英国-01",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-英国-02",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-英国-03",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_adjustment",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-英国-04",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-英国-b01",
+      "case_type": "boundary",
+      "expected_status": "unsupported",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "state_oracle_candidate",
+      "applicable_rejection_codes": [
+        "state_oracle_candidate"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "state_oracle_candidate": {
+        "expected_status": "unsupported",
+        "calendar_evidence_status": "missing",
+        "policy_evidence_status": "missing",
+        "freeze_gate": "market calendar/session proof and a versioned historical_price status-policy decision"
+      }
+    },
+    {
+      "case_id": "hist-德国-01",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-德国-02",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_source_license",
+      "applicable_rejection_codes": [
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      }
+    },
+    {
+      "case_id": "hist-德国-03",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_adjustment",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-德国-04",
+      "case_type": "normal",
+      "expected_status": "success",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_contract",
+      "applicable_rejection_codes": [
+        "blocked_semantic_contract",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "semantic_contract_subtype": "entity_market_resolution_missing"
+    },
+    {
+      "case_id": "hist-德国-b01",
+      "case_type": "boundary",
+      "expected_status": "unsupported",
+      "oracle_state": "not_frozen",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "state_oracle_candidate",
+      "applicable_rejection_codes": [
+        "state_oracle_candidate"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+      },
+      "state_oracle_candidate": {
+        "expected_status": "unsupported",
+        "calendar_evidence_status": "missing",
+        "policy_evidence_status": "missing",
+        "freeze_gate": "market calendar/session proof and a versioned historical_price status-policy decision"
+      }
+    }
+  ],
+  "primary_rejection_counts": {
+    "blocked_source_license": 38,
+    "blocked_adjustment": 12,
+    "blocked_semantic_contract": 30,
+    "state_oracle_candidate": 20
+  },
+  "applicable_rejection_counts": {
+    "blocked_source_license": 80,
+    "blocked_adjustment": 17,
+    "blocked_semantic_contract": 30,
+    "state_oracle_candidate": 20
+  },
+  "semantic_contract_subtype_counts": {
+    "entity_market_resolution_missing": 24,
+    "monthly_bucket_contract_missing": 6
+  },
+  "overlap_gate": {
+    "counts_are_nonexclusive": true,
+    "normal_case_count": 80,
+    "entity_market_semantic_and_adjustment": 5,
+    "entity_market_semantic_and_source_license": 24,
+    "adjustment_and_source_license": 17,
+    "monthly_semantic_and_source_license": 6,
+    "primary_priority": [
+      "blocked_semantic_contract",
+      "blocked_adjustment",
+      "blocked_source_license"
+    ],
+    "rule": "When entity/market semantic ambiguity overlaps forward adjustment, semantic contract is primary and adjustment remains applicable."
+  },
+  "validator_interop": {
+    "oracle_v1_records": 0,
+    "reason": "The hardened oracle/v1 schema is for evidence-bearing value records. All 100 candidate cases are blocked before value-oracle admission, so the validator receives an explicit empty oracles array rather than fabricated evidence."
+  }
+}

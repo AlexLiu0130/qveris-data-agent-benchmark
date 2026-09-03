@@ -1,0 +1,3042 @@
+[
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "fs-hk-0700-fy2025-income-statement",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-025",
+      "FS-028",
+      "FS-031",
+      "FS-034",
+      "FS-037",
+      "FS-040",
+      "FS-043"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2026-04-08T17:52:00+08:00",
+      "source_published_at": "2026-04-08T17:52:00+08:00",
+      "retrieved_at": "2026-09-03T09:28:16Z",
+      "as_of": "2025-12-31T23:59:59+08:00"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "receipt-hkex-0700-fy2025-annual-report",
+      "corroborating_receipt_ids": [
+        "receipt-tencent-ir-0700-fy2025-annual-report"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "is-001",
+        "field": "consolidated_income_statement.value_added_services",
+        "expected": "369281",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-002",
+        "field": "consolidated_income_statement.marketing_services",
+        "expected": "144973",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-003",
+        "field": "consolidated_income_statement.fintech_and_business_services",
+        "expected": "229435",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-004",
+        "field": "consolidated_income_statement.others",
+        "expected": "8077",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-005",
+        "field": "consolidated_income_statement.revenues",
+        "expected": "751766",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-006",
+        "field": "consolidated_income_statement.cost_of_revenues",
+        "expected": "-329173",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-007",
+        "field": "consolidated_income_statement.gross_profit",
+        "expected": "422593",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-008",
+        "field": "consolidated_income_statement.selling_and_marketing_expenses",
+        "expected": "-41727",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-009",
+        "field": "consolidated_income_statement.general_and_administrative_expenses",
+        "expected": "-136127",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-010",
+        "field": "consolidated_income_statement.other_gains_losses_net",
+        "expected": "-3177",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-011",
+        "field": "consolidated_income_statement.operating_profit",
+        "expected": "241562",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-012",
+        "field": "consolidated_income_statement.net_gains_losses_from_investments_and_others",
+        "expected": "10168",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-013",
+        "field": "consolidated_income_statement.interest_income",
+        "expected": "16909",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-014",
+        "field": "consolidated_income_statement.finance_costs",
+        "expected": "-15130",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-015",
+        "field": "consolidated_income_statement.share_of_profit_loss_of_associates_and_joint_ventures_net",
+        "expected": "23740",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-016",
+        "field": "consolidated_income_statement.profit_before_income_tax",
+        "expected": "277249",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-017",
+        "field": "consolidated_income_statement.income_tax_expense",
+        "expected": "-47448",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-018",
+        "field": "consolidated_income_statement.profit_for_the_year",
+        "expected": "229801",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-019",
+        "field": "consolidated_income_statement.profit_attributable_to_equity_holders",
+        "expected": "224842",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-020",
+        "field": "consolidated_income_statement.profit_attributable_to_non_controlling_interests",
+        "expected": "4959",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-021",
+        "field": "consolidated_income_statement.profit_attributable_total",
+        "expected": "229801",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-022",
+        "field": "consolidated_income_statement.basic_eps",
+        "expected": "24.749",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "per_share",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "is-023",
+        "field": "consolidated_income_statement.diluted_eps",
+        "expected": "24.153",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "per_share",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-025",
+          "FS-028",
+          "FS-031",
+          "FS-034",
+          "FS-037",
+          "FS-040",
+          "FS-043"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-income_statement-v1",
+    "fact_contract": {
+      "entity": "Tencent Holdings Limited",
+      "symbol": "0700.HK",
+      "exchange": "HKEX",
+      "form": "annual_report",
+      "accession": "HKEXnews annual-report filing 2026040901231",
+      "period_end": "2025-12-31",
+      "duration_or_instant": "duration",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "reported_currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2025",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      },
+      "field_unit_exceptions": [
+        {
+          "currency": "RMB",
+          "unit_scale": "per_share",
+          "assertion_ids": [
+            "is-022",
+            "is-023"
+          ],
+          "fields": [
+            "consolidated_income_statement.basic_eps",
+            "consolidated_income_statement.diluted_eps"
+          ]
+        }
+      ]
+    },
+    "authoritative_origin_id": "hk-0700-hk-fy2025-authoritative-report",
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "minute",
+    "source_lineage": {
+      "origin_id": "hk-0700-hk-fy2025-authoritative-report",
+      "delivery_channel": "hkexnews_official_hosted_pdf",
+      "extraction_method": "pypdf_page_text",
+      "chain": [
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0409/2026040901231.pdf"
+      ]
+    },
+    "origin": "hk-0700-hk-fy2025-authoritative-report",
+    "same_authoritative_origin": true
+  },
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "fs-hk-0700-fy2025-statement-of-financial-position",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-026",
+      "FS-029",
+      "FS-032",
+      "FS-035",
+      "FS-038",
+      "FS-041",
+      "FS-044"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2026-04-08T17:52:00+08:00",
+      "source_published_at": "2026-04-08T17:52:00+08:00",
+      "retrieved_at": "2026-09-03T09:28:16Z",
+      "as_of": "2025-12-31T23:59:59+08:00"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "receipt-hkex-0700-fy2025-annual-report",
+      "corroborating_receipt_ids": [
+        "receipt-tencent-ir-0700-fy2025-annual-report"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "bs-001",
+        "field": "consolidated_statement_of_financial_position.property_plant_and_equipment",
+        "expected": "149905",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-002",
+        "field": "consolidated_statement_of_financial_position.land_use_rights",
+        "expected": "22339",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-003",
+        "field": "consolidated_statement_of_financial_position.right_of_use_assets",
+        "expected": "17367",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-004",
+        "field": "consolidated_statement_of_financial_position.construction_in_progress",
+        "expected": "9670",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-005",
+        "field": "consolidated_statement_of_financial_position.investment_properties",
+        "expected": "950",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-006",
+        "field": "consolidated_statement_of_financial_position.intangible_assets",
+        "expected": "205999",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-007",
+        "field": "consolidated_statement_of_financial_position.investments_in_associates",
+        "expected": "342409",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-008",
+        "field": "consolidated_statement_of_financial_position.investments_in_joint_ventures",
+        "expected": "6303",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-009",
+        "field": "consolidated_statement_of_financial_position.non_current_financial_assets_at_fvpl",
+        "expected": "207157",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-010",
+        "field": "consolidated_statement_of_financial_position.non_current_financial_assets_at_fvoci",
+        "expected": "356640",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-011",
+        "field": "consolidated_statement_of_financial_position.non_current_prepayments_deposits_and_other_assets",
+        "expected": "24540",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-012",
+        "field": "consolidated_statement_of_financial_position.non_current_other_financial_assets",
+        "expected": "1327",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-013",
+        "field": "consolidated_statement_of_financial_position.deferred_income_tax_assets",
+        "expected": "28618",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-014",
+        "field": "consolidated_statement_of_financial_position.non_current_term_deposits",
+        "expected": "70302",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-015",
+        "field": "consolidated_statement_of_financial_position.non_current_assets",
+        "expected": "1443526",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-016",
+        "field": "consolidated_statement_of_financial_position.inventories",
+        "expected": "530",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-017",
+        "field": "consolidated_statement_of_financial_position.accounts_receivable",
+        "expected": "49930",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-018",
+        "field": "consolidated_statement_of_financial_position.current_prepayments_deposits_and_other_assets",
+        "expected": "111270",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-019",
+        "field": "consolidated_statement_of_financial_position.current_other_financial_assets",
+        "expected": "4201",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-020",
+        "field": "consolidated_statement_of_financial_position.current_financial_assets_at_fvpl",
+        "expected": "35929",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-021",
+        "field": "consolidated_statement_of_financial_position.current_financial_assets_at_fvoci",
+        "expected": "8781",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-022",
+        "field": "consolidated_statement_of_financial_position.current_term_deposits",
+        "expected": "236801",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-023",
+        "field": "consolidated_statement_of_financial_position.restricted_cash",
+        "expected": "6977",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-024",
+        "field": "consolidated_statement_of_financial_position.cash_and_cash_equivalents",
+        "expected": "141041",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-025",
+        "field": "consolidated_statement_of_financial_position.current_assets",
+        "expected": "595460",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-026",
+        "field": "consolidated_statement_of_financial_position.total_assets",
+        "expected": "2038986",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-027",
+        "field": "consolidated_statement_of_financial_position.share_capital",
+        "expected": 0,
+        "comparison": "canonical_zero_from_display_nil",
+        "raw_display": "–",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ],
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ]
+      },
+      {
+        "assertion_id": "bs-028",
+        "field": "consolidated_statement_of_financial_position.share_premium",
+        "expected": "63796",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-029",
+        "field": "consolidated_statement_of_financial_position.treasury_shares",
+        "expected": "-3450",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-030",
+        "field": "consolidated_statement_of_financial_position.shares_held_for_share_award_schemes",
+        "expected": "-7124",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-031",
+        "field": "consolidated_statement_of_financial_position.other_reserves",
+        "expected": "90494",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-032",
+        "field": "consolidated_statement_of_financial_position.retained_earnings",
+        "expected": "1010436",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-033",
+        "field": "consolidated_statement_of_financial_position.equity_attributable_to_equity_holders",
+        "expected": "1154152",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-034",
+        "field": "consolidated_statement_of_financial_position.non_controlling_interests",
+        "expected": "86913",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-035",
+        "field": "consolidated_statement_of_financial_position.total_equity",
+        "expected": "1241065",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-036",
+        "field": "consolidated_statement_of_financial_position.non_current_borrowings",
+        "expected": "208369",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-037",
+        "field": "consolidated_statement_of_financial_position.non_current_notes_payable",
+        "expected": "126204",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-038",
+        "field": "consolidated_statement_of_financial_position.long_term_payables",
+        "expected": "10544",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-039",
+        "field": "consolidated_statement_of_financial_position.non_current_other_financial_liabilities",
+        "expected": "2879",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-040",
+        "field": "consolidated_statement_of_financial_position.deferred_income_tax_liabilities",
+        "expected": "21684",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-041",
+        "field": "consolidated_statement_of_financial_position.non_current_lease_liabilities",
+        "expected": "13280",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-042",
+        "field": "consolidated_statement_of_financial_position.non_current_deferred_revenue",
+        "expected": "2210",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-043",
+        "field": "consolidated_statement_of_financial_position.non_current_liabilities",
+        "expected": "385170",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-044",
+        "field": "consolidated_statement_of_financial_position.accounts_payable",
+        "expected": "121127",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-045",
+        "field": "consolidated_statement_of_financial_position.other_payables_and_accruals",
+        "expected": "96496",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-046",
+        "field": "consolidated_statement_of_financial_position.current_borrowings",
+        "expected": "42618",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-047",
+        "field": "consolidated_statement_of_financial_position.current_notes_payable",
+        "expected": "10542",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-048",
+        "field": "consolidated_statement_of_financial_position.current_income_tax_liabilities",
+        "expected": "18558",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-049",
+        "field": "consolidated_statement_of_financial_position.other_tax_liabilities",
+        "expected": "3723",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-050",
+        "field": "consolidated_statement_of_financial_position.current_other_financial_liabilities",
+        "expected": "3992",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-051",
+        "field": "consolidated_statement_of_financial_position.current_lease_liabilities",
+        "expected": "5386",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-052",
+        "field": "consolidated_statement_of_financial_position.current_deferred_revenue",
+        "expected": "110309",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-053",
+        "field": "consolidated_statement_of_financial_position.current_liabilities",
+        "expected": "412751",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-054",
+        "field": "consolidated_statement_of_financial_position.total_liabilities",
+        "expected": "797921",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "bs-055",
+        "field": "consolidated_statement_of_financial_position.total_equity_and_liabilities",
+        "expected": "2038986",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-026",
+          "FS-029",
+          "FS-032",
+          "FS-035",
+          "FS-038",
+          "FS-041",
+          "FS-044"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-balance_sheet-v1",
+    "fact_contract": {
+      "entity": "Tencent Holdings Limited",
+      "symbol": "0700.HK",
+      "exchange": "HKEX",
+      "form": "annual_report",
+      "accession": "HKEXnews annual-report filing 2026040901231",
+      "period_end": "2025-12-31",
+      "duration_or_instant": "instant",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "reported_currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "2025-12-31",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    "authoritative_origin_id": "hk-0700-hk-fy2025-authoritative-report",
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "minute",
+    "source_lineage": {
+      "origin_id": "hk-0700-hk-fy2025-authoritative-report",
+      "delivery_channel": "hkexnews_official_hosted_pdf",
+      "extraction_method": "pypdf_page_text",
+      "chain": [
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0409/2026040901231.pdf"
+      ]
+    },
+    "origin": "hk-0700-hk-fy2025-authoritative-report",
+    "same_authoritative_origin": true
+  },
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "fs-hk-0700-fy2025-cash-flows",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-024",
+      "FS-027",
+      "FS-030",
+      "FS-033",
+      "FS-036",
+      "FS-039",
+      "FS-042",
+      "FS-045"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2026-04-08T17:52:00+08:00",
+      "source_published_at": "2026-04-08T17:52:00+08:00",
+      "retrieved_at": "2026-09-03T09:28:16Z",
+      "as_of": "2025-12-31T23:59:59+08:00"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "receipt-hkex-0700-fy2025-annual-report",
+      "corroborating_receipt_ids": [
+        "receipt-tencent-ir-0700-fy2025-annual-report"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "cf-001",
+        "field": "consolidated_statement_of_cash_flows.cash_generated_from_operations",
+        "expected": "347751",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-002",
+        "field": "consolidated_statement_of_cash_flows.income_tax_paid",
+        "expected": "-44699",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-003",
+        "field": "consolidated_statement_of_cash_flows.net_cash_flows_from_operating_activities",
+        "expected": "303052",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-004",
+        "field": "consolidated_statement_of_cash_flows.payments_for_business_combinations_net_of_cash_acquired",
+        "expected": "-11541",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-005",
+        "field": "consolidated_statement_of_cash_flows.cash_from_disposals_of_investments_in_subsidiaries_net",
+        "expected": "-97",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-006",
+        "field": "consolidated_statement_of_cash_flows.purchase_of_prepayments_for_ppe_cip_and_investment_properties",
+        "expected": "-87482",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-007",
+        "field": "consolidated_statement_of_cash_flows.proceeds_from_disposal_of_ppe",
+        "expected": "152",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-008",
+        "field": "consolidated_statement_of_cash_flows.purchase_of_prepayments_for_intangible_assets",
+        "expected": "-25399",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-009",
+        "field": "consolidated_statement_of_cash_flows.refund_from_payments_for_land_use_rights",
+        "expected": "6",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-010",
+        "field": "consolidated_statement_of_cash_flows.payments_for_acquisition_of_investments_in_associates",
+        "expected": "-24637",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-011",
+        "field": "consolidated_statement_of_cash_flows.proceeds_from_disposal_of_investments_in_associates",
+        "expected": "1549",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-012",
+        "field": "consolidated_statement_of_cash_flows.payments_for_acquisition_of_investments_in_joint_ventures",
+        "expected": "-10",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-013",
+        "field": "consolidated_statement_of_cash_flows.proceeds_from_disposal_of_investments_in_joint_ventures",
+        "expected": "19",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-014",
+        "field": "consolidated_statement_of_cash_flows.payments_for_acquisition_of_fvoci",
+        "expected": "-73517",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-015",
+        "field": "consolidated_statement_of_cash_flows.proceeds_from_disposal_of_fvoci",
+        "expected": "70033",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-016",
+        "field": "consolidated_statement_of_cash_flows.payments_for_acquisition_of_fvpl",
+        "expected": "-131087",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-017",
+        "field": "consolidated_statement_of_cash_flows.proceeds_from_disposal_of_fvpl",
+        "expected": "96904",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-018",
+        "field": "consolidated_statement_of_cash_flows.payments_for_acquisition_settlement_of_other_financial_instruments",
+        "expected": "-3219",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-019",
+        "field": "consolidated_statement_of_cash_flows.net_inflow_from_acquisition_settlement_of_other_financial_instruments",
+        "expected": "2176",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-020",
+        "field": "consolidated_statement_of_cash_flows.payments_for_loans_to_investees_and_others",
+        "expected": "-755",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-021",
+        "field": "consolidated_statement_of_cash_flows.loan_repayments_from_investees_and_others",
+        "expected": "1025",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-022",
+        "field": "consolidated_statement_of_cash_flows.receipt_from_maturity_of_term_deposits_over_three_months",
+        "expected": "241403",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-023",
+        "field": "consolidated_statement_of_cash_flows.placement_of_term_deposits_over_three_months",
+        "expected": "-282289",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-024",
+        "field": "consolidated_statement_of_cash_flows.interest_received",
+        "expected": "14534",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-025",
+        "field": "consolidated_statement_of_cash_flows.dividends_received",
+        "expected": "6500",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-026",
+        "field": "consolidated_statement_of_cash_flows.net_cash_flows_used_in_investing_activities",
+        "expected": "-205732",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-027",
+        "field": "consolidated_statement_of_cash_flows.proceeds_from_short_term_borrowings",
+        "expected": "113557",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-028",
+        "field": "consolidated_statement_of_cash_flows.repayments_of_short_term_borrowings",
+        "expected": "-121385",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-029",
+        "field": "consolidated_statement_of_cash_flows.proceeds_from_long_term_borrowings",
+        "expected": "108683",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-030",
+        "field": "consolidated_statement_of_cash_flows.repayments_of_long_term_borrowings",
+        "expected": "-48530",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-031",
+        "field": "consolidated_statement_of_cash_flows.net_proceeds_from_issuance_of_notes_payable",
+        "expected": "8968",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-032",
+        "field": "consolidated_statement_of_cash_flows.repayments_of_notes_payable",
+        "expected": "-8587",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-033",
+        "field": "consolidated_statement_of_cash_flows.principal_elements_of_lease_payments",
+        "expected": "-6783",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-034",
+        "field": "consolidated_statement_of_cash_flows.interest_paid",
+        "expected": "-13180",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-035",
+        "field": "consolidated_statement_of_cash_flows.payments_for_repurchase_of_shares",
+        "expected": "-73312",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-036",
+        "field": "consolidated_statement_of_cash_flows.proceeds_from_issuance_of_ordinary_shares_from_options",
+        "expected": "2721",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-037",
+        "field": "consolidated_statement_of_cash_flows.payments_for_withholding_individual_income_tax_for_options",
+        "expected": "-954",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-038",
+        "field": "consolidated_statement_of_cash_flows.payments_for_shares_purchased_withheld_for_award_schemes",
+        "expected": "-4869",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-039",
+        "field": "consolidated_statement_of_cash_flows.proceeds_from_issuance_of_additional_equity_interests",
+        "expected": "582",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-040",
+        "field": "consolidated_statement_of_cash_flows.proceeds_from_transfer_of_interests_to_non_controlling_interests",
+        "expected": "83",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-041",
+        "field": "consolidated_statement_of_cash_flows.payments_for_acquisition_of_non_controlling_interests",
+        "expected": "-4242",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-042",
+        "field": "consolidated_statement_of_cash_flows.dividends_paid_to_company_shareholders",
+        "expected": "-37535",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-043",
+        "field": "consolidated_statement_of_cash_flows.dividends_paid_to_non_controlling_interests",
+        "expected": "-2372",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-044",
+        "field": "consolidated_statement_of_cash_flows.net_cash_flows_used_in_financing_activities",
+        "expected": "-87155",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-045",
+        "field": "consolidated_statement_of_cash_flows.net_increase_in_cash_and_cash_equivalents",
+        "expected": "10165",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-046",
+        "field": "consolidated_statement_of_cash_flows.cash_and_cash_equivalents_at_beginning_of_year",
+        "expected": "132519",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-047",
+        "field": "consolidated_statement_of_cash_flows.exchange_losses_on_cash_and_cash_equivalents",
+        "expected": "-1643",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      },
+      {
+        "assertion_id": "cf-048",
+        "field": "consolidated_statement_of_cash_flows.cash_and_cash_equivalents_at_end_of_year",
+        "expected": "141041",
+        "comparison": "exact_normalized",
+        "currency": "RMB",
+        "unit": "million",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-024",
+          "FS-027",
+          "FS-030",
+          "FS-033",
+          "FS-036",
+          "FS-039",
+          "FS-042",
+          "FS-045"
+        ],
+        "receipt_ids": [
+          "receipt-hkex-0700-fy2025-annual-report",
+          "receipt-tencent-ir-0700-fy2025-annual-report"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-cash_flow_statement-v1",
+    "fact_contract": {
+      "entity": "Tencent Holdings Limited",
+      "symbol": "0700.HK",
+      "exchange": "HKEX",
+      "form": "annual_report",
+      "accession": "HKEXnews annual-report filing 2026040901231",
+      "period_end": "2025-12-31",
+      "duration_or_instant": "duration",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "reported_currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2025",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    "authoritative_origin_id": "hk-0700-hk-fy2025-authoritative-report",
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "minute",
+    "source_lineage": {
+      "origin_id": "hk-0700-hk-fy2025-authoritative-report",
+      "delivery_channel": "hkexnews_official_hosted_pdf",
+      "extraction_method": "pypdf_page_text",
+      "chain": [
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0409/2026040901231.pdf"
+      ]
+    },
+    "origin": "hk-0700-hk-fy2025-authoritative-report",
+    "same_authoritative_origin": true
+  }
+]

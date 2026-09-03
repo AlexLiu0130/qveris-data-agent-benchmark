@@ -1,0 +1,119 @@
+{
+  "review_ledgers": [
+    {
+      "schema_version": "review-ledger/v1",
+      "oracle_id": "cn-600519-fy2024-consolidated-income-statement",
+      "oracle_file_sha256": "51ac2646700ef819a5775fa44f82c79c66eef70e38f3480c44e31088f2cacd46",
+      "reviews": [
+        {
+          "review_id": "data-review-cn-600519-fy2024-20260903",
+          "role": "data_reviewer",
+          "reviewer_id": "/root/ledger_review_financial_cn_hk",
+        "decision": "approved",
+        "reviewed_at": "2026-09-03T18:52:44+08:00",
+        "notes": "full_assertion_count=37; passed=37; failed=0. Independent table review and accounting reconciliation remain exact. Primary and issuer deliveries share the issuer-specific authoritative origin and use distinct official delivery channels; this is approved as same-authoritative-origin multi-delivery, not independent fact production. Current Oracle origin equals authoritative_origin_id and source_lineage.origin_id. conclusion=APPROVED; frozen-byte re-signature verified. Release readiness remains subject to the suite manifest gate, not an evidence conflict."
+        },
+        {
+          "review_id": "semantic-review-cn-600519-fy2024-20260903-enriched",
+          "role": "semantic_reviewer",
+        "reviewer_id": "/root/semantic_signoff_cn_hk",
+          "decision": "approved",
+          "reviewed_at": "2026-09-03T18:35:26+08:00",
+          "notes": "Semantic gate: resolved fact_contract_ref maps to the same Oracle, eight case IDs, issuer/symbol/exchange, FY2024 period end, consolidated scope, CAS accounting standard, CNY yuan, and complete income-statement schema. All 37 assertions link both the authoritative CNINFO receipt and Moutai IR corroborating receipt. Both receipts declare the same authoritative origin and distinct official delivery channels; this is approved only as same-authoritative-origin multi-delivery, not as independent fact production."
+        }
+      ],
+      "conflicts": [
+        {
+          "conflict_id": "CONFLICT-CN-600519-ORACLE-ORIGIN-MISSING",
+          "status": "resolved",
+          "description": "Current validate_freeze requires a non-empty literal Oracle origin field; authoritative_origin_id alone does not satisfy the machine contract.",
+          "opened_at": "2026-09-03T18:52:44+08:00",
+          "resolved_at": "2026-09-03T18:52:44+08:00",
+          "resolution": "Current Oracle now supplies origin equal to authoritative_origin_id and source_lineage.origin_id; current validator no longer reports the missing-origin machine-contract gap."
+        }
+      ]
+    },
+    {
+      "schema_version": "review-ledger/v1",
+      "oracle_id": "cn-300750-fy2024-consolidated-balance-sheet",
+      "oracle_file_sha256": "51ac2646700ef819a5775fa44f82c79c66eef70e38f3480c44e31088f2cacd46",
+      "reviews": [
+        {
+          "review_id": "data-review-cn-300750-fy2024-20260903",
+          "role": "data_reviewer",
+          "reviewer_id": "/root/ledger_review_financial_cn_hk",
+        "decision": "approved",
+        "reviewed_at": "2026-09-03T18:52:44+08:00",
+        "notes": "full_assertion_count=60; passed=60; failed=0. Independent balance-sheet table review and accounting reconciliation remain exact; disclosed thousand-yuan rounding residuals are not assertion mismatches. CNINFO and CATL IR now share the CATL-specific authoritative origin through distinct official delivery channels. Current Oracle origin equals authoritative_origin_id and source_lineage.origin_id. conclusion=APPROVED; frozen-byte re-signature verified. Release readiness remains subject to the suite manifest gate, not an evidence conflict."
+        },
+        {
+          "review_id": "semantic-review-cn-300750-fy2024-20260903-enriched",
+          "role": "semantic_reviewer",
+        "reviewer_id": "/root/semantic_signoff_cn_hk",
+        "decision": "approved",
+        "reviewed_at": "2026-09-03T18:52:44+08:00",
+        "notes": "Semantic sign-off approved: the enriched inline contract matches its registry entry, including presentation_scope and optional field_unit_exceptions; case scope, issuer, period, basis, unit, and statement schema are coherent. Receipt-origin and literal-origin contract defects remain separately open data/provenance blockers."
+        }
+      ],
+      "conflicts": [
+        {
+          "conflict_id": "CONFLICT-CN-300750-CORROBORATING-ORIGIN-MISMATCH",
+          "status": "resolved",
+          "description": "The CATL IR corroborating receipt authoritative_origin_id is cn-600519-sh-fy2024-authoritative-report, but the CNINFO authoritative receipt and Oracle declare cn-300750-sz-fy2024-authoritative-report. This violates same_authoritative_origin_multi_delivery.",
+          "opened_at": "2026-09-03T18:35:26+08:00",
+          "resolved_at": "2026-09-03T18:52:44+08:00",
+          "resolution": "Independent current-file recheck confirms both CATL receipt authoritative_origin_id and source_lineage.origin_id equal cn-300750-sz-fy2024-authoritative-report; the two official delivery channels now satisfy the same-authoritative-origin boundary."
+        },
+        {
+          "conflict_id": "CONFLICT-CN-300750-ORACLE-ORIGIN-MISSING",
+          "status": "resolved",
+          "description": "Current validate_freeze requires a non-empty literal Oracle origin field; authoritative_origin_id alone does not satisfy the machine contract.",
+          "opened_at": "2026-09-03T18:52:44+08:00",
+          "resolved_at": "2026-09-03T18:52:44+08:00",
+          "resolution": "Current Oracle now supplies origin equal to authoritative_origin_id and source_lineage.origin_id; current validator no longer reports the missing-origin machine-contract gap."
+        }
+      ]
+    },
+    {
+      "schema_version": "review-ledger/v1",
+      "oracle_id": "cn-000333-fy2024-consolidated-cash-flow-statement",
+      "oracle_file_sha256": "51ac2646700ef819a5775fa44f82c79c66eef70e38f3480c44e31088f2cacd46",
+      "reviews": [
+        {
+          "review_id": "data-review-cn-000333-fy2024-20260903",
+          "role": "data_reviewer",
+          "reviewer_id": "/root/ledger_review_financial_cn_hk",
+        "decision": "approved",
+        "reviewed_at": "2026-09-03T18:52:44+08:00",
+        "notes": "full_assertion_count=41; passed=41; failed=0. Independent cash-flow table review and accounting reconciliation remain exact. CNINFO and Midea IR now share the Midea-specific authoritative origin through distinct official delivery channels; differing whole-file hashes do not change the matching target table. Current Oracle origin equals authoritative_origin_id and source_lineage.origin_id. conclusion=APPROVED; frozen-byte re-signature verified. Release readiness remains subject to the suite manifest gate, not an evidence conflict."
+        },
+        {
+          "review_id": "semantic-review-cn-000333-fy2024-20260903-enriched",
+          "role": "semantic_reviewer",
+        "reviewer_id": "/root/semantic_signoff_cn_hk",
+        "decision": "approved",
+        "reviewed_at": "2026-09-03T18:52:44+08:00",
+        "notes": "Semantic sign-off approved: the enriched inline contract matches its registry entry, including presentation_scope and optional field_unit_exceptions; case scope, issuer, period, basis, unit, and statement schema are coherent. Receipt-origin and literal-origin contract defects remain separately open data/provenance blockers."
+        }
+      ],
+      "conflicts": [
+        {
+          "conflict_id": "CONFLICT-CN-000333-CORROBORATING-ORIGIN-MISMATCH",
+          "status": "resolved",
+          "description": "The Midea IR corroborating receipt authoritative_origin_id is cn-600519-sh-fy2024-authoritative-report, but the CNINFO authoritative receipt and Oracle declare cn-000333-sz-fy2024-authoritative-report. This violates same_authoritative_origin_multi_delivery.",
+          "opened_at": "2026-09-03T18:35:26+08:00",
+          "resolved_at": "2026-09-03T18:52:44+08:00",
+          "resolution": "Independent current-file recheck confirms both Midea receipt authoritative_origin_id and source_lineage.origin_id equal cn-000333-sz-fy2024-authoritative-report; the two official delivery channels now satisfy the same-authoritative-origin boundary."
+        },
+        {
+          "conflict_id": "CONFLICT-CN-000333-ORACLE-ORIGIN-MISSING",
+          "status": "resolved",
+          "description": "Current validate_freeze requires a non-empty literal Oracle origin field; authoritative_origin_id alone does not satisfy the machine contract.",
+          "opened_at": "2026-09-03T18:52:44+08:00",
+          "resolved_at": "2026-09-03T18:52:44+08:00",
+          "resolution": "Current Oracle now supplies origin equal to authoritative_origin_id and source_lineage.origin_id; current validator no longer reports the missing-origin machine-contract gap."
+        }
+      ]
+    }
+  ]
+}

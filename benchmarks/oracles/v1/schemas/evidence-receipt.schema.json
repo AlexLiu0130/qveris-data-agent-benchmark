@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qveris.example/schemas/evidence-receipt/v1",
+  "title": "QVeris oracle evidence receipt v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "receipt_id", "source_id", "source_class", "independence_group", "published_at", "retrieved_at", "content_sha256", "evidence_locator", "authoritative_origin_id", "same_authoritative_origin", "timestamp_precision", "source_lineage"],
+  "properties": {
+    "schema_version": {"const": "evidence-receipt/v1"}, "receipt_id": {"type": "string", "minLength": 1}, "source_id": {"type": "string", "minLength": 1},
+    "source_class": {"enum": ["issuer_or_regulator", "exchange", "independent_market_data", "licensed_market_data", "independent_financial_data", "other"]}, "independence_group": {"type": "string", "minLength": 1},
+    "published_at": {"type": "string", "format": "date-time"}, "retrieved_at": {"type": "string", "format": "date-time"}, "content_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "evidence_locator": {"type": "string", "minLength": 1}, "source_document_id": {"type": "string", "minLength": 1},
+    "authoritative_origin_id": {"type": "string", "minLength": 1}, "same_authoritative_origin": {"type": "boolean"}, "timestamp_precision": {"enum": ["date", "minute", "second", "millisecond"]}, "license_id": {"type": "string", "minLength": 1},
+    "source_lineage": {"type": "object", "additionalProperties": false, "required": ["origin_id", "delivery_channel", "extraction_method"], "properties": {"origin_id": {"type": "string", "minLength": 1}, "delivery_channel": {"type": "string", "minLength": 1}, "extraction_method": {"type": "string", "minLength": 1}, "chain": {"type": "array", "items": {"type": "string", "minLength": 1}}}},
+    "display_nil_evidence": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["assertion_id", "raw_display", "evidence_locator", "confirmed_nil"], "properties": {"assertion_id": {"type": "string", "minLength": 1}, "raw_display": {"type": "string", "minLength": 1}, "evidence_locator": {"type": "string", "minLength": 1}, "confirmed_nil": {"type": "boolean"}}}},
+    "quote_capture": {"type": "object", "additionalProperties": false, "required": ["provider_quote_timestamp", "captured_at", "market_session", "timezone", "currency", "unit", "reference_role"], "properties": {"provider_quote_timestamp": {"type": "string", "format": "date-time"}, "captured_at": {"type": "string", "format": "date-time"}, "market_session": {"type": "string", "minLength": 1}, "timezone": {"type": "string", "minLength": 1}, "currency": {"type": "string", "minLength": 1}, "unit": {"type": "string", "minLength": 1}, "reference_role": {"enum": ["before", "after", "dual_reference"]}}},
+    "notes": {"type": "string"}
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qveris.example/schemas/oracle-manifest/v1",
+  "title": "QVeris oracle freeze manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "release_id", "suite", "status", "created_at", "files"],
+  "properties": {
+    "schema_version": {"const": "oracle-manifest/v1"},
+    "release_id": {"type": "string", "minLength": 1},
+    "suite": {"enum": ["historical_price", "financial_statements", "realtime_quote"]},
+    "status": {"enum": ["draft", "frozen", "superseded", "rejected"]},
+    "created_at": {"type": "string", "format": "date-time"},
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256", "suite"],
+        "properties": {
+          "path": {"type": "string", "pattern": "^(outputs/(historical_price|financial_statements|realtime_quote)/.+\\.json|fact-contracts\\.financial\\.v1\\.json)$"},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "suite": {"enum": ["historical_price", "financial_statements", "realtime_quote"]}
+        }
+      }
+    }
+  }
+}

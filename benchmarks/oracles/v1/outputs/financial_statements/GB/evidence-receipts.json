@@ -1,0 +1,44 @@
+[
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "SHEL-AR2025-CFS",
+    "source_id": "shell-annual-report-2025",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "shell_issuer",
+    "published_at": "2026-03-12T23:59:59Z",
+    "retrieved_at": "2026-09-03T09:30:33Z",
+    "content_sha256": "a97d13136097d9e8e303d3361c5194ec861cd08ca33f3e4b100a9c6fed5d0e34",
+    "evidence_locator": "https://www.shell.com/investors/results-and-reporting/annual-report/_jcr_content/root/main/section_2113846431/link_list/links/item4.stream/1773292255440/bc68032ad3986f04e8401c7f1d4d20885e16c950/consolidated-financial-statements-ar25.pdf ; Consolidated Statement of Income p.214, Consolidated Balance Sheet p.215, Consolidated Statement of Cash Flows p.217",
+    "source_document_id": "Shell plc Annual Report and Accounts 2025 — Consolidated Financial Statements",
+    "notes": "Primary issuer distribution. IFRS as issued by the IASB; all three tables are stated in USD million except EPS in USD per share. SHA-256 is the downloaded public PDF. Shell's 12 Mar 2026 announcement gives the publication date but not a time, so PIT uses conservative end-of-day UTC. Lineage: report table -> current FY2025 column -> decimal-string atomic assertion.",
+    "authoritative_origin_id": "gb-shel-l-fy2025-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "gb-shel-l-fy2025-authoritative-report",
+      "delivery_channel": "issuer_or_regulator_public_delivery",
+      "extraction_method": "reported_table_transcription"
+    }
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "SEC-20F-2025",
+    "source_id": "sec-edgar-0001628280-26-017024",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "sec_regulator",
+    "published_at": "2026-03-12T08:06:26Z",
+    "retrieved_at": "2026-09-03T09:30:33Z",
+    "content_sha256": "964866953ee25cc6827fa10d16ed9b2a395170e173e6258957b139d05eb79a99",
+    "evidence_locator": "https://www.sec.gov/Archives/edgar/data/1306965/000162828026017024/shel-20251231.htm ; Form 20-F tables p.214 (income), p.215 (balance sheet), p.217 (cash flows)",
+    "source_document_id": "SEC EDGAR accession 0001628280-26-017024, Shell plc Form 20-F for period ended 2025-12-31",
+    "notes": "Independent regulator-hosted filing used to cross-check every FY2025 decimal. SEC accepted timestamp is public PIT evidence. SHA-256 is the retrieved iXBRL HTML. The filing presents the same IFRS, USD-million tables and USD-per-share EPS presentation; it is an independently hosted regulatory distribution, not an independent preparer.",
+    "authoritative_origin_id": "gb-shel-l-fy2025-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "gb-shel-l-fy2025-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction"
+    }
+  }
+]

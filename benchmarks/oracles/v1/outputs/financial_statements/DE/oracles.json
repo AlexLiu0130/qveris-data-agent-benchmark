@@ -1,0 +1,1761 @@
+[
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "sap-de-fy2025-consolidated-income-statement",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-079"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2026-02-26T12:01:22Z",
+      "source_published_at": "2026-02-26T12:01:22Z",
+      "retrieved_at": "2026-09-03T09:32:20Z",
+      "as_of": "2025-12-31T00:00:00Z"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "sec-20f-2025-0001104659-26-020058",
+      "corroborating_receipt_ids": [
+        "sap-integrated-report-2025-pdf"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "income.cloud",
+        "field": "consolidated_income_statement.cloud",
+        "expected": "21023",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.software_licenses",
+        "field": "consolidated_income_statement.software_licenses",
+        "expected": "990",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.software_support",
+        "field": "consolidated_income_statement.software_support",
+        "expected": "10525",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.software_licenses_and_support",
+        "field": "consolidated_income_statement.software_licenses_and_support",
+        "expected": "11515",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.cloud_and_software",
+        "field": "consolidated_income_statement.cloud_and_software",
+        "expected": "32538",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.services",
+        "field": "consolidated_income_statement.services",
+        "expected": "4262",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.total_revenue",
+        "field": "consolidated_income_statement.total_revenue",
+        "expected": "36800",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.cost_of_cloud",
+        "field": "consolidated_income_statement.cost_of_cloud",
+        "expected": "-5480",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.cost_of_software_licenses_and_support",
+        "field": "consolidated_income_statement.cost_of_software_licenses_and_support",
+        "expected": "-1313",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.cost_of_cloud_and_software",
+        "field": "consolidated_income_statement.cost_of_cloud_and_software",
+        "expected": "-6793",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.cost_of_services",
+        "field": "consolidated_income_statement.cost_of_services",
+        "expected": "-3193",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.total_cost_of_revenue",
+        "field": "consolidated_income_statement.total_cost_of_revenue",
+        "expected": "-9986",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.gross_profit",
+        "field": "consolidated_income_statement.gross_profit",
+        "expected": "26814",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.research_and_development",
+        "field": "consolidated_income_statement.research_and_development",
+        "expected": "-6633",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.sales_and_marketing",
+        "field": "consolidated_income_statement.sales_and_marketing",
+        "expected": "-8879",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.general_and_administration",
+        "field": "consolidated_income_statement.general_and_administration",
+        "expected": "-1633",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.restructuring",
+        "field": "consolidated_income_statement.restructuring",
+        "expected": "-3",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.other_operating_income_expense_net",
+        "field": "consolidated_income_statement.other_operating_income_expense_net",
+        "expected": "-49",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.total_operating_expenses",
+        "field": "consolidated_income_statement.total_operating_expenses",
+        "expected": "-27183",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.operating_profit",
+        "field": "consolidated_income_statement.operating_profit",
+        "expected": "9617",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.other_non_operating_income_expense_net",
+        "field": "consolidated_income_statement.other_non_operating_income_expense_net",
+        "expected": "118",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.finance_income",
+        "field": "consolidated_income_statement.finance_income",
+        "expected": "1911",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.finance_costs",
+        "field": "consolidated_income_statement.finance_costs",
+        "expected": "-1377",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.financial_income_net",
+        "field": "consolidated_income_statement.financial_income_net",
+        "expected": "534",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.profit_before_tax_from_continuing_operations",
+        "field": "consolidated_income_statement.profit_before_tax_from_continuing_operations",
+        "expected": "10270",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.income_tax_expense",
+        "field": "consolidated_income_statement.income_tax_expense",
+        "expected": "-2944",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.profit_after_tax_from_continuing_operations",
+        "field": "consolidated_income_statement.profit_after_tax_from_continuing_operations",
+        "expected": "7326",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.continuing_attributable_to_owners",
+        "field": "consolidated_income_statement.continuing_attributable_to_owners_of_parent",
+        "expected": "7161",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.continuing_attributable_to_nci",
+        "field": "consolidated_income_statement.continuing_attributable_to_non_controlling_interests",
+        "expected": "165",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.discontinued_operations",
+        "field": "consolidated_income_statement.profit_after_tax_from_discontinued_operations",
+        "expected": "0",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.profit_after_tax",
+        "field": "consolidated_income_statement.profit_after_tax",
+        "expected": "7326",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.total_attributable_to_owners",
+        "field": "consolidated_income_statement.total_attributable_to_owners_of_parent",
+        "expected": "7161",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.total_attributable_to_nci",
+        "field": "consolidated_income_statement.total_attributable_to_non_controlling_interests",
+        "expected": "165",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.eps_basic_continuing",
+        "field": "consolidated_income_statement.earnings_per_share_basic_from_continuing_operations",
+        "expected": "6.14",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "per_share",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.eps_basic",
+        "field": "consolidated_income_statement.earnings_per_share_basic",
+        "expected": "6.14",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "per_share",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.eps_diluted_continuing",
+        "field": "consolidated_income_statement.earnings_per_share_diluted_from_continuing_operations",
+        "expected": "6.10",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "per_share",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "income.eps_diluted",
+        "field": "consolidated_income_statement.earnings_per_share_diluted",
+        "expected": "6.10",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "per_share",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-de-sap-de-fy2025-income_statement-v1",
+    "fact_contract": {
+      "entity": "SAP SE",
+      "symbol": "SAP.DE",
+      "exchange": "XETRA",
+      "form": "integrated_report",
+      "accession": "SEC accession 0001104659-26-020058, SAP SE 2025 Form 20-F",
+      "period_end": "2025-12-31",
+      "duration_or_instant": "duration",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "reported_currency": "EUR",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2025",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      },
+      "field_unit_exceptions": [
+        {
+          "currency": "EUR",
+          "unit_scale": "per_share",
+          "assertion_ids": [
+            "income.eps_basic_continuing",
+            "income.eps_basic",
+            "income.eps_diluted_continuing",
+            "income.eps_diluted"
+          ],
+          "fields": [
+            "consolidated_income_statement.earnings_per_share_basic_from_continuing_operations",
+            "consolidated_income_statement.earnings_per_share_basic",
+            "consolidated_income_statement.earnings_per_share_diluted_from_continuing_operations",
+            "consolidated_income_statement.earnings_per_share_diluted"
+          ]
+        }
+      ]
+    },
+    "authoritative_origin_id": "de-sap-de-fy2025-authoritative-report",
+    "origin": "de-sap-de-fy2025-authoritative-report",
+    "same_authoritative_origin": true,
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "de-sap-de-fy2025-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction",
+      "pit_anchor": true
+    }
+  },
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "sap-de-fy2025-consolidated-financial-position",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-077",
+      "FS-080"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2026-02-26T12:01:22Z",
+      "source_published_at": "2026-02-26T12:01:22Z",
+      "retrieved_at": "2026-09-03T09:32:20Z",
+      "as_of": "2025-12-31T00:00:00Z"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "sec-20f-2025-0001104659-26-020058",
+      "corroborating_receipt_ids": [
+        "sap-integrated-report-2025-pdf"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "position.cash_and_cash_equivalents",
+        "field": "consolidated_financial_position.cash_and_cash_equivalents",
+        "expected": "8220",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.current_other_financial_assets",
+        "field": "consolidated_financial_position.current_other_financial_assets",
+        "expected": "1552",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.current_trade_and_other_receivables",
+        "field": "consolidated_financial_position.current_trade_and_other_receivables",
+        "expected": "6675",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.current_other_non_financial_assets",
+        "field": "consolidated_financial_position.current_other_non_financial_assets",
+        "expected": "3212",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.current_tax_assets",
+        "field": "consolidated_financial_position.current_tax_assets",
+        "expected": "598",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.total_current_assets",
+        "field": "consolidated_financial_position.total_current_assets",
+        "expected": "20256",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.goodwill",
+        "field": "consolidated_financial_position.goodwill",
+        "expected": "29014",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.intangible_assets",
+        "field": "consolidated_financial_position.intangible_assets",
+        "expected": "2282",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.property_plant_and_equipment",
+        "field": "consolidated_financial_position.property_plant_and_equipment",
+        "expected": "4497",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.noncurrent_other_financial_assets",
+        "field": "consolidated_financial_position.noncurrent_other_financial_assets",
+        "expected": "7269",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.noncurrent_trade_and_other_receivables",
+        "field": "consolidated_financial_position.noncurrent_trade_and_other_receivables",
+        "expected": "218",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.noncurrent_other_non_financial_assets",
+        "field": "consolidated_financial_position.noncurrent_other_non_financial_assets",
+        "expected": "4419",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.noncurrent_tax_assets",
+        "field": "consolidated_financial_position.noncurrent_tax_assets",
+        "expected": "244",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.deferred_tax_assets",
+        "field": "consolidated_financial_position.deferred_tax_assets",
+        "expected": "2163",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.total_noncurrent_assets",
+        "field": "consolidated_financial_position.total_noncurrent_assets",
+        "expected": "50106",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.total_assets",
+        "field": "consolidated_financial_position.total_assets",
+        "expected": "70362",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.current_trade_and_other_payables",
+        "field": "consolidated_financial_position.current_trade_and_other_payables",
+        "expected": "2431",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.current_tax_liabilities",
+        "field": "consolidated_financial_position.current_tax_liabilities",
+        "expected": "968",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.current_financial_liabilities",
+        "field": "consolidated_financial_position.current_financial_liabilities",
+        "expected": "2050",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.current_other_non_financial_liabilities",
+        "field": "consolidated_financial_position.current_other_non_financial_liabilities",
+        "expected": "4849",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.current_provisions",
+        "field": "consolidated_financial_position.current_provisions",
+        "expected": "537",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.current_contract_liabilities",
+        "field": "consolidated_financial_position.current_contract_liabilities",
+        "expected": "6581",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.total_current_liabilities",
+        "field": "consolidated_financial_position.total_current_liabilities",
+        "expected": "17416",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.noncurrent_trade_and_other_payables",
+        "field": "consolidated_financial_position.noncurrent_trade_and_other_payables",
+        "expected": "2",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.noncurrent_tax_liabilities",
+        "field": "consolidated_financial_position.noncurrent_tax_liabilities",
+        "expected": "562",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.noncurrent_financial_liabilities",
+        "field": "consolidated_financial_position.noncurrent_financial_liabilities",
+        "expected": "6021",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.noncurrent_other_non_financial_liabilities",
+        "field": "consolidated_financial_position.noncurrent_other_non_financial_liabilities",
+        "expected": "524",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.noncurrent_provisions",
+        "field": "consolidated_financial_position.noncurrent_provisions",
+        "expected": "550",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.deferred_tax_liabilities",
+        "field": "consolidated_financial_position.deferred_tax_liabilities",
+        "expected": "72",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.noncurrent_contract_liabilities",
+        "field": "consolidated_financial_position.noncurrent_contract_liabilities",
+        "expected": "144",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.total_noncurrent_liabilities",
+        "field": "consolidated_financial_position.total_noncurrent_liabilities",
+        "expected": "7873",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.total_liabilities",
+        "field": "consolidated_financial_position.total_liabilities",
+        "expected": "25288",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.issued_capital",
+        "field": "consolidated_financial_position.issued_capital",
+        "expected": "1229",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.share_premium",
+        "field": "consolidated_financial_position.share_premium",
+        "expected": "2778",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.retained_earnings",
+        "field": "consolidated_financial_position.retained_earnings",
+        "expected": "47345",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.other_components_of_equity",
+        "field": "consolidated_financial_position.other_components_of_equity",
+        "expected": "182",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.treasury_shares",
+        "field": "consolidated_financial_position.treasury_shares",
+        "expected": "-6948",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.equity_attributable_to_owners",
+        "field": "consolidated_financial_position.equity_attributable_to_owners_of_parent",
+        "expected": "44586",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.non_controlling_interests",
+        "field": "consolidated_financial_position.non_controlling_interests",
+        "expected": "488",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.total_equity",
+        "field": "consolidated_financial_position.total_equity",
+        "expected": "45073",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "position.total_equity_and_liabilities",
+        "field": "consolidated_financial_position.total_equity_and_liabilities",
+        "expected": "70362",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-de-sap-de-fy2025-balance_sheet-v1",
+    "fact_contract": {
+      "entity": "SAP SE",
+      "symbol": "SAP.DE",
+      "exchange": "XETRA",
+      "form": "integrated_report",
+      "accession": "SEC accession 0001104659-26-020058, SAP SE 2025 Form 20-F",
+      "period_end": "2025-12-31",
+      "duration_or_instant": "instant",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "reported_currency": "EUR",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "2025-12-31",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    "authoritative_origin_id": "de-sap-de-fy2025-authoritative-report",
+    "origin": "de-sap-de-fy2025-authoritative-report",
+    "same_authoritative_origin": true,
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "de-sap-de-fy2025-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction",
+      "pit_anchor": true
+    }
+  },
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "sap-de-fy2025-consolidated-cash-flow-statement",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-078"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2026-02-26T12:01:22Z",
+      "source_published_at": "2026-02-26T12:01:22Z",
+      "retrieved_at": "2026-09-03T09:32:20Z",
+      "as_of": "2025-12-31T00:00:00Z"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "sec-20f-2025-0001104659-26-020058",
+      "corroborating_receipt_ids": [
+        "sap-integrated-report-2025-pdf"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "cash_flow.profit_after_tax",
+        "field": "consolidated_cash_flow_statement.profit_after_tax",
+        "expected": "7326",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.discontinued_operations_adjustment",
+        "field": "consolidated_cash_flow_statement.profit_after_tax_from_discontinued_operations_adjustment",
+        "expected": "0",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.depreciation_and_amortization",
+        "field": "consolidated_cash_flow_statement.depreciation_and_amortization",
+        "expected": "1311",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.share_based_payment_expense",
+        "field": "consolidated_cash_flow_statement.share_based_payment_expense",
+        "expected": "1695",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.income_tax_expense",
+        "field": "consolidated_cash_flow_statement.income_tax_expense",
+        "expected": "2944",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.financial_income_net",
+        "field": "consolidated_cash_flow_statement.financial_income_net",
+        "expected": "-534",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.allowances_on_trade_receivables",
+        "field": "consolidated_cash_flow_statement.change_in_allowances_on_trade_receivables",
+        "expected": "11",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.other_non_cash_items",
+        "field": "consolidated_cash_flow_statement.other_adjustments_for_non_cash_items",
+        "expected": "94",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.trade_and_other_receivables",
+        "field": "consolidated_cash_flow_statement.change_in_trade_and_other_receivables",
+        "expected": "-388",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.other_assets",
+        "field": "consolidated_cash_flow_statement.change_in_other_assets",
+        "expected": "-1315",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.trade_payables_provisions_other_liabilities",
+        "field": "consolidated_cash_flow_statement.change_in_trade_payables_provisions_and_other_liabilities",
+        "expected": "-308",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.contract_liabilities",
+        "field": "consolidated_cash_flow_statement.change_in_contract_liabilities",
+        "expected": "1336",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.share_based_payments",
+        "field": "consolidated_cash_flow_statement.share_based_payments",
+        "expected": "-817",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.income_taxes_paid",
+        "field": "consolidated_cash_flow_statement.income_taxes_paid_net_of_refunds",
+        "expected": "-2198",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.operating_continuing",
+        "field": "consolidated_cash_flow_statement.net_cash_flows_from_operating_activities_continuing_operations",
+        "expected": "9156",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.operating_discontinued",
+        "field": "consolidated_cash_flow_statement.net_cash_flows_from_operating_activities_discontinued_operations",
+        "expected": "0",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.operating",
+        "field": "consolidated_cash_flow_statement.net_cash_flows_from_operating_activities",
+        "expected": "9156",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.business_combinations",
+        "field": "consolidated_cash_flow_statement.business_combinations_net_of_cash_and_cash_equivalents_acquired",
+        "expected": "-702",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.derivatives_sale_of_businesses",
+        "field": "consolidated_cash_flow_statement.cash_flows_from_derivatives_related_to_sale_of_businesses",
+        "expected": "0",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.purchase_intangible_and_ppe",
+        "field": "consolidated_cash_flow_statement.purchase_of_intangible_assets_and_property_plant_and_equipment",
+        "expected": "-739",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.proceeds_intangible_and_ppe",
+        "field": "consolidated_cash_flow_statement.proceeds_from_sales_of_intangible_assets_and_property_plant_and_equipment",
+        "expected": "121",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.purchase_equity_or_debt",
+        "field": "consolidated_cash_flow_statement.purchase_of_equity_or_debt_instruments_of_other_entities",
+        "expected": "-5845",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.proceeds_equity_or_debt",
+        "field": "consolidated_cash_flow_statement.proceeds_from_sales_of_equity_or_debt_instruments_of_other_entities",
+        "expected": "5779",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.interest_received",
+        "field": "consolidated_cash_flow_statement.interest_received",
+        "expected": "420",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.investing_continuing",
+        "field": "consolidated_cash_flow_statement.net_cash_flows_from_investing_activities_continuing_operations",
+        "expected": "-965",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.investing_discontinued",
+        "field": "consolidated_cash_flow_statement.net_cash_flows_from_investing_activities_discontinued_operations",
+        "expected": "0",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.investing",
+        "field": "consolidated_cash_flow_statement.net_cash_flows_from_investing_activities",
+        "expected": "-965",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.dividends_paid",
+        "field": "consolidated_cash_flow_statement.dividends_paid",
+        "expected": "-2743",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.dividends_paid_nci",
+        "field": "consolidated_cash_flow_statement.dividends_paid_on_non_controlling_interests",
+        "expected": "-2",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.treasury_shares",
+        "field": "consolidated_cash_flow_statement.purchase_of_treasury_shares",
+        "expected": "-1937",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.proceeds_from_borrowings",
+        "field": "consolidated_cash_flow_statement.proceeds_from_borrowings",
+        "expected": "2",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.repayments_of_borrowings",
+        "field": "consolidated_cash_flow_statement.repayments_of_borrowings",
+        "expected": "-3191",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.lease_liabilities",
+        "field": "consolidated_cash_flow_statement.payments_of_lease_liabilities",
+        "expected": "-299",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.transactions_nci",
+        "field": "consolidated_cash_flow_statement.transactions_with_non_controlling_interests",
+        "expected": "0",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.interest_paid",
+        "field": "consolidated_cash_flow_statement.interest_paid",
+        "expected": "-574",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.financing_continuing",
+        "field": "consolidated_cash_flow_statement.net_cash_flows_from_financing_activities_continuing_operations",
+        "expected": "-8745",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.financing_discontinued",
+        "field": "consolidated_cash_flow_statement.net_cash_flows_from_financing_activities_discontinued_operations",
+        "expected": "0",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.financing",
+        "field": "consolidated_cash_flow_statement.net_cash_flows_from_financing_activities",
+        "expected": "-8745",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.fx_effect",
+        "field": "consolidated_cash_flow_statement.effect_of_foreign_currency_rates_on_cash_and_cash_equivalents",
+        "expected": "-836",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.net_change",
+        "field": "consolidated_cash_flow_statement.net_increase_decrease_in_cash_and_cash_equivalents",
+        "expected": "-1390",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.cash_beginning",
+        "field": "consolidated_cash_flow_statement.cash_and_cash_equivalents_at_beginning_of_period",
+        "expected": "9609",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cash_flow.cash_end",
+        "field": "consolidated_cash_flow_statement.cash_and_cash_equivalents_at_end_of_period",
+        "expected": "8220",
+        "comparison": "exact_normalized",
+        "currency": "EUR",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-20f-2025-0001104659-26-020058",
+          "sap-integrated-report-2025-pdf"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-de-sap-de-fy2025-cash_flow_statement-v1",
+    "fact_contract": {
+      "entity": "SAP SE",
+      "symbol": "SAP.DE",
+      "exchange": "XETRA",
+      "form": "integrated_report",
+      "accession": "SEC accession 0001104659-26-020058, SAP SE 2025 Form 20-F",
+      "period_end": "2025-12-31",
+      "duration_or_instant": "duration",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "reported_currency": "EUR",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2025",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    "authoritative_origin_id": "de-sap-de-fy2025-authoritative-report",
+    "origin": "de-sap-de-fy2025-authoritative-report",
+    "same_authoritative_origin": true,
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "de-sap-de-fy2025-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction",
+      "pit_anchor": true
+    }
+  }
+]

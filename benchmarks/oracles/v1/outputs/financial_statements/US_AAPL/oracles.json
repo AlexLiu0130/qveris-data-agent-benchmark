@@ -1,0 +1,2807 @@
+[
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "financial-statements-us-aapl-fy2025-income-statement-v1",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-046",
+      "FS-058"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2025-10-31T06:01:26-04:00",
+      "source_published_at": "2025-10-31T06:01:26-04:00",
+      "retrieved_at": "2026-09-03T09:28:21Z",
+      "as_of": "2025-09-27T00:00:00Z"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "aapl-fy2025-sec-10k-primary",
+      "corroborating_receipt_ids": [
+        "aapl-fy2025-apple-ir-repost"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "aapl-is-2025-products",
+        "field": "consolidated_statements_of_operations.net_sales.products",
+        "expected": "307003",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2025-services",
+        "field": "consolidated_statements_of_operations.net_sales.services",
+        "expected": "109158",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2025-total-net-sales",
+        "field": "consolidated_statements_of_operations.total_net_sales",
+        "expected": "416161",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2025-cost-products",
+        "field": "consolidated_statements_of_operations.cost_of_sales.products",
+        "expected": "194116",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2025-cost-services",
+        "field": "consolidated_statements_of_operations.cost_of_sales.services",
+        "expected": "26844",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2025-total-cost",
+        "field": "consolidated_statements_of_operations.total_cost_of_sales",
+        "expected": "220960",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2025-gross-margin",
+        "field": "consolidated_statements_of_operations.gross_margin",
+        "expected": "195201",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2025-rnd",
+        "field": "consolidated_statements_of_operations.operating_expenses.research_and_development",
+        "expected": "34550",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2025-sga",
+        "field": "consolidated_statements_of_operations.operating_expenses.selling_general_and_administrative",
+        "expected": "27601",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2025-total-opex",
+        "field": "consolidated_statements_of_operations.total_operating_expenses",
+        "expected": "62151",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2025-operating-income",
+        "field": "consolidated_statements_of_operations.operating_income",
+        "expected": "133050",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2025-other-income-expense-net",
+        "field": "consolidated_statements_of_operations.other_income_expense_net",
+        "expected": "-321",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2025-income-before-tax",
+        "field": "consolidated_statements_of_operations.income_before_provision_for_income_taxes",
+        "expected": "132729",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2025-income-tax",
+        "field": "consolidated_statements_of_operations.provision_for_income_taxes",
+        "expected": "20719",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2025-net-income",
+        "field": "consolidated_statements_of_operations.net_income",
+        "expected": "112010",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2025-basic-eps",
+        "field": "consolidated_statements_of_operations.earnings_per_share.basic",
+        "expected": "7.49",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_per_share",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2025-diluted-eps",
+        "field": "consolidated_statements_of_operations.earnings_per_share.diluted",
+        "expected": "7.46",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_per_share",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2025-basic-shares",
+        "field": "consolidated_statements_of_operations.shares_used_in_computing_eps.basic",
+        "expected": "14948500",
+        "comparison": "exact_normalized",
+        "currency": "N/A",
+        "unit": "shares_thousands",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2025-diluted-shares",
+        "field": "consolidated_statements_of_operations.shares_used_in_computing_eps.diluted",
+        "expected": "15004697",
+        "comparison": "exact_normalized",
+        "currency": "N/A",
+        "unit": "shares_thousands",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2024-products",
+        "field": "consolidated_statements_of_operations.net_sales.products",
+        "expected": "294866",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2024-services",
+        "field": "consolidated_statements_of_operations.net_sales.services",
+        "expected": "96169",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2024-total-net-sales",
+        "field": "consolidated_statements_of_operations.total_net_sales",
+        "expected": "391035",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2024-cost-products",
+        "field": "consolidated_statements_of_operations.cost_of_sales.products",
+        "expected": "185233",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2024-cost-services",
+        "field": "consolidated_statements_of_operations.cost_of_sales.services",
+        "expected": "25119",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2024-total-cost",
+        "field": "consolidated_statements_of_operations.total_cost_of_sales",
+        "expected": "210352",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2024-gross-margin",
+        "field": "consolidated_statements_of_operations.gross_margin",
+        "expected": "180683",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2024-rnd",
+        "field": "consolidated_statements_of_operations.operating_expenses.research_and_development",
+        "expected": "31370",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2024-sga",
+        "field": "consolidated_statements_of_operations.operating_expenses.selling_general_and_administrative",
+        "expected": "26097",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2024-total-opex",
+        "field": "consolidated_statements_of_operations.total_operating_expenses",
+        "expected": "57467",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2024-operating-income",
+        "field": "consolidated_statements_of_operations.operating_income",
+        "expected": "123216",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2024-other-income-expense-net",
+        "field": "consolidated_statements_of_operations.other_income_expense_net",
+        "expected": "269",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2024-income-before-tax",
+        "field": "consolidated_statements_of_operations.income_before_provision_for_income_taxes",
+        "expected": "123485",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2024-income-tax",
+        "field": "consolidated_statements_of_operations.provision_for_income_taxes",
+        "expected": "29749",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2024-net-income",
+        "field": "consolidated_statements_of_operations.net_income",
+        "expected": "93736",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2024-basic-eps",
+        "field": "consolidated_statements_of_operations.earnings_per_share.basic",
+        "expected": "6.11",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_per_share",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2024-diluted-eps",
+        "field": "consolidated_statements_of_operations.earnings_per_share.diluted",
+        "expected": "6.08",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_per_share",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2024-basic-shares",
+        "field": "consolidated_statements_of_operations.shares_used_in_computing_eps.basic",
+        "expected": "15343783",
+        "comparison": "exact_normalized",
+        "currency": "N/A",
+        "unit": "shares_thousands",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2024-diluted-shares",
+        "field": "consolidated_statements_of_operations.shares_used_in_computing_eps.diluted",
+        "expected": "15408095",
+        "comparison": "exact_normalized",
+        "currency": "N/A",
+        "unit": "shares_thousands",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2023-products",
+        "field": "consolidated_statements_of_operations.net_sales.products",
+        "expected": "298085",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2023-services",
+        "field": "consolidated_statements_of_operations.net_sales.services",
+        "expected": "85200",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2023-total-net-sales",
+        "field": "consolidated_statements_of_operations.total_net_sales",
+        "expected": "383285",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2023-cost-products",
+        "field": "consolidated_statements_of_operations.cost_of_sales.products",
+        "expected": "189282",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2023-cost-services",
+        "field": "consolidated_statements_of_operations.cost_of_sales.services",
+        "expected": "24855",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2023-total-cost",
+        "field": "consolidated_statements_of_operations.total_cost_of_sales",
+        "expected": "214137",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2023-gross-margin",
+        "field": "consolidated_statements_of_operations.gross_margin",
+        "expected": "169148",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2023-rnd",
+        "field": "consolidated_statements_of_operations.operating_expenses.research_and_development",
+        "expected": "29915",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2023-sga",
+        "field": "consolidated_statements_of_operations.operating_expenses.selling_general_and_administrative",
+        "expected": "24932",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2023-total-opex",
+        "field": "consolidated_statements_of_operations.total_operating_expenses",
+        "expected": "54847",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2023-operating-income",
+        "field": "consolidated_statements_of_operations.operating_income",
+        "expected": "114301",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2023-other-income-expense-net",
+        "field": "consolidated_statements_of_operations.other_income_expense_net",
+        "expected": "-565",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2023-income-before-tax",
+        "field": "consolidated_statements_of_operations.income_before_provision_for_income_taxes",
+        "expected": "113736",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2023-income-tax",
+        "field": "consolidated_statements_of_operations.provision_for_income_taxes",
+        "expected": "16741",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2023-net-income",
+        "field": "consolidated_statements_of_operations.net_income",
+        "expected": "96995",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2023-basic-eps",
+        "field": "consolidated_statements_of_operations.earnings_per_share.basic",
+        "expected": "6.16",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_per_share",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2023-diluted-eps",
+        "field": "consolidated_statements_of_operations.earnings_per_share.diluted",
+        "expected": "6.13",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_per_share",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2023-basic-shares",
+        "field": "consolidated_statements_of_operations.shares_used_in_computing_eps.basic",
+        "expected": "15744231",
+        "comparison": "exact_normalized",
+        "currency": "N/A",
+        "unit": "shares_thousands",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-is-2023-diluted-shares",
+        "field": "consolidated_statements_of_operations.shares_used_in_computing_eps.diluted",
+        "expected": "15812547",
+        "comparison": "exact_normalized",
+        "currency": "N/A",
+        "unit": "shares_thousands",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-us-aapl-fy2025-income_statement-v1",
+    "fact_contract": {
+      "entity": "Apple Inc.",
+      "symbol": "AAPL",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "SEC accession 0000320193-25-000079; CIK 0000320193; form 10-K; fiscal year ended 2025-09-27",
+      "period_end": "2025-09-27",
+      "duration_or_instant": "duration",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "reported_currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2025",
+          "label": "FY2025",
+          "period_end": "2025-09-27"
+        },
+        "comparative_periods": [
+          "FY2024",
+          "FY2023"
+        ],
+        "required_as_filed": true
+      },
+      "field_unit_exceptions": [
+        {
+          "currency": "USD",
+          "unit_scale": "USD_per_share",
+          "assertion_ids": [
+            "aapl-is-2025-basic-eps",
+            "aapl-is-2025-diluted-eps",
+            "aapl-is-2024-basic-eps",
+            "aapl-is-2024-diluted-eps",
+            "aapl-is-2023-basic-eps",
+            "aapl-is-2023-diluted-eps"
+          ],
+          "fields": [
+            "consolidated_statements_of_operations.earnings_per_share.basic",
+            "consolidated_statements_of_operations.earnings_per_share.diluted",
+            "consolidated_statements_of_operations.earnings_per_share.basic",
+            "consolidated_statements_of_operations.earnings_per_share.diluted",
+            "consolidated_statements_of_operations.earnings_per_share.basic",
+            "consolidated_statements_of_operations.earnings_per_share.diluted"
+          ]
+        },
+        {
+          "currency": "N/A",
+          "unit_scale": "shares_thousands",
+          "assertion_ids": [
+            "aapl-is-2025-basic-shares",
+            "aapl-is-2025-diluted-shares",
+            "aapl-is-2024-basic-shares",
+            "aapl-is-2024-diluted-shares",
+            "aapl-is-2023-basic-shares",
+            "aapl-is-2023-diluted-shares"
+          ],
+          "fields": [
+            "consolidated_statements_of_operations.shares_used_in_computing_eps.basic",
+            "consolidated_statements_of_operations.shares_used_in_computing_eps.diluted",
+            "consolidated_statements_of_operations.shares_used_in_computing_eps.basic",
+            "consolidated_statements_of_operations.shares_used_in_computing_eps.diluted",
+            "consolidated_statements_of_operations.shares_used_in_computing_eps.basic",
+            "consolidated_statements_of_operations.shares_used_in_computing_eps.diluted"
+          ]
+        }
+      ]
+    },
+    "authoritative_origin_id": "us-aapl-fy2025-authoritative-report",
+    "same_authoritative_origin": true,
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "us-aapl-fy2025-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction"
+    },
+    "origin": "us-aapl-fy2025-authoritative-report"
+  },
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "financial-statements-us-aapl-fy2025-balance-sheet-v1",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-050",
+      "FS-062"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2025-10-31T06:01:26-04:00",
+      "source_published_at": "2025-10-31T06:01:26-04:00",
+      "retrieved_at": "2026-09-03T09:28:21Z",
+      "as_of": "2025-09-27T00:00:00Z"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "aapl-fy2025-sec-10k-primary",
+      "corroborating_receipt_ids": [
+        "aapl-fy2025-apple-ir-repost"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "aapl-bs-2025-cash",
+        "field": "consolidated_balance_sheets.current_assets.cash_and_cash_equivalents",
+        "expected": "35934",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-marketable-securities-current",
+        "field": "consolidated_balance_sheets.current_assets.marketable_securities",
+        "expected": "18763",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-ar",
+        "field": "consolidated_balance_sheets.current_assets.accounts_receivable_net",
+        "expected": "39777",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-vendor-receivables",
+        "field": "consolidated_balance_sheets.current_assets.vendor_non_trade_receivables",
+        "expected": "33180",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-inventories",
+        "field": "consolidated_balance_sheets.current_assets.inventories",
+        "expected": "5718",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-other-current-assets",
+        "field": "consolidated_balance_sheets.current_assets.other_current_assets",
+        "expected": "14585",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-total-current-assets",
+        "field": "consolidated_balance_sheets.total_current_assets",
+        "expected": "147957",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-marketable-securities-noncurrent",
+        "field": "consolidated_balance_sheets.noncurrent_assets.marketable_securities",
+        "expected": "77723",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-ppe",
+        "field": "consolidated_balance_sheets.noncurrent_assets.property_plant_and_equipment_net",
+        "expected": "49834",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-other-noncurrent-assets",
+        "field": "consolidated_balance_sheets.noncurrent_assets.other_noncurrent_assets",
+        "expected": "83727",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-total-noncurrent-assets",
+        "field": "consolidated_balance_sheets.total_noncurrent_assets",
+        "expected": "211284",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-total-assets",
+        "field": "consolidated_balance_sheets.total_assets",
+        "expected": "359241",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-accounts-payable",
+        "field": "consolidated_balance_sheets.current_liabilities.accounts_payable",
+        "expected": "69860",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-other-current-liabilities",
+        "field": "consolidated_balance_sheets.current_liabilities.other_current_liabilities",
+        "expected": "66387",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-deferred-revenue",
+        "field": "consolidated_balance_sheets.current_liabilities.deferred_revenue",
+        "expected": "9055",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-commercial-paper",
+        "field": "consolidated_balance_sheets.current_liabilities.commercial_paper",
+        "expected": "7979",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-term-debt-current",
+        "field": "consolidated_balance_sheets.current_liabilities.term_debt",
+        "expected": "12350",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-total-current-liabilities",
+        "field": "consolidated_balance_sheets.total_current_liabilities",
+        "expected": "165631",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-term-debt-noncurrent",
+        "field": "consolidated_balance_sheets.noncurrent_liabilities.term_debt",
+        "expected": "78328",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-other-noncurrent-liabilities",
+        "field": "consolidated_balance_sheets.noncurrent_liabilities.other_noncurrent_liabilities",
+        "expected": "41549",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-total-noncurrent-liabilities",
+        "field": "consolidated_balance_sheets.total_noncurrent_liabilities",
+        "expected": "119877",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-total-liabilities",
+        "field": "consolidated_balance_sheets.total_liabilities",
+        "expected": "285508",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-common-stock-apic",
+        "field": "consolidated_balance_sheets.shareholders_equity.common_stock_and_additional_paid_in_capital",
+        "expected": "93568",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-accumulated-deficit",
+        "field": "consolidated_balance_sheets.shareholders_equity.accumulated_deficit",
+        "expected": "-14264",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-aoci-loss",
+        "field": "consolidated_balance_sheets.shareholders_equity.accumulated_other_comprehensive_loss",
+        "expected": "-5571",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-total-equity",
+        "field": "consolidated_balance_sheets.total_shareholders_equity",
+        "expected": "73733",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2025-total-liabilities-and-equity",
+        "field": "consolidated_balance_sheets.total_liabilities_and_shareholders_equity",
+        "expected": "359241",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-09-27",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-cash",
+        "field": "consolidated_balance_sheets.current_assets.cash_and_cash_equivalents",
+        "expected": "29943",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-marketable-securities-current",
+        "field": "consolidated_balance_sheets.current_assets.marketable_securities",
+        "expected": "35228",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-ar",
+        "field": "consolidated_balance_sheets.current_assets.accounts_receivable_net",
+        "expected": "33410",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-vendor-receivables",
+        "field": "consolidated_balance_sheets.current_assets.vendor_non_trade_receivables",
+        "expected": "32833",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-inventories",
+        "field": "consolidated_balance_sheets.current_assets.inventories",
+        "expected": "7286",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-other-current-assets",
+        "field": "consolidated_balance_sheets.current_assets.other_current_assets",
+        "expected": "14287",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-total-current-assets",
+        "field": "consolidated_balance_sheets.total_current_assets",
+        "expected": "152987",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-marketable-securities-noncurrent",
+        "field": "consolidated_balance_sheets.noncurrent_assets.marketable_securities",
+        "expected": "91479",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-ppe",
+        "field": "consolidated_balance_sheets.noncurrent_assets.property_plant_and_equipment_net",
+        "expected": "45680",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-other-noncurrent-assets",
+        "field": "consolidated_balance_sheets.noncurrent_assets.other_noncurrent_assets",
+        "expected": "74834",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-total-noncurrent-assets",
+        "field": "consolidated_balance_sheets.total_noncurrent_assets",
+        "expected": "211993",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-total-assets",
+        "field": "consolidated_balance_sheets.total_assets",
+        "expected": "364980",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-accounts-payable",
+        "field": "consolidated_balance_sheets.current_liabilities.accounts_payable",
+        "expected": "68960",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-other-current-liabilities",
+        "field": "consolidated_balance_sheets.current_liabilities.other_current_liabilities",
+        "expected": "78304",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-deferred-revenue",
+        "field": "consolidated_balance_sheets.current_liabilities.deferred_revenue",
+        "expected": "8249",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-commercial-paper",
+        "field": "consolidated_balance_sheets.current_liabilities.commercial_paper",
+        "expected": "9967",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-term-debt-current",
+        "field": "consolidated_balance_sheets.current_liabilities.term_debt",
+        "expected": "10912",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-total-current-liabilities",
+        "field": "consolidated_balance_sheets.total_current_liabilities",
+        "expected": "176392",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-term-debt-noncurrent",
+        "field": "consolidated_balance_sheets.noncurrent_liabilities.term_debt",
+        "expected": "85750",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-other-noncurrent-liabilities",
+        "field": "consolidated_balance_sheets.noncurrent_liabilities.other_noncurrent_liabilities",
+        "expected": "45888",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-total-noncurrent-liabilities",
+        "field": "consolidated_balance_sheets.total_noncurrent_liabilities",
+        "expected": "131638",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-total-liabilities",
+        "field": "consolidated_balance_sheets.total_liabilities",
+        "expected": "308030",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-common-stock-apic",
+        "field": "consolidated_balance_sheets.shareholders_equity.common_stock_and_additional_paid_in_capital",
+        "expected": "83276",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-accumulated-deficit",
+        "field": "consolidated_balance_sheets.shareholders_equity.accumulated_deficit",
+        "expected": "-19154",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-aoci-loss",
+        "field": "consolidated_balance_sheets.shareholders_equity.accumulated_other_comprehensive_loss",
+        "expected": "-7172",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-total-equity",
+        "field": "consolidated_balance_sheets.total_shareholders_equity",
+        "expected": "56950",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-bs-2024-total-liabilities-and-equity",
+        "field": "consolidated_balance_sheets.total_liabilities_and_shareholders_equity",
+        "expected": "364980",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2024-09-28",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-us-aapl-fy2025-balance_sheet-v1",
+    "fact_contract": {
+      "entity": "Apple Inc.",
+      "symbol": "AAPL",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "SEC accession 0000320193-25-000079; CIK 0000320193; form 10-K; fiscal year ended 2025-09-27",
+      "period_end": "2025-09-27",
+      "duration_or_instant": "instant",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "reported_currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "2025-09-27",
+          "label": "FY2025",
+          "period_end": "2025-09-27"
+        },
+        "comparative_periods": [
+          "2024-09-28"
+        ],
+        "required_as_filed": true
+      }
+    },
+    "authoritative_origin_id": "us-aapl-fy2025-authoritative-report",
+    "same_authoritative_origin": true,
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "us-aapl-fy2025-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction"
+    },
+    "origin": "us-aapl-fy2025-authoritative-report"
+  },
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "financial-statements-us-aapl-fy2025-cash-flow-statement-v1",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-054",
+      "FS-066"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2025-10-31T06:01:26-04:00",
+      "source_published_at": "2025-10-31T06:01:26-04:00",
+      "retrieved_at": "2026-09-03T09:28:21Z",
+      "as_of": "2025-09-27T00:00:00Z"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "aapl-fy2025-sec-10k-primary",
+      "corroborating_receipt_ids": [
+        "aapl-fy2025-apple-ir-repost"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "aapl-cf-2025-begin-cash",
+        "field": "consolidated_statements_of_cash_flows.cash_cash_equivalents_and_restricted_cash.beginning_balance",
+        "expected": "29943",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-net-income",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.net_income",
+        "expected": "112010",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-da",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.depreciation_and_amortization",
+        "expected": "11698",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-sbc",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.share_based_compensation_expense",
+        "expected": "12863",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-other",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.other",
+        "expected": "-89",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-ar",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.changes.accounts_receivable_net",
+        "expected": "-6682",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-vendor-receivables",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.changes.vendor_non_trade_receivables",
+        "expected": "-347",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-inventories",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.changes.inventories",
+        "expected": "1400",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-other-assets",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.changes.other_current_and_noncurrent_assets",
+        "expected": "-9197",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-ap",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.changes.accounts_payable",
+        "expected": "902",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-other-liabilities",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.changes.other_current_and_noncurrent_liabilities",
+        "expected": "-11076",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-cfo",
+        "field": "consolidated_statements_of_cash_flows.cash_generated_by_operating_activities",
+        "expected": "111482",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-purchase-ms",
+        "field": "consolidated_statements_of_cash_flows.investing_activities.purchases_of_marketable_securities",
+        "expected": "-24407",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-mature-ms",
+        "field": "consolidated_statements_of_cash_flows.investing_activities.proceeds_from_maturities_of_marketable_securities",
+        "expected": "40907",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-sale-ms",
+        "field": "consolidated_statements_of_cash_flows.investing_activities.proceeds_from_sales_of_marketable_securities",
+        "expected": "12890",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-ppe",
+        "field": "consolidated_statements_of_cash_flows.investing_activities.payments_for_acquisition_of_property_plant_and_equipment",
+        "expected": "-12715",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-investing-other",
+        "field": "consolidated_statements_of_cash_flows.investing_activities.other",
+        "expected": "-1480",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-cfi",
+        "field": "consolidated_statements_of_cash_flows.cash_generated_by_investing_activities",
+        "expected": "15195",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-taxes-net-share",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.payments_for_taxes_related_to_net_share_settlement_of_equity_awards",
+        "expected": "-5960",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-dividends",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.payments_for_dividends_and_dividend_equivalents",
+        "expected": "-15421",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-repurchase",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.repurchases_of_common_stock",
+        "expected": "-90711",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-term-debt-issued",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.proceeds_from_issuance_of_term_debt_net",
+        "expected": "4481",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-term-debt-repaid",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.repayments_of_term_debt",
+        "expected": "-10932",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-commercial-paper",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.proceeds_from_or_repayments_of_commercial_paper_net",
+        "expected": "-2032",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-financing-other",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.other",
+        "expected": "-111",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-cff",
+        "field": "consolidated_statements_of_cash_flows.cash_used_in_financing_activities",
+        "expected": "-120686",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-change-cash",
+        "field": "consolidated_statements_of_cash_flows.increase_or_decrease_in_cash_cash_equivalents_and_restricted_cash",
+        "expected": "5991",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-end-cash",
+        "field": "consolidated_statements_of_cash_flows.cash_cash_equivalents_and_restricted_cash.ending_balance",
+        "expected": "35934",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2025-cash-taxes",
+        "field": "consolidated_statements_of_cash_flows.supplemental_cash_flow_disclosure.cash_paid_for_income_taxes_net",
+        "expected": "43369",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-begin-cash",
+        "field": "consolidated_statements_of_cash_flows.cash_cash_equivalents_and_restricted_cash.beginning_balance",
+        "expected": "30737",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-net-income",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.net_income",
+        "expected": "93736",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-da",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.depreciation_and_amortization",
+        "expected": "11445",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-sbc",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.share_based_compensation_expense",
+        "expected": "11688",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-other",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.other",
+        "expected": "-2266",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-ar",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.changes.accounts_receivable_net",
+        "expected": "-3788",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-vendor-receivables",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.changes.vendor_non_trade_receivables",
+        "expected": "-1356",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-inventories",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.changes.inventories",
+        "expected": "-1046",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-other-assets",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.changes.other_current_and_noncurrent_assets",
+        "expected": "-11731",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-ap",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.changes.accounts_payable",
+        "expected": "6020",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-other-liabilities",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.changes.other_current_and_noncurrent_liabilities",
+        "expected": "15552",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-cfo",
+        "field": "consolidated_statements_of_cash_flows.cash_generated_by_operating_activities",
+        "expected": "118254",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-purchase-ms",
+        "field": "consolidated_statements_of_cash_flows.investing_activities.purchases_of_marketable_securities",
+        "expected": "-48656",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-mature-ms",
+        "field": "consolidated_statements_of_cash_flows.investing_activities.proceeds_from_maturities_of_marketable_securities",
+        "expected": "51211",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-sale-ms",
+        "field": "consolidated_statements_of_cash_flows.investing_activities.proceeds_from_sales_of_marketable_securities",
+        "expected": "11135",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-ppe",
+        "field": "consolidated_statements_of_cash_flows.investing_activities.payments_for_acquisition_of_property_plant_and_equipment",
+        "expected": "-9447",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-investing-other",
+        "field": "consolidated_statements_of_cash_flows.investing_activities.other",
+        "expected": "-1308",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-cfi",
+        "field": "consolidated_statements_of_cash_flows.cash_generated_by_investing_activities",
+        "expected": "2935",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-taxes-net-share",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.payments_for_taxes_related_to_net_share_settlement_of_equity_awards",
+        "expected": "-5441",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-dividends",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.payments_for_dividends_and_dividend_equivalents",
+        "expected": "-15234",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-repurchase",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.repurchases_of_common_stock",
+        "expected": "-94949",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-term-debt-issued",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.proceeds_from_issuance_of_term_debt_net",
+        "expected": null,
+        "comparison": "exact",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "raw_display": "—",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-term-debt-repaid",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.repayments_of_term_debt",
+        "expected": "-9958",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-commercial-paper",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.proceeds_from_or_repayments_of_commercial_paper_net",
+        "expected": "3960",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-financing-other",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.other",
+        "expected": "-361",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-cff",
+        "field": "consolidated_statements_of_cash_flows.cash_used_in_financing_activities",
+        "expected": "-121983",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-change-cash",
+        "field": "consolidated_statements_of_cash_flows.increase_or_decrease_in_cash_cash_equivalents_and_restricted_cash",
+        "expected": "-794",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-end-cash",
+        "field": "consolidated_statements_of_cash_flows.cash_cash_equivalents_and_restricted_cash.ending_balance",
+        "expected": "29943",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2024-cash-taxes",
+        "field": "consolidated_statements_of_cash_flows.supplemental_cash_flow_disclosure.cash_paid_for_income_taxes_net",
+        "expected": "26102",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-begin-cash",
+        "field": "consolidated_statements_of_cash_flows.cash_cash_equivalents_and_restricted_cash.beginning_balance",
+        "expected": "24977",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-net-income",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.net_income",
+        "expected": "96995",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-da",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.depreciation_and_amortization",
+        "expected": "11519",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-sbc",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.share_based_compensation_expense",
+        "expected": "10833",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-other",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.other",
+        "expected": "-2227",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-ar",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.changes.accounts_receivable_net",
+        "expected": "-1688",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-vendor-receivables",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.changes.vendor_non_trade_receivables",
+        "expected": "1271",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-inventories",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.changes.inventories",
+        "expected": "-1618",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-other-assets",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.changes.other_current_and_noncurrent_assets",
+        "expected": "-5684",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-ap",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.changes.accounts_payable",
+        "expected": "-1889",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-other-liabilities",
+        "field": "consolidated_statements_of_cash_flows.operating_activities.changes.other_current_and_noncurrent_liabilities",
+        "expected": "3031",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-cfo",
+        "field": "consolidated_statements_of_cash_flows.cash_generated_by_operating_activities",
+        "expected": "110543",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-purchase-ms",
+        "field": "consolidated_statements_of_cash_flows.investing_activities.purchases_of_marketable_securities",
+        "expected": "-29513",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-mature-ms",
+        "field": "consolidated_statements_of_cash_flows.investing_activities.proceeds_from_maturities_of_marketable_securities",
+        "expected": "39686",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-sale-ms",
+        "field": "consolidated_statements_of_cash_flows.investing_activities.proceeds_from_sales_of_marketable_securities",
+        "expected": "5828",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-ppe",
+        "field": "consolidated_statements_of_cash_flows.investing_activities.payments_for_acquisition_of_property_plant_and_equipment",
+        "expected": "-10959",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-investing-other",
+        "field": "consolidated_statements_of_cash_flows.investing_activities.other",
+        "expected": "-1337",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-cfi",
+        "field": "consolidated_statements_of_cash_flows.cash_generated_by_investing_activities",
+        "expected": "3705",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-taxes-net-share",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.payments_for_taxes_related_to_net_share_settlement_of_equity_awards",
+        "expected": "-5431",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-dividends",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.payments_for_dividends_and_dividend_equivalents",
+        "expected": "-15025",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-repurchase",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.repurchases_of_common_stock",
+        "expected": "-77550",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-term-debt-issued",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.proceeds_from_issuance_of_term_debt_net",
+        "expected": "5228",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-term-debt-repaid",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.repayments_of_term_debt",
+        "expected": "-11151",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-commercial-paper",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.proceeds_from_or_repayments_of_commercial_paper_net",
+        "expected": "-3978",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-financing-other",
+        "field": "consolidated_statements_of_cash_flows.financing_activities.other",
+        "expected": "-581",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-cff",
+        "field": "consolidated_statements_of_cash_flows.cash_used_in_financing_activities",
+        "expected": "-108488",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-change-cash",
+        "field": "consolidated_statements_of_cash_flows.increase_or_decrease_in_cash_cash_equivalents_and_restricted_cash",
+        "expected": "5760",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-end-cash",
+        "field": "consolidated_statements_of_cash_flows.cash_cash_equivalents_and_restricted_cash.ending_balance",
+        "expected": "30737",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      },
+      {
+        "assertion_id": "aapl-cf-2023-cash-taxes",
+        "field": "consolidated_statements_of_cash_flows.supplemental_cash_flow_disclosure.cash_paid_for_income_taxes_net",
+        "expected": "18679",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2023",
+        "receipt_ids": [
+          "aapl-fy2025-sec-10k-primary",
+          "aapl-fy2025-apple-ir-repost"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-us-aapl-fy2025-cash_flow_statement-v1",
+    "fact_contract": {
+      "entity": "Apple Inc.",
+      "symbol": "AAPL",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "SEC accession 0000320193-25-000079; CIK 0000320193; form 10-K; fiscal year ended 2025-09-27",
+      "period_end": "2025-09-27",
+      "duration_or_instant": "duration",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "reported_currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2025",
+          "label": "FY2025",
+          "period_end": "2025-09-27"
+        },
+        "comparative_periods": [
+          "FY2024",
+          "FY2023"
+        ],
+        "required_as_filed": true
+      }
+    },
+    "authoritative_origin_id": "us-aapl-fy2025-authoritative-report",
+    "same_authoritative_origin": true,
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "us-aapl-fy2025-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction"
+    },
+    "origin": "us-aapl-fy2025-authoritative-report"
+  }
+]

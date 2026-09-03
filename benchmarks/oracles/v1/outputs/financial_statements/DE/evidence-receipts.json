@@ -1,0 +1,46 @@
+[
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "sap-integrated-report-2025-pdf",
+    "source_id": "sap-integrated-report-2025",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "sap-issuer",
+    "published_at": "2026-09-02T15:19:04Z",
+    "retrieved_at": "2026-09-03T09:32:19Z",
+    "content_sha256": "cc295a7eb53f3f81e45ecf482c95f158530fbb893d59291d44335a6bcf44377a",
+    "evidence_locator": "https://www.sap.com/docs/download/investors/2025/sap-2025-integrated-report.pdf ; Consolidated Income Statements p.211/327, Statements of Financial Position p.213/327, Statements of Cash Flows p.215/327",
+    "source_document_id": "SAP Integrated Report 2025",
+    "notes": "SAP-hosted corroborating delivery of the same SAP FY2025 authoritative report, not the authority or PIT anchor. Presentation currency EUR; monetary table unit EUR millions except income-statement EPS (EUR per share). PDF was streamed for extraction and not retained. published_at is the fetched delivery's HTTP Last-Modified timestamp, not an asserted first-publication time; the historical SAP-host upload time is unavailable and remains a provenance blocker for this delivery. relationship=same_authoritative_origin; role=corroborating_delivery_only.",
+    "authoritative_origin_id": "de-sap-de-fy2025-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "de-sap-de-fy2025-authoritative-report",
+      "delivery_channel": "sap_investor_relations_pdf",
+      "extraction_method": "pypdf_statement_table_transcription",
+      "publisher_timestamp_type": "http_last_modified_not_first_publication"
+    }
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "sec-20f-2025-0001104659-26-020058",
+    "source_id": "sec-edgar-20f",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "sec-regulator",
+    "published_at": "2026-02-26T12:01:22Z",
+    "retrieved_at": "2026-09-03T09:32:20Z",
+    "content_sha256": "95017d7d5ea133ec3eaa11522a6b4a6661d99308394081735ae9e2efbc875151",
+    "evidence_locator": "https://www.sec.gov/Archives/edgar/data/1000184/000110465926020058/sap-20251231x20f.htm#ConsolidatedIncomeStatementsofSAPGroupfo ; #ConsolidatedStatementsofFinancialPositio ; #ConsolidatedStatementsofCashFlowsofSAPGr (20-F accepted 2026-02-26T12:01:22Z)",
+    "source_document_id": "SEC accession 0001104659-26-020058, SAP SE 2025 Form 20-F",
+    "notes": "SEC-hosted Form 20-F authoritative delivery and the sole PIT anchor: EDGAR acceptance at 2026-02-26T12:01:22Z proves this complete three-statement filing was publicly available then. SAP IR is a same-authoritative-origin corroborating delivery, not an independent factual origin. No raw filing was retained. relationship=same_authoritative_origin; role=authoritative_delivery_and_pit_anchor.",
+    "authoritative_origin_id": "de-sap-de-fy2025-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "de-sap-de-fy2025-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction",
+      "pit_anchor": true
+    }
+  }
+]

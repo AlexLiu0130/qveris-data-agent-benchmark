@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qveris.example/schemas/financial-fact-contract-registry/v1",
+  "title": "QVeris financial fact contract registry v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "suite", "status", "contracts"],
+  "properties": {
+    "schema_version": {"const": "financial-statement-fact-contract/v1"},
+    "suite": {"const": "financial_statements"},
+    "status": {"type": "string", "minLength": 1},
+    "contracts": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["fact_contract_id", "case_ids", "entity", "period", "consolidation_scope", "reported_currency", "unit_scale", "complete_statement_schema_id", "source_oracle"]}}
+  }
+}

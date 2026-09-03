@@ -1,0 +1,2007 @@
+[
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "cn-600519-fy2024-consolidated-income-statement",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-001",
+      "FS-004",
+      "FS-007",
+      "FS-010",
+      "FS-013",
+      "FS-016",
+      "FS-019",
+      "FS-022"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2025-04-03T23:59:59+08:00",
+      "source_published_at": "2025-04-03T23:59:59+08:00",
+      "retrieved_at": "2026-09-03T17:29:58+08:00",
+      "as_of": "2024-12-31T23:59:59+08:00"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "receipt-cninfo-600519-fy2024-annual",
+      "corroborating_receipt_ids": [
+        "receipt-issuer-600519-fy2024-annual"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "is-001",
+        "field": "consolidated_income_statement.营业总收入",
+        "expected": "174144069958.25",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-002",
+        "field": "consolidated_income_statement.营业收入",
+        "expected": "170899152276.34",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-003",
+        "field": "consolidated_income_statement.利息收入",
+        "expected": "3244917681.91",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-004",
+        "field": "consolidated_income_statement.营业总成本",
+        "expected": "54523971452.57",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-005",
+        "field": "consolidated_income_statement.营业成本",
+        "expected": "13789482367.98",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-006",
+        "field": "consolidated_income_statement.利息支出",
+        "expected": "105127802.03",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-007",
+        "field": "consolidated_income_statement.手续费及佣金支出",
+        "expected": "94078.17",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-008",
+        "field": "consolidated_income_statement.税金及附加",
+        "expected": "26926161474.99",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-009",
+        "field": "consolidated_income_statement.销售费用",
+        "expected": "5639300059.49",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-010",
+        "field": "consolidated_income_statement.管理费用",
+        "expected": "9315650060.38",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-011",
+        "field": "consolidated_income_statement.研发费用",
+        "expected": "218375472.87",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-012",
+        "field": "consolidated_income_statement.财务费用",
+        "expected": "-1470219863.34",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-013",
+        "field": "consolidated_income_statement.财务费用.利息费用",
+        "expected": "14474584.09",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-014",
+        "field": "consolidated_income_statement.财务费用.利息收入",
+        "expected": "1476991223.18",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-015",
+        "field": "consolidated_income_statement.其他收益",
+        "expected": "21229466.81",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-016",
+        "field": "consolidated_income_statement.投资收益",
+        "expected": "9130340.37",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-017",
+        "field": "consolidated_income_statement.公允价值变动收益",
+        "expected": "60980724.35",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-018",
+        "field": "consolidated_income_statement.信用减值损失",
+        "expected": "-23248436.03",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-019",
+        "field": "consolidated_income_statement.资产处置收益",
+        "expected": "388852.05",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-020",
+        "field": "consolidated_income_statement.营业利润",
+        "expected": "119688579453.23",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-021",
+        "field": "consolidated_income_statement.营业外收入",
+        "expected": "70936575.97",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-022",
+        "field": "consolidated_income_statement.营业外支出",
+        "expected": "120937834.74",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-023",
+        "field": "consolidated_income_statement.利润总额",
+        "expected": "119638578194.46",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-024",
+        "field": "consolidated_income_statement.所得税费用",
+        "expected": "30303850168.56",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-025",
+        "field": "consolidated_income_statement.净利润",
+        "expected": "89334728025.90",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-026",
+        "field": "consolidated_income_statement.持续经营净利润",
+        "expected": "89334728025.90",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-027",
+        "field": "consolidated_income_statement.归属于母公司股东的净利润",
+        "expected": "86228146421.62",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-028",
+        "field": "consolidated_income_statement.少数股东损益",
+        "expected": "3106581604.28",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-029",
+        "field": "consolidated_income_statement.其他综合收益的税后净额",
+        "expected": "-3854497.18",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-030",
+        "field": "consolidated_income_statement.归属母公司所有者的其他综合收益的税后净额",
+        "expected": "-3854497.18",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-031",
+        "field": "consolidated_income_statement.将重分类进损益的其他综合收益",
+        "expected": "-3854497.18",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-032",
+        "field": "consolidated_income_statement.外币财务报表折算差额",
+        "expected": "-3854497.18",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-033",
+        "field": "consolidated_income_statement.综合收益总额",
+        "expected": "89330873528.72",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-034",
+        "field": "consolidated_income_statement.归属于母公司所有者的综合收益总额",
+        "expected": "86224291924.44",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-035",
+        "field": "consolidated_income_statement.归属于少数股东的综合收益总额",
+        "expected": "3106581604.28",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-036",
+        "field": "consolidated_income_statement.基本每股收益",
+        "expected": "68.64",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan_per_share",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "is-037",
+        "field": "consolidated_income_statement.稀释每股收益",
+        "expected": "68.64",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "yuan_per_share",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-600519-fy2024-annual",
+          "receipt-issuer-600519-fy2024-annual"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-cn-600519-sh-fy2024-income_statement-v1",
+    "fact_contract": {
+      "entity": "贵州茅台酒股份有限公司",
+      "symbol": "600519.SH",
+      "exchange": "SSE",
+      "form": "annual_report",
+      "accession": "1222993920",
+      "period_end": "2024-12-31",
+      "duration_or_instant": "duration",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "reported_currency": "CNY",
+      "unit_scale": "yuan",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2024",
+          "label": "FY2024",
+          "period_end": "2024-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      },
+      "field_unit_exceptions": [
+        {
+          "currency": "CNY",
+          "unit_scale": "yuan_per_share",
+          "assertion_ids": [
+            "is-036",
+            "is-037"
+          ],
+          "fields": [
+            "consolidated_income_statement.基本每股收益",
+            "consolidated_income_statement.稀释每股收益"
+          ]
+        }
+      ]
+    },
+    "authoritative_origin_id": "cn-600519-sh-fy2024-authoritative-report",
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "cn-600519-sh-fy2024-authoritative-report",
+      "delivery_channel": "cninfo_designated_disclosure",
+      "extraction_method": "reported_table_transcription"
+    },
+    "origin": "cn-600519-sh-fy2024-authoritative-report",
+    "same_authoritative_origin": true
+  },
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "cn-300750-fy2024-consolidated-balance-sheet",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-002",
+      "FS-005",
+      "FS-008",
+      "FS-011",
+      "FS-014",
+      "FS-017",
+      "FS-020",
+      "FS-023"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2025-03-15T23:59:59+08:00",
+      "source_published_at": "2025-03-15T23:59:59+08:00",
+      "retrieved_at": "2026-09-03T17:29:58+08:00",
+      "as_of": "2024-12-31T23:59:59+08:00"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "receipt-cninfo-300750-fy2024-annual",
+      "corroborating_receipt_ids": [
+        "receipt-issuer-300750-fy2024-annual"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "bs-001",
+        "field": "consolidated_balance_sheet.货币资金",
+        "expected": "303511993",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-002",
+        "field": "consolidated_balance_sheet.交易性金融资产",
+        "expected": "14282253",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-003",
+        "field": "consolidated_balance_sheet.应收票据",
+        "expected": "130403",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-004",
+        "field": "consolidated_balance_sheet.应收账款",
+        "expected": "64135510",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-005",
+        "field": "consolidated_balance_sheet.应收款项融资",
+        "expected": "53309701",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-006",
+        "field": "consolidated_balance_sheet.预付款项",
+        "expected": "5969685",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-007",
+        "field": "consolidated_balance_sheet.其他应收款",
+        "expected": "2206947",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-008",
+        "field": "consolidated_balance_sheet.其他应收款.应收股利",
+        "expected": "65217",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-009",
+        "field": "consolidated_balance_sheet.存货",
+        "expected": "59835533",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-010",
+        "field": "consolidated_balance_sheet.合同资产",
+        "expected": "400626",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-011",
+        "field": "consolidated_balance_sheet.一年内到期的非流动资产",
+        "expected": "72972",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-012",
+        "field": "consolidated_balance_sheet.其他流动资产",
+        "expected": "6286465",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-013",
+        "field": "consolidated_balance_sheet.流动资产合计",
+        "expected": "510142089",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-014",
+        "field": "consolidated_balance_sheet.长期应收款",
+        "expected": "151342",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-015",
+        "field": "consolidated_balance_sheet.长期股权投资",
+        "expected": "54791525",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-016",
+        "field": "consolidated_balance_sheet.其他权益工具投资",
+        "expected": "11900901",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-017",
+        "field": "consolidated_balance_sheet.其他非流动金融资产",
+        "expected": "3135658",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-018",
+        "field": "consolidated_balance_sheet.固定资产",
+        "expected": "112589053",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-019",
+        "field": "consolidated_balance_sheet.在建工程",
+        "expected": "29754703",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-020",
+        "field": "consolidated_balance_sheet.使用权资产",
+        "expected": "889995",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-021",
+        "field": "consolidated_balance_sheet.无形资产",
+        "expected": "14419804",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-022",
+        "field": "consolidated_balance_sheet.商誉",
+        "expected": "894757",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-023",
+        "field": "consolidated_balance_sheet.长期待摊费用",
+        "expected": "4593980",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-024",
+        "field": "consolidated_balance_sheet.递延所得税资产",
+        "expected": "24118834",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-025",
+        "field": "consolidated_balance_sheet.其他非流动资产",
+        "expected": "19275483",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-026",
+        "field": "consolidated_balance_sheet.非流动资产合计",
+        "expected": "276516035",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-027",
+        "field": "consolidated_balance_sheet.资产总计",
+        "expected": "786658123",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-028",
+        "field": "consolidated_balance_sheet.短期借款",
+        "expected": "19696282",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-029",
+        "field": "consolidated_balance_sheet.衍生金融负债",
+        "expected": "2116017",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-030",
+        "field": "consolidated_balance_sheet.应付票据",
+        "expected": "67356323",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-031",
+        "field": "consolidated_balance_sheet.应付账款",
+        "expected": "130977408",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-032",
+        "field": "consolidated_balance_sheet.合同负债",
+        "expected": "27834446",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-033",
+        "field": "consolidated_balance_sheet.应付职工薪酬",
+        "expected": "18653079",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-034",
+        "field": "consolidated_balance_sheet.应交税费",
+        "expected": "9436442",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-035",
+        "field": "consolidated_balance_sheet.其他应付款",
+        "expected": "16161923",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-036",
+        "field": "consolidated_balance_sheet.其他应付款.应付股利",
+        "expected": "5400161",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-037",
+        "field": "consolidated_balance_sheet.一年内到期的非流动负债",
+        "expected": "22881417",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-038",
+        "field": "consolidated_balance_sheet.其他流动负债",
+        "expected": "2058196",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-039",
+        "field": "consolidated_balance_sheet.流动负债合计",
+        "expected": "317171534",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-040",
+        "field": "consolidated_balance_sheet.长期借款",
+        "expected": "81238456",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-041",
+        "field": "consolidated_balance_sheet.应付债券",
+        "expected": "11922623",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-042",
+        "field": "consolidated_balance_sheet.租赁负债",
+        "expected": "662814",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-043",
+        "field": "consolidated_balance_sheet.长期应付款",
+        "expected": "1606480",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-044",
+        "field": "consolidated_balance_sheet.预计负债",
+        "expected": "71926943",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-045",
+        "field": "consolidated_balance_sheet.递延收益",
+        "expected": "22041069",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-046",
+        "field": "consolidated_balance_sheet.递延所得税负债",
+        "expected": "1231236",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-047",
+        "field": "consolidated_balance_sheet.其他非流动负债",
+        "expected": "5400795",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-048",
+        "field": "consolidated_balance_sheet.非流动负债合计",
+        "expected": "196030416",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-049",
+        "field": "consolidated_balance_sheet.负债合计",
+        "expected": "513201949",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-050",
+        "field": "consolidated_balance_sheet.股本",
+        "expected": "4403466",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-051",
+        "field": "consolidated_balance_sheet.资本公积",
+        "expected": "116756136",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-052",
+        "field": "consolidated_balance_sheet.减_库存股",
+        "expected": "2712804",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-053",
+        "field": "consolidated_balance_sheet.其他综合收益",
+        "expected": "-348637",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-054",
+        "field": "consolidated_balance_sheet.专项储备",
+        "expected": "35551",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-055",
+        "field": "consolidated_balance_sheet.盈余公积",
+        "expected": "2194779",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-056",
+        "field": "consolidated_balance_sheet.未分配利润",
+        "expected": "126601541",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-057",
+        "field": "consolidated_balance_sheet.归属于母公司所有者权益合计",
+        "expected": "246930033",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-058",
+        "field": "consolidated_balance_sheet.少数股东权益",
+        "expected": "26526141",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-059",
+        "field": "consolidated_balance_sheet.所有者权益合计",
+        "expected": "273456174",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "bs-060",
+        "field": "consolidated_balance_sheet.负债和所有者权益总计",
+        "expected": "786658123",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "2024-12-31",
+        "receipt_ids": [
+          "receipt-cninfo-300750-fy2024-annual",
+          "receipt-issuer-300750-fy2024-annual"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-cn-300750-sz-fy2024-balance_sheet-v1",
+    "fact_contract": {
+      "entity": "宁德时代新能源科技股份有限公司",
+      "symbol": "300750.SZ",
+      "exchange": "SZSE",
+      "form": "annual_report",
+      "accession": "1222806982",
+      "period_end": "2024-12-31",
+      "duration_or_instant": "instant",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "reported_currency": "CNY",
+      "unit_scale": "thousand_yuan",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "2024-12-31",
+          "label": "FY2024",
+          "period_end": "2024-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    "authoritative_origin_id": "cn-300750-sz-fy2024-authoritative-report",
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "cn-300750-sz-fy2024-authoritative-report",
+      "delivery_channel": "cninfo_designated_disclosure",
+      "extraction_method": "reported_table_transcription"
+    },
+    "origin": "cn-300750-sz-fy2024-authoritative-report",
+    "same_authoritative_origin": true
+  },
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "cn-000333-fy2024-consolidated-cash-flow-statement",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-003",
+      "FS-006",
+      "FS-009",
+      "FS-012",
+      "FS-015",
+      "FS-018",
+      "FS-021"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2025-03-29T23:59:59+08:00",
+      "source_published_at": "2025-03-29T23:59:59+08:00",
+      "retrieved_at": "2026-09-03T17:29:58+08:00",
+      "as_of": "2024-12-31T23:59:59+08:00"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "receipt-cninfo-000333-fy2024-annual",
+      "corroborating_receipt_ids": [
+        "receipt-issuer-000333-fy2024-annual"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "cf-001",
+        "field": "consolidated_cash_flow_statement.销售商品_提供劳务收到的现金",
+        "expected": "388661338",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-002",
+        "field": "consolidated_cash_flow_statement.发放贷款及垫款净减少额",
+        "expected": "3979158",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-003",
+        "field": "consolidated_cash_flow_statement.吸收存款和同业存放款项净增加额",
+        "expected": "48384",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-004",
+        "field": "consolidated_cash_flow_statement.收取利息_手续费及佣金的现金",
+        "expected": "1936687",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-005",
+        "field": "consolidated_cash_flow_statement.收到的税费返还",
+        "expected": "9278400",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-006",
+        "field": "consolidated_cash_flow_statement.收到其他与经营活动有关的现金",
+        "expected": "8871166",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-007",
+        "field": "consolidated_cash_flow_statement.经营活动现金流入小计",
+        "expected": "412775133",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-008",
+        "field": "consolidated_cash_flow_statement.购买商品_接受劳务支付的现金",
+        "expected": "-245627386",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-009",
+        "field": "consolidated_cash_flow_statement.存放中央银行款项净增加额",
+        "expected": "-2045260",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-010",
+        "field": "consolidated_cash_flow_statement.支付利息_手续费及佣金的现金",
+        "expected": "-5040",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-011",
+        "field": "consolidated_cash_flow_statement.支付给职工以及为职工支付的现金",
+        "expected": "-43788585",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-012",
+        "field": "consolidated_cash_flow_statement.支付的各项税费",
+        "expected": "-19521276",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-013",
+        "field": "consolidated_cash_flow_statement.支付其他与经营活动有关的现金",
+        "expected": "-41276014",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-014",
+        "field": "consolidated_cash_flow_statement.经营活动现金流出小计",
+        "expected": "-352263561",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-015",
+        "field": "consolidated_cash_flow_statement.经营活动产生的现金流量净额",
+        "expected": "60511572",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-016",
+        "field": "consolidated_cash_flow_statement.收回投资收到的现金",
+        "expected": "112907842",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-017",
+        "field": "consolidated_cash_flow_statement.取得投资收益所收到的现金",
+        "expected": "3984518",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-018",
+        "field": "consolidated_cash_flow_statement.处置固定资产_无形资产和其他长期资产收回的现金净额",
+        "expected": "960404",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-019",
+        "field": "consolidated_cash_flow_statement.处置子公司及其他营业单位收到的现金净额",
+        "expected": "78073",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-020",
+        "field": "consolidated_cash_flow_statement.收到其他与投资活动有关的现金",
+        "expected": "5000",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-021",
+        "field": "consolidated_cash_flow_statement.投资活动现金流入小计",
+        "expected": "117935837",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-022",
+        "field": "consolidated_cash_flow_statement.购建固定资产_无形资产和其他长期资产支付的现金",
+        "expected": "-7839636",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-023",
+        "field": "consolidated_cash_flow_statement.投资支付的现金",
+        "expected": "-197985757",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-024",
+        "field": "consolidated_cash_flow_statement.支付其他与投资活动有关的现金",
+        "expected": "-12246",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-025",
+        "field": "consolidated_cash_flow_statement.投资活动现金流出小计",
+        "expected": "-205837639",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-026",
+        "field": "consolidated_cash_flow_statement.投资活动使用的现金流量净额",
+        "expected": "-87901802",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-027",
+        "field": "consolidated_cash_flow_statement.吸收投资收到的现金",
+        "expected": "34695921",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-028",
+        "field": "consolidated_cash_flow_statement.吸收投资收到的现金.子公司吸收少数股东投资收到的现金",
+        "expected": "32294",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-029",
+        "field": "consolidated_cash_flow_statement.取得借款收到的现金",
+        "expected": "37800361",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-030",
+        "field": "consolidated_cash_flow_statement.收到其他与筹资活动有关的现金",
+        "expected": "180667",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-031",
+        "field": "consolidated_cash_flow_statement.筹资活动现金流入小计",
+        "expected": "72676949",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-032",
+        "field": "consolidated_cash_flow_statement.偿还债务支付的现金",
+        "expected": "-24986249",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-033",
+        "field": "consolidated_cash_flow_statement.分配股利_利润或偿付利息支付的现金",
+        "expected": "-22821861",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-034",
+        "field": "consolidated_cash_flow_statement.分配股利_利润或偿付利息支付的现金.子公司支付给少数股东的股利_利润",
+        "expected": "-409782",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-035",
+        "field": "consolidated_cash_flow_statement.支付其他与筹资活动有关的现金",
+        "expected": "-2170885",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-036",
+        "field": "consolidated_cash_flow_statement.筹资活动现金流出小计",
+        "expected": "-49978995",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-037",
+        "field": "consolidated_cash_flow_statement.筹资活动产生_使用的现金流量净额",
+        "expected": "22697954",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-038",
+        "field": "consolidated_cash_flow_statement.汇率变动对现金及现金等价物的影响",
+        "expected": "-76256",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-039",
+        "field": "consolidated_cash_flow_statement.现金及现金等价物净减少_增加额",
+        "expected": "-4768532",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-040",
+        "field": "consolidated_cash_flow_statement.年初现金及现金等价物余额",
+        "expected": "59887260",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      },
+      {
+        "assertion_id": "cf-041",
+        "field": "consolidated_cash_flow_statement.年末现金及现金等价物余额",
+        "expected": "55118728",
+        "comparison": "exact_normalized",
+        "currency": "CNY",
+        "unit": "thousand_yuan",
+        "period": "FY2024",
+        "receipt_ids": [
+          "receipt-cninfo-000333-fy2024-annual",
+          "receipt-issuer-000333-fy2024-annual"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-cn-000333-sz-fy2024-cash_flow_statement-v1",
+    "fact_contract": {
+      "entity": "美的集团股份有限公司",
+      "symbol": "000333.SZ",
+      "exchange": "SZSE",
+      "form": "annual_report",
+      "accession": "1222951181",
+      "period_end": "2024-12-31",
+      "duration_or_instant": "duration",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "reported_currency": "CNY",
+      "unit_scale": "thousand_yuan",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2024",
+          "label": "FY2024",
+          "period_end": "2024-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    "authoritative_origin_id": "cn-000333-sz-fy2024-authoritative-report",
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "cn-000333-sz-fy2024-authoritative-report",
+      "delivery_channel": "cninfo_designated_disclosure",
+      "extraction_method": "reported_table_transcription"
+    },
+    "origin": "cn-000333-sz-fy2024-authoritative-report",
+    "same_authoritative_origin": true
+  }
+]

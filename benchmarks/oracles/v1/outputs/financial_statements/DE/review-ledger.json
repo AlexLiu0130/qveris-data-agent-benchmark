@@ -1,0 +1,81 @@
+{
+  "review_ledgers": [
+    {
+      "schema_version": "review-ledger/v1",
+      "oracle_id": "sap-de-fy2025-consolidated-income-statement",
+      "oracle_file_sha256": "1e66dbf95f25521a53f83056ad857dbf2230a855b630ae43fc4bd5206e1ffe83",
+      "reviews": [
+        {"review_id": "review-de-income-20260903", "role": "data_reviewer", "reviewer_id": "review_de", "decision": "changes_requested", "reviewed_at": "2026-09-03T09:50:13Z", "notes": "37/37 source rows pass exactly; release approval is withheld only for the SAP PIT, evidence_collected status, and manifest gaps recorded below."},
+        {"review_id": "review-de-income-semantic-20260903", "role": "semantic_reviewer", "reviewer_id": "review_de_semantic", "decision": "changes_requested", "reviewed_at": "2026-09-03T09:50:13Z", "notes": "Historical review retained."},
+        {"review_id": "review-de-income-data-final-20260903", "role": "data_reviewer", "reviewer_id": "/root/ledger_review_financial_jp_gb_de", "decision": "approved", "reviewed_at": "2026-09-03T11:37:44Z", "notes": "Re-signed current oracle SHA-256 1e66dbf95f25521a53f83056ad857dbf2230a855b630ae43fc4bd5206e1ffe83: 37/37 values and dual-receipt links verify; FY2025, consolidated IFRS, EUR millions except EUR-per-share EPS, 2025/2024/2023 presentation, same-origin multi-delivery, and SEC PIT/clock order verify."},
+        {"review_id": "review-de-income-semantic-final-20260903", "role": "semantic_reviewer", "reviewer_id": "/root/semantic_signoff_jp_gb_de", "decision": "approved", "reviewed_at": "2026-09-03T11:37:44Z", "notes": "Re-signed current oracle bytes: FY2025 consolidated IFRS statement, EUR millions with EUR-per-share EPS, comparative columns, and as-reported presentation scope are correct."}
+      ],
+      "conflicts": [{"conflict_id": "DE-income-freeze-incomplete", "status": "resolved", "description": "Historical data-review conflict retained: SEC clock was previously one second after frozen_at. Current frozen_at 2026-09-03T11:15:43Z follows both receipt retrievals; all data gates now pass.", "opened_at": "2026-09-03T09:50:13Z", "resolved_at": "2026-09-03T11:21:05Z", "resolution": "Resolved for data review. Evidence approval is approved; a suite manifest is a separate immutable-release control."}]
+    },
+    {
+      "schema_version": "review-ledger/v1",
+      "oracle_id": "sap-de-fy2025-consolidated-financial-position",
+      "oracle_file_sha256": "1e66dbf95f25521a53f83056ad857dbf2230a855b630ae43fc4bd5206e1ffe83",
+      "reviews": [
+        {"review_id": "review-de-financial-position-20260903", "role": "data_reviewer", "reviewer_id": "review_de", "decision": "changes_requested", "reviewed_at": "2026-09-03T09:50:13Z", "notes": "41/41 source rows pass exactly; release approval is withheld only for the SAP PIT, evidence_collected status, and manifest gaps recorded below."},
+        {"review_id": "review-de-financial-position-semantic-20260903", "role": "semantic_reviewer", "reviewer_id": "review_de_semantic", "decision": "changes_requested", "reviewed_at": "2026-09-03T09:50:13Z", "notes": "Historical review retained."},
+        {"review_id": "review-de-financial-position-data-final-20260903", "role": "data_reviewer", "reviewer_id": "/root/ledger_review_financial_jp_gb_de", "decision": "approved", "reviewed_at": "2026-09-03T11:37:44Z", "notes": "Re-signed current oracle SHA-256 1e66dbf95f25521a53f83056ad857dbf2230a855b630ae43fc4bd5206e1ffe83: 41/41 values and dual-receipt links verify; 2025-12-31 instant, consolidated IFRS, EUR millions, 2025/2024 presentation, same-origin multi-delivery, and SEC PIT/clock order verify."},
+        {"review_id": "review-de-financial-position-semantic-final-20260903", "role": "semantic_reviewer", "reviewer_id": "/root/semantic_signoff_jp_gb_de", "decision": "approved", "reviewed_at": "2026-09-03T11:37:44Z", "notes": "Re-signed current oracle bytes: 2025-12-31 consolidated IFRS financial position, EUR millions, comparative column, and as-reported presentation scope are correct."}
+      ],
+      "conflicts": [{"conflict_id": "DE-position-freeze-incomplete", "status": "resolved", "description": "Historical data-review conflict retained: SEC clock was previously one second after frozen_at. Current frozen_at 2026-09-03T11:15:43Z follows both receipt retrievals; all data gates now pass.", "opened_at": "2026-09-03T09:50:13Z", "resolved_at": "2026-09-03T11:21:05Z", "resolution": "Resolved for data review. Evidence approval is approved; a suite manifest is a separate immutable-release control."}]
+    },
+    {
+      "schema_version": "review-ledger/v1",
+      "oracle_id": "sap-de-fy2025-consolidated-cash-flow-statement",
+      "oracle_file_sha256": "1e66dbf95f25521a53f83056ad857dbf2230a855b630ae43fc4bd5206e1ffe83",
+      "reviews": [
+        {"review_id": "review-de-cash-flow-20260903", "role": "data_reviewer", "reviewer_id": "review_de", "decision": "changes_requested", "reviewed_at": "2026-09-03T09:50:13Z", "notes": "42/42 source rows pass exactly; release approval is withheld only for the SAP PIT, evidence_collected status, and manifest gaps recorded below."},
+        {"review_id": "review-de-cash-flow-semantic-20260903", "role": "semantic_reviewer", "reviewer_id": "review_de_semantic", "decision": "changes_requested", "reviewed_at": "2026-09-03T09:50:13Z", "notes": "Historical review retained."},
+        {"review_id": "review-de-cash-flow-data-final-20260903", "role": "data_reviewer", "reviewer_id": "/root/ledger_review_financial_jp_gb_de", "decision": "approved", "reviewed_at": "2026-09-03T11:37:44Z", "notes": "Re-signed current oracle SHA-256 1e66dbf95f25521a53f83056ad857dbf2230a855b630ae43fc4bd5206e1ffe83: 42/42 values and dual-receipt links verify; FY2025, consolidated IFRS, EUR millions, 2025/2024/2023 presentation, same-origin multi-delivery, and SEC PIT/clock order verify."},
+        {"review_id": "review-de-cash-flow-semantic-final-20260903", "role": "semantic_reviewer", "reviewer_id": "/root/semantic_signoff_jp_gb_de", "decision": "approved", "reviewed_at": "2026-09-03T11:37:44Z", "notes": "Re-signed current oracle bytes: FY2025 consolidated IFRS cash flow, EUR millions, comparative columns, and as-reported presentation scope are correct."}
+      ],
+      "conflicts": [{"conflict_id": "DE-cash-flow-freeze-incomplete", "status": "resolved", "description": "Historical data-review conflict retained: SEC clock was previously one second after frozen_at. Current frozen_at 2026-09-03T11:15:43Z follows both receipt retrievals; all data gates now pass.", "opened_at": "2026-09-03T09:50:13Z", "resolved_at": "2026-09-03T11:21:05Z", "resolution": "Resolved for data review. Evidence approval is approved; a suite manifest is a separate immutable-release control."}]
+    }
+  ],
+  "package_review": {
+    "task_name": "/root/ledger_review_financial_jp_gb_de/review_de",
+    "role": "independent_data_reviewer",
+    "reviewed_at": "2026-09-03T11:37:44Z",
+    "scope": {
+      "directory": "outputs/financial_statements/DE",
+      "entity": "SAP SE",
+      "period": "FY2025 / 2025-12-31",
+      "reporting_framework": "IFRS",
+      "currency_and_units": "EUR millions; EPS in EUR per share",
+      "comparison_columns": "2025 source column checked against 2024 and 2023 comparatives where presented",
+      "same_authoritative_origin": true,
+      "same_authoritative_origin_conclusion": "The SAP-hosted Integrated Report and SEC-hosted 20-F are separate official distributions, but both reproduce SAP's issuer-prepared audited consolidated statements; they are not independently originated accounting evidence."
+    },
+    "source_verification": {
+      "SAP_Integrated_Report_2025": "pass: cc295a7eb53f3f81e45ecf482c95f158530fbb893d59291d44335a6bcf44377a; corroborating same-origin delivery only, not the PIT anchor; https://www.sap.com/docs/download/investors/2025/sap-2025-integrated-report.pdf",
+      "SEC_20F_0001104659_26_020058": "pass: 95017d7d5ea133ec3eaa11522a6b4a6661d99308394081735ae9e2efbc875151; authoritative delivery and sole PIT anchor at SEC acceptance 2026-02-26T12:01:22Z; https://www.sec.gov/Archives/edgar/data/1000184/000110465926020058/sap-20251231x20f.htm",
+      "IFRS": "The Form 20-F Notes state that SAP SE and subsidiaries' 2025 consolidated financial statements were prepared in accordance with IFRS and German Commercial Code section 315e(1)."
+    },
+    "assertion_results": [
+      {"oracle_id": "sap-de-fy2025-consolidated-income-statement", "statement": "Consolidated Income Statements", "source_locations": "SAP Integrated Report p.211/327; SEC 20-F Consolidated Income Statements anchor", "assertions": 37, "pass": 37, "fail": 0, "hold": 0, "conclusion": "Every expected FY2025 source-row value, negative sign, EUR-million declaration, and EUR-per-share EPS declaration matches exactly."},
+      {"oracle_id": "sap-de-fy2025-consolidated-financial-position", "statement": "Consolidated Statements of Financial Position", "source_locations": "SAP Integrated Report p.213/327; SEC 20-F Consolidated Statements of Financial Position anchor", "assertions": 41, "pass": 41, "fail": 0, "hold": 0, "conclusion": "Every expected 2025-12-31 source-row value, comparison-column selection, negative sign, and EUR-million declaration matches exactly."},
+      {"oracle_id": "sap-de-fy2025-consolidated-cash-flow-statement", "statement": "Consolidated Statements of Cash Flows", "source_locations": "SAP Integrated Report p.215/327; SEC 20-F Consolidated Statements of Cash Flows anchor", "assertions": 42, "pass": 42, "fail": 0, "hold": 0, "conclusion": "Every expected FY2025 source-row value, negative sign, comparison-column selection, and EUR-million declaration matches exactly."}
+    ],
+    "counts": {"assertions": 120, "pass": 120, "fail": 0, "hold": 0, "receipt_hashes_pass": 2, "receipt_hashes_fail": 0, "row_level_decision": "pass", "package_evidence_decision": "approved", "package_release_decision": "approved", "release_readiness": "released"},
+    "reconciliations": {
+      "exact": ["Cloud and software plus services equals total revenue; cloud/software cost plus services cost equals total cost of revenue; gross profit less operating costs equals operating profit; tax and attribution bridges agree.", "Non-current assets and current liabilities reconcile; current plus non-current assets equals total assets.", "Operating, investing, financing, and FX totals bridge exactly to reported net change."],
+      "accepted_rounding": ["Income: operating profit plus other non-operating income and financial income, net is EUR1m below reported profit before tax.", "Financial position: displayed current-asset components exceed their displayed total by EUR1m; seven displayed non-current-liability components exceed their total by EUR2m in aggregate; total liabilities plus total equity is EUR1m below total assets.", "Cash flow: displayed operating, investing, and financing components differ from their reported subtotals by EUR1m each; opening cash plus displayed net decrease is EUR1m below closing cash."],
+      "conclusion": "No reported value was repaired. The differences are EUR-million presentation rounding; each asserted as-reported source row remains exact_normalized."
+    },
+    "conflicts": [
+      {"conflict_id": "DE-001-same-authoritative-origin", "status": "resolved", "scope": "package provenance", "description": "The two receipts have distinct official delivery hosts but the accounting facts originate with SAP's issuer-prepared audited statements.", "resolved_at": "2026-09-03T09:50:13Z", "conclusion": "Current financial-statement policy expressly permits one authoritative issuer/regulator fact source with a second official delivery or independent parse and distinct semantic/data review. The SAP and SEC official deliveries satisfy that policy condition as a factual review finding; this does not make them independently originated accounting evidence."},
+      {"conflict_id": "DE-002-primary-pit-publication-time", "status": "resolved", "scope": "package provenance", "description": "Historical conflict retained: SAP-host PDF upload time was not established. Current candidate instead designates the SEC 20-F as authoritative delivery and sole PIT anchor, with SEC acceptance 2026-02-26T12:01:22Z.", "resolved_at": "2026-09-03T10:52:16Z", "conclusion": "Resolved only because SEC, not SAP-host time, now supplies the authoritative PIT evidence. SAP remains a corroborating same-origin delivery and its HTTP Last-Modified timestamp is not used as PIT."},
+      {"conflict_id": "DE-004-freeze-machine-contract-incomplete", "status": "resolved", "scope": "package promotion readiness", "description": "Historical promotion conflict retained: the prior evidence_collected state and absent manifest were release-workflow controls. Current records are frozen, and all evidence gates pass: explicit origin/same-authoritative-origin, resolvable contracts, dual-receipt links, approved semantic and data reviews, and receipt clock order.", "resolved_at": "2026-09-03T11:21:05Z", "conclusion": "Resolved as an evidence-review conflict. Package evidence approval is approved. One immutable frozen suite manifest remains the separate release-finalization artifact; its absence is recorded as release readiness, not an open evidence conflict."},
+      {"conflict_id": "DE-005-sec-retrieval-after-freeze-clock", "status": "resolved", "scope": "PIT clock order", "description": "Historical conflict retained: SEC authoritative/PIT-anchor receipt retrieved_at is 2026-09-03T09:32:20Z. All record frozen_at values are now 2026-09-03T11:15:43Z, after both SEC and SAP receipt retrievals.", "resolved_at": "2026-09-03T11:21:05Z", "conclusion": "Resolved: current receipt clock order satisfies retrieved_at <= frozen_at. SEC remains the PIT authority; SAP is corroborating-only."},
+      {"conflict_id": "DE-003-eur-million-presentation-rounding", "status": "resolved", "scope": "derived reconciliations", "description": "Some displayed subtotal/component additions differ by EUR1m; seven displayed non-current-liability components differ from their displayed total by EUR2m in aggregate.", "conclusion": "Accepted as aggregation of EUR-million presentation rounding for as-reported row scoring. No source row differs and no assertion was modified."}
+    ],
+    "review_decision": {"row_level": "pass", "package_evidence": "approved", "package_release": "released", "decision": "approved", "reason": "All 120 assertions and both hashes verify; SEC is the valid PIT authority, SAP is corroborating-only, record origin/same-origin, dual-linkage, receipt clock, and independent semantic/data approvals pass. The frozen suite manifest now completes release finalization."},
+    "validation": {"json_parse": "pass", "assertion_count_match": "pass: 120 oracle assertions = 120 pass + 0 fail + 0 hold", "source_match": "pass: SEC exact-display comparison matched 37/37 income, 41/41 financial-position, and 42/42 cash-flow source rows; all 120 assertions link both receipts", "declarations": "pass: all assertions declare EUR; EUR millions except EUR-per-share EPS; FY2025 or 2025-12-31; IFRS Accounting Standards, consolidated as_reported presentation, and exact_normalized throughout"},
+    "unverified_risk": "SAP-host HTTP Last-Modified is not PIT evidence and is not used. SEC acceptance is the PIT anchor; there is no current package release blocker."
+  }
+}

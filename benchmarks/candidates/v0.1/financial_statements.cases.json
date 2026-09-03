@@ -22,11 +22,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "yuan",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -40,7 +49,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-600519-sh-fy2024-income_statement-v1"
   },
   {
     "id": "FS-002",
@@ -65,11 +75,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "thousand_yuan",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -83,7 +102,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-300750-sz-fy2024-balance_sheet-v1"
   },
   {
     "id": "FS-003",
@@ -108,11 +128,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "thousand_yuan",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -126,7 +155,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-000333-sz-fy2024-cash_flow_statement-v1"
   },
   {
     "id": "FS-004",
@@ -151,11 +181,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "yuan",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -169,7 +208,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-600519-sh-fy2024-income_statement-v1"
   },
   {
     "id": "FS-005",
@@ -194,11 +234,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "thousand_yuan",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -212,7 +261,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-300750-sz-fy2024-balance_sheet-v1"
   },
   {
     "id": "FS-006",
@@ -237,11 +287,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "thousand_yuan",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -255,7 +314,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-000333-sz-fy2024-cash_flow_statement-v1"
   },
   {
     "id": "FS-007",
@@ -280,11 +340,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "yuan",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -298,7 +367,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-600519-sh-fy2024-income_statement-v1"
   },
   {
     "id": "FS-008",
@@ -323,11 +393,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "thousand_yuan",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -341,7 +420,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-300750-sz-fy2024-balance_sheet-v1"
   },
   {
     "id": "FS-009",
@@ -366,11 +446,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "thousand_yuan",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -384,7 +473,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-000333-sz-fy2024-cash_flow_statement-v1"
   },
   {
     "id": "FS-010",
@@ -409,11 +499,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "yuan",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -427,7 +526,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-600519-sh-fy2024-income_statement-v1"
   },
   {
     "id": "FS-011",
@@ -452,11 +552,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "thousand_yuan",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -470,7 +579,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-300750-sz-fy2024-balance_sheet-v1"
   },
   {
     "id": "FS-012",
@@ -495,11 +605,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "thousand_yuan",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -513,7 +632,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-000333-sz-fy2024-cash_flow_statement-v1"
   },
   {
     "id": "FS-013",
@@ -538,11 +658,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "yuan",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -556,7 +685,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-600519-sh-fy2024-income_statement-v1"
   },
   {
     "id": "FS-014",
@@ -581,11 +711,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "thousand_yuan",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -599,7 +738,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-300750-sz-fy2024-balance_sheet-v1"
   },
   {
     "id": "FS-015",
@@ -624,11 +764,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "thousand_yuan",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -642,7 +791,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-000333-sz-fy2024-cash_flow_statement-v1"
   },
   {
     "id": "FS-016",
@@ -667,11 +817,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "yuan",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -685,7 +844,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-600519-sh-fy2024-income_statement-v1"
   },
   {
     "id": "FS-017",
@@ -710,11 +870,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "thousand_yuan",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -728,7 +897,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-300750-sz-fy2024-balance_sheet-v1"
   },
   {
     "id": "FS-018",
@@ -753,11 +923,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "thousand_yuan",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -771,7 +950,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-000333-sz-fy2024-cash_flow_statement-v1"
   },
   {
     "id": "FS-019",
@@ -796,11 +976,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "yuan",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -814,7 +1003,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-600519-sh-fy2024-income_statement-v1"
   },
   {
     "id": "FS-020",
@@ -839,11 +1029,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "thousand_yuan",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -857,7 +1056,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-300750-sz-fy2024-balance_sheet-v1"
   },
   {
     "id": "FS-021",
@@ -882,11 +1082,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "thousand_yuan",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -900,7 +1109,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-000333-sz-fy2024-cash_flow_statement-v1"
   },
   {
     "id": "FS-022",
@@ -925,11 +1135,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "yuan",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -943,7 +1162,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-600519-sh-fy2024-income_statement-v1"
   },
   {
     "id": "FS-023",
@@ -968,11 +1188,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2024,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2024",
+        "period_end": "2024-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "thousand_yuan",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -986,7 +1215,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-cn-300750-sz-fy2024-balance_sheet-v1"
   },
   {
     "id": "FS-024",
@@ -1011,11 +1241,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1029,7 +1268,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-cash_flow_statement-v1"
   },
   {
     "id": "FS-025",
@@ -1054,11 +1294,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1072,7 +1321,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-income_statement-v1"
   },
   {
     "id": "FS-026",
@@ -1097,11 +1347,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1115,7 +1374,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-balance_sheet-v1"
   },
   {
     "id": "FS-027",
@@ -1140,11 +1400,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1158,7 +1427,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-cash_flow_statement-v1"
   },
   {
     "id": "FS-028",
@@ -1183,11 +1453,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1201,7 +1480,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-income_statement-v1"
   },
   {
     "id": "FS-029",
@@ -1226,11 +1506,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1244,7 +1533,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-balance_sheet-v1"
   },
   {
     "id": "FS-030",
@@ -1269,11 +1559,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1287,7 +1586,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-cash_flow_statement-v1"
   },
   {
     "id": "FS-031",
@@ -1312,11 +1612,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1330,7 +1639,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-income_statement-v1"
   },
   {
     "id": "FS-032",
@@ -1355,11 +1665,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1373,7 +1692,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-balance_sheet-v1"
   },
   {
     "id": "FS-033",
@@ -1398,11 +1718,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1416,7 +1745,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-cash_flow_statement-v1"
   },
   {
     "id": "FS-034",
@@ -1441,11 +1771,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1459,7 +1798,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-income_statement-v1"
   },
   {
     "id": "FS-035",
@@ -1484,11 +1824,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1502,7 +1851,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-balance_sheet-v1"
   },
   {
     "id": "FS-036",
@@ -1527,11 +1877,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1545,7 +1904,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-cash_flow_statement-v1"
   },
   {
     "id": "FS-037",
@@ -1570,11 +1930,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1588,7 +1957,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-income_statement-v1"
   },
   {
     "id": "FS-038",
@@ -1613,11 +1983,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1631,7 +2010,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-balance_sheet-v1"
   },
   {
     "id": "FS-039",
@@ -1656,11 +2036,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1674,7 +2063,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-cash_flow_statement-v1"
   },
   {
     "id": "FS-040",
@@ -1699,11 +2089,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1717,7 +2116,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-income_statement-v1"
   },
   {
     "id": "FS-041",
@@ -1742,11 +2142,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1760,7 +2169,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-balance_sheet-v1"
   },
   {
     "id": "FS-042",
@@ -1785,11 +2195,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1803,7 +2222,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-cash_flow_statement-v1"
   },
   {
     "id": "FS-043",
@@ -1828,11 +2248,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1846,7 +2275,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-income_statement-v1"
   },
   {
     "id": "FS-044",
@@ -1871,11 +2301,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1889,7 +2328,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-balance_sheet-v1"
   },
   {
     "id": "FS-045",
@@ -1914,11 +2354,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1932,7 +2381,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-hk-0700-hk-fy2025-cash_flow_statement-v1"
   },
   {
     "id": "FS-046",
@@ -1940,8 +2390,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "US",
-    "query": "想看苹果2025年的完整利润表。用于核对年报。",
-    "prompt": "想看苹果2025年的完整利润表。用于核对年报。",
+    "query": "请给我苹果 FY2025 财年（截至 2025-09-27）的合并利润表，按年报原币种和单位展示。",
+    "prompt": "请给我苹果 FY2025 财年（截至 2025-09-27）的合并利润表，按年报原币种和单位展示。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -1957,11 +2407,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-09-27"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -1975,7 +2434,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-aapl-fy2025-income_statement-v1"
   },
   {
     "id": "FS-047",
@@ -1983,8 +2443,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "US",
-    "query": "麻烦查一下微软2026年年度资产负债表。我在整理年度资料。",
-    "prompt": "麻烦查一下微软2026年年度资产负债表。我在整理年度资料。",
+    "query": "请给我微软 FY2026 财年（截至 2026-06-30）的合并资产负债表，按年报原币种和单位展示。",
+    "prompt": "请给我微软 FY2026 财年（截至 2026-06-30）的合并资产负债表，按年报原币种和单位展示。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -2000,11 +2460,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2026,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2026",
+        "period_end": "2026-06-30"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2018,7 +2487,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-msft-fy2026-balance_sheet-v1"
   },
   {
     "id": "FS-048",
@@ -2043,11 +2513,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2061,7 +2540,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-tsla-fy2025-cash_flow_statement-v1"
   },
   {
     "id": "FS-049",
@@ -2069,8 +2549,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "US",
-    "query": "英伟达2026年的利润表，我要看整份。用于做财务归档。",
-    "prompt": "英伟达2026年的利润表，我要看整份。用于做财务归档。",
+    "query": "请给我英伟达 FY2026 财年（截至 2026-01-25）的合并利润表，按年报原币种和单位展示。",
+    "prompt": "请给我英伟达 FY2026 财年（截至 2026-01-25）的合并利润表，按年报原币种和单位展示。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -2086,11 +2566,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2026,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2026",
+        "period_end": "2026-01-25"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2104,7 +2593,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-nvda-fy2026-income_statement-v1"
   },
   {
     "id": "FS-050",
@@ -2112,8 +2602,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "US",
-    "query": "帮我找苹果2025年报里的完整资产负债表。我需要核对已披露数据。",
-    "prompt": "帮我找苹果2025年报里的完整资产负债表。我需要核对已披露数据。",
+    "query": "请给我苹果 FY2025 财年（截至 2025-09-27）的合并资产负债表，按年报原币种和单位展示。",
+    "prompt": "请给我苹果 FY2025 财年（截至 2025-09-27）的合并资产负债表，按年报原币种和单位展示。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -2129,11 +2619,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-09-27"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2147,7 +2646,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-aapl-fy2025-balance_sheet-v1"
   },
   {
     "id": "FS-051",
@@ -2155,8 +2655,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "US",
-    "query": "请查微软（MSFT）2026年度完整现金流量表。请返回整份报表。",
-    "prompt": "请查微软（MSFT）2026年度完整现金流量表。请返回整份报表。",
+    "query": "请给我微软 FY2026 财年（截至 2026-06-30）的合并现金流量表，按年报原币种和单位展示。",
+    "prompt": "请给我微软 FY2026 财年（截至 2026-06-30）的合并现金流量表，按年报原币种和单位展示。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -2172,11 +2672,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2026,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2026",
+        "period_end": "2026-06-30"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2190,7 +2699,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-msft-fy2026-cash_flow_statement-v1"
   },
   {
     "id": "FS-052",
@@ -2215,11 +2725,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2233,7 +2752,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-tsla-fy2025-income_statement-v1"
   },
   {
     "id": "FS-053",
@@ -2241,8 +2761,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "US",
-    "query": "麻烦查一下英伟达2026年年度资产负债表。我想核对年度披露。",
-    "prompt": "麻烦查一下英伟达2026年年度资产负债表。我想核对年度披露。",
+    "query": "请给我英伟达 FY2026 财年（截至 2026-01-25）的合并资产负债表，按年报原币种和单位展示。",
+    "prompt": "请给我英伟达 FY2026 财年（截至 2026-01-25）的合并资产负债表，按年报原币种和单位展示。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -2258,11 +2778,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2026,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2026",
+        "period_end": "2026-01-25"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2276,7 +2805,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-nvda-fy2026-balance_sheet-v1"
   },
   {
     "id": "FS-054",
@@ -2284,8 +2814,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "US",
-    "query": "请给我苹果2025年完整现金流量表。麻烦保留报表的完整内容。",
-    "prompt": "请给我苹果2025年完整现金流量表。麻烦保留报表的完整内容。",
+    "query": "请给我苹果 FY2025 财年（截至 2025-09-27）的合并现金流量表，按年报原币种和单位展示。",
+    "prompt": "请给我苹果 FY2025 财年（截至 2025-09-27）的合并现金流量表，按年报原币种和单位展示。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -2301,11 +2831,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-09-27"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2319,7 +2858,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-aapl-fy2025-cash_flow_statement-v1"
   },
   {
     "id": "FS-055",
@@ -2327,8 +2867,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "US",
-    "query": "微软2026年的利润表，我要看整份。用于公司财务资料整理。",
-    "prompt": "微软2026年的利润表，我要看整份。用于公司财务资料整理。",
+    "query": "请给我微软 FY2026 财年（截至 2026-06-30）的合并利润表，按年报原币种和单位展示。",
+    "prompt": "请给我微软 FY2026 财年（截至 2026-06-30）的合并利润表，按年报原币种和单位展示。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -2344,11 +2884,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2026,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2026",
+        "period_end": "2026-06-30"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2362,7 +2911,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-msft-fy2026-income_statement-v1"
   },
   {
     "id": "FS-056",
@@ -2387,11 +2937,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2405,7 +2964,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-tsla-fy2025-balance_sheet-v1"
   },
   {
     "id": "FS-057",
@@ -2413,8 +2973,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "US",
-    "query": "请查英伟达（NVDA）2026年度完整现金流量表。请直接给我年度报表。",
-    "prompt": "请查英伟达（NVDA）2026年度完整现金流量表。请直接给我年度报表。",
+    "query": "请给我英伟达 FY2026 财年（截至 2026-01-25）的合并现金流量表，按年报原币种和单位展示。",
+    "prompt": "请给我英伟达 FY2026 财年（截至 2026-01-25）的合并现金流量表，按年报原币种和单位展示。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -2430,11 +2990,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2026,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2026",
+        "period_end": "2026-01-25"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2448,7 +3017,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-nvda-fy2026-cash_flow_statement-v1"
   },
   {
     "id": "FS-058",
@@ -2456,8 +3026,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "US",
-    "query": "想看苹果2025年的完整利润表。用于复核公开披露。",
-    "prompt": "想看苹果2025年的完整利润表。用于复核公开披露。",
+    "query": "麻烦提供苹果 FY2025 财年（截至 2025-09-27）的完整合并利润表，保留年报原币种和单位。",
+    "prompt": "麻烦提供苹果 FY2025 财年（截至 2025-09-27）的完整合并利润表，保留年报原币种和单位。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -2473,11 +3043,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-09-27"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2491,7 +3070,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-aapl-fy2025-income_statement-v1"
   },
   {
     "id": "FS-059",
@@ -2499,8 +3079,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "US",
-    "query": "麻烦查一下微软2026年年度资产负债表。我想查年报里的完整数据。",
-    "prompt": "麻烦查一下微软2026年年度资产负债表。我想查年报里的完整数据。",
+    "query": "我想核对微软 FY2026 财年截至 2026-06-30 的完整合并资产负债表，请按年报原币种和单位展示。",
+    "prompt": "我想核对微软 FY2026 财年截至 2026-06-30 的完整合并资产负债表，请按年报原币种和单位展示。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -2516,11 +3096,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2026,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2026",
+        "period_end": "2026-06-30"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2534,7 +3123,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-msft-fy2026-balance_sheet-v1"
   },
   {
     "id": "FS-060",
@@ -2559,11 +3149,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2577,7 +3176,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-tsla-fy2025-cash_flow_statement-v1"
   },
   {
     "id": "FS-061",
@@ -2585,8 +3185,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "US",
-    "query": "英伟达2026年的利润表，我要看整份。用于财务资料归档。",
-    "prompt": "英伟达2026年的利润表，我要看整份。用于财务资料归档。",
+    "query": "请查询英伟达 FY2026 财年（截至 2026-01-25）的完整合并利润表，沿用年报原币种和单位。",
+    "prompt": "请查询英伟达 FY2026 财年（截至 2026-01-25）的完整合并利润表，沿用年报原币种和单位。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -2602,11 +3202,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2026,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2026",
+        "period_end": "2026-01-25"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2620,7 +3229,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-nvda-fy2026-income_statement-v1"
   },
   {
     "id": "FS-062",
@@ -2628,8 +3238,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "US",
-    "query": "帮我找苹果2025年报里的完整资产负债表。我要看公司年度报表。",
-    "prompt": "帮我找苹果2025年报里的完整资产负债表。我要看公司年度报表。",
+    "query": "请给出苹果 FY2025 财年截至 2025-09-27 的完整合并资产负债表，使用年报原币种和单位。",
+    "prompt": "请给出苹果 FY2025 财年截至 2025-09-27 的完整合并资产负债表，使用年报原币种和单位。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -2645,11 +3255,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-09-27"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2663,7 +3282,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-aapl-fy2025-balance_sheet-v1"
   },
   {
     "id": "FS-063",
@@ -2671,8 +3291,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "US",
-    "query": "请查微软（MSFT）2026年度完整现金流量表。麻烦提供完整年度报表。",
-    "prompt": "请查微软（MSFT）2026年度完整现金流量表。麻烦提供完整年度报表。",
+    "query": "我需要微软 FY2026 财年（截至 2026-06-30）的完整合并现金流量表，按年报原币种和单位提供。",
+    "prompt": "我需要微软 FY2026 财年（截至 2026-06-30）的完整合并现金流量表，按年报原币种和单位提供。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -2688,11 +3308,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2026,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2026",
+        "period_end": "2026-06-30"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2706,7 +3335,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-msft-fy2026-cash_flow_statement-v1"
   },
   {
     "id": "FS-064",
@@ -2731,11 +3361,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2749,7 +3388,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-tsla-fy2025-income_statement-v1"
   },
   {
     "id": "FS-065",
@@ -2757,8 +3397,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "US",
-    "query": "麻烦查一下英伟达2026年年度资产负债表。请帮我调取年度报表。",
-    "prompt": "麻烦查一下英伟达2026年年度资产负债表。请帮我调取年度报表。",
+    "query": "麻烦查询英伟达 FY2026 财年截至 2026-01-25 的完整合并资产负债表，保留年报原币种和单位。",
+    "prompt": "麻烦查询英伟达 FY2026 财年截至 2026-01-25 的完整合并资产负债表，保留年报原币种和单位。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -2774,11 +3414,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2026,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2026",
+        "period_end": "2026-01-25"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2792,7 +3441,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-nvda-fy2026-balance_sheet-v1"
   },
   {
     "id": "FS-066",
@@ -2800,8 +3450,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "US",
-    "query": "请给我苹果2025年完整现金流量表。用于查看公司年度情况。",
-    "prompt": "请给我苹果2025年完整现金流量表。用于查看公司年度情况。",
+    "query": "我想看苹果 FY2025 财年（截至 2025-09-27）的完整合并现金流量表，请按年报原币种和单位展示。",
+    "prompt": "我想看苹果 FY2025 财年（截至 2025-09-27）的完整合并现金流量表，请按年报原币种和单位展示。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -2817,11 +3467,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-09-27"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2835,7 +3494,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-aapl-fy2025-cash_flow_statement-v1"
   },
   {
     "id": "FS-067",
@@ -2843,8 +3503,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "US",
-    "query": "微软2026年的利润表，我要看整份。我想确认该年度数据。",
-    "prompt": "微软2026年的利润表，我要看整份。我想确认该年度数据。",
+    "query": "请提供微软 FY2026 财年截至 2026-06-30 的完整合并利润表，采用年报原币种和单位。",
+    "prompt": "请提供微软 FY2026 财年截至 2026-06-30 的完整合并利润表，采用年报原币种和单位。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -2860,11 +3520,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2026,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2026",
+        "period_end": "2026-06-30"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2878,7 +3547,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-msft-fy2026-income_statement-v1"
   },
   {
     "id": "FS-068",
@@ -2903,11 +3573,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2921,7 +3600,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-us-tsla-fy2025-balance_sheet-v1"
   },
   {
     "id": "FS-069",
@@ -2929,8 +3609,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "JP",
-    "query": "想看丰田汽车2026年的完整现金流量表。用于核对年报。",
-    "prompt": "想看丰田汽车2026年的完整现金流量表。用于核对年报。",
+    "query": "请给我丰田汽车 FY2026 财年（截至 2026-03-31）的合并现金流量表，按年报原币种和单位展示。",
+    "prompt": "请给我丰田汽车 FY2026 财年（截至 2026-03-31）的合并现金流量表，按年报原币种和单位展示。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -2946,11 +3626,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2026,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2026",
+        "period_end": "2026-03-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "JPY",
+      "unit_scale": "JPY_millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -2964,7 +3653,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-jp-7203-t-fy2026-cash_flow_statement-v1"
   },
   {
     "id": "FS-070",
@@ -2972,8 +3662,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "JP",
-    "query": "麻烦查一下丰田汽车2026年年度利润表。我在整理年度资料。",
-    "prompt": "麻烦查一下丰田汽车2026年年度利润表。我在整理年度资料。",
+    "query": "请给我丰田汽车 FY2026 财年（截至 2026-03-31）的合并利润表，按年报原币种和单位展示。",
+    "prompt": "请给我丰田汽车 FY2026 财年（截至 2026-03-31）的合并利润表，按年报原币种和单位展示。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -2989,11 +3679,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2026,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2026",
+        "period_end": "2026-03-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "JPY",
+      "unit_scale": "JPY_millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -3007,7 +3706,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-jp-7203-t-fy2026-income_statement-v1"
   },
   {
     "id": "FS-071",
@@ -3015,8 +3715,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "JP",
-    "query": "请给我丰田汽车2026年完整资产负债表。请按年报口径返回。",
-    "prompt": "请给我丰田汽车2026年完整资产负债表。请按年报口径返回。",
+    "query": "请给我丰田汽车 FY2026 财年（截至 2026-03-31）的合并资产负债表，按年报原币种和单位展示。",
+    "prompt": "请给我丰田汽车 FY2026 财年（截至 2026-03-31）的合并资产负债表，按年报原币种和单位展示。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -3032,11 +3732,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2026,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2026",
+        "period_end": "2026-03-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "JPY",
+      "unit_scale": "JPY_millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -3050,7 +3759,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-jp-7203-t-fy2026-balance_sheet-v1"
   },
   {
     "id": "FS-072",
@@ -3058,8 +3768,8 @@
     "suite": "financial_statements",
     "case_type": "normal",
     "market": "JP",
-    "query": "丰田汽车2026年的现金流量表，我要看整份。用于做财务归档。",
-    "prompt": "丰田汽车2026年的现金流量表，我要看整份。用于做财务归档。",
+    "query": "我需要丰田汽车 FY2026 财年截至 2026-03-31 的完整合并现金流量表，请按原始年报的币种和单位给出。",
+    "prompt": "我需要丰田汽车 FY2026 财年截至 2026-03-31 的完整合并现金流量表，请按原始年报的币种和单位给出。",
     "language": "zh-CN",
     "query_timezone": "Asia/Shanghai",
     "expected_status": "success",
@@ -3075,11 +3785,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2026,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2026",
+        "period_end": "2026-03-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "JPY",
+      "unit_scale": "JPY_millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -3093,7 +3812,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-jp-7203-t-fy2026-cash_flow_statement-v1"
   },
   {
     "id": "FS-073",
@@ -3118,11 +3838,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "USD",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -3136,7 +3865,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-gb-shel-l-fy2025-income_statement-v1"
   },
   {
     "id": "FS-074",
@@ -3161,11 +3891,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "USD",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -3179,7 +3918,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-gb-shel-l-fy2025-balance_sheet-v1"
   },
   {
     "id": "FS-075",
@@ -3204,11 +3944,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "USD",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -3222,7 +3971,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-gb-shel-l-fy2025-cash_flow_statement-v1"
   },
   {
     "id": "FS-076",
@@ -3247,11 +3997,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "USD",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -3265,7 +4024,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-gb-shel-l-fy2025-income_statement-v1"
   },
   {
     "id": "FS-077",
@@ -3290,11 +4050,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "EUR",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -3308,7 +4077,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-de-sap-de-fy2025-balance_sheet-v1"
   },
   {
     "id": "FS-078",
@@ -3333,11 +4103,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "cash_flow_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "EUR",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -3351,7 +4130,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-de-sap-de-fy2025-cash_flow_statement-v1"
   },
   {
     "id": "FS-079",
@@ -3376,11 +4156,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "income_statement",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "EUR",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -3394,7 +4183,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-de-sap-de-fy2025-income_statement-v1"
   },
   {
     "id": "FS-080",
@@ -3419,11 +4209,20 @@
       ],
       "time_or_period": {
         "fiscal_year": 2025,
-        "fiscal_period": "FY"
+        "fiscal_period": "FY",
+        "period_label": "FY2025",
+        "period_end": "2025-12-31"
       },
       "suite_policy_fields": {
         "statement_presentation": "complete"
-      }
+      },
+      "statement_type": "balance_sheet",
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "EUR",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1"
     },
     "data_oracle": {
       "oracle_status": "single_source",
@@ -3437,7 +4236,8 @@
         "complete_statement_shape"
       ]
     },
-    "override_comparison_rule": "default"
+    "override_comparison_rule": "default",
+    "fact_contract_ref": "financial-statements-de-sap-de-fy2025-balance_sheet-v1"
   },
   {
     "id": "FS-081",
@@ -3463,7 +4263,12 @@
       ],
       "forbidden_data_claims": [
         "financial_value"
-      ]
+      ],
+      "evaluation_cutoff": {
+        "status": "unbound",
+        "required_before_formal_run": true,
+        "reason": "The period is intentionally absent; a formal evaluator must pin its evaluation cutoff before deciding whether any later disclosure could be inferred."
+      }
     },
     "evidence": {
       "type": "suite_scope",
@@ -3495,7 +4300,12 @@
       ],
       "forbidden_data_claims": [
         "financial_value"
-      ]
+      ],
+      "evaluation_cutoff": {
+        "status": "unbound",
+        "required_before_formal_run": true,
+        "reason": "The period is intentionally absent; a formal evaluator must pin its evaluation cutoff before deciding whether any later disclosure could be inferred."
+      }
     },
     "evidence": {
       "type": "suite_scope",
@@ -3522,7 +4332,12 @@
       "forbidden_resolved_fields": [],
       "forbidden_data_claims": [
         "financial_statement"
-      ]
+      ],
+      "evaluation_cutoff": {
+        "status": "unbound",
+        "required_before_formal_run": true,
+        "reason": "The period is intentionally absent; a formal evaluator must pin its evaluation cutoff before deciding whether any later disclosure could be inferred."
+      }
     },
     "evidence": {
       "type": "suite_scope",
@@ -3549,7 +4364,12 @@
       "forbidden_resolved_fields": [],
       "forbidden_data_claims": [
         "financial_value"
-      ]
+      ],
+      "evaluation_cutoff": {
+        "status": "unbound",
+        "required_before_formal_run": true,
+        "reason": "The period is intentionally absent; a formal evaluator must pin its evaluation cutoff before deciding whether any later disclosure could be inferred."
+      }
     },
     "evidence": {
       "type": "suite_scope",
@@ -3576,7 +4396,12 @@
       "forbidden_resolved_fields": [],
       "forbidden_data_claims": [
         "financial_value"
-      ]
+      ],
+      "evaluation_cutoff": {
+        "status": "unbound",
+        "required_before_formal_run": true,
+        "reason": "The period is intentionally absent; a formal evaluator must pin its evaluation cutoff before deciding whether any later disclosure could be inferred."
+      }
     },
     "evidence": {
       "type": "suite_scope",
@@ -3607,7 +4432,12 @@
       ],
       "forbidden_data_claims": [
         "financial_value"
-      ]
+      ],
+      "evaluation_cutoff": {
+        "status": "unbound",
+        "required_before_formal_run": true,
+        "reason": "The period is intentionally absent; a formal evaluator must pin its evaluation cutoff before deciding whether any later disclosure could be inferred."
+      }
     },
     "evidence": {
       "type": "suite_scope",
@@ -3639,7 +4469,12 @@
       ],
       "forbidden_data_claims": [
         "financial_value"
-      ]
+      ],
+      "evaluation_cutoff": {
+        "status": "unbound",
+        "required_before_formal_run": true,
+        "reason": "The period is intentionally absent; a formal evaluator must pin its evaluation cutoff before deciding whether any later disclosure could be inferred."
+      }
     },
     "evidence": {
       "type": "suite_scope",
@@ -3666,7 +4501,12 @@
       "forbidden_resolved_fields": [],
       "forbidden_data_claims": [
         "financial_statement"
-      ]
+      ],
+      "evaluation_cutoff": {
+        "status": "unbound",
+        "required_before_formal_run": true,
+        "reason": "The period is intentionally absent; a formal evaluator must pin its evaluation cutoff before deciding whether any later disclosure could be inferred."
+      }
     },
     "evidence": {
       "type": "suite_scope",
@@ -3693,7 +4533,12 @@
       "forbidden_resolved_fields": [],
       "forbidden_data_claims": [
         "financial_value"
-      ]
+      ],
+      "evaluation_cutoff": {
+        "status": "unbound",
+        "required_before_formal_run": true,
+        "reason": "The period is intentionally absent; a formal evaluator must pin its evaluation cutoff before deciding whether any later disclosure could be inferred."
+      }
     },
     "evidence": {
       "type": "suite_scope",
@@ -3720,7 +4565,12 @@
       "forbidden_resolved_fields": [],
       "forbidden_data_claims": [
         "financial_value"
-      ]
+      ],
+      "evaluation_cutoff": {
+        "status": "unbound",
+        "required_before_formal_run": true,
+        "reason": "The period is intentionally absent; a formal evaluator must pin its evaluation cutoff before deciding whether any later disclosure could be inferred."
+      }
     },
     "evidence": {
       "type": "suite_scope",
@@ -3751,7 +4601,12 @@
       ],
       "forbidden_data_claims": [
         "financial_value"
-      ]
+      ],
+      "evaluation_cutoff": {
+        "status": "unbound",
+        "required_before_formal_run": true,
+        "reason": "The period is intentionally absent; a formal evaluator must pin its evaluation cutoff before deciding whether any later disclosure could be inferred."
+      }
     },
     "evidence": {
       "type": "suite_scope",
@@ -3783,7 +4638,12 @@
       ],
       "forbidden_data_claims": [
         "financial_value"
-      ]
+      ],
+      "evaluation_cutoff": {
+        "status": "unbound",
+        "required_before_formal_run": true,
+        "reason": "The period is intentionally absent; a formal evaluator must pin its evaluation cutoff before deciding whether any later disclosure could be inferred."
+      }
     },
     "evidence": {
       "type": "suite_scope",
@@ -3810,7 +4670,12 @@
       "forbidden_resolved_fields": [],
       "forbidden_data_claims": [
         "financial_statement"
-      ]
+      ],
+      "evaluation_cutoff": {
+        "status": "unbound",
+        "required_before_formal_run": true,
+        "reason": "The period is intentionally absent; a formal evaluator must pin its evaluation cutoff before deciding whether any later disclosure could be inferred."
+      }
     },
     "evidence": {
       "type": "suite_scope",
@@ -3837,7 +4702,12 @@
       "forbidden_resolved_fields": [],
       "forbidden_data_claims": [
         "financial_value"
-      ]
+      ],
+      "evaluation_cutoff": {
+        "status": "unbound",
+        "required_before_formal_run": true,
+        "reason": "The period is intentionally absent; a formal evaluator must pin its evaluation cutoff before deciding whether any later disclosure could be inferred."
+      }
     },
     "evidence": {
       "type": "suite_scope",
@@ -3864,7 +4734,12 @@
       "forbidden_resolved_fields": [],
       "forbidden_data_claims": [
         "financial_value"
-      ]
+      ],
+      "evaluation_cutoff": {
+        "status": "unbound",
+        "required_before_formal_run": true,
+        "reason": "The period is intentionally absent; a formal evaluator must pin its evaluation cutoff before deciding whether any later disclosure could be inferred."
+      }
     },
     "evidence": {
       "type": "suite_scope",
@@ -3895,7 +4770,12 @@
       ],
       "forbidden_data_claims": [
         "financial_value"
-      ]
+      ],
+      "evaluation_cutoff": {
+        "status": "unbound",
+        "required_before_formal_run": true,
+        "reason": "The period is intentionally absent; a formal evaluator must pin its evaluation cutoff before deciding whether any later disclosure could be inferred."
+      }
     },
     "evidence": {
       "type": "suite_scope",
@@ -3927,7 +4807,12 @@
       ],
       "forbidden_data_claims": [
         "financial_value"
-      ]
+      ],
+      "evaluation_cutoff": {
+        "status": "unbound",
+        "required_before_formal_run": true,
+        "reason": "The period is intentionally absent; a formal evaluator must pin its evaluation cutoff before deciding whether any later disclosure could be inferred."
+      }
     },
     "evidence": {
       "type": "suite_scope",
@@ -3954,7 +4839,12 @@
       "forbidden_resolved_fields": [],
       "forbidden_data_claims": [
         "financial_statement"
-      ]
+      ],
+      "evaluation_cutoff": {
+        "status": "unbound",
+        "required_before_formal_run": true,
+        "reason": "The period is intentionally absent; a formal evaluator must pin its evaluation cutoff before deciding whether any later disclosure could be inferred."
+      }
     },
     "evidence": {
       "type": "suite_scope",
@@ -3981,7 +4871,12 @@
       "forbidden_resolved_fields": [],
       "forbidden_data_claims": [
         "financial_value"
-      ]
+      ],
+      "evaluation_cutoff": {
+        "status": "unbound",
+        "required_before_formal_run": true,
+        "reason": "The period is intentionally absent; a formal evaluator must pin its evaluation cutoff before deciding whether any later disclosure could be inferred."
+      }
     },
     "evidence": {
       "type": "suite_scope",
@@ -4012,7 +4907,12 @@
       ],
       "forbidden_data_claims": [
         "financial_value"
-      ]
+      ],
+      "evaluation_cutoff": {
+        "status": "unbound",
+        "required_before_formal_run": true,
+        "reason": "The period is intentionally absent; a formal evaluator must pin its evaluation cutoff before deciding whether any later disclosure could be inferred."
+      }
     },
     "evidence": {
       "type": "suite_scope",

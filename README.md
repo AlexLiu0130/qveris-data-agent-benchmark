@@ -10,7 +10,7 @@ Natural-language query -> one public get -> structured response -> scorer
 
 目标是三个独立 Suite，各 100 题：`realtime_quote`、`historical_price`、`financial_statements`。每套遵循 80 道正常题 / 20 道边界题；市场配额为 A 股 29、港股 28、美股 28、日本 5、英国 5、德国 5。
 
-目前仓库只含 200/300 候选题：历史行情 100 题、财务报表 100 题；实时行情尚未纳入。历史和财报 Oracle 都**未冻结**，因此两套题的 `data_accuracy` 都是 `not_scored`，不得用于正式排名或准确率结论。
+目前仓库含 300/300 候选题：实时行情、历史行情、财务报表各 100 题。财报的 80 道正常题已由 27 条 `frozen` Oracle 记录、1,198 条断言、复签的独立审查账本及已验证的 suite manifest 覆盖，已具备 Data Accuracy 的数据评分条件；20 道边界题仅保留状态规则，不进入数值数据评分分母。Runner 与 Scorer 尚未实现，因此仓库尚未产出实际的 Data Accuracy、Case Pass 或排名。实时行情仍是 100 题无数值阻塞清单，需绑定双授权来源的 Reference Snapshot；历史行情仍未冻结，二者均为 `not_scored`。
 
 ## 运行合同
 

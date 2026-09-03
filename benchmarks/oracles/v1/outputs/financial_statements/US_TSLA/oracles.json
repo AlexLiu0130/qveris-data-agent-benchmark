@@ -1,0 +1,1908 @@
+[
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "FS-US-TSLA-FY2025-CONSOLIDATED-INCOME-STATEMENT",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-052",
+      "FS-064"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2026-01-28T20:55:03-05:00",
+      "source_published_at": "2026-01-28T20:55:03-05:00",
+      "retrieved_at": "2026-09-03T09:28:34Z",
+      "as_of": "2025-12-31T00:00:00-05:00"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "sec-10k-2025-ixbrl",
+      "corroborating_receipt_ids": [
+        "tesla-ir-2025-10k-pdf"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "is-001",
+        "field": "consolidated_statements_of_operations.automotive_sales|ixbrl=us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax|context=c-10|table=22",
+        "expected": "65821",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-002",
+        "field": "consolidated_statements_of_operations.automotive_regulatory_credits|ixbrl=us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax|context=c-13|table=22",
+        "expected": "1993",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-003",
+        "field": "consolidated_statements_of_operations.automotive_leasing|ixbrl=us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax|context=c-16|table=22",
+        "expected": "1712",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-004",
+        "field": "consolidated_statements_of_operations.total_automotive_revenues|ixbrl=us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax|context=c-19|table=22",
+        "expected": "69526",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-005",
+        "field": "consolidated_statements_of_operations.energy_generation_and_storage_revenue|ixbrl=us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax|context=c-22|table=22",
+        "expected": "12771",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-006",
+        "field": "consolidated_statements_of_operations.services_and_other_revenue|ixbrl=us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax|context=c-25|table=22",
+        "expected": "12530",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-007",
+        "field": "consolidated_statements_of_operations.total_revenues|ixbrl=us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax|context=c-1|table=22",
+        "expected": "94827",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-008",
+        "field": "consolidated_statements_of_operations.automotive_sales_cost_of_revenues|ixbrl=us-gaap:CostOfRevenue|context=c-10|table=22",
+        "expected": "56267",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-009",
+        "field": "consolidated_statements_of_operations.automotive_leasing_cost_of_revenues|ixbrl=us-gaap:CostOfRevenue|context=c-16|table=22",
+        "expected": "898",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-010",
+        "field": "consolidated_statements_of_operations.total_automotive_cost_of_revenues|ixbrl=us-gaap:CostOfRevenue|context=c-19|table=22",
+        "expected": "57165",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-011",
+        "field": "consolidated_statements_of_operations.energy_generation_and_storage_cost_of_revenues|ixbrl=us-gaap:CostOfRevenue|context=c-22|table=22",
+        "expected": "8969",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-012",
+        "field": "consolidated_statements_of_operations.services_and_other_cost_of_revenues|ixbrl=us-gaap:CostOfRevenue|context=c-25|table=22",
+        "expected": "11599",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-013",
+        "field": "consolidated_statements_of_operations.total_cost_of_revenues|ixbrl=us-gaap:CostOfRevenue|context=c-1|table=22",
+        "expected": "77733",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-014",
+        "field": "consolidated_statements_of_operations.gross_profit|ixbrl=us-gaap:GrossProfit|context=c-1|table=22",
+        "expected": "17094",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-015",
+        "field": "consolidated_statements_of_operations.research_and_development|ixbrl=us-gaap:ResearchAndDevelopmentExpense|context=c-1|table=22",
+        "expected": "6411",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-016",
+        "field": "consolidated_statements_of_operations.selling_general_and_administrative|ixbrl=us-gaap:SellingGeneralAndAdministrativeExpense|context=c-1|table=22",
+        "expected": "5834",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-017",
+        "field": "consolidated_statements_of_operations.restructuring_and_other|ixbrl=tsla:RestructuringAndOtherExpenses|context=c-1|table=22",
+        "expected": "494",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-018",
+        "field": "consolidated_statements_of_operations.total_operating_expenses|ixbrl=us-gaap:OperatingExpenses|context=c-1|table=22",
+        "expected": "12739",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-019",
+        "field": "consolidated_statements_of_operations.income_from_operations|ixbrl=us-gaap:OperatingIncomeLoss|context=c-1|table=22",
+        "expected": "4355",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-020",
+        "field": "consolidated_statements_of_operations.interest_income|ixbrl=us-gaap:InvestmentIncomeInterest|context=c-1|table=22",
+        "expected": "1680",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-021",
+        "field": "consolidated_statements_of_operations.interest_expense|ixbrl=us-gaap:InterestExpenseNonoperating|context=c-1|table=22",
+        "expected": "-338",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-022",
+        "field": "consolidated_statements_of_operations.other_expense_income_net|ixbrl=us-gaap:OtherNonoperatingIncomeExpense|context=c-1|table=22",
+        "expected": "-419",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-023",
+        "field": "consolidated_statements_of_operations.income_before_income_taxes|ixbrl=us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest|context=c-1|table=22",
+        "expected": "5278",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-024",
+        "field": "consolidated_statements_of_operations.income_tax_provision|ixbrl=us-gaap:IncomeTaxExpenseBenefit|context=c-1|table=22",
+        "expected": "1423",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-025",
+        "field": "consolidated_statements_of_operations.net_income|ixbrl=us-gaap:ProfitLoss|context=c-1|table=22",
+        "expected": "3855",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-026",
+        "field": "consolidated_statements_of_operations.net_income_attributable_to_noncontrolling_interests|ixbrl=us-gaap:NetIncomeLossAttributableToNoncontrollingInterest|context=c-1|table=22",
+        "expected": "61",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-027",
+        "field": "consolidated_statements_of_operations.net_income_attributable_to_common_stockholders|ixbrl=us-gaap:NetIncomeLoss|context=c-1|table=22",
+        "expected": "3794",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-028",
+        "field": "consolidated_statements_of_operations.basic_earnings_per_share|ixbrl=us-gaap:EarningsPerShareBasic|context=c-1|table=22",
+        "expected": "1.18",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_per_share",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-029",
+        "field": "consolidated_statements_of_operations.diluted_earnings_per_share|ixbrl=us-gaap:EarningsPerShareDiluted|context=c-1|table=22",
+        "expected": "1.08",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_per_share",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-030",
+        "field": "consolidated_statements_of_operations.weighted_average_basic_shares|ixbrl=us-gaap:WeightedAverageNumberOfSharesOutstandingBasic|context=c-1|table=22",
+        "expected": "3225",
+        "comparison": "exact_normalized",
+        "currency": "N/A",
+        "unit": "shares_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "is-031",
+        "field": "consolidated_statements_of_operations.weighted_average_diluted_shares|ixbrl=us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding|context=c-1|table=22",
+        "expected": "3528",
+        "comparison": "exact_normalized",
+        "currency": "N/A",
+        "unit": "shares_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-052",
+          "FS-064"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-us-tsla-fy2025-income_statement-v1",
+    "fact_contract": {
+      "entity": "Tesla, Inc.",
+      "symbol": "TSLA",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "SEC accession 0001628280-26-003952; tsla-20251231.htm",
+      "period_end": "2025-12-31",
+      "duration_or_instant": "duration",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "reported_currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2025",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      },
+      "field_unit_exceptions": [
+        {
+          "currency": "USD",
+          "unit_scale": "USD_per_share",
+          "assertion_ids": [
+            "is-028",
+            "is-029"
+          ],
+          "fields": [
+            "consolidated_statements_of_operations.basic_earnings_per_share|ixbrl=us-gaap:EarningsPerShareBasic|context=c-1|table=22",
+            "consolidated_statements_of_operations.diluted_earnings_per_share|ixbrl=us-gaap:EarningsPerShareDiluted|context=c-1|table=22"
+          ]
+        },
+        {
+          "currency": "N/A",
+          "unit_scale": "shares_millions",
+          "assertion_ids": [
+            "is-030",
+            "is-031"
+          ],
+          "fields": [
+            "consolidated_statements_of_operations.weighted_average_basic_shares|ixbrl=us-gaap:WeightedAverageNumberOfSharesOutstandingBasic|context=c-1|table=22",
+            "consolidated_statements_of_operations.weighted_average_diluted_shares|ixbrl=us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding|context=c-1|table=22"
+          ]
+        }
+      ]
+    },
+    "authoritative_origin_id": "us-tsla-fy2025-authoritative-report",
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "us-tsla-fy2025-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction"
+    },
+    "origin": "us-tsla-fy2025-authoritative-report",
+    "same_authoritative_origin": true
+  },
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "FS-US-TSLA-FY2025-CONSOLIDATED-BALANCE-SHEET",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-056",
+      "FS-068"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2026-01-28T20:55:03-05:00",
+      "source_published_at": "2026-01-28T20:55:03-05:00",
+      "retrieved_at": "2026-09-03T09:28:34Z",
+      "as_of": "2025-12-31T00:00:00-05:00"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "sec-10k-2025-ixbrl",
+      "corroborating_receipt_ids": [
+        "tesla-ir-2025-10k-pdf"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "bs-001",
+        "field": "consolidated_balance_sheets.cash_and_cash_equivalents|ixbrl=us-gaap:CashAndCashEquivalentsAtCarryingValue|context=c-4|table=21",
+        "expected": "16513",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-002",
+        "field": "consolidated_balance_sheets.short_term_investments|ixbrl=us-gaap:ShortTermInvestments|context=c-4|table=21",
+        "expected": "27546",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-003",
+        "field": "consolidated_balance_sheets.accounts_receivable_net|ixbrl=us-gaap:AccountsReceivableNetCurrent|context=c-4|table=21",
+        "expected": "4576",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-004",
+        "field": "consolidated_balance_sheets.inventory|ixbrl=us-gaap:InventoryNet|context=c-4|table=21",
+        "expected": "12392",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-005",
+        "field": "consolidated_balance_sheets.prepaid_expenses_and_other_current_assets|ixbrl=us-gaap:PrepaidExpenseAndOtherAssetsCurrent|context=c-4|table=21",
+        "expected": "7615",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-006",
+        "field": "consolidated_balance_sheets.total_current_assets|ixbrl=us-gaap:AssetsCurrent|context=c-4|table=21",
+        "expected": "68642",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-007",
+        "field": "consolidated_balance_sheets.operating_lease_vehicles_net|ixbrl=us-gaap:DeferredCostsLeasingNetNoncurrent|context=c-6|table=21",
+        "expected": "4912",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-008",
+        "field": "consolidated_balance_sheets.energy_generation_and_storage_systems_net|ixbrl=tsla:LeasedAssetsNet|context=c-8|table=21",
+        "expected": "4604",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-009",
+        "field": "consolidated_balance_sheets.property_plant_and_equipment_net|ixbrl=us-gaap:PropertyPlantAndEquipmentAndFinanceLeaseRightOfUseAssetAfterAccumulatedDepreciationAndAmortization|context=c-4|table=21",
+        "expected": "40643",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-010",
+        "field": "consolidated_balance_sheets.operating_lease_right_of_use_assets|ixbrl=us-gaap:OperatingLeaseRightOfUseAsset|context=c-4|table=21",
+        "expected": "6027",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-011",
+        "field": "consolidated_balance_sheets.digital_assets|ixbrl=us-gaap:CryptoAssetFairValueNoncurrent|context=c-4|table=21",
+        "expected": "1008",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-012",
+        "field": "consolidated_balance_sheets.deferred_tax_assets|ixbrl=us-gaap:DeferredIncomeTaxAssetsNet|context=c-4|table=21",
+        "expected": "6925",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-013",
+        "field": "consolidated_balance_sheets.other_non_current_assets|ixbrl=us-gaap:OtherAssetsNoncurrent|context=c-4|table=21",
+        "expected": "5045",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-014",
+        "field": "consolidated_balance_sheets.total_assets|ixbrl=us-gaap:Assets|context=c-4|table=21",
+        "expected": "137806",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-015",
+        "field": "consolidated_balance_sheets.accounts_payable|ixbrl=us-gaap:AccountsPayableCurrent|context=c-4|table=21",
+        "expected": "13371",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-016",
+        "field": "consolidated_balance_sheets.accrued_liabilities_and_other|ixbrl=tsla:AccruedAndOtherCurrentLiabilities|context=c-4|table=21",
+        "expected": "13279",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-017",
+        "field": "consolidated_balance_sheets.deferred_revenue_current|ixbrl=us-gaap:ContractWithCustomerLiabilityCurrent|context=c-4|table=21",
+        "expected": "3424",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-018",
+        "field": "consolidated_balance_sheets.current_portion_of_debt_and_finance_leases|ixbrl=tsla:LongTermDebtAndFinanceLeasesCurrent|context=c-4|table=21",
+        "expected": "1640",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-019",
+        "field": "consolidated_balance_sheets.total_current_liabilities|ixbrl=us-gaap:LiabilitiesCurrent|context=c-4|table=21",
+        "expected": "31714",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-020",
+        "field": "consolidated_balance_sheets.debt_and_finance_leases_noncurrent|ixbrl=tsla:LongTermDebtAndFinanceLeasesNoncurrent|context=c-4|table=21",
+        "expected": "6736",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-021",
+        "field": "consolidated_balance_sheets.deferred_revenue_noncurrent|ixbrl=us-gaap:ContractWithCustomerLiabilityNoncurrent|context=c-4|table=21",
+        "expected": "3631",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-022",
+        "field": "consolidated_balance_sheets.other_long_term_liabilities|ixbrl=us-gaap:OtherLiabilitiesNoncurrent|context=c-4|table=21",
+        "expected": "12860",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-023",
+        "field": "consolidated_balance_sheets.total_liabilities|ixbrl=us-gaap:Liabilities|context=c-4|table=21",
+        "expected": "54941",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-024",
+        "field": "consolidated_balance_sheets.redeemable_noncontrolling_interests_in_subsidiaries|ixbrl=us-gaap:RedeemableNoncontrollingInterestEquityCarryingAmount|context=c-4|table=21",
+        "expected": "58",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-025",
+        "field": "consolidated_balance_sheets.preferred_stock_value|ixbrl=us-gaap:PreferredStockValue|context=c-4|table=21|source_display=dash",
+        "expected": "0",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-026",
+        "field": "consolidated_balance_sheets.common_stock_value|ixbrl=us-gaap:CommonStockValue|context=c-4|table=21",
+        "expected": "3",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-027",
+        "field": "consolidated_balance_sheets.additional_paid_in_capital|ixbrl=us-gaap:AdditionalPaidInCapitalCommonStock|context=c-4|table=21",
+        "expected": "42770",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-028",
+        "field": "consolidated_balance_sheets.accumulated_other_comprehensive_income_loss|ixbrl=us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax|context=c-4|table=21",
+        "expected": "361",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-029",
+        "field": "consolidated_balance_sheets.retained_earnings|ixbrl=us-gaap:RetainedEarningsAccumulatedDeficit|context=c-4|table=21",
+        "expected": "39003",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-030",
+        "field": "consolidated_balance_sheets.total_stockholders_equity|ixbrl=us-gaap:StockholdersEquity|context=c-4|table=21",
+        "expected": "82137",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-031",
+        "field": "consolidated_balance_sheets.noncontrolling_interests_in_subsidiaries|ixbrl=us-gaap:MinorityInterest|context=c-4|table=21",
+        "expected": "670",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "bs-032",
+        "field": "consolidated_balance_sheets.total_liabilities_and_equity|ixbrl=us-gaap:LiabilitiesAndStockholdersEquity|context=c-4|table=21",
+        "expected": "137806",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "2025-12-31",
+        "case_ids": [
+          "FS-056",
+          "FS-068"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-us-tsla-fy2025-balance_sheet-v1",
+    "fact_contract": {
+      "entity": "Tesla, Inc.",
+      "symbol": "TSLA",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "SEC accession 0001628280-26-003952; tsla-20251231.htm",
+      "period_end": "2025-12-31",
+      "duration_or_instant": "instant",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "reported_currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "2025-12-31",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    "authoritative_origin_id": "us-tsla-fy2025-authoritative-report",
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "us-tsla-fy2025-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction"
+    },
+    "origin": "us-tsla-fy2025-authoritative-report",
+    "same_authoritative_origin": true
+  },
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "FS-US-TSLA-FY2025-CONSOLIDATED-CASH-FLOW-STATEMENT",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-048",
+      "FS-060"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2026-01-28T20:55:03-05:00",
+      "source_published_at": "2026-01-28T20:55:03-05:00",
+      "retrieved_at": "2026-09-03T09:28:34Z",
+      "as_of": "2025-12-31T00:00:00-05:00"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "sec-10k-2025-ixbrl",
+      "corroborating_receipt_ids": [
+        "tesla-ir-2025-10k-pdf"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "cf-001",
+        "field": "consolidated_statements_of_cash_flows.net_income|ixbrl=us-gaap:ProfitLoss|context=c-1|table=25",
+        "expected": "3855",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-002",
+        "field": "consolidated_statements_of_cash_flows.depreciation_amortization_and_impairment|ixbrl=tsla:DepreciationAmortizationAndImpairment|context=c-1|table=25",
+        "expected": "6148",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-003",
+        "field": "consolidated_statements_of_cash_flows.stock_based_compensation|ixbrl=us-gaap:ShareBasedCompensation|context=c-1|table=25",
+        "expected": "2825",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-004",
+        "field": "consolidated_statements_of_cash_flows.inventory_and_purchase_commitments_write_downs|ixbrl=us-gaap:InventoryWriteDown|context=c-1|table=25",
+        "expected": "362",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-005",
+        "field": "consolidated_statements_of_cash_flows.foreign_currency_transaction_net_unrealized_loss_gain|ixbrl=us-gaap:ForeignCurrencyTransactionGainLossUnrealized|context=c-1|table=25",
+        "expected": "452",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-006",
+        "field": "consolidated_statements_of_cash_flows.deferred_income_taxes|ixbrl=us-gaap:DeferredIncomeTaxExpenseBenefit|context=c-1|table=25",
+        "expected": "123",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-007",
+        "field": "consolidated_statements_of_cash_flows.non_cash_interest_and_other_operating_activities|ixbrl=tsla:NoncashInterestIncomeExpenseAndOtherOperatingActivities|context=c-1|table=25",
+        "expected": "272",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-008",
+        "field": "consolidated_statements_of_cash_flows.digital_assets_loss_gain_net|ixbrl=tsla:GainLossOnDigitalAssets|context=c-1|table=25",
+        "expected": "68",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-009",
+        "field": "consolidated_statements_of_cash_flows.accounts_receivable|ixbrl=us-gaap:IncreaseDecreaseInAccountsReceivable|context=c-1|table=25",
+        "expected": "-261",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-010",
+        "field": "consolidated_statements_of_cash_flows.inventory|ixbrl=us-gaap:IncreaseDecreaseInInventories|context=c-1|table=25",
+        "expected": "-630",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-011",
+        "field": "consolidated_statements_of_cash_flows.operating_lease_vehicles|ixbrl=tsla:IncreaseDecreaseInOperatingLeaseVehicles|context=c-1|table=25",
+        "expected": "-25",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-012",
+        "field": "consolidated_statements_of_cash_flows.prepaid_expenses_and_other_assets|ixbrl=us-gaap:IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets|context=c-1|table=25",
+        "expected": "-3181",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-013",
+        "field": "consolidated_statements_of_cash_flows.accounts_payable_accrued_and_other_liabilities|ixbrl=us-gaap:IncreaseDecreaseInAccountsPayableAndAccruedLiabilities|context=c-1|table=25",
+        "expected": "4376",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-014",
+        "field": "consolidated_statements_of_cash_flows.deferred_revenue|ixbrl=us-gaap:IncreaseDecreaseInContractWithCustomerLiability|context=c-1|table=25",
+        "expected": "363",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-015",
+        "field": "consolidated_statements_of_cash_flows.net_cash_provided_by_operating_activities|ixbrl=us-gaap:NetCashProvidedByUsedInOperatingActivities|context=c-1|table=25",
+        "expected": "14747",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-016",
+        "field": "consolidated_statements_of_cash_flows.purchases_of_property_and_equipment_excluding_finance_leases_net_of_sales|ixbrl=us-gaap:PaymentsToAcquirePropertyPlantAndEquipment|context=c-1|table=25",
+        "expected": "-8527",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-017",
+        "field": "consolidated_statements_of_cash_flows.purchases_of_investments|ixbrl=us-gaap:PaymentsToAcquireInvestments|context=c-1|table=25",
+        "expected": "-37109",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-018",
+        "field": "consolidated_statements_of_cash_flows.proceeds_from_maturities_of_investments|ixbrl=us-gaap:ProceedsFromSaleMaturityAndCollectionsOfInvestments|context=c-1|table=25",
+        "expected": "30158",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-019",
+        "field": "consolidated_statements_of_cash_flows.proceeds_from_sales_of_investments|ixbrl=us-gaap:ProceedsFromSaleOfShortTermInvestments|context=c-1|table=25|source_display=dash",
+        "expected": "0",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-020",
+        "field": "consolidated_statements_of_cash_flows.business_combinations_net_of_cash_acquired|ixbrl=us-gaap:PaymentsToAcquireBusinessesNetOfCashAcquired|context=c-1|table=25|source_display=dash",
+        "expected": "0",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-021",
+        "field": "consolidated_statements_of_cash_flows.net_cash_used_in_investing_activities|ixbrl=us-gaap:NetCashProvidedByUsedInInvestingActivities|context=c-1|table=25",
+        "expected": "-15478",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-022",
+        "field": "consolidated_statements_of_cash_flows.proceeds_from_issuances_of_debt|ixbrl=us-gaap:ProceedsFromIssuanceOfDebt|context=c-1|table=25",
+        "expected": "5586",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-023",
+        "field": "consolidated_statements_of_cash_flows.repayments_of_debt|ixbrl=us-gaap:RepaymentsOfConvertibleDebt|context=c-1|table=25",
+        "expected": "-5546",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-024",
+        "field": "consolidated_statements_of_cash_flows.proceeds_from_exercises_of_stock_options_and_other_stock_issuances_net_of_issuance_costs|ixbrl=us-gaap:ProceedsFromIssuanceOfSharesUnderIncentiveAndShareBasedCompensationPlansIncludingStockOptions|context=c-1|table=25",
+        "expected": "1186",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-025",
+        "field": "consolidated_statements_of_cash_flows.principal_payments_on_finance_leases|ixbrl=us-gaap:FinanceLeasePrincipalPayments|context=c-1|table=25",
+        "expected": "-104",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-026",
+        "field": "consolidated_statements_of_cash_flows.proceeds_received_from_directors_in_shareholder_settlement|ixbrl=tsla:ProceedsReceivedFromDirectorsInShareholderSettlement|context=c-1|table=25",
+        "expected": "277",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-027",
+        "field": "consolidated_statements_of_cash_flows.payment_of_legal_fees_associated_with_shareholder_settlement|ixbrl=tsla:PaymentForLegalFees|context=c-1|table=25",
+        "expected": "-176",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-028",
+        "field": "consolidated_statements_of_cash_flows.debt_issuance_costs|ixbrl=us-gaap:PaymentsOfDebtIssuanceCosts|context=c-1|table=25",
+        "expected": "-6",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-029",
+        "field": "consolidated_statements_of_cash_flows.distributions_paid_to_noncontrolling_interests_in_subsidiaries|ixbrl=us-gaap:PaymentsToMinorityShareholders|context=c-1|table=25",
+        "expected": "-78",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-030",
+        "field": "consolidated_statements_of_cash_flows.payments_for_buy_outs_of_noncontrolling_interests_in_subsidiaries|ixbrl=tsla:PaymentsForBuyOutsOfNoncontrollingInterestsInSubsidiaries|context=c-1|table=25|source_display=dash",
+        "expected": "0",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-031",
+        "field": "consolidated_statements_of_cash_flows.net_cash_provided_by_financing_activities|ixbrl=us-gaap:NetCashProvidedByUsedInFinancingActivities|context=c-1|table=25",
+        "expected": "1139",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-032",
+        "field": "consolidated_statements_of_cash_flows.effect_of_exchange_rate_changes_on_cash_and_cash_equivalents_and_restricted_cash|ixbrl=us-gaap:EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations|context=c-1|table=25",
+        "expected": "171",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-033",
+        "field": "consolidated_statements_of_cash_flows.net_increase_in_cash_and_cash_equivalents_and_restricted_cash|ixbrl=us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect|context=c-1|table=25",
+        "expected": "579",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-034",
+        "field": "consolidated_statements_of_cash_flows.cash_and_cash_equivalents_and_restricted_cash_beginning_of_period|ixbrl=us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations|context=c-5|table=25",
+        "expected": "17037",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-035",
+        "field": "consolidated_statements_of_cash_flows.cash_and_cash_equivalents_and_restricted_cash_end_of_period|ixbrl=us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations|context=c-4|table=25",
+        "expected": "17616",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-036",
+        "field": "consolidated_statements_of_cash_flows.acquisitions_of_property_and_equipment_included_in_liabilities|ixbrl=us-gaap:NoncashOrPartNoncashAcquisitionValueOfAssetsAcquired1|context=c-1|table=25",
+        "expected": "1913",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      },
+      {
+        "assertion_id": "cf-037",
+        "field": "consolidated_statements_of_cash_flows.cash_paid_during_the_period_for_interest|ixbrl=us-gaap:InterestPaidNet|context=c-1|table=25",
+        "expected": "292",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2025",
+        "case_ids": [
+          "FS-048",
+          "FS-060"
+        ],
+        "receipt_ids": [
+          "sec-10k-2025-ixbrl",
+          "tesla-ir-2025-10k-pdf"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-us-tsla-fy2025-cash_flow_statement-v1",
+    "fact_contract": {
+      "entity": "Tesla, Inc.",
+      "symbol": "TSLA",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "SEC accession 0001628280-26-003952; tsla-20251231.htm",
+      "period_end": "2025-12-31",
+      "duration_or_instant": "duration",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "reported_currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2025",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    "authoritative_origin_id": "us-tsla-fy2025-authoritative-report",
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "us-tsla-fy2025-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction"
+    },
+    "origin": "us-tsla-fy2025-authoritative-report",
+    "same_authoritative_origin": true
+  }
+]

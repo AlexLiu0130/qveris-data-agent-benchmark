@@ -1,0 +1,2252 @@
+[
+  {
+    "schema_version": "oracle/v1",
+    "suite": "financial_statements",
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2026-06-10T06:02:59Z",
+      "source_published_at": "2026-06-10T06:02:59Z",
+      "retrieved_at": "2026-09-03T09:28:10Z",
+      "as_of": "2026-03-31T23:59:59Z"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "toyota-fy2026-sec-20f",
+      "corroborating_receipt_ids": [
+        "toyota-fy2026-jpx-summary"
+      ]
+    },
+    "oracle_id": "fs-jp-toyota-7203-fy2026-income-statement",
+    "case_ids": [
+      "FS-070"
+    ],
+    "atomic_assertions": [
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-income-statement-row-01",
+        "field": "consolidated_statement_of_income.sales_of_products",
+        "expected": "45865949",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-070"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-income-statement-row-02",
+        "field": "consolidated_statement_of_income.financial_services",
+        "expected": "4819003",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-070"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-income-statement-row-03",
+        "field": "consolidated_statement_of_income.total_sales_revenues",
+        "expected": "50684952",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-070"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-income-statement-row-04",
+        "field": "consolidated_statement_of_income.cost_of_products_sold",
+        "expected": "39141418",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-070"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-income-statement-row-05",
+        "field": "consolidated_statement_of_income.cost_of_financial_services",
+        "expected": "3079794",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-070"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-income-statement-row-06",
+        "field": "consolidated_statement_of_income.selling_general_and_administrative",
+        "expected": "4697524",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-070"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-income-statement-row-07",
+        "field": "consolidated_statement_of_income.total_costs_and_expenses",
+        "expected": "46918736",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-070"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-income-statement-row-08",
+        "field": "consolidated_statement_of_income.operating_income",
+        "expected": "3766216",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-070"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-income-statement-row-09",
+        "field": "consolidated_statement_of_income.share_of_profit_loss_of_investments_accounted_for_using_equity_method",
+        "expected": "552742",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-070"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-income-statement-row-10",
+        "field": "consolidated_statement_of_income.other_finance_income",
+        "expected": "594243",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-070"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-income-statement-row-11",
+        "field": "consolidated_statement_of_income.other_finance_costs",
+        "expected": "-86746",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-070"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-income-statement-row-12",
+        "field": "consolidated_statement_of_income.foreign_exchange_gain_loss_net",
+        "expected": "400780",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-070"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-income-statement-row-13",
+        "field": "consolidated_statement_of_income.other_income_loss_net",
+        "expected": "-74239",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-070"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-income-statement-row-14",
+        "field": "consolidated_statement_of_income.income_before_income_taxes",
+        "expected": "5152996",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-070"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-income-statement-row-15",
+        "field": "consolidated_statement_of_income.income_tax_expense",
+        "expected": "1167234",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-070"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-income-statement-row-16",
+        "field": "consolidated_statement_of_income.net_income",
+        "expected": "3985761",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-070"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-income-statement-row-17",
+        "field": "consolidated_statement_of_income.net_income_attributable_to_toyota_motor_corporation",
+        "expected": "3848098",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-070"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-income-statement-row-18",
+        "field": "consolidated_statement_of_income.non_controlling_interests",
+        "expected": "137664",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-070"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-income-statement-row-19",
+        "field": "consolidated_statement_of_income.net_income_attributable_total",
+        "expected": "3985761",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-070"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-income-statement-row-20",
+        "field": "consolidated_statement_of_income.basic_and_diluted_earnings_per_share",
+        "expected": "295.25",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-070"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-jp-7203-t-fy2026-income_statement-v1",
+    "fact_contract": {
+      "entity": "Toyota Motor Corporation",
+      "symbol": "7203.T",
+      "exchange": "TSE",
+      "form": "20-F",
+      "accession": "SEC accession 0001193125-26-264811, Form 20-F, period ended 2026-03-31",
+      "period_end": "2026-03-31",
+      "duration_or_instant": "duration",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "reported_currency": "JPY",
+      "unit_scale": "JPY_millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2026 (2025-04-01 to 2026-03-31)",
+          "label": "FY2026",
+          "period_end": "2026-03-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      },
+      "field_unit_exceptions": [
+        {
+          "currency": "JPY",
+          "unit_scale": "JPY",
+          "assertion_ids": [
+            "fs-jp-toyota-7203-fy2026-income-statement-row-20"
+          ],
+          "fields": [
+            "consolidated_statement_of_income.basic_and_diluted_earnings_per_share"
+          ]
+        }
+      ]
+    },
+    "authoritative_origin_id": "jp-7203-t-fy2026-authoritative-report",
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "jp-7203-t-fy2026-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction",
+      "chain": [
+        "Toyota FY2026 annual report consolidated financial statements",
+        "Authority delivery/parse channel for the Toyota FY2026 annual report. It is not an independent factual origin."
+      ]
+    },
+    "same_authoritative_origin": true,
+    "origin": "jp-7203-t-fy2026-authoritative-report"
+  },
+  {
+    "schema_version": "oracle/v1",
+    "suite": "financial_statements",
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2026-06-10T06:02:59Z",
+      "source_published_at": "2026-06-10T06:02:59Z",
+      "retrieved_at": "2026-09-03T09:28:10Z",
+      "as_of": "2026-03-31T23:59:59Z"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "toyota-fy2026-sec-20f",
+      "corroborating_receipt_ids": [
+        "toyota-fy2026-jpx-summary"
+      ]
+    },
+    "oracle_id": "fs-jp-toyota-7203-fy2026-balance-sheet",
+    "case_ids": [
+      "FS-071"
+    ],
+    "atomic_assertions": [
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-01",
+        "field": "consolidated_statement_of_financial_position.cash_and_cash_equivalents",
+        "expected": "12659622",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-02",
+        "field": "consolidated_statement_of_financial_position.trade_accounts_and_other_receivables",
+        "expected": "3795986",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-03",
+        "field": "consolidated_statement_of_financial_position.receivables_related_to_financial_services_current",
+        "expected": "13478474",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-04",
+        "field": "consolidated_statement_of_financial_position.other_financial_assets_current",
+        "expected": "3982445",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-05",
+        "field": "consolidated_statement_of_financial_position.inventories",
+        "expected": "5134996",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-06",
+        "field": "consolidated_statement_of_financial_position.income_tax_receivable",
+        "expected": "235425",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-07",
+        "field": "consolidated_statement_of_financial_position.other_current_assets",
+        "expected": "1520330",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-08",
+        "field": "consolidated_statement_of_financial_position.subtotal_current_assets_before_assets_held_for_sale",
+        "expected": "40807277",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-09",
+        "field": "consolidated_statement_of_financial_position.assets_held_for_sale",
+        "expected": "2016804",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-10",
+        "field": "consolidated_statement_of_financial_position.total_current_assets",
+        "expected": "42824081",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-11",
+        "field": "consolidated_statement_of_financial_position.investments_accounted_for_using_equity_method",
+        "expected": "5342548",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-12",
+        "field": "consolidated_statement_of_financial_position.receivables_related_to_financial_services_noncurrent",
+        "expected": "25488182",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-13",
+        "field": "consolidated_statement_of_financial_position.other_financial_assets_noncurrent",
+        "expected": "11135799",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-14",
+        "field": "consolidated_statement_of_financial_position.land",
+        "expected": "1351625",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-15",
+        "field": "consolidated_statement_of_financial_position.buildings",
+        "expected": "6284907",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-16",
+        "field": "consolidated_statement_of_financial_position.machinery_and_equipment",
+        "expected": "17509377",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-17",
+        "field": "consolidated_statement_of_financial_position.vehicles_and_equipment_on_operating_leases",
+        "expected": "9705647",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-18",
+        "field": "consolidated_statement_of_financial_position.construction_in_progress",
+        "expected": "1719808",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-19",
+        "field": "consolidated_statement_of_financial_position.total_property_plant_and_equipment_at_cost",
+        "expected": "36571364",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-20",
+        "field": "consolidated_statement_of_financial_position.less_accumulated_depreciation_and_impairment_losses",
+        "expected": "-19504000",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-21",
+        "field": "consolidated_statement_of_financial_position.total_property_plant_and_equipment_net",
+        "expected": "17067365",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-22",
+        "field": "consolidated_statement_of_financial_position.right_of_use_assets",
+        "expected": "901232",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-23",
+        "field": "consolidated_statement_of_financial_position.intangible_assets",
+        "expected": "1392755",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-24",
+        "field": "consolidated_statement_of_financial_position.deferred_tax_assets",
+        "expected": "555596",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-25",
+        "field": "consolidated_statement_of_financial_position.other_noncurrent_assets",
+        "expected": "814773",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-26",
+        "field": "consolidated_statement_of_financial_position.total_noncurrent_assets",
+        "expected": "62698250",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-27",
+        "field": "consolidated_statement_of_financial_position.total_assets",
+        "expected": "105522331",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-28",
+        "field": "consolidated_statement_of_financial_position.trade_accounts_and_other_payables",
+        "expected": "5856945",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-29",
+        "field": "consolidated_statement_of_financial_position.short_term_and_current_portion_of_long_term_debt",
+        "expected": "17581104",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-30",
+        "field": "consolidated_statement_of_financial_position.accrued_expenses",
+        "expected": "2112571",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-31",
+        "field": "consolidated_statement_of_financial_position.other_financial_liabilities_current",
+        "expected": "2384008",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-32",
+        "field": "consolidated_statement_of_financial_position.income_taxes_payable",
+        "expected": "711675",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-33",
+        "field": "consolidated_statement_of_financial_position.liabilities_for_quality_assurance",
+        "expected": "2097943",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-34",
+        "field": "consolidated_statement_of_financial_position.provisions_current",
+        "expected": "431191",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-35",
+        "field": "consolidated_statement_of_financial_position.other_current_liabilities",
+        "expected": "1735034",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-36",
+        "field": "consolidated_statement_of_financial_position.subtotal_current_liabilities_before_assets_held_for_sale",
+        "expected": "32910472",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-37",
+        "field": "consolidated_statement_of_financial_position.liabilities_directly_associated_with_assets_held_for_sale",
+        "expected": "694547",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-38",
+        "field": "consolidated_statement_of_financial_position.total_current_liabilities",
+        "expected": "33605019",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-39",
+        "field": "consolidated_statement_of_financial_position.long_term_debt",
+        "expected": "25624365",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-40",
+        "field": "consolidated_statement_of_financial_position.other_financial_liabilities_noncurrent",
+        "expected": "1157413",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-41",
+        "field": "consolidated_statement_of_financial_position.retirement_benefit_liabilities",
+        "expected": "1022483",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-42",
+        "field": "consolidated_statement_of_financial_position.deferred_tax_liabilities",
+        "expected": "1584505",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-43",
+        "field": "consolidated_statement_of_financial_position.provisions_noncurrent",
+        "expected": "498463",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-44",
+        "field": "consolidated_statement_of_financial_position.other_noncurrent_liabilities",
+        "expected": "1010015",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-45",
+        "field": "consolidated_statement_of_financial_position.total_noncurrent_liabilities",
+        "expected": "30897244",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-46",
+        "field": "consolidated_statement_of_financial_position.total_liabilities",
+        "expected": "64502263",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-47",
+        "field": "consolidated_statement_of_financial_position.common_stock",
+        "expected": "397050",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-48",
+        "field": "consolidated_statement_of_financial_position.additional_paid_in_capital",
+        "expected": "456742",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-49",
+        "field": "consolidated_statement_of_financial_position.retained_earnings",
+        "expected": "38709858",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-50",
+        "field": "consolidated_statement_of_financial_position.other_components_of_equity",
+        "expected": "4544019",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-51",
+        "field": "consolidated_statement_of_financial_position.other_comprehensive_income_associated_with_assets_held_for_sale",
+        "expected": "266596",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-52",
+        "field": "consolidated_statement_of_financial_position.treasury_stock",
+        "expected": "-4455410",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-53",
+        "field": "consolidated_statement_of_financial_position.total_toyota_motor_corporation_shareholders_equity",
+        "expected": "39918854",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-54",
+        "field": "consolidated_statement_of_financial_position.non_controlling_interests",
+        "expected": "1101214",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-55",
+        "field": "consolidated_statement_of_financial_position.total_shareholders_equity",
+        "expected": "41020068",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-balance-sheet-row-56",
+        "field": "consolidated_statement_of_financial_position.total_liabilities_and_shareholders_equity",
+        "expected": "105522331",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-071"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-jp-7203-t-fy2026-balance_sheet-v1",
+    "fact_contract": {
+      "entity": "Toyota Motor Corporation",
+      "symbol": "7203.T",
+      "exchange": "TSE",
+      "form": "20-F",
+      "accession": "SEC accession 0001193125-26-264811, Form 20-F, period ended 2026-03-31",
+      "period_end": "2026-03-31",
+      "duration_or_instant": "instant",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "reported_currency": "JPY",
+      "unit_scale": "JPY_millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2026 (2025-04-01 to 2026-03-31)",
+          "label": "FY2026",
+          "period_end": "2026-03-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    "authoritative_origin_id": "jp-7203-t-fy2026-authoritative-report",
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "jp-7203-t-fy2026-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction",
+      "chain": [
+        "Toyota FY2026 annual report consolidated financial statements",
+        "Authority delivery/parse channel for the Toyota FY2026 annual report. It is not an independent factual origin."
+      ]
+    },
+    "same_authoritative_origin": true,
+    "origin": "jp-7203-t-fy2026-authoritative-report"
+  },
+  {
+    "schema_version": "oracle/v1",
+    "suite": "financial_statements",
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2026-06-10T06:02:59Z",
+      "source_published_at": "2026-06-10T06:02:59Z",
+      "retrieved_at": "2026-09-03T09:28:10Z",
+      "as_of": "2026-03-31T23:59:59Z"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "toyota-fy2026-sec-20f",
+      "corroborating_receipt_ids": [
+        "toyota-fy2026-jpx-summary"
+      ]
+    },
+    "oracle_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement",
+    "case_ids": [
+      "FS-069",
+      "FS-072"
+    ],
+    "atomic_assertions": [
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-01",
+        "field": "consolidated_statement_of_cash_flows.net_income",
+        "expected": "3985761",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-02",
+        "field": "consolidated_statement_of_cash_flows.depreciation_and_amortization",
+        "expected": "2392519",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-03",
+        "field": "consolidated_statement_of_cash_flows.interest_income_and_interest_costs_related_to_financial_services_net",
+        "expected": "-809088",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-04",
+        "field": "consolidated_statement_of_cash_flows.share_of_profit_loss_of_investments_accounted_for_using_equity_method",
+        "expected": "-552742",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-05",
+        "field": "consolidated_statement_of_cash_flows.income_tax_expense",
+        "expected": "1167234",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-06",
+        "field": "consolidated_statement_of_cash_flows.changes_in_operating_assets_and_liabilities_and_other",
+        "expected": "-976558",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-07",
+        "field": "consolidated_statement_of_cash_flows.increase_decrease_in_trade_accounts_and_other_receivables",
+        "expected": "-539370",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-08",
+        "field": "consolidated_statement_of_cash_flows.increase_decrease_in_receivables_related_to_financial_services",
+        "expected": "-2017214",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-09",
+        "field": "consolidated_statement_of_cash_flows.increase_decrease_in_inventories",
+        "expected": "-468883",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-10",
+        "field": "consolidated_statement_of_cash_flows.increase_decrease_in_other_current_assets",
+        "expected": "-175944",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-11",
+        "field": "consolidated_statement_of_cash_flows.increase_decrease_in_trade_accounts_and_other_payables",
+        "expected": "378798",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-12",
+        "field": "consolidated_statement_of_cash_flows.increase_decrease_in_other_current_liabilities",
+        "expected": "1477356",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-13",
+        "field": "consolidated_statement_of_cash_flows.increase_decrease_in_retirement_benefit_liabilities",
+        "expected": "153351",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-14",
+        "field": "consolidated_statement_of_cash_flows.other_net_operating",
+        "expected": "215348",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-15",
+        "field": "consolidated_statement_of_cash_flows.interest_received",
+        "expected": "2760711",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-16",
+        "field": "consolidated_statement_of_cash_flows.dividends_received",
+        "expected": "430774",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-17",
+        "field": "consolidated_statement_of_cash_flows.interest_paid",
+        "expected": "-1685013",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-18",
+        "field": "consolidated_statement_of_cash_flows.income_taxes_paid_net_of_refunds",
+        "expected": "-1240680",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-19",
+        "field": "consolidated_statement_of_cash_flows.net_cash_provided_by_used_in_operating_activities",
+        "expected": "5472920",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-20",
+        "field": "consolidated_statement_of_cash_flows.additions_to_fixed_assets_excluding_equipment_leased_to_others",
+        "expected": "-2148192",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-21",
+        "field": "consolidated_statement_of_cash_flows.additions_to_equipment_leased_to_others",
+        "expected": "-2766352",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-22",
+        "field": "consolidated_statement_of_cash_flows.proceeds_from_sales_of_fixed_assets_excluding_equipment_leased_to_others",
+        "expected": "31242",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-23",
+        "field": "consolidated_statement_of_cash_flows.proceeds_from_sales_of_equipment_leased_to_others",
+        "expected": "1355605",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-24",
+        "field": "consolidated_statement_of_cash_flows.additions_to_intangible_assets",
+        "expected": "-378804",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-25",
+        "field": "consolidated_statement_of_cash_flows.additions_to_public_and_corporate_bonds_and_stocks",
+        "expected": "-4290671",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-26",
+        "field": "consolidated_statement_of_cash_flows.proceeds_from_sales_of_public_and_corporate_bonds_and_stocks",
+        "expected": "739503",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-27",
+        "field": "consolidated_statement_of_cash_flows.proceeds_upon_maturity_of_public_and_corporate_bonds",
+        "expected": "4778059",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-28",
+        "field": "consolidated_statement_of_cash_flows.other_net_investing",
+        "expected": "1159304",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-29",
+        "field": "consolidated_statement_of_cash_flows.net_cash_provided_by_used_in_investing_activities",
+        "expected": "-1520307",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-30",
+        "field": "consolidated_statement_of_cash_flows.increase_decrease_in_short_term_debt",
+        "expected": "-90691",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-31",
+        "field": "consolidated_statement_of_cash_flows.proceeds_from_long_term_debt",
+        "expected": "12880225",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-32",
+        "field": "consolidated_statement_of_cash_flows.payments_of_long_term_debt",
+        "expected": "-11956541",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-33",
+        "field": "consolidated_statement_of_cash_flows.dividends_paid_to_toyota_motor_corporation_common_shareholders",
+        "expected": "-1238974",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-34",
+        "field": "consolidated_statement_of_cash_flows.dividends_paid_to_non_controlling_interests",
+        "expected": "-125416",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-35",
+        "field": "consolidated_statement_of_cash_flows.reissuance_repurchase_of_treasury_stock",
+        "expected": "-39975",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-36",
+        "field": "consolidated_statement_of_cash_flows.other_net_financing",
+        "expected": "34712",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-37",
+        "field": "consolidated_statement_of_cash_flows.net_cash_provided_by_used_in_financing_activities",
+        "expected": "-536659",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-38",
+        "field": "consolidated_statement_of_cash_flows.effect_of_exchange_rate_changes_on_cash_and_cash_equivalents",
+        "expected": "377197",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-39",
+        "field": "consolidated_statement_of_cash_flows.net_increase_decrease_in_cash_and_cash_equivalents",
+        "expected": "3793150",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-40",
+        "field": "consolidated_statement_of_cash_flows.cash_and_cash_equivalents_at_beginning_of_year",
+        "expected": "8982404",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-41",
+        "field": "consolidated_statement_of_cash_flows.net_increase_decrease_from_transfer_to_assets_held_for_sale",
+        "expected": "-115932",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      },
+      {
+        "assertion_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-42",
+        "field": "consolidated_statement_of_cash_flows.cash_and_cash_equivalents_at_end_of_year",
+        "expected": "12659622",
+        "comparison": "exact_normalized",
+        "currency": "JPY",
+        "unit": "JPY_millions",
+        "period": "FY2026 (2025-04-01 to 2026-03-31)",
+        "basis": "as_reported",
+        "case_ids": [
+          "FS-069",
+          "FS-072"
+        ],
+        "receipt_ids": [
+          "toyota-fy2026-sec-20f",
+          "toyota-fy2026-jpx-summary"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-jp-7203-t-fy2026-cash_flow_statement-v1",
+    "fact_contract": {
+      "entity": "Toyota Motor Corporation",
+      "symbol": "7203.T",
+      "exchange": "TSE",
+      "form": "20-F",
+      "accession": "SEC accession 0001193125-26-264811, Form 20-F, period ended 2026-03-31",
+      "period_end": "2026-03-31",
+      "duration_or_instant": "duration",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "reported_currency": "JPY",
+      "unit_scale": "JPY_millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2026 (2025-04-01 to 2026-03-31)",
+          "label": "FY2026",
+          "period_end": "2026-03-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    "authoritative_origin_id": "jp-7203-t-fy2026-authoritative-report",
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "jp-7203-t-fy2026-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction",
+      "chain": [
+        "Toyota FY2026 annual report consolidated financial statements",
+        "Authority delivery/parse channel for the Toyota FY2026 annual report. It is not an independent factual origin."
+      ]
+    },
+    "same_authoritative_origin": true,
+    "origin": "jp-7203-t-fy2026-authoritative-report"
+  }
+]
