@@ -1,0 +1,4022 @@
+[
+  {
+    "id": "FS-001",
+    "family_id": "financial_statement_is_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "想看贵州茅台2024年的完整利润表。用于核对年报。",
+    "prompt": "想看贵州茅台2024年的完整利润表。用于核对年报。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "贵州茅台酒股份有限公司",
+        "symbol": "600519.SH"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-001",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-002",
+    "family_id": "financial_statement_bs_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "麻烦查一下宁德时代2024年年度资产负债表。我在整理年度资料。",
+    "prompt": "麻烦查一下宁德时代2024年年度资产负债表。我在整理年度资料。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "宁德时代新能源科技股份有限公司",
+        "symbol": "300750.SZ"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-002",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-003",
+    "family_id": "financial_statement_cf_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "请给我美的集团2024年完整现金流量表。请按年报口径返回。",
+    "prompt": "请给我美的集团2024年完整现金流量表。请按年报口径返回。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "美的集团股份有限公司",
+        "symbol": "000333.SZ"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-003",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-004",
+    "family_id": "financial_statement_is_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "贵州茅台2024年的利润表，我要看整份。用于做财务归档。",
+    "prompt": "贵州茅台2024年的利润表，我要看整份。用于做财务归档。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "贵州茅台酒股份有限公司",
+        "symbol": "600519.SH"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-004",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-005",
+    "family_id": "financial_statement_bs_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "帮我找宁德时代2024年报里的完整资产负债表。我需要核对已披露数据。",
+    "prompt": "帮我找宁德时代2024年报里的完整资产负债表。我需要核对已披露数据。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "宁德时代新能源科技股份有限公司",
+        "symbol": "300750.SZ"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-005",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-006",
+    "family_id": "financial_statement_cf_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "请查美的集团（000333.SZ）2024年度完整现金流量表。请返回整份报表。",
+    "prompt": "请查美的集团（000333.SZ）2024年度完整现金流量表。请返回整份报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "美的集团股份有限公司",
+        "symbol": "000333.SZ"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-006",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-007",
+    "family_id": "financial_statement_is_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "想看贵州茅台2024年的完整利润表。这是给审阅同事看的。",
+    "prompt": "想看贵州茅台2024年的完整利润表。这是给审阅同事看的。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "贵州茅台酒股份有限公司",
+        "symbol": "600519.SH"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-007",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-008",
+    "family_id": "financial_statement_bs_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "麻烦查一下宁德时代2024年年度资产负债表。我想核对年度披露。",
+    "prompt": "麻烦查一下宁德时代2024年年度资产负债表。我想核对年度披露。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "宁德时代新能源科技股份有限公司",
+        "symbol": "300750.SZ"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-008",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-009",
+    "family_id": "financial_statement_cf_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "请给我美的集团2024年完整现金流量表。麻烦保留报表的完整内容。",
+    "prompt": "请给我美的集团2024年完整现金流量表。麻烦保留报表的完整内容。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "美的集团股份有限公司",
+        "symbol": "000333.SZ"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-009",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-010",
+    "family_id": "financial_statement_is_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "贵州茅台2024年的利润表，我要看整份。用于公司财务资料整理。",
+    "prompt": "贵州茅台2024年的利润表，我要看整份。用于公司财务资料整理。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "贵州茅台酒股份有限公司",
+        "symbol": "600519.SH"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-010",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-011",
+    "family_id": "financial_statement_bs_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "帮我找宁德时代2024年报里的完整资产负债表。我需要确认该年度报表。",
+    "prompt": "帮我找宁德时代2024年报里的完整资产负债表。我需要确认该年度报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "宁德时代新能源科技股份有限公司",
+        "symbol": "300750.SZ"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-011",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-012",
+    "family_id": "financial_statement_cf_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "请查美的集团（000333.SZ）2024年度完整现金流量表。请直接给我年度报表。",
+    "prompt": "请查美的集团（000333.SZ）2024年度完整现金流量表。请直接给我年度报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "美的集团股份有限公司",
+        "symbol": "000333.SZ"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-012",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-013",
+    "family_id": "financial_statement_is_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "想看贵州茅台2024年的完整利润表。用于复核公开披露。",
+    "prompt": "想看贵州茅台2024年的完整利润表。用于复核公开披露。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "贵州茅台酒股份有限公司",
+        "symbol": "600519.SH"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-013",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-014",
+    "family_id": "financial_statement_bs_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "麻烦查一下宁德时代2024年年度资产负债表。我想查年报里的完整数据。",
+    "prompt": "麻烦查一下宁德时代2024年年度资产负债表。我想查年报里的完整数据。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "宁德时代新能源科技股份有限公司",
+        "symbol": "300750.SZ"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-014",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-015",
+    "family_id": "financial_statement_cf_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "请给我美的集团2024年完整现金流量表。请按该财年返回。",
+    "prompt": "请给我美的集团2024年完整现金流量表。请按该财年返回。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "美的集团股份有限公司",
+        "symbol": "000333.SZ"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-015",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-016",
+    "family_id": "financial_statement_is_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "贵州茅台2024年的利润表，我要看整份。用于财务资料归档。",
+    "prompt": "贵州茅台2024年的利润表，我要看整份。用于财务资料归档。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "贵州茅台酒股份有限公司",
+        "symbol": "600519.SH"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-016",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-017",
+    "family_id": "financial_statement_bs_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "帮我找宁德时代2024年报里的完整资产负债表。我要看公司年度报表。",
+    "prompt": "帮我找宁德时代2024年报里的完整资产负债表。我要看公司年度报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "宁德时代新能源科技股份有限公司",
+        "symbol": "300750.SZ"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-017",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-018",
+    "family_id": "financial_statement_cf_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "请查美的集团（000333.SZ）2024年度完整现金流量表。麻烦提供完整年度报表。",
+    "prompt": "请查美的集团（000333.SZ）2024年度完整现金流量表。麻烦提供完整年度报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "美的集团股份有限公司",
+        "symbol": "000333.SZ"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-018",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-019",
+    "family_id": "financial_statement_is_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "想看贵州茅台2024年的完整利润表。我正在核对财报。",
+    "prompt": "想看贵州茅台2024年的完整利润表。我正在核对财报。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "贵州茅台酒股份有限公司",
+        "symbol": "600519.SH"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-019",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-020",
+    "family_id": "financial_statement_bs_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "麻烦查一下宁德时代2024年年度资产负债表。请帮我调取年度报表。",
+    "prompt": "麻烦查一下宁德时代2024年年度资产负债表。请帮我调取年度报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "宁德时代新能源科技股份有限公司",
+        "symbol": "300750.SZ"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-020",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-021",
+    "family_id": "financial_statement_cf_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "请给我美的集团2024年完整现金流量表。用于查看公司年度情况。",
+    "prompt": "请给我美的集团2024年完整现金流量表。用于查看公司年度情况。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "美的集团股份有限公司",
+        "symbol": "000333.SZ"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-021",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-022",
+    "family_id": "financial_statement_is_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "贵州茅台2024年的利润表，我要看整份。我想确认该年度数据。",
+    "prompt": "贵州茅台2024年的利润表，我要看整份。我想确认该年度数据。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "贵州茅台酒股份有限公司",
+        "symbol": "600519.SH"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-022",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-023",
+    "family_id": "financial_statement_bs_cn",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "CN",
+    "query": "帮我找宁德时代2024年报里的完整资产负债表。请给我年报中的整份报表。",
+    "prompt": "帮我找宁德时代2024年报里的完整资产负债表。请给我年报中的整份报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "宁德时代新能源科技股份有限公司",
+        "symbol": "300750.SZ"
+      },
+      "market": "CN",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2024,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-023",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-024",
+    "family_id": "financial_statement_cf_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "想看腾讯控股2025年的完整现金流量表。用于核对年报。",
+    "prompt": "想看腾讯控股2025年的完整现金流量表。用于核对年报。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-024",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-025",
+    "family_id": "financial_statement_is_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "麻烦查一下腾讯控股2025年年度利润表。我在整理年度资料。",
+    "prompt": "麻烦查一下腾讯控股2025年年度利润表。我在整理年度资料。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-025",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-026",
+    "family_id": "financial_statement_bs_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "请给我腾讯控股2025年完整资产负债表。请按年报口径返回。",
+    "prompt": "请给我腾讯控股2025年完整资产负债表。请按年报口径返回。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-026",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-027",
+    "family_id": "financial_statement_cf_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "腾讯控股2025年的现金流量表，我要看整份。用于做财务归档。",
+    "prompt": "腾讯控股2025年的现金流量表，我要看整份。用于做财务归档。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-027",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-028",
+    "family_id": "financial_statement_is_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "帮我找腾讯控股2025年报里的完整利润表。我需要核对已披露数据。",
+    "prompt": "帮我找腾讯控股2025年报里的完整利润表。我需要核对已披露数据。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-028",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-029",
+    "family_id": "financial_statement_bs_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "请查腾讯控股（0700.HK）2025年度完整资产负债表。请返回整份报表。",
+    "prompt": "请查腾讯控股（0700.HK）2025年度完整资产负债表。请返回整份报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-029",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-030",
+    "family_id": "financial_statement_cf_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "想看腾讯控股2025年的完整现金流量表。这是给审阅同事看的。",
+    "prompt": "想看腾讯控股2025年的完整现金流量表。这是给审阅同事看的。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-030",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-031",
+    "family_id": "financial_statement_is_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "麻烦查一下腾讯控股2025年年度利润表。我想核对年度披露。",
+    "prompt": "麻烦查一下腾讯控股2025年年度利润表。我想核对年度披露。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-031",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-032",
+    "family_id": "financial_statement_bs_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "请给我腾讯控股2025年完整资产负债表。麻烦保留报表的完整内容。",
+    "prompt": "请给我腾讯控股2025年完整资产负债表。麻烦保留报表的完整内容。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-032",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-033",
+    "family_id": "financial_statement_cf_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "腾讯控股2025年的现金流量表，我要看整份。用于公司财务资料整理。",
+    "prompt": "腾讯控股2025年的现金流量表，我要看整份。用于公司财务资料整理。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-033",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-034",
+    "family_id": "financial_statement_is_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "帮我找腾讯控股2025年报里的完整利润表。我需要确认该年度报表。",
+    "prompt": "帮我找腾讯控股2025年报里的完整利润表。我需要确认该年度报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-034",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-035",
+    "family_id": "financial_statement_bs_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "请查腾讯控股（0700.HK）2025年度完整资产负债表。请直接给我年度报表。",
+    "prompt": "请查腾讯控股（0700.HK）2025年度完整资产负债表。请直接给我年度报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-035",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-036",
+    "family_id": "financial_statement_cf_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "想看腾讯控股2025年的完整现金流量表。用于复核公开披露。",
+    "prompt": "想看腾讯控股2025年的完整现金流量表。用于复核公开披露。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-036",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-037",
+    "family_id": "financial_statement_is_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "麻烦查一下腾讯控股2025年年度利润表。我想查年报里的完整数据。",
+    "prompt": "麻烦查一下腾讯控股2025年年度利润表。我想查年报里的完整数据。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-037",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-038",
+    "family_id": "financial_statement_bs_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "请给我腾讯控股2025年完整资产负债表。请按该财年返回。",
+    "prompt": "请给我腾讯控股2025年完整资产负债表。请按该财年返回。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-038",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-039",
+    "family_id": "financial_statement_cf_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "腾讯控股2025年的现金流量表，我要看整份。用于财务资料归档。",
+    "prompt": "腾讯控股2025年的现金流量表，我要看整份。用于财务资料归档。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-039",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-040",
+    "family_id": "financial_statement_is_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "帮我找腾讯控股2025年报里的完整利润表。我要看公司年度报表。",
+    "prompt": "帮我找腾讯控股2025年报里的完整利润表。我要看公司年度报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-040",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-041",
+    "family_id": "financial_statement_bs_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "请查腾讯控股（0700.HK）2025年度完整资产负债表。麻烦提供完整年度报表。",
+    "prompt": "请查腾讯控股（0700.HK）2025年度完整资产负债表。麻烦提供完整年度报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-041",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-042",
+    "family_id": "financial_statement_cf_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "想看腾讯控股2025年的完整现金流量表。我正在核对财报。",
+    "prompt": "想看腾讯控股2025年的完整现金流量表。我正在核对财报。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-042",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-043",
+    "family_id": "financial_statement_is_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "麻烦查一下腾讯控股2025年年度利润表。请帮我调取年度报表。",
+    "prompt": "麻烦查一下腾讯控股2025年年度利润表。请帮我调取年度报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-043",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-044",
+    "family_id": "financial_statement_bs_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "请给我腾讯控股2025年完整资产负债表。用于查看公司年度情况。",
+    "prompt": "请给我腾讯控股2025年完整资产负债表。用于查看公司年度情况。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-044",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-045",
+    "family_id": "financial_statement_cf_hk",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "HK",
+    "query": "腾讯控股2025年的现金流量表，我要看整份。我想确认该年度数据。",
+    "prompt": "腾讯控股2025年的现金流量表，我要看整份。我想确认该年度数据。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-045",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-046",
+    "family_id": "financial_statement_is_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "想看苹果2025年的完整利润表。用于核对年报。",
+    "prompt": "想看苹果2025年的完整利润表。用于核对年报。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Apple Inc.",
+        "symbol": "AAPL"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-046",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-047",
+    "family_id": "financial_statement_bs_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "麻烦查一下微软2026年年度资产负债表。我在整理年度资料。",
+    "prompt": "麻烦查一下微软2026年年度资产负债表。我在整理年度资料。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Microsoft Corporation",
+        "symbol": "MSFT"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2026,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-047",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-048",
+    "family_id": "financial_statement_cf_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "请给我特斯拉2025年完整现金流量表。请按年报口径返回。",
+    "prompt": "请给我特斯拉2025年完整现金流量表。请按年报口径返回。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tesla, Inc.",
+        "symbol": "TSLA"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-048",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-049",
+    "family_id": "financial_statement_is_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "英伟达2026年的利润表，我要看整份。用于做财务归档。",
+    "prompt": "英伟达2026年的利润表，我要看整份。用于做财务归档。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "NVIDIA Corporation",
+        "symbol": "NVDA"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2026,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-049",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-050",
+    "family_id": "financial_statement_bs_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "帮我找苹果2025年报里的完整资产负债表。我需要核对已披露数据。",
+    "prompt": "帮我找苹果2025年报里的完整资产负债表。我需要核对已披露数据。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Apple Inc.",
+        "symbol": "AAPL"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-050",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-051",
+    "family_id": "financial_statement_cf_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "请查微软（MSFT）2026年度完整现金流量表。请返回整份报表。",
+    "prompt": "请查微软（MSFT）2026年度完整现金流量表。请返回整份报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Microsoft Corporation",
+        "symbol": "MSFT"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2026,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-051",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-052",
+    "family_id": "financial_statement_is_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "想看特斯拉2025年的完整利润表。这是给审阅同事看的。",
+    "prompt": "想看特斯拉2025年的完整利润表。这是给审阅同事看的。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tesla, Inc.",
+        "symbol": "TSLA"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-052",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-053",
+    "family_id": "financial_statement_bs_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "麻烦查一下英伟达2026年年度资产负债表。我想核对年度披露。",
+    "prompt": "麻烦查一下英伟达2026年年度资产负债表。我想核对年度披露。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "NVIDIA Corporation",
+        "symbol": "NVDA"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2026,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-053",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-054",
+    "family_id": "financial_statement_cf_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "请给我苹果2025年完整现金流量表。麻烦保留报表的完整内容。",
+    "prompt": "请给我苹果2025年完整现金流量表。麻烦保留报表的完整内容。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Apple Inc.",
+        "symbol": "AAPL"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-054",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-055",
+    "family_id": "financial_statement_is_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "微软2026年的利润表，我要看整份。用于公司财务资料整理。",
+    "prompt": "微软2026年的利润表，我要看整份。用于公司财务资料整理。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Microsoft Corporation",
+        "symbol": "MSFT"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2026,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-055",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-056",
+    "family_id": "financial_statement_bs_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "帮我找特斯拉2025年报里的完整资产负债表。我需要确认该年度报表。",
+    "prompt": "帮我找特斯拉2025年报里的完整资产负债表。我需要确认该年度报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tesla, Inc.",
+        "symbol": "TSLA"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-056",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-057",
+    "family_id": "financial_statement_cf_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "请查英伟达（NVDA）2026年度完整现金流量表。请直接给我年度报表。",
+    "prompt": "请查英伟达（NVDA）2026年度完整现金流量表。请直接给我年度报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "NVIDIA Corporation",
+        "symbol": "NVDA"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2026,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-057",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-058",
+    "family_id": "financial_statement_is_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "想看苹果2025年的完整利润表。用于复核公开披露。",
+    "prompt": "想看苹果2025年的完整利润表。用于复核公开披露。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Apple Inc.",
+        "symbol": "AAPL"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-058",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-059",
+    "family_id": "financial_statement_bs_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "麻烦查一下微软2026年年度资产负债表。我想查年报里的完整数据。",
+    "prompt": "麻烦查一下微软2026年年度资产负债表。我想查年报里的完整数据。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Microsoft Corporation",
+        "symbol": "MSFT"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2026,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-059",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-060",
+    "family_id": "financial_statement_cf_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "请给我特斯拉2025年完整现金流量表。请按该财年返回。",
+    "prompt": "请给我特斯拉2025年完整现金流量表。请按该财年返回。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tesla, Inc.",
+        "symbol": "TSLA"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-060",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-061",
+    "family_id": "financial_statement_is_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "英伟达2026年的利润表，我要看整份。用于财务资料归档。",
+    "prompt": "英伟达2026年的利润表，我要看整份。用于财务资料归档。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "NVIDIA Corporation",
+        "symbol": "NVDA"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2026,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-061",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-062",
+    "family_id": "financial_statement_bs_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "帮我找苹果2025年报里的完整资产负债表。我要看公司年度报表。",
+    "prompt": "帮我找苹果2025年报里的完整资产负债表。我要看公司年度报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Apple Inc.",
+        "symbol": "AAPL"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-062",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-063",
+    "family_id": "financial_statement_cf_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "请查微软（MSFT）2026年度完整现金流量表。麻烦提供完整年度报表。",
+    "prompt": "请查微软（MSFT）2026年度完整现金流量表。麻烦提供完整年度报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Microsoft Corporation",
+        "symbol": "MSFT"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2026,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-063",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-064",
+    "family_id": "financial_statement_is_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "想看特斯拉2025年的完整利润表。我正在核对财报。",
+    "prompt": "想看特斯拉2025年的完整利润表。我正在核对财报。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tesla, Inc.",
+        "symbol": "TSLA"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-064",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-065",
+    "family_id": "financial_statement_bs_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "麻烦查一下英伟达2026年年度资产负债表。请帮我调取年度报表。",
+    "prompt": "麻烦查一下英伟达2026年年度资产负债表。请帮我调取年度报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "NVIDIA Corporation",
+        "symbol": "NVDA"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2026,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-065",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-066",
+    "family_id": "financial_statement_cf_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "请给我苹果2025年完整现金流量表。用于查看公司年度情况。",
+    "prompt": "请给我苹果2025年完整现金流量表。用于查看公司年度情况。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Apple Inc.",
+        "symbol": "AAPL"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-066",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-067",
+    "family_id": "financial_statement_is_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "微软2026年的利润表，我要看整份。我想确认该年度数据。",
+    "prompt": "微软2026年的利润表，我要看整份。我想确认该年度数据。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Microsoft Corporation",
+        "symbol": "MSFT"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2026,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-067",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-068",
+    "family_id": "financial_statement_bs_us",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "US",
+    "query": "帮我找特斯拉2025年报里的完整资产负债表。请给我年报中的整份报表。",
+    "prompt": "帮我找特斯拉2025年报里的完整资产负债表。请给我年报中的整份报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Tesla, Inc.",
+        "symbol": "TSLA"
+      },
+      "market": "US",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-068",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-069",
+    "family_id": "financial_statement_cf_jp",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "JP",
+    "query": "想看丰田汽车2026年的完整现金流量表。用于核对年报。",
+    "prompt": "想看丰田汽车2026年的完整现金流量表。用于核对年报。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Toyota Motor Corporation",
+        "symbol": "7203.T"
+      },
+      "market": "JP",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2026,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-069",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-070",
+    "family_id": "financial_statement_is_jp",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "JP",
+    "query": "麻烦查一下丰田汽车2026年年度利润表。我在整理年度资料。",
+    "prompt": "麻烦查一下丰田汽车2026年年度利润表。我在整理年度资料。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Toyota Motor Corporation",
+        "symbol": "7203.T"
+      },
+      "market": "JP",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2026,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-070",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-071",
+    "family_id": "financial_statement_bs_jp",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "JP",
+    "query": "请给我丰田汽车2026年完整资产负债表。请按年报口径返回。",
+    "prompt": "请给我丰田汽车2026年完整资产负债表。请按年报口径返回。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Toyota Motor Corporation",
+        "symbol": "7203.T"
+      },
+      "market": "JP",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2026,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-071",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-072",
+    "family_id": "financial_statement_cf_jp",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "JP",
+    "query": "丰田汽车2026年的现金流量表，我要看整份。用于做财务归档。",
+    "prompt": "丰田汽车2026年的现金流量表，我要看整份。用于做财务归档。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Toyota Motor Corporation",
+        "symbol": "7203.T"
+      },
+      "market": "JP",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2026,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-072",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-073",
+    "family_id": "financial_statement_is_gb",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "GB",
+    "query": "想看壳牌2025年的完整利润表。用于核对年报。",
+    "prompt": "想看壳牌2025年的完整利润表。用于核对年报。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Shell plc",
+        "symbol": "SHEL.L"
+      },
+      "market": "GB",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-073",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-074",
+    "family_id": "financial_statement_bs_gb",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "GB",
+    "query": "麻烦查一下壳牌2025年年度资产负债表。我在整理年度资料。",
+    "prompt": "麻烦查一下壳牌2025年年度资产负债表。我在整理年度资料。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Shell plc",
+        "symbol": "SHEL.L"
+      },
+      "market": "GB",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-074",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-075",
+    "family_id": "financial_statement_cf_gb",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "GB",
+    "query": "请给我壳牌2025年完整现金流量表。请按年报口径返回。",
+    "prompt": "请给我壳牌2025年完整现金流量表。请按年报口径返回。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Shell plc",
+        "symbol": "SHEL.L"
+      },
+      "market": "GB",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-075",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-076",
+    "family_id": "financial_statement_is_gb",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "GB",
+    "query": "壳牌2025年的利润表，我要看整份。用于做财务归档。",
+    "prompt": "壳牌2025年的利润表，我要看整份。用于做财务归档。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "Shell plc",
+        "symbol": "SHEL.L"
+      },
+      "market": "GB",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-076",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-077",
+    "family_id": "financial_statement_bs_de",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "DE",
+    "query": "想看SAP2025年的完整资产负债表。用于核对年报。",
+    "prompt": "想看SAP2025年的完整资产负债表。用于核对年报。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "SAP SE",
+        "symbol": "SAP.DE"
+      },
+      "market": "DE",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-077",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-078",
+    "family_id": "financial_statement_cf_de",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "DE",
+    "query": "麻烦查一下SAP2025年年度现金流量表。我在整理年度资料。",
+    "prompt": "麻烦查一下SAP2025年年度现金流量表。我在整理年度资料。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "SAP SE",
+        "symbol": "SAP.DE"
+      },
+      "market": "DE",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_cash_flow_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-078",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-079",
+    "family_id": "financial_statement_is_de",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "DE",
+    "query": "请给我SAP2025年完整利润表。请按年报口径返回。",
+    "prompt": "请给我SAP2025年完整利润表。请按年报口径返回。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "SAP SE",
+        "symbol": "SAP.DE"
+      },
+      "market": "DE",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_income_statement"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-079",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-080",
+    "family_id": "financial_statement_bs_de",
+    "suite": "financial_statements",
+    "case_type": "normal",
+    "market": "DE",
+    "query": "SAP2025年的资产负债表，我要看整份。用于做财务归档。",
+    "prompt": "SAP2025年的资产负债表，我要看整份。用于做财务归档。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "success",
+    "expected_intent": {
+      "entity": {
+        "name": "SAP SE",
+        "symbol": "SAP.DE"
+      },
+      "market": "DE",
+      "data_type": "financial_statement",
+      "fields": [
+        "complete_balance_sheet"
+      ],
+      "time_or_period": {
+        "fiscal_year": 2025,
+        "fiscal_period": "FY"
+      },
+      "suite_policy_fields": {
+        "statement_presentation": "complete"
+      }
+    },
+    "data_oracle": {
+      "oracle_status": "single_source",
+      "reference_key": "FS-080",
+      "assertions": [
+        "entity",
+        "market",
+        "data_type",
+        "fields",
+        "time_or_period",
+        "complete_statement_shape"
+      ]
+    },
+    "override_comparison_rule": "default"
+  },
+  {
+    "id": "FS-081",
+    "family_id": "boundary_missing_period_cn",
+    "suite": "financial_statements",
+    "case_type": "boundary",
+    "market": "CN",
+    "query": "帮我查贵州茅台的完整利润表，按A股口径。我在核对年报范围。",
+    "prompt": "帮我查贵州茅台的完整利润表，按A股口径。我在核对年报范围。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "needs_clarification",
+    "state_oracle": {
+      "required_disclosures": [
+        "需要报告期"
+      ],
+      "required_missing_information": [
+        "time_or_period"
+      ],
+      "allowed_data_shape": "empty",
+      "forbidden_resolved_fields": [
+        "time_or_period"
+      ],
+      "forbidden_data_claims": [
+        "financial_value"
+      ]
+    },
+    "evidence": {
+      "type": "suite_scope",
+      "reference": "oracle-policy.yaml#boundary.missing_period"
+    }
+  },
+  {
+    "id": "FS-082",
+    "family_id": "boundary_ambiguous_listing_cn",
+    "suite": "financial_statements",
+    "case_type": "boundary",
+    "market": "CN",
+    "query": "帮我查腾讯2024年的完整资产负债表，按A股口径。请按这个问题处理。",
+    "prompt": "帮我查腾讯2024年的完整资产负债表，按A股口径。请按这个问题处理。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "needs_clarification",
+    "state_oracle": {
+      "required_disclosures": [
+        "需要证券代码或交易所"
+      ],
+      "required_missing_information": [
+        "entity_listing"
+      ],
+      "allowed_data_shape": "empty",
+      "forbidden_resolved_fields": [
+        "entity",
+        "market"
+      ],
+      "forbidden_data_claims": [
+        "financial_value"
+      ]
+    },
+    "evidence": {
+      "type": "suite_scope",
+      "reference": "oracle-policy.yaml#boundary.ambiguous_listing"
+    }
+  },
+  {
+    "id": "FS-083",
+    "family_id": "boundary_future_unfiled_cn",
+    "suite": "financial_statements",
+    "case_type": "boundary",
+    "market": "CN",
+    "query": "请给我贵州茅台2027年的完整现金流量表，按A股口径。这是我需要确认的内容。",
+    "prompt": "请给我贵州茅台2027年的完整现金流量表，按A股口径。这是我需要确认的内容。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "no_data",
+    "state_oracle": {
+      "required_disclosures": [
+        "该财年尚无已披露财报"
+      ],
+      "required_missing_information": [],
+      "allowed_data_shape": "empty",
+      "forbidden_resolved_fields": [],
+      "forbidden_data_claims": [
+        "financial_statement"
+      ]
+    },
+    "evidence": {
+      "type": "suite_scope",
+      "reference": "oracle-policy.yaml#boundary.future_unfiled"
+    }
+  },
+  {
+    "id": "FS-084",
+    "family_id": "boundary_unsupported_ratio_cn",
+    "suite": "financial_statements",
+    "case_type": "boundary",
+    "market": "CN",
+    "query": "帮我查贵州茅台2024年的ROE，按A股口径。我想核对公开披露。",
+    "prompt": "帮我查贵州茅台2024年的ROE，按A股口径。我想核对公开披露。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "unsupported",
+    "state_oracle": {
+      "required_disclosures": [
+        "ROE 不属于本 Suite 支持的完整财报数据"
+      ],
+      "required_missing_information": [],
+      "allowed_data_shape": "empty",
+      "forbidden_resolved_fields": [],
+      "forbidden_data_claims": [
+        "financial_value"
+      ]
+    },
+    "evidence": {
+      "type": "suite_scope",
+      "reference": "oracle-policy.yaml#boundary.unsupported_ratio"
+    }
+  },
+  {
+    "id": "FS-085",
+    "family_id": "boundary_unsupported_private_entity_cn",
+    "suite": "financial_statements",
+    "case_type": "boundary",
+    "market": "CN",
+    "query": "帮我查星河智造科技有限公司2024年的完整利润表，按A股口径。麻烦按财报场景处理。",
+    "prompt": "帮我查星河智造科技有限公司2024年的完整利润表，按A股口径。麻烦按财报场景处理。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "unsupported",
+    "state_oracle": {
+      "required_disclosures": [
+        "不支持非上市主体的财报查询"
+      ],
+      "required_missing_information": [],
+      "allowed_data_shape": "empty",
+      "forbidden_resolved_fields": [],
+      "forbidden_data_claims": [
+        "financial_value"
+      ]
+    },
+    "evidence": {
+      "type": "suite_scope",
+      "reference": "oracle-policy.yaml#boundary.unsupported_private_entity"
+    }
+  },
+  {
+    "id": "FS-086",
+    "family_id": "boundary_missing_period_cn",
+    "suite": "financial_statements",
+    "case_type": "boundary",
+    "market": "CN",
+    "query": "帮我查贵州茅台的完整利润表，按A股口径。用于年度资料整理。",
+    "prompt": "帮我查贵州茅台的完整利润表，按A股口径。用于年度资料整理。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "needs_clarification",
+    "state_oracle": {
+      "required_disclosures": [
+        "需要报告期"
+      ],
+      "required_missing_information": [
+        "time_or_period"
+      ],
+      "allowed_data_shape": "empty",
+      "forbidden_resolved_fields": [
+        "time_or_period"
+      ],
+      "forbidden_data_claims": [
+        "financial_value"
+      ]
+    },
+    "evidence": {
+      "type": "suite_scope",
+      "reference": "oracle-policy.yaml#boundary.missing_period"
+    }
+  },
+  {
+    "id": "FS-087",
+    "family_id": "boundary_ambiguous_listing_hk",
+    "suite": "financial_statements",
+    "case_type": "boundary",
+    "market": "HK",
+    "query": "帮我查腾讯2024年的完整资产负债表，按港股口径。我需要明确可返回的范围。",
+    "prompt": "帮我查腾讯2024年的完整资产负债表，按港股口径。我需要明确可返回的范围。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "needs_clarification",
+    "state_oracle": {
+      "required_disclosures": [
+        "需要证券代码或交易所"
+      ],
+      "required_missing_information": [
+        "entity_listing"
+      ],
+      "allowed_data_shape": "empty",
+      "forbidden_resolved_fields": [
+        "entity",
+        "market"
+      ],
+      "forbidden_data_claims": [
+        "financial_value"
+      ]
+    },
+    "evidence": {
+      "type": "suite_scope",
+      "reference": "oracle-policy.yaml#boundary.ambiguous_listing"
+    }
+  },
+  {
+    "id": "FS-088",
+    "family_id": "boundary_future_unfiled_hk",
+    "suite": "financial_statements",
+    "case_type": "boundary",
+    "market": "HK",
+    "query": "请给我腾讯控股2027年的完整现金流量表，按港股口径。请告诉我是否可以直接查。",
+    "prompt": "请给我腾讯控股2027年的完整现金流量表，按港股口径。请告诉我是否可以直接查。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "no_data",
+    "state_oracle": {
+      "required_disclosures": [
+        "该财年尚无已披露财报"
+      ],
+      "required_missing_information": [],
+      "allowed_data_shape": "empty",
+      "forbidden_resolved_fields": [],
+      "forbidden_data_claims": [
+        "financial_statement"
+      ]
+    },
+    "evidence": {
+      "type": "suite_scope",
+      "reference": "oracle-policy.yaml#boundary.future_unfiled"
+    }
+  },
+  {
+    "id": "FS-089",
+    "family_id": "boundary_unsupported_ratio_hk",
+    "suite": "financial_statements",
+    "case_type": "boundary",
+    "market": "HK",
+    "query": "帮我查腾讯控股2024年的ROE，按港股口径。用于核对系统行为。",
+    "prompt": "帮我查腾讯控股2024年的ROE，按港股口径。用于核对系统行为。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "unsupported",
+    "state_oracle": {
+      "required_disclosures": [
+        "ROE 不属于本 Suite 支持的完整财报数据"
+      ],
+      "required_missing_information": [],
+      "allowed_data_shape": "empty",
+      "forbidden_resolved_fields": [],
+      "forbidden_data_claims": [
+        "financial_value"
+      ]
+    },
+    "evidence": {
+      "type": "suite_scope",
+      "reference": "oracle-policy.yaml#boundary.unsupported_ratio"
+    }
+  },
+  {
+    "id": "FS-090",
+    "family_id": "boundary_unsupported_private_entity_hk",
+    "suite": "financial_statements",
+    "case_type": "boundary",
+    "market": "HK",
+    "query": "帮我查星河智造科技有限公司2024年的完整利润表，按港股口径。我想确认数据是否可得。",
+    "prompt": "帮我查星河智造科技有限公司2024年的完整利润表，按港股口径。我想确认数据是否可得。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "unsupported",
+    "state_oracle": {
+      "required_disclosures": [
+        "不支持非上市主体的财报查询"
+      ],
+      "required_missing_information": [],
+      "allowed_data_shape": "empty",
+      "forbidden_resolved_fields": [],
+      "forbidden_data_claims": [
+        "financial_value"
+      ]
+    },
+    "evidence": {
+      "type": "suite_scope",
+      "reference": "oracle-policy.yaml#boundary.unsupported_private_entity"
+    }
+  },
+  {
+    "id": "FS-091",
+    "family_id": "boundary_missing_period_hk",
+    "suite": "financial_statements",
+    "case_type": "boundary",
+    "market": "HK",
+    "query": "帮我查腾讯控股的完整利润表，按港股口径。请按财报查询处理。",
+    "prompt": "帮我查腾讯控股的完整利润表，按港股口径。请按财报查询处理。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "needs_clarification",
+    "state_oracle": {
+      "required_disclosures": [
+        "需要报告期"
+      ],
+      "required_missing_information": [
+        "time_or_period"
+      ],
+      "allowed_data_shape": "empty",
+      "forbidden_resolved_fields": [
+        "time_or_period"
+      ],
+      "forbidden_data_claims": [
+        "financial_value"
+      ]
+    },
+    "evidence": {
+      "type": "suite_scope",
+      "reference": "oracle-policy.yaml#boundary.missing_period"
+    }
+  },
+  {
+    "id": "FS-092",
+    "family_id": "boundary_ambiguous_listing_hk",
+    "suite": "financial_statements",
+    "case_type": "boundary",
+    "market": "HK",
+    "query": "帮我查腾讯2024年的完整资产负债表，按港股口径。我在整理上市公司资料。",
+    "prompt": "帮我查腾讯2024年的完整资产负债表，按港股口径。我在整理上市公司资料。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "needs_clarification",
+    "state_oracle": {
+      "required_disclosures": [
+        "需要证券代码或交易所"
+      ],
+      "required_missing_information": [
+        "entity_listing"
+      ],
+      "allowed_data_shape": "empty",
+      "forbidden_resolved_fields": [
+        "entity",
+        "market"
+      ],
+      "forbidden_data_claims": [
+        "financial_value"
+      ]
+    },
+    "evidence": {
+      "type": "suite_scope",
+      "reference": "oracle-policy.yaml#boundary.ambiguous_listing"
+    }
+  },
+  {
+    "id": "FS-093",
+    "family_id": "boundary_future_unfiled_us",
+    "suite": "financial_statements",
+    "case_type": "boundary",
+    "market": "US",
+    "query": "请给我苹果2027年的完整现金流量表，按美股口径。麻烦按当前市场理解。",
+    "prompt": "请给我苹果2027年的完整现金流量表，按美股口径。麻烦按当前市场理解。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "no_data",
+    "state_oracle": {
+      "required_disclosures": [
+        "该财年尚无已披露财报"
+      ],
+      "required_missing_information": [],
+      "allowed_data_shape": "empty",
+      "forbidden_resolved_fields": [],
+      "forbidden_data_claims": [
+        "financial_statement"
+      ]
+    },
+    "evidence": {
+      "type": "suite_scope",
+      "reference": "oracle-policy.yaml#boundary.future_unfiled"
+    }
+  },
+  {
+    "id": "FS-094",
+    "family_id": "boundary_unsupported_ratio_us",
+    "suite": "financial_statements",
+    "case_type": "boundary",
+    "market": "US",
+    "query": "帮我查苹果2024年的ROE，按美股口径。这是一次年度数据查询。",
+    "prompt": "帮我查苹果2024年的ROE，按美股口径。这是一次年度数据查询。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "unsupported",
+    "state_oracle": {
+      "required_disclosures": [
+        "ROE 不属于本 Suite 支持的完整财报数据"
+      ],
+      "required_missing_information": [],
+      "allowed_data_shape": "empty",
+      "forbidden_resolved_fields": [],
+      "forbidden_data_claims": [
+        "financial_value"
+      ]
+    },
+    "evidence": {
+      "type": "suite_scope",
+      "reference": "oracle-policy.yaml#boundary.unsupported_ratio"
+    }
+  },
+  {
+    "id": "FS-095",
+    "family_id": "boundary_unsupported_private_entity_us",
+    "suite": "financial_statements",
+    "case_type": "boundary",
+    "market": "US",
+    "query": "帮我查星河智造科技有限公司2024年的完整利润表，按美股口径。请帮我确认请求范围。",
+    "prompt": "帮我查星河智造科技有限公司2024年的完整利润表，按美股口径。请帮我确认请求范围。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "unsupported",
+    "state_oracle": {
+      "required_disclosures": [
+        "不支持非上市主体的财报查询"
+      ],
+      "required_missing_information": [],
+      "allowed_data_shape": "empty",
+      "forbidden_resolved_fields": [],
+      "forbidden_data_claims": [
+        "financial_value"
+      ]
+    },
+    "evidence": {
+      "type": "suite_scope",
+      "reference": "oracle-policy.yaml#boundary.unsupported_private_entity"
+    }
+  },
+  {
+    "id": "FS-096",
+    "family_id": "boundary_missing_period_us",
+    "suite": "financial_statements",
+    "case_type": "boundary",
+    "market": "US",
+    "query": "帮我查苹果的完整利润表，按美股口径。我想确认能否返回报表。",
+    "prompt": "帮我查苹果的完整利润表，按美股口径。我想确认能否返回报表。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "needs_clarification",
+    "state_oracle": {
+      "required_disclosures": [
+        "需要报告期"
+      ],
+      "required_missing_information": [
+        "time_or_period"
+      ],
+      "allowed_data_shape": "empty",
+      "forbidden_resolved_fields": [
+        "time_or_period"
+      ],
+      "forbidden_data_claims": [
+        "financial_value"
+      ]
+    },
+    "evidence": {
+      "type": "suite_scope",
+      "reference": "oracle-policy.yaml#boundary.missing_period"
+    }
+  },
+  {
+    "id": "FS-097",
+    "family_id": "boundary_ambiguous_listing_us",
+    "suite": "financial_statements",
+    "case_type": "boundary",
+    "market": "US",
+    "query": "帮我查腾讯2024年的完整资产负债表，按美股口径。用于审核数据范围。",
+    "prompt": "帮我查腾讯2024年的完整资产负债表，按美股口径。用于审核数据范围。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "needs_clarification",
+    "state_oracle": {
+      "required_disclosures": [
+        "需要证券代码或交易所"
+      ],
+      "required_missing_information": [
+        "entity_listing"
+      ],
+      "allowed_data_shape": "empty",
+      "forbidden_resolved_fields": [
+        "entity",
+        "market"
+      ],
+      "forbidden_data_claims": [
+        "financial_value"
+      ]
+    },
+    "evidence": {
+      "type": "suite_scope",
+      "reference": "oracle-policy.yaml#boundary.ambiguous_listing"
+    }
+  },
+  {
+    "id": "FS-098",
+    "family_id": "boundary_future_unfiled_jp",
+    "suite": "financial_statements",
+    "case_type": "boundary",
+    "market": "JP",
+    "query": "请给我丰田汽车2027年的完整现金流量表，按日本股市口径。请说明是否支持这个请求。",
+    "prompt": "请给我丰田汽车2027年的完整现金流量表，按日本股市口径。请说明是否支持这个请求。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "no_data",
+    "state_oracle": {
+      "required_disclosures": [
+        "该财年尚无已披露财报"
+      ],
+      "required_missing_information": [],
+      "allowed_data_shape": "empty",
+      "forbidden_resolved_fields": [],
+      "forbidden_data_claims": [
+        "financial_statement"
+      ]
+    },
+    "evidence": {
+      "type": "suite_scope",
+      "reference": "oracle-policy.yaml#boundary.future_unfiled"
+    }
+  },
+  {
+    "id": "FS-099",
+    "family_id": "boundary_unsupported_ratio_gb",
+    "suite": "financial_statements",
+    "case_type": "boundary",
+    "market": "GB",
+    "query": "帮我查壳牌2024年的ROE，按英国股市口径。我在核对查询口径。",
+    "prompt": "帮我查壳牌2024年的ROE，按英国股市口径。我在核对查询口径。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "unsupported",
+    "state_oracle": {
+      "required_disclosures": [
+        "ROE 不属于本 Suite 支持的完整财报数据"
+      ],
+      "required_missing_information": [],
+      "allowed_data_shape": "empty",
+      "forbidden_resolved_fields": [],
+      "forbidden_data_claims": [
+        "financial_value"
+      ]
+    },
+    "evidence": {
+      "type": "suite_scope",
+      "reference": "oracle-policy.yaml#boundary.unsupported_ratio"
+    }
+  },
+  {
+    "id": "FS-100",
+    "family_id": "boundary_missing_period_de",
+    "suite": "financial_statements",
+    "case_type": "boundary",
+    "market": "DE",
+    "query": "帮我查SAP的完整利润表，按德国股市口径。请按年度财报处理。",
+    "prompt": "帮我查SAP的完整利润表，按德国股市口径。请按年度财报处理。",
+    "language": "zh-CN",
+    "query_timezone": "Asia/Shanghai",
+    "expected_status": "needs_clarification",
+    "state_oracle": {
+      "required_disclosures": [
+        "需要报告期"
+      ],
+      "required_missing_information": [
+        "time_or_period"
+      ],
+      "allowed_data_shape": "empty",
+      "forbidden_resolved_fields": [
+        "time_or_period"
+      ],
+      "forbidden_data_claims": [
+        "financial_value"
+      ]
+    },
+    "evidence": {
+      "type": "suite_scope",
+      "reference": "oracle-policy.yaml#boundary.missing_period"
+    }
+  }
+]

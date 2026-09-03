@@ -1,0 +1,48 @@
+{
+  "benchmark_id": "qveris-data-agent-benchmark-v0.1-candidate",
+  "status": "candidate_200_of_300_not_formal",
+  "subject": "black_box_public_get",
+  "suite_inventory": {
+    "historical_price": 100,
+    "financial_statements": 100,
+    "realtime_quote": 0,
+    "target_total": 300,
+    "available_total": 200
+  },
+  "files": [
+    {
+      "suite": "historical_price",
+      "path": "historical_price.cases.json",
+      "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279",
+      "schema_version": "source_implicit_historical_v0.1",
+      "case_id_field": "case_id",
+      "query_field": "query",
+      "data_oracle_reference_field": "data_oracle.source_note",
+      "state_oracle_shape": "string",
+      "data_accuracy": "not_scored_candidate_unverified"
+    },
+    {
+      "suite": "financial_statements",
+      "path": "financial_statements.cases.json",
+      "sha256": "a9da2324411179f18dfe5a4bc98c4869bbe6012562d8cddcfe07a126bdb74d38",
+      "schema_version": "source_implicit_financial_v0.1",
+      "case_id_field": "id",
+      "query_field": "query (prompt retained as source-compatible duplicate)",
+      "data_oracle_reference_field": "data_oracle.reference_key",
+      "state_oracle_shape": "object with optional evidence",
+      "data_accuracy": "not_scored_single_source"
+    }
+  ],
+  "runtime_contract": {
+    "agents_per_cell": 1,
+    "public_get_executions_per_cell": 1,
+    "structured_outputs_per_cell": 1,
+    "forbidden_capabilities": ["Search", "Inspect"]
+  },
+  "metrics": [
+    "semantic_accuracy",
+    "data_accuracy",
+    "end_to_end_latency",
+    "token_usage"
+  ]
+}
