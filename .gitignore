@@ -1,24 +1,24 @@
-# Local secrets (keep the documented template)
-.env*
-!.env.example
-
-# Generated benchmark outputs
-results/raw/
-results.jsonl
-artifacts/raw/
-artifacts/private/
-artifacts/results/raw/
-artifacts/tool-audit/
-
-# Approval and external decision artifacts
-benchmarks/pilot/approved-*.json
-benchmarks/pilot/*approval*digest*
-
-# Python caches and virtual environments
 .DS_Store
+.env
+.env.*
+!.env.example
 __pycache__/
 *.py[cod]
-.pytest_cache/
-.mypy_cache/
-.venv/
-venv/
+
+# Generated, sensitive, or non-reproducible benchmark material
+artifacts/
+artifacts/private/
+artifacts/integrated-benchmark-v*/
+finance-benchmark-*/
+draft_*_folder/
+docs/oracles/
+tool-audit/
+raw/
+results/
+results/raw/
+results/**/raw/
+results.jsonl
+benchmarks/pilot/approved-*.json
+benchmarks/pilot/*approval*digest*
+*.receipt.json
+*.raw.json

@@ -1,131 +1,40 @@
 # QVeris Data Agent Benchmark
 
-一个受控的基础数据取数 benchmark：检验用户请求能否被一次模型语义规划正确映射为一个细分场景及其标准参数，并产出可评分的结构化结果。
+QVeris 的黑箱端到端数据取数评测：输入是真实风格的自然语言 Query，系统只能经一次公开 `get` 返回一个结构化响应。Benchmark 不检查内部推理、检索或数据供应商，只评测最终用户结果。
 
-完整设计见 [架构说明](docs/architecture.md)。本仓库不是生产 Agent、搜索产品或数据分析产品。
+```text
+Natural-language query -> one public get -> structured response -> scorer
+```
 
-## 目标与当前范围
+## 范围与当前状态
 
-最终目标是三个独立 Suite，各 100 个 case：
+目标是三个独立 Suite，各 100 题：`realtime_quote`、`historical_price`、`financial_statements`。每套遵循 80 道正常题 / 20 道边界题；市场配额为 A 股 29、港股 28、美股 28、日本 5、英国 5、德国 5。
 
-- 实时行情；
-- 历史行情；
-- 财报。
-
-当前实现和证据范围更小：
-
-- 一个离线、3-case 的 synthetic replay fixture self-check（每个 Suite 一个 synthetic fixture case）；它输出 not_scored_oracle 和 self_check，而非 success 或数据准确率；
-- 一个 legacy narrow Manifest：保存 v6–v10 的三条已执行 Tool 候选及其兼容性/replay 约束；它不是当前交付的 runtime contract，也不是三域 Tool selection 或 300-case benchmark；
-- 历史 v3 realtime pilot 仅保留为 Tool curation 证据，不是当前 runtime alias 或 live-ready 声明。
-
-因此，仓库当前不能支持“已准确”“已交付”“已上线”或“Finnhub 最佳”的结论。
+目前仓库只含 200/300 候选题：历史行情 100 题、财务报表 100 题；实时行情尚未纳入。历史和财报 Oracle 都**未冻结**，因此两套题的 `data_accuracy` 都是 `not_scored`，不得用于正式排名或准确率结论。
 
 ## 运行合同
 
-每个 runtime 请求遵循唯一链路：
+- 每个 evaluation cell：`agent_variant × get_variant × case × trial`。
+- 每个 cell 仅一个 Agent、一次公开 `get`、一个结构化输出；禁止 `Search` 与 `Inspect`。
+- `get` 内部模型调用必须走 QVeris Gateway；这是设计要求，当前仓库尚未实现或验证此门禁。
+- 合法响应状态：`success`、`partial`、`needs_clarification`、`unsupported`、`no_data`、`error`。`error` 不能是正确预期。
 
-~~~text
-用户/Kimi 输入
-  → 单一模型的一次 SemanticPlanReceipt（plan + raw_usage）
-  → 确定性 validation
-  → （目标）market × scenario Registry 的确定性 Router
-  → 当前 legacy alias connector 仅用于 replay/窄切片验证
-  → 结构化结果与评分记录
-~~~
+## 四项指标
 
-Agent 不在请求时运行 Search 或 Inspect，不调用多个 Tool，也不在取数后再次调用模型。Search/Inspect 仅属于构建期 Tool 目录和证据审查，不属于用户请求路径。
+| 指标 | 计算口径 |
+| --- | --- |
+| `semantic_accuracy` | 可评分 Case 中，`resolved_request` 与该题 Semantic Oracle 一致的比例。 |
+| `data_accuracy` | 可评分原子数据断言的通过比例；Oracle 未冻结时必须为 `not_scored`。 |
+| `end_to_end_latency` | Runner 从发出请求到收到完整结构化响应的单调时钟耗时。 |
+| `token_usage` | `get` 内部 QVeris Gateway 的实际 token receipt；不可观测时为 `unknown`，不能估算为 0。 |
 
-Agent 只返回 SemanticPlanReceipt：SemanticPlan 的状态为 READY、CLARIFY 或 REJECT，加上模型原样返回的 raw_usage。Agent 不计时、不计算 token/费用、不评分。只有外部 Harness 的确定性 validation 通过 schema、状态、alias 和参数 allowlist 后，READY plan 才可以进入 connector。模型不接触 QVeris 或供应商凭据。
+`Case Pass` 是派生门禁，而非第五个指标：`schema_valid AND status_correct AND semantic_pass AND data_pass AND NOT timeout`。当 `data_accuracy` 未评分时，不得产出正式 Case Pass 或总榜排名。
 
-## QVerisGet 公共合同（当前实现）
+## 目录边界
 
-QVerisGet 是当前最小的业务接口，而非完整 benchmark 模板。调用输入为 query、request_id 与 idempotency_key；后两者是安全的 opaque identifier。公共输出只有：
+- [`benchmarks/`](benchmarks/README.md)：候选题库、版本清单和题库验证说明。
+- [`runner/`](runner/README.md)：未来 Runner 的运行与记录合同；正式 Runner 尚未实现。
+- [`get/`](get/README.md)：未来自研公开 `get` 的响应合同；自研 `get` 尚未实现。
+- [`docs/architecture.md`](docs/architecture.md)：责任边界与完整数据流。
 
-~~~text
-request_id, status, tool_alias, payload, message
-~~~
-
-status 可为 SUCCESS、EMPTY、BLOCKED、FAILED、UNCERTAIN、CLARIFY、REJECT 或 SEMANTIC_ERROR。公共 response 不含 plan、usage、token、cost、latency、metrics、Tool ID、headers、key、idempotency 或 oracle。
-
-READY 路径恰有 1 次 Agent 调用与至多 1 次 connector 调用；CLARIFY、REJECT 和语义错误各有 1 次 Agent 调用、0 次 connector 调用。内部 trace_sink 仅接收安全 observation（plan 的 status/domain/tool_alias 摘要、allowlisted token 数值、outcome/reason code 与调用计数），供外部 Harness 做 metrics；它不是公共 response，sink 失败也不改变业务结果。
-
-正式 runtime 将由 Agent 输出 `scenario_id` 与标准参数，再由 market × scenario Registry 确定性映射已冻结 Tool；Agent 不接触 Tool ID。历史窄切片记录中的 `quote.realtime.v1`、`price.history.v1`、`statement.financial.v1` 是 Finnhub、Tiingo、FMP 的三条候选证据，保留其 envelope/projection/receipt/cost gate 用于兼容性与真实调用验证；它们不是当前交付合同，也不能代表三个数据方向。
-
-新 Registry 尚未接入 runtime。若恢复 legacy 窄切片真实验证，目标设计是采用默认拒绝、需显式 permit 的验证适配层；受控 paid pilot 仍是独立的 Tool curation/admin 流程，不是正式 get runtime 的替代入口。
-
-目标验证适配层的响应上限应为 1 MiB；它只接受仓外、当前用户所有、普通非 symlink、0600 且内容与其冻结验证记录精确匹配的 permit，并默认拒绝。
-
-因此，可 allowlist 的真实模型只能配合 fake Tool connector 做语义联调，不等于 QVeris live-ready。正式 live activation 仍待完成按市场与细分场景的候选 Tool 真实调用、质量/延迟/稳定性排序并冻结 Registry；后处理/转换/二次 Agent 调用继续 deferred。
-
-详细的 replay/live 边界、请求次数、指标和 Tool selection 规则见 [架构说明](docs/architecture.md)。
-
-## 四项 benchmark 指标
-
-| 指标 | 外部 Harness 口径 |
-|---|---|
-| 语义准确率（semantic_exact） | Harness 将 receipt.plan 的状态、语义槽位、固定 alias 和参数与冻结 case 比较。 |
-| 数据准确率（data_accuracy） | 仅未来 live runner 配合可比较的 independent_source oracle 才可评分；当前 fake replay 一律为 not_scored，不得补造成准确率。 |
-| Token（token_usage） | Harness 从 receipt.raw_usage 派生 prompt、completion、total；未报告时为 unknown。没有已批准的价格表时 token cost=unknown。 |
-| 端到端延迟（e2e_ms） | Harness 用单调时钟记录 e2e，并单列 agent_call_ms、connector_ms（及需要时的确定性 validation）；replay 与 live 分开报告。 |
-
-四项指标由 Harness 模块外拆，不属于 Agent 输出或 Agent 计算；它们不等同于供应商可靠性、生产 SLA 或用户价值。
-
-## Replay、模型 live replay 与 paid Execute
-
-默认 replay 使用 fake model transport 与 fake QVeris transport，目的是验证语义、validation、alias 路由、fixture 比较和记录格式。它不发起外网模型或 Tool 调用。其三条 smoke 记录为 not_scored_oracle；self_check=pass 仅说明 fixture 链路自洽，不是 success、oracle accuracy 或 live 能力。
-
-真实模型只能以显式 model_live_replay_data 模式配合 replay data 使用；它仍使用 fake connector，且模型 API base 必须位于 MODEL_API_BASE_ALLOWLIST。普通 replay 不接受外网模型 transport。
-
-受控 paid pilot 脚本是独立的 Tool curation/admin 流程，不是 core runner 或 get runtime 的替代入口。脚本默认 dry-run；只有传入 --execute、仓库外且 owner-only 0600 的 approval digest 文件、并且该 digest 匹配冻结 plan hash 后，才可尝试一个 approved Execute POST。逐 Tool 仍需要当前 Inspect 证据、明确授权、真实业务成功与 receipt、实际费用和 as-of 验证；replay、HTTP 200 或目录记录均不能替代这些证据。
-
-v3 realtime Tool pilot 是已 superseded 的历史归档 curation 证据，非 runtime alias 或 live-ready 声明。它仅表明：纠正为 parameters 协议后有一次有效业务回执；其响应仍缺少 symbol、source、session、currency 等准确性/新鲜度所需字段或合同证据。相关已忽略的批准工件不构成可提交或可加载的当前合同。
-
-## Tool selection
-
-候选 Tool 必须先通过准确性 gate：请求/响应 schema、域语义、provenance、as-of/时间口径、授权以及可比较 oracle 或相应 live 证据都应成立。通过该 gate 的候选，才按 latency 与 reliability 的 Pareto 前沿比较；不预设“最快”或“最可靠”的单一赢家。
-
-v3–v10 evidence 均只构成历史/窄切片候选证据：Tiingo 历史 EOD、FMP income statement 与 Finnhub quote 均未证明准确、稳定、最快或最佳；Alpha Vantage income statement 在单 Tool、无额外 GET 的数据交付约束下不兼容。正式 Tool 冻结必须在同一 market × scenario 下完成候选真实调用和可比排序后写入新的运行时 Registry。
-
-## 本地运行
-
-要求 Python 3.11。离线 smoke 不需要 API key：
-
-~~~bash
-PYTHONPATH=src python3.11 -m qveris_benchmark \
-  benchmarks/pilot/cases.example.jsonl \
-  --results /private/tmp/qveris-benchmark-replay.jsonl
-~~~
-
-它应输出 mode=replay_fixture_self_check、3 个 case 和 chain_self_checks，并把三条 not_scored_oracle/self_check 记录写到指定路径。可运行测试：
-
-~~~bash
-PYTHONPATH=src python3.11 -m unittest discover -s tests -v
-~~~
-
-## 环境变量与密钥
-
-[.env.example](.env.example) 列出当前预留的配置名：
-
-~~~text
-QVERIS_API_KEY=
-MODEL_API_BASE=
-MODEL_API_BASE_ALLOWLIST=
-MODEL_API_KEY=
-MODEL_ID=
-MODEL_REASONING_EFFORT=
-~~~
-
-当前 replay CLI 不自动读取该文件，也不需要这些值。真实模型接入时，model provider/version/settings 必须作为被测 run 的冻结 profile 记录，且 MODEL_API_BASE 必须匹配 MODEL_API_BASE_ALLOWLIST；不得把模型、URL、header、凭据或 Tool ID 交给模型生成。
-
-历史窄切片验证记录与 paid approval artifact（approved runtime plan/manifest、approval digest）是两套不可互换的历史/验证合同。前者绑定窄切片 alias/schema/receipt/cost/projection；后者才绑定外部 pilot 的批准范围和 plan hash。正式 runtime Registry 仍待按 market × scenario 冻结。approved pilot artifacts 与 artifacts/ 均被 .gitignore 忽略，不能视为可提交、可移植或已发布证据。
-
-不要提交 .env、.env.local、token、API key、raw response、receipt、approved pilot artifact 或结果工件。只在获得单独授权的受控环境设置外部凭据；不要为了运行 replay 填写 QVeris 密钥。
-
-## 已知未完成
-
-- 三 Suite 各 100 case、冻结 dev/selection/holdout 集及完整 oracle；
-- 三域 Tool 的 live selection 与可比较的 accuracy/reliability/latency 证据；
-- Kimi 的真实模型 profile、token 与延迟 baseline；
-- 可报告的 300-case benchmark 结果。
-
-这些缺口存在时，应报告 blocked 或 degraded，而不是推断为成功。
+禁止提交凭据、token、原始供应商响应、原始运行结果、私有 Oracle 快照，或任何 paid pilot / provider probe 资产。
