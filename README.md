@@ -10,7 +10,9 @@ Natural-language query -> one public get -> structured response -> scorer
 
 目标是三个独立 Suite，各 100 题：`realtime_quote`、`historical_price`、`financial_statements`。每套遵循 80 道正常题 / 20 道边界题；市场配额为 A 股 29、港股 28、美股 28、日本 5、英国 5、德国 5。
 
-目前仓库只含 200/300 候选题：历史行情 100 题、财务报表 100 题；实时行情尚未纳入。历史和财报 Oracle 都**未冻结**，因此两套题的 `data_accuracy` 都是 `not_scored`，不得用于正式排名或准确率结论。
+目前仓库只含 200/300 候选题：历史行情 100 题、财务报表 100 题；实时行情尚未纳入。这 200 题不是正式 Runner 输入。历史和财报 Oracle 都**未冻结**，因此两套题的 `data_accuracy` 都是 `not_scored`，不得用于正式排名或准确率结论。
+
+本仓库已实现本地确定性的 Runner、Scorer 和只读 Arena HTTP/SSE 投影；它们只执行/验证冻结输入，不接入真实 GET Provider，不创建正式 300-case 冻结或排名，也不构成生产部署。
 
 ## 运行合同
 
@@ -33,7 +35,7 @@ Natural-language query -> one public get -> structured response -> scorer
 ## 目录边界
 
 - [`benchmarks/`](benchmarks/README.md)：候选题库、版本清单和题库验证说明。
-- [`runner/`](runner/README.md)：未来 Runner 的运行与记录合同；正式 Runner 尚未实现。
+- [`runner/`](runner/README.md)：已实现的本地 Runner、Scorer 和 Arena 的运行与记录合同。
 - [`get/`](get/README.md)：未来自研公开 `get` 的响应合同；自研 `get` 尚未实现。
 - [`docs/architecture.md`](docs/architecture.md)：责任边界与完整数据流。
 
