@@ -1,27 +1,26 @@
 {
   "package_schema_version": "realtime-quote-source-capability-matrix/v1",
   "suite": "realtime_quote",
-  "status": "not_frozen",
-  "data_accuracy": "not_scored",
+  "status": "contract_frozen_runtime_capture_pending",
+  "data_accuracy": "82_runtime_capture_required;_18_not_applicable",
   "source_candidate": {
     "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
-    "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+    "sha256": "6803e0cbc12a1b40b541aaadf70cbda4c0c6e646a4c185a56a1cc1d4b16577ec"
   },
   "admission_rule": {
-    "live_bracketed_requires": [
-      "Two distinct licensed market-data providers with documented internal benchmark storage/use permission and distinct independence groups.",
-      "For each comparison, provider quote timestamps, evaluator captured_at, market session, timezone, currency, and unit.",
-      "A pre-bound staleness limit, cross-source skew limit, and tick tolerance; none may be inferred after capture.",
-      "A declared before/after or dual-reference capture method, preserved in evidence receipts and independently reviewed."
+    "runtime_source_coherent_requires": [
+      "At least one complete source receipt per dynamic case: source identity, response hash, provider quote timestamp, evaluator captured_at, session, timezone, currency, unit, freshness and tick.",
+      "One accepted variant uses one complete source. More sources may create alternative accepted variants only; never average or cross-source splice.",
+      "An invalid or absent receipt marks only that case Data Accuracy not_scored."
     ],
     "replay_fixture_rule": "A replay fixture may support deterministic regression only. It must use snapshot_mode=replay_fixture and evaluation_use=non_formal_replay_only; it never contributes to formal data_accuracy or rankings.",
     "hard_scoring_exclusion": "Candidate provider tool parameters are not a hard-scoring target."
   },
   "capability_status": {
-    "live_bracketed_dual_provider": "not_admitted",
-    "license_evidence": "not_admitted",
-    "reference_capture_contract": "unbound",
+    "static_request_contracts": "frozen_100",
+    "state_oracles": "frozen_18",
+    "runtime_source_receipts": "not_collected_82",
     "replay_fixture": "not_collected_non_formal_only"
   },
-  "conclusion": "No authorized dual-provider realtime reference source or pre-bound capture policy is present in this package. No case is admitted for formal realtime value-oracle freezing."
+  "conclusion": "Static request contracts and state-only Oracles are frozen. No dynamic value receipt is stored here; the current Runner cannot collect one."
 }

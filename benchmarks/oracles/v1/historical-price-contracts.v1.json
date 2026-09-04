@@ -1,0 +1,4359 @@
+{
+  "schema_version": "historical-price-contract-registry/v1",
+  "suite": "historical_price",
+  "status": "candidate_semantic_contracts_complete_source_evidence_pending",
+  "description": "Evaluator-owned historical-price semantic contracts. They bind query identity and calculation semantics without admitting sources or numeric market values.",
+  "raw_query_integrity": "Each contract stores a SHA-256 of the unmodified candidate query.",
+  "normal_numeric_contract_count": 50,
+  "state_contract_count": 50,
+  "state_response_policy": {
+    "status_precedence": [
+      {
+        "rank": 1,
+        "status": "unsupported",
+        "when": "The requested entity type, field, comparison task, or task domain is outside historical_price v1 scope."
+      },
+      {
+        "rank": 2,
+        "status": "needs_clarification",
+        "when": "The request is in scope but lacks a required semantic dimension or has incompatible aggregation and date-window semantics."
+      },
+      {
+        "rank": 3,
+        "status": "no_data",
+        "when": "The request is otherwise fully bound and the applicable exchange calendar/session proves that no eligible trading bar exists."
+      }
+    ],
+    "rule": "Apply the first matching status. State-only cases never enter the Data Accuracy denominator and must not emit numeric values before their state contract is resolved."
+  },
+  "aggregation_policy": {
+    "D": {
+      "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+      "bar": "daily",
+      "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+    },
+    "W": {
+      "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+      "bar": "weekly",
+      "bucket": "market-local Monday-Sunday calendar week",
+      "rule": "Open is the first eligible regular-session open, high/low are extrema, close is the last eligible regular-session close, and volume is the sum of eligible regular-session volume within the week."
+    },
+    "M": {
+      "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+      "bar": "monthly",
+      "bucket": "full natural calendar month in the market-local timezone",
+      "rule": "Open is the first eligible regular-session open, high/low are extrema, close is the last eligible regular-session close, and volume is the sum of eligible regular-session volume in the full month. A partial-week date range is not a monthly bar."
+    }
+  },
+  "numeric_acquisition_contracts": [
+    {
+      "contract_id": "historical-price-numeric-001",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-A股-01"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-01",
+          "algorithm": "sha256",
+          "value": "78cbef057ef0f6c19e4454afa6a07f181390a901949e95695638da2f32ca3ede"
+        }
+      ],
+      "entity": {
+        "name": "贵州茅台",
+        "symbol": "600519.SH"
+      },
+      "market": "CN",
+      "listing": {
+        "exchange": "Shanghai Stock Exchange",
+        "mic": "XSHG"
+      },
+      "currency": "CNY",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Shanghai",
+      "trading_calendar": "China mainland equity regular trading calendar",
+      "fields": [
+        "close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-08-24",
+        "end_date": "2026-08-28",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-002",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-A股-02"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-02",
+          "algorithm": "sha256",
+          "value": "0a0f1c0207e8e026942d75fb801cbde9463863d1d4dcb74ae4133226397fdd8b"
+        }
+      ],
+      "entity": {
+        "name": "平安银行",
+        "symbol": "000001.SZ"
+      },
+      "market": "CN",
+      "listing": {
+        "exchange": "Shenzhen Stock Exchange",
+        "mic": "XSEC"
+      },
+      "currency": "CNY",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Shanghai",
+      "trading_calendar": "China mainland equity regular trading calendar",
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-07-27",
+        "end_date": "2026-08-07",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-003",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-A股-03"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-03",
+          "algorithm": "sha256",
+          "value": "7a21baf3ff0d58d5233a6b265c99ed64bcdfceebcc07986c0a70647095fd897e"
+        }
+      ],
+      "entity": {
+        "name": "万科A",
+        "symbol": "000002.SZ"
+      },
+      "market": "CN",
+      "listing": {
+        "exchange": "Shenzhen Stock Exchange",
+        "mic": "XSEC"
+      },
+      "currency": "CNY",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Shanghai",
+      "trading_calendar": "China mainland equity regular trading calendar",
+      "fields": [
+        "adj_close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-08-03",
+        "end_date": "2026-08-07",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "forward_adjusted",
+        "formula": "adjusted_value(t) = raw_value(t) × cumulative_adjustment_factor(t) / cumulative_adjustment_factor(anchor)",
+        "anchor": "The last eligible regular-session trading date inside the closed requested market-local date window; record the actual anchor session date and factor in source evidence before value admission.",
+        "revision_policy": "Freeze the source provider adjustment-factor revision with each capture. Corporate-action corrections or factor revisions require a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-004",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-A股-07"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-07",
+          "algorithm": "sha256",
+          "value": "42f0fc23614cf46988256d2a27bb35f7d712e004548b53767453d154d80675df"
+        }
+      ],
+      "entity": {
+        "name": "五粮液",
+        "symbol": "000858.SZ"
+      },
+      "market": "CN",
+      "listing": {
+        "exchange": "Shenzhen Stock Exchange",
+        "mic": "XSEC"
+      },
+      "currency": "CNY",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Shanghai",
+      "trading_calendar": "China mainland equity regular trading calendar",
+      "fields": [
+        "high",
+        "low"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-04-13",
+        "end_date": "2026-04-17",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-005",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-A股-10"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-10",
+          "algorithm": "sha256",
+          "value": "1f2ac00a54a148a647f1fbbf92f198aacc262bf1e8ec88591eccb4435c7990d9"
+        }
+      ],
+      "entity": {
+        "name": "平安银行",
+        "symbol": "000001.SZ"
+      },
+      "market": "CN",
+      "listing": {
+        "exchange": "Shenzhen Stock Exchange",
+        "mic": "XSEC"
+      },
+      "currency": "CNY",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Shanghai",
+      "trading_calendar": "China mainland equity regular trading calendar",
+      "fields": [
+        "close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-08-24",
+        "end_date": "2026-08-28",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-006",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-A股-11"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-11",
+          "algorithm": "sha256",
+          "value": "e7dd3dd8916ecaeb2b57d7899d00dab712bb7d9a751148ec2db12827549733ec"
+        }
+      ],
+      "entity": {
+        "name": "万科A",
+        "symbol": "000002.SZ"
+      },
+      "market": "CN",
+      "listing": {
+        "exchange": "Shenzhen Stock Exchange",
+        "mic": "XSEC"
+      },
+      "currency": "CNY",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Shanghai",
+      "trading_calendar": "China mainland equity regular trading calendar",
+      "fields": [
+        "close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-07-27",
+        "end_date": "2026-08-07",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-007",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-A股-12"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-12",
+          "algorithm": "sha256",
+          "value": "8fe613d14608429efba01ef742e4e9ab87f1f708fff840a86d0eb0143aabd8db"
+        }
+      ],
+      "entity": {
+        "name": "宁德时代",
+        "symbol": "300750.SZ"
+      },
+      "market": "CN",
+      "listing": {
+        "exchange": "Shenzhen Stock Exchange",
+        "mic": "XSEC"
+      },
+      "currency": "CNY",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Shanghai",
+      "trading_calendar": "China mainland equity regular trading calendar",
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-08-03",
+        "end_date": "2026-08-07",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-008",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-A股-15"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-15",
+          "algorithm": "sha256",
+          "value": "5b184428d31fd816ac8a849d378fd5086f21583c9d94e2dace3a7b207b381db0"
+        }
+      ],
+      "entity": {
+        "name": "五粮液",
+        "symbol": "000858.SZ"
+      },
+      "market": "CN",
+      "listing": {
+        "exchange": "Shenzhen Stock Exchange",
+        "mic": "XSEC"
+      },
+      "currency": "CNY",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Shanghai",
+      "trading_calendar": "China mainland equity regular trading calendar",
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "interval": "W",
+      "date_window": {
+        "start_date": "2026-05-11",
+        "end_date": "2026-05-15",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "weekly",
+        "bucket": "market-local Monday-Sunday calendar week",
+        "rule": "Open is the first eligible regular-session open, high/low are extrema, close is the last eligible regular-session close, and volume is the sum of eligible regular-session volume within the week."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-009",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-A股-17"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-17",
+          "algorithm": "sha256",
+          "value": "0c7198400683cd2515c7b2025e2cf77a810be4748a7206ba85e6d2c291d64598"
+        }
+      ],
+      "entity": {
+        "name": "贵州茅台",
+        "symbol": "600519.SH"
+      },
+      "market": "CN",
+      "listing": {
+        "exchange": "Shanghai Stock Exchange",
+        "mic": "XSHG"
+      },
+      "currency": "CNY",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Shanghai",
+      "trading_calendar": "China mainland equity regular trading calendar",
+      "fields": [
+        "high",
+        "low"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-02-09",
+        "end_date": "2026-02-13",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-010",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-A股-18"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-18",
+          "algorithm": "sha256",
+          "value": "14d2a0a2880f4b941338c51dc75b3251b0e14ae7e5577dd103e1e270940050c2"
+        }
+      ],
+      "entity": {
+        "name": "平安银行",
+        "symbol": "000001.SZ"
+      },
+      "market": "CN",
+      "listing": {
+        "exchange": "Shenzhen Stock Exchange",
+        "mic": "XSEC"
+      },
+      "currency": "CNY",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Shanghai",
+      "trading_calendar": "China mainland equity regular trading calendar",
+      "fields": [
+        "adj_open",
+        "adj_high",
+        "adj_low",
+        "adj_close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-01-12",
+        "end_date": "2026-01-16",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "forward_adjusted",
+        "formula": "adjusted_value(t) = raw_value(t) × cumulative_adjustment_factor(t) / cumulative_adjustment_factor(anchor)",
+        "anchor": "The last eligible regular-session trading date inside the closed requested market-local date window; record the actual anchor session date and factor in source evidence before value admission.",
+        "revision_policy": "Freeze the source provider adjustment-factor revision with each capture. Corporate-action corrections or factor revisions require a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-011",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-A股-22"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-22",
+          "algorithm": "sha256",
+          "value": "b5e748ab6c292f273fdc5a62e9c683de88abb99de6ae1458a1545b96f9fbd38c"
+        }
+      ],
+      "entity": {
+        "name": "招商银行",
+        "symbol": "600036.SH"
+      },
+      "market": "CN",
+      "listing": {
+        "exchange": "Shanghai Stock Exchange",
+        "mic": "XSHG"
+      },
+      "currency": "CNY",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Shanghai",
+      "trading_calendar": "China mainland equity regular trading calendar",
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-07-06",
+        "end_date": "2026-07-10",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-012",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-A股-23"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-23",
+          "algorithm": "sha256",
+          "value": "04499e84896c4141a0843f200e0135a5417b327d9fa880fb5588f5f12ae8c6ef"
+        }
+      ],
+      "entity": {
+        "name": "五粮液",
+        "symbol": "000858.SZ"
+      },
+      "market": "CN",
+      "listing": {
+        "exchange": "Shenzhen Stock Exchange",
+        "mic": "XSEC"
+      },
+      "currency": "CNY",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Shanghai",
+      "trading_calendar": "China mainland equity regular trading calendar",
+      "fields": [
+        "adj_close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "forward_adjusted",
+        "formula": "adjusted_value(t) = raw_value(t) × cumulative_adjustment_factor(t) / cumulative_adjustment_factor(anchor)",
+        "anchor": "The last eligible regular-session trading date inside the closed requested market-local date window; record the actual anchor session date and factor in source evidence before value admission.",
+        "revision_policy": "Freeze the source provider adjustment-factor revision with each capture. Corporate-action corrections or factor revisions require a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-013",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-港股-01"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-01",
+          "algorithm": "sha256",
+          "value": "72e2c9f02605a85752dd0760123d29ba7643d8ec99febc4c7392f6a3a5956407"
+        }
+      ],
+      "entity": {
+        "name": "腾讯控股",
+        "symbol": "00700.HK"
+      },
+      "market": "HK",
+      "listing": {
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG"
+      },
+      "currency": "HKD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Hong_Kong",
+      "trading_calendar": "Hong Kong equities regular trading calendar",
+      "fields": [
+        "close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-07-06",
+        "end_date": "2026-07-10",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-014",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-港股-02"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-02",
+          "algorithm": "sha256",
+          "value": "ff0c3a66f88320681efafff0a045cb7cb09ce8b4fea730dfed6a79982842a725"
+        }
+      ],
+      "entity": {
+        "name": "阿里巴巴-W",
+        "symbol": "09988.HK"
+      },
+      "market": "HK",
+      "listing": {
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG"
+      },
+      "currency": "HKD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Hong_Kong",
+      "trading_calendar": "Hong Kong equities regular trading calendar",
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-015",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-港股-03"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-03",
+          "algorithm": "sha256",
+          "value": "6ece8728baa9900aad0d839fdacaa2950987861369b126186f4ea48887a1e888"
+        }
+      ],
+      "entity": {
+        "name": "美团-W",
+        "symbol": "03690.HK"
+      },
+      "market": "HK",
+      "listing": {
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG"
+      },
+      "currency": "HKD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Hong_Kong",
+      "trading_calendar": "Hong Kong equities regular trading calendar",
+      "fields": [
+        "adj_close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-05-04",
+        "end_date": "2026-05-08",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "forward_adjusted",
+        "formula": "adjusted_value(t) = raw_value(t) × cumulative_adjustment_factor(t) / cumulative_adjustment_factor(anchor)",
+        "anchor": "The last eligible regular-session trading date inside the closed requested market-local date window; record the actual anchor session date and factor in source evidence before value admission.",
+        "revision_policy": "Freeze the source provider adjustment-factor revision with each capture. Corporate-action corrections or factor revisions require a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-016",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-港股-04"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-04",
+          "algorithm": "sha256",
+          "value": "755142529ab64248f5c0b68f3ddd161ff0f36cd6bc4eaacbeaf7b57085ee1e78"
+        }
+      ],
+      "entity": {
+        "name": "小米集团-W",
+        "symbol": "01810.HK"
+      },
+      "market": "HK",
+      "listing": {
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG"
+      },
+      "currency": "HKD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Hong_Kong",
+      "trading_calendar": "Hong Kong equities regular trading calendar",
+      "fields": [
+        "volume"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-04-07",
+        "end_date": "2026-04-10",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-017",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-港股-08"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-08",
+          "algorithm": "sha256",
+          "value": "bf3fe3cf03fd6cf4876f81a9a6a51ce59428d7a5d7e7408d59a8b6d1df7ce0c6"
+        }
+      ],
+      "entity": {
+        "name": "友邦保险",
+        "symbol": "01299.HK"
+      },
+      "market": "HK",
+      "listing": {
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG"
+      },
+      "currency": "HKD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Hong_Kong",
+      "trading_calendar": "Hong Kong equities regular trading calendar",
+      "fields": [
+        "adj_open",
+        "adj_high",
+        "adj_low",
+        "adj_close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2025-12-01",
+        "end_date": "2025-12-05",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "forward_adjusted",
+        "formula": "adjusted_value(t) = raw_value(t) × cumulative_adjustment_factor(t) / cumulative_adjustment_factor(anchor)",
+        "anchor": "The last eligible regular-session trading date inside the closed requested market-local date window; record the actual anchor session date and factor in source evidence before value admission.",
+        "revision_policy": "Freeze the source provider adjustment-factor revision with each capture. Corporate-action corrections or factor revisions require a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-018",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-港股-10"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-10",
+          "algorithm": "sha256",
+          "value": "42aa2cb37a9837fa4428a39bc0dc6d53e9d2542435ba17695adca10621f4b8ed"
+        }
+      ],
+      "entity": {
+        "name": "阿里巴巴-W",
+        "symbol": "09988.HK"
+      },
+      "market": "HK",
+      "listing": {
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG"
+      },
+      "currency": "HKD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Hong_Kong",
+      "trading_calendar": "Hong Kong equities regular trading calendar",
+      "fields": [
+        "close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-07-06",
+        "end_date": "2026-07-10",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-019",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-港股-11"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-11",
+          "algorithm": "sha256",
+          "value": "deb9ec9ea592e957509f4794d20f6849fe4373292e40d5d6fba3bca2288cb82e"
+        }
+      ],
+      "entity": {
+        "name": "美团-W",
+        "symbol": "03690.HK"
+      },
+      "market": "HK",
+      "listing": {
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG"
+      },
+      "currency": "HKD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Hong_Kong",
+      "trading_calendar": "Hong Kong equities regular trading calendar",
+      "fields": [
+        "close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-020",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-港股-12"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-12",
+          "algorithm": "sha256",
+          "value": "748a854025febb498c0d2fa76bcfcbdf1102bbfd352b70924d3a779abf360f25"
+        }
+      ],
+      "entity": {
+        "name": "小米集团-W",
+        "symbol": "01810.HK"
+      },
+      "market": "HK",
+      "listing": {
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG"
+      },
+      "currency": "HKD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Hong_Kong",
+      "trading_calendar": "Hong Kong equities regular trading calendar",
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-05-04",
+        "end_date": "2026-05-08",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-021",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-港股-16"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-16",
+          "algorithm": "sha256",
+          "value": "aec0e5a45a62abfab30243f44ea8e6d82e6fe80ff41e435e93445b2eed2ebe77"
+        }
+      ],
+      "entity": {
+        "name": "友邦保险",
+        "symbol": "01299.HK"
+      },
+      "market": "HK",
+      "listing": {
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG"
+      },
+      "currency": "HKD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Hong_Kong",
+      "trading_calendar": "Hong Kong equities regular trading calendar",
+      "fields": [
+        "open",
+        "close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-01-05",
+        "end_date": "2026-01-09",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-022",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-港股-17"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-17",
+          "algorithm": "sha256",
+          "value": "bd2f9c78841adfe83651fa0999fb3f9e1e275f808dc1ae4a1ce6ab87aa13ed90"
+        }
+      ],
+      "entity": {
+        "name": "腾讯控股",
+        "symbol": "00700.HK"
+      },
+      "market": "HK",
+      "listing": {
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG"
+      },
+      "currency": "HKD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Hong_Kong",
+      "trading_calendar": "Hong Kong equities regular trading calendar",
+      "fields": [
+        "high",
+        "low"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2025-11-03",
+        "end_date": "2025-11-07",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-023",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-港股-18"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-18",
+          "algorithm": "sha256",
+          "value": "f9399b56c2112550026848a7c5b5891252487c8fd5ab5d23128ee3cfcff83729"
+        }
+      ],
+      "entity": {
+        "name": "阿里巴巴-W",
+        "symbol": "09988.HK"
+      },
+      "market": "HK",
+      "listing": {
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG"
+      },
+      "currency": "HKD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Hong_Kong",
+      "trading_calendar": "Hong Kong equities regular trading calendar",
+      "fields": [
+        "adj_open",
+        "adj_high",
+        "adj_low",
+        "adj_close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2025-10-06",
+        "end_date": "2025-10-10",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "forward_adjusted",
+        "formula": "adjusted_value(t) = raw_value(t) × cumulative_adjustment_factor(t) / cumulative_adjustment_factor(anchor)",
+        "anchor": "The last eligible regular-session trading date inside the closed requested market-local date window; record the actual anchor session date and factor in source evidence before value admission.",
+        "revision_policy": "Freeze the source provider adjustment-factor revision with each capture. Corporate-action corrections or factor revisions require a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-024",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-港股-20"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-20",
+          "algorithm": "sha256",
+          "value": "b70499bacf0d328b04fce4e6c147a5bd4bed08dfec8c2c0d8b8756823beb5651"
+        }
+      ],
+      "entity": {
+        "name": "小米集团-W",
+        "symbol": "01810.HK"
+      },
+      "market": "HK",
+      "listing": {
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG"
+      },
+      "currency": "HKD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Hong_Kong",
+      "trading_calendar": "Hong Kong equities regular trading calendar",
+      "fields": [
+        "close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-025",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-港股-22"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-22",
+          "algorithm": "sha256",
+          "value": "1ad29131f1b36916e935091f23daf0ce9b645cdbbc3ba1cff1d535afcb74b3a0"
+        }
+      ],
+      "entity": {
+        "name": "汇丰控股",
+        "symbol": "00005.HK"
+      },
+      "market": "HK",
+      "listing": {
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG"
+      },
+      "currency": "HKD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Hong_Kong",
+      "trading_calendar": "Hong Kong equities regular trading calendar",
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-04-07",
+        "end_date": "2026-04-10",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-026",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-01"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-01",
+          "algorithm": "sha256",
+          "value": "d9c91fdc9f372e774cc94413aaae147c2b17423efa671354755547e44c04cd43"
+        }
+      ],
+      "entity": {
+        "name": "苹果",
+        "symbol": "AAPL"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "Nasdaq Stock Market",
+        "mic": "XNAS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-07-06",
+        "end_date": "2026-07-10",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-027",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-02"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-02",
+          "algorithm": "sha256",
+          "value": "916bf48fb0f2584b41f483fbc0342b498c2a6a73ca4fc1e3a4c1dab0caaeaaa0"
+        }
+      ],
+      "entity": {
+        "name": "微软",
+        "symbol": "MSFT"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "Nasdaq Stock Market",
+        "mic": "XNAS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-028",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-03"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-03",
+          "algorithm": "sha256",
+          "value": "63aa702cc3078af8900ba68f318ea63bac1061a83b895226c1ed889bca553988"
+        }
+      ],
+      "entity": {
+        "name": "英伟达",
+        "symbol": "NVDA"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "Nasdaq Stock Market",
+        "mic": "XNAS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "adj_close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-05-04",
+        "end_date": "2026-05-08",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "forward_adjusted",
+        "formula": "adjusted_value(t) = raw_value(t) × cumulative_adjustment_factor(t) / cumulative_adjustment_factor(anchor)",
+        "anchor": "The last eligible regular-session trading date inside the closed requested market-local date window; record the actual anchor session date and factor in source evidence before value admission.",
+        "revision_policy": "Freeze the source provider adjustment-factor revision with each capture. Corporate-action corrections or factor revisions require a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-029",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-04"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-04",
+          "algorithm": "sha256",
+          "value": "593a4a2be682aef9f180337cbfa320ab09706f140372271efa2de17835c36029"
+        }
+      ],
+      "entity": {
+        "name": "特斯拉",
+        "symbol": "TSLA"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "Nasdaq Stock Market",
+        "mic": "XNAS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "volume"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-04-13",
+        "end_date": "2026-04-17",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-030",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-05"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-05",
+          "algorithm": "sha256",
+          "value": "15207f0363fb26a19cdafb3db4022a8732cd99c1e0d14d002ee413cc2d25a69d"
+        }
+      ],
+      "entity": {
+        "name": "亚马逊",
+        "symbol": "AMZN"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "Nasdaq Stock Market",
+        "mic": "XNAS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "interval": "W",
+      "date_window": {
+        "start_date": "2026-03-02",
+        "end_date": "2026-03-06",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "weekly",
+        "bucket": "market-local Monday-Sunday calendar week",
+        "rule": "Open is the first eligible regular-session open, high/low are extrema, close is the last eligible regular-session close, and volume is the sum of eligible regular-session volume within the week."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-031",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-06"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-06",
+          "algorithm": "sha256",
+          "value": "6b9f67414f99104ecf74fc7ebd65a5edf7f6054faf595173414392e95e517de0"
+        }
+      ],
+      "entity": {
+        "name": "谷歌A",
+        "symbol": "GOOGL"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "Nasdaq Stock Market",
+        "mic": "XNAS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "open",
+        "close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-02-09",
+        "end_date": "2026-02-13",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-032",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-07"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-07",
+          "algorithm": "sha256",
+          "value": "80333193934f030037150ebf7790db20e0b66166570f89061f982745db5309e2"
+        }
+      ],
+      "entity": {
+        "name": "Meta",
+        "symbol": "META"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "Nasdaq Stock Market",
+        "mic": "XNAS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "high",
+        "low"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-01-05",
+        "end_date": "2026-01-09",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-033",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-08"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-08",
+          "algorithm": "sha256",
+          "value": "b14c734067bc649a53905020da49071b9ed561c4b8b85b9270718da8b7f44c9f"
+        }
+      ],
+      "entity": {
+        "name": "超威半导体",
+        "symbol": "AMD"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "Nasdaq Stock Market",
+        "mic": "XNAS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "adj_open",
+        "adj_high",
+        "adj_low",
+        "adj_close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2025-12-01",
+        "end_date": "2025-12-05",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "forward_adjusted",
+        "formula": "adjusted_value(t) = raw_value(t) × cumulative_adjustment_factor(t) / cumulative_adjustment_factor(anchor)",
+        "anchor": "The last eligible regular-session trading date inside the closed requested market-local date window; record the actual anchor session date and factor in source evidence before value admission.",
+        "revision_policy": "Freeze the source provider adjustment-factor revision with each capture. Corporate-action corrections or factor revisions require a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-034",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-10"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-10",
+          "algorithm": "sha256",
+          "value": "4a733f221ab7c776f47873cadaa02ba17eb59e45d2d8383bf17a525355b0741e"
+        }
+      ],
+      "entity": {
+        "name": "可口可乐",
+        "symbol": "KO"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "New York Stock Exchange",
+        "mic": "XNYS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2025-10-06",
+        "end_date": "2025-10-10",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-035",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-11"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-11",
+          "algorithm": "sha256",
+          "value": "4b35cafa006a030d30266cc7a9daa083d84d94ca7b36596bc45dc29e277c3978"
+        }
+      ],
+      "entity": {
+        "name": "苹果",
+        "symbol": "AAPL"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "Nasdaq Stock Market",
+        "mic": "XNAS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-036",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-12"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-12",
+          "algorithm": "sha256",
+          "value": "4eb52ebb3725a68c47292995bbd6fb2954a8f2fca312bdad0c01eb6d85d5f990"
+        }
+      ],
+      "entity": {
+        "name": "微软",
+        "symbol": "MSFT"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "Nasdaq Stock Market",
+        "mic": "XNAS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-05-04",
+        "end_date": "2026-05-08",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-037",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-13"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-13",
+          "algorithm": "sha256",
+          "value": "a9b852a1d2d646adfc7ebdce8bf79b04429e6fd1fcc2126041316518373f9d09"
+        }
+      ],
+      "entity": {
+        "name": "英伟达",
+        "symbol": "NVDA"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "Nasdaq Stock Market",
+        "mic": "XNAS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "adj_close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-04-13",
+        "end_date": "2026-04-17",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "forward_adjusted",
+        "formula": "adjusted_value(t) = raw_value(t) × cumulative_adjustment_factor(t) / cumulative_adjustment_factor(anchor)",
+        "anchor": "The last eligible regular-session trading date inside the closed requested market-local date window; record the actual anchor session date and factor in source evidence before value admission.",
+        "revision_policy": "Freeze the source provider adjustment-factor revision with each capture. Corporate-action corrections or factor revisions require a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-038",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-14"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-14",
+          "algorithm": "sha256",
+          "value": "03441d22d360ff5b2d09b2c494e80fc402ed00db1b98106e85d5f80efd9a1265"
+        }
+      ],
+      "entity": {
+        "name": "特斯拉",
+        "symbol": "TSLA"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "Nasdaq Stock Market",
+        "mic": "XNAS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "volume"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-03-02",
+        "end_date": "2026-03-06",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-039",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-15"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-15",
+          "algorithm": "sha256",
+          "value": "77670db57e150a50d84426c4be9550a0830dca716adcc839b5f9ab9002752ed2"
+        }
+      ],
+      "entity": {
+        "name": "亚马逊",
+        "symbol": "AMZN"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "Nasdaq Stock Market",
+        "mic": "XNAS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "interval": "W",
+      "date_window": {
+        "start_date": "2026-02-09",
+        "end_date": "2026-02-13",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "weekly",
+        "bucket": "market-local Monday-Sunday calendar week",
+        "rule": "Open is the first eligible regular-session open, high/low are extrema, close is the last eligible regular-session close, and volume is the sum of eligible regular-session volume within the week."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-040",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-16"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-16",
+          "algorithm": "sha256",
+          "value": "ee67d51fbf37a7472180418ddf699812faef1f8bdf6e5815f5a9348d213f07f0"
+        }
+      ],
+      "entity": {
+        "name": "谷歌A",
+        "symbol": "GOOGL"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "Nasdaq Stock Market",
+        "mic": "XNAS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "open",
+        "close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-01-05",
+        "end_date": "2026-01-09",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-041",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-17"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-17",
+          "algorithm": "sha256",
+          "value": "021f560aa9e811c395d1b77dce021a866cffe9e578f2ecb19ec61ce0fabdffac"
+        }
+      ],
+      "entity": {
+        "name": "Meta",
+        "symbol": "META"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "Nasdaq Stock Market",
+        "mic": "XNAS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "high",
+        "low"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2025-12-01",
+        "end_date": "2025-12-05",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-042",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-18"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-18",
+          "algorithm": "sha256",
+          "value": "f0b88aae221418e11041dcac0eafad9868b2544c1ac2d7abe052fc008605c827"
+        }
+      ],
+      "entity": {
+        "name": "超威半导体",
+        "symbol": "AMD"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "Nasdaq Stock Market",
+        "mic": "XNAS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "adj_open",
+        "adj_high",
+        "adj_low",
+        "adj_close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2025-11-03",
+        "end_date": "2025-11-07",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "forward_adjusted",
+        "formula": "adjusted_value(t) = raw_value(t) × cumulative_adjustment_factor(t) / cumulative_adjustment_factor(anchor)",
+        "anchor": "The last eligible regular-session trading date inside the closed requested market-local date window; record the actual anchor session date and factor in source evidence before value admission.",
+        "revision_policy": "Freeze the source provider adjustment-factor revision with each capture. Corporate-action corrections or factor revisions require a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-043",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-20"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-20",
+          "algorithm": "sha256",
+          "value": "c8d18c9024cb67e85084c08970ce97314c160412a15e036b25540a38bd697af6"
+        }
+      ],
+      "entity": {
+        "name": "可口可乐",
+        "symbol": "KO"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "New York Stock Exchange",
+        "mic": "XNYS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-07-06",
+        "end_date": "2026-07-10",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-044",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-21"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-21",
+          "algorithm": "sha256",
+          "value": "aada9b1c20ad6a9668cfa61b441f550cea071de7f683d4ff8181d2d69c4247f5"
+        }
+      ],
+      "entity": {
+        "name": "苹果",
+        "symbol": "AAPL"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "Nasdaq Stock Market",
+        "mic": "XNAS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-05-04",
+        "end_date": "2026-05-08",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-045",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-22"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-22",
+          "algorithm": "sha256",
+          "value": "800f033ec0587355a5fa7608ef25915eb86ec20f71bea956de6689a7bda0a31e"
+        }
+      ],
+      "entity": {
+        "name": "微软",
+        "symbol": "MSFT"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "Nasdaq Stock Market",
+        "mic": "XNAS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-04-13",
+        "end_date": "2026-04-17",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-046",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-美股-23"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-23",
+          "algorithm": "sha256",
+          "value": "94edfa948ba2691814bbfc1223bde70f357ef01550d015a8237b7f0ed03cf0a8"
+        }
+      ],
+      "entity": {
+        "name": "英伟达",
+        "symbol": "NVDA"
+      },
+      "market": "US",
+      "listing": {
+        "exchange": "Nasdaq Stock Market",
+        "mic": "XNAS"
+      },
+      "currency": "USD",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "America/New_York",
+      "trading_calendar": "US primary-listing regular equity trading calendar",
+      "fields": [
+        "adj_close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-03-02",
+        "end_date": "2026-03-06",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "forward_adjusted",
+        "formula": "adjusted_value(t) = raw_value(t) × cumulative_adjustment_factor(t) / cumulative_adjustment_factor(anchor)",
+        "anchor": "The last eligible regular-session trading date inside the closed requested market-local date window; record the actual anchor session date and factor in source evidence before value admission.",
+        "revision_policy": "Freeze the source provider adjustment-factor revision with each capture. Corporate-action corrections or factor revisions require a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-047",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-日本-02"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-日本-02",
+          "algorithm": "sha256",
+          "value": "fbe8df7215eab10eaafff350039f4ab9ad89c5edfd6506dc0a1015cee4afd61c"
+        }
+      ],
+      "entity": {
+        "name": "索尼",
+        "symbol": "6758.T"
+      },
+      "market": "JP",
+      "listing": {
+        "exchange": "Tokyo Stock Exchange",
+        "mic": "XTKS"
+      },
+      "currency": "JPY",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Tokyo",
+      "trading_calendar": "Tokyo Stock Exchange regular trading calendar",
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-048",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-日本-03"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-日本-03",
+          "algorithm": "sha256",
+          "value": "fe58442c78b9d12364171bce3bb9fc98d835bebeac2cb7bdf6a3ad19703a0d2c"
+        }
+      ],
+      "entity": {
+        "name": "东京电子",
+        "symbol": "8035.T"
+      },
+      "market": "JP",
+      "listing": {
+        "exchange": "Tokyo Stock Exchange",
+        "mic": "XTKS"
+      },
+      "currency": "JPY",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Asia/Tokyo",
+      "trading_calendar": "Tokyo Stock Exchange regular trading calendar",
+      "fields": [
+        "adj_close"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-05-11",
+        "end_date": "2026-05-15",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "forward_adjusted",
+        "formula": "adjusted_value(t) = raw_value(t) × cumulative_adjustment_factor(t) / cumulative_adjustment_factor(anchor)",
+        "anchor": "The last eligible regular-session trading date inside the closed requested market-local date window; record the actual anchor session date and factor in source evidence before value admission.",
+        "revision_policy": "Freeze the source provider adjustment-factor revision with each capture. Corporate-action corrections or factor revisions require a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-049",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-英国-02"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-英国-02",
+          "algorithm": "sha256",
+          "value": "82516f52675f12d1f8e1ce28b01e94c6e84969b8d347cd41cb9e4bc67496e05f"
+        }
+      ],
+      "entity": {
+        "name": "阿斯利康",
+        "symbol": "AZN.L"
+      },
+      "market": "GB",
+      "listing": {
+        "exchange": "London Stock Exchange",
+        "mic": "XLON"
+      },
+      "currency": "GBP",
+      "units": {
+        "price": "GBX_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Europe/London",
+      "trading_calendar": "London Stock Exchange regular trading calendar",
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    },
+    {
+      "contract_id": "historical-price-numeric-050",
+      "contract_type": "numeric_acquisition",
+      "contract_status": "candidate_source_evidence_pending",
+      "case_ids": [
+        "hist-德国-02"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-德国-02",
+          "algorithm": "sha256",
+          "value": "1582e1805ee5b9f4317bfb42920a940f9483acd07fa97a06a5b635eec282a6db"
+        }
+      ],
+      "entity": {
+        "name": "西门子",
+        "symbol": "SIE.DE"
+      },
+      "market": "DE",
+      "listing": {
+        "exchange": "Xetra",
+        "mic": "XETR"
+      },
+      "currency": "EUR",
+      "units": {
+        "price": "currency_per_share",
+        "volume": "shares"
+      },
+      "timezone": "Europe/Berlin",
+      "trading_calendar": "Xetra regular trading calendar",
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "interval": "D",
+      "date_window": {
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "boundary": "closed_inclusive_market_local_dates"
+      },
+      "aggregation": {
+        "date_window": "closed inclusive market-local calendar dates; never synthesize bars for exchange closures",
+        "bar": "daily",
+        "rule": "One bar per eligible regular-session trading date; open/high/low/close as published and volume summed only for that session."
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "formula": "reported_bar_value(t) = source_raw_bar_value(t)",
+        "anchor": "not_applicable",
+        "revision_policy": "Use the captured source revision as reported. Any corrected history requires new receipts and a superseding Oracle release."
+      },
+      "source_admission": {
+        "status": "v1_admitted",
+        "required": "One complete publicly traceable source-coherent source is sufficient in v1. When multiple complete sources conflict, retain each as an independent accepted variant; never average or cross-source splice.",
+        "strict_upgrade": "Future strict release: two independent licensed historical-market-data sources with distinct origins and independence groups; record license IDs, receipts, capture timestamps, and revision identifiers before value admission."
+      },
+      "data_accuracy": "not_scored"
+    }
+  ],
+  "state_contracts": [
+    {
+      "contract_id": "historical-price-state-001",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-A股-04"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-04",
+          "algorithm": "sha256",
+          "value": "4a9f2bd8df83ff1bf89edc91cd1c43e8d123e13a88cd5de6acde7ef2f709999b"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-002",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-A股-05"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-05",
+          "algorithm": "sha256",
+          "value": "d78000e25941a40aefc3dd39e90dfa48ffd8d9fbbd5daaf1b879c83e95a5072b"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-003",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-A股-06"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-06",
+          "algorithm": "sha256",
+          "value": "da00bfb00704e6b6a48349500df9c7394c3af2fc43d0628509d106761e72bc2b"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-004",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-A股-08"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-08",
+          "algorithm": "sha256",
+          "value": "0c924794a472e5cb6a27cb8ff94adcf8ab7c02fe0e553966146560164b967eed"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-005",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-A股-09"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-09",
+          "algorithm": "sha256",
+          "value": "e9686a87ce996d25dd40cba9c55c82eb93ca9f6ed78cd96b327cfb20ab1785d7"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "bar_aggregation",
+        "requested_period_window"
+      ],
+      "reason": "The raw query requests a monthly K bar while supplying only a partial-week date range; neither a full natural month nor daily bars is uniquely implied.",
+      "resolution_basis": "Ask whether the user wants a full natural-calendar-month monthly bar or daily bars for the stated date range; do not infer either interpretation.",
+      "follow_up_slots": [
+        {
+          "dimension": "bar_aggregation_and_requested_period_window",
+          "prompt": "请确认要查完整自然月的月K，还是指定日期范围的日K；如选月K请提供完整自然月。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-006",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-A股-13"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-13",
+          "algorithm": "sha256",
+          "value": "0b8808c7d22b11d500f5871a5153ca7279c059c807db43a648036467a543792f"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-007",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-A股-14"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-14",
+          "algorithm": "sha256",
+          "value": "dd9bc5ca89f21a5702ec930d655666ee7f7c4ec5c4210d7b540667ebf4de6271"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-008",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-A股-16"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-16",
+          "algorithm": "sha256",
+          "value": "6c320f561fe518708a737f8a66ba90c487b65d18213312d6d069c3a58bdec25b"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-009",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-A股-19"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-19",
+          "algorithm": "sha256",
+          "value": "b1a3a7d7f5d69d869c635f263133b548445bace143dd407d28cab803c2b940fa"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "bar_aggregation",
+        "requested_period_window"
+      ],
+      "reason": "The raw query requests a monthly K bar while supplying only a partial-week date range; neither a full natural month nor daily bars is uniquely implied.",
+      "resolution_basis": "Ask whether the user wants a full natural-calendar-month monthly bar or daily bars for the stated date range; do not infer either interpretation.",
+      "follow_up_slots": [
+        {
+          "dimension": "bar_aggregation_and_requested_period_window",
+          "prompt": "请确认要查完整自然月的月K，还是指定日期范围的日K；如选月K请提供完整自然月。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-010",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-A股-20"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-20",
+          "algorithm": "sha256",
+          "value": "560f842f80145d98253bc61c252dce59cf56eea3c751e1d0a644bee54c3feeb1"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-011",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-A股-21"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-21",
+          "algorithm": "sha256",
+          "value": "eb4c0b4d8a4f52fe5efacd55f01cd73b4842934cfc1c8009257dca252b3a2985"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-012",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-港股-05"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-05",
+          "algorithm": "sha256",
+          "value": "7ca6963411f04d420b631874f89bb67c1b670ea58953f454ddf5899c10439a58"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-013",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-港股-06"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-06",
+          "algorithm": "sha256",
+          "value": "c7d24f80d53a36a7f9f17612faf498d939f9123dc6f80ce5430b44e299079c76"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-014",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-港股-07"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-07",
+          "algorithm": "sha256",
+          "value": "0377a820e796345636ee8746180db6b5061319fa3491c2d0df1def3ec4616348"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-015",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-港股-09"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-09",
+          "algorithm": "sha256",
+          "value": "8a89e747f665167d00ba5f9305aa4e9f094a89e7d6be6a34a1d44a1880096191"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "bar_aggregation",
+        "requested_period_window"
+      ],
+      "reason": "The raw query requests a monthly K bar while supplying only a partial-week date range; neither a full natural month nor daily bars is uniquely implied.",
+      "resolution_basis": "Ask whether the user wants a full natural-calendar-month monthly bar or daily bars for the stated date range; do not infer either interpretation.",
+      "follow_up_slots": [
+        {
+          "dimension": "bar_aggregation_and_requested_period_window",
+          "prompt": "请确认要查完整自然月的月K，还是指定日期范围的日K；如选月K请提供完整自然月。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-016",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-港股-13"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-13",
+          "algorithm": "sha256",
+          "value": "de7dd575bc6c36c70a9b247a90e7d8b64d95f65942f924259fd56223231e958f"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-017",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-港股-14"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-14",
+          "algorithm": "sha256",
+          "value": "55f1713a710452b3028685fbd9557425df1c125fded1406ba5a30c48d6ef53cf"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-018",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-港股-15"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-15",
+          "algorithm": "sha256",
+          "value": "ab0aceb41c2658d826373bc5505ba0174589002f156c741cec5fa887d65e3b27"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-019",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-港股-19"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-19",
+          "algorithm": "sha256",
+          "value": "9d8135717428c91ee240a1aec7da8cccb27e9b94d3737063550588d892af8143"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "bar_aggregation",
+        "requested_period_window"
+      ],
+      "reason": "The raw query requests a monthly K bar while supplying only a partial-week date range; neither a full natural month nor daily bars is uniquely implied.",
+      "resolution_basis": "Ask whether the user wants a full natural-calendar-month monthly bar or daily bars for the stated date range; do not infer either interpretation.",
+      "follow_up_slots": [
+        {
+          "dimension": "bar_aggregation_and_requested_period_window",
+          "prompt": "请确认要查完整自然月的月K，还是指定日期范围的日K；如选月K请提供完整自然月。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-020",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-港股-21"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-21",
+          "algorithm": "sha256",
+          "value": "0029818e7147cab6d5d3c0946b732989db27535e4bf1d9539fe1664e0a800284"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-021",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-美股-09"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-09",
+          "algorithm": "sha256",
+          "value": "619650a9a0c107b167da97fd98378b2abb53a536677c8551fa33c4be7bdd74c0"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "bar_aggregation",
+        "requested_period_window"
+      ],
+      "reason": "The raw query requests a monthly K bar while supplying only a partial-week date range; neither a full natural month nor daily bars is uniquely implied.",
+      "resolution_basis": "Ask whether the user wants a full natural-calendar-month monthly bar or daily bars for the stated date range; do not infer either interpretation.",
+      "follow_up_slots": [
+        {
+          "dimension": "bar_aggregation_and_requested_period_window",
+          "prompt": "请确认要查完整自然月的月K，还是指定日期范围的日K；如选月K请提供完整自然月。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-022",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-美股-19"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-19",
+          "algorithm": "sha256",
+          "value": "a30d30439bd3af59ca0ebd238dfcea6c17f5e389efe9b0643521291c50fd86e7"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "bar_aggregation",
+        "requested_period_window"
+      ],
+      "reason": "The raw query requests a monthly K bar while supplying only a partial-week date range; neither a full natural month nor daily bars is uniquely implied.",
+      "resolution_basis": "Ask whether the user wants a full natural-calendar-month monthly bar or daily bars for the stated date range; do not infer either interpretation.",
+      "follow_up_slots": [
+        {
+          "dimension": "bar_aggregation_and_requested_period_window",
+          "prompt": "请确认要查完整自然月的月K，还是指定日期范围的日K；如选月K请提供完整自然月。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-023",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-日本-01"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-日本-01",
+          "algorithm": "sha256",
+          "value": "6f43bb2d5abb5bb0f0df730156bbcab1251b2f4bd7fad050ee0c2ba2929e6be0"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-024",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-日本-04"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-日本-04",
+          "algorithm": "sha256",
+          "value": "1dbcdc8c9529c58ffb8b3b05ac6137f8963a0e8f78c4e336ead79f5b68609ff8"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-025",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-英国-01"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-英国-01",
+          "algorithm": "sha256",
+          "value": "4aa81502a363ec73d6647b1405605e22edccc4a63bfc683c482e5b3d8427255c"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-026",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-英国-03"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-英国-03",
+          "algorithm": "sha256",
+          "value": "1488c732b46b6185038f2758009212b96e276af8a9490200733f990eae8286e4"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-027",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-英国-04"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-英国-04",
+          "algorithm": "sha256",
+          "value": "b3f6840a0c502b5d0d5c3139484eff151a7f1349ab7b2ee7684d2de295084d1a"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-028",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-德国-01"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-德国-01",
+          "algorithm": "sha256",
+          "value": "cf178ee8478fa5290ae5a45f9024f7cc0f18a5d44d409cf2ec5d43915682c725"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-029",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-德国-03"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-德国-03",
+          "algorithm": "sha256",
+          "value": "6ca4ea73cf574bf19d63bc25b03ee18cce4a50595bbf357a3de3d660fe30dd8f"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-030",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-德国-04"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-德国-04",
+          "algorithm": "sha256",
+          "value": "3f14a6d540f21167a820fa21484b3c5bbcaeffba2774e893c242efdf0cb1ad7b"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+      "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+      "follow_up_slots": [
+        {
+          "dimension": "listing_market_or_exchange_or_security_identifier",
+          "prompt": "请确认上市市场/交易所，或直接提供证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-031",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-A股-b01"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-b01",
+          "algorithm": "sha256",
+          "value": "2cdf9d07a2ede0e6cbffede7976d0514ee94ff15111ecd3b1627b6cd4f520fda"
+        }
+      ],
+      "expected_status": "no_data",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [],
+      "reason": "2026-08-08 为周六，A 股市场休市，无当日行情",
+      "resolution_basis": "The request is fully bound but needs exchange-calendar/session evidence before a no-data response can be frozen.",
+      "follow_up_slots": [],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-032",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-A股-b02"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-b02",
+          "algorithm": "sha256",
+          "value": "1d8e850881ed4b6f18a1620fa3100265be316f197c5bbcec9623ed885bff78c0"
+        }
+      ],
+      "expected_status": "unsupported",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [],
+      "reason": "须披露=标的类型=指数；禁解析=entity；Suite Scope：V1 仅上市公司普通股票，指数不入场",
+      "resolution_basis": "The request is outside the historical_price v1 policy scope.",
+      "follow_up_slots": [],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-033",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-A股-b03"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-b03",
+          "algorithm": "sha256",
+          "value": "d2c79032a5212ebb200d8bcad25856a8fa0c611392632baf29cf4dda561c84c3"
+        }
+      ],
+      "expected_status": "unsupported",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [],
+      "reason": "须披露=任务类型=比较；禁解析=entity；Suite Scope：单公司单任务，比较不入场",
+      "resolution_basis": "The request is outside the historical_price v1 policy scope.",
+      "follow_up_slots": [],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-034",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-A股-b04"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-b04",
+          "algorithm": "sha256",
+          "value": "fdfb736f47027c7b57857b635e8466f4ea4c62258a1562263f27e4977b6911fb"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "adjustment_basis",
+        "requested_period_window"
+      ],
+      "reason": "缺失=复权口径及日期范围；禁断言=复权收盘价数值；不得根据评测元数据补全。",
+      "resolution_basis": "Adjusted historical values require an explicit adjustment basis and requested date range before any number can be returned.",
+      "follow_up_slots": [
+        {
+          "dimension": "adjustment_basis_and_requested_period_window",
+          "prompt": "请确认复权口径（前复权、后复权或不复权）以及要查询的日期范围。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-035",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-A股-b05"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-b05",
+          "algorithm": "sha256",
+          "value": "32834c77addd49de5867e87ad464a70f0fe39eb8e8a6999f3a13405ec2924ebf"
+        }
+      ],
+      "expected_status": "unsupported",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [],
+      "reason": "须披露=字段=换手率；禁解析=fields；历史行情 Suite 字段集不包含换手率",
+      "resolution_basis": "The request is outside the historical_price v1 policy scope.",
+      "follow_up_slots": [],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-036",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-A股-b06"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-A股-b06",
+          "algorithm": "sha256",
+          "value": "60aae8c4a2c6af03e99ad30f2b2fe43f5b9dbbce36f258e3b57ba1824a9037ae"
+        }
+      ],
+      "expected_status": "no_data",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [],
+      "reason": "2025-10-01 A 股国庆休市，无当日行情",
+      "resolution_basis": "The request is fully bound but needs exchange-calendar/session evidence before a no-data response can be frozen.",
+      "follow_up_slots": [],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-037",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-港股-b01"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-b01",
+          "algorithm": "sha256",
+          "value": "34c19fd61b2b802a890aa90a9d3501662acec2aabfcfeb7cbbf0193101821c04"
+        }
+      ],
+      "expected_status": "no_data",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [],
+      "reason": "2026-05-16 为周六，港交所休市",
+      "resolution_basis": "The request is fully bound but needs exchange-calendar/session evidence before a no-data response can be frozen.",
+      "follow_up_slots": [],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-038",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-港股-b02"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-b02",
+          "algorithm": "sha256",
+          "value": "fa2e88c4add314bb7ce29341128709326a5e7d58857cfaad6637a6b567e9cc0e"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "data_temporality",
+        "listing_market_or_exchange",
+        "security_identifier"
+      ],
+      "reason": "缺失=行情类型（实时/历史）及可唯一定位的上市市场/证券代码；禁断言=价格；不得以评测元数据替用户消歧。",
+      "resolution_basis": "Ask one minimal question that lets the user choose realtime or historical data and identify the intended listing by market/exchange or ticker/ISIN.",
+      "follow_up_slots": [
+        {
+          "dimension": "temporality_and_listing_identifier",
+          "prompt": "请确认要查实时还是历史行情，并提供上市市场/交易所或证券代码/ISIN。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-039",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-港股-b03"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-b03",
+          "algorithm": "sha256",
+          "value": "2747113072027d3eecb9310b35c891cf01b6b41dea5080fa3f15d204979311a1"
+        }
+      ],
+      "expected_status": "unsupported",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [],
+      "reason": "须披露=标的类型=指数；禁解析=entity；Suite Scope：V1 仅上市公司普通股票",
+      "resolution_basis": "The request is outside the historical_price v1 policy scope.",
+      "follow_up_slots": [],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-040",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-港股-b04"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-b04",
+          "algorithm": "sha256",
+          "value": "123b8c7026a3c880af424dbdc26067809b6b529430f4ebdfba295ac7c775c66b"
+        }
+      ],
+      "expected_status": "unsupported",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [],
+      "reason": "须披露=任务类型=比较；禁解析=entity；Suite Scope：单公司单任务",
+      "resolution_basis": "The request is outside the historical_price v1 policy scope.",
+      "follow_up_slots": [],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-041",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-港股-b05"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-b05",
+          "algorithm": "sha256",
+          "value": "d7ab34eda77a6f01097d2e9bcf4e7aa0e9e701e1ef509bd9a9c354c59061e0f8"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "adjustment_basis"
+      ],
+      "reason": "缺失=复权口径；禁断言=复权收盘价数值；港股复权口径需显式指定",
+      "resolution_basis": "Adjusted historical values require an explicit adjustment basis before any number can be returned.",
+      "follow_up_slots": [
+        {
+          "dimension": "adjustment_basis",
+          "prompt": "请确认复权口径：前复权、后复权或不复权。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-042",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-港股-b06"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-港股-b06",
+          "algorithm": "sha256",
+          "value": "ead84bb07cd593658afc56db0e623edd2e77bee6292f315baaba282415e29e60"
+        }
+      ],
+      "expected_status": "no_data",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [],
+      "reason": "2025-12-25 港交所圣诞休市",
+      "resolution_basis": "The request is fully bound but needs exchange-calendar/session evidence before a no-data response can be frozen.",
+      "follow_up_slots": [],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-043",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-美股-b01"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-b01",
+          "algorithm": "sha256",
+          "value": "089db72f3da96d510b3691b0fc66b61602e60c029df31a1c25d6061a99e54683"
+        }
+      ],
+      "expected_status": "no_data",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [],
+      "reason": "2025-07-04 纽交所/纳斯达克休市",
+      "resolution_basis": "The request is fully bound but needs exchange-calendar/session evidence before a no-data response can be frozen.",
+      "follow_up_slots": [],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-044",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-美股-b02"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-b02",
+          "algorithm": "sha256",
+          "value": "eefaa6137ddacdb2a8b98140df9d4c86c94f144023ef142fdf2e21d6ceff94bc"
+        }
+      ],
+      "expected_status": "unsupported",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [],
+      "reason": "须披露=标的类型=指数；禁解析=entity；Suite Scope：V1 仅上市公司普通股票",
+      "resolution_basis": "The request is outside the historical_price v1 policy scope.",
+      "follow_up_slots": [],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-045",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-美股-b03"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-b03",
+          "algorithm": "sha256",
+          "value": "ceaf1eddb9576438a6bafc82314aa4de465b0a54b149b79e12b6f19f4cb1ef34"
+        }
+      ],
+      "expected_status": "needs_clarification",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [
+        "adjustment_basis"
+      ],
+      "reason": "缺失=复权口径；禁断言=复权收盘价数值；美股复权口径需显式指定",
+      "resolution_basis": "Adjusted historical values require an explicit adjustment basis before any number can be returned.",
+      "follow_up_slots": [
+        {
+          "dimension": "adjustment_basis",
+          "prompt": "请确认复权口径：前复权、后复权或不复权。"
+        }
+      ],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-046",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-美股-b04"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-b04",
+          "algorithm": "sha256",
+          "value": "8697d682b606d869e50292a94869e746265e5e8a8b10993fafada293e15c2d62"
+        }
+      ],
+      "expected_status": "unsupported",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [],
+      "reason": "须披露=任务类型=财务/估值；禁解析=fields；历史行情 Suite 不覆盖财务与估值",
+      "resolution_basis": "The request is outside the historical_price v1 policy scope.",
+      "follow_up_slots": [],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-047",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-美股-b05"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-美股-b05",
+          "algorithm": "sha256",
+          "value": "2c4e8c8c60e826e418708895d02dfedad339596adc9e844b028f6686f18cf495"
+        }
+      ],
+      "expected_status": "no_data",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [],
+      "reason": "2026-05-25 纽交所/纳斯达克休市",
+      "resolution_basis": "The request is fully bound but needs exchange-calendar/session evidence before a no-data response can be frozen.",
+      "follow_up_slots": [],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-048",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-日本-b01"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-日本-b01",
+          "algorithm": "sha256",
+          "value": "36d78155d5b82157a62b9325ba3333ae59235805602c4864bb698e3ab28e6d18"
+        }
+      ],
+      "expected_status": "unsupported",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [],
+      "reason": "须披露=标的类型=指数；禁解析=entity；Suite Scope：V1 仅上市公司普通股票；日本为候选市场",
+      "resolution_basis": "The request is outside the historical_price v1 policy scope.",
+      "follow_up_slots": [],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-049",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-英国-b01"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-英国-b01",
+          "algorithm": "sha256",
+          "value": "78639911202443fbeef1d2d29c75cc35514301a6c3c19aba726f226657449fc5"
+        }
+      ],
+      "expected_status": "unsupported",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [],
+      "reason": "须披露=标的类型=指数；禁解析=entity；Suite Scope：V1 仅上市公司普通股票；英国为候选市场",
+      "resolution_basis": "The request is outside the historical_price v1 policy scope.",
+      "follow_up_slots": [],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    },
+    {
+      "contract_id": "historical-price-state-050",
+      "contract_type": "state_response",
+      "contract_status": "candidate_ready_for_state_review",
+      "case_ids": [
+        "hist-德国-b01"
+      ],
+      "raw_query_hashes": [
+        {
+          "case_id": "hist-德国-b01",
+          "algorithm": "sha256",
+          "value": "311e8225e30eb3205f5811de191c115c65ffc3b8a57d439ca6c9bdfcab533fea"
+        }
+      ],
+      "expected_status": "unsupported",
+      "data_accuracy": "not_applicable_excluded_from_denominator",
+      "clarification_dimensions": [],
+      "reason": "须披露=标的类型=指数；禁解析=entity；Suite Scope：V1 仅上市公司普通股票；德国为候选市场",
+      "resolution_basis": "The request is outside the historical_price v1 policy scope.",
+      "follow_up_slots": [],
+      "freeze_gate": "Versioned historical_price state-policy review. For no_data, add exchange calendar/session evidence; for unsupported, add scope-policy evidence; for needs_clarification, review the clarification response contract."
+    }
+  ]
+}

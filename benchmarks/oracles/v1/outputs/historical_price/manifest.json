@@ -1,0 +1,46 @@
+{
+  "schema_version": "oracle-manifest/v1",
+  "release_id": "historical-price-v1-public-traceable-50n-50s-55v",
+  "suite": "historical_price",
+  "status": "frozen",
+  "created_at": "2026-09-04T05:53:48Z",
+  "case_coverage": {
+    "total_cases": 100,
+    "numeric_cases": 50,
+    "state_cases": 50,
+    "accepted_variant_count": 55
+  },
+  "source_policy": "One complete public traceable variant is sufficient in v1; conflicting complete variants are retained; no averages or cross-source splices.",
+  "files": [
+    {
+      "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+      "sha256": "46ded5e1ae00f5f0e73c2bdec04ace836c356de3b9ee0e2293c3890d6e3d7724",
+      "suite": "historical_price"
+    },
+    {
+      "path": "historical-price-contracts.v1.json",
+      "sha256": "fa66485f627664f4365ec1d9a45f1d7f3c4c5c083aac93edf0a1fa65f8d07208",
+      "suite": "historical_price"
+    },
+    {
+      "path": "outputs/historical_price/oracles.json",
+      "sha256": "00b62c761d8bf27e9cae7fdc780ab9289dc6874d3b615c9f7e1b1c369024c5a6",
+      "suite": "historical_price"
+    },
+    {
+      "path": "outputs/historical_price/evidence-receipts.json",
+      "sha256": "23864e6a7566f28b557ade4f23456abe6299958b672df310579f489f7a161885",
+      "suite": "historical_price"
+    },
+    {
+      "path": "outputs/historical_price/review-ledger.json",
+      "sha256": "840a7f4d26e17a84e962a08d73eecac08b931098d6bb9bd54a1e2800ed424a32",
+      "suite": "historical_price"
+    },
+    {
+      "path": "outputs/historical_price/source-capability-matrix.json",
+      "sha256": "8f28178541c558d5b1328a63e5766706fe40f126b1a1491a9f69d57b633c476f",
+      "suite": "historical_price"
+    }
+  ]
+}

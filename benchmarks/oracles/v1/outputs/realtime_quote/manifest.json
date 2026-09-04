@@ -1,0 +1,19 @@
+{
+  "schema_version": "oracle-manifest/v1",
+  "release_id": "realtime-quote-layered-v1",
+  "suite": "realtime_quote",
+  "status": "frozen",
+  "created_at": "2026-09-04T00:00:00Z",
+  "files": [
+    {
+      "path": "outputs/realtime_quote/oracles.json",
+      "sha256": "f66cffd6531d1b2eac153b5a5244727114ae2691918716570a939bab279b8e6f",
+      "suite": "realtime_quote"
+    },
+    {
+      "path": "fact-contracts.realtime.v1.json",
+      "sha256": "793288d97b14d2ca51bfcbf04ec6937e57f695b1758b6b3ec61e2afa5f8a4b64",
+      "suite": "realtime_quote"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qveris.example/schemas/historical-price-oracle-package/v1",
+  "title": "QVeris historical-price layered Oracle package v1",
+  "type": "object",
+  "required": ["package_schema_version", "suite", "status", "source_candidate", "numeric_oracles", "state_oracles", "coverage"],
+  "properties": {
+    "package_schema_version": {"const": "historical-price-oracle-package/v1"},
+    "suite": {"const": "historical_price"},
+    "status": {"enum": ["under_review", "frozen"]},
+    "source_candidate": {"type": "object"},
+    "numeric_oracles": {"type": "array", "minItems": 50, "maxItems": 50},
+    "state_oracles": {"type": "array", "minItems": 50, "maxItems": 50},
+    "coverage": {"type": "object"}
+  }
+}

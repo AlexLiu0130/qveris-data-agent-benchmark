@@ -48,20 +48,27 @@ neither may be the case author. Set `corroboration_scope` to one of:
 - `same_authoritative_origin_independent_parse`; or
 - `independent_fact_source`.
 
-Historical prices do **not** inherit that exception: frozen records require
-`same_authoritative_origin: false`, two independent licensed market-data
-sources with distinct origins and independence groups, non-empty `license_id`,
-and consistent receipt lineage on both sources.
+Historical-price v1 is a deliberately narrower baseline: one exact-case, publicly
+traceable, source-coherent variant may freeze a numeric case. It makes no claim
+of provider authorization, redistribution rights, official-exchange status, or
+independent-source reconciliation. If complete sources disagree, retain every
+complete source-coherent variant; never average values or splice fields/rows.
+Licensed dual-source reconciliation is a future strict-release upgrade.
 
 ### Realtime quote contract
 
-Realtime has two mutually exclusive modes. `live_bracketed` is the only mode
-eligible for formal Data Accuracy: every frozen value needs two distinct
-licensed providers, either a `before_after` or `dual_reference` capture method,
-provider quote timestamps, evaluator `captured_at`, market session, timezone,
-currency, unit, and **pre-bound** staleness, cross-source-skew, and tick
-tolerances. The receipt stores `quote_capture`; the ordinary review ledger and
-suite manifest remain the sole review/release system.
+Realtime v1 freezes what can remain stable: all 100 query hashes, request and
+terminal-status contracts, plus 18 state-only Oracles. The other 82 cases are
+`runtime_snapshot`: before a formal run, freeze at least one complete source
+receipt with source identity, response hash, quote/capture time, session,
+timezone, currency, unit, freshness and tick. One accepted variant contains
+one complete source only. Multiple sources may yield alternative accepted
+variants; averaging or cross-source field splicing is prohibited. Invalid or
+missing capture makes only that case's Data Accuracy `not_scored`.
+
+The current Runner does not generate dynamic receipts. A future value record
+may use `live_bracketed` for formal Data Accuracy, but v1 does not require two
+sources merely to freeze static contracts or status Oracles.
 
 `replay_fixture` is a deterministic regression artifact only. Its
 `evaluation_use` must be `non_formal_replay_only`; it never contributes to
@@ -154,9 +161,9 @@ decision and why. Approval may not erase a conflict record.
 
 ```text
 schemas/                         JSON contracts
-outputs/historical_price/          blocked inventory pending licensed data
+outputs/historical_price/          50 frozen source-coherent numeric cases (55 variants) + 50 frozen state Oracles
 outputs/financial_statements/<market>/  frozen records; re-signed ledgers and validated suite manifest make normal-case data contracts scoreable
-outputs/realtime_quote/            blocked inventory until live admission
+outputs/realtime_quote/            18 frozen state Oracles + 82 runtime-snapshot contracts
 validate_freeze.py               dependency-free structural validator
 ```
 

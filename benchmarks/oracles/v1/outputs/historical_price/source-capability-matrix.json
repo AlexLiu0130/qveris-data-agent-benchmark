@@ -1,67 +1,67 @@
 {
   "package_schema_version": "historical-source-capability-matrix/v1",
   "suite": "historical_price",
-  "status": "not_frozen",
-  "data_accuracy": "not_scored",
+  "status": "frozen",
+  "data_accuracy": "50_numeric_cases_scoreable;_50_state_cases_excluded",
   "source_candidate": {
     "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
-    "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+    "sha256": "46ded5e1ae00f5f0e73c2bdec04ace836c356de3b9ee0e2293c3890d6e3d7724"
   },
   "admission_rule": {
     "requires": [
-      "An exact-case primary source with documented internal benchmark storage/use permission.",
-      "An independent exact-case secondary source for adversarial reconciliation.",
-      "Explicit identity, exchange, date/session, raw-or-adjusted basis, currency, units, and revision handling."
+      "One exact-case, complete, publicly traceable source-coherent variant.",
+      "Explicit identity, exchange, date/session, raw-or-adjusted basis, currency, units, and revision handling.",
+      "A unique evidence receipt for every accepted variant."
     ],
-    "not_sufficient": [
-      "Public accessibility alone.",
-      "A schema probe or pilot plan.",
-      "A source without evidence of permitted benchmark storage/use."
+    "conflict_handling": "Retain all complete source-coherent variants; do not average, select fields across sources, or splice rows.",
+    "not_claimed": [
+      "Provider authorization, redistribution rights, or official-exchange status.",
+      "Independent-source reconciliation as a v1 admission prerequisite."
     ]
   },
   "markets": [
     {
       "market": "CN",
       "candidate_case_count": 29,
-      "primary_source_status": "not_admitted",
-      "independent_secondary_status": "not_admitted",
-      "license_evidence_status": "not_admitted"
+      "primary_source_status": "admitted_v1_public_traceable",
+      "independent_secondary_status": "not_required_v1",
+      "license_evidence_status": "not_asserted_v1"
     },
     {
       "market": "HK",
       "candidate_case_count": 28,
-      "primary_source_status": "not_admitted",
-      "independent_secondary_status": "not_admitted",
-      "license_evidence_status": "not_admitted"
+      "primary_source_status": "admitted_v1_public_traceable",
+      "independent_secondary_status": "not_required_v1",
+      "license_evidence_status": "not_asserted_v1"
     },
     {
       "market": "US",
       "candidate_case_count": 28,
-      "primary_source_status": "not_admitted",
-      "independent_secondary_status": "not_admitted",
-      "license_evidence_status": "not_admitted"
+      "primary_source_status": "admitted_v1_public_traceable",
+      "independent_secondary_status": "not_required_v1",
+      "license_evidence_status": "not_asserted_v1"
     },
     {
       "market": "JP",
       "candidate_case_count": 5,
-      "primary_source_status": "not_admitted",
-      "independent_secondary_status": "not_admitted",
-      "license_evidence_status": "not_admitted"
+      "primary_source_status": "admitted_v1_public_traceable",
+      "independent_secondary_status": "not_required_v1",
+      "license_evidence_status": "not_asserted_v1"
     },
     {
       "market": "GB",
       "candidate_case_count": 5,
-      "primary_source_status": "not_admitted",
-      "independent_secondary_status": "not_admitted",
-      "license_evidence_status": "not_admitted"
+      "primary_source_status": "admitted_v1_public_traceable",
+      "independent_secondary_status": "not_required_v1",
+      "license_evidence_status": "not_asserted_v1"
     },
     {
       "market": "DE",
       "candidate_case_count": 5,
-      "primary_source_status": "not_admitted",
-      "independent_secondary_status": "not_admitted",
-      "license_evidence_status": "not_admitted"
+      "primary_source_status": "admitted_v1_public_traceable",
+      "independent_secondary_status": "not_required_v1",
+      "license_evidence_status": "not_asserted_v1"
     }
   ],
-  "conclusion": "No market is admitted for candidate value-oracle freezing in this package."
+  "conclusion": "Historical v1 is frozen as a traceable public-source baseline; strict dual-source licensing remains a future release upgrade."
 }

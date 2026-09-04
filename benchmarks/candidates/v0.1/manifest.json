@@ -13,13 +13,13 @@
     {
       "suite": "historical_price",
       "path": "historical_price.cases.json",
-      "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279",
+      "sha256": "46ded5e1ae00f5f0e73c2bdec04ace836c356de3b9ee0e2293c3890d6e3d7724",
       "schema_version": "source_implicit_historical_v0.1",
       "case_id_field": "case_id",
       "query_field": "query",
       "data_oracle_reference_field": "data_oracle.source_note",
-      "state_oracle_shape": "string",
-      "data_accuracy": "not_scored_candidate_unverified"
+      "state_oracle_shape": "historical v1: one minimal follow-up slot per state Oracle",
+      "data_accuracy": "frozen_50_numeric_cases_scoreable_with_55_source_coherent_variants;_50_state_Oracles_not_applicable"
     },
     {
       "suite": "financial_statements",
@@ -35,17 +35,17 @@
     {
       "suite": "realtime_quote",
       "path": "realtime_quote.cases.json",
-      "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc",
+      "sha256": "6803e0cbc12a1b40b541aaadf70cbda4c0c6e646a4c185a56a1cc1d4b16577ec",
       "schema_version": "realtime_quote_candidate/v0.1",
       "case_id_field": "case_id",
       "query_field": "query",
       "data_oracle_reference_field": "data_oracle",
-      "state_oracle_shape": "expected_status or status_conflict",
+      "state_oracle_shape": "expected_status; 18 frozen static state contracts",
       "source": {
         "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
         "revision_id": 15
       },
-      "data_accuracy": "not_scored_reference_snapshot_required"
+      "data_accuracy": "82_contract_frozen_runtime_snapshot_required;_18_state_only_not_applicable"
     }
   ],
   "oracle_assets": [
@@ -55,6 +55,13 @@
       "sha256": "16bc1df58f3620906a6321ef268a899fb5537e60f4ec05ca118e6798bdd5fc93",
       "contract_count": 27,
       "status": "frozen_manifest_validated_ledger_resigned_80_normal_cases_data_scoreable"
+    },
+    {
+      "suite": "historical_price",
+      "path": "../../oracles/v1/historical-price-contracts.v1.json",
+      "sha256": "fa66485f627664f4365ec1d9a45f1d7f3c4c5c083aac93edf0a1fa65f8d07208",
+      "contract_count": 50,
+      "status": "frozen_v1_single_public_traceable_source_baseline_50_numeric_cases_scoreable"
     }
   ],
   "runtime_contract": {

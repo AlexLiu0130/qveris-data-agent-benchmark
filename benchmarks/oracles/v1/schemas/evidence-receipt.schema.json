@@ -13,6 +13,8 @@
     "source_lineage": {"type": "object", "additionalProperties": false, "required": ["origin_id", "delivery_channel", "extraction_method"], "properties": {"origin_id": {"type": "string", "minLength": 1}, "delivery_channel": {"type": "string", "minLength": 1}, "extraction_method": {"type": "string", "minLength": 1}, "chain": {"type": "array", "items": {"type": "string", "minLength": 1}}}},
     "display_nil_evidence": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["assertion_id", "raw_display", "evidence_locator", "confirmed_nil"], "properties": {"assertion_id": {"type": "string", "minLength": 1}, "raw_display": {"type": "string", "minLength": 1}, "evidence_locator": {"type": "string", "minLength": 1}, "confirmed_nil": {"type": "boolean"}}}},
     "quote_capture": {"type": "object", "additionalProperties": false, "required": ["provider_quote_timestamp", "captured_at", "market_session", "timezone", "currency", "unit", "reference_role"], "properties": {"provider_quote_timestamp": {"type": "string", "format": "date-time"}, "captured_at": {"type": "string", "format": "date-time"}, "market_session": {"type": "string", "minLength": 1}, "timezone": {"type": "string", "minLength": 1}, "currency": {"type": "string", "minLength": 1}, "unit": {"type": "string", "minLength": 1}, "reference_role": {"enum": ["before", "after", "dual_reference"]}}},
+    "oracle_id": {"type": "string", "minLength": 1}, "case_id": {"type": "string", "minLength": 1}, "variant_id": {"type": "string", "minLength": 1},
+    "historical_capture": {"type": "object", "additionalProperties": true},
     "notes": {"type": "string"}
   }
 }

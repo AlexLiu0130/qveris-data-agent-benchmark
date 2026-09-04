@@ -27,7 +27,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：A股 600519.SH 2026-08-24\\~2026-08-28",
       "assertions": [
         "entity",
@@ -40,7 +40,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-001"
   },
   {
     "case_id": "hist-A股-02",
@@ -74,7 +75,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：A股 000001.SZ 2026-07-27\\~2026-08-07",
       "assertions": [
         "entity",
@@ -87,7 +88,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-002"
   },
   {
     "case_id": "hist-A股-03",
@@ -117,7 +119,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：A股 000002.SZ 2026-08-03\\~2026-08-07",
       "assertions": [
         "entity",
@@ -130,7 +132,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-003"
   },
   {
     "case_id": "hist-A股-04",
@@ -140,7 +143,7 @@
     "source_market_label": "A股",
     "query": "宁德时代 在 2026 年 7 月 6 日 到 2026 年 7 月 10 日 每天的成交量是多少？",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=宁德时代；symbol=300750.SZ；data_type=historical_quote；fields=[volume]；interval=D；adjustment=none；window=2026-07-06\\~2026-07-10",
     "expected_intent": {
       "entity": {
@@ -160,20 +163,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：A股 300750.SZ 2026-07-06\\~2026-07-10",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-001"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-001",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-A股-05",
@@ -183,7 +191,7 @@
     "source_market_label": "A股",
     "query": "中国平安 2026 年 6 月 1 日 到 2026 年 6 月 5 日 的周K线（开高低收和成交量）。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=中国平安；symbol=601318.SH；data_type=historical_quote；fields=[open,high,low,close,volume]；interval=W；adjustment=none；window=2026-06-01\\~2026-06-05",
     "expected_intent": {
       "entity": {
@@ -207,20 +215,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：A股 601318.SH 2026-06-01\\~2026-06-05",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-002"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-002",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-A股-06",
@@ -230,7 +243,7 @@
     "source_market_label": "A股",
     "query": "招商银行 2026 年 5 月 11 日 到 2026 年 5 月 15 日 每天的开盘价和收盘价。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=招商银行；symbol=600036.SH；data_type=historical_quote；fields=[open,close]；interval=D；adjustment=none；window=2026-05-11\\~2026-05-15",
     "expected_intent": {
       "entity": {
@@ -251,20 +264,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：A股 600036.SH 2026-05-11\\~2026-05-15",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-003"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-003",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-A股-07",
@@ -295,7 +313,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：A股 000858.SZ 2026-04-13\\~2026-04-17",
       "assertions": [
         "entity",
@@ -308,7 +326,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-004"
   },
   {
     "case_id": "hist-A股-08",
@@ -318,7 +337,7 @@
     "source_market_label": "A股",
     "query": "比亚迪 2026 年 3 月 9 日 到 2026 年 3 月 13 日 的前复权开高低收。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=比亚迪；symbol=002594.SZ；data_type=historical_quote；fields=[adj_open,adj_high,adj_low,adj_close]；interval=D；adjustment=forward；window=2026-03-09\\~2026-03-13",
     "expected_intent": {
       "entity": {
@@ -341,20 +360,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：A股 002594.SZ 2026-03-09\\~2026-03-13",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-004"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-004",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-A股-09",
@@ -364,7 +388,7 @@
     "source_market_label": "A股",
     "query": "贵州茅台 2026 年 1 月 12 日 到 2026 年 1 月 16 日 的月K线收盘价和成交量。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=贵州茅台；symbol=600519.SH；data_type=historical_quote；fields=[close,volume]；interval=M；adjustment=none；window=2026-01-12\\~2026-01-16",
     "expected_intent": {
       "entity": {
@@ -385,20 +409,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：A股 600519.SH 2026-01-12\\~2026-01-16",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-005"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-005",
+    "clarification_dimensions": [
+      "bar_aggregation",
+      "requested_period_window"
+    ],
+    "clarification_reason": "The raw query requests a monthly K bar while supplying only a partial-week date range; neither a full natural month nor daily bars is uniquely implied.",
+    "resolution_basis": "Ask whether the user wants a full natural-calendar-month monthly bar or daily bars for the stated date range; do not infer either interpretation.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-A股-10",
@@ -428,7 +457,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：A股 000001.SZ 2026-08-24\\~2026-08-28",
       "assertions": [
         "entity",
@@ -441,7 +470,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-005"
   },
   {
     "case_id": "hist-A股-11",
@@ -471,7 +501,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：A股 000002.SZ 2026-07-27\\~2026-08-07",
       "assertions": [
         "entity",
@@ -484,7 +514,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-006"
   },
   {
     "case_id": "hist-A股-12",
@@ -518,7 +549,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：A股 300750.SZ 2026-08-03\\~2026-08-07",
       "assertions": [
         "entity",
@@ -531,7 +562,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-007"
   },
   {
     "case_id": "hist-A股-13",
@@ -541,7 +573,7 @@
     "source_market_label": "A股",
     "query": "帮我取 中国平安 2026 年 7 月 6 日 到 2026 年 7 月 10 日 的前复权收盘价。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=中国平安；symbol=601318.SH；data_type=historical_quote；fields=[adj_close]；interval=D；adjustment=forward；window=2026-07-06\\~2026-07-10",
     "expected_intent": {
       "entity": {
@@ -561,20 +593,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：A股 601318.SH 2026-07-06\\~2026-07-10",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-006"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-006",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-A股-14",
@@ -584,7 +621,7 @@
     "source_market_label": "A股",
     "query": "招商银行 在 2026 年 6 月 1 日 到 2026 年 6 月 5 日 每天的成交量是多少？",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=招商银行；symbol=600036.SH；data_type=historical_quote；fields=[volume]；interval=D；adjustment=none；window=2026-06-01\\~2026-06-05",
     "expected_intent": {
       "entity": {
@@ -604,20 +641,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：A股 600036.SH 2026-06-01\\~2026-06-05",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-007"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-007",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-A股-15",
@@ -651,7 +693,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：A股 000858.SZ 2026-05-11\\~2026-05-15",
       "assertions": [
         "entity",
@@ -664,7 +706,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-008"
   },
   {
     "case_id": "hist-A股-16",
@@ -674,7 +717,7 @@
     "source_market_label": "A股",
     "query": "比亚迪 2026 年 4 月 13 日 到 2026 年 4 月 17 日 每天的开盘价和收盘价。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=比亚迪；symbol=002594.SZ；data_type=historical_quote；fields=[open,close]；interval=D；adjustment=none；window=2026-04-13\\~2026-04-17",
     "expected_intent": {
       "entity": {
@@ -695,20 +738,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：A股 002594.SZ 2026-04-13\\~2026-04-17",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-008"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-008",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-A股-17",
@@ -739,7 +787,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：A股 600519.SH 2026-02-09\\~2026-02-13",
       "assertions": [
         "entity",
@@ -752,7 +800,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-009"
   },
   {
     "case_id": "hist-A股-18",
@@ -785,7 +834,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：A股 000001.SZ 2026-01-12\\~2026-01-16",
       "assertions": [
         "entity",
@@ -798,7 +847,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-010"
   },
   {
     "case_id": "hist-A股-19",
@@ -808,7 +858,7 @@
     "source_market_label": "A股",
     "query": "万科A 2026 年 8 月 24 日 到 2026 年 8 月 28 日 的月K线收盘价和成交量。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=万科A；symbol=000002.SZ；data_type=historical_quote；fields=[close,volume]；interval=M；adjustment=none；window=2026-08-24\\~2026-08-28",
     "expected_intent": {
       "entity": {
@@ -829,20 +879,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：A股 000002.SZ 2026-08-24\\~2026-08-28",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-009"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-009",
+    "clarification_dimensions": [
+      "bar_aggregation",
+      "requested_period_window"
+    ],
+    "clarification_reason": "The raw query requests a monthly K bar while supplying only a partial-week date range; neither a full natural month nor daily bars is uniquely implied.",
+    "resolution_basis": "Ask whether the user wants a full natural-calendar-month monthly bar or daily bars for the stated date range; do not infer either interpretation.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-A股-20",
@@ -852,7 +907,7 @@
     "source_market_label": "A股",
     "query": "宁德时代 到 2026 年 8 月 7 日 为止往前 5 个交易日的收盘价。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=宁德时代；symbol=300750.SZ；data_type=historical_quote；fields=[close]；interval=D；adjustment=none；window=2026-07-27\\~2026-08-07",
     "expected_intent": {
       "entity": {
@@ -872,21 +927,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：A股 300750.SZ 2026-08-03~2026-08-07",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
       ],
-      "source_note_before_correction": "待独立冻结快照：A股 300750.SZ 2026-07-27\\~2026-08-07"
+      "state_contract_ref": "historical-price-state-010"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-010",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-A股-21",
@@ -896,7 +955,7 @@
     "source_market_label": "A股",
     "query": "查一下中国平安 2026 年 8 月 3 日 到 2026 年 8 月 7 日 的收盘价。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=中国平安；symbol=601318.SH；data_type=historical_quote；fields=[close]；interval=D；adjustment=none；window=2026-08-03\\~2026-08-07",
     "expected_intent": {
       "entity": {
@@ -916,20 +975,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：A股 601318.SH 2026-08-03\\~2026-08-07",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-011"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-011",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-A股-22",
@@ -963,7 +1027,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：A股 600036.SH 2026-07-06\\~2026-07-10",
       "assertions": [
         "entity",
@@ -976,7 +1040,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-011"
   },
   {
     "case_id": "hist-A股-23",
@@ -1006,7 +1071,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：A股 000858.SZ 2026-06-01\\~2026-06-05",
       "assertions": [
         "entity",
@@ -1019,7 +1084,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-012"
   },
   {
     "case_id": "hist-A股-b01",
@@ -1032,7 +1098,8 @@
     "expected_status": "no_data",
     "state_oracle": "2026-08-08 为周六，A 股市场休市，无当日行情",
     "data_oracle": null,
-    "oracle_status": "state_only"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-031"
   },
   {
     "case_id": "hist-A股-b02",
@@ -1045,7 +1112,8 @@
     "expected_status": "unsupported",
     "state_oracle": "须披露=标的类型=指数；禁解析=entity；Suite Scope：V1 仅上市公司普通股票，指数不入场",
     "data_oracle": null,
-    "oracle_status": "state_only"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-032"
   },
   {
     "case_id": "hist-A股-b03",
@@ -1058,7 +1126,8 @@
     "expected_status": "unsupported",
     "state_oracle": "须披露=任务类型=比较；禁解析=entity；Suite Scope：单公司单任务，比较不入场",
     "data_oracle": null,
-    "oracle_status": "state_only"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-033"
   },
   {
     "case_id": "hist-A股-b04",
@@ -1071,7 +1140,8 @@
     "expected_status": "needs_clarification",
     "state_oracle": "缺失=复权口径（前复权/后复权）；禁断言=复权收盘价数值；复权口径必须显式指定",
     "data_oracle": null,
-    "oracle_status": "state_only"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-034"
   },
   {
     "case_id": "hist-A股-b05",
@@ -1084,7 +1154,8 @@
     "expected_status": "unsupported",
     "state_oracle": "须披露=字段=换手率；禁解析=fields；历史行情 Suite 字段集不包含换手率",
     "data_oracle": null,
-    "oracle_status": "state_only"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-035"
   },
   {
     "case_id": "hist-A股-b06",
@@ -1097,7 +1168,8 @@
     "expected_status": "no_data",
     "state_oracle": "2025-10-01 A 股国庆休市，无当日行情",
     "data_oracle": null,
-    "oracle_status": "state_only"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-036"
   },
   {
     "case_id": "hist-港股-01",
@@ -1127,7 +1199,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：港股 00700.HK 2026-07-06\\~2026-07-10",
       "assertions": [
         "entity",
@@ -1140,7 +1212,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-013"
   },
   {
     "case_id": "hist-港股-02",
@@ -1174,7 +1247,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：港股 09988.HK 2026-06-01\\~2026-06-05",
       "assertions": [
         "entity",
@@ -1187,7 +1260,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-014"
   },
   {
     "case_id": "hist-港股-03",
@@ -1217,7 +1291,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：港股 03690.HK 2026-05-04\\~2026-05-08",
       "assertions": [
         "entity",
@@ -1230,7 +1304,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-015"
   },
   {
     "case_id": "hist-港股-04",
@@ -1260,7 +1335,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：港股 01810.HK 2026-04-07\\~2026-04-10",
       "assertions": [
         "entity",
@@ -1273,7 +1348,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-016"
   },
   {
     "case_id": "hist-港股-05",
@@ -1283,7 +1359,7 @@
     "source_market_label": "港股",
     "query": "中国移动 2026 年 3 月 2 日 到 2026 年 3 月 6 日 的周K线（开高低收和成交量）。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=中国移动；symbol=00941.HK；data_type=historical_quote；fields=[open,high,low,close,volume]；interval=W；adjustment=none；window=2026-03-02\\~2026-03-06",
     "expected_intent": {
       "entity": {
@@ -1307,20 +1383,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：港股 00941.HK 2026-03-02\\~2026-03-06",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-012"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-012",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-港股-06",
@@ -1330,7 +1411,7 @@
     "source_market_label": "港股",
     "query": "汇丰控股 2026 年 2 月 9 日 到 2026 年 2 月 13 日 每天的开盘价和收盘价。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=汇丰控股；symbol=00005.HK；data_type=historical_quote；fields=[open,close]；interval=D；adjustment=none；window=2026-02-09\\~2026-02-13",
     "expected_intent": {
       "entity": {
@@ -1351,20 +1432,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：港股 00005.HK 2026-02-09\\~2026-02-13",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-013"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-013",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-港股-07",
@@ -1374,7 +1460,7 @@
     "source_market_label": "港股",
     "query": "中国平安 2026 年 1 月 5 日 到 2026 年 1 月 9 日 的最高价和最低价分别是多少？",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=中国平安；symbol=02318.HK；data_type=historical_quote；fields=[high,low]；interval=D；adjustment=none；window=2026-01-05\\~2026-01-09",
     "expected_intent": {
       "entity": {
@@ -1395,20 +1481,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：港股 02318.HK 2026-01-05\\~2026-01-09",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-014"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-014",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-港股-08",
@@ -1441,7 +1532,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：港股 01299.HK 2025-12-01\\~2025-12-05",
       "assertions": [
         "entity",
@@ -1454,7 +1545,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-017"
   },
   {
     "case_id": "hist-港股-09",
@@ -1464,7 +1556,7 @@
     "source_market_label": "港股",
     "query": "腾讯控股 2025 年 10 月 6 日 到 2025 年 10 月 10 日 的月K线收盘价和成交量。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=腾讯控股；symbol=00700.HK；data_type=historical_quote；fields=[close,volume]；interval=M；adjustment=none；window=2025-10-06\\~2025-10-10",
     "expected_intent": {
       "entity": {
@@ -1485,20 +1577,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：港股 00700.HK 2025-10-06\\~2025-10-10",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-015"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-015",
+    "clarification_dimensions": [
+      "bar_aggregation",
+      "requested_period_window"
+    ],
+    "clarification_reason": "The raw query requests a monthly K bar while supplying only a partial-week date range; neither a full natural month nor daily bars is uniquely implied.",
+    "resolution_basis": "Ask whether the user wants a full natural-calendar-month monthly bar or daily bars for the stated date range; do not infer either interpretation.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-港股-10",
@@ -1528,7 +1625,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：港股 09988.HK 2026-07-06\\~2026-07-10",
       "assertions": [
         "entity",
@@ -1541,7 +1638,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-018"
   },
   {
     "case_id": "hist-港股-11",
@@ -1571,7 +1669,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：港股 03690.HK 2026-06-01\\~2026-06-05",
       "assertions": [
         "entity",
@@ -1584,7 +1682,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-019"
   },
   {
     "case_id": "hist-港股-12",
@@ -1618,7 +1717,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：港股 01810.HK 2026-05-04\\~2026-05-08",
       "assertions": [
         "entity",
@@ -1631,7 +1730,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-020"
   },
   {
     "case_id": "hist-港股-13",
@@ -1641,7 +1741,7 @@
     "source_market_label": "港股",
     "query": "帮我取 中国移动 2026 年 4 月 7 日 到 2026 年 4 月 10 日 的前复权收盘价。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=中国移动；symbol=00941.HK；data_type=historical_quote；fields=[adj_close]；interval=D；adjustment=forward；window=2026-04-07\\~2026-04-10",
     "expected_intent": {
       "entity": {
@@ -1661,20 +1761,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：港股 00941.HK 2026-04-07\\~2026-04-10",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-016"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-016",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-港股-14",
@@ -1684,7 +1789,7 @@
     "source_market_label": "港股",
     "query": "汇丰控股 在 2026 年 3 月 2 日 到 2026 年 3 月 6 日 每天的成交量是多少？",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=汇丰控股；symbol=00005.HK；data_type=historical_quote；fields=[volume]；interval=D；adjustment=none；window=2026-03-02\\~2026-03-06",
     "expected_intent": {
       "entity": {
@@ -1704,20 +1809,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：港股 00005.HK 2026-03-02\\~2026-03-06",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-017"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-017",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-港股-15",
@@ -1727,7 +1837,7 @@
     "source_market_label": "港股",
     "query": "中国平安 2026 年 2 月 9 日 到 2026 年 2 月 13 日 的周K线（开高低收和成交量）。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=中国平安；symbol=02318.HK；data_type=historical_quote；fields=[open,high,low,close,volume]；interval=W；adjustment=none；window=2026-02-09\\~2026-02-13",
     "expected_intent": {
       "entity": {
@@ -1751,20 +1861,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：港股 02318.HK 2026-02-09\\~2026-02-13",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-018"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-018",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-港股-16",
@@ -1795,7 +1910,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：港股 01299.HK 2026-01-05\\~2026-01-09",
       "assertions": [
         "entity",
@@ -1808,7 +1923,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-021"
   },
   {
     "case_id": "hist-港股-17",
@@ -1839,7 +1955,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：港股 00700.HK 2025-11-03\\~2025-11-07",
       "assertions": [
         "entity",
@@ -1852,7 +1968,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-022"
   },
   {
     "case_id": "hist-港股-18",
@@ -1885,7 +2002,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：港股 09988.HK 2025-10-06\\~2025-10-10",
       "assertions": [
         "entity",
@@ -1898,7 +2015,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-023"
   },
   {
     "case_id": "hist-港股-19",
@@ -1908,7 +2026,7 @@
     "source_market_label": "港股",
     "query": "美团-W 2026 年 7 月 6 日 到 2026 年 7 月 10 日 的月K线收盘价和成交量。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=美团-W；symbol=03690.HK；data_type=historical_quote；fields=[close,volume]；interval=M；adjustment=none；window=2026-07-06\\~2026-07-10",
     "expected_intent": {
       "entity": {
@@ -1929,20 +2047,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：港股 03690.HK 2026-07-06\\~2026-07-10",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-019"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-019",
+    "clarification_dimensions": [
+      "bar_aggregation",
+      "requested_period_window"
+    ],
+    "clarification_reason": "The raw query requests a monthly K bar while supplying only a partial-week date range; neither a full natural month nor daily bars is uniquely implied.",
+    "resolution_basis": "Ask whether the user wants a full natural-calendar-month monthly bar or daily bars for the stated date range; do not infer either interpretation.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-港股-20",
@@ -1972,7 +2095,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：港股 01810.HK 2026-06-01\\~2026-06-05",
       "assertions": [
         "entity",
@@ -1985,7 +2108,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-024"
   },
   {
     "case_id": "hist-港股-21",
@@ -1995,7 +2119,7 @@
     "source_market_label": "港股",
     "query": "查一下中国移动 2026 年 5 月 4 日 到 2026 年 5 月 8 日 的收盘价。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=中国移动；symbol=00941.HK；data_type=historical_quote；fields=[close]；interval=D；adjustment=none；window=2026-05-04\\~2026-05-08",
     "expected_intent": {
       "entity": {
@@ -2015,20 +2139,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：港股 00941.HK 2026-05-04\\~2026-05-08",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-020"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-020",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-港股-22",
@@ -2062,7 +2191,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：港股 00005.HK 2026-04-07\\~2026-04-10",
       "assertions": [
         "entity",
@@ -2075,7 +2204,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-025"
   },
   {
     "case_id": "hist-港股-b01",
@@ -2088,7 +2218,8 @@
     "expected_status": "no_data",
     "state_oracle": "2026-05-16 为周六，港交所休市",
     "data_oracle": null,
-    "oracle_status": "state_only"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-037"
   },
   {
     "case_id": "hist-港股-b02",
@@ -2101,7 +2232,8 @@
     "expected_status": "needs_clarification",
     "state_oracle": "缺失=行情类型（实时/历史）；禁断言=价格；未指定实时或历史，历史行情 Suite 无法安全默认",
     "data_oracle": null,
-    "oracle_status": "state_only"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-038"
   },
   {
     "case_id": "hist-港股-b03",
@@ -2114,7 +2246,8 @@
     "expected_status": "unsupported",
     "state_oracle": "须披露=标的类型=指数；禁解析=entity；Suite Scope：V1 仅上市公司普通股票",
     "data_oracle": null,
-    "oracle_status": "state_only"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-039"
   },
   {
     "case_id": "hist-港股-b04",
@@ -2127,7 +2260,8 @@
     "expected_status": "unsupported",
     "state_oracle": "须披露=任务类型=比较；禁解析=entity；Suite Scope：单公司单任务",
     "data_oracle": null,
-    "oracle_status": "state_only"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-040"
   },
   {
     "case_id": "hist-港股-b05",
@@ -2140,7 +2274,8 @@
     "expected_status": "needs_clarification",
     "state_oracle": "缺失=复权口径；禁断言=复权收盘价数值；港股复权口径需显式指定",
     "data_oracle": null,
-    "oracle_status": "state_only"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-041"
   },
   {
     "case_id": "hist-港股-b06",
@@ -2153,7 +2288,8 @@
     "expected_status": "no_data",
     "state_oracle": "2025-12-25 港交所圣诞休市",
     "data_oracle": null,
-    "oracle_status": "state_only"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-042"
   },
   {
     "case_id": "hist-美股-01",
@@ -2183,7 +2319,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 AAPL 2026-07-06\\~2026-07-10",
       "assertions": [
         "entity",
@@ -2196,7 +2332,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-026"
   },
   {
     "case_id": "hist-美股-02",
@@ -2230,7 +2367,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 MSFT 2026-06-01\\~2026-06-05",
       "assertions": [
         "entity",
@@ -2243,7 +2380,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-027"
   },
   {
     "case_id": "hist-美股-03",
@@ -2273,7 +2411,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 NVDA 2026-05-04\\~2026-05-08",
       "assertions": [
         "entity",
@@ -2286,7 +2424,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-028"
   },
   {
     "case_id": "hist-美股-04",
@@ -2316,7 +2455,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 TSLA 2026-04-13\\~2026-04-17",
       "assertions": [
         "entity",
@@ -2329,7 +2468,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-029"
   },
   {
     "case_id": "hist-美股-05",
@@ -2363,7 +2503,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 AMZN 2026-03-02\\~2026-03-06",
       "assertions": [
         "entity",
@@ -2376,7 +2516,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-030"
   },
   {
     "case_id": "hist-美股-06",
@@ -2407,7 +2548,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 GOOGL 2026-02-09\\~2026-02-13",
       "assertions": [
         "entity",
@@ -2420,7 +2561,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-031"
   },
   {
     "case_id": "hist-美股-07",
@@ -2451,7 +2593,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 META 2026-01-05\\~2026-01-09",
       "assertions": [
         "entity",
@@ -2464,7 +2606,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-032"
   },
   {
     "case_id": "hist-美股-08",
@@ -2497,7 +2640,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 AMD 2025-12-01\\~2025-12-05",
       "assertions": [
         "entity",
@@ -2510,7 +2653,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-033"
   },
   {
     "case_id": "hist-美股-09",
@@ -2520,7 +2664,7 @@
     "source_market_label": "美股",
     "query": "摩根大通 2025 年 11 月 3 日 到 2025 年 11 月 7 日 的月K线收盘价和成交量。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=摩根大通；symbol=JPM；data_type=historical_quote；fields=[close,volume]；interval=M；adjustment=none；window=2025-11-03\\~2025-11-07",
     "expected_intent": {
       "entity": {
@@ -2541,20 +2685,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：美股 JPM 2025-11-03\\~2025-11-07",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-021"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-021",
+    "clarification_dimensions": [
+      "bar_aggregation",
+      "requested_period_window"
+    ],
+    "clarification_reason": "The raw query requests a monthly K bar while supplying only a partial-week date range; neither a full natural month nor daily bars is uniquely implied.",
+    "resolution_basis": "Ask whether the user wants a full natural-calendar-month monthly bar or daily bars for the stated date range; do not infer either interpretation.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-美股-10",
@@ -2584,7 +2733,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 KO 2025-10-06\\~2025-10-10",
       "assertions": [
         "entity",
@@ -2597,7 +2746,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-034"
   },
   {
     "case_id": "hist-美股-11",
@@ -2627,7 +2777,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 AAPL 2026-06-01\\~2026-06-05",
       "assertions": [
         "entity",
@@ -2640,7 +2790,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-035"
   },
   {
     "case_id": "hist-美股-12",
@@ -2674,7 +2825,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 MSFT 2026-05-04\\~2026-05-08",
       "assertions": [
         "entity",
@@ -2687,7 +2838,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-036"
   },
   {
     "case_id": "hist-美股-13",
@@ -2717,7 +2869,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 NVDA 2026-04-13\\~2026-04-17",
       "assertions": [
         "entity",
@@ -2730,7 +2882,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-037"
   },
   {
     "case_id": "hist-美股-14",
@@ -2760,7 +2913,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 TSLA 2026-03-02\\~2026-03-06",
       "assertions": [
         "entity",
@@ -2773,7 +2926,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-038"
   },
   {
     "case_id": "hist-美股-15",
@@ -2807,7 +2961,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 AMZN 2026-02-09\\~2026-02-13",
       "assertions": [
         "entity",
@@ -2820,7 +2974,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-039"
   },
   {
     "case_id": "hist-美股-16",
@@ -2851,7 +3006,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 GOOGL 2026-01-05\\~2026-01-09",
       "assertions": [
         "entity",
@@ -2864,7 +3019,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-040"
   },
   {
     "case_id": "hist-美股-17",
@@ -2895,7 +3051,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 META 2025-12-01\\~2025-12-05",
       "assertions": [
         "entity",
@@ -2908,7 +3064,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-041"
   },
   {
     "case_id": "hist-美股-18",
@@ -2941,7 +3098,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 AMD 2025-11-03\\~2025-11-07",
       "assertions": [
         "entity",
@@ -2954,7 +3111,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-042"
   },
   {
     "case_id": "hist-美股-19",
@@ -2964,7 +3122,7 @@
     "source_market_label": "美股",
     "query": "摩根大通 2025 年 10 月 6 日 到 2025 年 10 月 10 日 的月K线收盘价和成交量。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=摩根大通；symbol=JPM；data_type=historical_quote；fields=[close,volume]；interval=M；adjustment=none；window=2025-10-06\\~2025-10-10",
     "expected_intent": {
       "entity": {
@@ -2985,20 +3143,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：美股 JPM 2025-10-06\\~2025-10-10",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-022"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-022",
+    "clarification_dimensions": [
+      "bar_aggregation",
+      "requested_period_window"
+    ],
+    "clarification_reason": "The raw query requests a monthly K bar while supplying only a partial-week date range; neither a full natural month nor daily bars is uniquely implied.",
+    "resolution_basis": "Ask whether the user wants a full natural-calendar-month monthly bar or daily bars for the stated date range; do not infer either interpretation.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-美股-20",
@@ -3028,7 +3191,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 KO 2026-07-06\\~2026-07-10",
       "assertions": [
         "entity",
@@ -3041,7 +3204,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-043"
   },
   {
     "case_id": "hist-美股-21",
@@ -3071,7 +3235,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 AAPL 2026-05-04\\~2026-05-08",
       "assertions": [
         "entity",
@@ -3084,7 +3248,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-044"
   },
   {
     "case_id": "hist-美股-22",
@@ -3118,7 +3283,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 MSFT 2026-04-13\\~2026-04-17",
       "assertions": [
         "entity",
@@ -3131,7 +3296,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-045"
   },
   {
     "case_id": "hist-美股-23",
@@ -3161,7 +3327,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：美股 NVDA 2026-03-02\\~2026-03-06",
       "assertions": [
         "entity",
@@ -3174,7 +3340,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-046"
   },
   {
     "case_id": "hist-美股-b01",
@@ -3187,7 +3354,8 @@
     "expected_status": "no_data",
     "state_oracle": "2025-07-04 纽交所/纳斯达克休市",
     "data_oracle": null,
-    "oracle_status": "state_only"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-043"
   },
   {
     "case_id": "hist-美股-b02",
@@ -3200,7 +3368,8 @@
     "expected_status": "unsupported",
     "state_oracle": "须披露=标的类型=指数；禁解析=entity；Suite Scope：V1 仅上市公司普通股票",
     "data_oracle": null,
-    "oracle_status": "state_only"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-044"
   },
   {
     "case_id": "hist-美股-b03",
@@ -3213,7 +3382,8 @@
     "expected_status": "needs_clarification",
     "state_oracle": "缺失=复权口径；禁断言=复权收盘价数值；美股复权口径需显式指定",
     "data_oracle": null,
-    "oracle_status": "state_only"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-045"
   },
   {
     "case_id": "hist-美股-b04",
@@ -3226,7 +3396,8 @@
     "expected_status": "unsupported",
     "state_oracle": "须披露=任务类型=财务/估值；禁解析=fields；历史行情 Suite 不覆盖财务与估值",
     "data_oracle": null,
-    "oracle_status": "state_only"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-046"
   },
   {
     "case_id": "hist-美股-b05",
@@ -3239,7 +3410,8 @@
     "expected_status": "no_data",
     "state_oracle": "2026-05-25 纽交所/纳斯达克休市",
     "data_oracle": null,
-    "oracle_status": "state_only"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-047"
   },
   {
     "case_id": "hist-日本-01",
@@ -3249,7 +3421,7 @@
     "source_market_label": "日本",
     "query": "查一下丰田汽车 2026 年 7 月 6 日 到 2026 年 7 月 10 日 的收盘价。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=丰田汽车；symbol=7203.T；data_type=historical_quote；fields=[close]；interval=D；adjustment=none；window=2026-07-06\\~2026-07-10",
     "expected_intent": {
       "entity": {
@@ -3269,20 +3441,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：日本 7203.T 2026-07-06\\~2026-07-10",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-023"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-023",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-日本-02",
@@ -3316,7 +3493,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：日本 6758.T 2026-06-01\\~2026-06-05",
       "assertions": [
         "entity",
@@ -3329,7 +3506,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-047"
   },
   {
     "case_id": "hist-日本-03",
@@ -3359,7 +3537,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：日本 8035.T 2026-05-11\\~2026-05-15",
       "assertions": [
         "entity",
@@ -3372,7 +3550,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-048"
   },
   {
     "case_id": "hist-日本-04",
@@ -3382,7 +3561,7 @@
     "source_market_label": "日本",
     "query": "软银集团 在 2026 年 4 月 13 日 到 2026 年 4 月 17 日 每天的成交量是多少？",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=软银集团；symbol=9984.T；data_type=historical_quote；fields=[volume]；interval=D；adjustment=none；window=2026-04-13\\~2026-04-17",
     "expected_intent": {
       "entity": {
@@ -3402,20 +3581,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：日本 9984.T 2026-04-13\\~2026-04-17",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-024"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-024",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-日本-b01",
@@ -3428,7 +3612,8 @@
     "expected_status": "unsupported",
     "state_oracle": "须披露=标的类型=指数；禁解析=entity；Suite Scope：V1 仅上市公司普通股票；日本为候选市场",
     "data_oracle": null,
-    "oracle_status": "state_only"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-048"
   },
   {
     "case_id": "hist-英国-01",
@@ -3438,7 +3623,7 @@
     "source_market_label": "英国",
     "query": "查一下壳牌 2026 年 7 月 6 日 到 2026 年 7 月 10 日 的收盘价。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=壳牌；symbol=SHEL.L；data_type=historical_quote；fields=[close]；interval=D；adjustment=none；window=2026-07-06\\~2026-07-10",
     "expected_intent": {
       "entity": {
@@ -3458,20 +3643,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：英国 SHEL.L 2026-07-06\\~2026-07-10",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-025"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-025",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-英国-02",
@@ -3505,7 +3695,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：英国 AZN.L 2026-06-01\\~2026-06-05",
       "assertions": [
         "entity",
@@ -3518,7 +3708,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-049"
   },
   {
     "case_id": "hist-英国-03",
@@ -3528,7 +3719,7 @@
     "source_market_label": "英国",
     "query": "帮我取 汇丰控股 2026 年 5 月 11 日 到 2026 年 5 月 15 日 的前复权收盘价。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=汇丰控股；symbol=HSBA.L；data_type=historical_quote；fields=[adj_close]；interval=D；adjustment=forward；window=2026-05-11\\~2026-05-15",
     "expected_intent": {
       "entity": {
@@ -3548,20 +3739,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：英国 HSBA.L 2026-05-11\\~2026-05-15",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-026"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-026",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-英国-04",
@@ -3571,7 +3767,7 @@
     "source_market_label": "英国",
     "query": "沃达丰 在 2026 年 4 月 13 日 到 2026 年 4 月 17 日 每天的成交量是多少？",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=沃达丰；symbol=VOD.L；data_type=historical_quote；fields=[volume]；interval=D；adjustment=none；window=2026-04-13\\~2026-04-17",
     "expected_intent": {
       "entity": {
@@ -3591,20 +3787,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：英国 VOD.L 2026-04-13\\~2026-04-17",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-027"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-027",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-英国-b01",
@@ -3617,7 +3818,8 @@
     "expected_status": "unsupported",
     "state_oracle": "须披露=标的类型=指数；禁解析=entity；Suite Scope：V1 仅上市公司普通股票；英国为候选市场",
     "data_oracle": null,
-    "oracle_status": "state_only"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-049"
   },
   {
     "case_id": "hist-德国-01",
@@ -3627,7 +3829,7 @@
     "source_market_label": "德国",
     "query": "查一下SAP 2026 年 7 月 6 日 到 2026 年 7 月 10 日 的收盘价。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=SAP；symbol=SAP.DE；data_type=historical_quote；fields=[close]；interval=D；adjustment=none；window=2026-07-06\\~2026-07-10",
     "expected_intent": {
       "entity": {
@@ -3647,20 +3849,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：德国 SAP.DE 2026-07-06\\~2026-07-10",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-028"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-028",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-德国-02",
@@ -3694,7 +3901,7 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
+      "oracle_status": "frozen/v1",
       "source_note": "待独立冻结快照：德国 SIE.DE 2026-06-01\\~2026-06-05",
       "assertions": [
         "entity",
@@ -3707,7 +3914,8 @@
         "row_values"
       ]
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "frozen/v1",
+    "numeric_contract_ref": "historical-price-numeric-050"
   },
   {
     "case_id": "hist-德国-03",
@@ -3717,7 +3925,7 @@
     "source_market_label": "德国",
     "query": "帮我取 安联保险 2026 年 5 月 11 日 到 2026 年 5 月 15 日 的前复权收盘价。",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=安联保险；symbol=ALV.DE；data_type=historical_quote；fields=[adj_close]；interval=D；adjustment=forward；window=2026-05-11\\~2026-05-15",
     "expected_intent": {
       "entity": {
@@ -3737,20 +3945,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：德国 ALV.DE 2026-05-11\\~2026-05-15",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-029"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-029",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-德国-04",
@@ -3760,7 +3973,7 @@
     "source_market_label": "德国",
     "query": "巴斯夫 在 2026 年 4 月 13 日 到 2026 年 4 月 17 日 每天的成交量是多少？",
     "case_type": "normal",
-    "expected_status": "success",
+    "expected_status": "needs_clarification",
     "source_expected_intent": "entity=巴斯夫；symbol=BAS.DE；data_type=historical_quote；fields=[volume]；interval=D；adjustment=none；window=2026-04-13\\~2026-04-17",
     "expected_intent": {
       "entity": {
@@ -3780,20 +3993,25 @@
       }
     },
     "data_oracle": {
-      "oracle_status": "candidate/unverified",
-      "source_note": "待独立冻结快照：德国 BAS.DE 2026-04-13\\~2026-04-17",
+      "oracle_status": "state_frozen/v1",
+      "source_note": "No numeric reference Oracle applies until the user resolves the required clarification dimensions.",
       "assertions": [
-        "entity",
-        "market",
-        "data_type",
-        "fields",
-        "interval",
-        "adjustment",
-        "time_or_period",
-        "row_values"
-      ]
+        "expected_status",
+        "clarification_dimensions",
+        "clarification_reason",
+        "resolution_basis"
+      ],
+      "state_contract_ref": "historical-price-state-030"
     },
-    "oracle_status": "candidate/unverified"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-030",
+    "clarification_dimensions": [
+      "listing_market_or_exchange",
+      "security_identifier"
+    ],
+    "clarification_reason": "The raw query names an issuer but does not bind a listing market/exchange or a security identifier; evaluator-only market and symbol metadata must not resolve the request.",
+    "resolution_basis": "Ask the user to choose a listing market/exchange or provide a ticker/ISIN before any numeric historical-price request is made.",
+    "state_oracle": "needs_clarification; numeric data is inapplicable until the stated dimensions are resolved"
   },
   {
     "case_id": "hist-德国-b01",
@@ -3806,6 +4024,7 @@
     "expected_status": "unsupported",
     "state_oracle": "须披露=标的类型=指数；禁解析=entity；Suite Scope：V1 仅上市公司普通股票；德国为候选市场",
     "data_oracle": null,
-    "oracle_status": "state_only"
+    "oracle_status": "state_frozen/v1",
+    "state_contract_ref": "historical-price-state-050"
   }
 ]

@@ -1,32 +1,26 @@
-# Historical-price blocked package validation
+# Historical-price Oracle v1 validation
 
-Status: **not frozen**. Data Accuracy: **not scored**. This is a blocker package, not a value oracle.
+Status: **frozen v1 public-traceable baseline**.
 
-- Candidate source: `benchmarks/candidates/v0.1/historical_price.cases.json`
-- Candidate SHA-256: `9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279`
-- Covered Cases: 100 (80 normal, 20 boundary)
-- Historical market values stored: 0
-- `oracle/v1` value records admitted: 0
+- Candidate cases: 100
+- State oracles: 50 (excluded from Data Accuracy)
+- Numeric contracts: 50
+- Numeric records scoreable with at least one source-coherent variant: 50
+- Numeric records with evidence missing: 0
+- Evidence receipts: 55, normalized to `evidence-receipt/v1`; each retains its original capture metadata and declares `raw_payload_retained: false`
 
-## Mutually exclusive primary rejection
+## V1 admission rule
 
-| Primary rejection | Count |
-|---|---:|
-| `blocked_semantic_contract` | 30 |
-| `blocked_adjustment` | 12 |
-| `blocked_source_license` | 38 |
-| `state_oracle_candidate` | 20 |
+A numeric case retains every complete source-coherent variant. V1 admits one exact-case publicly traceable variant; it does not claim provider authorization, redistribution rights, or official-exchange status. Conflicts remain accepted alternative variants when each is complete and source-coherent: never average, select fields across sources, or splice rows. Strict licensed dual-source reconciliation is a future release upgrade.
 
-## Nonexclusive gate overlap
+## Known evidence gap
 
-- Entity/market semantic contract missing: 24 normal Cases.
-- Monthly-bucket semantic contract missing: 6 normal Cases.
-- Forward-adjustment lineage missing: 17 normal Cases.
-- Independent-source/license evidence missing: 80 normal Cases.
-- Five Cases have both entity/market semantic ambiguity and forward-adjustment requirements; semantic is primary while adjustment remains applicable.
+- None.
 
-Every boundary Case is a structured state-oracle candidate with both calendar and suite-policy evidence marked missing. No candidate Case is `frozen`, and none is eligible for Data Accuracy scoring.
+## Integrity checks
 
-## Validator contract
-
-`oracles.json` includes an explicit empty `oracles` array for the hardened `validate_freeze.py` discovery path. Blocked Case records are kept separately in `blocked_cases`, preventing synthetic assertions, receipts, contracts, or values from being fabricated merely to satisfy a frozen-record schema.
+- All 50 state contracts are represented exactly once.
+- All 50 numeric contracts are represented exactly once.
+- Every numeric variant links to one receipt and retains source URL, content hash (or explicitly qualified excerpt hash), retrieval time, currency, unit, adjustment basis and rows restricted to the requested field/date contract.
+- Raw Query text is never stored or rewritten by this package; only the registry hash and pre-existing raw-query SHA-256 are referenced.
+- review-ledger.json binds the frozen Oracle hash. Numeric cases have independent approved semantic/data decisions; state cases have approved semantic decisions and explicit Data Accuracy exclusion.

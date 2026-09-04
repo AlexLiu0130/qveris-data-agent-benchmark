@@ -25,6 +25,8 @@ REQUIRED_SCHEMAS = {
     "review-ledger.schema.json": "review-ledger/v1",
     "manifest.schema.json": "oracle-manifest/v1",
     "financial-fact-contract-registry.schema.json": "financial-statement-fact-contract/v1",
+    "realtime-quote-contract-registry.schema.json": "realtime-quote-contract-registry/v1",
+    "historical-price-oracle-package.schema.json": "historical-price-oracle-package/v1",
 }
 SUITES = {"historical_price", "financial_statements", "realtime_quote"}
 STATUSES = {"draft", "evidence_collected", "under_review", "conflict", "frozen", "rejected", "superseded"}
@@ -227,7 +229,8 @@ def schema_check(report: Report) -> None:
             continue
         if not isinstance(schema, dict) or schema.get("$schema") != "https://json-schema.org/draft/2020-12/schema":
             report.fail(f"{name}: must declare JSON Schema draft 2020-12")
-        if schema.get("properties", {}).get("schema_version", {}).get("const") != version:
+        version_key = "package_schema_version" if name == "historical-price-oracle-package.schema.json" else "schema_version"
+        if schema.get("properties", {}).get(version_key, {}).get("const") != version:
             report.fail(f"{name}: wrong schema_version contract")
 
 
@@ -284,6 +287,8 @@ def collect_ledgers(suite_dir: Path, report: Report) -> tuple[dict[str, dict[str
     for path in candidates:
         try:
             value = load_json(path)
+            if isinstance(value, dict) and value.get("schema_version") == "historical-price-review-ledger/v1":
+                continue
             items = records(value, "review_ledgers", path, report)
         except (OSError, json.JSONDecodeError) as error:
             report.fail(f"{path}: unreadable review ledger: {error}")
@@ -323,6 +328,8 @@ def collect_manifest(suite_dir: Path, report: Report) -> tuple[dict[str, str], l
                 report.fail(f"{path}: invalid manifest entry")
                 continue
             target = ROOT / entry["path"]
+            if not target.is_file():
+                target = ROOT.parents[2] / entry["path"]
             if not target.is_file() or digest(target) != entry["sha256"]:
                 report.fail(f"{path}: manifest hash mismatch for {entry['path']}")
             entries[entry["path"]] = entry["sha256"]
@@ -514,6 +521,20 @@ def historical_sources_are_independent_licensed(sources: list[dict[str, Any]]) -
 
 
 QUOTE_CAPTURE_FIELDS = {"provider_quote_timestamp", "captured_at", "market_session", "timezone", "currency", "unit"}
+REALTIME_RECEIPT_FIELDS = {
+    "source_id", "source_name", "source_response_sha256", "provider_quote_timestamp",
+    "captured_at", "market_session", "timezone", "currency", "unit", "freshness", "tick",
+}
+REALTIME_VARIANT_POLICY = {
+    "variant_rule": "one_complete_source_per_accepted_variant",
+    "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
+    "forbidden": ["average", "cross_source_field_splice"],
+    "required_receipt_fields": [
+        "source_id", "source_name", "source_response_sha256", "provider_quote_timestamp",
+        "captured_at", "market_session", "timezone", "currency", "unit", "freshness", "tick",
+    ],
+    "capture_failure": "case_data_not_scored",
+}
 
 
 def quote_contract_gate(record: dict[str, Any], prefix: str, frozen: bool, report: Report) -> bool:
@@ -636,6 +657,256 @@ def validate_realtime_blocked_inventory(path: Path, value: Any, report: Report) 
         report.fail(f"{prefix}: blocked_cases does not exactly match candidate IDs")
     report.incomplete += len(blocked)
     report.gap(f"{prefix}: {len(blocked)} realtime cases are an explicit no-value blocker inventory; none is scoreable")
+    return True
+
+
+def query_digest(query: Any) -> str | None:
+    return hashlib.sha256(query.encode()).hexdigest() if isinstance(query, str) else None
+
+
+def historical_receipt_matches_variant(receipts: dict[str, dict[str, Any]], oracle_id: str, variant_id: str) -> bool:
+    """A historical variant is traceable only through its own capture receipt."""
+    return sum(
+        receipt.get("oracle_id") == oracle_id and receipt.get("variant_id") == variant_id
+        for receipt in receipts.values()
+    ) == 1
+
+
+def validate_historical_layered_package(
+    path: Path, value: Any, receipt_by_id: dict[str, dict[str, Any]], report: Report,
+) -> bool:
+    """Validate the historical v1 source-coherent freeze without oracle/v1 reshaping."""
+    if not isinstance(value, dict) or value.get("package_schema_version") != "historical-price-oracle-package/v1":
+        return False
+    prefix = str(path)
+    frozen_at = iso_datetime(value.get("frozen_at"))
+    if value.get("suite") != "historical_price" or value.get("status") != "frozen" or frozen_at is None:
+        report.fail(f"{prefix}: invalid historical package state")
+    root = ROOT.parents[2]
+    source = value.get("source_candidate")
+    if not isinstance(source, dict) or source.get("path") != "benchmarks/candidates/v0.1/historical_price.cases.json" or not is_sha256(source.get("sha256")):
+        report.fail(f"{prefix}: historical source_candidate path/hash are required")
+        return True
+    candidate_path = root / source["path"]
+    try:
+        candidates = load_json(candidate_path)
+    except (OSError, json.JSONDecodeError) as error:
+        report.fail(f"{prefix}: unreadable historical candidate source: {error}")
+        return True
+    if not isinstance(candidates, list) or len(candidates) != 100 or source.get("case_count") != 100 or digest(candidate_path) != source["sha256"]:
+        report.fail(f"{prefix}: candidate source must be an exact 100-case hash match")
+        return True
+    candidate_by_id = {item.get("case_id"): item for item in candidates if isinstance(item, dict)}
+    if len(candidate_by_id) != 100:
+        report.fail(f"{prefix}: candidate case IDs must be unique")
+        return True
+    numeric, states = value.get("numeric_oracles"), value.get("state_oracles")
+    if not isinstance(numeric, list) or not isinstance(states, list) or len(numeric) != 50 or len(states) != 50:
+        report.fail(f"{prefix}: historical package requires exactly 50 numeric and 50 state Oracles")
+        return True
+    numeric_by_case = {item.get("case_id"): item for item in numeric if isinstance(item, dict)}
+    state_by_case = {item.get("case_id"): item for item in states if isinstance(item, dict)}
+    if len(numeric_by_case) != 50 or len(state_by_case) != 50 or set(numeric_by_case) & set(state_by_case) or set(numeric_by_case) | set(state_by_case) != set(candidate_by_id):
+        report.fail(f"{prefix}: numeric/state Oracles must cover every candidate exactly once")
+        return True
+    seen_oracle_ids: set[str] = set()
+    for case_id, item in numeric_by_case.items():
+        oracle_id, variants = item.get("oracle_id"), item.get("accepted_variants")
+        if item.get("type") != "numeric_oracle" or item.get("status") != "frozen" or item.get("data_accuracy") != "scoreable":
+            report.fail(f"{prefix}:{case_id}: invalid numeric Oracle state")
+        if item.get("frozen_at") != value.get("frozen_at"):
+            report.fail(f"{prefix}:{case_id}: numeric frozen_at must equal package frozen_at")
+        if not isinstance(oracle_id, str) or not oracle_id or oracle_id in seen_oracle_ids or item.get("raw_query_sha256") != query_digest(candidate_by_id[case_id].get("query")):
+            report.fail(f"{prefix}:{case_id}: numeric Oracle ID or query hash mismatch")
+        seen_oracle_ids.add(str(oracle_id))
+        contract = item.get("contract")
+        required_contract = ("contract_id", "symbol", "market", "currency", "unit", "timezone", "interval")
+        if not isinstance(contract, dict) or strings(contract, required_contract) or not isinstance(contract.get("fields"), list) or not contract["fields"] or not isinstance(contract.get("date_window"), dict) or not isinstance(contract.get("adjustment"), dict):
+            report.fail(f"{prefix}:{case_id}: malformed numeric contract")
+        if not isinstance(variants, list) or not variants:
+            report.fail(f"{prefix}:{case_id}: numeric Oracle needs at least one accepted source-coherent variant")
+            continue
+        variant_ids: set[str] = set()
+        for variant in variants:
+            if not isinstance(variant, dict) or strings(variant, ("variant_id", "currency", "unit", "adjustment", "method")) or not isinstance(variant.get("rows"), list) or not variant["rows"]:
+                report.fail(f"{prefix}:{case_id}: malformed accepted variant")
+                continue
+            variant_id = variant["variant_id"]
+            if variant_id in variant_ids or not historical_receipt_matches_variant(receipt_by_id, str(oracle_id), variant_id):
+                report.fail(f"{prefix}:{case_id}:{variant_id}: accepted variant lacks exactly linked receipt")
+            variant_ids.add(variant_id)
+        if item.get("aggregation_policy") not in {None, "accepted_variants_only_no_average_or_field_splice"}:
+            report.fail(f"{prefix}:{case_id}: unsupported aggregation policy")
+    for case_id, item in state_by_case.items():
+        oracle_id, slots = item.get("oracle_id"), item.get("follow_up_slots")
+        if item.get("type") != "state_oracle" or item.get("status") != "frozen" or item.get("expected_status") not in {"needs_clarification", "no_data", "unsupported"} or item.get("data_accuracy") != "not_applicable_excluded_from_denominator":
+            report.fail(f"{prefix}:{case_id}: invalid state Oracle state")
+        if item.get("frozen_at") != value.get("frozen_at"):
+            report.fail(f"{prefix}:{case_id}: state frozen_at must equal package frozen_at")
+        if not isinstance(oracle_id, str) or not oracle_id or oracle_id in seen_oracle_ids or item.get("raw_query_sha256") != query_digest(candidate_by_id[case_id].get("query")):
+            report.fail(f"{prefix}:{case_id}: state Oracle ID or query hash mismatch")
+        seen_oracle_ids.add(str(oracle_id))
+        if item.get("expected_status") == "needs_clarification" and (not isinstance(slots, list) or len(slots) != 1 or not isinstance(slots[0], dict) or strings(slots[0], ("dimension", "prompt"))):
+            report.fail(f"{prefix}:{case_id}: state Oracle needs one minimal follow-up slot")
+    coverage = value.get("coverage")
+    if not isinstance(coverage, dict) or coverage.get("total_cases") != 100 or coverage.get("numeric_cases") != 50 or coverage.get("state_cases") != 50 or coverage.get("numeric_with_variant") != 50 or coverage.get("numeric_evidence_missing") != 0:
+        report.fail(f"{prefix}: coverage must declare the 50/50 historical partition")
+    if sum(len(item.get("accepted_variants", [])) for item in numeric_by_case.values()) != 55:
+        report.fail(f"{prefix}: historical v1 must retain all 55 accepted source-coherent variants")
+    if any((moment := iso_datetime(receipt.get("retrieved_at"))) is None or frozen_at is None or moment >= frozen_at for receipt in receipt_by_id.values()):
+        report.fail(f"{prefix}: package frozen_at must be later than every historical receipt retrieval")
+    ledger_path = path.parent / "review-ledger.json"
+    try:
+        ledger = load_json(ledger_path)
+    except (OSError, json.JSONDecodeError) as error:
+        report.fail(f"{prefix}: unreadable historical review ledger: {error}")
+        ledger = None
+    if not isinstance(ledger, dict) or ledger.get("schema_version") != "historical-price-review-ledger/v1" or ledger.get("oracle_file_sha256") != digest(path):
+        report.fail(f"{prefix}: historical review ledger must be a current signable v1 ledger")
+    else:
+        entries = ledger.get("entries")
+        by_case = {item.get("case_id"): item for item in entries if isinstance(item, dict)} if isinstance(entries, list) else {}
+        if len(by_case) != 100 or set(by_case) != set(candidate_by_id):
+            report.fail(f"{prefix}: historical review ledger must cover every case once")
+        numeric_reviewers = {
+            "CN": "/root/review_historical_cn_hk_v1",
+            "HK": "/root/review_historical_cn_hk_v1",
+            "US": "/root/review_historical_us_v1",
+            "JP": "/root/review_historical_jp_gb_de_v1",
+            "GB": "/root/review_historical_jp_gb_de_v1",
+            "DE": "/root/review_historical_jp_gb_de_v1",
+        }
+        for case_id, entry in by_case.items():
+            reviews = entry.get("reviews")
+            requirements = entry.get("review_requirements")
+            if not isinstance(reviews, list) or not isinstance(requirements, list) or entry.get("status") != "approved" or entry.get("conflicts_or_observations") not in ([], None):
+                report.fail(f"{prefix}:{case_id}: historical review entry must be approved with no open conflicts")
+                continue
+            decisions = {(item.get("role"), item.get("reviewer_id"), item.get("decision")) for item in reviews if isinstance(item, dict)}
+            required_status = {item.get("role"): item.get("status") for item in requirements if isinstance(item, dict)}
+            if case_id in numeric_by_case:
+                expected_data = numeric_reviewers.get(numeric_by_case[case_id].get("contract", {}).get("market"))
+                required = {
+                    ("semantic_reviewer", "/root/semantic_review_historical_numeric_v1", "approved"),
+                    ("data_reviewer", expected_data, "approved"),
+                }
+                if required - decisions or required_status != {"semantic_reviewer": "approved", "data_reviewer": "approved"}:
+                    report.fail(f"{prefix}:{case_id}: numeric case lacks its independent approved semantic/data reviewers")
+            else:
+                required = {("semantic_reviewer", "/root/review_historical_state_v1", "approved")}
+                if required - decisions or required_status != {"semantic_reviewer": "approved", "data_reviewer": "not_applicable"}:
+                    report.fail(f"{prefix}:{case_id}: state case requires semantic approval and data exclusion")
+    manifest_path = path.parent / "manifest.json"
+    try:
+        manifest = load_json(manifest_path)
+    except (OSError, json.JSONDecodeError) as error:
+        report.fail(f"{prefix}: unreadable historical manifest: {error}")
+        manifest = {}
+    required_files = {
+        "benchmarks/candidates/v0.1/historical_price.cases.json",
+        "historical-price-contracts.v1.json",
+        "outputs/historical_price/oracles.json",
+        "outputs/historical_price/evidence-receipts.json",
+        "outputs/historical_price/review-ledger.json",
+        "outputs/historical_price/source-capability-matrix.json",
+    }
+    entries = manifest.get("files") if isinstance(manifest, dict) else None
+    paths = [item.get("path") for item in entries if isinstance(item, dict)] if isinstance(entries, list) else []
+    if not suite_manifest_is_frozen("historical_price", [(manifest_path, manifest)] if isinstance(manifest, dict) else []) or set(paths) != required_files or len(paths) != len(set(paths)):
+        report.fail(f"{prefix}: historical manifest must be the one frozen release with all protected v1 inputs")
+    report.frozen += 100
+    return True
+
+
+def realtime_policy_is_valid(value: Any) -> bool:
+    return isinstance(value, dict) and value == REALTIME_VARIANT_POLICY and set(value["required_receipt_fields"]) == REALTIME_RECEIPT_FIELDS
+
+
+def validate_realtime_layered_package(path: Path, value: Any, report: Report) -> bool:
+    """Validate frozen static contracts without pretending live values already exist."""
+    if not isinstance(value, dict) or value.get("package_schema_version") != "realtime-quote-layered-package/v1":
+        return False
+    prefix = str(path)
+    if value.get("suite") != "realtime_quote" or value.get("status") != "partially_frozen" or value.get("data_accuracy") != "runtime_snapshot_required":
+        report.fail(f"{prefix}: invalid realtime layered-package state")
+    root = ROOT.parents[2]
+    source = value.get("source_candidate")
+    if not isinstance(source, dict) or not isinstance(source.get("path"), str) or not is_sha256(source.get("sha256")):
+        report.fail(f"{prefix}: source_candidate path/hash are required")
+        return True
+    candidate_path = root / source["path"]
+    try:
+        candidates = load_json(candidate_path)
+    except (OSError, json.JSONDecodeError) as error:
+        report.fail(f"{prefix}: unreadable realtime candidate source: {error}")
+        return True
+    if not isinstance(candidates, list) or len(candidates) != 100 or source.get("case_count") != 100 or digest(candidate_path) != source["sha256"]:
+        report.fail(f"{prefix}: candidate source must be an exact 100-case hash match")
+        return True
+    candidate_by_id = {item.get("case_id"): item for item in candidates if isinstance(item, dict)}
+    if len(candidate_by_id) != 100 or set(candidate_by_id) != {f"RTQ-{number:03d}" for number in range(1, 101)}:
+        report.fail(f"{prefix}: candidate IDs must exactly cover RTQ-001..RTQ-100")
+        return True
+    registry_ref = value.get("static_contract_registry")
+    if not isinstance(registry_ref, dict) or registry_ref.get("path") != "benchmarks/oracles/v1/fact-contracts.realtime.v1.json" or not is_sha256(registry_ref.get("sha256")) or registry_ref.get("contract_count") != 100:
+        report.fail(f"{prefix}: static_contract_registry is invalid")
+        return True
+    registry_path = root / registry_ref["path"]
+    try:
+        registry = load_json(registry_path)
+    except (OSError, json.JSONDecodeError) as error:
+        report.fail(f"{prefix}: unreadable realtime contract registry: {error}")
+        return True
+    if digest(registry_path) != registry_ref["sha256"] or registry.get("schema_version") != "realtime-quote-contract-registry/v1" or registry.get("status") != "contract_frozen" or registry.get("source_candidate") != source or not realtime_policy_is_valid(registry.get("source_coherence_policy")):
+        report.fail(f"{prefix}: realtime contract registry hash or source-coherence policy mismatch")
+        return True
+    contracts = registry.get("contracts")
+    if not isinstance(contracts, list) or len(contracts) != 100:
+        report.fail(f"{prefix}: realtime registry must have 100 contracts")
+        return True
+    contract_by_id = {item.get("case_id"): item for item in contracts if isinstance(item, dict)}
+    if len(contract_by_id) != 100 or set(contract_by_id) != set(candidate_by_id):
+        report.fail(f"{prefix}: realtime registry must cover each candidate exactly once")
+        return True
+    state_ids: set[str] = set()
+    dynamic_ids: set[str] = set()
+    for case_id, case in candidate_by_id.items():
+        contract = contract_by_id[case_id]
+        expected = case.get("expected_status")
+        mode = "runtime_snapshot" if expected == "success" else "state_only"
+        if contract.get("query_sha256") != query_digest(case.get("query")) or contract.get("contract_status") != "contract_frozen" or contract.get("expected_status") != expected or contract.get("evaluation_mode") != mode:
+            report.fail(f"{prefix}:{case_id}: registry request/status/query contract mismatch")
+        if mode == "runtime_snapshot":
+            dynamic_ids.add(case_id)
+            if case.get("reference_snapshot_required") is not True or contract.get("runtime_capture_required") is not True or not realtime_policy_is_valid(contract.get("accepted_variant_policy")):
+                report.fail(f"{prefix}:{case_id}: dynamic case requires a source-coherent runtime capture contract")
+        else:
+            state_ids.add(case_id)
+            if case.get("reference_snapshot_required") is not False or "runtime_capture_required" in contract:
+                report.fail(f"{prefix}:{case_id}: state-only contract cannot require a quote capture")
+    if len(state_ids) != 18 or len(dynamic_ids) != 82:
+        report.fail(f"{prefix}: expected 18 state-only and 82 runtime dynamic cases")
+    state_oracles = value.get("state_oracles")
+    runtime_cases = value.get("runtime_dynamic_cases")
+    if not isinstance(state_oracles, list) or not isinstance(runtime_cases, list):
+        report.fail(f"{prefix}: state_oracles and runtime_dynamic_cases are required")
+        return True
+    state_by_id = {item.get("case_id"): item for item in state_oracles if isinstance(item, dict)}
+    dynamic_by_id = {item.get("case_id"): item for item in runtime_cases if isinstance(item, dict)}
+    if len(state_by_id) != 18 or set(state_by_id) != state_ids or len(dynamic_by_id) != 82 or set(dynamic_by_id) != dynamic_ids:
+        report.fail(f"{prefix}: static state/dynamic partitions must match registry modes")
+        return True
+    for case_id, item in state_by_id.items():
+        case = candidate_by_id[case_id]
+        if item.get("oracle_state") != "frozen" or item.get("semantic_accuracy") != "scoreable" or item.get("data_accuracy") != "not_applicable" or item.get("expected_status") != case.get("expected_status") or item.get("query_sha256") != query_digest(case.get("query")):
+            report.fail(f"{prefix}:{case_id}: frozen state Oracle mismatch")
+    for case_id, item in dynamic_by_id.items():
+        case = candidate_by_id[case_id]
+        if item.get("oracle_state") != "contract_frozen" or item.get("semantic_accuracy") != "scoreable" or item.get("data_accuracy") != "runtime_capture_required" or item.get("expected_status") != "success" or item.get("runtime_capture_required") is not True or item.get("capture_failure") != "case_data_not_scored" or item.get("query_sha256") != query_digest(case.get("query")) or not realtime_policy_is_valid(item.get("accepted_variant_policy")):
+            report.fail(f"{prefix}:{case_id}: runtime dynamic contract mismatch")
+    report.frozen += len(state_ids)
+    report.incomplete += len(dynamic_ids)
+    report.gap(f"{prefix}: 82 dynamic cases await per-run complete source-coherent receipts; capture failure is case-level data not_scored")
     return True
 
 
@@ -843,7 +1114,9 @@ def validate_package() -> Report:
             except (OSError, json.JSONDecodeError) as error:
                 report.fail(f"{path}: unreadable oracles: {error}")
                 continue
-            if suite == "realtime_quote" and validate_realtime_blocked_inventory(path, value, report):
+            if suite == "historical_price" and validate_historical_layered_package(path, value, receipt_by_id, report):
+                continue
+            if suite == "realtime_quote" and (validate_realtime_layered_package(path, value, report) or validate_realtime_blocked_inventory(path, value, report)):
                 continue
             items = records(value, "oracles", path, report)
             for item in items:
@@ -892,6 +1165,9 @@ def self_test() -> int:
     quote_report = Report()
     validate_oracle(quote, Path("realtime-oracles.json"), {}, {}, {}, {}, set(), {}, [], {}, {}, quote_report)
     assert not quote_report.failures and quote_report.incomplete == 1
+    assert realtime_policy_is_valid(REALTIME_VARIANT_POLICY)
+    assert not realtime_policy_is_valid({**REALTIME_VARIANT_POLICY, "forbidden": ["average"]})
+    assert query_digest("same query") == hashlib.sha256(b"same query").hexdigest()
     quote["quote_contract"]["snapshot_mode"] = "replay_fixture"
     quote["quote_contract"]["evaluation_use"] = "formal_data_accuracy"
     replay_report = Report()
@@ -939,7 +1215,7 @@ def self_test() -> int:
         assert not collect_financial_contracts(malformed_registry_report, registry_path)
         assert any("registry_projection_contract_invalid" in failure for failure in malformed_registry_report.failures)
     assert "exchange" in FINANCIAL_AUTHORITY_SOURCE_CLASSES and "other" not in FINANCIAL_AUTHORITY_SOURCE_CLASSES
-    print("OK: self-test covered registry receipt normalization/projection guards, reviewer separation, origin/license, frozen manifest, ISO/PIT/hash, authority class, display-nil, and realtime live/replay gates")
+    print("OK: self-test covered registry receipt normalization/projection guards, reviewer separation, origin/license, frozen manifest, ISO/PIT/hash, authority class, display-nil, realtime live/replay gates, and source-coherent dynamic quote policy")
     return 0
 
 

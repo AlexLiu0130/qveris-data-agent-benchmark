@@ -1,248 +1,112 @@
 {
-  "package_schema_version": "realtime-quote-layered-package/v1",
-  "purpose": "Static request/state contracts are frozen. Dynamic quote values are frozen per run only after a complete source-coherent receipt is captured.",
+  "schema_version": "realtime-quote-contract-registry/v1",
   "suite": "realtime_quote",
-  "status": "partially_frozen",
-  "data_accuracy": "runtime_snapshot_required",
+  "status": "contract_frozen",
   "source_candidate": {
     "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
     "sha256": "6803e0cbc12a1b40b541aaadf70cbda4c0c6e646a4c185a56a1cc1d4b16577ec",
     "case_count": 100
   },
-  "static_contract_registry": {
-    "path": "benchmarks/oracles/v1/fact-contracts.realtime.v1.json",
-    "sha256": "793288d97b14d2ca51bfcbf04ec6937e57f695b1758b6b3ec61e2afa5f8a4b64",
-    "contract_count": 100
+  "source_coherence_policy": {
+    "variant_rule": "one_complete_source_per_accepted_variant",
+    "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
+    "forbidden": [
+      "average",
+      "cross_source_field_splice"
+    ],
+    "required_receipt_fields": [
+      "source_id",
+      "source_name",
+      "source_response_sha256",
+      "provider_quote_timestamp",
+      "captured_at",
+      "market_session",
+      "timezone",
+      "currency",
+      "unit",
+      "freshness",
+      "tick"
+    ],
+    "capture_failure": "case_data_not_scored"
   },
-  "state_oracles": [
+  "contracts": [
     {
-      "oracle_id": "RTQ-STATE-001",
       "case_id": "RTQ-001",
       "query_sha256": "e64d07612765437b4e5bfe36181fa91d066387ac62f0ab7c4f06f7dc22a6fccb",
-      "oracle_state": "frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "not_applicable",
-      "expected_status": "needs_clarification",
-      "state_resolution": {
-        "rule": "Public GET terminal status is the complete answer; no dynamic market value is requested."
-      }
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "state_only",
+      "expected_status": "needs_clarification"
     },
     {
-      "oracle_id": "RTQ-STATE-002",
       "case_id": "RTQ-002",
       "query_sha256": "99db13d3dd02daeb1d0785c3bef63b6f114b6c74374bfc6f3672582e0d06f3f4",
-      "oracle_state": "frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "not_applicable",
-      "expected_status": "needs_clarification",
-      "state_resolution": {
-        "rule": "Public GET terminal status is the complete answer; no dynamic market value is requested."
-      }
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "state_only",
+      "expected_status": "needs_clarification"
     },
     {
-      "oracle_id": "RTQ-STATE-003",
       "case_id": "RTQ-003",
       "query_sha256": "1291b98a11cc06b9b4a2803b9e1f28ce7cd6c0d437f4ea6fdbae2102171ffece",
-      "oracle_state": "frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "not_applicable",
-      "expected_status": "needs_clarification",
-      "state_resolution": {
-        "rule": "Public GET terminal status is the complete answer; no dynamic market value is requested."
-      }
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "state_only",
+      "expected_status": "needs_clarification"
     },
     {
-      "oracle_id": "RTQ-STATE-004",
       "case_id": "RTQ-004",
       "query_sha256": "b9b707472e3a2e7b40401fa703d0b1b856a4ee05f47bbc8904deac6a4033d7f0",
-      "oracle_state": "frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "not_applicable",
-      "expected_status": "needs_clarification",
-      "state_resolution": {
-        "rule": "Public GET terminal status is the complete answer; no dynamic market value is requested."
-      }
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "state_only",
+      "expected_status": "needs_clarification"
     },
     {
-      "oracle_id": "RTQ-STATE-005",
       "case_id": "RTQ-005",
       "query_sha256": "91a61eeeb5b2594fba758302ec061ed7bdeb926668e4da7ae8fa8660ab363fa2",
-      "oracle_state": "frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "not_applicable",
-      "expected_status": "needs_clarification",
-      "state_resolution": {
-        "rule": "Public GET terminal status is the complete answer; no dynamic market value is requested."
-      }
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "state_only",
+      "expected_status": "needs_clarification"
     },
     {
-      "oracle_id": "RTQ-STATE-006",
       "case_id": "RTQ-006",
       "query_sha256": "a1748f65f27222e5c2e8662f9957af9b641ec7d60198d538f9191107b7627bdf",
-      "oracle_state": "frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "not_applicable",
-      "expected_status": "needs_clarification",
-      "state_resolution": {
-        "rule": "Public GET terminal status is the complete answer; no dynamic market value is requested."
-      }
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "state_only",
+      "expected_status": "needs_clarification"
     },
     {
-      "oracle_id": "RTQ-STATE-007",
       "case_id": "RTQ-007",
       "query_sha256": "c306ac5ae53a3fba2e30452ea74f4707890573b080a6de1870dc3d1fbc18382d",
-      "oracle_state": "frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "not_applicable",
-      "expected_status": "needs_clarification",
-      "state_resolution": {
-        "rule": "Public GET terminal status is the complete answer; no dynamic market value is requested."
-      }
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "state_only",
+      "expected_status": "needs_clarification"
     },
     {
-      "oracle_id": "RTQ-STATE-008",
       "case_id": "RTQ-008",
       "query_sha256": "c061491015c6a04997690a6b31edc91600cdcb1aa16188fb55a8c5ae4af9d366",
-      "oracle_state": "frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "not_applicable",
-      "expected_status": "needs_clarification",
-      "state_resolution": {
-        "rule": "Public GET terminal status is the complete answer; no dynamic market value is requested."
-      }
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "state_only",
+      "expected_status": "needs_clarification"
     },
     {
-      "oracle_id": "RTQ-STATE-009",
       "case_id": "RTQ-009",
       "query_sha256": "c8beebe0cd9cc8789291239dba7b38c8f9be560ebe84f3239966e77770322ffd",
-      "oracle_state": "frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "not_applicable",
-      "expected_status": "needs_clarification",
-      "state_resolution": {
-        "rule": "Public GET terminal status is the complete answer; no dynamic market value is requested."
-      }
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "state_only",
+      "expected_status": "needs_clarification"
     },
     {
-      "oracle_id": "RTQ-STATE-010",
       "case_id": "RTQ-010",
       "query_sha256": "5a4bd425ca43e07e9647877f04737ca0bb15ae6a4c13ec109a74753b35c90ad2",
-      "oracle_state": "frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "not_applicable",
-      "expected_status": "needs_clarification",
-      "state_resolution": {
-        "rule": "Public GET terminal status is the complete answer; no dynamic market value is requested."
-      }
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "state_only",
+      "expected_status": "needs_clarification"
     },
-    {
-      "oracle_id": "RTQ-STATE-047",
-      "case_id": "RTQ-047",
-      "query_sha256": "4b6c36b1c3074ea19ab5d6d295bb45f738d1d66570b2abd8d1ce157f9faa2386",
-      "oracle_state": "frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "not_applicable",
-      "expected_status": "needs_clarification",
-      "state_resolution": {
-        "rule": "Public GET terminal status is the complete answer; no dynamic market value is requested."
-      }
-    },
-    {
-      "oracle_id": "RTQ-STATE-048",
-      "case_id": "RTQ-048",
-      "query_sha256": "f38991505465cf4517c3a7d8ebea7156f2468bceecbcd6b674e1f991c0b4719a",
-      "oracle_state": "frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "not_applicable",
-      "expected_status": "no_data",
-      "state_resolution": {
-        "rule": "Public GET terminal status is the complete answer; no dynamic market value is requested."
-      }
-    },
-    {
-      "oracle_id": "RTQ-STATE-049",
-      "case_id": "RTQ-049",
-      "query_sha256": "7873f1c2041e0def79b24af286961c8e40211e574a4ff827f6bc46f7522b1bb0",
-      "oracle_state": "frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "not_applicable",
-      "expected_status": "needs_clarification",
-      "state_resolution": {
-        "priority": "entity_first",
-        "rule": "Missing named security is resolved by clarification before any freshness claim is evaluated."
-      }
-    },
-    {
-      "oracle_id": "RTQ-STATE-050",
-      "case_id": "RTQ-050",
-      "query_sha256": "1234155eb50a21c96e528288d27ce02446902475f65b01b98bbb060a94f3628b",
-      "oracle_state": "frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "not_applicable",
-      "expected_status": "unsupported",
-      "state_resolution": {
-        "rule": "Public GET terminal status is the complete answer; no dynamic market value is requested."
-      }
-    },
-    {
-      "oracle_id": "RTQ-STATE-071",
-      "case_id": "RTQ-071",
-      "query_sha256": "061e9427ac46edf7e67c89557d80b3bca52e6d94e5c9da69a925322b494a8345",
-      "oracle_state": "frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "not_applicable",
-      "expected_status": "needs_clarification",
-      "state_resolution": {
-        "rule": "Public GET terminal status is the complete answer; no dynamic market value is requested."
-      }
-    },
-    {
-      "oracle_id": "RTQ-STATE-072",
-      "case_id": "RTQ-072",
-      "query_sha256": "e97a8fdba4a6207447d7ac7bfd972a47b1667ad4a81439fd45f5aefbf17022b0",
-      "oracle_state": "frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "not_applicable",
-      "expected_status": "needs_clarification",
-      "state_resolution": {
-        "rule": "Public GET terminal status is the complete answer; no dynamic market value is requested."
-      }
-    },
-    {
-      "oracle_id": "RTQ-STATE-077",
-      "case_id": "RTQ-077",
-      "query_sha256": "6ab1b87353163eeccfdca52fece6fab282c57adacb37595db51be442ea244345",
-      "oracle_state": "frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "not_applicable",
-      "expected_status": "unsupported",
-      "state_resolution": {
-        "rule": "Public GET terminal status is the complete answer; no dynamic market value is requested."
-      }
-    },
-    {
-      "oracle_id": "RTQ-STATE-100",
-      "case_id": "RTQ-100",
-      "query_sha256": "57cc65f849851136b49b9dd56227472c6bbd27b35df3d84d3de863626c754b01",
-      "oracle_state": "frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "not_applicable",
-      "expected_status": "unsupported",
-      "state_resolution": {
-        "rule": "Public GET terminal status is the complete answer; no dynamic market value is requested."
-      }
-    }
-  ],
-  "runtime_dynamic_cases": [
     {
       "case_id": "RTQ-011",
       "query_sha256": "8448efdc7f883c0566b59b2f5929ee891b9037a2fabafd19d8d4e2b2de624681",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -269,12 +133,10 @@
     {
       "case_id": "RTQ-012",
       "query_sha256": "d06b5c93808badb1e8ae4fc38c6a94ed2088624b71907f5848aadb4337c5f35c",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -301,12 +163,10 @@
     {
       "case_id": "RTQ-013",
       "query_sha256": "5676f5d1acbed45d529ed90d0652747c6966a7d0c02d8a3c0d22b97d9fad74db",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -333,12 +193,10 @@
     {
       "case_id": "RTQ-014",
       "query_sha256": "501a944a33dd2d77c6a0e6b79272b82413a09c75afae6bfae3bd923a6420681d",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -365,12 +223,10 @@
     {
       "case_id": "RTQ-015",
       "query_sha256": "31dd0efcc20e0fc7762307791c04217c29eff677c0b5f768f4d90d836abfa0b0",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -397,12 +253,10 @@
     {
       "case_id": "RTQ-016",
       "query_sha256": "eeb4c506750f88cd629a889e9be8e60ed2bbbeb4838cf8c3657d3eb6d4cc3b48",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -429,12 +283,10 @@
     {
       "case_id": "RTQ-017",
       "query_sha256": "885d6b17831acff8086bee67175200b77ebfc65de3bb4730bc3c37c6261b3f18",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -461,12 +313,10 @@
     {
       "case_id": "RTQ-018",
       "query_sha256": "f764daa957b34fca57b6b65634db2fd530f019e7132bbe1dd1e6f5ea9bb78399",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -493,12 +343,10 @@
     {
       "case_id": "RTQ-019",
       "query_sha256": "8faee40cac81f6b6d88d148833146f7bf7a1817f32d05de36c0cff026cbdd7f7",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -525,12 +373,10 @@
     {
       "case_id": "RTQ-020",
       "query_sha256": "cfdd4a4fe6a348da4ea31ceea8b5527bb8e2cab808b4fd6b2b9118c3bc6c11ec",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -557,12 +403,10 @@
     {
       "case_id": "RTQ-021",
       "query_sha256": "76e4ac0adf87a45221cc29cee7163082f67239eeb1a57fcd627c65075722fafd",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -589,12 +433,10 @@
     {
       "case_id": "RTQ-022",
       "query_sha256": "0603ac10186870bc5aa776b023a293d9cc0e502d8a7d829e262139dcbcd31e34",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -621,12 +463,10 @@
     {
       "case_id": "RTQ-023",
       "query_sha256": "7fd66926d619b3866e72f13839ae20e06bc611886dd2d58400f854ee8fb11f12",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -653,12 +493,10 @@
     {
       "case_id": "RTQ-024",
       "query_sha256": "990e1118d43ea6c1e468b20d854f00ed9eec129326adfafbe0659e8f49727c91",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -685,12 +523,10 @@
     {
       "case_id": "RTQ-025",
       "query_sha256": "be2c8f8ba24820aee377abff4d75c084656731ca86289c1511804a55b96d73fe",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -717,12 +553,10 @@
     {
       "case_id": "RTQ-026",
       "query_sha256": "c5ace52d1bfa68e163085be47b5696bc346226002da67cfd60dcb7b9a44b27ae",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -749,12 +583,10 @@
     {
       "case_id": "RTQ-027",
       "query_sha256": "5896eb19cc72d5461aca979d0713e9dd9b9fb4563d1dd35e65d6b88eb397a648",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -781,12 +613,10 @@
     {
       "case_id": "RTQ-028",
       "query_sha256": "720b0e04ee42ffe777e3d9faf0f085fc7ba6af74f2154ee43b5a1e201e36cd74",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -813,12 +643,10 @@
     {
       "case_id": "RTQ-029",
       "query_sha256": "9daf0e654f3683dedca4b2f55ba96247df249fdd43254b0c5b8fbbcedde71484",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -845,12 +673,10 @@
     {
       "case_id": "RTQ-030",
       "query_sha256": "1b7f1747143fb93756ea3b681dabec482d9e8598a0421d48817d657c0a2556b2",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -877,12 +703,10 @@
     {
       "case_id": "RTQ-031",
       "query_sha256": "ec421f9eb6f901706449ab5a99012fc2f45c7d35f0c2ae3353948d26ccd8186e",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -909,12 +733,10 @@
     {
       "case_id": "RTQ-032",
       "query_sha256": "4c08e49c211f5fd8b7ba87699f8ff5120cef91ecb2f4c7dacda9484333294abf",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -941,12 +763,10 @@
     {
       "case_id": "RTQ-033",
       "query_sha256": "4f03d8e34bed86b00a0dd1c50551032b49dd45d0ae65a08e5ee911267f22e556",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -973,12 +793,10 @@
     {
       "case_id": "RTQ-034",
       "query_sha256": "0585eae365fe00489f8be237dd0ade38ba9438e87d42e6f39ffa6a05d77f9680",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1005,12 +823,10 @@
     {
       "case_id": "RTQ-035",
       "query_sha256": "7944b64713356f21a20f213971b4d3b5e8f537ce2f9c4ca4540b756229bf1bfd",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1037,12 +853,10 @@
     {
       "case_id": "RTQ-036",
       "query_sha256": "23f558fc46a3ca497d36ec0126d554f51aadf21ba5eda9cfb6763bc8272d76a6",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1069,12 +883,10 @@
     {
       "case_id": "RTQ-037",
       "query_sha256": "26edaabb11234e4546cf206531a9595c9f66d2d249c96080b03870d20b4e6ceb",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1101,12 +913,10 @@
     {
       "case_id": "RTQ-038",
       "query_sha256": "56b1ab8dc8a52ce9d28d1af746b2cfe0a8f332f91c72cbcadb4486671ad68c39",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1133,12 +943,10 @@
     {
       "case_id": "RTQ-039",
       "query_sha256": "f637f0f5d0a9107535b8ba1446cb8d3fac6f475e052bc926ac1072c98cd6b485",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1165,12 +973,10 @@
     {
       "case_id": "RTQ-040",
       "query_sha256": "8ffc0665a51118599e4056eaa567a8201c72b4c317df06cf60db0a7cb2b4cad9",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1197,12 +1003,10 @@
     {
       "case_id": "RTQ-041",
       "query_sha256": "22f3b38e290e2836069993b88f668353d960d78fdb46fe15fdd8b4d71b9d77d1",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1229,12 +1033,10 @@
     {
       "case_id": "RTQ-042",
       "query_sha256": "cac050f616782cb4791ee177dc4cd8c7774920227e6dc0ec66d61f88c094fae8",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1261,12 +1063,10 @@
     {
       "case_id": "RTQ-043",
       "query_sha256": "b789ab1e00231f178ae343bef37034f2a624a25dfab2bdeae6b559ed9e58b45f",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1293,12 +1093,10 @@
     {
       "case_id": "RTQ-044",
       "query_sha256": "07b6d264c7257dd8a42a570191bf0813d4e3288613ab65586b38a2cb187f2e03",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1325,12 +1123,10 @@
     {
       "case_id": "RTQ-045",
       "query_sha256": "c34f49211452d06d65ae3c2d9097c32819ab5aebf3baba25159d15df99848239",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1357,12 +1153,10 @@
     {
       "case_id": "RTQ-046",
       "query_sha256": "5a1915def849649b140c30c90dd537c160c926f70777a4978141e5c46cbe643c",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1387,14 +1181,44 @@
       }
     },
     {
+      "case_id": "RTQ-047",
+      "query_sha256": "4b6c36b1c3074ea19ab5d6d295bb45f738d1d66570b2abd8d1ce157f9faa2386",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "state_only",
+      "expected_status": "needs_clarification"
+    },
+    {
+      "case_id": "RTQ-048",
+      "query_sha256": "f38991505465cf4517c3a7d8ebea7156f2468bceecbcd6b674e1f991c0b4719a",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "state_only",
+      "expected_status": "no_data"
+    },
+    {
+      "case_id": "RTQ-049",
+      "query_sha256": "7873f1c2041e0def79b24af286961c8e40211e574a4ff827f6bc46f7522b1bb0",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "state_only",
+      "expected_status": "needs_clarification",
+      "state_resolution": {
+        "priority": "entity_first",
+        "rule": "Missing named security is resolved by clarification before any freshness claim is evaluated."
+      }
+    },
+    {
+      "case_id": "RTQ-050",
+      "query_sha256": "1234155eb50a21c96e528288d27ce02446902475f65b01b98bbb060a94f3628b",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "state_only",
+      "expected_status": "unsupported"
+    },
+    {
       "case_id": "RTQ-051",
       "query_sha256": "fcc944095d80b48533a265e4106c48216ad0fa2dc253401325f924ba5ea93a7a",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1421,12 +1245,10 @@
     {
       "case_id": "RTQ-052",
       "query_sha256": "6d56fcce9cb8125447d7151d70abd807936065f9da9f4993a97f41db638a9e58",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1453,12 +1275,10 @@
     {
       "case_id": "RTQ-053",
       "query_sha256": "22585e4dff76669071e07056236ca5883a6851bf64286d3b04de52ed34b78f12",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1485,12 +1305,10 @@
     {
       "case_id": "RTQ-054",
       "query_sha256": "efb458b8cadeb6a29e596fe9b317fef35ba75c0d81dcfe83de9580974a5c4eeb",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1517,12 +1335,10 @@
     {
       "case_id": "RTQ-055",
       "query_sha256": "06aaa313f52390373f81f8bbd7828e5cc291ef3f31b78b2509e668539d0b03f0",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1549,12 +1365,10 @@
     {
       "case_id": "RTQ-056",
       "query_sha256": "f2b2bf8d85ba28e070892d599688295c934b24f24484cd2146ffcda3099b60bd",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1581,12 +1395,10 @@
     {
       "case_id": "RTQ-057",
       "query_sha256": "459420505f385d29108ba918d48cae25b14742f59e6ed4c9c6e2b3bc6bf1989d",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1613,12 +1425,10 @@
     {
       "case_id": "RTQ-058",
       "query_sha256": "30132c5b154842bd20912d00ce740ae114d70171acc361e75e3017b15e71f87f",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1645,12 +1455,10 @@
     {
       "case_id": "RTQ-059",
       "query_sha256": "dbdec6a4501ddf5af730f6e7bf5c426433bcf12abbd6308446c167ef5cb1f44c",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1677,12 +1485,10 @@
     {
       "case_id": "RTQ-060",
       "query_sha256": "933fbfd3bbe5a1be0d96498e392de8b0f825a294bcb1466d038ecad79286377a",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1709,12 +1515,10 @@
     {
       "case_id": "RTQ-061",
       "query_sha256": "3b1459d0b7fe7cfb288d054a85a774dc5213704bd45efe22c102a9b034e66bfd",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1741,12 +1545,10 @@
     {
       "case_id": "RTQ-062",
       "query_sha256": "3f0ad0fb46fb0498d85b80650fcf6c15728e6b082833b1805982c7ddd3afd0cf",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1773,12 +1575,10 @@
     {
       "case_id": "RTQ-063",
       "query_sha256": "88ce67e754971e91d7428cb7c38af31670f5350152ed8e5a6b627edf67724762",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1805,12 +1605,10 @@
     {
       "case_id": "RTQ-064",
       "query_sha256": "77e41e51c7de6b786b5f26314137416f0dd16101859087bbbe51899814e1b45b",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1837,12 +1635,10 @@
     {
       "case_id": "RTQ-065",
       "query_sha256": "2ef952c4c23611db1ff772aa4c5f49fa0c7a9246aa3389db758c3e1b1bb86e9e",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1869,12 +1665,10 @@
     {
       "case_id": "RTQ-066",
       "query_sha256": "88bb694aaee5ffc732e76b2afaa8e2d66b280979d62e2ccb8b393d7fee76fa8a",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1901,12 +1695,10 @@
     {
       "case_id": "RTQ-067",
       "query_sha256": "68a4ed9169c91a85902163be08ebf2191da7d59e5b4e79f1a734cc2117def13f",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1933,12 +1725,10 @@
     {
       "case_id": "RTQ-068",
       "query_sha256": "36ee7ef1352dc582022928e1532002a91df1cdc2982e450c49e8e3e15b58754d",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1965,12 +1755,10 @@
     {
       "case_id": "RTQ-069",
       "query_sha256": "79d24ccc136c486ad9d1605e7fdddf0129371bd5a376767ff09bae0e0c770c00",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -1997,12 +1785,10 @@
     {
       "case_id": "RTQ-070",
       "query_sha256": "72bebecb6ca2469c10bfe7cd3013eb01c6c406810ca5cb44ff03eedad04881a8",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2027,14 +1813,26 @@
       }
     },
     {
+      "case_id": "RTQ-071",
+      "query_sha256": "061e9427ac46edf7e67c89557d80b3bca52e6d94e5c9da69a925322b494a8345",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "state_only",
+      "expected_status": "needs_clarification"
+    },
+    {
+      "case_id": "RTQ-072",
+      "query_sha256": "e97a8fdba4a6207447d7ac7bfd972a47b1667ad4a81439fd45f5aefbf17022b0",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "state_only",
+      "expected_status": "needs_clarification"
+    },
+    {
       "case_id": "RTQ-073",
       "query_sha256": "cc0f3f742a57008e1e698a12331e80ffca6a02079b92b73285835712588339b9",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2061,12 +1859,10 @@
     {
       "case_id": "RTQ-074",
       "query_sha256": "73ae356d76688501efeda2419e88a678c0c2a1eae10f084a8f9cd42401e56980",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2093,12 +1889,10 @@
     {
       "case_id": "RTQ-075",
       "query_sha256": "3888dc8df41a84fdf1be5907d87110724e4cb381a5e7428412cf56dbe153f0b8",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2125,12 +1919,10 @@
     {
       "case_id": "RTQ-076",
       "query_sha256": "3f45455874f10623d6e79a89dca5f3040c7ec0bdb002bfc8ae709eb6eb5c1334",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2155,14 +1947,19 @@
       }
     },
     {
+      "case_id": "RTQ-077",
+      "query_sha256": "6ab1b87353163eeccfdca52fece6fab282c57adacb37595db51be442ea244345",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "state_only",
+      "expected_status": "unsupported"
+    },
+    {
       "case_id": "RTQ-078",
       "query_sha256": "2ea53bf961ec966913a51f02baab1af51c5288d58857171ded5da90e47e1816d",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2189,12 +1986,10 @@
     {
       "case_id": "RTQ-079",
       "query_sha256": "cac7e58bc973e94c271bc4a39745a042fa725b8516cca9f35af01a9a5e5df9a4",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2221,12 +2016,10 @@
     {
       "case_id": "RTQ-080",
       "query_sha256": "5a09f61a8f7dddef4b0f3743f97c55a0081d170358915698faf676249f3f9ce3",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2253,12 +2046,10 @@
     {
       "case_id": "RTQ-081",
       "query_sha256": "934d719ab6781bed7fc40956f8b3056d13928a513bde5d469470e1577ba8a41d",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2285,12 +2076,10 @@
     {
       "case_id": "RTQ-082",
       "query_sha256": "0e0bdea2cb206c827904c2c1e39572389982cc2f922527cab33c6c8ca92c665a",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2317,12 +2106,10 @@
     {
       "case_id": "RTQ-083",
       "query_sha256": "781f882d7e54960ba3ec9730bfdb099363b8057454d2ffe890c3e43a240e7cdb",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2349,12 +2136,10 @@
     {
       "case_id": "RTQ-084",
       "query_sha256": "64d467eaa1af9d39300051279d40cbc95b56ecb5e53702d720016aa7a6d9c8b9",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2381,12 +2166,10 @@
     {
       "case_id": "RTQ-085",
       "query_sha256": "b87a4bb996c4dc49b8760e098ce2375902a70bbda7a55f08cfe182f6364db951",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2413,12 +2196,10 @@
     {
       "case_id": "RTQ-086",
       "query_sha256": "79d3228c483e16628290ebcb760860f999c7bd7ea7bb67a4600ec96d4aa35d02",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2445,12 +2226,10 @@
     {
       "case_id": "RTQ-087",
       "query_sha256": "9e1e2e5c5f0ab8a1175afa9379527845301573aa57cfd5be085407fe4f89d1c5",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2477,12 +2256,10 @@
     {
       "case_id": "RTQ-088",
       "query_sha256": "19e9c433ab12a81ac6f6c3279f70a5eedb9239ff83304a9bb6bd629edd590688",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2509,12 +2286,10 @@
     {
       "case_id": "RTQ-089",
       "query_sha256": "0da584b8d1f7af57fb25b87b99cd992db41d79ac03e4d198b7c00f05647706e8",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2541,12 +2316,10 @@
     {
       "case_id": "RTQ-090",
       "query_sha256": "4f96e49cb8e14af1883b86a4e03abd6608d70ad0c681d72c1b25c9d45276758b",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2573,12 +2346,10 @@
     {
       "case_id": "RTQ-091",
       "query_sha256": "a72d89af8175c7ff17213a4385760e8ecfd140550c5b1850575e57eb7a9d86cc",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2605,12 +2376,10 @@
     {
       "case_id": "RTQ-092",
       "query_sha256": "4c6c108ca732d8d383fc93ca0a6ce2f7bd6151cb25548153f5c0c536c5163b37",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2637,12 +2406,10 @@
     {
       "case_id": "RTQ-093",
       "query_sha256": "4b42ffaed475fe9fc1b405ff58de460b87c433d6e9b7cbd9062881cf1f2d5821",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2669,12 +2436,10 @@
     {
       "case_id": "RTQ-094",
       "query_sha256": "998bb5339fd6d0b088c31e23e99b66a9f53fa24064944586d2161c3ea46a2351",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2701,12 +2466,10 @@
     {
       "case_id": "RTQ-095",
       "query_sha256": "9fcdf4a5a166971f701ec4250d2c6818e344bcb13f95afcbde4907b5a26393c4",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2733,12 +2496,10 @@
     {
       "case_id": "RTQ-096",
       "query_sha256": "08f729f3e83c59f03acbb263c322a19d6f8a61944f7d8a7ba89633a2a6d63e81",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2765,12 +2526,10 @@
     {
       "case_id": "RTQ-097",
       "query_sha256": "77af041a8a9af76734d57bf8992fc9014079693c4f11ddad1a6c700fa7fac675",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2797,12 +2556,10 @@
     {
       "case_id": "RTQ-098",
       "query_sha256": "2617c7219ccd9331db721766d05290b09da67ecc16c6902a2985f7cb7f672686",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2829,12 +2586,10 @@
     {
       "case_id": "RTQ-099",
       "query_sha256": "6340082553f82985385920f982ddedb25f619285e60cb82b3593c019e7a4d733",
-      "oracle_state": "contract_frozen",
-      "semantic_accuracy": "scoreable",
-      "data_accuracy": "runtime_capture_required",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "runtime_snapshot",
       "expected_status": "success",
       "runtime_capture_required": true,
-      "capture_failure": "case_data_not_scored",
       "accepted_variant_policy": {
         "variant_rule": "one_complete_source_per_accepted_variant",
         "multiple_source_rule": "additional sources create alternative source-coherent accepted_variants only",
@@ -2857,6 +2612,13 @@
         ],
         "capture_failure": "case_data_not_scored"
       }
+    },
+    {
+      "case_id": "RTQ-100",
+      "query_sha256": "57cc65f849851136b49b9dd56227472c6bbd27b35df3d84d3de863626c754b01",
+      "contract_status": "contract_frozen",
+      "evaluation_mode": "state_only",
+      "expected_status": "unsupported"
     }
   ]
 }

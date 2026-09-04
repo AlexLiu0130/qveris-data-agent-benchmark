@@ -27,7 +27,7 @@
       "clarification_question"
     ],
     "reference_snapshot_required": false,
-    "scoring_status": "not_scored",
+    "scoring_status": "state_oracle_frozen",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -41,8 +41,8 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/no_numeric_snapshot",
-      "frozen": false
+      "oracle_status": "state_oracle/frozen",
+      "frozen": true
     },
     "expected_status": "needs_clarification"
   },
@@ -75,7 +75,7 @@
       "clarification_question"
     ],
     "reference_snapshot_required": false,
-    "scoring_status": "not_scored",
+    "scoring_status": "state_oracle_frozen",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -89,8 +89,8 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/no_numeric_snapshot",
-      "frozen": false
+      "oracle_status": "state_oracle/frozen",
+      "frozen": true
     },
     "expected_status": "needs_clarification"
   },
@@ -123,7 +123,7 @@
       "clarification_question"
     ],
     "reference_snapshot_required": false,
-    "scoring_status": "not_scored",
+    "scoring_status": "state_oracle_frozen",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -137,8 +137,8 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/no_numeric_snapshot",
-      "frozen": false
+      "oracle_status": "state_oracle/frozen",
+      "frozen": true
     },
     "expected_status": "needs_clarification"
   },
@@ -171,7 +171,7 @@
       "clarification_question"
     ],
     "reference_snapshot_required": false,
-    "scoring_status": "not_scored",
+    "scoring_status": "state_oracle_frozen",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -185,8 +185,8 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/no_numeric_snapshot",
-      "frozen": false
+      "oracle_status": "state_oracle/frozen",
+      "frozen": true
     },
     "expected_status": "needs_clarification"
   },
@@ -219,7 +219,7 @@
       "clarification_question"
     ],
     "reference_snapshot_required": false,
-    "scoring_status": "not_scored",
+    "scoring_status": "state_oracle_frozen",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -233,8 +233,8 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/no_numeric_snapshot",
-      "frozen": false
+      "oracle_status": "state_oracle/frozen",
+      "frozen": true
     },
     "expected_status": "needs_clarification"
   },
@@ -267,7 +267,7 @@
       "clarification_question"
     ],
     "reference_snapshot_required": false,
-    "scoring_status": "not_scored",
+    "scoring_status": "state_oracle_frozen",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -281,8 +281,8 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/no_numeric_snapshot",
-      "frozen": false
+      "oracle_status": "state_oracle/frozen",
+      "frozen": true
     },
     "expected_status": "needs_clarification"
   },
@@ -313,7 +313,7 @@
       "clarification_question"
     ],
     "reference_snapshot_required": false,
-    "scoring_status": "not_scored",
+    "scoring_status": "state_oracle_frozen",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -327,8 +327,8 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/no_numeric_snapshot",
-      "frozen": false
+      "oracle_status": "state_oracle/frozen",
+      "frozen": true
     },
     "expected_status": "needs_clarification"
   },
@@ -361,7 +361,7 @@
       "clarification_question"
     ],
     "reference_snapshot_required": false,
-    "scoring_status": "not_scored",
+    "scoring_status": "state_oracle_frozen",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -375,8 +375,8 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/no_numeric_snapshot",
-      "frozen": false
+      "oracle_status": "state_oracle/frozen",
+      "frozen": true
     },
     "expected_status": "needs_clarification"
   },
@@ -408,7 +408,7 @@
       "clarification_question"
     ],
     "reference_snapshot_required": false,
-    "scoring_status": "not_scored",
+    "scoring_status": "state_oracle_frozen",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -422,8 +422,8 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/no_numeric_snapshot",
-      "frozen": false
+      "oracle_status": "state_oracle/frozen",
+      "frozen": true
     },
     "expected_status": "needs_clarification"
   },
@@ -455,7 +455,7 @@
       "clarification_question"
     ],
     "reference_snapshot_required": false,
-    "scoring_status": "not_scored",
+    "scoring_status": "state_oracle_frozen",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -469,8 +469,8 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/no_numeric_snapshot",
-      "frozen": false
+      "oracle_status": "state_oracle/frozen",
+      "frozen": true
     },
     "expected_status": "needs_clarification"
   },
@@ -502,7 +502,7 @@
       "trade_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -516,7 +516,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -550,7 +550,7 @@
       "trade_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -564,7 +564,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -597,7 +597,7 @@
       "trade_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -611,7 +611,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -645,7 +645,7 @@
       "trade_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -659,7 +659,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -692,7 +692,7 @@
       "trade_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -706,7 +706,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -739,7 +739,7 @@
       "trade_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -753,7 +753,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -786,7 +786,7 @@
       "trade_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -800,7 +800,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -833,7 +833,7 @@
       "trade_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -847,7 +847,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -881,7 +881,7 @@
       "trade_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -895,7 +895,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -928,7 +928,7 @@
       "trade_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -942,7 +942,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -976,7 +976,7 @@
       "trade_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -990,7 +990,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -1023,7 +1023,7 @@
       "trade_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -1037,7 +1037,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -1070,7 +1070,7 @@
       "trade_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -1084,7 +1084,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -1118,7 +1118,7 @@
       "trade_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -1132,7 +1132,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -1166,7 +1166,7 @@
       "market_state"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -1180,7 +1180,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -1213,7 +1213,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -1227,7 +1227,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -1260,7 +1260,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -1274,7 +1274,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -1306,7 +1306,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -1320,7 +1320,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -1352,7 +1352,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -1366,7 +1366,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -1399,7 +1399,7 @@
       "delay_status"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -1413,7 +1413,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -1446,7 +1446,7 @@
       "market_state"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -1460,7 +1460,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -1495,7 +1495,7 @@
       "delay_status"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -1509,7 +1509,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -1544,7 +1544,7 @@
       "price_type"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -1558,7 +1558,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -1593,7 +1593,7 @@
       "market_state"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -1607,7 +1607,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -1642,7 +1642,7 @@
       "last_trading_date"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -1656,7 +1656,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -1690,7 +1690,7 @@
       "market_state"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -1704,7 +1704,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -1739,7 +1739,7 @@
       "suspension_flag"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -1753,7 +1753,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -1788,7 +1788,7 @@
       "freshness"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -1802,7 +1802,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -1837,7 +1837,7 @@
       "field_time_consistency"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -1848,18 +1848,14 @@
       "source_terminal_status": "success/unverifiable",
       "source_call_strategy": "required",
       "source_oracle_note": "字段时间一致时 success；不一致时不得合并，并返回 field_time_mismatch 或 unverifiable",
-      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract.",
+      "semantic_resolution": "v1: success; source-level conditions are response-validation requirements, not alternate terminal statuses."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
-    "status_conflict": {
-      "state": "blocked_semantic_status",
-      "source_status": "success/unverifiable",
-      "reason": "The source prompt combines conditional data-coherence/freshness behaviour with a success-shaped Golden; no single terminal status is defined for scoring.",
-      "required_resolution": "Split success and conflict paths, or freeze a terminal-status precedence rule."
-    }
+    "expected_status": "success"
   },
   {
     "case_id": "RTQ-040",
@@ -1893,7 +1889,7 @@
       "market_phase"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -1907,7 +1903,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -1941,7 +1937,7 @@
       "as_of"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -1955,7 +1951,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -1989,7 +1985,7 @@
       "market_state"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2003,7 +1999,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -2037,7 +2033,7 @@
       "market_phase"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2051,7 +2047,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -2086,7 +2082,7 @@
       "suspension_flag"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2100,7 +2096,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -2134,7 +2130,7 @@
       "dst_status"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2148,7 +2144,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -2181,7 +2177,7 @@
       "provider"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2192,18 +2188,14 @@
       "source_terminal_status": "success/unverifiable",
       "source_call_strategy": "required",
       "source_oracle_note": "字段齐全才 success；缺 quote_time 或 delay_status 必须为 unverifiable",
-      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract.",
+      "semantic_resolution": "v1: success; source-level conditions are response-validation requirements, not alternate terminal statuses."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
-    "status_conflict": {
-      "state": "blocked_semantic_status",
-      "source_status": "success/unverifiable",
-      "reason": "The source prompt combines conditional data-coherence/freshness behaviour with a success-shaped Golden; no single terminal status is defined for scoring.",
-      "required_resolution": "Split success and conflict paths, or freeze a terminal-status precedence rule."
-    }
+    "expected_status": "success"
   },
   {
     "case_id": "RTQ-047",
@@ -2231,7 +2223,7 @@
       "clarification_question"
     ],
     "reference_snapshot_required": false,
-    "scoring_status": "not_scored",
+    "scoring_status": "state_oracle_frozen",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2245,8 +2237,8 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/no_numeric_snapshot",
-      "frozen": false
+      "oracle_status": "state_oracle/frozen",
+      "frozen": true
     },
     "expected_status": "needs_clarification"
   },
@@ -2277,7 +2269,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": false,
-    "scoring_status": "not_scored",
+    "scoring_status": "state_oracle_frozen",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2291,8 +2283,8 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/no_numeric_snapshot",
-      "frozen": false
+      "oracle_status": "state_oracle/frozen",
+      "frozen": true
     },
     "expected_status": "no_data"
   },
@@ -2324,7 +2316,7 @@
       "clarification_question"
     ],
     "reference_snapshot_required": false,
-    "scoring_status": "not_scored",
+    "scoring_status": "state_oracle_frozen",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2338,10 +2330,14 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/no_numeric_snapshot",
-      "frozen": false
+      "oracle_status": "state_oracle/frozen",
+      "frozen": true
     },
-    "expected_status": "needs_clarification"
+    "expected_status": "needs_clarification",
+    "state_resolution": {
+      "priority": "entity_first",
+      "rule": "Missing named security is resolved by clarification before any freshness claim is evaluated."
+    }
   },
   {
     "case_id": "RTQ-050",
@@ -2370,7 +2366,7 @@
       "rejection_reason"
     ],
     "reference_snapshot_required": false,
-    "scoring_status": "not_scored",
+    "scoring_status": "state_oracle_frozen",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2384,8 +2380,8 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/no_numeric_snapshot",
-      "frozen": false
+      "oracle_status": "state_oracle/frozen",
+      "frozen": true
     },
     "expected_status": "unsupported"
   },
@@ -2421,7 +2417,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2435,7 +2431,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -2473,7 +2469,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2487,7 +2483,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -2524,7 +2520,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2538,7 +2534,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -2575,7 +2571,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2589,7 +2585,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -2627,7 +2623,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2641,7 +2637,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -2679,7 +2675,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2693,7 +2689,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -2731,7 +2727,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2745,7 +2741,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -2782,7 +2778,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2796,7 +2792,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -2833,7 +2829,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2847,7 +2843,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -2884,7 +2880,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2898,7 +2894,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -2934,7 +2930,7 @@
       "trade_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2948,7 +2944,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -2984,7 +2980,7 @@
       "trade_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -2998,7 +2994,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -3034,7 +3030,7 @@
       "currency"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -3048,7 +3044,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -3083,7 +3079,7 @@
       "trade_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -3097,7 +3093,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -3132,7 +3128,7 @@
       "trade_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -3146,7 +3142,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -3182,7 +3178,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -3196,7 +3192,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -3231,7 +3227,7 @@
       "market_state"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -3245,7 +3241,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -3282,7 +3278,7 @@
       "trade_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -3296,7 +3292,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -3330,7 +3326,7 @@
       "trade_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -3344,7 +3340,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -3380,7 +3376,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -3394,7 +3390,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -3430,7 +3426,7 @@
       "clarification_question"
     ],
     "reference_snapshot_required": false,
-    "scoring_status": "not_scored",
+    "scoring_status": "state_oracle_frozen",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -3444,8 +3440,8 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/no_numeric_snapshot",
-      "frozen": false
+      "oracle_status": "state_oracle/frozen",
+      "frozen": true
     },
     "expected_status": "needs_clarification"
   },
@@ -3479,7 +3475,7 @@
       "clarification_question"
     ],
     "reference_snapshot_required": false,
-    "scoring_status": "not_scored",
+    "scoring_status": "state_oracle_frozen",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -3493,8 +3489,8 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/no_numeric_snapshot",
-      "frozen": false
+      "oracle_status": "state_oracle/frozen",
+      "frozen": true
     },
     "expected_status": "needs_clarification"
   },
@@ -3527,7 +3523,7 @@
       "currency"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -3541,7 +3537,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -3575,7 +3571,7 @@
       "currency"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -3589,7 +3585,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -3624,7 +3620,7 @@
       "currency"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -3638,7 +3634,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -3671,8 +3667,8 @@
       "trading_status",
       "status_as_of"
     ],
-    "reference_snapshot_required": false,
-    "scoring_status": "not_scored",
+    "reference_snapshot_required": true,
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -3683,13 +3679,14 @@
       "source_terminal_status": "unverifiable",
       "source_call_strategy": "required",
       "source_oracle_note": "按当前能力表预期 unverifiable；可返回已验证交易状态，但不得把它当上市状态",
-      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract.",
+      "semantic_resolution": "v1: success; source-level conditions are response-validation requirements, not alternate terminal statuses."
     },
     "data_oracle": {
-      "oracle_status": "candidate/no_numeric_snapshot",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
-    "expected_status": "unsupported"
+    "expected_status": "success"
   },
   {
     "case_id": "RTQ-077",
@@ -3722,7 +3719,7 @@
       "status_as_of"
     ],
     "reference_snapshot_required": false,
-    "scoring_status": "not_scored",
+    "scoring_status": "state_oracle_frozen",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -3736,8 +3733,8 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/no_numeric_snapshot",
-      "frozen": false
+      "oracle_status": "state_oracle/frozen",
+      "frozen": true
     },
     "expected_status": "unsupported"
   },
@@ -3771,7 +3768,7 @@
       "field_as_of"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -3785,7 +3782,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -3819,7 +3816,7 @@
       "unit"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -3833,7 +3830,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -3868,7 +3865,7 @@
       "field_as_of"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -3882,7 +3879,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -3917,7 +3914,7 @@
       "field_as_of"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -3931,7 +3928,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -3964,7 +3961,7 @@
       "status_as_of"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -3978,7 +3975,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -4014,7 +4011,7 @@
       "field_as_of"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -4028,7 +4025,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -4064,7 +4061,7 @@
       "field_as_of"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -4078,7 +4075,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -4113,7 +4110,7 @@
       "status_as_of"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -4127,7 +4124,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -4164,7 +4161,7 @@
       "unit"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -4178,7 +4175,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -4214,7 +4211,7 @@
       "market_state"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -4228,7 +4225,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -4263,7 +4260,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -4277,7 +4274,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -4313,7 +4310,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -4327,7 +4324,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -4364,7 +4361,7 @@
       "delay_status"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -4378,7 +4375,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -4413,7 +4410,7 @@
       "market_state"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -4427,7 +4424,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -4463,7 +4460,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -4474,18 +4471,14 @@
       "source_terminal_status": "success",
       "source_call_strategy": "required",
       "source_oracle_note": "最新价与盘口字段必须来自一致快照；冲突时不得伪装成功。",
-      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract.",
+      "semantic_resolution": "v1: success; source-level conditions are response-validation requirements, not alternate terminal statuses."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
-    "status_conflict": {
-      "state": "blocked_semantic_status",
-      "source_status": "success",
-      "reason": "The source prompt combines conditional data-coherence/freshness behaviour with a success-shaped Golden; no single terminal status is defined for scoring.",
-      "required_resolution": "Split success and conflict paths, or freeze a terminal-status precedence rule."
-    }
+    "expected_status": "success"
   },
   {
     "case_id": "RTQ-093",
@@ -4518,7 +4511,7 @@
       "stale_flag"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -4532,7 +4525,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -4568,7 +4561,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -4582,7 +4575,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -4617,7 +4610,7 @@
       "market_state"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -4631,7 +4624,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -4668,7 +4661,7 @@
       "market_state"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -4682,7 +4675,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -4716,7 +4709,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -4730,7 +4723,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -4764,7 +4757,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -4775,18 +4768,14 @@
       "source_terminal_status": "success",
       "source_call_strategy": "required",
       "source_oracle_note": "买档价格应由高到低、卖档由低到高；异常不得静默修正。",
-      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract.",
+      "semantic_resolution": "v1: success; source-level conditions are response-validation requirements, not alternate terminal statuses."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
-    "status_conflict": {
-      "state": "blocked_semantic_status",
-      "source_status": "success",
-      "reason": "The source prompt combines conditional data-coherence/freshness behaviour with a success-shaped Golden; no single terminal status is defined for scoring.",
-      "required_resolution": "Split success and conflict paths, or freeze a terminal-status precedence rule."
-    }
+    "expected_status": "success"
   },
   {
     "case_id": "RTQ-099",
@@ -4818,7 +4807,7 @@
       "field_time_consistency"
     ],
     "reference_snapshot_required": true,
-    "scoring_status": "not_scored",
+    "scoring_status": "contract_frozen_runtime_snapshot_required",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -4832,7 +4821,7 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/reference_snapshot_required",
+      "oracle_status": "contract_frozen/runtime_snapshot_required",
       "frozen": false
     },
     "expected_status": "success"
@@ -4866,7 +4855,7 @@
       "quote_time"
     ],
     "reference_snapshot_required": false,
-    "scoring_status": "not_scored",
+    "scoring_status": "state_oracle_frozen",
     "source_doc": {
       "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
       "revision_id": 15,
@@ -4880,8 +4869,8 @@
       "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
     },
     "data_oracle": {
-      "oracle_status": "candidate/no_numeric_snapshot",
-      "frozen": false
+      "oracle_status": "state_oracle/frozen",
+      "frozen": true
     },
     "expected_status": "unsupported"
   }

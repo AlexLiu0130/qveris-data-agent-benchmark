@@ -10,7 +10,9 @@ Natural-language query -> one public get -> structured response -> scorer
 
 目标是三个独立 Suite，各 100 题：`realtime_quote`、`historical_price`、`financial_statements`。每套遵循 80 道正常题 / 20 道边界题；市场配额为 A 股 29、港股 28、美股 28、日本 5、英国 5、德国 5。
 
-目前仓库含 300/300 候选题：实时行情、历史行情、财务报表各 100 题。财报的 80 道正常题由 27 条 `frozen` Oracle 记录、1,198 条断言、复签审查账本及已验证 suite manifest 覆盖，具备 Data Accuracy 的数据评分条件；20 道边界题仅保留状态规则，不进入数值数据评分分母。实时行情是 100 题无数值阻塞清单，需绑定双授权来源的 Reference Snapshot；历史行情仍未冻结；两者均为 `not_scored`。
+目前仓库含 300/300 候选题：实时行情、历史行情、财务报表各 100 题。财报的 80 道正常题由 27 条 `frozen` Oracle 记录、1,198 条断言、复签审查账本及已验证 suite manifest 覆盖，具备 Data Accuracy 的数据评分条件；20 道边界题仅保留状态规则，不进入数值数据评分分母。历史行情 v1 已冻结：50 道数值题覆盖 55 个公开可追溯、来源一致的完整变体，50 道状态题不进入数值数据评分分母。实时行情已冻结 18 道状态 Oracle 与 100 条静态请求合同；82 道动态题须在每轮评测时冻结单一完整来源的动态快照，捕获失败只使该题 Data Accuracy 为 `not_scored`。
+
+历史行情 v1 不声称供应商授权、再分发权或官方交易所地位；严格双源授权核对是后续升级项。若完整来源之间存在差异，保留各自完整且来源一致的变体，不平均也不跨源拼接。
 
 本地确定性 Runner、Scorer 和只读 Arena HTTP/SSE 投影已实现，但目前只接受独立 Run Manifest 与 `oracle-bundle/v1`，尚无 candidate/Oracle 到 Runner 的编译层，也未接入真实 QVeris Gateway。因此尚未对本 300 题产生正式评测、Case Pass 或榜单，亦不构成生产部署。
 

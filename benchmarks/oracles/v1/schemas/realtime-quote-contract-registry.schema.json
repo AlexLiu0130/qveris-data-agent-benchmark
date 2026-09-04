@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qveris.example/schemas/realtime-quote-contract-registry/v1",
+  "title": "QVeris realtime quote static contract registry v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "suite", "status", "source_candidate", "source_coherence_policy", "contracts"],
+  "properties": {
+    "schema_version": {"const": "realtime-quote-contract-registry/v1"},
+    "suite": {"const": "realtime_quote"},
+    "status": {"const": "contract_frozen"},
+    "source_candidate": {"type": "object"},
+    "source_coherence_policy": {"type": "object"},
+    "contracts": {
+      "type": "array",
+      "minItems": 100,
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "required": ["case_id", "query_sha256", "contract_status", "evaluation_mode", "expected_status"],
+        "properties": {
+          "case_id": {"type": "string", "pattern": "^RTQ-[0-9]{3}$"},
+          "query_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "contract_status": {"const": "contract_frozen"},
+          "evaluation_mode": {"enum": ["state_only", "runtime_snapshot"]},
+          "expected_status": {"enum": ["success", "needs_clarification", "unsupported", "no_data"]}
+        }
+      }
+    }
+  }
+}

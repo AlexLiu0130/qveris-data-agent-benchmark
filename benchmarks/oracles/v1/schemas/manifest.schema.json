@@ -19,7 +19,7 @@
         "additionalProperties": false,
         "required": ["path", "sha256", "suite"],
         "properties": {
-          "path": {"type": "string", "pattern": "^(outputs/(historical_price|financial_statements|realtime_quote)/.+\\.json|fact-contracts\\.financial\\.v1\\.json)$"},
+          "path": {"type": "string", "pattern": "^(outputs/(historical_price|financial_statements|realtime_quote)/.+\\.json|fact-contracts\\.(financial|realtime)\\.v1\\.json|historical-price-contracts\\.v1\\.json|benchmarks/candidates/v0\\.1/historical_price\\.cases\\.json)$"},
           "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
           "suite": {"enum": ["historical_price", "financial_statements", "realtime_quote"]}
         }

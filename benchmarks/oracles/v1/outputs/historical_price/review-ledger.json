@@ -1,0 +1,2858 @@
+{
+  "schema_version": "historical-price-review-ledger/v1",
+  "status": "approved",
+  "review_scope": "Frozen v1 review: numeric cases have independent semantic/data decisions; state cases have semantic approval and are excluded from Data Accuracy.",
+  "oracle_file_sha256": "00b62c761d8bf27e9cae7fdc780ab9289dc6874d3b615c9f7e1b1c369024c5a6",
+  "entries": [
+    {
+      "oracle_id": "historical-price-historical-price-numeric-001-v1",
+      "case_id": "hist-A股-01",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-002-v1",
+      "case_id": "hist-A股-02",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-003-v1",
+      "case_id": "hist-A股-03",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-001-v1",
+      "case_id": "hist-A股-04",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-002-v1",
+      "case_id": "hist-A股-05",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-003-v1",
+      "case_id": "hist-A股-06",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-004-v1",
+      "case_id": "hist-A股-07",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-004-v1",
+      "case_id": "hist-A股-08",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-005-v1",
+      "case_id": "hist-A股-09",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-005-v1",
+      "case_id": "hist-A股-10",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-006-v1",
+      "case_id": "hist-A股-11",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-007-v1",
+      "case_id": "hist-A股-12",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-006-v1",
+      "case_id": "hist-A股-13",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-007-v1",
+      "case_id": "hist-A股-14",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-008-v1",
+      "case_id": "hist-A股-15",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-008-v1",
+      "case_id": "hist-A股-16",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-009-v1",
+      "case_id": "hist-A股-17",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-010-v1",
+      "case_id": "hist-A股-18",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-009-v1",
+      "case_id": "hist-A股-19",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-010-v1",
+      "case_id": "hist-A股-20",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-011-v1",
+      "case_id": "hist-A股-21",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-011-v1",
+      "case_id": "hist-A股-22",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-012-v1",
+      "case_id": "hist-A股-23",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-031-v1",
+      "case_id": "hist-A股-b01",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-032-v1",
+      "case_id": "hist-A股-b02",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-033-v1",
+      "case_id": "hist-A股-b03",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-034-v1",
+      "case_id": "hist-A股-b04",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-035-v1",
+      "case_id": "hist-A股-b05",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-036-v1",
+      "case_id": "hist-A股-b06",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-013-v1",
+      "case_id": "hist-港股-01",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-014-v1",
+      "case_id": "hist-港股-02",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-015-v1",
+      "case_id": "hist-港股-03",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-016-v1",
+      "case_id": "hist-港股-04",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-012-v1",
+      "case_id": "hist-港股-05",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-013-v1",
+      "case_id": "hist-港股-06",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-014-v1",
+      "case_id": "hist-港股-07",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-017-v1",
+      "case_id": "hist-港股-08",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-015-v1",
+      "case_id": "hist-港股-09",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-018-v1",
+      "case_id": "hist-港股-10",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-019-v1",
+      "case_id": "hist-港股-11",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-020-v1",
+      "case_id": "hist-港股-12",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-016-v1",
+      "case_id": "hist-港股-13",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-017-v1",
+      "case_id": "hist-港股-14",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-018-v1",
+      "case_id": "hist-港股-15",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-021-v1",
+      "case_id": "hist-港股-16",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-022-v1",
+      "case_id": "hist-港股-17",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-023-v1",
+      "case_id": "hist-港股-18",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-019-v1",
+      "case_id": "hist-港股-19",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-024-v1",
+      "case_id": "hist-港股-20",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-020-v1",
+      "case_id": "hist-港股-21",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-025-v1",
+      "case_id": "hist-港股-22",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_cn_hk_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-037-v1",
+      "case_id": "hist-港股-b01",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-038-v1",
+      "case_id": "hist-港股-b02",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-039-v1",
+      "case_id": "hist-港股-b03",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-040-v1",
+      "case_id": "hist-港股-b04",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-041-v1",
+      "case_id": "hist-港股-b05",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-042-v1",
+      "case_id": "hist-港股-b06",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-026-v1",
+      "case_id": "hist-美股-01",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-027-v1",
+      "case_id": "hist-美股-02",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-028-v1",
+      "case_id": "hist-美股-03",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-029-v1",
+      "case_id": "hist-美股-04",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-030-v1",
+      "case_id": "hist-美股-05",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-031-v1",
+      "case_id": "hist-美股-06",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-032-v1",
+      "case_id": "hist-美股-07",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-033-v1",
+      "case_id": "hist-美股-08",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-021-v1",
+      "case_id": "hist-美股-09",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-034-v1",
+      "case_id": "hist-美股-10",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-035-v1",
+      "case_id": "hist-美股-11",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-036-v1",
+      "case_id": "hist-美股-12",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-037-v1",
+      "case_id": "hist-美股-13",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-038-v1",
+      "case_id": "hist-美股-14",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-039-v1",
+      "case_id": "hist-美股-15",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-040-v1",
+      "case_id": "hist-美股-16",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-041-v1",
+      "case_id": "hist-美股-17",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-042-v1",
+      "case_id": "hist-美股-18",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-022-v1",
+      "case_id": "hist-美股-19",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-043-v1",
+      "case_id": "hist-美股-20",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-044-v1",
+      "case_id": "hist-美股-21",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-045-v1",
+      "case_id": "hist-美股-22",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-046-v1",
+      "case_id": "hist-美股-23",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_us_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-043-v1",
+      "case_id": "hist-美股-b01",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-044-v1",
+      "case_id": "hist-美股-b02",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-045-v1",
+      "case_id": "hist-美股-b03",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-046-v1",
+      "case_id": "hist-美股-b04",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-047-v1",
+      "case_id": "hist-美股-b05",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-023-v1",
+      "case_id": "hist-日本-01",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-047-v1",
+      "case_id": "hist-日本-02",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_jp_gb_de_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-048-v1",
+      "case_id": "hist-日本-03",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_jp_gb_de_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-024-v1",
+      "case_id": "hist-日本-04",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-048-v1",
+      "case_id": "hist-日本-b01",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-025-v1",
+      "case_id": "hist-英国-01",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-049-v1",
+      "case_id": "hist-英国-02",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_jp_gb_de_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-026-v1",
+      "case_id": "hist-英国-03",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-027-v1",
+      "case_id": "hist-英国-04",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-049-v1",
+      "case_id": "hist-英国-b01",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-028-v1",
+      "case_id": "hist-德国-01",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-numeric-050-v1",
+      "case_id": "hist-德国-02",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_review_historical_numeric_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "natural-language query to frozen historical contract"
+        },
+        {
+          "role": "data_reviewer",
+          "reviewer_id": "/root/review_historical_jp_gb_de_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "source-coherent rows, receipt linkage, currency, unit, and adjustment basis"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "approved"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-029-v1",
+      "case_id": "hist-德国-03",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-030-v1",
+      "case_id": "hist-德国-04",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    },
+    {
+      "oracle_id": "historical-price-historical-price-state-050-v1",
+      "case_id": "hist-德国-b01",
+      "status": "approved",
+      "reviews": [
+        {
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/review_historical_state_v1",
+          "decision": "approved",
+          "reviewed_at": "2026-09-04T05:53:48Z",
+          "scope": "expected terminal status and one minimal clarification slot where required"
+        }
+      ],
+      "review_requirements": [
+        {
+          "role": "semantic_reviewer",
+          "status": "approved"
+        },
+        {
+          "role": "data_reviewer",
+          "status": "not_applicable"
+        }
+      ],
+      "conflicts_or_observations": []
+    }
+  ]
+}
