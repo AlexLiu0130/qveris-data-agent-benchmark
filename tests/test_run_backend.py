@@ -158,6 +158,15 @@ class RunBackendTests(unittest.TestCase):
         terminal = next(event for event in self.service.get_events("run-1") if event["event_type"] == "terminal")
         self.assertEqual((terminal["transport_status"], terminal["transport_completed"], terminal["execution_outcome"]), ("completed", True, "success"))
 
+    def test_diagnostic_accepts_one_variant_but_official_rejects_it(self):
+        diagnostic = manifest()
+        diagnostic["variants"] = [diagnostic["variants"][0]]
+        RunService(RunStore(self.directory.name + "-single-diagnostic"), {"variant-b": self.clients["variant-b"]}).create_run(diagnostic)
+        official = manifest(official=True)
+        official["variants"] = [official["variants"][0]]
+        with self.assertRaises(RunBackendError):
+            RunService(RunStore(self.directory.name + "-single-official"), {"variant-b": self.clients["variant-b"]}).create_run(official)
+
     def test_canonical_public_statuses_need_no_legacy_interface(self):
         with self.assertRaises(ModuleNotFoundError):
             importlib.import_module("qveris_benchmark.get_interface")
@@ -716,6 +725,28 @@ class RunBackendTests(unittest.TestCase):
         event = {"event_type": "terminal", "cell_id": "cell-1", "attempt_id": "attempt-1", "elapsed_ms": 0, "transport_status": "completed", "public_response": without_meta, "response_hash": _digest(without_meta), "usage": "unknown", "usage_source": "public_meta_usage", "sequence": 1, "manifest_hash": "a" * 64, "previous_event_hash": None}
         event["event_hash"] = _digest(event)
         with self.assertRaises(RunBackendError): _validate_event(event, "run-1", 1, "a" * 64)
+
+    def test_ambiguous_external_action_is_limited_to_execute_or_gateway(self):
+        def terminal(stage, external_cost="unknown"):
+            event = RunService._terminal(
+                "cell-1", "attempt-1", 0, "failed", "timeout", None, "unknown", "not_comparable",
+                variant_identity=_variant_identity(variants()[0]), execution_profile="exploratory_ab",
+                receipt_hashes={}, receipt_coverage={}, stage=stage, stage_attempted_count=1,
+                stage_completed_count=0, stage_exception_class="TimeoutError", stage_error_code="timeout",
+                external_action_may_have_occurred=True, external_cost=external_cost,
+            )
+            event.update({"sequence": 1, "manifest_hash": "a" * 64, "previous_event_hash": None})
+            event["event_hash"] = _digest(event)
+            return event
+
+        for stage in ("qveris_execute", "gateway_completion"):
+            with self.subTest(stage=stage):
+                _validate_event(terminal(stage), "run-1", 1, "a" * 64)
+        with self.assertRaises(RunBackendError):
+            _validate_event(terminal("qveris_execute", external_cost=0), "run-1", 1, "a" * 64)
+        for stage in ("model_preflight", "web_search", "qveris_search", "qveris_inspect"):
+            with self.subTest(stage=stage), self.assertRaises(RunBackendError):
+                _validate_event(terminal(stage), "run-1", 1, "a" * 64)
 
     def test_score_case_type_blocks_partial_and_error_before_execution(self):
         for status in ("partial", "error"):

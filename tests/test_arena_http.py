@@ -130,13 +130,13 @@ class ArenaHttpTests(unittest.TestCase):
         self._assert_scored_http(ranked=True, status="SCORED")
 
     def test_scored_not_ranked_run_is_safe_over_all_routes_and_sse(self):
-        self._assert_scored_http(ranked=False, status="SCORED_NOT_RANKED")
+        self._assert_scored_http(ranked=False, status="SCORED_NOT_RANKED", single_variant=True)
 
-    def _assert_scored_http(self, *, ranked, status):
+    def _assert_scored_http(self, *, ranked, status, single_variant=False):
         contracts = {"success": {"required_non_null_paths": ["resolved_request", "data", "as_of", "source"], "required_null_paths": ["clarification", "terminal_reason"]}, "partial": {"required_non_null_paths": ["resolved_request", "data", "as_of", "source"], "required_null_paths": ["clarification", "terminal_reason"]}, "needs_clarification": {"required_non_null_paths": ["clarification"], "required_null_paths": ["data", "terminal_reason"]}, "unsupported": {"required_non_null_paths": ["terminal_reason"], "required_null_paths": ["data", "clarification"]}, "no_data": {"required_non_null_paths": ["terminal_reason"], "required_null_paths": ["data", "clarification"]}, "error": {"required_non_null_paths": ["terminal_reason"], "required_null_paths": ["data", "clarification"]}}
-        policy = {"schema_version": "score-policy/v1", "metric_names": ["semantic_accuracy", "data_accuracy", "token_usage", "e2e_latency"], "percentile_method": "nearest_rank", "assertion_operators": ["exact", "within_abs"], "operator_registry": ["exact", "within_abs"], "case_pass_gate": ["schema_valid", "status_correct", "semantic_pass", "data_pass", "execution_complete"], "completeness": {}, "response_schema_version": "get-response/v1", "response_status_contracts": contracts, "max_reference_window_seconds": 60, "error": "disabled", "timeout_latency_treatment": "cap_at_timeout", "usage_receipt_required_fields": ["receipt_id", "measurement_version", "cache_status", "request_id", "issuer", "input_tokens", "output_tokens", "total_tokens"], "trusted_receipt_issuers": ["runner"], "eligibility": {"semantic_coverage_min": 1, "oracle_coverage_min": 1, "receipt_coverage_min": 1, "require_complete_execution": True} if ranked else None, "ranking": {"ordered_keys": ["case_pass_rate", "data_accuracy", "semantic_accuracy", "e2e_p95_ms", "average_total_tokens"], "directions": ["desc", "desc", "desc", "asc", "asc"], "tie_break": "variant_id"} if ranked else None}
+        policy = {"schema_version": "score-policy/v1", "metric_names": ["semantic_accuracy", "data_accuracy", "end_to_end_latency", "token_usage"], "percentile_method": "nearest_rank", "assertion_operators": ["exact", "within_abs"], "operator_registry": ["exact", "within_abs"], "case_pass_gate": ["schema_valid", "status_correct", "semantic_pass", "data_pass", "execution_complete"], "completeness": {}, "response_schema_version": "get-response/v1", "response_status_contracts": contracts, "max_reference_window_seconds": 60, "error": "disabled", "timeout_latency_treatment": "cap_at_timeout", "usage_receipt_required_fields": ["receipt_id", "measurement_version", "cache_status", "request_id", "issuer", "input_tokens", "output_tokens", "total_tokens"], "trusted_receipt_issuers": ["runner"], "eligibility": {"semantic_coverage_min": 1, "oracle_coverage_min": 1, "receipt_coverage_min": 1, "require_complete_execution": True} if ranked else None, "ranking": {"ordered_keys": ["case_pass_rate", "data_accuracy", "semantic_accuracy", "end_to_end_latency_p95_ms", "average_total_tokens"], "directions": ["desc", "desc", "desc", "asc", "asc"], "tie_break": "variant_id"} if ranked else None}
         oracle = {"schema_version": "oracle-bundle/v1", "oracles": {"oracle-one": {"oracle_id": "oracle-one", "case_id": "case-one", "independence": "independent_frozen", "semantic_assertions": [{"path": "resolved_request.symbol", "operator": "exact", "expected": "ABC", "tolerance": None, "weight": 1, "fatal": True}], "data_assertions": [{"path": "data.close", "operator": "exact", "expected": 10, "tolerance": None, "weight": 1, "fatal": True}], "state_assertions": [], "reference_evidence": None, "source_ref": "frozen", "version": "v1", "semantic_review_status": "approved", "data_review_status": "approved", "state_review_status": "not_applicable"}}}
-        score_variants = variants()
+        score_variants = variants()[:1] if single_variant else variants()
         manifest = {"run_id": "score-http", "mode": "diagnostic", "freeze_digest": "a" * 64, "policy": {"version": "v1"}, "timeout_ms": 100, "concurrency": 1, "scoring_contract": {"policy_digest": _digest(policy), "oracle_bundle_digest": _digest(oracle), "scorer_version": SCORER_VERSION, "scorer_digest": SCORER_DIGEST, "variant_contract_digest": _variant_contract_digest(score_variants)}, "variants": score_variants, "cases": [{"case_id": "case-one", "suite": "historical_price", "query": "safe", "score_case": {"expected_status": ["success"], "oracle_id": "oracle-one", "case_type": "normal"}}]}
         class Client:
             def __init__(self, variant_id): self.variant_id = variant_id
@@ -145,7 +145,8 @@ class ArenaHttpTests(unittest.TestCase):
                 identity = _variant_identity(next(item for item in score_variants if item["variant_id"] == self.variant_id))
                 return PublicGetResult(copy.deepcopy(value), ExecutionEvidence(**identity, agent_invocations=1, tool_executions=1, structured_outputs=1, tools_used=("get",)))
         with tempfile.TemporaryDirectory() as root:
-            service = RunService(RunStore(root), {"variant-a": Client("variant-a"), "variant-b": Client("variant-b")})
+            clients = {variant["variant_id"]: Client(variant["variant_id"]) for variant in score_variants}
+            service = RunService(RunStore(root), clients)
             service.create_run(manifest); service.execute("score-http")
             BenchmarkScorer(service.store, policy=policy, oracle_bundle=oracle, approved_policy_digests={_digest(policy)}, approved_oracle_bundle_digests={_digest(oracle)}).score("score-http")
             execution_cursor = service.get_snapshot("score-http")["event_cursor"] - 1
@@ -163,6 +164,16 @@ class ArenaHttpTests(unittest.TestCase):
                 self.assertIn("end_to_end_latency", variant["variant"]["metrics"])
                 self.assertNotIn("e2e_latency", variant["variant"]["metrics"])
                 self.assertEqual(snapshot["scoring"]["end_to_end_latency"], "SCORED")
+                self.assertEqual(set(variant["variant"]["metrics"]), {"semantic_accuracy", "data_accuracy", "end_to_end_latency", "token_usage"})
+                self.assertEqual(variant["variant"]["semantic_oracle_coverage"], {"available": 1, "denominator": 1, "value": 1.0})
+                self.assertEqual(variant["variant"]["oracle_coverage"], {"available": 1, "denominator": 1, "value": 1.0})
+                self.assertEqual(variant["variant"]["receipt_coverage"], {"available": 1, "denominator": 1, "value": 1.0})
+                if single_variant:
+                    self.assertEqual([item["variant_id"] for item in snapshot["variants"]], ["variant-a"])
+                    self.assertEqual(variant["variant"]["eligibility"], "not_ranked")
+                    self.assertNotIn("rank", variant["variant"])
+                    self.assertNotIn("ranked_results", snapshot)
+                    self.assertNotIn("ineligible_results", snapshot)
                 self.assertIn("event: scorer_projection", events)
                 self.assertIn('"projection_status":"' + status + '"', events)
                 self.assertNotIn("oracle_id", json.dumps([runs, snapshot, variant, events]))
@@ -170,6 +181,11 @@ class ArenaHttpTests(unittest.TestCase):
                 self.assertNotIn("raw_response", json.dumps([runs, snapshot, variant, events]))
                 self.assertNotIn("execution_evidence", json.dumps([runs, snapshot, variant, events]))
                 self.assertNotIn("model_config_digest", json.dumps([runs, snapshot, variant, events]))
+                if single_variant:
+                    with urlopen(Request(base + "/events", headers={"Last-Event-ID": "999999"}), timeout=2) as response:
+                        resync = response.read().decode()
+                    self.assertIn("event: resync_required", resync)
+                    self.assertIn("/v1/arena/runs/score-http/snapshot", resync)
             finally:
                 server.shutdown(); server.server_close(); thread.join()
 

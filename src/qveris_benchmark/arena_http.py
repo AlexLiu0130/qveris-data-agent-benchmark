@@ -67,7 +67,8 @@ _EVENT_FIELDS = frozenset({
     "reference", "elapsed_ms", "transport_status", "usage", "comparability", "response_hash",
     "error_class", "public_response", "status", "reason_code", "call_completed", "result_status",
     "transport_completed", "execution_outcome", "usage_source", "previous_event_hash", "event_hash", "event_id", "emitted_at",
-    "projection_status", "projection_hash", "variant_identity", "execution_evidence",
+    "projection_status", "projection_hash", "variant_identity", "execution_evidence", "execution_profile", "gateway_receipt",
+    "external_receipts", "external_action_occurred",
 })
 
 

@@ -4,10 +4,11 @@ import pathlib
 import sys
 import tempfile
 import unittest
+from decimal import Decimal
 
 sys.path.insert(0, str(pathlib.Path(__file__).parents[1] / "src"))
 
-from qveris_benchmark.benchmark_scorer import BenchmarkScoreError, BenchmarkScorer, SCORER_DIGEST, SCORER_VERSION
+from qveris_benchmark.benchmark_scorer import BenchmarkScoreError, BenchmarkScorer, SCORER_DIGEST, SCORER_VERSION, _assertion_pass
 from qveris_benchmark.public_get import PublicGetAdapter
 from qveris_benchmark.run_backend import ExecutionEvidence, PublicGetResult, RunBackendError, RunService, RunStore, _digest, _score_projection_hash, _variant_contract_digest, _variant_identity
 
@@ -15,6 +16,26 @@ from qveris_benchmark.run_backend import ExecutionEvidence, PublicGetResult, Run
 def policy(*, percentile="nearest_rank", ranked=True):
     contracts = {"success": {"required_non_null_paths": ["resolved_request", "data", "as_of", "source"], "required_null_paths": ["clarification", "terminal_reason"]}, "partial": {"required_non_null_paths": ["resolved_request", "data", "as_of", "source"], "required_null_paths": ["clarification", "terminal_reason"]}, "needs_clarification": {"required_non_null_paths": ["clarification"], "required_null_paths": ["data", "terminal_reason"]}, "unsupported": {"required_non_null_paths": ["terminal_reason"], "required_null_paths": ["data", "clarification"]}, "no_data": {"required_non_null_paths": ["terminal_reason"], "required_null_paths": ["data", "clarification"]}, "error": {"required_non_null_paths": ["terminal_reason"], "required_null_paths": ["data", "clarification"]}}
     return {"schema_version": "score-policy/v1", "metric_names": ["semantic_accuracy", "data_accuracy", "end_to_end_latency", "token_usage"], "percentile_method": percentile, "assertion_operators": ["exact", "within_abs"], "operator_registry": ["exact", "within_abs"], "case_pass_gate": ["schema_valid", "status_correct", "semantic_pass", "data_pass", "execution_complete"], "completeness": {}, "response_schema_version": "get-response/v1", "response_status_contracts": contracts, "max_reference_window_seconds": 60, "error": "disabled", "timeout_latency_treatment": "cap_at_timeout", "usage_receipt_required_fields": ["receipt_id", "measurement_version", "cache_status", "request_id", "issuer", "input_tokens", "output_tokens", "total_tokens"], "trusted_receipt_issuers": ["runner"], "eligibility": {"semantic_coverage_min": 1, "oracle_coverage_min": 1, "receipt_coverage_min": 1, "require_complete_execution": True} if ranked else None, "ranking": {"ordered_keys": ["case_pass_rate", "data_accuracy", "semantic_accuracy", "end_to_end_latency_p95_ms", "average_total_tokens"], "directions": ["desc", "desc", "desc", "asc", "asc"], "tie_break": "variant_id"} if ranked else None}
+
+
+def financial_policy(*, ranked=True):
+    value = policy(ranked=ranked)
+    value["assertion_operators"] = ["exact", "within_abs", "exact_normalized", "canonical_zero_from_display_nil"]
+    value["operator_registry"] = list(value["assertion_operators"])
+    return value
+
+
+def financial_assertion(assertion_id, field, operator, expected, *, currency="CNY", unit="yuan", period="FY2024", raw_display=None):
+    value = {"response_root": "data", "assertion_id": assertion_id, "field": field, "operator": operator, "expected": expected, "tolerance": None, "weight": 1, "fatal": True, "currency": currency, "unit": unit, "period": period}
+    if raw_display is not None:
+        value["raw_display"] = raw_display
+    return value
+
+
+def financial_response(*facts):
+    value = response()
+    value["data"] = {"facts": list(facts)}
+    return value
 
 
 def response(close=10, *, usage=True, status="success"):
@@ -119,6 +140,110 @@ class BenchmarkScorerTests(unittest.TestCase):
         scored = self.scorer(store, p, o).score("score-run")
         self.assertEqual(next(v for v in scored["variants"] if v["variant_id"] == "variant-a")["metrics"]["data_accuracy"]["value"], 1.0)
         self.assertEqual(next(v for v in scored["variants"] if v["variant_id"] == "variant-b")["metrics"]["data_accuracy"]["value"], 0.0)
+
+    def test_financial_exact_normalized_uses_frozen_fact_carrier_without_unit_conversion(self):
+        p, o = financial_policy(), bundle()
+        assertions = [
+            financial_assertion("fact:中文/金额", "income_statement.中文/金额:本期", "exact_normalized", " 10.00 ", unit="million"),
+            financial_assertion("fact:date", "income_statement.报告日期", "exact_normalized", "2025-12-31", unit="date"),
+        ]
+        o["oracles"]["oracle-one"]["data_assertions"] = assertions
+        good = financial_response(
+            {"assertion_id": "fact:中文/金额", "value": "10", "currency": "CNY", "unit": "million", "period": "FY2024"},
+            {"assertion_id": "fact:date", "value": " 2025-12-31 ", "currency": "CNY", "unit": "date", "period": "FY2024"},
+        )
+        store, p, o, _ = self.execute_run(good, good, policy_value=p, oracle_value=o)
+        self.assertEqual(self.scorer(store, p, o).score("score-run")["variants"][0]["metrics"]["data_accuracy"]["value"], 1.0)
+        wrong_scale = financial_response(
+            {"assertion_id": "fact:中文/金额", "value": 10000000, "currency": "CNY", "unit": "million", "period": "FY2024"},
+            {"assertion_id": "fact:date", "value": "2025-12-31", "currency": "CNY", "unit": "date", "period": "FY2024"},
+        )
+        other = RunStore(self.tmp.name + "-wrong-scale")
+        service = RunService(other, clients(wrong_scale, wrong_scale)); service.create_run(manifest(p, o)); service.execute("score-run")
+        self.assertEqual(self.scorer(other, p, o).score("score-run")["variants"][0]["metrics"]["data_accuracy"]["value"], 0.5)
+
+    def test_financial_display_nil_rules_are_narrow_and_exact_null_keeps_em_dash(self):
+        p, o = financial_policy(), bundle()
+        o["oracles"]["oracle-one"]["data_assertions"] = [
+            financial_assertion("fact:nil-zero", "financial_position.股本", "canonical_zero_from_display_nil", 0, unit="million", raw_display="–"),
+            financial_assertion("fact:nil-null", "cash_flows.债务", "exact", None, currency="USD", unit="USD_millions", raw_display="—"),
+        ]
+        good = financial_response(
+            {"assertion_id": "fact:nil-zero", "value": "0.0", "raw_display": "–", "currency": "CNY", "unit": "million", "period": "FY2024"},
+            {"assertion_id": "fact:nil-null", "value": None, "raw_display": "—", "currency": "USD", "unit": "USD_millions", "period": "FY2024"},
+        )
+        store, p, o, _ = self.execute_run(good, good, policy_value=p, oracle_value=o)
+        self.assertEqual(self.scorer(store, p, o).score("score-run")["variants"][0]["metrics"]["data_accuracy"]["value"], 1.0)
+        self.assertTrue(_assertion_pass(Decimal("0"), o["oracles"]["oracle-one"]["data_assertions"][0]))
+        bad_zero_value = financial_response(
+            {"assertion_id": "fact:nil-zero", "value": "–", "raw_display": "–", "currency": "CNY", "unit": "million", "period": "FY2024"},
+            good["data"]["facts"][1],
+        )
+        bad_zero_display = financial_response(
+            {"assertion_id": "fact:nil-zero", "value": 0, "raw_display": "—", "currency": "CNY", "unit": "million", "period": "FY2024"},
+            good["data"]["facts"][1],
+        )
+        bad_null_display = financial_response(
+            good["data"]["facts"][0],
+            {"assertion_id": "fact:nil-null", "value": None, "raw_display": "–", "currency": "USD", "unit": "USD_millions", "period": "FY2024"},
+        )
+        for suffix, wrong in (("value", bad_zero_value), ("zero-display", bad_zero_display), ("null-display", bad_null_display)):
+            other = RunStore(self.tmp.name + "-wrong-nil-" + suffix)
+            service = RunService(other, clients(wrong, wrong)); service.create_run(manifest(p, o)); service.execute("score-run")
+            self.assertEqual(self.scorer(other, p, o).score("score-run")["variants"][0]["metrics"]["data_accuracy"]["value"], 0.5, suffix)
+
+    def test_financial_fact_assertions_require_declared_carrier_metadata_and_policy_operator(self):
+        p, o = financial_policy(), bundle()
+        assertion = financial_assertion("fact:one", "income/statement:金额", "exact_normalized", 1)
+        o["oracles"]["oracle-one"]["data_assertions"] = [assertion]
+        incomplete = financial_response({"assertion_id": "fact:one", "value": 1, "currency": "CNY", "unit": "yuan", "period": "FY2024"})
+        store, p, o, _ = self.execute_run(incomplete, incomplete, policy_value=p, oracle_value=o)
+        self.assertEqual(self.scorer(store, p, o).score("score-run")["variants"][0]["metrics"]["data_accuracy"]["value"], 1.0)
+        legacy_policy = policy()
+        value = manifest(legacy_policy, o)
+        value["scoring_contract"] = scoring_contract(legacy_policy, o)
+        other = RunStore(self.tmp.name + "-operator")
+        service = RunService(other, clients(incomplete, incomplete)); service.create_run(value); service.execute("score-run")
+        with self.assertRaises(BenchmarkScoreError): self.scorer(other, legacy_policy, o).score("score-run")
+
+    def test_financial_fact_carrier_rejects_missing_metadata_and_duplicate_ids(self):
+        p, o = financial_policy(), bundle()
+        assertion = financial_assertion("fact:one", "income/statement:金额", "exact_normalized", 1)
+        o["oracles"]["oracle-one"]["data_assertions"] = [assertion]
+        bad = copy.deepcopy(o); bad["oracles"]["oracle-one"]["data_assertions"][0].pop("currency")
+        invalid = RunStore(self.tmp.name + "-missing-metadata")
+        service = RunService(invalid, clients(response(), response())); service.create_run(manifest(p, bad)); service.execute("score-run")
+        with self.assertRaises(BenchmarkScoreError): self.scorer(invalid, p, bad).score("score-run")
+        duplicate = financial_response(
+            {"assertion_id": "fact:one", "value": 1, "currency": "CNY", "unit": "yuan", "period": "FY2024"},
+            {"assertion_id": "fact:one", "value": 1, "currency": "CNY", "unit": "yuan", "period": "FY2024"},
+        )
+        other = RunStore(self.tmp.name + "-duplicate")
+        service = RunService(other, clients(duplicate, duplicate)); service.create_run(manifest(p, o)); service.execute("score-run")
+        self.assertEqual(self.scorer(other, p, o).score("score-run")["variants"][0]["metrics"]["data_accuracy"]["value"], 0.0)
+
+    def test_financial_fact_carrier_rejects_metadata_mismatch_missing_value_and_unknown_id(self):
+        p, o = financial_policy(), bundle()
+        o["oracles"]["oracle-one"]["data_assertions"] = [financial_assertion("fact:one", "income/statement:金额", "exact_normalized", 1)]
+        good = {"assertion_id": "fact:one", "value": 1, "currency": "CNY", "unit": "yuan", "period": "FY2024"}
+        cases = []
+        for name, change in (
+            ("currency", {"currency": "USD"}),
+            ("unit", {"unit": "millions"}),
+            ("period", {"period": "FY2023"}),
+            ("missing-value", {"value": None}),
+            ("unknown-id", {"assertion_id": "fact:unknown"}),
+        ):
+            fact = dict(good)
+            fact.update(change)
+            if name == "missing-value":
+                fact.pop("value")
+            cases.append((name, fact))
+        for name, fact in cases:
+            store = RunStore(self.tmp.name + "-carrier-" + name)
+            service = RunService(store, clients(financial_response(fact), financial_response(fact)))
+            service.create_run(manifest(p, o)); service.execute("score-run")
+            self.assertEqual(self.scorer(store, p, o).score("score-run")["variants"][0]["metrics"]["data_accuracy"]["value"], 0.0, name)
 
     def test_schema_status_transport_and_usage_missing_are_not_success(self):
         store, p, o, _ = self.execute_run({"status": "success"}, response(10, usage=False))

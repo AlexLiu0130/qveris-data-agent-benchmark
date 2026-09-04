@@ -35,7 +35,7 @@ _SENSITIVE = frozenset({
 _USAGE_TOKENS = frozenset({"input_tokens", "output_tokens", "total_tokens"})
 _USAGE_AUDIT = frozenset({"receipt_id", "measurement_version", "cache_status", "request_id", "issuer"})
 _USAGE = _USAGE_TOKENS | _USAGE_AUDIT
-_EVENTS = frozenset({"run_started", "dispatch_intent", "reference_before", "reference_after", "reference_after_unavailable", "terminal", "run_finished"})
+_EVENTS = frozenset({"run_started", "model_preflight", "dispatch_intent", "stage_intent", "stage_complete", "reference_before", "reference_after", "reference_after_unavailable", "terminal", "run_finished"})
 _GET_RESPONSE_FIELDS = frozenset({"schema_version", "status", "resolved_request", "data", "as_of", "source", "clarification", "terminal_reason", "meta"})
 _GET_DATA_FORBIDDEN = frozenset({"provider", "provider_response", "provider_payload", "raw_response", "receipt", "execution_id"})
 _CANONICAL_RESPONSE_STATUSES = frozenset({"success", "partial", "needs_clarification", "unsupported", "no_data", "error"})
@@ -57,7 +57,34 @@ _VARIANT_IDENTITY_FIELDS = (
     "agent_variant_id", "agent_version", "get_variant_id", "get_version",
     "model_identifier", "model_version", "model_config_digest",
 )
+_EXPLORATORY_OUTPUT_DIGEST_FIELDS = (
+    "prompt_contract_digest", "output_schema_digest", "metadata_digest",
+)
 _TOOL_ALIASES = {"get": "get", "public_get": "get", "qveris_get": "get"}
+_EXECUTION_PROFILES = frozenset({"public_get", "exploratory_ab", "exploratory_gateway_probe"})
+_EXPLORATORY_PROFILES = frozenset({"exploratory_ab", "exploratory_gateway_probe"})
+_EXPLORATORY_TOOLSETS = frozenset({
+    ("web_search",),
+    ("qveris_search", "qveris_execute"),
+    ("qveris_search", "qveris_inspect", "qveris_execute"),
+})
+
+
+def _is_exploratory_profile(profile: str) -> bool:
+    return profile in _EXPLORATORY_PROFILES
+
+
+def _allowed_exploratory_toolsets(profile: str) -> frozenset[tuple[str, ...]]:
+    return _EXPLORATORY_TOOLSETS | frozenset({()}) if profile == "exploratory_gateway_probe" else _EXPLORATORY_TOOLSETS
+_EXPLORATORY_STAGES = frozenset({"model_preflight", "web_search", "qveris_search", "qveris_inspect", "qveris_execute", "result_selector", "gateway_completion"})
+_STAGE_COVERAGE_FIELDS = {
+    "web_search": frozenset({"credits"}),
+    "qveris_search": frozenset({"remaining_credits"}),
+    "qveris_inspect": frozenset({"remaining_credits"}),
+    "qveris_execute": frozenset({"actual_cost", "remaining_credits"}),
+    "result_selector": frozenset({"validation"}),
+    "gateway_completion": frozenset({"billing", "usage"}),
+}
 
 
 class RunBackendError(ValueError):
@@ -92,6 +119,33 @@ class PublicGetResult:
 
     public_response: Mapping[str, Any]
     execution_evidence: ExecutionEvidence
+
+
+@dataclass(frozen=True)
+class ExploratoryExecutionEvidence:
+    """Trusted topology attestation for the diagnostic-only A/B runner path."""
+
+    agent_variant_id: str
+    agent_version: str
+    get_variant_id: str
+    get_version: str
+    model_identifier: str
+    model_version: str
+    model_config_digest: str
+    agent_invocations: int
+    tool_executions: int
+    structured_outputs: int
+    tools_used: tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class ExploratoryAgentResult:
+    """One Gateway-agent result; deliberately not a public ``get`` result."""
+
+    public_response: Mapping[str, Any]
+    execution_evidence: ExploratoryExecutionEvidence
+    gateway_receipt: Mapping[str, Any]
+    external_receipts: Mapping[str, Mapping[str, Any]]
 
 
 class PublicGetClient(Protocol):
@@ -139,6 +193,12 @@ def _validate_variant_identity(value: Any, field: str = "variant identity") -> d
     return result
 
 
+def _validate_exploratory_output_digests(value: Mapping[str, Any], field: str = "variant") -> None:
+    for name in _EXPLORATORY_OUTPUT_DIGEST_FIELDS:
+        if type(value.get(name)) is not str or _SHA256.fullmatch(value[name]) is None:
+            raise RunBackendError("%s.%s must be a SHA256 digest" % (field, name))
+
+
 def _normalize_tool_name(value: Any) -> str:
     if type(value) is not str:
         raise RunBackendError("execution evidence tool name is invalid")
@@ -183,6 +243,194 @@ def _evidence_projection(value: Any, expected_identity: Mapping[str, Any], statu
     projected = {**identity, "agent_invocations": value.agent_invocations, "tool_executions": value.tool_executions, "structured_outputs": value.structured_outputs, "tools_used": list(tools)}
     _validate_execution_evidence(projected, expected_identity, status, "execution evidence", terminal_reason)
     return projected
+
+
+def _exploratory_evidence_projection(value: Any, expected_identity: Mapping[str, Any], profile: str = "exploratory_ab") -> dict[str, Any]:
+    if type(value) is not ExploratoryExecutionEvidence:
+        raise RunBackendError("exploratory result requires trusted ExploratoryExecutionEvidence")
+    identity = _validate_variant_identity({field: getattr(value, field) for field in _VARIANT_IDENTITY_FIELDS}, "execution evidence")
+    if identity != _variant_identity(expected_identity):
+        raise RunBackendError("execution evidence identity does not match manifest variant")
+    tools = value.tools_used if type(value.tools_used) is tuple else ()
+    if tools not in _allowed_exploratory_toolsets(profile) or any(type(tool) is not str for tool in tools):
+        raise RunBackendError("exploratory execution evidence has an illegal tool topology")
+    if (value.agent_invocations, value.tool_executions, value.structured_outputs) != (1, len(tools), 1):
+        raise RunBackendError("exploratory execution evidence requires one agent, exact tools, and one structured output")
+    return {**identity, "agent_invocations": 1, "tool_executions": len(tools), "structured_outputs": 1, "tools_used": list(tools)}
+
+
+def _execution_profile(manifest: Mapping[str, Any]) -> str:
+    return manifest.get("execution_profile", "public_get")
+
+
+def _validate_gateway_receipt(value: Any) -> dict[str, Any]:
+    if not isinstance(value, Mapping) or set(value) != {"schema_version", "request_id", "model_id", "call_id_sha256", "finish_reason", "billing", "usage"}:
+        raise RunBackendError("gateway receipt has an invalid schema")
+    if value["schema_version"] != "qveris-gateway-receipt/v1":
+        raise RunBackendError("gateway receipt has an invalid schema version")
+    _safe_id(value["request_id"], "gateway receipt request_id")
+    _safe_id(value["model_id"], "gateway receipt model_id")
+    if type(value["call_id_sha256"]) is not str or _SHA256.fullmatch(value["call_id_sha256"]) is None:
+        raise RunBackendError("gateway receipt call ID is invalid")
+    if value["finish_reason"] not in {None, "stop", "length", "tool_calls"}:
+        raise RunBackendError("gateway receipt finish reason is invalid")
+    billing = value["billing"]
+    if not isinstance(billing, Mapping) or set(billing) != {"credits_charged", "cost_usd", "usage_estimated"}:
+        raise RunBackendError("gateway receipt billing is invalid")
+    if any(type(billing[name]) not in (int, float) or isinstance(billing[name], bool) or billing[name] < 0 for name in ("credits_charged", "cost_usd")) or type(billing["usage_estimated"]) is not bool:
+        raise RunBackendError("gateway receipt billing is invalid")
+    usage = value["usage"]
+    if usage != "unknown" and (not isinstance(usage, Mapping) or set(usage) != _USAGE_TOKENS or any(type(usage[name]) is not int or isinstance(usage[name], bool) or usage[name] < 0 for name in _USAGE_TOKENS)):
+        raise RunBackendError("gateway receipt usage is invalid")
+    return {"schema_version": value["schema_version"], "request_id": value["request_id"], "model_id": value["model_id"], "call_id_sha256": value["call_id_sha256"], "finish_reason": value["finish_reason"], "billing": dict(billing), "usage": usage if usage == "unknown" else dict(usage)}
+
+
+def _validate_gateway_diagnostic_receipt(value: Any) -> dict[str, Any]:
+    """Accept only fixed, raw-body-free observations from a failed HTTP response."""
+    keys = {"http_status", "content_type_class", "content_encoding_class", "charset_class", "declared_body_bytes", "observed_body_bytes", "body_state", "body_sha256", "call_id_sha256"}
+    if not isinstance(value, Mapping) or set(value) != keys:
+        raise RunBackendError("gateway diagnostic receipt has an invalid schema")
+    if value["http_status"] is not None and (type(value["http_status"]) is not int or isinstance(value["http_status"], bool) or not 100 <= value["http_status"] <= 599):
+        raise RunBackendError("gateway diagnostic receipt status is invalid")
+    if value["content_type_class"] not in {"json", "html", "sse", "other", "missing"} or value["content_encoding_class"] not in {"identity", "gzip", "deflate", "br", "other", "missing"} or value["charset_class"] not in {"utf8", "non_utf8", "missing", "invalid"}:
+        raise RunBackendError("gateway diagnostic receipt classification is invalid")
+    if value["declared_body_bytes"] is not None and (type(value["declared_body_bytes"]) is not int or isinstance(value["declared_body_bytes"], bool) or value["declared_body_bytes"] < 0):
+        raise RunBackendError("gateway diagnostic receipt declared body size is invalid")
+    if type(value["observed_body_bytes"]) is not int or isinstance(value["observed_body_bytes"], bool) or value["observed_body_bytes"] < 0:
+        raise RunBackendError("gateway diagnostic receipt observed body size is invalid")
+    state = value["body_state"]
+    if state not in {"empty_body", "invalid_utf8", "invalid_json", "invalid_json_object", "response_truncated", "response_too_large", "invalid_content_length"}:
+        raise RunBackendError("gateway diagnostic receipt body state is invalid")
+    if state in {"empty_body", "response_truncated", "response_too_large", "invalid_content_length"}:
+        if value["body_sha256"] is not None:
+            raise RunBackendError("gateway diagnostic receipt cannot hash an incomplete body")
+    elif value["observed_body_bytes"] <= 0 or type(value["body_sha256"]) is not str or _SHA256.fullmatch(value["body_sha256"]) is None:
+        raise RunBackendError("gateway diagnostic receipt body hash is invalid")
+    _safe_hash(value["call_id_sha256"], "gateway diagnostic call ID")
+    return dict(value)
+
+
+def _validate_gateway_usage_binding(response: Mapping[str, Any], usage: Mapping[str, Any] | str, receipt: Mapping[str, Any]) -> None:
+    receipt_usage = receipt["usage"]
+    if receipt_usage == "unknown":
+        if "meta" in response or usage != "unknown":
+            raise RunBackendError("unknown gateway usage cannot carry a public usage receipt")
+        return
+    if "meta" not in response or not isinstance(usage, Mapping) or set(usage) != _USAGE:
+        raise RunBackendError("known gateway usage requires a complete public receipt")
+    if usage["receipt_id"] != receipt["call_id_sha256"] or usage["request_id"] != receipt["request_id"]:
+        raise RunBackendError("gateway usage receipt does not bind to the Gateway call")
+    if any(usage[name] != receipt_usage[name] for name in _USAGE_TOKENS):
+        raise RunBackendError("gateway usage receipt token counts do not match")
+    if (usage["issuer"], usage["measurement_version"], usage["cache_status"]) != ("qveris-gateway", "gateway-v1", "unknown"):
+        raise RunBackendError("gateway usage receipt has an unexpected measurement contract")
+
+
+def _safe_hash(value: Any, field: str) -> str | None:
+    if value is None:
+        return None
+    if type(value) is not str or _SHA256.fullmatch(value) is None:
+        raise RunBackendError("%s is invalid" % field)
+    return value
+
+
+def _validate_exploratory_receipts(value: Any, *, request_id: str | None = None) -> dict[str, dict[str, Any]]:
+    if not isinstance(value, Mapping) or set(value) not in ({"tavily"}, {"qveris_execute"}):
+        raise RunBackendError("exploratory receipts have an invalid schema")
+    if "tavily" in value:
+        receipt = value["tavily"]
+        if not isinstance(receipt, Mapping) or set(receipt) != {"schema_version", "provider", "request_id_sha256", "credits", "source_count"} or receipt["schema_version"] != "tavily-receipt/v1" or receipt["provider"] != "tavily" or type(receipt["source_count"]) is not int or receipt["source_count"] < 0 or receipt["credits"] is not None and (type(receipt["credits"]) not in (int, float) or isinstance(receipt["credits"], bool) or receipt["credits"] < 0):
+            raise RunBackendError("tavily receipt is invalid")
+        _safe_hash(receipt["request_id_sha256"], "tavily request hash")
+    if "qveris_execute" in value:
+        receipt = value["qveris_execute"]
+        keys = {"schema_version", "request_id", "idempotency_key_sha256", "search_catalog_sha256", "inspect_contract_sha256", "tool_freeze_sha256", "parameter_schema_sha256", "billing_rule_sha256", "execution_id_sha256", "execute_call_id_sha256", "result_sha256", "actual_cost", "remaining_credits", "tool_id", "entity_binding"}
+        if not isinstance(receipt, Mapping) or set(receipt) != keys or receipt["schema_version"] != "qveris-execute-receipt/v1" or (request_id is not None and receipt["request_id"] != request_id):
+            raise RunBackendError("QVeris execute receipt is invalid")
+        _safe_id(receipt["request_id"], "QVeris receipt request_id")
+        _safe_id(receipt["tool_id"], "QVeris receipt tool_id")
+        if receipt["entity_binding"] not in {"response_field", "request_parameter", "unverified"}:
+            raise RunBackendError("QVeris receipt entity binding is invalid")
+        for field in keys & {"idempotency_key_sha256", "search_catalog_sha256", "tool_freeze_sha256", "parameter_schema_sha256", "billing_rule_sha256", "execution_id_sha256", "execute_call_id_sha256", "result_sha256"}:
+            _safe_hash(receipt[field], field)
+        _safe_hash(receipt["inspect_contract_sha256"], "inspect_contract_sha256")
+        if any(type(receipt[name]) not in (int, float) or isinstance(receipt[name], bool) or receipt[name] < 0 for name in ("actual_cost",)) or receipt["remaining_credits"] is not None and (type(receipt["remaining_credits"]) not in (int, float) or isinstance(receipt["remaining_credits"], bool) or receipt["remaining_credits"] < 0):
+            raise RunBackendError("QVeris execute receipt amounts are invalid")
+    return {name: dict(receipt) for name, receipt in value.items()}
+
+
+def _receipt_amount(value: Any, field: str) -> float | int | None:
+    if value is not None and (type(value) not in (int, float) or isinstance(value, bool) or value < 0):
+        raise RunBackendError("%s is invalid" % field)
+    return value
+
+
+def _validate_stage_receipt(stage: Any, value: Any, *, request_id: str) -> dict[str, Any]:
+    """Accept only receipt projections that cannot contain raw provider/model data."""
+    if stage == "web_search":
+        return _validate_exploratory_receipts({"tavily": value})["tavily"]
+    if stage == "qveris_execute":
+        return _validate_exploratory_receipts({"qveris_execute": value}, request_id=request_id)["qveris_execute"]
+    if stage == "result_selector":
+        keys = {"schema_version", "selector_sha256", "result_sha256", "entity", "fiscal_year", "date", "unique_match", "validation_status", "failure_code"}
+        if not isinstance(value, Mapping) or set(value) != keys or value["schema_version"] != "fs049-result-selector-receipt/v1" or value["entity"] != "NVDA" or value["fiscal_year"] != 2026 or value["date"] != "2026-01-25" or type(value["unique_match"]) is not bool or value["validation_status"] not in {"passed", "failed"}:
+            raise RunBackendError("result selector receipt is invalid")
+        _safe_hash(value["selector_sha256"], "result selector hash")
+        _safe_hash(value["result_sha256"], "result selector result hash")
+        if (value["validation_status"] == "passed") != value["unique_match"] or (value["failure_code"] is not None and value["failure_code"] != "unique_match_required") or (value["validation_status"] == "passed" and value["failure_code"] is not None) or (value["validation_status"] == "failed" and value["failure_code"] != "unique_match_required"):
+            raise RunBackendError("result selector receipt outcome is invalid")
+        return dict(value)
+    if stage == "gateway_completion":
+        receipt = _validate_gateway_receipt(value)
+        if receipt["request_id"] != request_id:
+            raise RunBackendError("Gateway stage receipt does not bind to Runner attempt")
+        return receipt
+    if stage == "qveris_search":
+        keys = {"schema_version", "request_id", "search_catalog_sha256", "search_call_id_sha256", "remaining_credits", "result_count"}
+        if not isinstance(value, Mapping) or set(value) != keys or value["schema_version"] != "qveris-search-receipt/v1" or value["request_id"] != request_id or type(value["result_count"]) is not int or isinstance(value["result_count"], bool) or value["result_count"] < 0:
+            raise RunBackendError("QVeris search stage receipt is invalid")
+        _safe_id(value["request_id"], "QVeris search receipt request_id")
+        _safe_hash(value["search_catalog_sha256"], "QVeris search catalog hash")
+        _safe_hash(value["search_call_id_sha256"], "QVeris search call hash")
+        _receipt_amount(value["remaining_credits"], "QVeris search remaining credits")
+        return dict(value)
+    if stage == "qveris_inspect":
+        keys = {"schema_version", "request_id", "tool_id", "tool_contract_sha256", "inspect_call_id_sha256", "remaining_credits"}
+        if not isinstance(value, Mapping) or set(value) != keys or value["schema_version"] != "qveris-inspect-receipt/v1" or value["request_id"] != request_id:
+            raise RunBackendError("QVeris inspect stage receipt is invalid")
+        _safe_id(value["request_id"], "QVeris inspect receipt request_id")
+        _safe_id(value["tool_id"], "QVeris inspect receipt tool_id")
+        _safe_hash(value["tool_contract_sha256"], "QVeris inspect contract hash")
+        _safe_hash(value["inspect_call_id_sha256"], "QVeris inspect call hash")
+        _receipt_amount(value["remaining_credits"], "QVeris inspect remaining credits")
+        return dict(value)
+    raise RunBackendError("exploratory stage cannot have a receipt")
+
+
+def _stage_receipt_coverage(stage: str, receipt: Mapping[str, Any]) -> dict[str, str]:
+    if stage == "gateway_completion":
+        return {"billing": "reported", "usage": "unknown" if receipt["usage"] == "unknown" else "reported"}
+    if stage == "qveris_execute":
+        return {"actual_cost": "reported", "remaining_credits": "unknown" if receipt["remaining_credits"] is None else "reported"}
+    if stage == "result_selector":
+        return {"validation": "reported"}
+    field = next(iter(_STAGE_COVERAGE_FIELDS[stage]))
+    return {field: "unknown" if receipt[field] is None else "reported"}
+
+
+def _validate_model_preflight(value: Any, variants: list[Mapping[str, Any]]) -> dict[str, Any]:
+    if not isinstance(value, Mapping) or set(value) != {"schema_version", "model_id", "model_catalog_sha256", "model_config_digest", "model_available"}:
+        raise RunBackendError("model preflight has an invalid schema")
+    if value["schema_version"] != "qveris-model-preflight/v1":
+        raise RunBackendError("model preflight has an invalid schema version")
+    _safe_id(value["model_id"], "preflight model_id")
+    _safe_hash(value["model_catalog_sha256"], "preflight model catalog")
+    _safe_hash(value["model_config_digest"], "preflight model config")
+    if type(value["model_available"]) is not bool:
+        raise RunBackendError("model preflight availability is invalid")
+    if any(variant["model_identifier"] != value["model_id"] or variant["model_config_digest"] != value["model_config_digest"] for variant in variants):
+        raise RunBackendError("model preflight does not bind to manifest variants")
+    return dict(value)
 
 
 def _reject_sensitive(value: Any, path: str = "") -> None:
@@ -291,6 +539,17 @@ def _validate_manifest(raw: Mapping[str, Any]) -> dict[str, Any]:
         raise RunBackendError("manifest schema_version is unsupported")
     if manifest["mode"] == "official" and manifest.get("schema_version") is None:
         raise RunBackendError("official manifests require an explicit schema_version")
+    profile = _execution_profile(manifest)
+    if profile not in _EXECUTION_PROFILES:
+        raise RunBackendError("execution_profile is invalid")
+    if _is_exploratory_profile(profile):
+        policy_scope = manifest["policy"].get("scope") if type(manifest.get("policy")) is dict else None
+        if manifest["mode"] != "diagnostic" or policy_scope != "exploratory_nonranking" or "scoring_contract" in manifest:
+            raise RunBackendError("exploratory profiles are diagnostic-only and cannot be scored or ranked")
+    elif "execution_profile" in manifest and manifest["execution_profile"] != "public_get":
+        raise RunBackendError("execution_profile is invalid")
+    if manifest["mode"] == "official" and profile != "public_get":
+        raise RunBackendError("official runs require the public_get execution profile")
     _freeze_digest(manifest)
     if type(manifest.get("policy")) is not dict or not manifest["policy"]:
         raise RunBackendError("manifest requires a non-empty frozen policy object")
@@ -310,17 +569,24 @@ def _validate_manifest(raw: Mapping[str, Any]) -> dict[str, Any]:
     if _is_v2_template(manifest):
         if variants:
             raise RunBackendError("v2 manifest templates require variants=[]")
-    elif not 2 <= len(variants) <= 8:
-        raise RunBackendError("manifest requires 2-8 variants")
+    else:
+        minimum_variants = 1 if manifest["mode"] == "diagnostic" else 2
+        if not minimum_variants <= len(variants) <= 8:
+            raise RunBackendError("diagnostic manifests require 1-8 variants; official manifests require 2-8 variants")
     variant_ids, orders, identities = set(), set(), set()
     for variant in variants:
-        if type(variant) is not dict or set(variant) != {"variant_id", "stable_display_order", *_VARIANT_IDENTITY_FIELDS}:
+        expected_variant_fields = {"variant_id", "stable_display_order", *_VARIANT_IDENTITY_FIELDS}
+        if _is_exploratory_profile(profile):
+            expected_variant_fields.update(_EXPLORATORY_OUTPUT_DIGEST_FIELDS)
+        if type(variant) is not dict or set(variant) != expected_variant_fields:
             raise RunBackendError("variant must be an object")
         variant_id = _safe_id(variant.get("variant_id"), "variant_id")
         order = variant.get("stable_display_order")
         if variant_id in variant_ids or type(order) is not int or isinstance(order, bool) or order in orders:
             raise RunBackendError("variant ids and stable_display_order values must be unique")
         identity = _validate_variant_identity(_variant_identity(variant), "variant")
+        if _is_exploratory_profile(profile):
+            _validate_exploratory_output_digests(variant)
         identity_key = tuple(identity[field] for field in _VARIANT_IDENTITY_FIELDS)
         if identity_key in identities:
             raise RunBackendError("variant identities must be unique")
@@ -692,7 +958,10 @@ def _validate_event(event: Any, run_id: str, sequence: int, manifest_hash: str) 
         raise RunBackendError("illegal event")
     # Token counts are safe numeric receipts, unlike token values/credentials.
     public = event.get("public_response")
-    safe_event = {key: value for key, value in event.items() if key != "usage"}
+    # Receipt IDs and idempotency bindings are retained only as SHA-256 values.
+    # Validate those separately so the generic secret-key detector never treats
+    # an explicitly safe ``*_sha256`` field as an unredacted credential.
+    safe_event = {key: value for key, value in event.items() if key not in {"usage", "gateway_receipt", "external_receipts", "idempotency_key_sha256", "stage_receipt"}}
     if isinstance(public, Mapping) and isinstance(public.get("meta"), Mapping):
         safe_public = dict(public); safe_public.pop("meta")
         safe_event["public_response"] = safe_public
@@ -716,7 +985,7 @@ def _validate_event(event: Any, run_id: str, sequence: int, manifest_hash: str) 
         raise RunBackendError("event id is invalid")
     if "emitted_at" in event and (type(event["emitted_at"]) not in (int, float) or isinstance(event["emitted_at"], bool)):
         raise RunBackendError("event timestamp is invalid")
-    if event["event_type"] in {"dispatch_intent", "reference_before", "reference_after", "reference_after_unavailable", "terminal"}:
+    if event["event_type"] in {"dispatch_intent", "stage_intent", "stage_complete", "reference_before", "reference_after", "reference_after_unavailable", "terminal"}:
         for field in ("cell_id", "attempt_id"):
             _safe_id(event.get(field), field)
         if "trial" in event and event["trial"] != 1:
@@ -727,6 +996,27 @@ def _validate_event(event: Any, run_id: str, sequence: int, manifest_hash: str) 
         if not all(type(event.get(field)) is str and re.fullmatch(r"[0-9a-f]{64}", event[field]) for field in ("input_hash", "request_hash")):
             raise RunBackendError("dispatch intent must contain hashes")
         _validate_variant_identity(event.get("variant_identity"), "dispatch variant identity")
+    if event["event_type"] in {"stage_intent", "stage_complete"}:
+        if event.get("stage") not in _EXPLORATORY_STAGES or type(event.get("ordinal")) is not int or isinstance(event["ordinal"], bool) or event["ordinal"] <= 0:
+            raise RunBackendError("exploratory stage event is invalid")
+        if not all(type(event.get(field)) is str and _SHA256.fullmatch(event[field]) is not None for field in ("request_sha256", "idempotency_key_sha256", "resource_sha256")):
+            raise RunBackendError("exploratory stage hashes are invalid")
+        _safe_id(event.get("resource_id"), "exploratory stage resource")
+        allowed = {"event_type", "cell_id", "attempt_id", "stage", "ordinal", "request_sha256", "idempotency_key_sha256", "resource_id", "resource_sha256", "sequence", "manifest_hash", "previous_event_hash", "event_hash", "event_id", "emitted_at"}
+        if event["event_type"] == "stage_complete":
+            allowed.update({"receipt_sha256", "stage_receipt"})
+            receipt = _validate_stage_receipt(event["stage"], event.get("stage_receipt"), request_id=event["attempt_id"])
+            if type(event.get("receipt_sha256")) is not str or _SHA256.fullmatch(event["receipt_sha256"]) is None or event["receipt_sha256"] != _digest(receipt):
+                raise RunBackendError("exploratory stage receipt is invalid")
+        if set(event) - allowed:
+            raise RunBackendError("exploratory stage event contains unsafe fields")
+    if event["event_type"] == "model_preflight":
+        preflight = {key: event.get(key) for key in ("schema_version", "model_id", "model_catalog_sha256", "model_config_digest", "model_available")}
+        if set(event) - {"event_type", *preflight.keys(), "sequence", "manifest_hash", "previous_event_hash", "event_hash", "event_id", "emitted_at"}:
+            raise RunBackendError("model preflight event is invalid")
+        # Manifest binding is checked by the journal transition, which has the
+        # normalized manifest available.
+        _validate_model_preflight(preflight, [{"model_identifier": preflight["model_id"], "model_config_digest": preflight["model_config_digest"]}])
     if event["event_type"] == "run_finished" and event.get("status") not in {"execution_complete", "execution_failed", "incomplete"}:
         raise RunBackendError("run finish status is invalid")
     if event["event_type"] == "terminal":
@@ -749,14 +1039,66 @@ def _validate_event(event: Any, run_id: str, sequence: int, manifest_hash: str) 
         elif event.get("usage_source") == "public_meta_usage" or usage != "unknown":
             raise RunBackendError("usage receipt source is invalid")
         _validate_variant_identity(event.get("variant_identity"), "terminal variant identity")
+        profile = event.get("execution_profile", "public_get")
+        if profile not in _EXECUTION_PROFILES:
+            raise RunBackendError("terminal execution profile is invalid")
+        receipt_hashes = event.get("receipt_hashes")
+        receipt_coverage = event.get("receipt_coverage")
+        if _is_exploratory_profile(profile):
+            if not isinstance(receipt_hashes, Mapping) or not isinstance(receipt_coverage, Mapping) or set(receipt_hashes) != set(receipt_coverage) or any(stage not in _STAGE_COVERAGE_FIELDS or type(receipt_hashes[stage]) is not str or _SHA256.fullmatch(receipt_hashes[stage]) is None or not isinstance(receipt_coverage[stage], Mapping) or set(receipt_coverage[stage]) != _STAGE_COVERAGE_FIELDS[stage] or any(value not in {"reported", "unknown"} for value in receipt_coverage[stage].values()) for stage in receipt_hashes):
+                raise RunBackendError("terminal exploratory receipt references are invalid")
+        elif receipt_hashes is not None or receipt_coverage is not None:
+            raise RunBackendError("public get terminal cannot contain exploratory receipt references")
         evidence = event.get("execution_evidence")
         if event.get("transport_status") == "completed":
             if type(evidence) is not dict:
                 raise RunBackendError("completed terminal requires execution evidence")
-            status = response.get("status") if isinstance(response, Mapping) else None
-            _validate_execution_evidence(evidence, event["variant_identity"], status, "terminal execution evidence", response.get("terminal_reason") if isinstance(response, Mapping) else None)
+            if profile == "public_get":
+                status = response.get("status") if isinstance(response, Mapping) else None
+                _validate_execution_evidence(evidence, event["variant_identity"], status, "terminal execution evidence", response.get("terminal_reason") if isinstance(response, Mapping) else None)
+                if "gateway_receipt" in event or "gateway_diagnostic_receipt" in event:
+                    raise RunBackendError("public get terminal cannot contain a gateway receipt")
+            else:
+                identity = _validate_variant_identity({field: evidence.get(field) for field in _VARIANT_IDENTITY_FIELDS}, "terminal execution evidence")
+                if identity != _validate_variant_identity(event["variant_identity"], "terminal variant identity"):
+                    raise RunBackendError("terminal execution evidence identity mismatch")
+                tools = evidence.get("tools_used")
+                if type(tools) is not list or tuple(tools) not in _allowed_exploratory_toolsets(profile) or any(type(tool) is not str for tool in tools) or (evidence.get("agent_invocations"), evidence.get("tool_executions"), evidence.get("structured_outputs")) != (1, len(tools), 1):
+                    raise RunBackendError("terminal exploratory evidence violates runtime discipline")
+                _validate_gateway_receipt(event.get("gateway_receipt"))
+                if profile == "exploratory_gateway_probe":
+                    if event.get("external_receipts") != {} or event.get("external_action_occurred"):
+                        raise RunBackendError("gateway probe cannot attest an evidence-provider action")
+                else:
+                    external = _validate_exploratory_receipts(event.get("external_receipts"), request_id=event["attempt_id"])
+                    expected_receipt = "tavily" if tuple(tools) == ("web_search",) else "qveris_execute"
+                    if set(external) != {expected_receipt} or event.get("external_action_occurred") is not True:
+                        raise RunBackendError("terminal exploratory receipts do not match topology")
         elif evidence is not None:
             raise RunBackendError("non-completed terminal cannot carry execution evidence")
+        elif "gateway_receipt" in event or "gateway_diagnostic_receipt" in event or "external_receipts" in event:
+            if not _is_exploratory_profile(profile) or event.get("transport_status") != "failed" or event.get("external_action_occurred") is not True:
+                raise RunBackendError("non-completed external receipt is invalid")
+            if "gateway_receipt" in event:
+                receipt = _validate_gateway_receipt(event["gateway_receipt"])
+                if receipt["request_id"] != event["attempt_id"]:
+                    raise RunBackendError("non-completed Gateway receipt is invalid")
+            if "gateway_diagnostic_receipt" in event:
+                if "gateway_receipt" in event:
+                    raise RunBackendError("non-completed Gateway diagnostic cannot attest completion")
+                _validate_gateway_diagnostic_receipt(event["gateway_diagnostic_receipt"])
+            if "external_receipts" in event:
+                _validate_exploratory_receipts(event["external_receipts"], request_id=event["attempt_id"] if "qveris_execute" in event["external_receipts"] else None)
+            if "gateway_receipt" not in event and "gateway_diagnostic_receipt" not in event and "external_receipts" not in event:
+                raise RunBackendError("non-completed external receipt is invalid")
+        elif event.get("external_action_may_have_occurred"):
+            if not _is_exploratory_profile(profile) or event.get("transport_status") != "failed" or event.get("stage") not in {"qveris_execute", "gateway_completion"} or event.get("external_cost") != "unknown":
+                raise RunBackendError("ambiguous external failure is invalid")
+        elif event.get("external_action_occurred"):
+            raise RunBackendError("terminal external action lacks a receipt")
+        if _is_exploratory_profile(profile) and event.get("transport_status") != "completed":
+            if event.get("stage") not in _EXPLORATORY_STAGES or type(event.get("stage_attempted_count")) is not int or type(event.get("stage_completed_count")) is not int or event["stage_attempted_count"] < event["stage_completed_count"] or event["stage_completed_count"] < 0 or (event["stage_attempted_count"] <= 0 and event.get("stage") != "model_preflight") or type(event.get("stage_exception_class")) is not str or _ID.fullmatch(event["stage_exception_class"]) is None or type(event.get("stage_error_code")) is not str or _ID.fullmatch(event["stage_error_code"]) is None:
+                raise RunBackendError("exploratory failure lacks safe stage ledger")
     if event["event_type"] in {"reference_before", "reference_after"}:
         reference = event.get("reference")
         if not isinstance(reference, Mapping) or set(reference) != {"hash", "as_of", "source", "comparability"} or reference.get("hash") != _digest({key: value for key, value in reference.items() if key != "hash"}):
@@ -875,16 +1217,18 @@ def _reference_projection(value: Mapping[str, Any]) -> dict[str, Any]:
 
 def _expected_cells(manifest: Mapping[str, Any]) -> dict[str, tuple[str, bool, dict[str, str]]]:
     result = {}
+    operation = "agent" if _is_exploratory_profile(_execution_profile(manifest)) else "get"
     for variant in manifest["variants"]:
         for case in manifest["cases"]:
             cell_id = "cell-" + _digest([manifest["run_id"], variant["variant_id"], case["case_id"], 1])[:48]
-            attempt_id = "attempt-" + _digest([manifest["run_id"], variant["variant_id"], case["case_id"], 1, "get"])[:48]
+            attempt_id = "attempt-" + _digest([manifest["run_id"], variant["variant_id"], case["case_id"], 1, operation])[:48]
             result[cell_id] = (attempt_id, case["suite"] == "realtime_quote", _variant_identity(variant))
     return result
 
 
 def _validate_journal(manifest: Mapping[str, Any], events: list[dict[str, Any]]) -> None:
-    expected, state, started, finished = _expected_cells(manifest), {}, False, False
+    expected, state, stages, started, finished, preflight_seen = _expected_cells(manifest), {}, {}, False, False, False
+    profile = _execution_profile(manifest)
     for index, event in enumerate(events):
         previous = events[index - 1]["event_hash"] if index else None
         if event.get("previous_event_hash") != previous:
@@ -895,17 +1239,25 @@ def _validate_journal(manifest: Mapping[str, Any], events: list[dict[str, Any]])
                 raise RunBackendError("illegal run start transition")
             started = True
             continue
+        if kind == "model_preflight":
+            if not _is_exploratory_profile(profile) or not started or finished or preflight_seen or state:
+                raise RunBackendError("illegal model preflight transition")
+            _validate_model_preflight({key: event[key] for key in ("schema_version", "model_id", "model_catalog_sha256", "model_config_digest", "model_available")}, manifest["variants"])
+            preflight_seen = True
+            continue
         if kind == "run_finished":
             references_complete = all(
                 not reference_required or "before" not in state.get(cell_id, set()) or "after" in state[cell_id]
                 for cell_id, (_attempt_id, reference_required, _identity) in expected.items()
             )
-            if not started or finished or index != len(events) - 1 or len(state) != len(expected) or any("terminal" not in value for value in state.values()) or not references_complete:
+            if not started or finished or index != len(events) - 1 or len(state) != len(expected) or any("terminal" not in value for value in state.values()) or not references_complete or preflight_seen != _is_exploratory_profile(profile):
                 raise RunBackendError("illegal run finish transition")
             finished = True
             continue
         if not started or finished:
             raise RunBackendError("cell event outside active run")
+        if _is_exploratory_profile(profile) and not preflight_seen:
+            raise RunBackendError("exploratory execution requires model preflight")
         cell_id, attempt_id = event["cell_id"], event["attempt_id"]
         if cell_id not in expected or attempt_id != expected[cell_id][0]:
             raise RunBackendError("event does not bind to a manifest cell")
@@ -918,6 +1270,20 @@ def _validate_journal(manifest: Mapping[str, Any], events: list[dict[str, Any]])
             if "intent" in entry or "terminal" in entry:
                 raise RunBackendError("duplicate or late dispatch intent")
             entry.add("intent")
+        elif kind == "stage_intent":
+            if not _is_exploratory_profile(profile) or "intent" not in entry or "terminal" in entry:
+                raise RunBackendError("illegal exploratory stage intent")
+            history = stages.setdefault(cell_id, {})
+            if event["ordinal"] != len(history) + 1 or any(item["state"] == "pending" for item in history.values()):
+                raise RunBackendError("exploratory stage intent order is invalid")
+            history[event["ordinal"]] = {"state": "pending", **{name: event[name] for name in ("stage", "request_sha256", "idempotency_key_sha256", "resource_id", "resource_sha256")}}
+        elif kind == "stage_complete":
+            history = stages.get(cell_id, {})
+            prior = history.get(event["ordinal"])
+            if not _is_exploratory_profile(profile) or "intent" not in entry or "terminal" in entry or prior is None or prior["state"] != "pending" or any(event[name] != prior[name] for name in ("stage", "request_sha256", "idempotency_key_sha256", "resource_id", "resource_sha256")):
+                raise RunBackendError("exploratory stage completion is invalid")
+            receipt = _validate_stage_receipt(event["stage"], event["stage_receipt"], request_id=attempt_id)
+            prior.update({"state": "complete", "receipt_sha256": event["receipt_sha256"], "receipt_coverage": _stage_receipt_coverage(event["stage"], receipt)})
         elif kind == "reference_before":
             if not reference_required or "before" in entry or "intent" in entry or "terminal" in entry:
                 raise RunBackendError("illegal reference-before transition")
@@ -925,15 +1291,26 @@ def _validate_journal(manifest: Mapping[str, Any], events: list[dict[str, Any]])
         elif kind == "terminal":
             if event.get("variant_identity") != expected_identity:
                 raise RunBackendError("terminal identity does not bind to manifest variant")
+            if event.get("execution_profile", "public_get") != profile:
+                raise RunBackendError("terminal execution profile does not bind to manifest")
             evidence = event.get("execution_evidence")
             if event.get("transport_status") == "completed" and (not isinstance(evidence, Mapping) or {field: evidence.get(field) for field in _VARIANT_IDENTITY_FIELDS} != expected_identity):
                 raise RunBackendError("terminal evidence does not bind to manifest variant")
-            if event.get("transport_status") == "completed" and isinstance(evidence, Mapping):
+            if profile == "public_get" and event.get("transport_status") == "completed" and isinstance(evidence, Mapping):
                 response = event.get("public_response")
                 _validate_execution_evidence(evidence, expected_identity, response.get("status") if isinstance(response, Mapping) else None, "terminal execution evidence", response.get("terminal_reason") if isinstance(response, Mapping) else None)
             reference_unavailable = reference_required and event.get("transport_status") == "reference_unavailable" and event.get("error_class") in {"reference_before_unavailable", "reference_after_unavailable", "reference_contract_mismatch", "reference_contract_unavailable"}
             if "terminal" in entry or ("intent" not in entry and not reference_unavailable):
                 raise RunBackendError("terminal lacks a dispatch intent")
+            pending = any(item["state"] == "pending" for item in stages.get(cell_id, {}).values())
+            if event.get("transport_status") == "completed" and pending:
+                raise RunBackendError("completed exploratory cell has an unfinished stage")
+            if _is_exploratory_profile(profile):
+                completed = [item for item in stages.get(cell_id, {}).values() if item["state"] == "complete"]
+                hashes = {item["stage"]: item["receipt_sha256"] for item in completed}
+                coverage = {item["stage"]: item["receipt_coverage"] for item in completed}
+                if event.get("receipt_hashes") != hashes or event.get("receipt_coverage") != coverage:
+                    raise RunBackendError("terminal exploratory receipt references do not match stage ledger")
             entry.add("terminal")
         elif kind in {"reference_after", "reference_after_unavailable"}:
             if not reference_required or "terminal" not in entry or "after" in entry or ("intent" not in entry and "before" not in entry):
@@ -974,6 +1351,8 @@ class RunService:
                 snapshot = self._snapshot(run_id)
                 self.store.write_snapshot(run_id, snapshot)
                 return snapshot
+            if _is_exploratory_profile(_execution_profile(manifest)):
+                self._preflight_exploratory(manifest, events)
             for variant in sorted(manifest["variants"], key=lambda item: item["stable_display_order"]):
                 for case in manifest["cases"]:
                     self._execute_cell(manifest, variant, case)
@@ -1037,6 +1416,54 @@ class RunService:
         for variant in manifest["variants"]:
             if variant["variant_id"] not in self.clients:
                 raise RunBackendError("missing client for variant")
+        if _is_exploratory_profile(_execution_profile(manifest)):
+            clients = [self.clients[variant["variant_id"]] for variant in manifest["variants"]]
+            if any(not callable(getattr(client, "preflight", None)) for client in clients):
+                raise RunBackendError("exploratory clients must expose model preflight")
+            gateways = [getattr(client, "gateway", None) for client in clients]
+            if any(gateway is None for gateway in gateways) or len({id(gateway) for gateway in gateways}) != 1:
+                raise RunBackendError("exploratory clients must share one Gateway preflight cache")
+
+    def _preflight_exploratory(self, manifest: Mapping[str, Any], events: list[Mapping[str, Any]]) -> None:
+        for variant in manifest["variants"]:
+            client = self.clients[variant["variant_id"]]
+            contract_digests = getattr(client, "output_contract_digests", None)
+            if not callable(contract_digests):
+                raise RunBackendError("exploratory clients must expose output contract digests")
+            try:
+                actual = contract_digests()
+            except Exception as exc:
+                raise RunBackendError("exploratory output contract digest preflight failed") from exc
+            if type(actual) is not dict or set(actual) != set(_EXPLORATORY_OUTPUT_DIGEST_FIELDS):
+                raise RunBackendError("exploratory output contract digest preflight failed")
+            _validate_exploratory_output_digests(actual, "exploratory output contract")
+            if any(actual[name] != variant[name] for name in _EXPLORATORY_OUTPUT_DIGEST_FIELDS):
+                raise RunBackendError("exploratory output contract digest does not bind to manifest")
+        recorded = [event for event in events if event.get("event_type") == "model_preflight"]
+        if recorded:
+            if len(recorded) != 1:
+                raise RunBackendError("exploratory run has multiple model preflights")
+            _validate_model_preflight({key: recorded[0][key] for key in ("schema_version", "model_id", "model_catalog_sha256", "model_config_digest", "model_available")}, manifest["variants"])
+            return
+        client = self.clients[manifest["variants"][0]["variant_id"]]
+        try:
+            preflight = client.preflight(request_id="preflight-" + _digest(manifest["run_id"])[:48])
+            validated = _validate_model_preflight(preflight, manifest["variants"])
+        except Exception as exc:
+            # Fail closed before dispatch: no evidence-provider or Gateway
+            # completion calls can happen after an unavailable model catalogue.
+            raise RunBackendError("Gateway model preflight failed") from exc
+        self._append(manifest["run_id"], {"event_type": "model_preflight", **validated})
+        # A shared Gateway client means the remaining adapters must use the
+        # frozen catalogue result rather than issue their own /models request.
+        for variant in manifest["variants"][1:]:
+            other = self.clients[variant["variant_id"]]
+            preflight_cache = getattr(other, "_preflight", None)
+            if preflight_cache is None:
+                try:
+                    other._preflight = dict(validated)
+                except Exception as exc:
+                    raise RunBackendError("exploratory client cannot consume frozen model preflight") from exc
 
     def _require_single_reference_contract(self, manifest: Mapping[str, Any]) -> None:
         """Attribute-based hooks deliberately support one frozen contract per run."""
@@ -1088,8 +1515,9 @@ class RunService:
     def _execute_cell(self, manifest: Mapping[str, Any], variant: Mapping[str, Any], case: Mapping[str, Any]) -> None:
         variant_id, case_id = variant["variant_id"], case["case_id"]
         variant_identity = _variant_identity(variant)
+        profile = _execution_profile(manifest)
         cell_id = "cell-" + _digest([manifest["run_id"], variant_id, case_id, 1])[:48]
-        attempt_id = "attempt-" + _digest([manifest["run_id"], variant_id, case_id, 1, "get"])[:48]
+        attempt_id = "attempt-" + _digest([manifest["run_id"], variant_id, case_id, 1, "agent" if _is_exploratory_profile(profile) else "get"])[:48]
         events = self.store.events(manifest["run_id"])
         cell_events = [event for event in events if event.get("cell_id") == cell_id]
         terminal = any(event["event_type"] == "terminal" for event in cell_events)
@@ -1100,7 +1528,13 @@ class RunService:
                 self._append(manifest["run_id"], {"event_type": "reference_after_unavailable", "cell_id": cell_id, "attempt_id": attempt_id})
             return
         if any(event["event_type"] == "dispatch_intent" for event in cell_events):
-            self._append(manifest["run_id"], self._terminal(cell_id, attempt_id, 0, "uncertain", "recovery_uncertain", None, "unknown", "not_comparable", variant_identity=variant_identity))
+            receipts = [event for event in cell_events if event["event_type"] == "stage_complete"]
+            receipt_hashes, receipt_coverage = {}, {}
+            for event in receipts:
+                receipt = _validate_stage_receipt(event["stage"], event["stage_receipt"], request_id=attempt_id)
+                receipt_hashes[event["stage"]] = event["receipt_sha256"]
+                receipt_coverage[event["stage"]] = _stage_receipt_coverage(event["stage"], receipt)
+            self._append(manifest["run_id"], self._terminal(cell_id, attempt_id, 0, "uncertain", "recovery_uncertain", None, "unknown", "not_comparable", variant_identity=variant_identity, execution_profile=profile, receipt_hashes=receipt_hashes if _is_exploratory_profile(profile) else None, receipt_coverage=receipt_coverage if _is_exploratory_profile(profile) else None))
             if reference_required:
                 self._append(manifest["run_id"], {"event_type": "reference_after_unavailable", "cell_id": cell_id, "attempt_id": attempt_id})
             return
@@ -1112,7 +1546,7 @@ class RunService:
                 return
             before_event = next((event for event in cell_events if event["event_type"] == "reference_before"), None)
             if self.reference_hook is not None and not self._reference_contract_matches(case):
-                self._append(manifest["run_id"], self._terminal(cell_id, attempt_id, 0, "reference_unavailable", "reference_contract_mismatch", None, "unknown", "not_comparable", variant_identity=variant_identity))
+                self._append(manifest["run_id"], self._terminal(cell_id, attempt_id, 0, "reference_unavailable", "reference_contract_mismatch", None, "unknown", "not_comparable", variant_identity=variant_identity, execution_profile=profile))
                 if before_event is not None:
                     self._append(manifest["run_id"], {"event_type": "reference_after_unavailable", "cell_id": cell_id, "attempt_id": attempt_id})
                 return
@@ -1120,22 +1554,22 @@ class RunService:
                 reference = before_event.get("reference")
                 comparable = reference.get("comparability", "not_comparable") if isinstance(reference, Mapping) else "not_comparable"
                 if self.reference_hook is None:
-                    self._append(manifest["run_id"], self._terminal(cell_id, attempt_id, 0, "reference_unavailable", "reference_after_unavailable", None, "unknown", "not_comparable", variant_identity=variant_identity))
+                    self._append(manifest["run_id"], self._terminal(cell_id, attempt_id, 0, "reference_unavailable", "reference_after_unavailable", None, "unknown", "not_comparable", variant_identity=variant_identity, execution_profile=profile))
                     self._append(manifest["run_id"], {"event_type": "reference_after_unavailable", "cell_id": cell_id, "attempt_id": attempt_id})
                     return
             elif self.reference_hook is not None:
                 try:
                     before = self._reference(case, "before")
                 except Exception:
-                    self._append(manifest["run_id"], self._terminal(cell_id, attempt_id, 0, "reference_unavailable", "reference_before_unavailable", None, "unknown", "not_comparable", variant_identity=variant_identity))
+                    self._append(manifest["run_id"], self._terminal(cell_id, attempt_id, 0, "reference_unavailable", "reference_before_unavailable", None, "unknown", "not_comparable", variant_identity=variant_identity, execution_profile=profile))
                     return
                 self._append(manifest["run_id"], {"event_type": "reference_before", "cell_id": cell_id, "attempt_id": attempt_id, "reference": before})
                 comparable = before["comparability"]
             else:
-                self._append(manifest["run_id"], self._terminal(cell_id, attempt_id, 0, "reference_unavailable", "reference_before_unavailable", None, "unknown", "not_comparable", variant_identity=variant_identity))
+                self._append(manifest["run_id"], self._terminal(cell_id, attempt_id, 0, "reference_unavailable", "reference_before_unavailable", None, "unknown", "not_comparable", variant_identity=variant_identity, execution_profile=profile))
                 return
         if reference_required and self.reference_hook is not None and not self._reference_contract_matches(case):
-            self._append(manifest["run_id"], self._terminal(cell_id, attempt_id, 0, "reference_unavailable", "reference_contract_mismatch", None, "unknown", "not_comparable", variant_identity=variant_identity))
+            self._append(manifest["run_id"], self._terminal(cell_id, attempt_id, 0, "reference_unavailable", "reference_contract_mismatch", None, "unknown", "not_comparable", variant_identity=variant_identity, execution_profile=profile))
             self._append(manifest["run_id"], {"event_type": "reference_after_unavailable", "cell_id": cell_id, "attempt_id": attempt_id})
             return
         self._assert_manifest_binding(manifest["run_id"], _digest(manifest))
@@ -1152,18 +1586,83 @@ class RunService:
         result: Any = None
         transport, error = "completed", None
         call_completed = False
+        external_receipts: dict[str, dict[str, Any]] | None = None
+        gateway_receipt: dict[str, Any] | None = None
+        gateway_diagnostic_receipt: dict[str, Any] | None = None
+        external_action_occurred = False
+        stage_ledger = {"stage": "model_preflight", "attempted": 0, "completed": 0, "receipt_hashes": {}, "receipt_coverage": {}}
+
+        def audit_stage(event: Mapping[str, Any]) -> None:
+            if not isinstance(event, Mapping) or event.get("event_type") not in {"stage_intent", "stage_complete"}:
+                raise RunBackendError("exploratory client emitted an invalid stage event")
+            record = {**dict(event), "cell_id": cell_id, "attempt_id": attempt_id}
+            if event["event_type"] == "stage_complete":
+                receipt = _validate_stage_receipt(event.get("stage"), event.get("stage_receipt"), request_id=attempt_id)
+                if event.get("receipt_sha256") != _digest(receipt):
+                    raise RunBackendError("exploratory client emitted an invalid stage receipt")
+            self._append(manifest["run_id"], record)
+            stage_ledger["stage"] = event.get("stage")
+            if event["event_type"] == "stage_intent":
+                stage_ledger["attempted"] += 1
+            else:
+                stage_ledger["completed"] += 1
+                stage_ledger["receipt_hashes"][event["stage"]] = event["receipt_sha256"]
+                stage_ledger["receipt_coverage"][event["stage"]] = _stage_receipt_coverage(event["stage"], receipt)
         try:
-            result = self._call_with_timeout(self.clients[variant_id], case["query"], request_id, idempotency_key, manifest["timeout_ms"])
+            result = self._call_with_timeout(self.clients[variant_id], case["query"], request_id, idempotency_key, manifest["timeout_ms"], audit_stage if _is_exploratory_profile(profile) else None)
             call_completed = True
         except TimeoutError:
             transport, error = "timeout", "timeout"
-        except Exception:
+            if _is_exploratory_profile(profile):
+                stage_ledger["exception_class"] = "TimeoutError"
+                stage_ledger["error_code"] = "timeout"
+                # An alarm can interrupt after dispatch but before the durable completion receipt.
+                if stage_ledger["stage"] in {"qveris_execute", "gateway_completion"}:
+                    stage_ledger["external_action_may_have_occurred"] = True
+        except Exception as exc:
             transport, error = "failed", "client_exception"
+            receipts = getattr(exc, "receipts", None)
+            failed_gateway_receipt = getattr(exc, "gateway_receipt", None)
+            failed_gateway_diagnostic_receipt = getattr(exc, "gateway_diagnostic_receipt", None)
+            if _is_exploratory_profile(profile) and receipts:
+                try:
+                    external_receipts = _validate_exploratory_receipts(receipts, request_id=request_id)
+                    external_action_occurred = True
+                except RunBackendError:
+                    external_receipts = None
+            if _is_exploratory_profile(profile) and failed_gateway_receipt is not None:
+                try:
+                    gateway_receipt = _validate_gateway_receipt(failed_gateway_receipt)
+                    if gateway_receipt["request_id"] != request_id:
+                        raise RunBackendError("Gateway failure receipt does not bind to Runner attempt")
+                    external_action_occurred = True
+                except RunBackendError:
+                    gateway_receipt = None
+            if _is_exploratory_profile(profile) and failed_gateway_diagnostic_receipt is not None:
+                try:
+                    gateway_diagnostic_receipt = _validate_gateway_diagnostic_receipt(failed_gateway_diagnostic_receipt)
+                    external_action_occurred = True
+                except RunBackendError:
+                    gateway_diagnostic_receipt = None
+            if _is_exploratory_profile(profile):
+                error = getattr(exc, "error_class", "client_exception")
+            if _is_exploratory_profile(profile):
+                stage_ledger["exception_class"] = type(exc).__name__
+                stage_ledger["error_code"] = getattr(exc, "safe_error_code", "client_exception")
+                if getattr(exc, "external_action_may_have_occurred", False):
+                    stage_ledger["external_action_may_have_occurred"] = True
         elapsed_ms = (self.monotonic_ns() - started) / 1_000_000
         evidence: dict[str, Any] | None = None
         if call_completed:
             try:
-                projected, usage, evidence = self._project_result(result, variant, strict_response_contract=manifest.get("schema_version") == _V2_MANIFEST_SCHEMA, suite=case["suite"])
+                if profile == "public_get":
+                    projected, usage, evidence = self._project_result(result, variant, profile, strict_response_contract=manifest.get("schema_version") == _V2_MANIFEST_SCHEMA, suite=case["suite"], idempotency_key=idempotency_key)
+                    gateway_receipt, external_receipts = None, None
+                else:
+                    projected, usage, evidence, gateway_receipt, external_receipts = self._project_result(result, variant, profile, idempotency_key=idempotency_key)
+                    if gateway_receipt is not None and gateway_receipt["request_id"] != request_id:
+                        raise RunBackendError("gateway receipt request_id does not bind to Runner attempt")
+                    external_action_occurred = bool(external_receipts)
             except RunBackendError:
                 projected, usage, transport, error = {"schema_version": "get-response/v1", "status": "invalid_public_response"}, "unknown", "failed", "runtime_evidence_invalid"
         else:
@@ -1173,7 +1672,8 @@ class RunService:
             error = "invalid_public_response" if result_status == "invalid_public_response" else "get_%s" % (result_status or "missing")
         if error == "runtime_evidence_invalid":
             result_status = "runtime_evidence_invalid"
-        self._append(manifest["run_id"], self._terminal(cell_id, attempt_id, elapsed_ms, transport, error, projected, usage, comparable, variant_identity=variant_identity, execution_evidence=evidence, usage_source="public_meta_usage" if usage != "unknown" else "unknown", call_completed=call_completed, result_status=result_status))
+        stage_failure = {} if not _is_exploratory_profile(profile) or transport == "completed" else {"stage": stage_ledger["stage"], "stage_attempted_count": stage_ledger["attempted"], "stage_completed_count": stage_ledger["completed"], "stage_exception_class": stage_ledger.get("exception_class", "TimeoutError"), "stage_error_code": stage_ledger.get("error_code", "timeout"), "external_action_may_have_occurred": stage_ledger.get("external_action_may_have_occurred", False), "external_cost": "unknown" if stage_ledger.get("external_action_may_have_occurred", False) else None}
+        self._append(manifest["run_id"], self._terminal(cell_id, attempt_id, elapsed_ms, transport, error, projected, usage, comparable, variant_identity=variant_identity, execution_evidence=evidence, gateway_receipt=gateway_receipt, gateway_diagnostic_receipt=gateway_diagnostic_receipt, external_receipts=external_receipts, external_action_occurred=external_action_occurred, execution_profile=profile, usage_source="public_meta_usage" if usage != "unknown" else "unknown", call_completed=call_completed, result_status=result_status, receipt_hashes=stage_ledger["receipt_hashes"] if _is_exploratory_profile(profile) else None, receipt_coverage=stage_ledger["receipt_coverage"] if _is_exploratory_profile(profile) else None, **stage_failure))
         if reference_required and self.reference_hook is not None:
             try:
                 after = self._reference(case, "after")
@@ -1182,14 +1682,23 @@ class RunService:
                 self._append(manifest["run_id"], {"event_type": "reference_after_unavailable", "cell_id": cell_id, "attempt_id": attempt_id})
 
     @staticmethod
-    def _call(client: Any, query: str, request_id: str, idempotency_key: str) -> Any:
+    def _call(client: Any, query: str, request_id: str, idempotency_key: str, audit_callback: Callable[[Mapping[str, Any]], None] | None = None) -> Any:
         target = client if callable(client) else getattr(client, "run", None) or getattr(client, "get", None)
         if not callable(target):
             raise RunBackendError("variant client must be callable or expose run/get")
-        return target(query, request_id=request_id, idempotency_key=idempotency_key)
+        setter = None if audit_callback is None else getattr(client, "set_audit_callback", None)
+        if audit_callback is not None and not callable(setter):
+            raise RunBackendError("exploratory client must support durable stage auditing")
+        if setter is not None:
+            setter(audit_callback)
+        try:
+            return target(query, request_id=request_id, idempotency_key=idempotency_key)
+        finally:
+            if setter is not None:
+                setter(None)
 
     @classmethod
-    def _call_with_timeout(cls, client: Any, query: str, request_id: str, idempotency_key: str, timeout_ms: int) -> Any:
+    def _call_with_timeout(cls, client: Any, query: str, request_id: str, idempotency_key: str, timeout_ms: int, audit_callback: Callable[[Mapping[str, Any]], None] | None = None) -> Any:
         cls._require_timeout_support()
         previous_timer = signal.setitimer(signal.ITIMER_REAL, 0)
         previous_handler = signal.getsignal(signal.SIGALRM)
@@ -1201,7 +1710,7 @@ class RunService:
         try:
             signal.signal(signal.SIGALRM, expired)
             signal.setitimer(signal.ITIMER_REAL, timeout_ms / 1000)
-            return cls._call(client, query, request_id, idempotency_key)
+            return cls._call(client, query, request_id, idempotency_key, audit_callback)
         finally:
             signal.setitimer(signal.ITIMER_REAL, 0)
             signal.signal(signal.SIGALRM, previous_handler)
@@ -1217,8 +1726,8 @@ class RunService:
         return _reference_projection(value)
 
     @staticmethod
-    def _terminal(cell_id: str, attempt_id: str, elapsed_ms: float, transport: str, error: str | None, response: Mapping[str, Any] | None, usage: Mapping[str, Any] | str, comparability: str, *, variant_identity: Mapping[str, Any], execution_evidence: Mapping[str, Any] | None = None, usage_source: str = "unknown", call_completed: bool = False, result_status: str | None = None) -> dict[str, Any]:
-        record: dict[str, Any] = {"event_type": "terminal", "cell_id": cell_id, "attempt_id": attempt_id, "elapsed_ms": round(elapsed_ms, 3), "transport_status": transport, "transport_completed": call_completed, "call_completed": call_completed, "execution_outcome": result_status, "result_status": result_status, "usage": usage, "usage_source": usage_source, "comparability": comparability, "response_hash": None, "variant_identity": dict(variant_identity)}
+    def _terminal(cell_id: str, attempt_id: str, elapsed_ms: float, transport: str, error: str | None, response: Mapping[str, Any] | None, usage: Mapping[str, Any] | str, comparability: str, *, variant_identity: Mapping[str, Any], execution_evidence: Mapping[str, Any] | None = None, gateway_receipt: Mapping[str, Any] | None = None, gateway_diagnostic_receipt: Mapping[str, Any] | None = None, external_receipts: Mapping[str, Mapping[str, Any]] | None = None, external_action_occurred: bool = False, execution_profile: str = "public_get", usage_source: str = "unknown", call_completed: bool = False, result_status: str | None = None, receipt_hashes: Mapping[str, str] | None = None, receipt_coverage: Mapping[str, Mapping[str, str]] | None = None, stage: str | None = None, stage_attempted_count: int | None = None, stage_completed_count: int | None = None, stage_exception_class: str | None = None, stage_error_code: str | None = None, external_action_may_have_occurred: bool = False, external_cost: str | None = None) -> dict[str, Any]:
+        record: dict[str, Any] = {"event_type": "terminal", "cell_id": cell_id, "attempt_id": attempt_id, "elapsed_ms": round(elapsed_ms, 3), "transport_status": transport, "transport_completed": call_completed, "call_completed": call_completed, "execution_outcome": result_status, "result_status": result_status, "usage": usage, "usage_source": usage_source, "comparability": comparability, "response_hash": None, "variant_identity": dict(variant_identity), "execution_profile": execution_profile}
         if error is not None:
             record["error_class"] = error
         if response is not None:
@@ -1226,15 +1735,51 @@ class RunService:
             record["response_hash"] = _digest(response)
         if execution_evidence is not None:
             record["execution_evidence"] = dict(execution_evidence)
+        if gateway_receipt is not None:
+            record["gateway_receipt"] = dict(gateway_receipt)
+        if gateway_diagnostic_receipt is not None:
+            record["gateway_diagnostic_receipt"] = dict(gateway_diagnostic_receipt)
+        if external_receipts is not None:
+            record["external_receipts"] = {name: dict(receipt) for name, receipt in external_receipts.items()}
+        if external_action_occurred:
+            record["external_action_occurred"] = True
+        if receipt_hashes is not None:
+            record["receipt_hashes"] = dict(receipt_hashes)
+            record["receipt_coverage"] = {stage: dict(coverage) for stage, coverage in (receipt_coverage or {}).items()}
+        if stage is not None:
+            record.update({"stage": stage, "stage_attempted_count": stage_attempted_count, "stage_completed_count": stage_completed_count, "stage_exception_class": stage_exception_class, "stage_error_code": stage_error_code})
+        if external_action_may_have_occurred:
+            record.update({"external_action_may_have_occurred": True, "external_cost": external_cost})
         return record
 
     @staticmethod
-    def _project_result(result: Any, variant: Mapping[str, Any], *, strict_response_contract: bool = False, suite: str | None = None) -> tuple[dict[str, Any] | None, Mapping[str, Any] | str, dict[str, Any]]:
-        if type(result) is not PublicGetResult:
-            raise RunBackendError("GET adapter must return PublicGetResult, not a bare response")
-        response, usage = RunService._project_response(result.public_response, strict_response_contract=strict_response_contract, suite=suite)
-        evidence = _evidence_projection(result.execution_evidence, variant, response.get("status") if response is not None else None, response.get("terminal_reason") if response is not None else None)
-        return response, usage, evidence
+    def _project_result(result: Any, variant: Mapping[str, Any], profile: str = "public_get", *, strict_response_contract: bool = False, suite: str | None = None, idempotency_key: str | None = None) -> Any:
+        if profile == "public_get":
+            if type(result) is not PublicGetResult:
+                raise RunBackendError("GET adapter must return PublicGetResult, not a bare response")
+            response, usage = RunService._project_response(result.public_response, strict_response_contract=strict_response_contract, suite=suite)
+            evidence = _evidence_projection(result.execution_evidence, variant, response.get("status") if response is not None else None, response.get("terminal_reason") if response is not None else None)
+            return response, usage, evidence
+        if not _is_exploratory_profile(profile) or type(result) is not ExploratoryAgentResult:
+            raise RunBackendError("exploratory adapter must return ExploratoryAgentResult")
+        evidence = _exploratory_evidence_projection(result.execution_evidence, variant, profile)
+        receipt = _validate_gateway_receipt(result.gateway_receipt)
+        response, usage = RunService._project_exploratory_response(result.public_response)
+        if receipt["request_id"] == "" or receipt["model_id"] != variant["model_identifier"]:
+            raise RunBackendError("gateway receipt does not bind to manifest model")
+        _validate_gateway_usage_binding(response, usage, receipt)
+        if profile == "exploratory_gateway_probe":
+            if result.external_receipts != {}:
+                raise RunBackendError("gateway probe cannot carry evidence-provider receipts")
+            external = {}
+        else:
+            external = _validate_exploratory_receipts(result.external_receipts, request_id=receipt["request_id"])
+            expected_receipt = "tavily" if tuple(evidence["tools_used"]) == ("web_search",) else "qveris_execute"
+            if set(external) != {expected_receipt}:
+                raise RunBackendError("exploratory receipt does not match tool topology")
+            if idempotency_key is not None and expected_receipt == "qveris_execute" and external["qveris_execute"]["idempotency_key_sha256"] != sha256(idempotency_key.encode("utf-8")).hexdigest():
+                raise RunBackendError("QVeris execute receipt does not bind to Runner idempotency key")
+        return response, usage, evidence, receipt, external
 
     @staticmethod
     def _project_response(response: Any, *, strict_response_contract: bool = False, suite: str | None = None) -> tuple[dict[str, Any] | None, Mapping[str, Any] | str]:
@@ -1284,6 +1829,38 @@ class RunService:
                 else:
                     usage = {}
                     break
+        return projected, usage or "unknown"
+
+    @staticmethod
+    def _project_exploratory_response(response: Any) -> tuple[dict[str, Any] | None, Mapping[str, Any] | str]:
+        if not isinstance(response, Mapping):
+            raise RunBackendError("exploratory agent response must be an object")
+        _reject_sensitive({key: value for key, value in response.items() if key not in {"meta"}})
+        if set(response) not in ({"schema_version", "status", "facts"}, {"schema_version", "status", "facts", "meta"}) or response.get("schema_version") != "exploratory-financial-answer/v3" or response.get("status") not in _CANONICAL_RESPONSE_STATUSES or type(response.get("facts")) is not list:
+            raise RunBackendError("exploratory agent response is invalid")
+        for fact in response["facts"]:
+            if type(fact) is not dict or set(fact) != {"assertion_id", "label", "currency", "unit", "period", "value"}:
+                raise RunBackendError("exploratory agent facts are invalid")
+            for field in ("assertion_id", "label", "currency", "unit", "period"):
+                if type(fact[field]) is not str or not fact[field]:
+                    raise RunBackendError("exploratory agent facts are invalid")
+            _canonical(fact["value"])
+        usage_raw = None
+        if "meta" in response:
+            if not isinstance(response["meta"], Mapping) or set(response["meta"]) != {"usage"}:
+                raise RunBackendError("exploratory agent response metadata is invalid")
+            usage_raw = response["meta"]["usage"]
+        projected, usage = dict(response), {}
+        if isinstance(usage_raw, Mapping) and set(usage_raw).issubset(_USAGE):
+            for key, value in usage_raw.items():
+                if key in _USAGE_TOKENS and type(value) is int and not isinstance(value, bool) and value >= 0:
+                    usage[key] = value
+                elif key in _USAGE_AUDIT and type(value) is str and value:
+                    usage[key] = value
+                else:
+                    usage = {}
+                    break
+        _canonical(projected)
         return projected, usage or "unknown"
 
     @staticmethod

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
+from datetime import date, datetime
 from decimal import Decimal, InvalidOperation
 from math import ceil
 from pathlib import Path
@@ -31,6 +32,10 @@ _ORACLE_ITEM_KEYS = frozenset({"oracle_id", "case_id", "independence", "semantic
 _OPTIONAL_ORACLE_ITEM_KEYS = frozenset({"alternative_assertion_sets"})
 _ORACLE_V2_ITEM_KEYS = _ORACLE_ITEM_KEYS | _OPTIONAL_ORACLE_ITEM_KEYS | frozenset({"suite", "expected_status", "runtime_contract", "data_not_scored_until_receipt", "source_case_id", "source_oracle_id"})
 _ASSERTION_KEYS = frozenset({"path", "operator", "expected", "tolerance", "weight", "fatal"})
+_ASSERTION_BASE_KEYS = frozenset({"operator", "expected", "tolerance", "weight", "fatal"})
+_ASSERTION_PATH_KEYS = frozenset({"path"})
+_ASSERTION_FIELD_KEYS = frozenset({"response_root", "assertion_id", "field", "currency", "unit", "period"})
+_ASSERTION_OPERATORS = frozenset({"exact", "within_abs", "exact_normalized", "canonical_zero_from_display_nil"})
 _STATUS_CONTRACTS = {
     "success": {"required_non_null_paths": ("resolved_request", "data", "as_of", "source"), "required_null_paths": ("clarification", "terminal_reason")},
     "partial": {"required_non_null_paths": ("resolved_request", "data", "as_of", "source"), "required_null_paths": ("clarification", "terminal_reason")},
@@ -50,7 +55,7 @@ def _fail(message: str) -> None:
 
 
 def _decimal(value: Any, field: str, *, nonnegative: bool = False) -> Decimal:
-    if isinstance(value, bool) or not isinstance(value, (int, float, str)):
+    if isinstance(value, bool) or not isinstance(value, (Decimal, int, float, str)):
         _fail("%s must be a decimal number" % field)
     try:
         result = Decimal(str(value))
@@ -93,9 +98,41 @@ def _path_value(value: Any, path: str) -> tuple[bool, Any]:
     return True, current
 
 
+def _normalized_exact(value: Any) -> tuple[str, Any] | None:
+    if not isinstance(value, bool) and isinstance(value, (int, float)):
+        try:
+            return "number", _decimal(value, "exact_normalized value")
+        except BenchmarkScoreError:
+            return None
+    if type(value) is not str:
+        return None
+    text = value.strip()
+    if not text:
+        return None
+    try:
+        return "number", _decimal(text, "exact_normalized value")
+    except BenchmarkScoreError:
+        pass
+    try:
+        return "date", date.fromisoformat(text)
+    except ValueError:
+        pass
+    try:
+        return "datetime", datetime.fromisoformat(text[:-1] + "+00:00" if text.endswith("Z") else text)
+    except ValueError:
+        return None
+
+
 def _assertion_pass(actual: Any, assertion: Mapping[str, Any]) -> bool:
     if assertion["operator"] == "exact":
         return type(actual) is type(assertion["expected"]) and actual == assertion["expected"]
+    if assertion["operator"] == "exact_normalized":
+        return _normalized_exact(actual) == _normalized_exact(assertion["expected"])
+    if assertion["operator"] == "canonical_zero_from_display_nil":
+        try:
+            return not isinstance(actual, bool) and _decimal(actual, "actual") == 0
+        except BenchmarkScoreError:
+            return False
     if isinstance(actual, bool) or isinstance(assertion["expected"], bool):
         return False
     try:
@@ -113,15 +150,22 @@ def _oracle_assertion_sets(oracle: Mapping[str, Any]) -> list[Mapping[str, Any]]
     return ([base] if any(base.values()) else []) + alternatives
 
 
-def _validate_assertions(assertions: Any, *, kind: str, case_type: str, expected_status: list[str]) -> None:
+def _validate_assertions(assertions: Any, *, kind: str, case_type: str, expected_status: list[str], policy: Mapping[str, Any]) -> None:
     prefix = "data" if kind == "data_assertions" else "resolved_request" if case_type == "normal" else "clarification"
     if type(assertions) is not list:
         _fail("oracle assertions must be arrays")
     for assertion in assertions:
-        if type(assertion) is not dict or set(assertion) != _ASSERTION_KEYS:
+        if type(assertion) is not dict:
+            _fail("atomic assertion has an invalid schema")
+        is_fact = kind == "data_assertions" and _ASSERTION_FIELD_KEYS <= set(assertion)
+        allowed = _ASSERTION_BASE_KEYS | (_ASSERTION_FIELD_KEYS | ({"raw_display"} if "raw_display" in assertion else set()) if is_fact else _ASSERTION_PATH_KEYS)
+        if set(assertion) != allowed:
             _fail("atomic assertion has an invalid schema")
         path = assertion.get("path")
-        if kind == "semantic_assertions" and case_type == "normal" and path == "status" and set(expected_status) == {"success"}:
+        if is_fact:
+            if assertion["response_root"] != "data" or type(assertion["assertion_id"]) is not str or not assertion["assertion_id"] or type(assertion["field"]) is not str or not assertion["field"] or "\x00" in assertion["field"] or any(type(assertion[name]) is not str or not assertion[name] for name in ("currency", "unit", "period")):
+                _fail("financial fact assertion is invalid")
+        elif kind == "semantic_assertions" and case_type == "normal" and path == "status" and set(expected_status) == {"success"}:
             _safe_path(path, "status")
         elif kind == "semantic_assertions" and case_type == "boundary":
             expected_statuses = set(expected_status)
@@ -131,16 +175,43 @@ def _validate_assertions(assertions: Any, *, kind: str, case_type: str, expected
                 _safe_path(path, "terminal_reason")
             else:
                 _fail("boundary semantic assertion path does not match expected status")
-        else:
+        elif not is_fact:
             state_prefix = "clarification" if kind == "state_assertions" and isinstance(path, str) and path.startswith("clarification") else "terminal_reason" if kind == "state_assertions" and isinstance(path, str) and path.startswith("terminal_reason") else "status" if kind == "state_assertions" else prefix
             _safe_path(path, state_prefix)
-        if assertion.get("operator") not in {"exact", "within_abs"} or type(assertion.get("fatal")) is not bool or _decimal(assertion.get("weight"), "assertion.weight", nonnegative=True) <= 0:
+        if assertion.get("operator") not in policy["assertion_operators"] or type(assertion.get("fatal")) is not bool or _decimal(assertion.get("weight"), "assertion.weight", nonnegative=True) <= 0:
             _fail("atomic assertion is invalid")
         if assertion["operator"] == "within_abs":
             _decimal(assertion.get("expected"), "assertion.expected")
             _decimal(assertion.get("tolerance"), "assertion.tolerance", nonnegative=True)
         elif assertion.get("tolerance") is not None:
             _fail("exact assertion tolerance must be null")
+        if assertion["operator"] == "exact_normalized" and (not is_fact or _normalized_exact(assertion["expected"]) is None):
+            _fail("exact_normalized assertion is invalid")
+        if assertion["operator"] == "canonical_zero_from_display_nil":
+            try:
+                expected_zero = not isinstance(assertion["expected"], bool) and _decimal(assertion["expected"], "assertion.expected") == 0
+            except BenchmarkScoreError:
+                expected_zero = False
+            if not is_fact or not expected_zero or assertion.get("raw_display") != "–":
+                _fail("canonical display nil assertion is invalid")
+        if is_fact and assertion["operator"] == "exact" and assertion["expected"] is None and assertion.get("raw_display") != "—":
+            _fail("exact null financial assertion is invalid")
+
+def _fact_value(response: Mapping[str, Any], assertion: Mapping[str, Any]) -> tuple[bool, Any]:
+    facts = response.get("data", {}).get("facts") if type(response.get("data")) is dict else None
+    if type(facts) is not list:
+        return False, None
+    matches = [fact for fact in facts if type(fact) is dict and fact.get("assertion_id") == assertion["assertion_id"]]
+    if len(matches) != 1:
+        return False, None
+    fact = matches[0]
+    if any(fact.get(name) != assertion[name] for name in ("currency", "unit", "period")) or "value" not in fact:
+        return False, None
+    if assertion["operator"] == "canonical_zero_from_display_nil" and fact.get("raw_display") != "–":
+        return False, None
+    if assertion["operator"] == "exact" and assertion["expected"] is None and fact.get("raw_display") != assertion["raw_display"]:
+        return False, None
+    return True, fact["value"]
 
 
 def _validate_policy(value: Any) -> dict[str, Any]:
@@ -150,7 +221,7 @@ def _validate_policy(value: Any) -> dict[str, Any]:
         _fail("scoring policy schema or metrics are invalid")
     if value["percentile_method"] not in {"nearest_rank", "linear"}:
         _fail("unsupported percentile method")
-    if type(value["assertion_operators"]) is not list or set(value["assertion_operators"]) != {"exact", "within_abs"} or value["operator_registry"] != value["assertion_operators"]:
+    if type(value["assertion_operators"]) is not list or not value["assertion_operators"] or len(value["assertion_operators"]) != len(set(value["assertion_operators"])) or not set(value["assertion_operators"]) <= _ASSERTION_OPERATORS or value["operator_registry"] != value["assertion_operators"]:
         _fail("assertion operator registry is invalid")
     if tuple(value["case_pass_gate"]) != _GATES or type(value["completeness"]) is not dict:
         _fail("case pass or completeness policy is invalid")
@@ -195,11 +266,13 @@ def _validate_v2_bundle_metadata(value: Mapping[str, Any], manifest: Mapping[str
             _fail("oracle bundle v2 status counts do not bind to manifest")
 
 
-def _validate_bundle(value: Any, manifest: Mapping[str, Any]) -> dict[str, dict[str, Any]]:
+def _validate_bundle(value: Any, manifest: Mapping[str, Any], policy: Mapping[str, Any] | None = None) -> dict[str, dict[str, Any]]:
+    if policy is None:
+        policy = {"assertion_operators": ["exact", "within_abs"]}
     if type(value) is not dict or type(value.get("oracles")) is not dict:
         _fail("oracle bundle has an invalid schema")
     schema_version = value.get("schema_version")
-    if schema_version == "oracle-bundle/v1":
+    if schema_version in {"oracle-bundle/v1", "financial-diagnostic-oracle-bundle/v1"}:
         if set(value) != _ORACLE_KEYS:
             _fail("oracle bundle has an invalid schema")
         v2 = False
@@ -229,7 +302,7 @@ def _validate_bundle(value: Any, manifest: Mapping[str, Any]) -> dict[str, dict[
             _fail("oracle has no assertion sets")
         for assertion_set in assertion_sets:
             for kind in ("semantic_assertions", "data_assertions", "state_assertions"):
-                _validate_assertions(assertion_set[kind], kind=kind, case_type=case_type, expected_status=case["score_case"]["expected_status"])
+                _validate_assertions(assertion_set[kind], kind=kind, case_type=case_type, expected_status=case["score_case"]["expected_status"], policy=policy)
         semantic_ok = oracle["semantic_review_status"] == "approved" and all(bool(item["semantic_assertions"]) for item in assertion_sets)
         data_ok = oracle["data_review_status"] == "approved" and all(bool(item["data_assertions"]) for item in assertion_sets) and oracle["independence"] in {"independent_frozen", "independent_dynamic"}
         state_ok = oracle["state_review_status"] == "approved" and all(bool(item["state_assertions"]) for item in assertion_sets)
@@ -308,10 +381,13 @@ class BenchmarkScorer:
                 manifest, execution = self.store.load_manifest(run_id), self.store.events(run_id)
                 if not execution or execution[-1].get("event_type") != "run_finished":
                     _fail("run must be finished before scoring")
+                if manifest.get("execution_profile", "public_get") == "exploratory_ab":
+                    _fail("exploratory A/B runs cannot enter the benchmark scorer or ranking")
                 contract = manifest.get("scoring_contract")
                 if type(contract) is not dict or contract.get("policy_digest") != self.policy_digest or contract.get("oracle_bundle_digest") != self.oracle_digest or contract.get("scorer_version") != SCORER_VERSION or contract.get("scorer_digest") != SCORER_DIGEST or contract.get("variant_contract_digest") != _variant_contract_digest(manifest["variants"]) or self.policy_digest not in self.approved_policy_digests or self.oracle_digest not in self.approved_oracle_bundle_digests:
                     _fail("scoring contract digest is not approved")
-                policy, oracles = _validate_policy(self.policy_raw), _validate_bundle(self.bundle_raw, manifest)
+                policy = _validate_policy(self.policy_raw)
+                oracles = _validate_bundle(self.bundle_raw, manifest, policy)
                 if manifest["mode"] == "official" and policy["timeout_latency_treatment"] != "cap_at_timeout":
                     _fail("official scoring requires cap_at_timeout latency")
                 if any((case["score_case"]["case_type"] == "normal" and case["score_case"]["expected_status"] != ["success"]) or (case["score_case"]["case_type"] == "boundary" and any(status not in {"needs_clarification", "unsupported", "no_data"} for status in case["score_case"]["expected_status"])) for case in manifest["cases"] if "score_case" in case):
@@ -437,10 +513,13 @@ class BenchmarkScorer:
     def _assertions(response: Mapping[str, Any], assertions: list[Mapping[str, Any]]) -> dict[str, Any]:
         summary = []
         for assertion in assertions:
-            exists, actual = _path_value(response, assertion["path"])
+            is_fact = "assertion_id" in assertion
+            exists, actual = _fact_value(response, assertion) if is_fact else _path_value(response, assertion["path"])
             passed = exists and _assertion_pass(actual, assertion)
-            summary.append({"path": assertion["path"], "operator": assertion["operator"], "passed": passed, "weight": str(_decimal(assertion["weight"], "weight")), "fatal": assertion["fatal"]})
-        return {"summary": summary, "all_passed": all(item["passed"] for item in summary), "fatal_failed": any(item["fatal"] and not item["passed"] for item in summary), "fatal_missing": any(item["fatal"] and not item["passed"] and not _path_value(response, item["path"])[0] for item in summary)}
+            item = {"assertion_id": assertion["assertion_id"]} if is_fact else {"path": assertion["path"]}
+            item.update({"operator": assertion["operator"], "passed": passed, "weight": str(_decimal(assertion["weight"], "weight")), "fatal": assertion["fatal"], "exists": exists})
+            summary.append(item)
+        return {"summary": summary, "all_passed": all(item["passed"] for item in summary), "fatal_failed": any(item["fatal"] and not item["passed"] for item in summary), "fatal_missing": any(item["fatal"] and not item["passed"] and not item["exists"] for item in summary)}
 
     @classmethod
     def _assertion_set_results(cls, response: Mapping[str, Any], assertion_sets: list[Mapping[str, Any]]) -> list[dict[str, Any]]:
