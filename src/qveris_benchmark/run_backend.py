@@ -22,6 +22,8 @@ import threading
 import time
 from typing import Any, Protocol
 
+from .response_contract import ResponseContractError, normalize_response
+
 _ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$")
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
 _SUITES = ("realtime_quote", "historical_price", "financial_statements")
@@ -37,6 +39,10 @@ _EVENTS = frozenset({"run_started", "dispatch_intent", "reference_before", "refe
 _GET_RESPONSE_FIELDS = frozenset({"schema_version", "status", "resolved_request", "data", "as_of", "source", "clarification", "terminal_reason", "meta"})
 _GET_DATA_FORBIDDEN = frozenset({"provider", "provider_response", "provider_payload", "raw_response", "receipt", "execution_id"})
 _CANONICAL_RESPONSE_STATUSES = frozenset({"success", "partial", "needs_clarification", "unsupported", "no_data", "error"})
+_SCORE_CASE_STATUSES = frozenset({"success", "needs_clarification", "unsupported", "no_data"})
+_LEGACY_MANIFEST_SCHEMA = "runner-run-manifest/v1"
+_V2_MANIFEST_SCHEMA = "runner-run-manifest/v2"
+_V2_TEMPLATE_SCHEMA = "runner-run-manifest-template/v2"
 _EXECUTION_OUTCOME_STATES = {
     "success": "success",
     "partial": "incomplete",
@@ -196,6 +202,58 @@ def _validate_reference_contract(value: Any) -> None:
     _safe_id(value.get("window_rule_version"), "reference_contract.window_rule_version")
 
 
+def _reference_contract_is_complete(value: Any) -> bool:
+    """Validate a v2 contract without inventing a missing runtime reference."""
+    if value is None:
+        return False
+    if type(value) is not dict:
+        raise RunBackendError("realtime_quote reference_contract must be an object")
+    _reject_sensitive(value)
+    _canonical(value)
+    source_hash, window_rule = value.get("source_contract_hash"), value.get("window_rule_version")
+    if source_hash is not None and (type(source_hash) is not str or _SHA256.fullmatch(source_hash) is None):
+        raise RunBackendError("reference_contract.source_contract_hash must be a SHA256 digest")
+    if window_rule is not None:
+        _safe_id(window_rule, "reference_contract.window_rule_version")
+    return source_hash is not None and window_rule is not None
+
+
+def _is_v2(manifest: Mapping[str, Any]) -> bool:
+    return manifest.get("schema_version") in {_V2_MANIFEST_SCHEMA, _V2_TEMPLATE_SCHEMA}
+
+
+def _is_v2_template(manifest: Mapping[str, Any]) -> bool:
+    return manifest.get("schema_version") == _V2_TEMPLATE_SCHEMA
+
+
+def _v2_declared_status_counts(manifest: Mapping[str, Any]) -> dict[str, dict[str, int]]:
+    """Read either compact counts or the candidate-manifest-like suite composition."""
+    raw = manifest.get("expected_status_counts")
+    if raw is None:
+        raw = manifest.get("suite_composition")
+    if type(raw) is list:
+        indexed = {item.get("suite"): item for item in raw if type(item) is dict}
+        if len(indexed) != len(raw):
+            raise RunBackendError("v2 suite_composition requires unique suite objects")
+        raw = {suite: item.get("expected_status_counts") for suite, item in indexed.items()}
+    if type(raw) is not dict or set(raw) != set(_SUITES):
+        raise RunBackendError("official v2 manifests require expected_status_counts for all suites")
+    result: dict[str, dict[str, int]] = {}
+    for suite, counts in raw.items():
+        if type(counts) is not dict or not counts or set(counts) - _SCORE_CASE_STATUSES:
+            raise RunBackendError("v2 expected_status_counts is invalid")
+        normalized = {}
+        for status, count in counts.items():
+            if type(count) is not int or isinstance(count, bool) or count < 0:
+                raise RunBackendError("v2 expected_status_counts must contain non-negative integers")
+            if count:
+                normalized[status] = count
+        if sum(normalized.values()) != 100:
+            raise RunBackendError("v2 expected_status_counts must total 100 per suite")
+        result[suite] = normalized
+    return result
+
+
 def _validate_manifest(raw: Mapping[str, Any]) -> dict[str, Any]:
     if type(raw) is not dict:
         raise RunBackendError("manifest must be a JSON object")
@@ -204,6 +262,10 @@ def _validate_manifest(raw: Mapping[str, Any]) -> dict[str, Any]:
     _safe_id(manifest.get("run_id"), "run_id")
     if manifest.get("mode") not in ("diagnostic", "official"):
         raise RunBackendError("mode must be diagnostic or official")
+    if manifest.get("schema_version") not in {None, _LEGACY_MANIFEST_SCHEMA, _V2_MANIFEST_SCHEMA, _V2_TEMPLATE_SCHEMA}:
+        raise RunBackendError("manifest schema_version is unsupported")
+    if manifest["mode"] == "official" and manifest.get("schema_version") is None:
+        raise RunBackendError("official manifests require an explicit schema_version")
     _freeze_digest(manifest)
     if type(manifest.get("policy")) is not dict or not manifest["policy"]:
         raise RunBackendError("manifest requires a non-empty frozen policy object")
@@ -218,7 +280,12 @@ def _validate_manifest(raw: Mapping[str, Any]) -> dict[str, Any]:
     if _contains_sla(manifest):
         raise RunBackendError("SLA declarations do not belong in a benchmark run manifest")
     variants = manifest.get("variants")
-    if type(variants) is not list or not 2 <= len(variants) <= 8:
+    if type(variants) is not list:
+        raise RunBackendError("manifest requires a variants list")
+    if _is_v2_template(manifest):
+        if variants:
+            raise RunBackendError("v2 manifest templates require variants=[]")
+    elif not 2 <= len(variants) <= 8:
         raise RunBackendError("manifest requires 2-8 variants")
     variant_ids, orders, identities = set(), set(), set()
     for variant in variants:
@@ -246,11 +313,18 @@ def _validate_manifest(raw: Mapping[str, Any]) -> dict[str, Any]:
     for case in cases:
         if type(case) is not dict:
             raise RunBackendError("case must be an object")
+        if _is_v2(manifest) and set(case) - {"case_id", "source_case_id", "suite", "query", "score_case", "reference_contract", "reference_contract_status"}:
+            raise RunBackendError("v2 case has unsupported fields")
         case_id = _safe_id(case.get("case_id"), "case_id")
         if case_id in case_ids or case.get("suite") not in _SUITES or type(case.get("query")) is not str or not case["query"].strip():
             raise RunBackendError("cases require unique id, known suite, and non-empty query")
+        if "source_case_id" in case and (type(case["source_case_id"]) is not str or not case["source_case_id"].strip()):
+            raise RunBackendError("source_case_id must be a non-empty read-only string")
         if case["suite"] == "realtime_quote":
-            _validate_reference_contract(case.get("reference_contract"))
+            if _is_v2(manifest):
+                _reference_contract_is_complete(case.get("reference_contract"))
+            else:
+                _validate_reference_contract(case.get("reference_contract"))
         score_case = case.get("score_case")
         if score_case is not None:
             if type(score_case) is not dict or set(score_case) != {"expected_status", "oracle_id", "case_type"}:
@@ -260,6 +334,8 @@ def _validate_manifest(raw: Mapping[str, Any]) -> dict[str, Any]:
             allowed = {"success"} if case_type == "normal" else {"needs_clarification", "unsupported", "no_data"} if case_type == "boundary" else set()
             if type(statuses) is not list or not statuses or len(statuses) != len(set(statuses)) or any(type(status) is not str or status not in allowed for status in statuses):
                 raise RunBackendError("score_case.expected_status must be a non-empty list")
+            if manifest["mode"] == "official" and _is_v2(manifest) and len(statuses) != 1:
+                raise RunBackendError("official v2 score_case.expected_status requires one declared status")
             _safe_id(score_case.get("oracle_id"), "score_case.oracle_id")
             suite_case_types[case["suite"]][case_type] += 1
         elif manifest["mode"] == "official":
@@ -268,8 +344,21 @@ def _validate_manifest(raw: Mapping[str, Any]) -> dict[str, Any]:
         suite_counts[case["suite"]] += 1
     if manifest["mode"] == "official" and suite_counts != {suite: 100 for suite in _SUITES}:
         raise RunBackendError("official runs require exactly 100 cases for each of the three suites")
-    if manifest["mode"] == "official" and suite_case_types != {suite: {"normal": 80, "boundary": 20} for suite in _SUITES}:
-        raise RunBackendError("official runs require 80 normal and 20 boundary cases per suite")
+    if manifest["mode"] == "official" and _is_v2(manifest):
+        declared = _v2_declared_status_counts(manifest)
+        actual = {
+            suite: {
+                status: sum(score_case.get("expected_status") == [status] for score_case in (
+                    case.get("score_case", {}) for case in cases if case["suite"] == suite
+                ))
+                for status in _SCORE_CASE_STATUSES
+            }
+            for suite in _SUITES
+        }
+        if {suite: {status: count for status, count in counts.items() if count} for suite, counts in actual.items()} != declared:
+            raise RunBackendError("v2 expected_status_counts does not match cases")
+    elif manifest["mode"] == "official" and suite_case_types != {suite: {"normal": 80, "boundary": 20} for suite in _SUITES}:
+        raise RunBackendError("legacy official runs require 80 normal and 20 boundary cases per suite")
     return manifest
 
 
@@ -817,7 +906,7 @@ def _validate_journal(manifest: Mapping[str, Any], events: list[dict[str, Any]])
             evidence = event.get("execution_evidence")
             if event.get("transport_status") == "completed" and (not isinstance(evidence, Mapping) or {field: evidence.get(field) for field in _VARIANT_IDENTITY_FIELDS} != expected_identity):
                 raise RunBackendError("terminal evidence does not bind to manifest variant")
-            reference_unavailable = reference_required and event.get("transport_status") == "reference_unavailable" and event.get("error_class") in {"reference_before_unavailable", "reference_after_unavailable", "reference_contract_mismatch"}
+            reference_unavailable = reference_required and event.get("transport_status") == "reference_unavailable" and event.get("error_class") in {"reference_before_unavailable", "reference_after_unavailable", "reference_contract_mismatch", "reference_contract_unavailable"}
             if "terminal" in entry or ("intent" not in entry and not reference_unavailable):
                 raise RunBackendError("terminal lacks a dispatch intent")
             entry.add("terminal")
@@ -849,6 +938,8 @@ class RunService:
         self._require_timeout_support()
         with self.store.locked(run_id):
             manifest = self.store.load_manifest(run_id)
+            if _is_v2_template(manifest):
+                raise RunBackendError("v2 manifest template must be compiled before execution")
             manifest_hash = _digest(manifest)
             self._assert_manifest_binding(run_id, manifest_hash)
             self._require_clients(manifest)
@@ -929,7 +1020,7 @@ class RunService:
         contracts = {
             (case["reference_contract"]["source_contract_hash"], case["reference_contract"]["window_rule_version"])
             for case in manifest["cases"]
-            if case["suite"] == "realtime_quote"
+            if case["suite"] == "realtime_quote" and _reference_contract_is_complete(case.get("reference_contract"))
         }
         if len(contracts) > 1:
             raise RunBackendError("reference hook supports one reference contract per run")
@@ -942,6 +1033,8 @@ class RunService:
             source_contract_hash = self.reference_hook.source_contract_hash
             window_rule_version = self.reference_hook.window_rule_version
         except Exception:
+            return False
+        if not _reference_contract_is_complete(case.get("reference_contract")):
             return False
         expected = case["reference_contract"]
         return (
@@ -989,6 +1082,9 @@ class RunService:
         comparable = "not_applicable"
         if reference_required:
             comparable = "not_comparable"
+            if not _reference_contract_is_complete(case.get("reference_contract")):
+                self._append(manifest["run_id"], self._terminal(cell_id, attempt_id, 0, "reference_unavailable", "reference_contract_unavailable", None, "unknown", "not_comparable", variant_identity=variant_identity, result_status="reference_contract_unavailable"))
+                return
             before_event = next((event for event in cell_events if event["event_type"] == "reference_before"), None)
             if self.reference_hook is not None and not self._reference_contract_matches(case):
                 self._append(manifest["run_id"], self._terminal(cell_id, attempt_id, 0, "reference_unavailable", "reference_contract_mismatch", None, "unknown", "not_comparable", variant_identity=variant_identity))
@@ -1042,7 +1138,7 @@ class RunService:
         evidence: dict[str, Any] | None = None
         if call_completed:
             try:
-                projected, usage, evidence = self._project_result(result, variant)
+                projected, usage, evidence = self._project_result(result, variant, strict_response_contract=manifest.get("schema_version") == _V2_MANIFEST_SCHEMA, suite=case["suite"])
             except RunBackendError:
                 projected, usage, transport, error = {"schema_version": "qveris-get-response/v1", "status": "invalid_public_response"}, "unknown", "failed", "runtime_evidence_invalid"
         else:
@@ -1108,19 +1204,21 @@ class RunService:
         return record
 
     @staticmethod
-    def _project_result(result: Any, variant: Mapping[str, Any]) -> tuple[dict[str, Any] | None, Mapping[str, Any] | str, dict[str, Any]]:
+    def _project_result(result: Any, variant: Mapping[str, Any], *, strict_response_contract: bool = False, suite: str | None = None) -> tuple[dict[str, Any] | None, Mapping[str, Any] | str, dict[str, Any]]:
         if type(result) is not PublicGetResult:
             raise RunBackendError("GET adapter must return PublicGetResult, not a bare response")
         evidence = _evidence_projection(result.execution_evidence, variant)
-        response, usage = RunService._project_response(result.public_response)
+        response, usage = RunService._project_response(result.public_response, strict_response_contract=strict_response_contract, suite=suite)
         return response, usage, evidence
 
     @staticmethod
-    def _project_response(response: Any) -> tuple[dict[str, Any] | None, Mapping[str, Any] | str]:
+    def _project_response(response: Any, *, strict_response_contract: bool = False, suite: str | None = None) -> tuple[dict[str, Any] | None, Mapping[str, Any] | str]:
         if response is None:
             return None, "unknown"
         if isinstance(response, Mapping):
             try:
+                if strict_response_contract:
+                    response = normalize_response(response, suite=suite)
                 _reject_sensitive({key: value for key, value in response.items() if key not in {"usage", "meta"}})
                 if not set(response).issubset(_GET_RESPONSE_FIELDS) or type(response.get("status")) is not str or response["status"] not in _CANONICAL_RESPONSE_STATUSES:
                     raise RunBackendError("invalid public GET response")
@@ -1134,11 +1232,11 @@ class RunService:
                 if "source" in projected and (type(projected["source"]) is not str or not projected["source"]):
                     raise RunBackendError("invalid public GET response")
                 for field in ("clarification", "terminal_reason"):
-                    if field in projected and type(projected[field]) is not str:
+                    if field in projected and projected[field] is not None and type(projected[field]) is not str:
                         raise RunBackendError("invalid public GET response")
                 if "meta" in response and (not isinstance(response["meta"], Mapping) or set(response["meta"]) != {"usage"}):
                     raise RunBackendError("invalid public GET response")
-            except RunBackendError:
+            except (RunBackendError, ResponseContractError):
                 projected = {"schema_version": "qveris-get-response/v1", "status": "invalid_public_response"}
             meta = response.get("meta")
             usage_raw = meta.get("usage") if isinstance(meta, Mapping) and set(meta) == {"usage"} else None
@@ -1197,7 +1295,7 @@ class RunService:
                 if terminal:
                     suites[case["suite"]]["completed"] += 1
                     outcome = terminal.get("execution_outcome", terminal.get("result_status"))
-                    state = "incomplete" if cell_id in after_failures or terminal["transport_status"] in {"uncertain", "reference_unavailable"} else _EXECUTION_OUTCOME_STATES.get(outcome, "failed")
+                    state = "blocked" if terminal.get("error_class") == "reference_contract_unavailable" else "incomplete" if cell_id in after_failures or terminal["transport_status"] in {"uncertain", "reference_unavailable"} else _EXECUTION_OUTCOME_STATES.get(outcome, "failed")
                     suites[case["suite"]][state] += 1
                     if state == "success": success += 1
                     elif state == "failed": failed += 1
@@ -1217,9 +1315,9 @@ class RunService:
                 scored = score_variants.get(variant["variant_id"])
                 if scored:
                     variant.update({key: value for key, value in scored.items() if key not in {"variant_id", "stable_display_order"}})
-            scoring = {"semantic_accuracy": "SCORED", "data_accuracy": "SCORED", "e2e_latency": "SCORED", "token_usage": "SCORED", "coverage": "SCORED", "rank": "SCORED" if projection.get("projection_status") == "SCORED" else None, "eligibility": "SCORED" if projection.get("projection_status") == "SCORED" else None}
+            scoring = {"semantic_accuracy": "SCORED", "data_accuracy": "SCORED", "end_to_end_latency": "SCORED", "token_usage": "SCORED", "coverage": "SCORED", "rank": "SCORED" if projection.get("projection_status") == "SCORED" else None, "eligibility": "SCORED" if projection.get("projection_status") == "SCORED" else None}
             projection_status, projection_reason = projection["projection_status"], "score_projection_available"
         else:
-            scoring = {"semantic_accuracy": "UNSCORED", "data_accuracy": "UNSCORED", "e2e_latency": "UNSCORED", "token_usage": "UNSCORED", "coverage": None, "rank": None, "eligibility": None}
+            scoring = {"semantic_accuracy": "UNSCORED", "data_accuracy": "UNSCORED", "end_to_end_latency": "UNSCORED", "token_usage": "UNSCORED", "coverage": None, "rank": None, "eligibility": None}
             projection_status, projection_reason = "UNSCORED", "scorer_projection_unavailable"
         return {"schema_version": "qveris-run-snapshot/v1", "run_id": run_id, "manifest_hash": _digest(manifest), "status": public_status, "internal_status": internal_status, "projection_status": projection_status, "projection_reason": projection_reason, "snapshot_sequence": event_cursor, "event_cursor": event_cursor, "updated_at": updated_at, "connection_basis": "durable_event_journal", "variants": variants, "cells": cells, "execution": {"total": total, "completed": success + failed + incomplete + blocked, "success": success, "failed": failed, "incomplete": incomplete, "blocked": blocked}, "scoring": scoring}

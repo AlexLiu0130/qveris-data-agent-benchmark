@@ -376,5 +376,37 @@ class BenchmarkScorerTests(unittest.TestCase):
         store = RunStore(self.tmp.name); service = RunService(store, clients(response(), response()), reference_hook=hook, wall_clock=lambda: next(ticks)); service.create_run(value); service.execute("score-run")
         self.assertIn("ORACLE_UNAVAILABLE", self.scorer(store, p, o).score("score-run")["variants"][0]["completeness_reasons"])
 
+    def test_alternative_assertion_sets_require_one_complete_coherent_answer(self):
+        def atom(path, expected): return {"path": path, "operator": "exact", "expected": expected, "tolerance": None, "weight": 1, "fatal": True}
+        p, o = policy(), bundle(); o["schema_version"] = "oracle-bundle/v2"; oracle = o["oracles"]["oracle-one"]
+        oracle.update({"semantic_assertions": [], "data_assertions": [], "alternative_assertion_sets": [
+            {"semantic_assertions": [atom("resolved_request.symbol", "ABC"), atom("resolved_request.accepted_variant_id", "source-a")], "data_assertions": [atom("data.accepted_variant_id", "source-a"), atom("data.bars[0].open", 1), atom("data.bars[0].close", 10)], "state_assertions": []},
+            {"semantic_assertions": [atom("resolved_request.symbol", "ABC"), atom("resolved_request.accepted_variant_id", "source-b")], "data_assertions": [atom("data.accepted_variant_id", "source-b"), atom("data.bars[0].open", 2), atom("data.bars[0].close", 20)], "state_assertions": []},
+        ]})
+        for index, (identity, data, case_pass, accuracy) in enumerate((("source-a", {"accepted_variant_id": "source-a", "bars": [{"open": 1, "close": 10}]}, 1.0, 1.0), ("source-b", {"accepted_variant_id": "source-b", "bars": [{"open": 2, "close": 20}]}, 1.0, 1.0), ("source-a", {"accepted_variant_id": "source-a", "bars": [{"open": 1, "close": 20}]}, 0.0, 2 / 3), ("source-a", {"accepted_variant_id": "source-a", "bars": [{"open": 9, "close": 99}]}, 0.0, 1 / 3))):
+            answer = response(); answer["data"] = data
+            answer["resolved_request"]["accepted_variant_id"] = identity
+            store = RunStore(self.tmp.name + "-alternatives-%d" % index); service = RunService(store, clients(answer, answer)); service.create_run(manifest(p, o)); service.execute("score-run")
+            item = self.scorer(store, p, o).score("score-run")["variants"][0]
+            self.assertEqual((item["case_pass_rate"]["value"], item["metrics"]["data_accuracy"]["value"]), (case_pass, accuracy))
+
+    def test_legacy_input_emits_canonical_latency_and_standard_data_paths_score(self):
+        for index, (path, data, expected) in enumerate((("data.facts[0].value", {"facts": [{"value": 10}]}, 10), ("data.bars[0].close", {"bars": [{"close": 20}]}, 20), ("data.quote.last", {"quote": {"last": 30}}, 30))):
+            p, o = policy(), bundle(); o["oracles"]["oracle-one"]["data_assertions"] = [{"path": path, "operator": "exact", "expected": expected, "tolerance": None, "weight": 1, "fatal": True}]
+            answer = response(); answer["data"] = data
+            store = RunStore(self.tmp.name + "-container-%d" % index); service = RunService(store, clients(answer, answer)); service.create_run(manifest(p, o)); service.execute("score-run")
+            projection = self.scorer(store, p, o).score("score-run")
+            self.assertEqual(projection["variants"][0]["metrics"]["data_accuracy"]["value"], 1.0)
+            self.assertIn("end_to_end_latency", projection["variants"][0]["metrics"])
+            self.assertNotIn("e2e_latency", projection["variants"][0]["metrics"])
+            self.assertEqual({item["rank"] for item in projection["ranked_results"]}, {1, 2})
+
+    def test_normal_success_allows_status_only_semantic_oracle(self):
+        p, o = policy(), bundle(); o["oracles"]["oracle-one"]["semantic_assertions"] = [{"path": "status", "operator": "exact", "expected": "success", "tolerance": None, "weight": 1, "fatal": True}]
+        store, _, _, _ = self.execute_run(policy_value=p, oracle_value=o)
+        self.scorer(store, p, o).score("score-run")
+        record = next(event["record"] for event in store.score_events("score-run") if event["event_type"] == "score_record")
+        self.assertEqual((record["semantic_pass"], record["case_pass"]), (True, True))
+
 
 if __name__ == "__main__": unittest.main()

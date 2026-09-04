@@ -14,9 +14,11 @@ from .run_backend import RunBackendError, RunStore, _digest, _safe_id, _score_pr
 
 
 _PATH = re.compile(r"(?:[A-Za-z_][A-Za-z0-9_]*)(?:\[[0-9]+\])?(?:\.(?:[A-Za-z_][A-Za-z0-9_]*)(?:\[[0-9]+\])?)*$")
-_METRICS = ("semantic_accuracy", "data_accuracy", "token_usage", "e2e_latency")
+_METRICS = ("semantic_accuracy", "data_accuracy", "end_to_end_latency", "token_usage")
+_LEGACY_METRICS = ("semantic_accuracy", "data_accuracy", "token_usage", "e2e_latency")
 _GATES = ("schema_valid", "status_correct", "semantic_pass", "data_pass", "execution_complete")
-_RANK_KEYS = ("case_pass_rate", "data_accuracy", "semantic_accuracy", "e2e_p95_ms", "average_total_tokens")
+_RANK_KEYS = ("case_pass_rate", "data_accuracy", "semantic_accuracy", "end_to_end_latency_p95_ms", "average_total_tokens")
+_LEGACY_RANK_KEYS = ("case_pass_rate", "data_accuracy", "semantic_accuracy", "e2e_p95_ms", "average_total_tokens")
 _RANK_DIRECTIONS = ("desc", "desc", "desc", "asc", "asc")
 _RECEIPT_FIELDS = ("receipt_id", "measurement_version", "cache_status", "request_id", "issuer", "input_tokens", "output_tokens", "total_tokens")
 _RESPONSE_STATUSES = frozenset({"success", "partial", "needs_clarification", "unsupported", "no_data", "error"})
@@ -24,7 +26,10 @@ SCORER_VERSION = "qveris-benchmark-scorer/v2"
 SCORER_DIGEST = __import__("hashlib").sha256(Path(__file__).read_bytes()).hexdigest()
 _POLICY_KEYS = frozenset({"schema_version", "metric_names", "percentile_method", "assertion_operators", "operator_registry", "case_pass_gate", "completeness", "response_schema_version", "response_status_contracts", "max_reference_window_seconds", "error", "timeout_latency_treatment", "usage_receipt_required_fields", "trusted_receipt_issuers", "eligibility", "ranking"})
 _ORACLE_KEYS = frozenset({"schema_version", "oracles"})
+_ORACLE_V2_ROOT_KEYS = _ORACLE_KEYS | frozenset({"freeze_digest", "compiler_module_sha256", "compiled_oracle_content_digest", "policy_digest", "source_manifest_hashes", "source_hashes", "expected_status_counts"})
 _ORACLE_ITEM_KEYS = frozenset({"oracle_id", "case_id", "independence", "semantic_assertions", "data_assertions", "state_assertions", "reference_evidence", "source_ref", "version", "semantic_review_status", "data_review_status", "state_review_status"})
+_OPTIONAL_ORACLE_ITEM_KEYS = frozenset({"alternative_assertion_sets"})
+_ORACLE_V2_ITEM_KEYS = _ORACLE_ITEM_KEYS | _OPTIONAL_ORACLE_ITEM_KEYS | frozenset({"suite", "expected_status", "runtime_contract", "data_not_scored_until_receipt", "source_case_id", "source_oracle_id"})
 _ASSERTION_KEYS = frozenset({"path", "operator", "expected", "tolerance", "weight", "fatal"})
 _STATUS_CONTRACTS = {
     "success": {"required_non_null_paths": ("resolved_request", "data", "as_of", "source"), "required_null_paths": ("clarification", "terminal_reason")},
@@ -99,10 +104,49 @@ def _assertion_pass(actual: Any, assertion: Mapping[str, Any]) -> bool:
         return False
 
 
+def _oracle_assertion_sets(oracle: Mapping[str, Any]) -> list[Mapping[str, Any]]:
+    """Return mutually exclusive, source-coherent assertion sets."""
+    base = {name: oracle[name] for name in ("semantic_assertions", "data_assertions", "state_assertions")}
+    alternatives = oracle.get("alternative_assertion_sets")
+    if alternatives is None:
+        return [base]
+    return ([base] if any(base.values()) else []) + alternatives
+
+
+def _validate_assertions(assertions: Any, *, kind: str, case_type: str, expected_status: list[str]) -> None:
+    prefix = "data" if kind == "data_assertions" else "resolved_request" if case_type == "normal" else "clarification"
+    if type(assertions) is not list:
+        _fail("oracle assertions must be arrays")
+    for assertion in assertions:
+        if type(assertion) is not dict or set(assertion) != _ASSERTION_KEYS:
+            _fail("atomic assertion has an invalid schema")
+        path = assertion.get("path")
+        if kind == "semantic_assertions" and case_type == "normal" and path == "status" and set(expected_status) == {"success"}:
+            _safe_path(path, "status")
+        elif kind == "semantic_assertions" and case_type == "boundary":
+            expected_statuses = set(expected_status)
+            if isinstance(path, str) and path.startswith("clarification") and expected_statuses == {"needs_clarification"}:
+                _safe_path(path, "clarification")
+            elif isinstance(path, str) and path.startswith("terminal_reason") and expected_statuses <= {"unsupported", "no_data"}:
+                _safe_path(path, "terminal_reason")
+            else:
+                _fail("boundary semantic assertion path does not match expected status")
+        else:
+            state_prefix = "clarification" if kind == "state_assertions" and isinstance(path, str) and path.startswith("clarification") else "terminal_reason" if kind == "state_assertions" and isinstance(path, str) and path.startswith("terminal_reason") else "status" if kind == "state_assertions" else prefix
+            _safe_path(path, state_prefix)
+        if assertion.get("operator") not in {"exact", "within_abs"} or type(assertion.get("fatal")) is not bool or _decimal(assertion.get("weight"), "assertion.weight", nonnegative=True) <= 0:
+            _fail("atomic assertion is invalid")
+        if assertion["operator"] == "within_abs":
+            _decimal(assertion.get("expected"), "assertion.expected")
+            _decimal(assertion.get("tolerance"), "assertion.tolerance", nonnegative=True)
+        elif assertion.get("tolerance") is not None:
+            _fail("exact assertion tolerance must be null")
+
+
 def _validate_policy(value: Any) -> dict[str, Any]:
     if type(value) is not dict or set(value) != _POLICY_KEYS:
         _fail("scoring policy has an invalid schema")
-    if type(value["schema_version"]) is not str or not value["schema_version"] or tuple(value["metric_names"]) != _METRICS:
+    if type(value["schema_version"]) is not str or not value["schema_version"] or tuple(value["metric_names"]) not in {_METRICS, _LEGACY_METRICS}:
         _fail("scoring policy schema or metrics are invalid")
     if value["percentile_method"] not in {"nearest_rank", "linear"}:
         _fail("unsupported percentile method")
@@ -129,68 +173,86 @@ def _validate_policy(value: Any) -> dict[str, Any]:
             _fail("eligibility has an invalid schema")
         if any(_decimal(eligibility[name], name, nonnegative=True) != 1 for name in ("semantic_coverage_min", "oracle_coverage_min", "receipt_coverage_min")):
             _fail("ranking coverage must be 1")
-        if type(ranking) is not dict or set(ranking) != {"ordered_keys", "directions", "tie_break"} or tuple(ranking["ordered_keys"]) != _RANK_KEYS or tuple(ranking["directions"]) != _RANK_DIRECTIONS or ranking["tie_break"] != "variant_id":
+        if type(ranking) is not dict or set(ranking) != {"ordered_keys", "directions", "tie_break"} or tuple(ranking["ordered_keys"]) not in {_RANK_KEYS, _LEGACY_RANK_KEYS} or tuple(ranking["directions"]) != _RANK_DIRECTIONS or ranking["tie_break"] != "variant_id":
             _fail("ranking order is fixed")
     return value
 
 
+def _validate_v2_bundle_metadata(value: Mapping[str, Any], manifest: Mapping[str, Any]) -> None:
+    for name in ("freeze_digest", "compiler_module_sha256", "compiled_oracle_content_digest", "policy_digest"):
+        if name in value and (type(value[name]) is not str or re.fullmatch(r"[0-9a-f]{64}", value[name]) is None):
+            _fail("oracle bundle v2 metadata is invalid")
+    source_manifests = value.get("source_manifest_hashes")
+    if source_manifests is not None and (type(source_manifests) is not dict or set(source_manifests) != {"candidate_manifest", "financial_statements_manifest", "historical_price_manifest", "realtime_quote_manifest"} or any(type(item) is not str or re.fullmatch(r"[0-9a-f]{64}", item) is None for item in source_manifests.values())):
+        _fail("oracle bundle v2 source manifests are invalid")
+    source_hashes = value.get("source_hashes")
+    if source_hashes is not None and (type(source_hashes) is not dict or not source_hashes or any(type(path) is not str or not path or Path(path).is_absolute() or ".." in Path(path).parts or type(digest) is not str or re.fullmatch(r"[0-9a-f]{64}", digest) is None for path, digest in source_hashes.items())):
+        _fail("oracle bundle v2 source hashes are invalid")
+    counts = value.get("expected_status_counts")
+    if counts is not None:
+        expected = manifest.get("expected_status_counts")
+        if type(counts) is not dict or counts != expected:
+            _fail("oracle bundle v2 status counts do not bind to manifest")
+
+
 def _validate_bundle(value: Any, manifest: Mapping[str, Any]) -> dict[str, dict[str, Any]]:
-    if type(value) is not dict or set(value) != _ORACLE_KEYS or type(value.get("schema_version")) is not str or not value["schema_version"] or type(value.get("oracles")) is not dict:
+    if type(value) is not dict or type(value.get("oracles")) is not dict:
+        _fail("oracle bundle has an invalid schema")
+    schema_version = value.get("schema_version")
+    if schema_version == "oracle-bundle/v1":
+        if set(value) != _ORACLE_KEYS:
+            _fail("oracle bundle has an invalid schema")
+        v2 = False
+    elif schema_version == "oracle-bundle/v2":
+        if not _ORACLE_KEYS <= set(value) <= _ORACLE_V2_ROOT_KEYS:
+            _fail("oracle bundle v2 has an invalid schema")
+        _validate_v2_bundle_metadata(value, manifest)
+        v2 = True
+    else:
         _fail("oracle bundle has an invalid schema")
     cases = {case["case_id"]: case for case in manifest["cases"] if "score_case" in case}
     result: dict[str, dict[str, Any]] = {}
     for oracle_id, oracle in value["oracles"].items():
         _safe_id(oracle_id, "oracle_id")
-        if type(oracle) is not dict or set(oracle) != _ORACLE_ITEM_KEYS or oracle.get("oracle_id") != oracle_id or oracle.get("case_id") not in cases or oracle.get("independence") not in {"independent_frozen", "independent_dynamic", "unavailable"} or any(type(oracle.get(name)) is not str or not oracle[name] for name in ("source_ref", "version")) or any(oracle.get(name) not in {"approved", "unavailable", "not_applicable"} for name in ("semantic_review_status", "data_review_status", "state_review_status")):
+        allowed = _ORACLE_V2_ITEM_KEYS if v2 else _ORACLE_ITEM_KEYS
+        if type(oracle) is not dict or not _ORACLE_ITEM_KEYS <= set(oracle) <= allowed or oracle.get("oracle_id") != oracle_id or oracle.get("case_id") not in cases or oracle.get("independence") not in {"independent_frozen", "independent_dynamic", "unavailable"} or any(type(oracle.get(name)) is not str or not oracle[name] for name in ("source_ref", "version")) or any(oracle.get(name) not in {"approved", "unavailable", "not_applicable"} for name in ("semantic_review_status", "data_review_status", "state_review_status")):
             _fail("oracle has an invalid schema")
         case = cases[oracle["case_id"]]
         case_type = case["score_case"]["case_type"]
-        semantic_ok = oracle["semantic_review_status"] == "approved" and bool(oracle["semantic_assertions"])
-        data_ok = oracle["data_review_status"] == "approved" and bool(oracle["data_assertions"]) and oracle["independence"] in {"independent_frozen", "independent_dynamic"}
-        state_ok = oracle["state_review_status"] == "approved" and bool(oracle["state_assertions"])
+        if v2 and (("suite" in oracle and oracle["suite"] != case["suite"]) or ("expected_status" in oracle and oracle["expected_status"] != case["score_case"]["expected_status"]) or ("runtime_contract" in oracle and type(oracle["runtime_contract"]) not in {dict, type(None)}) or ("data_not_scored_until_receipt" in oracle and type(oracle["data_not_scored_until_receipt"]) is not bool) or any(name in oracle and (type(oracle[name]) is not str or not oracle[name]) for name in ("source_case_id", "source_oracle_id"))):
+            _fail("oracle bundle v2 extension fields are invalid")
+        alternatives = oracle.get("alternative_assertion_sets")
+        if alternatives is not None and (type(alternatives) is not list or not alternatives or any(type(item) is not dict or set(item) != {"semantic_assertions", "data_assertions", "state_assertions"} for item in alternatives)):
+            _fail("alternative assertion sets are invalid")
+        assertion_sets = _oracle_assertion_sets(oracle)
+        if not assertion_sets:
+            _fail("oracle has no assertion sets")
+        for assertion_set in assertion_sets:
+            for kind in ("semantic_assertions", "data_assertions", "state_assertions"):
+                _validate_assertions(assertion_set[kind], kind=kind, case_type=case_type, expected_status=case["score_case"]["expected_status"])
+        semantic_ok = oracle["semantic_review_status"] == "approved" and all(bool(item["semantic_assertions"]) for item in assertion_sets)
+        data_ok = oracle["data_review_status"] == "approved" and all(bool(item["data_assertions"]) for item in assertion_sets) and oracle["independence"] in {"independent_frozen", "independent_dynamic"}
+        state_ok = oracle["state_review_status"] == "approved" and all(bool(item["state_assertions"]) for item in assertion_sets)
         if case_type == "normal":
-            if oracle["state_review_status"] != "not_applicable" or oracle["state_assertions"] or (oracle["data_review_status"] == "not_applicable" and oracle["data_assertions"]):
+            if oracle["state_review_status"] != "not_applicable" or any(item["state_assertions"] for item in assertion_sets) or (oracle["data_review_status"] == "not_applicable" and any(item["data_assertions"] for item in assertion_sets)):
                 _fail("normal oracle reviews are inconsistent")
-        elif oracle["data_review_status"] != "not_applicable" or oracle["data_assertions"] or oracle["independence"] != "unavailable" or not state_ok:
+        elif oracle["data_review_status"] != "not_applicable" or any(item["data_assertions"] for item in assertion_sets) or oracle["independence"] != "unavailable" or not state_ok:
             _fail("boundary oracle reviews are inconsistent")
         # Unavailable semantic/data review is preserved as an unscored cell, not guessed.
-        if not semantic_ok and oracle["semantic_review_status"] not in {"unavailable", "not_applicable"}:
+        if not semantic_ok and oracle["semantic_review_status"] not in {"unavailable", "not_applicable"} and not (v2 and case_type == "boundary" and state_ok):
             _fail("semantic oracle is inconsistent")
         if case_type == "normal" and not data_ok and oracle["data_review_status"] not in {"unavailable", "not_applicable", "approved"}:
             _fail("data oracle is inconsistent")
         evidence = oracle["reference_evidence"]
-        if case["suite"] == "realtime_quote" and oracle["data_assertions"]:
+        if v2:
+            if evidence is not None and type(evidence) is not dict:
+                _fail("oracle bundle v2 reference evidence is invalid")
+        elif case["suite"] == "realtime_quote" and any(item["data_assertions"] for item in assertion_sets):
             if oracle["independence"] != "independent_dynamic" or type(evidence) is not dict or set(evidence) != {"before_hash", "after_hash", "source_contract_hash", "window_rule_version"} or any(type(evidence.get(name)) is not str or re.fullmatch(r"[0-9a-f]{64}", evidence[name]) is None for name in ("before_hash", "after_hash", "source_contract_hash")):
                 _fail("realtime oracle reference evidence is invalid")
             _safe_id(evidence["window_rule_version"], "window_rule_version")
         elif evidence is not None:
             _fail("reference evidence is only allowed for realtime data oracles")
-        for kind, prefix in (("semantic_assertions", "resolved_request" if case_type == "normal" else "clarification"), ("data_assertions", "data"), ("state_assertions", "status")):
-            assertions = oracle[kind]
-            if type(assertions) is not list:
-                _fail("oracle assertions must be arrays")
-            for assertion in assertions:
-                if type(assertion) is not dict or set(assertion) != _ASSERTION_KEYS:
-                    _fail("atomic assertion has an invalid schema")
-                path = assertion.get("path")
-                if kind == "semantic_assertions" and case_type == "boundary":
-                    expected_statuses = set(case["score_case"]["expected_status"])
-                    if isinstance(path, str) and path.startswith("clarification") and expected_statuses == {"needs_clarification"}:
-                        _safe_path(path, "clarification")
-                    elif isinstance(path, str) and path.startswith("terminal_reason") and expected_statuses <= {"unsupported", "no_data"}:
-                        _safe_path(path, "terminal_reason")
-                    else:
-                        _fail("boundary semantic assertion path does not match expected status")
-                else:
-                    state_prefix = "clarification" if kind == "state_assertions" and isinstance(path, str) and path.startswith("clarification") else "terminal_reason" if kind == "state_assertions" and isinstance(path, str) and path.startswith("terminal_reason") else prefix
-                    _safe_path(path, state_prefix)
-                if assertion.get("operator") not in {"exact", "within_abs"} or type(assertion.get("fatal")) is not bool or _decimal(assertion.get("weight"), "assertion.weight", nonnegative=True) <= 0:
-                    _fail("atomic assertion is invalid")
-                if assertion["operator"] == "within_abs":
-                    _decimal(assertion.get("expected"), "assertion.expected")
-                    _decimal(assertion.get("tolerance"), "assertion.tolerance", nonnegative=True)
-                elif assertion.get("tolerance") is not None:
-                    _fail("exact assertion tolerance must be null")
         result[oracle_id] = oracle
     for case in cases.values():
         oracle = result.get(case["score_case"]["oracle_id"])
@@ -324,14 +386,15 @@ class BenchmarkScorer:
         status_correct = schema_valid and status in case["score_case"]["expected_status"]
         timeout = bool(terminal and terminal.get("transport_status") == "timeout")
         execution_complete = terminal is not None and terminal.get("transport_status") == "completed" and not timeout and (case["suite"] != "realtime_quote" or comparable)
-        semantic, state = self._assertions(response or {}, oracle["semantic_assertions"]), self._assertions(response or {}, oracle["state_assertions"])
-        semantic_eligible = oracle["semantic_review_status"] == "approved" and bool(oracle["semantic_assertions"])
+        assertion_sets = self._assertion_set_results(response or {}, _oracle_assertion_sets(oracle))
+        selected = self._select_assertion_set(assertion_sets)
+        coherent = next((item for item in assertion_sets if item["all_passed"]), None)
+        semantic, state, data = selected["semantic"], selected["state"], selected["data"]
+        semantic_eligible = oracle["semantic_review_status"] == "approved" and all(bool(item["semantic"]["summary"]) for item in assertion_sets)
         semantic_pass = semantic_eligible and schema_valid and status_correct and execution_complete and semantic["all_passed"] and state["all_passed"]
         normal = case["score_case"]["case_type"] == "normal"
-        has_data, independent = bool(oracle["data_assertions"]), oracle["independence"] in {"independent_frozen", "independent_dynamic"}
-        state_only = not normal
+        has_data, independent = all(bool(item["data"]["summary"]) for item in assertion_sets), oracle["independence"] in {"independent_frozen", "independent_dynamic"}
         data_eligible = normal and has_data and oracle["data_review_status"] == "approved" and independent and (case["suite"] != "realtime_quote" or comparable)
-        data = self._assertions(response or {}, oracle["data_assertions"])
         data_pass: bool | str = bool(schema_valid and status_correct and execution_complete and state["all_passed"]) if not normal else "not_scored" if not data_eligible else bool(schema_valid and status_correct and execution_complete and data["all_passed"])
         codes: list[str] = []
         if not schema_valid: codes.append("RESPONSE_SCHEMA_INVALID")
@@ -346,7 +409,7 @@ class BenchmarkScorer:
             elif terminal.get("transport_status") != "completed": codes.append("TRANSPORT_ERROR")
         usage = self._usage(terminal.get("usage") if terminal else "unknown", terminal.get("usage_source") if terminal else None, policy["usage_receipt_required_fields"], policy["trusted_receipt_issuers"], dispatch)
         if usage is None: codes.append("USAGE_UNAVAILABLE")
-        return {"variant_id": variant_id, "variant_identity": identity, "case_id": case["case_id"], "trial": 1, "cell_id": cell_id, "oracle_id": oracle["oracle_id"], "oracle_hash": _digest(oracle), "response_hash": terminal.get("response_hash") if terminal else None, "attempted": attempted, "schema_valid": schema_valid, "status_correct": status_correct, "semantic_eligible": semantic_eligible, "semantic_pass": semantic_pass, "semantic_assertions": semantic["summary"], "state_assertions": state["summary"], "data_eligible": data_eligible, "data_pass": data_pass, "data_assertions": data["summary"], "case_pass": schema_valid and status_correct and semantic_eligible and semantic_pass and data_pass is True and execution_complete, "execution_complete": execution_complete, "elapsed_ms": terminal.get("elapsed_ms") if attempted and terminal else None, "timeout": timeout, "usage": "known" if usage is not None else "unknown", "_usage_values": usage, "failure_codes": sorted(set(codes))}
+        return {"variant_id": variant_id, "variant_identity": identity, "case_id": case["case_id"], "trial": 1, "cell_id": cell_id, "oracle_id": oracle["oracle_id"], "oracle_hash": _digest(oracle), "response_hash": terminal.get("response_hash") if terminal else None, "attempted": attempted, "schema_valid": schema_valid, "status_correct": status_correct, "semantic_eligible": semantic_eligible, "semantic_pass": semantic_pass, "semantic_assertions": semantic["summary"], "state_assertions": state["summary"], "data_eligible": data_eligible, "data_pass": data_pass, "data_assertions": data["summary"], "assertion_set_index": selected["index"], "accepted_assertion_set_index": coherent["index"] if coherent is not None else None, "case_pass": schema_valid and status_correct and semantic_eligible and coherent is not None and data_pass is True and execution_complete, "execution_complete": execution_complete, "elapsed_ms": terminal.get("elapsed_ms") if attempted and terminal else None, "timeout": timeout, "usage": "known" if usage is not None else "unknown", "_usage_values": usage, "failure_codes": sorted(set(codes))}
 
     @staticmethod
     def _response_valid(response: Any, policy: Mapping[str, Any]) -> bool:
@@ -378,6 +441,23 @@ class BenchmarkScorer:
             passed = exists and _assertion_pass(actual, assertion)
             summary.append({"path": assertion["path"], "operator": assertion["operator"], "passed": passed, "weight": str(_decimal(assertion["weight"], "weight")), "fatal": assertion["fatal"]})
         return {"summary": summary, "all_passed": all(item["passed"] for item in summary), "fatal_failed": any(item["fatal"] and not item["passed"] for item in summary), "fatal_missing": any(item["fatal"] and not item["passed"] and not _path_value(response, item["path"])[0] for item in summary)}
+
+    @classmethod
+    def _assertion_set_results(cls, response: Mapping[str, Any], assertion_sets: list[Mapping[str, Any]]) -> list[dict[str, Any]]:
+        result = []
+        for index, item in enumerate(assertion_sets):
+            semantic, data, state = cls._assertions(response, item["semantic_assertions"]), cls._assertions(response, item["data_assertions"]), cls._assertions(response, item["state_assertions"])
+            result.append({"index": index, "semantic": semantic, "data": data, "state": state, "all_passed": semantic["all_passed"] and data["all_passed"] and state["all_passed"]})
+        return result
+
+    @staticmethod
+    def _select_assertion_set(results: list[dict[str, Any]]) -> dict[str, Any]:
+        def score(item: Mapping[str, Any]) -> tuple[Any, ...]:
+            data = item["data"]["summary"]
+            passed = sum(_decimal(assertion["weight"], "weight") for assertion in data if assertion["passed"])
+            total = sum((_decimal(assertion["weight"], "weight") for assertion in data), Decimal())
+            return (item["semantic"]["all_passed"] and item["state"]["all_passed"] and item["data"]["all_passed"], item["semantic"]["all_passed"] and item["state"]["all_passed"], passed / total if total else Decimal(), -item["index"])
+        return max(results, key=score)
 
     @staticmethod
     def _usage(value: Any, usage_source: Any, required: list[str], issuers: list[str], dispatch: Mapping[str, Any] | None) -> dict[str, Any] | None:
@@ -420,7 +500,7 @@ class BenchmarkScorer:
             for prefix, field in (("input", "input_tokens"), ("output", "output_tokens"), ("total", "total_tokens")):
                 values = [usage[field] for usage in usage_rows]
                 token_metrics.update({prefix + "_mean": _mean(values), prefix + "_p50": _percentile([float(value) for value in values], .5, policy["percentile_method"]), prefix + "_p95": _percentile([float(value) for value in values], .95, policy["percentile_method"])})
-            metrics = {"semantic_accuracy": {"passed": sum(row["semantic_pass"] for row in semantic_rows), "denominator": len(semantic_rows), "value": _ratio(sum(row["semantic_pass"] for row in semantic_rows), len(semantic_rows))}, "data_accuracy": {"passed_weight": _number(data_passed_weight), "eligible_weight": _number(data_weight), "value": _ratio(data_passed_weight, data_weight)}, "e2e_latency": {"count": len(latency), "raw_count": len(latency), "p50_ms": _percentile(latency, .5, policy["percentile_method"]), "p95_ms": _percentile(latency, .95, policy["percentile_method"]), "max_ms": max(latency, default=None), "timeout_rate": _ratio(sum(row["timeout"] for row in attempted), len(attempted))}, "token_usage": token_metrics}
+            metrics = {"semantic_accuracy": {"passed": sum(row["semantic_pass"] for row in semantic_rows), "denominator": len(semantic_rows), "value": _ratio(sum(row["semantic_pass"] for row in semantic_rows), len(semantic_rows))}, "data_accuracy": {"passed_weight": _number(data_passed_weight), "eligible_weight": _number(data_weight), "value": _ratio(data_passed_weight, data_weight)}, "end_to_end_latency": {"count": len(latency), "raw_count": len(latency), "p50_ms": _percentile(latency, .5, policy["percentile_method"]), "p95_ms": _percentile(latency, .95, policy["percentile_method"]), "max_ms": max(latency, default=None), "timeout_rate": _ratio(sum(row["timeout"] for row in attempted), len(attempted))}, "token_usage": token_metrics}
             complete = len(attempted) == len(rows) and all(row["execution_complete"] for row in rows)
             item = {"variant_id": variant["variant_id"], "stable_display_order": variant["stable_display_order"], "metrics": metrics, "case_pass_rate": {"passed": sum(row["case_pass"] for row in attempted), "denominator": len(attempted), "value": _ratio(sum(row["case_pass"] for row in attempted), len(attempted))}, "semantic_oracle_coverage": {"available": len(semantic_rows), "denominator": len(semantic_expected), "value": semantic_coverage}, "oracle_coverage": {"available": sum(row["data_eligible"] for row in data_expected), "denominator": len(data_expected), "value": oracle_coverage}, "receipt_coverage": {"available": len(usage_rows), "denominator": len(attempted), "value": receipt_coverage}, "completeness_reasons": sorted({code for row in rows for code in row["failure_codes"] if code in {"ORACLE_UNAVAILABLE", "SEMANTIC_ORACLE_UNAVAILABLE", "USAGE_UNAVAILABLE"}})}
             reason, eligibility = None, policy["eligibility"]
@@ -441,7 +521,7 @@ class BenchmarkScorer:
     @staticmethod
     def _rank(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
         def value(item: Mapping[str, Any], name: str) -> Any:
-            return item["case_pass_rate"]["value"] if name == "case_pass_rate" else item["metrics"]["data_accuracy"]["value"] if name == "data_accuracy" else item["metrics"]["semantic_accuracy"]["value"] if name == "semantic_accuracy" else item["metrics"]["e2e_latency"]["p95_ms"] if name == "e2e_p95_ms" else item["metrics"]["token_usage"]["total_mean"]
+            return item["case_pass_rate"]["value"] if name == "case_pass_rate" else item["metrics"]["data_accuracy"]["value"] if name == "data_accuracy" else item["metrics"]["semantic_accuracy"]["value"] if name == "semantic_accuracy" else item["metrics"]["end_to_end_latency"]["p95_ms"] if name in {"end_to_end_latency_p95_ms", "e2e_p95_ms"} else item["metrics"]["token_usage"]["total_mean"]
         def key(item: Mapping[str, Any]) -> tuple[Any, ...]:
             result = []
             for name, direction in zip(_RANK_KEYS, _RANK_DIRECTIONS):

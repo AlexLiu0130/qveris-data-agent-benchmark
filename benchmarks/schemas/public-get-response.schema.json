@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qveris.example/schemas/public-get-response/v1",
+  "title": "QVeris strict scoreable public GET response v1",
+  "description": "Interchange schema; response_contract is normative for cross-field validation.",
+  "$defs": {
+    "usage": {"type": "object", "additionalProperties": false, "required": ["receipt_id", "measurement_version", "cache_status", "request_id", "issuer", "input_tokens", "output_tokens", "total_tokens"], "properties": {"receipt_id": {"type": "string", "minLength": 1}, "measurement_version": {"type": "string", "minLength": 1}, "cache_status": {"type": "string", "minLength": 1}, "request_id": {"type": "string", "minLength": 1}, "issuer": {"type": "string", "minLength": 1}, "input_tokens": {"type": "integer", "minimum": 0}, "output_tokens": {"type": "integer", "minimum": 0}, "total_tokens": {"type": "integer", "minimum": 0}}},
+    "meta": {"type": "object", "additionalProperties": false, "required": ["usage"], "properties": {"usage": {"$ref": "#/$defs/usage"}}},
+    "request": {"type": "object", "additionalProperties": false, "required": ["suite", "accepted_variant_id"], "properties": {"suite": {"enum": ["financial_statements", "historical_price", "realtime_quote"]}, "accepted_variant_id": {"type": "string", "minLength": 1}}}
+  },
+  "oneOf": [
+    {"title": "success or partial", "type": "object", "additionalProperties": false, "required": ["schema_version", "status", "resolved_request", "data", "as_of", "source", "clarification", "terminal_reason", "meta"], "properties": {"schema_version": {"const": "get-response/v1"}, "status": {"enum": ["success", "partial"]}, "resolved_request": {"$ref": "#/$defs/request"}, "data": {"type": "object", "allOf": [{"if": {"properties": {"kind": {"const": "historical_price"}}, "required": ["kind"]}, "then": {"required": ["accepted_variant_id"]}}]}, "as_of": {"type": "string", "minLength": 1}, "source": {"type": "string", "minLength": 1}, "clarification": {"type": "null"}, "terminal_reason": {"type": "null"}, "meta": {"$ref": "#/$defs/meta"}}},
+    {"title": "clarification", "type": "object", "additionalProperties": false, "required": ["schema_version", "status", "data", "clarification", "terminal_reason", "meta"], "properties": {"schema_version": {"const": "get-response/v1"}, "status": {"const": "needs_clarification"}, "data": {"type": "null"}, "clarification": {"type": "string", "minLength": 1}, "terminal_reason": {"type": "null"}, "meta": {"$ref": "#/$defs/meta"}}},
+    {"title": "terminal", "type": "object", "additionalProperties": false, "required": ["schema_version", "status", "data", "clarification", "terminal_reason", "meta"], "properties": {"schema_version": {"const": "get-response/v1"}, "status": {"enum": ["unsupported", "no_data", "error"]}, "data": {"type": "null"}, "clarification": {"type": "null"}, "terminal_reason": {"type": "string", "minLength": 1}, "meta": {"$ref": "#/$defs/meta"}}}
+  ]
+}

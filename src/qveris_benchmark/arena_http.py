@@ -43,11 +43,11 @@ _RUN_FIELDS = frozenset({
 _CELL_FIELDS = frozenset({"variant_id", "case_id", "trial", "state"})
 _EXECUTION_FIELDS = frozenset({"total", "completed", "success", "failed", "incomplete", "blocked"})
 _SCORING_FIELDS = frozenset({
-    "semantic_accuracy", "data_accuracy", "e2e_latency", "token_usage", "coverage", "rank", "eligibility",
+    "semantic_accuracy", "data_accuracy", "end_to_end_latency", "token_usage", "coverage", "rank", "eligibility",
 })
 _SUITE_FIELDS = frozenset({"completed", "total", "success", "failed", "incomplete", "blocked"})
 _METRIC_FIELDS = frozenset({
-    "semantic_accuracy", "data_accuracy", "e2e_latency", "token_usage",
+    "semantic_accuracy", "data_accuracy", "end_to_end_latency", "token_usage",
 })
 _RATIO_FIELDS = frozenset({"available", "denominator", "value"})
 _CASE_PASS_FIELDS = frozenset({"passed", "denominator", "value"})
@@ -134,7 +134,7 @@ def _score_metric(metric: Mapping[str, Any]) -> None:
     schemas = {
         "semantic_accuracy": _SEMANTIC_FIELDS,
         "data_accuracy": _DATA_ACCURACY_FIELDS,
-        "e2e_latency": _LATENCY_FIELDS,
+        "end_to_end_latency": _LATENCY_FIELDS,
         "token_usage": _TOKEN_USAGE_FIELDS,
     }
     for name, fields in schemas.items():

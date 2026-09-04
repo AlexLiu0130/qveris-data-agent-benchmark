@@ -8,7 +8,7 @@ Natural-language query -> one public get -> structured response -> scorer
 
 ## 范围与当前状态
 
-目标是三个独立 Suite，各 100 题：`realtime_quote`、`historical_price`、`financial_statements`。每套遵循 80 道正常题 / 20 道边界题；市场配额为 A 股 29、港股 28、美股 28、日本 5、英国 5、德国 5。
+目标是三个独立 Suite，各 100 题：`realtime_quote`、`historical_price`、`financial_statements`。`v1` 的 legacy official Manifest 固定为每套 80 道 normal / 20 道 boundary；`v2` 改为由冻结 Manifest 显式定义状态分布：财报 88/12、历史行情 82/18、实时行情 90/10（success / 非 success）。市场配额为 A 股 29、港股 28、美股 28、日本 5、英国 5、德国 5。
 
 推荐审阅入口为 `benchmarks/candidates/v0.2/` 与 `benchmarks/oracles/v2/`：三个 Suite 各 100 题。财报改为同一张原始报表、同一报告期内的 1–6 个直接披露字段（88 成功、5 澄清、7 无数据），不再要求完整报表或计算；历史行情以常见实体默认解析（82 成功、2 澄清、6 无数据、10 不支持），多市场场景保留来源一致的完整可接受变体；实时行情为 90 个运行时快照合同和 10 个冻结状态题。`v0.1` 与 `oracles/v1` 是不可变基线，仍保留用于 v2 的来源绑定。
 
@@ -16,7 +16,7 @@ Natural-language query -> one public get -> structured response -> scorer
 
 历史行情 v2 不声称供应商授权、再分发权或官方交易所地位；严格双源授权核对是后续升级项。单一完整、可追溯的公开来源可构成一个候选变体；若完整来源之间存在差异，保留各自完整且来源一致的变体，不平均也不跨源拼接。
 
-本地确定性 Runner、Scorer 和只读 Arena HTTP/SSE 投影已实现，但目前只接受独立 Run Manifest 与 `oracle-bundle/v1`，尚无 candidate/Oracle 到 Runner 的编译层，也未接入真实 QVeris Gateway。因此尚未对本 300 题产生正式评测、Case Pass 或榜单，亦不构成生产部署。
+本地确定性 Runner、Scorer 和只读 Arena HTTP/SSE 投影已实现。`v2_compiler` 会将 v0.2 candidate 与 v2 Oracle 编译为 `run-manifest-template.v2.json` 和 `oracle-bundle.v2.json`；提供真实的 Variant 身份及 realtime reference contract 后才可生成可运行的 v2 Manifest。`v1` 独立 Manifest / `oracle-bundle/v1` 仅作 legacy 兼容。真实 QVeris Gateway 尚未接入或验证，因此尚未对本 300 题产生正式评测、Case Pass 或榜单，亦不构成生产部署。
 
 ## 运行合同
 
@@ -36,7 +36,7 @@ Natural-language query -> one public get -> structured response -> scorer
 
 `Case Pass` 是派生门禁，而非第五个指标：`schema_valid AND status_correct AND semantic_pass AND data_pass AND NOT timeout`。当 `data_accuracy` 未评分时，不得产出正式 Case Pass 或总榜排名。
 
-Benchmark 的规范指标名为 `end_to_end_latency`；现有 Runner 的字段仍为 `e2e_latency`，两者尚待适配，不能宣称指标已统一。
+Benchmark、Runner、Scorer 与 Arena 统一公开指标名为 `end_to_end_latency`。读取旧版 policy 时兼容 `e2e_latency`，但投影和排名不会再输出旧名。
 
 ## 目录边界
 

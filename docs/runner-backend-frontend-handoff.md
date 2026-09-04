@@ -4,7 +4,7 @@
 
 ## 0. 先读这一节：范围与不可假设的能力
 
-当前后端是一个串行、可恢复的 Benchmark Run 执行记录器，加确定性 Scorer 和本地只读 HTTP/SSE 投影。它可展示执行状态、四项已评分指标、coverage、eligibility 与确定性排名；真实 Provider、认证和生产部署仍未实现。
+当前后端是一个串行、可恢复的 Benchmark Run 执行记录器，加确定性 Scorer 和本地只读 HTTP/SSE 投影。它可展示执行状态、四项已评分指标、coverage、eligibility 与确定性排名；真实 Provider、认证和生产部署仍未实现。`v2_compiler` 已将 v0.2 candidate 与 Oracle v2 编译为 300-case Run Manifest template 和 `oracle-bundle/v2`；补入真实 Variant 身份及 realtime reference contract 后才可运行。`v1` Manifest / `oracle-bundle/v1` 仅保留 legacy 兼容。
 
 ```mermaid
 flowchart LR
@@ -44,8 +44,8 @@ PYTHONPATH=src python3.11 -m qveris_benchmark.arena_http \
 
 `manifest → run_started journal →（realtime 时 reference before）→ dispatch_intent → 单次 GET → terminal →（realtime 时 reference after）→ snapshot`。
 
-- Manifest 必须为 `diagnostic` 或 `official`；2–8 个 Variant，`stable_display_order` 唯一；并且当前只支持 `concurrency: 1`。
-- 三个 Suite 固定为 `realtime_quote`、`historical_price`、`financial_statements`。`official` 必须三套各 100 case，且每套严格为 80 normal / 20 boundary；这不是当前前端可推导的资格判断。
+- 可执行 Run Manifest 必须为 `diagnostic` 或 `official`，含 2–8 个 Variant 且 `stable_display_order` 唯一；当前只支持 `concurrency: 1`。编译前的 `runner-run-manifest-template/v2` 合法使用 `variants: []`，但不是可执行 Run Manifest。
+- 三个 Suite 固定为 `realtime_quote`、`historical_price`、`financial_statements`。`v1` legacy official Manifest 必须三套各 100 case，且每套严格为 80 normal / 20 boundary。编译后的 `v2` Manifest 仍要求每套 100 case，但状态分布由冻结 Manifest 显式给出：财报 88 success / 12 非 success、历史行情 82 / 18、实时行情 90 / 10；前端不得自行推导资格判断。
 - 每个 `variant × case × trial(=1)` cell 最多一次 GET。没有重试、fallback、Search、Inspect、并发或额外模型调用。
 - 每次 GET 有 Manifest 的 `timeout_ms` 外层 POSIX `SIGALRM` 超时。运行必须在 Python 主线程；timeout / client exception 均会写入 terminal 事实，而不会重试。
 - `realtime_quote` 先后各做一次已冻结合同的 reference hook。before 或合同失败会阻止 GET；after 失败会使该 cell/run `incomplete`。
@@ -167,7 +167,7 @@ PYTHONPATH=src python3.11 -m qveris_benchmark.arena_http \
   "scoring": {
     "semantic_accuracy": "UNSCORED",
     "data_accuracy": "UNSCORED",
-    "e2e_latency": "UNSCORED",
+    "end_to_end_latency": "UNSCORED",
     "token_usage": "UNSCORED",
     "coverage": null,
     "rank": null,
@@ -186,7 +186,7 @@ PYTHONPATH=src python3.11 -m qveris_benchmark.arena_http \
 | `SuiteExecution` | `completed,total,success,failed,incomplete,blocked: integer` | 非负计数；`total` 可为 0。|
 | `Cell` | `variant_id:string`、`case_id:string`、`trial:1`、`state:string` | `state` 为 `queued \| success \| failed \| incomplete \| blocked`。|
 | `Execution` | `total,completed,success,failed,incomplete,blocked: integer` | 非负计数。`​completed = success + failed + incomplete + blocked`。|
-| `ScoringState` | `semantic_accuracy,data_accuracy,e2e_latency,token_usage,coverage,rank,eligibility` | `UNSCORED` 时前四项为 `UNSCORED`、后三项为 `null`；评分后前五项为 `SCORED`，`rank`/`eligibility` 仅 `SCORED` 有值。|
+| `ScoringState` | `semantic_accuracy,data_accuracy,end_to_end_latency,token_usage,coverage,rank,eligibility` | `UNSCORED` 时前四项为 `UNSCORED`、后三项为 `null`；评分后前五项为 `SCORED`，`rank`/`eligibility` 仅 `SCORED` 有值。|
 
 ### 5.4 Variant detail 和 HTTP 白名单的边界
 
@@ -212,7 +212,7 @@ Variant detail 的最小真实 wrapper 是：
 
 ### 5.5 已评分 Variant 与榜单投影
 
-Scorer 只在 Run `run_finished` 后，对 approved 的冻结 Policy/Oracle bundle 评分。四项指标及结构如下；所有数值、coverage 和名次均为服务端结果，前端不得重算。
+Scorer 只在 Run `run_finished` 后，对 approved 的冻结 Policy/Oracle bundle 评分。当前 v2 Run 使用 `oracle-bundle/v2`；`oracle-bundle/v1` 仅用于 legacy Run。四项指标及结构如下；所有数值、coverage 和名次均为服务端结果，前端不得重算。
 
 ```json
 {
@@ -221,7 +221,7 @@ Scorer 只在 Run `run_finished` 后，对 approved 的冻结 Policy/Oracle bund
     "metrics": {
       "semantic_accuracy": {"passed": 1, "denominator": 1, "value": 1.0},
       "data_accuracy": {"passed_weight": 1.0, "eligible_weight": 1.0, "value": 1.0},
-      "e2e_latency": {"count": 1, "raw_count": 1, "p50_ms": 12.3, "p95_ms": 12.3, "max_ms": 12.3, "timeout_rate": 0.0},
+      "end_to_end_latency": {"count": 1, "raw_count": 1, "p50_ms": 12.3, "p95_ms": 12.3, "max_ms": 12.3, "timeout_rate": 0.0},
       "token_usage": {"count": 1, "receipt_coverage": 1.0, "input_mean": 2.0, "input_p50": 2.0, "input_p95": 2.0, "output_mean": 3.0, "output_p50": 3.0, "output_p95": 3.0, "total_mean": 5.0, "total_p50": 5.0, "total_p95": 5.0}
     },
     "case_pass_rate": {"passed": 1, "denominator": 1, "value": 1.0},
@@ -378,7 +378,7 @@ type Variant = {
   metrics?: {
     semantic_accuracy: MetricRatio;
     data_accuracy: { passed_weight: number | string; eligible_weight: number | string; value: number | string | null };
-    e2e_latency: { count: number; raw_count: number; p50_ms: number | null; p95_ms: number | null; max_ms: number | null; timeout_rate: number | string | null };
+    end_to_end_latency: { count: number; raw_count: number; p50_ms: number | null; p95_ms: number | null; max_ms: number | null; timeout_rate: number | string | null };
     token_usage: { count: number; receipt_coverage: number | string | null; input_mean: number | null; input_p50: number | null; input_p95: number | null; output_mean: number | null; output_p50: number | null; output_p95: number | null; total_mean: number | null; total_p50: number | null; total_p95: number | null };
   };
   case_pass_rate?: MetricRatio; semantic_oracle_coverage?: Ratio; oracle_coverage?: Ratio; receipt_coverage?: Ratio;
@@ -395,7 +395,7 @@ type RunSnapshot = RunBase & {
   variants: Variant[];
   cells: Array<{ variant_id: string; case_id: string; trial: 1; state: CellState }>;
   execution: Counts;
-  scoring: { semantic_accuracy: "UNSCORED" | "SCORED"; data_accuracy: "UNSCORED" | "SCORED"; e2e_latency: "UNSCORED" | "SCORED"; token_usage: "UNSCORED" | "SCORED"; coverage: null | "SCORED"; rank: null | "SCORED"; eligibility: null | "SCORED" };
+  scoring: { semantic_accuracy: "UNSCORED" | "SCORED"; data_accuracy: "UNSCORED" | "SCORED"; end_to_end_latency: "UNSCORED" | "SCORED"; token_usage: "UNSCORED" | "SCORED"; coverage: null | "SCORED"; rank: null | "SCORED"; eligibility: null | "SCORED" };
 };
 ```
 

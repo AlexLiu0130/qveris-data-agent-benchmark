@@ -73,7 +73,34 @@ def manifest(*, official=False, reference=False):
             {"case_id": "case-financial_statements", "suite": "financial_statements", "query": "query-financial_statements"},
             {"case_id": "case-financial_statements-2", "suite": "financial_statements", "query": "query-financial_statements-2"},
         ]
-    return {"run_id": "run-1", "mode": "official" if official else "diagnostic", "freeze_digest": "a" * 64, "policy": {"version": "v1"}, "timeout_ms": 100, "concurrency": 1, "variants": variants(), "cases": cases}
+    value = {"run_id": "run-1", "mode": "official" if official else "diagnostic", "freeze_digest": "a" * 64, "policy": {"version": "v1"}, "timeout_ms": 100, "concurrency": 1, "variants": variants(), "cases": cases}
+    if official:
+        value["schema_version"] = "runner-run-manifest/v1"
+    return value
+
+
+def v2_manifest(*, template=False):
+    counts = {
+        "financial_statements": {"success": 88, "needs_clarification": 5, "no_data": 7},
+        "historical_price": {"success": 82, "needs_clarification": 2, "no_data": 6, "unsupported": 10},
+        "realtime_quote": {"success": 90, "needs_clarification": 6, "no_data": 2, "unsupported": 2},
+    }
+    value = manifest(official=True)
+    value["schema_version"] = "runner-run-manifest-template/v2" if template else "runner-run-manifest/v2"
+    value["expected_status_counts"] = counts
+    value["cases"] = []
+    for suite, statuses in counts.items():
+        index = 0
+        for status, count in statuses.items():
+            for _ in range(count):
+                case = {"case_id": "%s-%03d" % (suite, index), "suite": suite, "query": "q", "score_case": {"expected_status": [status], "oracle_id": "oracle-%s-%03d" % (suite, index), "case_type": "normal" if status == "success" else "boundary"}}
+                if suite == "realtime_quote":
+                    case["reference_contract"] = reference_contract()
+                value["cases"].append(case)
+                index += 1
+    if template:
+        value["variants"] = []
+    return value
 
 
 def realtime_manifest():
@@ -222,6 +249,58 @@ class RunBackendTests(unittest.TestCase):
         bad_mix = manifest(official=True)
         bad_mix["cases"][0]["score_case"] = {"expected_status": ["no_data"], "oracle_id": "oracle-realtime_quote-000", "case_type": "boundary"}
         with self.assertRaises(RunBackendError): RunService(RunStore(self.directory.name + "-bad-mix"), self.clients).create_run(bad_mix)
+
+    def test_official_v2_uses_declared_status_counts_instead_of_legacy_eighty_twenty(self):
+        value = v2_manifest()
+        value["freeze"] = {"candidate_manifest_hash": "f" * 64}
+        value["oracle_bundle"] = {"digest": "d" * 64, "version": "v2"}
+        self.service.create_run(value)
+        snapshot = self.service.get_snapshot("run-1")
+        self.assertEqual(snapshot["execution"]["total"], 600)
+
+    def test_official_v2_declared_status_counts_must_match_cases(self):
+        value = v2_manifest()
+        value["expected_status_counts"]["financial_statements"]["success"] = 87
+        value["expected_status_counts"]["financial_statements"]["no_data"] = 8
+        with self.assertRaises(RunBackendError): self.service.create_run(value)
+        value = v2_manifest()
+        value.pop("expected_status_counts")
+        with self.assertRaises(RunBackendError): self.service.create_run(value)
+
+    def test_official_v2_accepts_candidate_style_suite_composition(self):
+        value = v2_manifest()
+        counts = value.pop("expected_status_counts")
+        value["suite_composition"] = [
+            {"suite": suite, "cases": 100, "expected_status_counts": statuses}
+            for suite, statuses in counts.items()
+        ]
+        self.service.create_run(value)
+
+    def test_v2_template_allows_empty_variants_but_cannot_execute(self):
+        self.service.create_run(v2_manifest(template=True))
+        self.assertEqual(self.service.get_snapshot("run-1")["execution"]["total"], 0)
+        with self.assertRaises(RunBackendError): self.service.execute("run-1")
+
+    def test_v2_realtime_without_complete_reference_contract_blocks_without_get(self):
+        value = manifest()
+        value["schema_version"] = "runner-run-manifest/v2"
+        value["cases"] = [{"case_id": "case-realtime_quote", "suite": "realtime_quote", "query": "query", "score_case": {"expected_status": ["success"], "oracle_id": "oracle-one", "case_type": "normal"}}]
+        self.service.create_run(value)
+        result = self.service.execute("run-1")
+        self.assertEqual([len(client.calls) for client in self.clients.values()], [0, 0])
+        self.assertEqual(result["execution"]["blocked"], 2)
+        self.assertEqual({event.get("error_class") for event in self.service.get_events("run-1") if event["event_type"] == "terminal"}, {"reference_contract_unavailable"})
+
+    def test_v2_source_case_id_is_read_only_and_other_case_extensions_are_rejected(self):
+        value = manifest()
+        value["schema_version"] = "runner-run-manifest/v2"
+        value["cases"][0]["source_case_id"] = "hist-港股-01"
+        self.service.create_run(value)
+        value = manifest()
+        value["schema_version"] = "runner-run-manifest/v2"
+        value["cases"][0]["source_case_id"] = "hist-港股-01"
+        value["cases"][0]["adapter_hint"] = "must-not-reach-client"
+        with self.assertRaises(RunBackendError): RunService(RunStore(self.directory.name + "-bad-v2-case"), self.clients).create_run(value)
 
     def test_runtime_evidence_rejects_bare_mapping_counts_tools_and_identity_mismatch(self):
         public = {"schema_version": "get-response/v1", "status": "success", "resolved_request": {}, "data": {}, "as_of": "t", "source": "s"}
