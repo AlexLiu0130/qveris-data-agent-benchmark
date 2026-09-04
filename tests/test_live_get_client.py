@@ -87,6 +87,7 @@ class LiveGetClientTests(unittest.TestCase):
         result = client.run("AAPL quote", request_id="request-1", idempotency_key="idem-1")
         self.assertEqual((result.public_response["status"], result.public_response["meta"]["usage"]["issuer"]), ("success", "qveris_model_gateway"))
         self.assertEqual((model_calls[0][0].full_url, model_calls[0][0].get_method(), tool_calls[0][0].full_url), ("https://aigateway.qveris.ai/v1/chat/completions", "POST", "https://qveris.ai/api/v1/tools/execute?tool_id=alphavantage.global_quote.retrieve.v1.9b8a7c6d"))
+        self.assertEqual((model_calls[0][1], tool_calls[0][1]), (60.0, 15.0))
         self.assertEqual(tool_calls[0][0].get_header("X-request-id"), "request-1")
 
     def test_factory_defaults_to_direct_verified_transports(self):

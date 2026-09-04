@@ -23,7 +23,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from qveris_benchmark.live_get_client import QVerisPublicGetConfig, build_qveris_public_get_client
+from qveris_benchmark.qveris_model_gateway import MODEL_GATEWAY_TIMEOUT_SECONDS, SemanticGatewayError
 from qveris_benchmark.qveris_tool_gateway import ToolCreditReceipt
+from qveris_benchmark.qveris_tool_gateway import TOOL_GATEWAY_TIMEOUT_SECONDS
 from qveris_benchmark.run_backend import RunService, RunStore, _digest
 
 
@@ -31,6 +33,8 @@ DEFAULT_CASE_ID = "RTQ-025"
 DEFAULT_RUNTIME_CASE = ROOT / "benchmarks" / "runtime" / "public" / "single-get-diagnostic.v1.json"
 _PUBLIC_CASE_FIELDS = frozenset({"case_id", "suite", "query"})
 _TOOL_RECEIPT_NAME = "tool-receipt.json"
+SINGLE_GET_TIMEOUT_MARGIN_SECONDS = 15.0
+SINGLE_GET_TIMEOUT_SECONDS = MODEL_GATEWAY_TIMEOUT_SECONDS + TOOL_GATEWAY_TIMEOUT_SECONDS + SINGLE_GET_TIMEOUT_MARGIN_SECONDS
 
 
 class _PrivateToolReceiptSink:
@@ -120,7 +124,7 @@ def _manifest(case: Mapping[str, str], identity: Mapping[str, str]) -> dict[str,
         "execution_profile": "diagnostic_public_get",
         "freeze_digest": case_digest,
         "policy": {"version": "single-get-diagnostic/v1", "scope": "unscored_nonranking"},
-        "timeout_ms": 45_000,
+        "timeout_ms": int(SINGLE_GET_TIMEOUT_SECONDS * 1000),
         "concurrency": 1,
         "variants": [{"variant_id": "qveris-public-get-live", "stable_display_order": 1, **dict(identity)}],
         "cases": [item],
@@ -128,19 +132,22 @@ def _manifest(case: Mapping[str, str], identity: Mapping[str, str]) -> dict[str,
 
 
 def _preflight(client: Any, identity: Mapping[str, str], run_id: str) -> dict[str, Any]:
-    resolver = getattr(client, "semantic_resolver", None)
-    preflight = getattr(resolver, "preflight_models", None)
-    if not callable(preflight):
-        raise DiagnosticError("public GET client does not expose model preflight")
     try:
+        resolver = getattr(client, "semantic_resolver", None)
+        preflight = getattr(resolver, "preflight_models", None)
+        if not callable(preflight):
+            raise ValueError
         result = preflight(request_id="preflight-" + _digest(run_id)[:48])
         configured, available = result.configured_model, result.available_model_ids
-    except Exception as exc:
-        raise DiagnosticError("Gateway model preflight failed") from exc
-    if configured != identity["model_identifier"] or type(available) is not tuple or any(type(model) is not str or not model for model in available):
-        raise DiagnosticError("Gateway model preflight is invalid")
-    if configured not in available:
-        raise DiagnosticError("configured Gateway model is unavailable")
+        if configured != identity["model_identifier"] or type(available) is not tuple or any(type(model) is not str or not model for model in available):
+            raise ValueError
+        model_available = configured in available
+    except SemanticGatewayError as exc:
+        raise DiagnosticError(exc.code) from None
+    except Exception:
+        raise DiagnosticError("internal_error") from None
+    if not model_available:
+        raise DiagnosticError("model_unavailable")
     return {"schema_version": "single-get-model-preflight/v1", "model_id": configured, "model_catalog_sha256": _digest({"model_ids": list(available)}), "model_available": True}
 
 

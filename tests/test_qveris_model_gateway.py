@@ -62,7 +62,7 @@ class QVerisModelGatewayTests(unittest.TestCase):
         self.assertEqual(resolved.usage["request_id"], "request-1")
         self.assertNotEqual(resolved.usage["receipt_id"], call_id)
         request, timeout = seen[0]
-        self.assertEqual((request.full_url, request.get_method(), timeout), ("https://aigateway.qveris.ai/v1/chat/completions", "POST", 15.0))
+        self.assertEqual((request.full_url, request.get_method(), timeout), ("https://aigateway.qveris.ai/v1/chat/completions", "POST", 60.0))
         self.assertEqual(request.get_header("Authorization"), "Bearer sk-test-key")
         payload = json.loads(request.data)
         self.assertEqual((payload["model"], payload["stream"], payload["temperature"], payload["max_tokens"]), ("public-model", False, 0, 512))
@@ -88,6 +88,12 @@ class QVerisModelGatewayTests(unittest.TestCase):
         with self.subTest("response too large"):
             with self.assertRaisesRegex(SemanticGatewayError, "^response_too_large$"):
                 self.resolver(lambda _request, _timeout: Response(b"x" * (256 * 1024 + 1)))("AAPL", request_id="request-1")
+
+    def test_completion_json_rejects_duplicate_keys_and_nonfinite_constants(self):
+        for body in (b'{"choices":[],"choices":[]}', b'{"choices":NaN}'):
+            with self.subTest(body=body):
+                with self.assertRaisesRegex(SemanticGatewayError, "^invalid_json$"):
+                    self.resolver(lambda _request, _timeout, body=body: Response(body))("AAPL", request_id="request-1")
 
     def test_semantic_schema_is_validated_before_adapter_routing(self):
         invalid = semantic()
@@ -149,8 +155,24 @@ class QVerisModelGatewayTests(unittest.TestCase):
         preflight = self.resolver(opener).preflight_models(request_id="request-1")
         self.assertEqual((preflight.configured_model, preflight.available_model_ids), ("public-model", ("other-model", "public-model")))
         request, timeout = seen[0]
-        self.assertEqual((request.full_url, request.get_method(), timeout), ("https://aigateway.qveris.ai/v1/models", "GET", 15.0))
+        self.assertEqual((request.full_url, request.get_method(), timeout), ("https://aigateway.qveris.ai/v1/models", "GET", 60.0))
         self.assertIsNone(request.data)
+
+    def test_model_preflight_failure_codes_are_safe_and_stable(self):
+        for status, expected in ((401, "model_preflight_http_401"), (500, "model_preflight_http_other")):
+            with self.subTest(status=status):
+                error = HTTPError("https://aigateway.qveris.ai/v1/models", status, "CANARY_SECRET", {}, io.BytesIO(b"CANARY_BODY"))
+                with self.assertRaisesRegex(SemanticGatewayError, "^" + expected + "$") as raised:
+                    self.resolver(lambda _request, _timeout, error=error: (_ for _ in ()).throw(error)).preflight_models(request_id="request-1")
+                self.assertNotIn("CANARY", str(raised.exception))
+        with self.assertRaisesRegex(SemanticGatewayError, "^model_preflight_response_invalid$"):
+            self.resolver(lambda _request, _timeout: Response(b"CANARY_NOT_JSON")).preflight_models(request_id="request-1")
+        with self.assertRaisesRegex(SemanticGatewayError, "^model_preflight_timeout$"):
+            self.resolver(lambda _request, _timeout: (_ for _ in ()).throw(socket.timeout())).preflight_models(request_id="request-1")
+        for body in (b'{"data":[],"data":[]}', b'{"data":NaN}'):
+            with self.subTest(preflight_body=body):
+                with self.assertRaisesRegex(SemanticGatewayError, "^model_preflight_response_invalid$"):
+                    self.resolver(lambda _request, _timeout, body=body: Response(body)).preflight_models(request_id="request-1")
 
 
 if __name__ == "__main__":

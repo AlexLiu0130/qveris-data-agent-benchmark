@@ -18,7 +18,7 @@ MODEL_GATEWAY_CHAT_ENDPOINT = "/v1/chat/completions"
 MODEL_GATEWAY_MODELS_ENDPOINT = "/v1/models"
 MODEL_GATEWAY_MAX_REQUEST_BYTES = 64 * 1024
 MODEL_GATEWAY_MAX_RESPONSE_BYTES = 256 * 1024
-MODEL_GATEWAY_TIMEOUT_SECONDS = 15.0
+MODEL_GATEWAY_TIMEOUT_SECONDS = 60.0
 MODEL_GATEWAY_MAX_TOKENS = 512
 _SYSTEM_PROMPT = """You compile one public financial-data query into exactly one JSON object.
 Return JSON only: no Markdown, prose, tool, provider, route, parser, or provider parameters.
@@ -49,6 +49,12 @@ SEMANTIC_GATEWAY_ERROR_CODES = frozenset({
     "invalid_json", "completion_shape_invalid", "semantic_json_invalid",
     "semantic_schema_invalid", "usage_missing", "usage_invalid", "timeout",
     "response_too_large", "transport_error", "request_invalid", "request_too_large",
+    "model_preflight_request_invalid", "model_preflight_http_400",
+    "model_preflight_http_401", "model_preflight_http_402",
+    "model_preflight_http_429", "model_preflight_http_503",
+    "model_preflight_http_other", "model_preflight_timeout",
+    "model_preflight_unavailable", "model_preflight_transport_failed",
+    "model_preflight_http_invalid", "model_preflight_response_invalid",
     "internal_error",
 })
 
@@ -224,7 +230,8 @@ class QVerisModelGatewaySemanticResolver:
             raise
         except HTTPError as exc:
             _read(exc)
-            raise SemanticGatewayError("model_preflight_http_%d" % exc.code) from exc
+            code = "model_preflight_http_%d" % exc.code if exc.code in _HTTP_CODES else "model_preflight_http_other"
+            raise SemanticGatewayError(code) from None
         except (socket.timeout, TimeoutError):
             raise SemanticGatewayError("model_preflight_timeout") from None
         except URLError:

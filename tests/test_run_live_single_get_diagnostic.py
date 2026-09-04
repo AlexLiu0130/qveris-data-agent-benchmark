@@ -15,6 +15,7 @@ SPEC.loader.exec_module(MODULE)
 sys.path.insert(0, str(ROOT / "src"))
 
 from qveris_benchmark.live_get_client import QVerisPublicGetConfig
+from qveris_benchmark.qveris_model_gateway import SemanticGatewayError
 from qveris_benchmark.qveris_tool_gateway import ToolCreditReceipt
 from qveris_benchmark.benchmark_scorer import BenchmarkScoreError, BenchmarkScorer
 from qveris_benchmark.run_backend import ExecutionEvidence, PublicGetResult, RunStore
@@ -94,10 +95,44 @@ class SingleGetDiagnosticTests(unittest.TestCase):
 
     def test_unavailable_model_stops_before_agent_or_get_and_creates_no_run(self):
         client = Client(self.config, available=[])
-        with self.assertRaisesRegex(MODULE.DiagnosticError, "unavailable"):
+        with self.assertRaisesRegex(MODULE.DiagnosticError, "^model_unavailable$"):
             MODULE.run_once(runtime_case=self.runtime_case, output=self.path / "outside", config=self.config, client_builder=lambda _config, **_kwargs: client)
         self.assertEqual((len(client.semantic_resolver.calls), len(client.calls)), (1, 0))
         self.assertFalse((self.path / "outside").exists())
+
+    def test_preflight_failure_codes_are_safe_and_stop_before_get(self):
+        for code in ("model_preflight_timeout", "model_preflight_http_401", "invalid_json"):
+            with self.subTest(code=code):
+                client = Client(self.config)
+
+                class FailureResolver:
+                    def preflight_models(self, *, request_id):
+                        raise SemanticGatewayError(code)
+
+                client.semantic_resolver = FailureResolver()
+                with self.assertRaisesRegex(MODULE.DiagnosticError, "^" + code + "$") as raised:
+                    MODULE.run_once(runtime_case=self.runtime_case, output=self.path / ("outside-" + code), config=self.config, client_builder=lambda _config, **_kwargs: client)
+                self.assertNotIn("CANARY", str(raised.exception))
+                self.assertEqual(client.calls, [])
+
+    def test_invalid_preflight_object_is_internal_error_without_get_or_raw_message(self):
+        client = Client(self.config)
+
+        class FailureResolver:
+            def preflight_models(self, *, request_id):
+                raise RuntimeError("CANARY_GATEWAY_BODY")
+
+        client.semantic_resolver = FailureResolver()
+        with self.assertRaisesRegex(MODULE.DiagnosticError, "^internal_error$") as raised:
+            MODULE.run_once(runtime_case=self.runtime_case, output=self.path / "outside", config=self.config, client_builder=lambda _config, **_kwargs: client)
+        self.assertNotIn("CANARY", str(raised.exception))
+        self.assertEqual(client.calls, [])
+
+    def test_manifest_budget_covers_model_tool_and_margin(self):
+        manifest = MODULE._manifest(MODULE._public_case(self.runtime_case, "RTQ-025"), self.config.identity())
+        self.assertEqual(MODULE.SINGLE_GET_TIMEOUT_SECONDS, 90.0)
+        self.assertGreaterEqual(MODULE.SINGLE_GET_TIMEOUT_SECONDS, 60.0 + 15.0 + MODULE.SINGLE_GET_TIMEOUT_MARGIN_SECONDS)
+        self.assertEqual(manifest["timeout_ms"], 90_000)
 
     def test_selected_case_projects_only_public_runtime_fields(self):
         case = MODULE._public_case(self.runtime_case, "RTQ-025")
