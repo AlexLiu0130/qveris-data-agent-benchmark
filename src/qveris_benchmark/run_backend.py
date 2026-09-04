@@ -61,17 +61,30 @@ _EXPLORATORY_OUTPUT_DIGEST_FIELDS = (
     "prompt_contract_digest", "output_schema_digest", "metadata_digest",
 )
 _TOOL_ALIASES = {"get": "get", "public_get": "get", "qveris_get": "get"}
-_EXECUTION_PROFILES = frozenset({"public_get", "exploratory_ab", "exploratory_gateway_probe"})
+_DIAGNOSTIC_PUBLIC_GET_PROFILE = "diagnostic_public_get"
+_EXECUTION_PROFILES = frozenset({"public_get", _DIAGNOSTIC_PUBLIC_GET_PROFILE, "exploratory_ab", "exploratory_gateway_probe"})
 _EXPLORATORY_PROFILES = frozenset({"exploratory_ab", "exploratory_gateway_probe"})
 _EXPLORATORY_TOOLSETS = frozenset({
     ("web_search",),
     ("qveris_search", "qveris_execute"),
     ("qveris_search", "qveris_inspect", "qveris_execute"),
 })
+_FORMAL_PUBLIC_GET_CASE_FIELDS = frozenset({
+    "case_id", "source_case_id", "suite", "query", "score_case",
+    "reference_contract", "reference_contract_status",
+})
 
 
 def _is_exploratory_profile(profile: str) -> bool:
     return profile in _EXPLORATORY_PROFILES
+
+
+def _is_public_get_profile(profile: str) -> bool:
+    return profile in {"public_get", _DIAGNOSTIC_PUBLIC_GET_PROFILE}
+
+
+def _is_diagnostic_public_get_profile(profile: str) -> bool:
+    return profile == _DIAGNOSTIC_PUBLIC_GET_PROFILE
 
 
 def _allowed_exploratory_toolsets(profile: str) -> frozenset[tuple[str, ...]]:
@@ -546,6 +559,10 @@ def _validate_manifest(raw: Mapping[str, Any]) -> dict[str, Any]:
         policy_scope = manifest["policy"].get("scope") if type(manifest.get("policy")) is dict else None
         if manifest["mode"] != "diagnostic" or policy_scope != "exploratory_nonranking" or "scoring_contract" in manifest:
             raise RunBackendError("exploratory profiles are diagnostic-only and cannot be scored or ranked")
+    elif _is_diagnostic_public_get_profile(profile):
+        policy_scope = manifest["policy"].get("scope") if type(manifest.get("policy")) is dict else None
+        if manifest["mode"] != "diagnostic" or policy_scope != "unscored_nonranking" or "scoring_contract" in manifest:
+            raise RunBackendError("diagnostic public_get runs are unscored and non-ranking")
     elif "execution_profile" in manifest and manifest["execution_profile"] != "public_get":
         raise RunBackendError("execution_profile is invalid")
     if manifest["mode"] == "official" and profile != "public_get":
@@ -606,12 +623,14 @@ def _validate_manifest(raw: Mapping[str, Any]) -> dict[str, Any]:
             raise RunBackendError("case must be an object")
         if _is_v2(manifest) and set(case) - {"case_id", "source_case_id", "suite", "query", "score_case", "reference_contract", "reference_contract_status"}:
             raise RunBackendError("v2 case has unsupported fields")
+        if _is_diagnostic_public_get_profile(profile) and set(case) != {"case_id", "suite", "query"}:
+            raise RunBackendError("diagnostic public_get cases contain non-public fields")
         case_id = _safe_id(case.get("case_id"), "case_id")
         if case_id in case_ids or case.get("suite") not in _SUITES or type(case.get("query")) is not str or not case["query"].strip():
             raise RunBackendError("cases require unique id, known suite, and non-empty query")
         if "source_case_id" in case and (type(case["source_case_id"]) is not str or not case["source_case_id"].strip()):
             raise RunBackendError("source_case_id must be a non-empty read-only string")
-        if case["suite"] == "realtime_quote":
+        if case["suite"] == "realtime_quote" and not _is_diagnostic_public_get_profile(profile):
             if _is_v2(manifest):
                 _reference_contract_is_complete(case.get("reference_contract"))
             else:
@@ -633,6 +652,8 @@ def _validate_manifest(raw: Mapping[str, Any]) -> dict[str, Any]:
             raise RunBackendError("official runs require score_case for every case")
         case_ids.add(case_id)
         suite_counts[case["suite"]] += 1
+    if _is_diagnostic_public_get_profile(profile) and (len(cases) != 1 or cases[0]["suite"] != "realtime_quote"):
+        raise RunBackendError("diagnostic public_get runs require one realtime_quote case")
     if manifest["mode"] == "official" and suite_counts != {suite: 100 for suite in _SUITES}:
         raise RunBackendError("official runs require exactly 100 cases for each of the three suites")
     if manifest["mode"] == "official" and _is_v2(manifest):
@@ -1042,6 +1063,11 @@ def _validate_event(event: Any, run_id: str, sequence: int, manifest_hash: str) 
         profile = event.get("execution_profile", "public_get")
         if profile not in _EXECUTION_PROFILES:
             raise RunBackendError("terminal execution profile is invalid")
+        if _is_diagnostic_public_get_profile(profile):
+            if event.get("scoring_status") != "UNSCORED" or event.get("ranking") != "non-ranking":
+                raise RunBackendError("diagnostic public_get terminal must be unscored and non-ranking")
+        elif "scoring_status" in event or "ranking" in event:
+            raise RunBackendError("terminal scoring status is reserved for diagnostic public_get")
         receipt_hashes = event.get("receipt_hashes")
         receipt_coverage = event.get("receipt_coverage")
         if _is_exploratory_profile(profile):
@@ -1053,7 +1079,7 @@ def _validate_event(event: Any, run_id: str, sequence: int, manifest_hash: str) 
         if event.get("transport_status") == "completed":
             if type(evidence) is not dict:
                 raise RunBackendError("completed terminal requires execution evidence")
-            if profile == "public_get":
+            if _is_public_get_profile(profile):
                 status = response.get("status") if isinstance(response, Mapping) else None
                 _validate_execution_evidence(evidence, event["variant_identity"], status, "terminal execution evidence", response.get("terminal_reason") if isinstance(response, Mapping) else None)
                 if "gateway_receipt" in event or "gateway_diagnostic_receipt" in event:
@@ -1215,14 +1241,46 @@ def _reference_projection(value: Mapping[str, Any]) -> dict[str, Any]:
     return projected
 
 
+def _formal_public_get_case(case: Mapping[str, Any]) -> dict[str, Any]:
+    """Reject runtime-only fields before a formal public GET can be sent."""
+    if type(case) is not dict or set(case) - _FORMAL_PUBLIC_GET_CASE_FIELDS:
+        raise RunBackendError("formal public_get runtime case has unsupported fields")
+    _reject_sensitive(case)
+    _canonical(case)
+    return dict(case)
+
+
+def _reference_hook_case(case: Mapping[str, Any]) -> dict[str, Any]:
+    """The independent reference provider receives no scoring or oracle material."""
+    if type(case) is not dict:
+        raise RunBackendError("reference case is invalid")
+    case_id = _safe_id(case.get("case_id"), "case_id")
+    suite, query = case.get("suite"), case.get("query")
+    if suite not in _SUITES or type(query) is not str or not query.strip():
+        raise RunBackendError("reference case is invalid")
+    contract = case.get("reference_contract")
+    if not _reference_contract_is_complete(contract):
+        raise RunBackendError("reference contract is unavailable")
+    return {
+        "case_id": case_id,
+        "suite": suite,
+        "query": query,
+        "reference_contract": {
+            "source_contract_hash": contract["source_contract_hash"],
+            "window_rule_version": contract["window_rule_version"],
+        },
+    }
+
+
 def _expected_cells(manifest: Mapping[str, Any]) -> dict[str, tuple[str, bool, dict[str, str]]]:
     result = {}
-    operation = "agent" if _is_exploratory_profile(_execution_profile(manifest)) else "get"
+    profile = _execution_profile(manifest)
+    operation = "agent" if _is_exploratory_profile(profile) else "get"
     for variant in manifest["variants"]:
         for case in manifest["cases"]:
             cell_id = "cell-" + _digest([manifest["run_id"], variant["variant_id"], case["case_id"], 1])[:48]
             attempt_id = "attempt-" + _digest([manifest["run_id"], variant["variant_id"], case["case_id"], 1, operation])[:48]
-            result[cell_id] = (attempt_id, case["suite"] == "realtime_quote", _variant_identity(variant))
+            result[cell_id] = (attempt_id, profile == "public_get" and case["suite"] == "realtime_quote", _variant_identity(variant))
     return result
 
 
@@ -1296,7 +1354,7 @@ def _validate_journal(manifest: Mapping[str, Any], events: list[dict[str, Any]])
             evidence = event.get("execution_evidence")
             if event.get("transport_status") == "completed" and (not isinstance(evidence, Mapping) or {field: evidence.get(field) for field in _VARIANT_IDENTITY_FIELDS} != expected_identity):
                 raise RunBackendError("terminal evidence does not bind to manifest variant")
-            if profile == "public_get" and event.get("transport_status") == "completed" and isinstance(evidence, Mapping):
+            if _is_public_get_profile(profile) and event.get("transport_status") == "completed" and isinstance(evidence, Mapping):
                 response = event.get("public_response")
                 _validate_execution_evidence(evidence, expected_identity, response.get("status") if isinstance(response, Mapping) else None, "terminal execution evidence", response.get("terminal_reason") if isinstance(response, Mapping) else None)
             reference_unavailable = reference_required and event.get("transport_status") == "reference_unavailable" and event.get("error_class") in {"reference_before_unavailable", "reference_after_unavailable", "reference_contract_mismatch", "reference_contract_unavailable"}
@@ -1513,16 +1571,18 @@ class RunService:
             raise RunBackendError("manifest is not durably bound to the run")
 
     def _execute_cell(self, manifest: Mapping[str, Any], variant: Mapping[str, Any], case: Mapping[str, Any]) -> None:
+        profile = _execution_profile(manifest)
+        if manifest["mode"] == "official" and profile == "public_get":
+            case = _formal_public_get_case(case)
         variant_id, case_id = variant["variant_id"], case["case_id"]
         variant_identity = _variant_identity(variant)
-        profile = _execution_profile(manifest)
         cell_id = "cell-" + _digest([manifest["run_id"], variant_id, case_id, 1])[:48]
         attempt_id = "attempt-" + _digest([manifest["run_id"], variant_id, case_id, 1, "agent" if _is_exploratory_profile(profile) else "get"])[:48]
         events = self.store.events(manifest["run_id"])
         cell_events = [event for event in events if event.get("cell_id") == cell_id]
         terminal = any(event["event_type"] == "terminal" for event in cell_events)
         reference_after = any(event["event_type"] in {"reference_after", "reference_after_unavailable"} for event in cell_events)
-        reference_required = case["suite"] == "realtime_quote"
+        reference_required = profile == "public_get" and case["suite"] == "realtime_quote"
         if terminal:
             if reference_required and not reference_after:
                 self._append(manifest["run_id"], {"event_type": "reference_after_unavailable", "cell_id": cell_id, "attempt_id": attempt_id})
@@ -1655,7 +1715,7 @@ class RunService:
         evidence: dict[str, Any] | None = None
         if call_completed:
             try:
-                if profile == "public_get":
+                if _is_public_get_profile(profile):
                     projected, usage, evidence = self._project_result(result, variant, profile, strict_response_contract=manifest.get("schema_version") == _V2_MANIFEST_SCHEMA, suite=case["suite"], idempotency_key=idempotency_key)
                     gateway_receipt, external_receipts = None, None
                 else:
@@ -1720,7 +1780,7 @@ class RunService:
     def _reference(self, case: Mapping[str, Any], phase: str) -> dict[str, Any]:
         if not self._reference_contract_matches(case):
             raise RunBackendError("reference contract mismatch")
-        value = self.reference_hook(case, phase) if self.reference_hook is not None else None
+        value = self.reference_hook(_reference_hook_case(case), phase) if self.reference_hook is not None else None
         if type(value) is not dict:
             raise RunBackendError("reference is unavailable")
         return _reference_projection(value)
@@ -1728,6 +1788,8 @@ class RunService:
     @staticmethod
     def _terminal(cell_id: str, attempt_id: str, elapsed_ms: float, transport: str, error: str | None, response: Mapping[str, Any] | None, usage: Mapping[str, Any] | str, comparability: str, *, variant_identity: Mapping[str, Any], execution_evidence: Mapping[str, Any] | None = None, gateway_receipt: Mapping[str, Any] | None = None, gateway_diagnostic_receipt: Mapping[str, Any] | None = None, external_receipts: Mapping[str, Mapping[str, Any]] | None = None, external_action_occurred: bool = False, execution_profile: str = "public_get", usage_source: str = "unknown", call_completed: bool = False, result_status: str | None = None, receipt_hashes: Mapping[str, str] | None = None, receipt_coverage: Mapping[str, Mapping[str, str]] | None = None, stage: str | None = None, stage_attempted_count: int | None = None, stage_completed_count: int | None = None, stage_exception_class: str | None = None, stage_error_code: str | None = None, external_action_may_have_occurred: bool = False, external_cost: str | None = None) -> dict[str, Any]:
         record: dict[str, Any] = {"event_type": "terminal", "cell_id": cell_id, "attempt_id": attempt_id, "elapsed_ms": round(elapsed_ms, 3), "transport_status": transport, "transport_completed": call_completed, "call_completed": call_completed, "execution_outcome": result_status, "result_status": result_status, "usage": usage, "usage_source": usage_source, "comparability": comparability, "response_hash": None, "variant_identity": dict(variant_identity), "execution_profile": execution_profile}
+        if _is_diagnostic_public_get_profile(execution_profile):
+            record.update({"scoring_status": "UNSCORED", "ranking": "non-ranking"})
         if error is not None:
             record["error_class"] = error
         if response is not None:
@@ -1754,7 +1816,7 @@ class RunService:
 
     @staticmethod
     def _project_result(result: Any, variant: Mapping[str, Any], profile: str = "public_get", *, strict_response_contract: bool = False, suite: str | None = None, idempotency_key: str | None = None) -> Any:
-        if profile == "public_get":
+        if _is_public_get_profile(profile):
             if type(result) is not PublicGetResult:
                 raise RunBackendError("GET adapter must return PublicGetResult, not a bare response")
             response, usage = RunService._project_response(result.public_response, strict_response_contract=strict_response_contract, suite=suite)
@@ -1922,4 +1984,7 @@ class RunService:
         else:
             scoring = {"semantic_accuracy": "UNSCORED", "data_accuracy": "UNSCORED", "end_to_end_latency": "UNSCORED", "token_usage": "UNSCORED", "coverage": None, "rank": None, "eligibility": None}
             projection_status, projection_reason = "UNSCORED", "scorer_projection_unavailable"
-        return {"schema_version": "qveris-run-snapshot/v1", "run_id": run_id, "manifest_hash": _digest(manifest), "status": public_status, "internal_status": internal_status, "projection_status": projection_status, "projection_reason": projection_reason, "snapshot_sequence": event_cursor, "event_cursor": event_cursor, "updated_at": updated_at, "connection_basis": "durable_event_journal", "variants": variants, "cells": cells, "execution": {"total": total, "completed": success + failed + incomplete + blocked, "success": success, "failed": failed, "incomplete": incomplete, "blocked": blocked}, "scoring": scoring}
+        snapshot = {"schema_version": "qveris-run-snapshot/v1", "run_id": run_id, "manifest_hash": _digest(manifest), "status": public_status, "internal_status": internal_status, "projection_status": projection_status, "projection_reason": projection_reason, "snapshot_sequence": event_cursor, "event_cursor": event_cursor, "updated_at": updated_at, "connection_basis": "durable_event_journal", "variants": variants, "cells": cells, "execution": {"total": total, "completed": success + failed + incomplete + blocked, "success": success, "failed": failed, "incomplete": incomplete, "blocked": blocked}, "scoring": scoring}
+        if _is_diagnostic_public_get_profile(_execution_profile(manifest)):
+            snapshot.update({"projection_status": "UNSCORED", "projection_reason": "diagnostic_public_get_nonranking", "ranking": "non-ranking"})
+        return snapshot

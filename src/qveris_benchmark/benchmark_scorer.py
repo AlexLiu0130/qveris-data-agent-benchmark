@@ -381,8 +381,8 @@ class BenchmarkScorer:
                 manifest, execution = self.store.load_manifest(run_id), self.store.events(run_id)
                 if not execution or execution[-1].get("event_type") != "run_finished":
                     _fail("run must be finished before scoring")
-                if manifest.get("execution_profile", "public_get") == "exploratory_ab":
-                    _fail("exploratory A/B runs cannot enter the benchmark scorer or ranking")
+                if manifest.get("execution_profile", "public_get") != "public_get":
+                    _fail("exploratory A/B and diagnostic runs cannot enter the benchmark scorer or ranking")
                 contract = manifest.get("scoring_contract")
                 if type(contract) is not dict or contract.get("policy_digest") != self.policy_digest or contract.get("oracle_bundle_digest") != self.oracle_digest or contract.get("scorer_version") != SCORER_VERSION or contract.get("scorer_digest") != SCORER_DIGEST or contract.get("variant_contract_digest") != _variant_contract_digest(manifest["variants"]) or self.policy_digest not in self.approved_policy_digests or self.oracle_digest not in self.approved_oracle_bundle_digests:
                     _fail("scoring contract digest is not approved")
