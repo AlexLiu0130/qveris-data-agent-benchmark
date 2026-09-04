@@ -27,6 +27,7 @@ from .qveris_tool_gateway import (
     QVerisToolGateway,
     ToolCreditReceipt,
 )
+from .tls import DirectHTTPSOpener
 
 
 _ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$")
@@ -106,17 +107,29 @@ def build_qveris_public_get_client(
     construction and GET execution do not list or select alternative models.
     """
     config.validate()
+    # Public GET must not inherit a developer-machine proxy.  Explicit test
+    # openers still take precedence over these production transports.
+    model_transport = model_opener or DirectHTTPSOpener(
+        ssl_context=None,
+        ca_file=None,
+        environment_ca_file="QVERIS_MODEL_GATEWAY_CA_BUNDLE",
+    )
+    tool_transport = tool_opener or DirectHTTPSOpener(
+        ssl_context=None,
+        ca_file=None,
+        environment_ca_file="QVERIS_TOOL_GATEWAY_CA_BUNDLE",
+    )
     resolver = QVerisModelGatewaySemanticResolver(
         api_key=config.model_gateway_api_key,
         model=config.model,
         timeout_seconds=MODEL_GATEWAY_TIMEOUT_SECONDS,
-        opener=model_opener,
+        opener=model_transport,
     )
     tool = QVerisToolGateway(
         api_key=config.tool_gateway_api_key,
         timeout_seconds=TOOL_GATEWAY_TIMEOUT_SECONDS,
         receipt_sink=tool_receipt_sink,
-        opener=tool_opener,
+        opener=tool_transport,
     )
     return PublicGetAdapter(resolver, tool, **config.identity())
 

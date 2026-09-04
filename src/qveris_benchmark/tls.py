@@ -5,6 +5,32 @@ from __future__ import annotations
 import os
 from pathlib import Path
 import ssl
+from typing import Any
+from urllib.request import HTTPRedirectHandler, HTTPSHandler, ProxyHandler, Request, build_opener
+
+
+class _NoRedirect(HTTPRedirectHandler):
+    def redirect_request(self, req: Request, fp: Any, code: int, msg: str, headers: Any, newurl: str) -> None:
+        return None
+
+
+class DirectHTTPSOpener:
+    """One-shot HTTPS opener that ignores ambient proxy configuration."""
+
+    def __init__(self, *, ssl_context: ssl.SSLContext | None, ca_file: str | None, environment_ca_file: str) -> None:
+        self._ssl_context = verified_ssl_context(
+            ssl_context=ssl_context,
+            ca_file=ca_file,
+            environment_ca_file=environment_ca_file,
+        )
+        self._opener = build_opener(
+            ProxyHandler({}),
+            HTTPSHandler(context=self._ssl_context),
+            _NoRedirect(),
+        )
+
+    def __call__(self, request: Request, timeout: float) -> Any:
+        return self._opener.open(request, timeout=timeout)
 
 
 def verified_ssl_context(

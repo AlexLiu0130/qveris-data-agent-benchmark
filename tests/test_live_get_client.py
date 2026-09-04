@@ -1,9 +1,13 @@
 import dataclasses
 import json
+import os
 import pathlib
+import ssl
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
+from urllib.request import ProxyHandler
 
 sys.path.insert(0, str(pathlib.Path(__file__).parents[1] / "src"))
 
@@ -84,6 +88,33 @@ class LiveGetClientTests(unittest.TestCase):
         self.assertEqual((result.public_response["status"], result.public_response["meta"]["usage"]["issuer"]), ("success", "qveris_model_gateway"))
         self.assertEqual((model_calls[0][0].full_url, model_calls[0][0].get_method(), tool_calls[0][0].full_url), ("https://aigateway.qveris.ai/v1/chat/completions", "POST", "https://qveris.ai/api/v1/tools/execute?tool_id=alphavantage.global_quote.retrieve.v1.9b8a7c6d"))
         self.assertEqual(tool_calls[0][0].get_header("X-request-id"), "request-1")
+
+    def test_factory_defaults_to_direct_verified_transports(self):
+        previous = os.environ.get("HTTPS_PROXY")
+        os.environ["HTTPS_PROXY"] = "http://127.0.0.1:1"
+        try:
+            client = build_qveris_public_get_client(self.config())
+        finally:
+            if previous is None:
+                os.environ.pop("HTTPS_PROXY", None)
+            else:
+                os.environ["HTTPS_PROXY"] = previous
+        for transport in (client.semantic_resolver._open, client.gateway_execute._open):
+            self.assertFalse(any(isinstance(handler, ProxyHandler) for handler in transport._opener.handlers))
+            self.assertEqual(transport._ssl_context.verify_mode, ssl.CERT_REQUIRED)
+            self.assertTrue(transport._ssl_context.check_hostname)
+
+    def test_factory_keeps_custom_openers_for_controlled_tests(self):
+        model, tool = lambda *_: None, lambda *_: None
+        client = build_qveris_public_get_client(self.config(), model_opener=model, tool_opener=tool)
+        self.assertIs(client.semantic_resolver._open, model)
+        self.assertIs(client.gateway_execute._open, tool)
+
+    def test_invalid_preflight_constructs_no_transport(self):
+        with patch("qveris_benchmark.live_get_client.DirectHTTPSOpener") as transport:
+            with self.assertRaisesRegex(ValueError, "Gateway API keys"):
+                build_qveris_public_get_client(dataclasses.replace(self.config(), tool_gateway_api_key=""))
+        transport.assert_not_called()
 
     def test_mock_http_chain_is_scored_with_bound_qveris_usage_receipt(self):
         model_calls, tool_calls = [], []
