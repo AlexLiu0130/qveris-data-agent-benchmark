@@ -29,6 +29,18 @@ def evidence(*, variant_id="variant-a", tools=("get",), agent_invocations=1, too
     return ExecutionEvidence(**identity, agent_invocations=agent_invocations, tool_executions=tool_executions, structured_outputs=structured_outputs, tools_used=tools)
 
 
+def public_response(status="success", *, reason="failed", clarification="which period?", usage=None):
+    if status in {"success", "partial"}:
+        value = {"schema_version": "get-response/v1", "status": status, "resolved_request": {"suite": "realtime_quote", "accepted_variant_id": "variant-1"}, "data": {"kind": "realtime_quote", "quote": {"instrument": {"symbol": "AAPL", "market": "US"}, "fields": {"close": {"value": "1", "unit": "USD_per_share", "as_of": "2026-09-04T00:00:00Z", "nil": False}}}}, "as_of": "2026-09-04T00:00:00Z", "source": "official", "clarification": None, "terminal_reason": None}
+    elif status == "needs_clarification":
+        value = {"schema_version": "get-response/v1", "status": status, "data": None, "clarification": clarification, "terminal_reason": None}
+    else:
+        value = {"schema_version": "get-response/v1", "status": status, "data": None, "clarification": None, "terminal_reason": reason}
+    if usage is not None:
+        value["meta"] = {"usage": usage}
+    return value
+
+
 def scoring_contract(policy_digest="c" * 64, oracle_digest="d" * 64):
     return {"policy_digest": policy_digest, "oracle_bundle_digest": oracle_digest, "scorer_version": SCORER_VERSION, "scorer_digest": SCORER_DIGEST, "variant_contract_digest": _variant_contract_digest(variants())}
 
@@ -110,7 +122,7 @@ def realtime_manifest():
 
 
 class Client:
-    def __init__(self, result=None, error=None, *, variant_id="variant-a"): self.calls, self.result, self.error, self.variant_id = [], result or {"schema_version": "v1", "status": "success", "data": {"close": 1}}, error, variant_id
+    def __init__(self, result=None, error=None, *, variant_id="variant-a"): self.calls, self.result, self.error, self.variant_id = [], result or public_response(), error, variant_id
     def run(self, query, *, request_id, idempotency_key):
         self.calls.append((query, request_id, idempotency_key))
         if self.error: raise self.error
@@ -150,20 +162,59 @@ class RunBackendTests(unittest.TestCase):
         with self.assertRaises(ModuleNotFoundError):
             importlib.import_module("qveris_benchmark.get_interface")
         responses = {
-            "success": {"status": "success", "data": {}},
-            "partial": {"status": "partial", "data": {}},
-            "needs_clarification": {"status": "needs_clarification", "clarification": "which period?"},
-            "unsupported": {"status": "unsupported", "terminal_reason": "unsupported"},
-            "no_data": {"status": "no_data", "terminal_reason": "no data"},
-            "error": {"status": "error", "terminal_reason": "failed"},
+            "success": public_response(), "partial": public_response("partial"),
+            "needs_clarification": public_response("needs_clarification"),
+            "unsupported": public_response("unsupported", reason="unsupported"),
+            "no_data": public_response("no_data", reason="no data"), "error": public_response("error"),
         }
         expected = {"success": "success", "partial": "incomplete", "needs_clarification": "blocked", "unsupported": "blocked", "no_data": "blocked", "error": "failed"}
         for status, response in responses.items():
             with self.subTest(status=status), tempfile.TemporaryDirectory() as directory:
-                service = RunService(RunStore(directory), {"variant-a": Client(response, variant_id="variant-a"), "variant-b": Client(response, variant_id="variant-b")})
+                tool_executions, tools = (0, ()) if status in {"needs_clarification", "unsupported"} else (1, ("get",))
+                service = RunService(RunStore(directory), {
+                    variant_id: ResultClient(PublicGetResult(response, evidence(variant_id=variant_id, tool_executions=tool_executions, tools=tools)))
+                    for variant_id in ("variant-a", "variant-b")
+                })
                 service.create_run(manifest())
                 snapshot = service.execute("run-1")
                 self.assertEqual(snapshot["execution"][expected[status]], 6)
+
+    def test_pre_dispatch_statuses_require_zero_public_get_and_all_others_require_one(self):
+        responses = {
+            "needs_clarification": public_response("needs_clarification"),
+            "unsupported": public_response("unsupported", reason="unsupported"),
+            "success": public_response(), "partial": public_response("partial"),
+            "no_data": public_response("no_data", reason="no data"), "error": public_response("error"),
+        }
+        for status, response in responses.items():
+            with self.subTest(status=status):
+                tool_executions, tools = (0, ()) if status in {"needs_clarification", "unsupported"} else (1, ("get",))
+                _, _, projected = RunService._project_result(PublicGetResult(response, evidence(tool_executions=tool_executions, tools=tools)), variants()[1])
+                self.assertEqual((projected["agent_invocations"], projected["tool_executions"], projected["structured_outputs"], projected["tools_used"]), (1, tool_executions, 1, list(tools)))
+                with self.assertRaises(RunBackendError):
+                    RunService._project_result(PublicGetResult(response, evidence(tool_executions=1 - tool_executions, tools=("get",) if not tools else ())), variants()[1])
+
+    def test_semantic_pre_dispatch_error_requires_zero_public_get(self):
+        response = public_response("error", reason="semantic_schema_invalid")
+        _, _, projected = RunService._project_result(PublicGetResult(response, evidence(tool_executions=0, tools=())), variants()[1])
+        self.assertEqual((projected["agent_invocations"], projected["tool_executions"], projected["structured_outputs"], projected["tools_used"]), (1, 0, 1, []))
+        with self.assertRaises(RunBackendError):
+            RunService._project_result(PublicGetResult(response, evidence()), variants()[1])
+
+    def test_pre_dispatch_rejects_list_form_forbidden_tools(self):
+        response = public_response("needs_clarification")
+        for tools in (["Search"], ["qveris.inspect"]):
+            with self.subTest(tools=tools), self.assertRaises(RunBackendError):
+                RunService._project_result(PublicGetResult(response, evidence(tool_executions=0, tools=tools)), variants()[1])
+
+    def test_terminal_replay_rejects_status_evidence_mismatch(self):
+        self.service.create_run(manifest())
+        response = {"status": "needs_clarification", "clarification": "which period?"}
+        cell = "cell-" + _digest(["run-1", "variant-a", "case-historical_price", 1])[:48]
+        attempt = "attempt-" + _digest(["run-1", "variant-a", "case-historical_price", 1, "get"])[:48]
+        self.service.store.append("run-1", {"event_type": "dispatch_intent", "cell_id": cell, "attempt_id": attempt, "trial": 1, "input_hash": "1" * 64, "request_hash": "2" * 64, "variant_identity": _variant_identity(variants()[1])})
+        with self.assertRaises(RunBackendError):
+            self.service.store.append("run-1", {"event_type": "terminal", "cell_id": cell, "attempt_id": attempt, "elapsed_ms": 0, "transport_status": "completed", "public_response": response, "response_hash": _digest(response), "usage": "unknown", "usage_source": "unknown", "variant_identity": _variant_identity(variants()[1]), "execution_evidence": {**_variant_identity(variants()[1]), "agent_invocations": 1, "tool_executions": 1, "structured_outputs": 1, "tools_used": ["get"]}})
 
     def test_scoring_contract_and_score_case_are_validated_without_changing_old_runs(self):
         value = manifest()
@@ -181,7 +232,7 @@ class RunBackendTests(unittest.TestCase):
         with self.assertRaises(RunBackendError): self.service.create_run(value)
 
     def test_usage_receipt_accepts_only_the_public_whitelist(self):
-        response = {"status": "success", "data": {"close": 1}, "meta": {"usage": {"receipt_id": "receipt-1", "measurement_version": "usage-v1", "cache_status": "miss", "request_id": "request-1", "issuer": "harness", "input_tokens": 2, "output_tokens": 3, "total_tokens": 5}}}
+        response = public_response(usage={"receipt_id": "receipt-1", "measurement_version": "usage-v1", "cache_status": "miss", "request_id": "request-1", "issuer": "harness", "input_tokens": 2, "output_tokens": 3, "total_tokens": 5})
         self.clients["variant-a"] = Client(response)
         self.service = RunService(self.service.store, self.clients); self.service.create_run(manifest()); self.service.execute("run-1")
         terminal = next(event for event in self.service.get_events("run-1") if event["event_type"] == "terminal" and event.get("usage") != "unknown")
@@ -649,7 +700,7 @@ class RunBackendTests(unittest.TestCase):
         self.assertEqual((projected["status"], usage), ("invalid_public_response", "unknown"))
 
     def test_public_response_source_is_a_nonempty_string(self):
-        response = {"schema_version": "get-response/v1", "status": "success", "resolved_request": {}, "data": {}, "as_of": "t", "source": "s"}
+        response = public_response()
         self.assertEqual(RunService._project_response(response)[0]["status"], "success")
         for invalid in (None, "", ["s"], []):
             with self.subTest(invalid=invalid):

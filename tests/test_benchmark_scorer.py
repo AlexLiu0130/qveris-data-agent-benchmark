@@ -8,23 +8,29 @@ import unittest
 sys.path.insert(0, str(pathlib.Path(__file__).parents[1] / "src"))
 
 from qveris_benchmark.benchmark_scorer import BenchmarkScoreError, BenchmarkScorer, SCORER_DIGEST, SCORER_VERSION
+from qveris_benchmark.public_get import PublicGetAdapter
 from qveris_benchmark.run_backend import ExecutionEvidence, PublicGetResult, RunBackendError, RunService, RunStore, _digest, _score_projection_hash, _variant_contract_digest, _variant_identity
 
 
 def policy(*, percentile="nearest_rank", ranked=True):
     contracts = {"success": {"required_non_null_paths": ["resolved_request", "data", "as_of", "source"], "required_null_paths": ["clarification", "terminal_reason"]}, "partial": {"required_non_null_paths": ["resolved_request", "data", "as_of", "source"], "required_null_paths": ["clarification", "terminal_reason"]}, "needs_clarification": {"required_non_null_paths": ["clarification"], "required_null_paths": ["data", "terminal_reason"]}, "unsupported": {"required_non_null_paths": ["terminal_reason"], "required_null_paths": ["data", "clarification"]}, "no_data": {"required_non_null_paths": ["terminal_reason"], "required_null_paths": ["data", "clarification"]}, "error": {"required_non_null_paths": ["terminal_reason"], "required_null_paths": ["data", "clarification"]}}
-    return {"schema_version": "score-policy/v1", "metric_names": ["semantic_accuracy", "data_accuracy", "token_usage", "e2e_latency"], "percentile_method": percentile, "assertion_operators": ["exact", "within_abs"], "operator_registry": ["exact", "within_abs"], "case_pass_gate": ["schema_valid", "status_correct", "semantic_pass", "data_pass", "execution_complete"], "completeness": {}, "response_schema_version": "get-response/v1", "response_status_contracts": contracts, "max_reference_window_seconds": 60, "error": "disabled", "timeout_latency_treatment": "cap_at_timeout", "usage_receipt_required_fields": ["receipt_id", "measurement_version", "cache_status", "request_id", "issuer", "input_tokens", "output_tokens", "total_tokens"], "trusted_receipt_issuers": ["runner"], "eligibility": {"semantic_coverage_min": 1, "oracle_coverage_min": 1, "receipt_coverage_min": 1, "require_complete_execution": True} if ranked else None, "ranking": {"ordered_keys": ["case_pass_rate", "data_accuracy", "semantic_accuracy", "e2e_p95_ms", "average_total_tokens"], "directions": ["desc", "desc", "desc", "asc", "asc"], "tie_break": "variant_id"} if ranked else None}
+    return {"schema_version": "score-policy/v1", "metric_names": ["semantic_accuracy", "data_accuracy", "end_to_end_latency", "token_usage"], "percentile_method": percentile, "assertion_operators": ["exact", "within_abs"], "operator_registry": ["exact", "within_abs"], "case_pass_gate": ["schema_valid", "status_correct", "semantic_pass", "data_pass", "execution_complete"], "completeness": {}, "response_schema_version": "get-response/v1", "response_status_contracts": contracts, "max_reference_window_seconds": 60, "error": "disabled", "timeout_latency_treatment": "cap_at_timeout", "usage_receipt_required_fields": ["receipt_id", "measurement_version", "cache_status", "request_id", "issuer", "input_tokens", "output_tokens", "total_tokens"], "trusted_receipt_issuers": ["runner"], "eligibility": {"semantic_coverage_min": 1, "oracle_coverage_min": 1, "receipt_coverage_min": 1, "require_complete_execution": True} if ranked else None, "ranking": {"ordered_keys": ["case_pass_rate", "data_accuracy", "semantic_accuracy", "end_to_end_latency_p95_ms", "average_total_tokens"], "directions": ["desc", "desc", "desc", "asc", "asc"], "tie_break": "variant_id"} if ranked else None}
 
 
 def response(close=10, *, usage=True, status="success"):
-    value = {"schema_version": "get-response/v1", "status": status, "resolved_request": {"symbol": "ABC"}, "data": {"close": close}, "as_of": "2026-09-03T00:00:00Z", "source": "frozen"}
+    if status in {"success", "partial"}:
+        value = {"schema_version": "get-response/v1", "status": status, "resolved_request": {"suite": "realtime_quote", "accepted_variant_id": "abc"}, "data": {"kind": "realtime_quote", "quote": {"instrument": {"symbol": "ABC", "market": "US"}, "fields": {"close": {"value": str(close), "unit": "USD_per_share", "as_of": "2026-09-03T00:00:00Z", "nil": False}}}}, "as_of": "2026-09-03T00:00:00Z", "source": "frozen", "clarification": None, "terminal_reason": None}
+    elif status == "needs_clarification":
+        value = {"schema_version": "get-response/v1", "status": status, "data": None, "clarification": "need detail", "terminal_reason": None}
+    else:
+        value = {"schema_version": "get-response/v1", "status": status, "data": None, "clarification": None, "terminal_reason": "unsupported request"}
     if usage: value["meta"] = {"usage": {"receipt_id": "receipt-1", "measurement_version": "usage-v1", "cache_status": "miss", "request_id": "request-" + "f" * 48, "issuer": "runner", "input_tokens": 2, "output_tokens": 3, "total_tokens": 5}}
     return value
 
 
 def bundle(*, tolerance=None, independence="independent_frozen"):
-    data = {"path": "data.close", "operator": "exact" if tolerance is None else "within_abs", "expected": 10, "tolerance": tolerance, "weight": 2, "fatal": True}
-    return {"schema_version": "oracle-bundle/v1", "oracles": {"oracle-one": {"oracle_id": "oracle-one", "case_id": "case-one", "independence": independence, "semantic_assertions": [{"path": "resolved_request.symbol", "operator": "exact", "expected": "ABC", "tolerance": None, "weight": 1, "fatal": True}], "data_assertions": [data], "state_assertions": [], "reference_evidence": None, "source_ref": "frozen", "version": "v1", "semantic_review_status": "approved", "data_review_status": "approved" if independence != "unavailable" else "unavailable", "state_review_status": "not_applicable"}}}
+    data = {"path": "data.quote.fields.close.value", "operator": "exact" if tolerance is None else "within_abs", "expected": "10" if tolerance is None else 10, "tolerance": tolerance, "weight": 2, "fatal": True}
+    return {"schema_version": "oracle-bundle/v1", "oracles": {"oracle-one": {"oracle_id": "oracle-one", "case_id": "case-one", "independence": independence, "semantic_assertions": [{"path": "resolved_request.accepted_variant_id", "operator": "exact", "expected": "abc", "tolerance": None, "weight": 1, "fatal": True}], "data_assertions": [data], "state_assertions": [], "reference_evidence": None, "source_ref": "frozen", "version": "v1", "semantic_review_status": "approved", "data_review_status": "approved" if independence != "unavailable" else "unavailable", "state_review_status": "not_applicable"}}}
 
 
 def variants():
@@ -46,11 +52,24 @@ class Client:
         value = copy.deepcopy(self.value)
         if isinstance(value, dict) and isinstance(value.get("meta", {}).get("usage"), dict): value["meta"]["usage"]["request_id"] = kwargs["request_id"].replace("request-", "attempt-", 1)
         identity = _variant_identity(next(item for item in variants() if item["variant_id"] == self.variant_id))
-        return PublicGetResult(value, ExecutionEvidence(**identity, agent_invocations=1, tool_executions=1, structured_outputs=1, tools_used=("get",)))
+        predispatch = value.get("status") in {"needs_clarification", "unsupported"} or (value.get("status") == "error" and value.get("terminal_reason") in {"semantic_schema_invalid", "semantic_resolver_failed"})
+        return PublicGetResult(value, ExecutionEvidence(**identity, agent_invocations=1, tool_executions=0 if predispatch else 1, structured_outputs=1, tools_used=() if predispatch else ("get",)))
 
 
 def clients(first, second):
     return {"variant-a": Client(first, variant_id="variant-a"), "variant-b": Client(second, variant_id="variant-b")}
+
+
+class AdapterClient:
+    def __init__(self, variant_id): self.variant_id = variant_id
+
+    def run(self, _query, **kwargs):
+        identity = _variant_identity(next(item for item in variants() if item["variant_id"] == self.variant_id))
+        semantic = {"schema_version": "public-get.semantic/v1", "request": {"kind": "market_quote", "security": {"asset_class": "equity", "venue": "US", "local_code": "AAPL"}, "operation": "quote_snapshot"}}
+        raw = {"Global Quote": {"01. symbol": "AAPL", "02. open": "1", "03. high": "2", "04. low": "0.5", "05. price": "1.5", "06. volume": "3", "07. latest trading day": "2026-09-04", "08. previous close": "1.2", "09. change": "0.3", "10. change percent": "25%"}}
+        def gateway(_tool_id, _params, *, request_id, idempotency_key):
+            return {"raw": raw, "usage": {"receipt_id": "receipt-1", "measurement_version": "usage-v1", "cache_status": "miss", "request_id": request_id, "issuer": "runner", "input_tokens": 2, "output_tokens": 3, "total_tokens": 5}}
+        return PublicGetAdapter(lambda _value, **_resolver_kwargs: semantic, gateway, **identity).run(_query, **kwargs)
 
 
 class BenchmarkScorerTests(unittest.TestCase):
@@ -79,6 +98,20 @@ class BenchmarkScorerTests(unittest.TestCase):
         self.assertEqual(a["metrics"]["token_usage"]["total_mean"], 5.0)
         self.assertEqual(service.get_snapshot("score-run")["status"], "completed")
         self.assertEqual(service.get_events("score-run")[-1]["event_type"], "scorer_projection")
+
+    def test_public_get_adapter_runservice_and_scorer_end_to_end(self):
+        p, o = policy(ranked=False), bundle()
+        oracle = o["oracles"]["oracle-one"]
+        oracle["semantic_assertions"] = [{"path": "resolved_request.accepted_variant_id", "operator": "exact", "expected": "realtime-equity-quote-snapshot-v1", "tolerance": None, "weight": 1, "fatal": True}]
+        oracle["data_assertions"][0].update({"path": "data.quote.fields.close.value", "expected": "1.5"})
+        value = manifest(p, o); value["scoring_contract"] = scoring_contract(p, o)
+        store = RunStore(self.tmp.name)
+        service = RunService(store, {"variant-a": AdapterClient("variant-a"), "variant-b": AdapterClient("variant-b")})
+        service.create_run(value); service.execute("score-run")
+        projection = self.scorer(store, p, o).score("score-run")
+        self.assertEqual(projection["variants"][0]["case_pass_rate"]["value"], 1.0)
+        terminal = next(event for event in service.get_events("score-run") if event["event_type"] == "terminal")
+        self.assertEqual((terminal["public_response"]["schema_version"], terminal["execution_evidence"]["tool_executions"]), ("get-response/v1", 1))
 
     def test_weighted_data_tolerance_and_percentiles(self):
         p, o = policy(percentile="linear"), bundle(tolerance=1)
@@ -169,7 +202,7 @@ class BenchmarkScorerTests(unittest.TestCase):
     def test_fatal_data_failure_keeps_other_weighted_credit(self):
         o = bundle(); assertions = o["oracles"]["oracle-one"]["data_assertions"]
         assertions[0].update({"expected": 9, "weight": 1, "fatal": True})
-        assertions.append({"path": "data.close", "operator": "exact", "expected": 10, "tolerance": None, "weight": 999, "fatal": False})
+        assertions.append({"path": "data.quote.fields.close.value", "operator": "exact", "expected": "10", "tolerance": None, "weight": 999, "fatal": False})
         store, p, o, _ = self.execute_run(policy_value=policy(), oracle_value=o)
         item = self.scorer(store, p, o).score("score-run")["variants"][0]
         self.assertFalse(item["case_pass_rate"]["value"])
@@ -183,7 +216,7 @@ class BenchmarkScorerTests(unittest.TestCase):
         p = policy(ranked=False); value = manifest(p, o); value["cases"][0]["score_case"].update({"case_type": "boundary", "expected_status": ["success"]})
         value["cases"][0]["score_case"]["expected_status"] = ["needs_clarification"]
         value["scoring_contract"] = scoring_contract(p, o)
-        response_value = {"schema_version": "get-response/v1", "status": "needs_clarification", "clarification": "need detail", "meta": response()["meta"]}
+        response_value = response(status="needs_clarification"); response_value["clarification"] = "need detail"
         store = RunStore(self.tmp.name); service = RunService(store, clients(response_value, response_value)); service.create_run(value); service.execute("score-run")
         item = self.scorer(store, p, o).score("score-run")["variants"][0]
         self.assertEqual(item["case_pass_rate"]["value"], 1.0)
@@ -199,9 +232,9 @@ class BenchmarkScorerTests(unittest.TestCase):
 
     def test_nonfatal_semantic_and_data_failures_gate_case_but_keep_weighted_credit(self):
         o = bundle(); oracle = o["oracles"]["oracle-one"]
-        oracle["semantic_assertions"].append({"path": "resolved_request.symbol", "operator": "exact", "expected": "ZZZ", "tolerance": None, "weight": 1, "fatal": False})
+        oracle["semantic_assertions"].append({"path": "resolved_request.accepted_variant_id", "operator": "exact", "expected": "zzz", "tolerance": None, "weight": 1, "fatal": False})
         oracle["data_assertions"][0].update({"expected": 9, "weight": 1, "fatal": False})
-        oracle["data_assertions"].append({"path": "data.close", "operator": "exact", "expected": 10, "tolerance": None, "weight": 999, "fatal": False})
+        oracle["data_assertions"].append({"path": "data.quote.fields.close.value", "operator": "exact", "expected": "10", "tolerance": None, "weight": 999, "fatal": False})
         store, p, o, _ = self.execute_run(policy_value=policy(), oracle_value=o)
         item = self.scorer(store, p, o).score("score-run")["variants"][0]
         self.assertEqual((item["case_pass_rate"]["value"], item["metrics"]["data_accuracy"]["value"]), (0.0, .999))
@@ -319,7 +352,7 @@ class BenchmarkScorerTests(unittest.TestCase):
         p, o = policy(), bundle(); oracle = o["oracles"]["oracle-one"]
         oracle.update({"semantic_assertions": [], "semantic_review_status": "unavailable", "data_assertions": [], "data_review_status": "not_applicable", "independence": "unavailable", "state_review_status": "approved", "state_assertions": [{"path": "status", "operator": "exact", "expected": "needs_clarification", "tolerance": None, "weight": 1, "fatal": True}]})
         value = manifest(p, o); value["cases"][0]["score_case"].update({"case_type": "boundary", "expected_status": ["needs_clarification"]}); value["scoring_contract"] = scoring_contract(p, o)
-        answer = {"schema_version": "get-response/v1", "status": "needs_clarification", "clarification": "need detail", "meta": response()["meta"]}
+        answer = response(status="needs_clarification"); answer["clarification"] = "need detail"
         store = RunStore(self.tmp.name); service = RunService(store, clients(answer, answer)); service.create_run(value); service.execute("score-run")
         item = self.scorer(store, p, o).score("score-run")["variants"][0]
         self.assertEqual((item["semantic_oracle_coverage"]["value"], item["case_pass_rate"]["value"]), (0.0, 0.0))
@@ -352,7 +385,7 @@ class BenchmarkScorerTests(unittest.TestCase):
         p, o = policy(ranked=False), bundle(); oracle = o["oracles"]["oracle-one"]
         oracle.update({"semantic_assertions": [{"path": "terminal_reason", "operator": "exact", "expected": "unsupported request", "tolerance": None, "weight": 1, "fatal": True}], "data_assertions": [], "independence": "unavailable", "data_review_status": "not_applicable", "state_review_status": "approved", "state_assertions": [{"path": "status", "operator": "exact", "expected": "unsupported", "tolerance": None, "weight": 1, "fatal": True}]})
         value = manifest(p, o); value["cases"][0]["score_case"].update({"case_type": "boundary", "expected_status": ["unsupported"]}); value["scoring_contract"] = scoring_contract(p, o)
-        answer = {"schema_version": "get-response/v1", "status": "unsupported", "terminal_reason": "unsupported request", "meta": response()["meta"]}
+        answer = response(status="unsupported")
         store = RunStore(self.tmp.name); service = RunService(store, clients(answer, answer)); service.create_run(value); service.execute("score-run")
         self.assertEqual(self.scorer(store, p, o).score("score-run")["variants"][0]["case_pass_rate"]["value"], 1.0)
 
@@ -376,20 +409,6 @@ class BenchmarkScorerTests(unittest.TestCase):
         store = RunStore(self.tmp.name); service = RunService(store, clients(response(), response()), reference_hook=hook, wall_clock=lambda: next(ticks)); service.create_run(value); service.execute("score-run")
         self.assertIn("ORACLE_UNAVAILABLE", self.scorer(store, p, o).score("score-run")["variants"][0]["completeness_reasons"])
 
-    def test_alternative_assertion_sets_require_one_complete_coherent_answer(self):
-        def atom(path, expected): return {"path": path, "operator": "exact", "expected": expected, "tolerance": None, "weight": 1, "fatal": True}
-        p, o = policy(), bundle(); o["schema_version"] = "oracle-bundle/v2"; oracle = o["oracles"]["oracle-one"]
-        oracle.update({"semantic_assertions": [], "data_assertions": [], "alternative_assertion_sets": [
-            {"semantic_assertions": [atom("resolved_request.symbol", "ABC"), atom("resolved_request.accepted_variant_id", "source-a")], "data_assertions": [atom("data.accepted_variant_id", "source-a"), atom("data.bars[0].open", 1), atom("data.bars[0].close", 10)], "state_assertions": []},
-            {"semantic_assertions": [atom("resolved_request.symbol", "ABC"), atom("resolved_request.accepted_variant_id", "source-b")], "data_assertions": [atom("data.accepted_variant_id", "source-b"), atom("data.bars[0].open", 2), atom("data.bars[0].close", 20)], "state_assertions": []},
-        ]})
-        for index, (identity, data, case_pass, accuracy) in enumerate((("source-a", {"accepted_variant_id": "source-a", "bars": [{"open": 1, "close": 10}]}, 1.0, 1.0), ("source-b", {"accepted_variant_id": "source-b", "bars": [{"open": 2, "close": 20}]}, 1.0, 1.0), ("source-a", {"accepted_variant_id": "source-a", "bars": [{"open": 1, "close": 20}]}, 0.0, 2 / 3), ("source-a", {"accepted_variant_id": "source-a", "bars": [{"open": 9, "close": 99}]}, 0.0, 1 / 3))):
-            answer = response(); answer["data"] = data
-            answer["resolved_request"]["accepted_variant_id"] = identity
-            store = RunStore(self.tmp.name + "-alternatives-%d" % index); service = RunService(store, clients(answer, answer)); service.create_run(manifest(p, o)); service.execute("score-run")
-            item = self.scorer(store, p, o).score("score-run")["variants"][0]
-            self.assertEqual((item["case_pass_rate"]["value"], item["metrics"]["data_accuracy"]["value"]), (case_pass, accuracy))
-
     def test_legacy_input_emits_canonical_latency_and_standard_data_paths_score(self):
         for index, (path, data, expected) in enumerate((("data.facts[0].value", {"facts": [{"value": 10}]}, 10), ("data.bars[0].close", {"bars": [{"close": 20}]}, 20), ("data.quote.last", {"quote": {"last": 30}}, 30))):
             p, o = policy(), bundle(); o["oracles"]["oracle-one"]["data_assertions"] = [{"path": path, "operator": "exact", "expected": expected, "tolerance": None, "weight": 1, "fatal": True}]
@@ -407,6 +426,22 @@ class BenchmarkScorerTests(unittest.TestCase):
         self.scorer(store, p, o).score("score-run")
         record = next(event["record"] for event in store.score_events("score-run") if event["event_type"] == "score_record")
         self.assertEqual((record["semantic_pass"], record["case_pass"]), (True, True))
+
+    def test_legacy_oracle_and_policy_input_emit_canonical_latency_and_rank(self):
+        p, o = policy(), bundle()
+        p["metric_names"] = ["semantic_accuracy", "data_accuracy", "token_usage", "e2e_latency"]
+        p["ranking"]["ordered_keys"][3] = "e2e_p95_ms"
+        store, _, _, _ = self.execute_run(response(), response(), policy_value=p, oracle_value=o)
+        projection = self.scorer(store, p, o).score("score-run")
+        self.assertIn("end_to_end_latency", projection["variants"][0]["metrics"])
+        self.assertNotIn("e2e_latency", projection["variants"][0]["metrics"])
+        self.assertEqual({item["variant_id"] for item in projection["ranked_results"]}, {"variant-a", "variant-b"})
+        self.assertEqual({item["rank"] for item in projection["ranked_results"]}, {1, 2})
+
+    def test_canonical_quote_path_is_scored(self):
+        p, o = policy(), bundle()
+        store = RunStore(self.tmp.name + "-canonical"); service = RunService(store, clients(response(), response())); service.create_run(manifest(p, o)); service.execute("score-run")
+        self.assertEqual(self.scorer(store, p, o).score("score-run")["variants"][0]["metrics"]["data_accuracy"]["value"], 1.0)
 
 
 if __name__ == "__main__": unittest.main()

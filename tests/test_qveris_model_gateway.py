@@ -1,0 +1,157 @@
+import io
+import json
+import pathlib
+import socket
+import sys
+import unittest
+from urllib.error import HTTPError
+
+sys.path.insert(0, str(pathlib.Path(__file__).parents[1] / "src"))
+
+from qveris_benchmark.public_get import PublicGetAdapter
+from qveris_benchmark.qveris_model_gateway import _SYSTEM_PROMPT, QVerisModelGatewaySemanticResolver, SEMANTIC_GATEWAY_ERROR_CODES, SemanticGatewayError
+
+
+def semantic():
+    return {
+        "schema_version": "public-get.semantic/v1",
+        "request": {
+            "kind": "market_quote",
+            "security": {"asset_class": "equity", "venue": "US", "local_code": "AAPL"},
+            "operation": "quote_snapshot",
+        },
+    }
+
+
+class Response:
+    status = 200
+
+    def __init__(self, body, headers=None):
+        self.body, self.headers = body, headers or {}
+
+    def read(self, size):
+        return self.body[:size]
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *_):
+        return False
+
+
+class QVerisModelGatewayTests(unittest.TestCase):
+    def resolver(self, opener):
+        return QVerisModelGatewaySemanticResolver(api_key="sk-test-key", model="public-model", opener=opener)
+
+    def test_posts_fixed_non_streaming_contract_and_returns_model_only_usage(self):
+        seen = []
+        call_id = "call-1"
+        body = {
+            "choices": [{"finish_reason": "stop", "message": {"role": "assistant", "content": json.dumps(semantic())}}],
+            "usage": {"prompt_tokens": 12, "completion_tokens": 5, "total_tokens": 17},
+            "qveris_billing": {"call_id": call_id, "usage_estimated": False},
+        }
+
+        def opener(request, timeout):
+            seen.append((request, timeout))
+            return Response(json.dumps(body).encode(), {"X-QVeris-Call-ID": call_id})
+
+        resolved = self.resolver(opener)("AAPL latest quote", request_id="request-1")
+        self.assertEqual(resolved.semantic, semantic())
+        self.assertEqual(resolved.usage["total_tokens"], 17)
+        self.assertEqual(resolved.usage["request_id"], "request-1")
+        self.assertNotEqual(resolved.usage["receipt_id"], call_id)
+        request, timeout = seen[0]
+        self.assertEqual((request.full_url, request.get_method(), timeout), ("https://aigateway.qveris.ai/v1/chat/completions", "POST", 15.0))
+        self.assertEqual(request.get_header("Authorization"), "Bearer sk-test-key")
+        payload = json.loads(request.data)
+        self.assertEqual((payload["model"], payload["stream"], payload["temperature"], payload["max_tokens"]), ("public-model", False, 0, 512))
+
+    def test_gateway_error_code_is_stable_and_has_no_response_body(self):
+        error = HTTPError("https://aigateway.qveris.ai/v1/chat/completions", 402, "payment", {}, io.BytesIO(b'{"error":{"code":"insufficient_credits"}}'))
+        with self.assertRaisesRegex(SemanticGatewayError, "^http_402$"):
+            self.resolver(lambda _request, _timeout: (_ for _ in ()).throw(error))("AAPL", request_id="request-1")
+
+    def test_known_http_statuses_and_unknown_error_text_are_safely_normalized(self):
+        for status in (400, 401, 402, 429, 503):
+            with self.subTest(status=status):
+                error = HTTPError("https://aigateway.qveris.ai/v1/chat/completions", status, "secret", {}, io.BytesIO(b"secret response"))
+                with self.assertRaisesRegex(SemanticGatewayError, "^http_%d$" % status):
+                    self.resolver(lambda _request, _timeout, error=error: (_ for _ in ()).throw(error))("AAPL", request_id="request-1")
+        self.assertEqual(SemanticGatewayError("api-key=secret").code, "internal_error")
+        self.assertTrue({"http_400", "invalid_json", "semantic_schema_invalid", "usage_missing", "timeout", "response_too_large"}.issubset(SEMANTIC_GATEWAY_ERROR_CODES))
+
+    def test_timeout_and_response_limit_fail_closed(self):
+        with self.subTest("timeout"):
+            with self.assertRaisesRegex(SemanticGatewayError, "^timeout$"):
+                self.resolver(lambda _request, _timeout: (_ for _ in ()).throw(socket.timeout()))("AAPL", request_id="request-1")
+        with self.subTest("response too large"):
+            with self.assertRaisesRegex(SemanticGatewayError, "^response_too_large$"):
+                self.resolver(lambda _request, _timeout: Response(b"x" * (256 * 1024 + 1)))("AAPL", request_id="request-1")
+
+    def test_semantic_schema_is_validated_before_adapter_routing(self):
+        invalid = semantic()
+        invalid["request"]["tool_id"] = "model-cannot-set-this"
+        body = {"choices": [{"finish_reason": "stop", "message": {"role": "assistant", "content": json.dumps(invalid)}}]}
+        with self.assertRaisesRegex(SemanticGatewayError, "^semantic_schema_invalid$"):
+            self.resolver(lambda _request, _timeout: Response(json.dumps(body).encode()))("AAPL", request_id="request-1")
+
+    def test_prompt_schema_version_matches_the_router_validator(self):
+        self.assertIn('"schema_version":"public-get.semantic/v1"', _SYSTEM_PROMPT)
+        self.assertNotIn("public-get.semantic.v1", _SYSTEM_PROMPT)
+
+    def test_prompt_contract_includes_exact_routable_shapes_and_examples(self):
+        self.assertIn('"kind":"market_quote","security":{"asset_class":"equity","venue":"US|SSE|SZSE|HKEX","local_code":"string"}', _SYSTEM_PROMPT)
+        self.assertIn('"operation":"quote_snapshot|last_price|bid_ask_l1|volume_turnover_snapshot|latest_trade|extended_hours_price|trading_status|batch_quote_snapshot"', _SYSTEM_PROMPT)
+        self.assertIn('"security":{"asset_class":"equity","venue":"US","local_code":"AAPL"},"operation":"quote_snapshot"', _SYSTEM_PROMPT)
+        self.assertIn('"operation":"corporate_actions","start_date":"2024-01-01","end_date":"2024-12-31"', _SYSTEM_PROMPT)
+        self.assertIn('"operation":"trading_calendar","start_date":"2024-01-02","end_date":"2024-01-05"', _SYSTEM_PROMPT)
+        self.assertIn("never manufacture a ticker, venue, date, fiscal period,", _SYSTEM_PROMPT)
+
+    def test_resolver_to_adapter_routes_aapl_quote(self):
+        call_id = "call-1"
+        body = {
+            "choices": [{"finish_reason": "stop", "message": {"role": "assistant", "content": json.dumps(semantic())}}],
+            "usage": {"prompt_tokens": 12, "completion_tokens": 5, "total_tokens": 17},
+            "qveris_billing": {"call_id": call_id, "usage_estimated": False},
+        }
+        resolver = self.resolver(lambda _request, _timeout: Response(json.dumps(body).encode(), {"X-QVeris-Call-ID": call_id}))
+        calls = []
+
+        def gateway(tool_id, params, *, request_id, idempotency_key):
+            calls.append((tool_id, params, request_id, idempotency_key))
+            return {"raw": {"Global Quote": {"01. symbol": "AAPL", "02. open": "1", "03. high": "2", "04. low": "0.5", "05. price": "1.5", "06. volume": "3", "07. latest trading day": "2026-09-04", "08. previous close": "1.2", "09. change": "0.3", "10. change percent": "25%"}}}
+
+        adapter = PublicGetAdapter(resolver, gateway, agent_variant_id="semantic-agent", agent_version="v1", get_variant_id="public-get", get_version="v1", model_identifier="test-model", model_version="v1", model_config_digest="a" * 64)
+        result = adapter.run("AAPL latest quote", request_id="request-1", idempotency_key="key-1")
+        self.assertEqual((result.public_response["status"], result.public_response["data"]["quote"]["instrument"]["symbol"]), ("success", "AAPL"))
+        self.assertEqual(calls, [("alphavantage.global_quote.retrieve.v1.9b8a7c6d", {"function": "GLOBAL_QUOTE", "symbol": "AAPL", "entitlement": "realtime"}, "request-1", "key-1")])
+
+    def test_semantic_schema_error_has_one_prefix_in_public_response(self):
+        adapter = PublicGetAdapter(lambda _query, **_kwargs: (_ for _ in ()).throw(SemanticGatewayError("semantic_schema_invalid")), lambda *_args, **_kwargs: self.fail("must not dispatch"), agent_variant_id="semantic-agent", agent_version="v1", get_variant_id="public-get", get_version="v1", model_identifier="test-model", model_version="v1", model_config_digest="a" * 64)
+        result = adapter.run("AAPL latest quote", request_id="request-1", idempotency_key="key-1")
+        self.assertEqual(result.public_response["terminal_reason"], "semantic_schema_invalid")
+
+    def test_missing_or_invalid_usage_is_a_safe_failure(self):
+        valid = {"choices": [{"finish_reason": "stop", "message": {"role": "assistant", "content": json.dumps(semantic())}}]}
+        for body, code in ((valid, "usage_missing"), ({**valid, "usage": {}}, "usage_missing"), ({**valid, "usage": {"prompt_tokens": 1}, "qveris_billing": {"usage_estimated": False}}, "usage_invalid")):
+            with self.subTest(code=code):
+                with self.assertRaisesRegex(SemanticGatewayError, "^" + code + "$"):
+                    self.resolver(lambda _request, _timeout, body=body: Response(json.dumps(body).encode()))("AAPL", request_id="request-1")
+
+    def test_models_preflight_is_explicit_read_only_and_does_not_select_a_model(self):
+        seen = []
+
+        def opener(request, timeout):
+            seen.append((request, timeout))
+            return Response(b'{"object":"list","data":[{"id":"other-model"},{"id":"public-model"}]}')
+
+        preflight = self.resolver(opener).preflight_models(request_id="request-1")
+        self.assertEqual((preflight.configured_model, preflight.available_model_ids), ("public-model", ("other-model", "public-model")))
+        request, timeout = seen[0]
+        self.assertEqual((request.full_url, request.get_method(), timeout), ("https://aigateway.qveris.ai/v1/models", "GET", 15.0))
+        self.assertIsNone(request.data)
+
+
+if __name__ == "__main__":
+    unittest.main()

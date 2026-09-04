@@ -48,6 +48,10 @@ def _exact(value: Mapping[str, Any], expected: frozenset[str], path: str) -> Non
     if set(value) != expected: _fail(path + " keys are invalid")
 
 
+def _with_optional_usage(value: Mapping[str, Any], required: frozenset[str], path: str) -> None:
+    _exact(value, required if "meta" in value else required - {"meta"}, path)
+
+
 def _safe(value: Any, path: str = "") -> None:
     if isinstance(value, list): _fail("arrays are not allowed in scoreable public response")
     if not isinstance(value, Mapping): return
@@ -141,7 +145,7 @@ def normalize_response(response: Any, *, suite: str | None = None, diagnostic: b
     if suite is not None and suite not in SUITES: _fail("suite is invalid")
     _safe(source); status = source.get("status")
     if status in {"success", "partial"}:
-        _exact(source, _SUCCESS, "response")
+        _with_optional_usage(source, _SUCCESS, "response")
         if source["schema_version"] != SCHEMA_VERSION or source["clarification"] is not None or source["terminal_reason"] is not None: _fail("successful envelope is invalid")
         request = _obj(source["resolved_request"], "resolved_request"); _exact(request, frozenset({"suite", "accepted_variant_id"}), "resolved_request")
         request_suite = _string(request["suite"], "resolved_request.suite")
@@ -149,16 +153,18 @@ def normalize_response(response: Any, *, suite: str | None = None, diagnostic: b
         as_of = _string(source["as_of"], "as_of")
         accepted_variant_id = _string(request["accepted_variant_id"], "resolved_request.accepted_variant_id", _ASSERTION)
         data = _financial(source["data"]) if request_suite == "financial_statements" else _historical(source["data"], accepted_variant_id) if request_suite == "historical_price" else _realtime(source["data"], as_of)
-        result = {"schema_version": SCHEMA_VERSION, "status": status, "resolved_request": {"suite": request_suite, "accepted_variant_id": accepted_variant_id}, "data": data, "as_of": as_of, "source": _string(source["source"], "source"), "clarification": None, "terminal_reason": None, "meta": _meta(source["meta"])}
+        result = {"schema_version": SCHEMA_VERSION, "status": status, "resolved_request": {"suite": request_suite, "accepted_variant_id": accepted_variant_id}, "data": data, "as_of": as_of, "source": _string(source["source"], "source"), "clarification": None, "terminal_reason": None}
     elif status == "needs_clarification":
-        _exact(source, _STATE, "response")
+        _with_optional_usage(source, _STATE, "response")
         if source["schema_version"] != SCHEMA_VERSION or source["data"] is not None or source["terminal_reason"] is not None: _fail("clarification response is invalid")
-        result = {"schema_version": SCHEMA_VERSION, "status": status, "data": None, "clarification": _string(source["clarification"], "clarification"), "terminal_reason": None, "meta": _meta(source["meta"])}
+        result = {"schema_version": SCHEMA_VERSION, "status": status, "data": None, "clarification": _string(source["clarification"], "clarification"), "terminal_reason": None}
     elif status in {"unsupported", "no_data", "error"}:
-        _exact(source, _STATE, "response")
+        _with_optional_usage(source, _STATE, "response")
         if source["schema_version"] != SCHEMA_VERSION or source["data"] is not None or source["clarification"] is not None: _fail("terminal response is invalid")
-        result = {"schema_version": SCHEMA_VERSION, "status": status, "data": None, "clarification": None, "terminal_reason": _string(source["terminal_reason"], "terminal_reason"), "meta": _meta(source["meta"])}
+        result = {"schema_version": SCHEMA_VERSION, "status": status, "data": None, "clarification": None, "terminal_reason": _string(source["terminal_reason"], "terminal_reason")}
     else: _fail("status is invalid")
+    if "meta" in source:
+        result["meta"] = _meta(source["meta"])
     return json.loads(json.dumps(result, ensure_ascii=False, allow_nan=False, sort_keys=True))
 
 

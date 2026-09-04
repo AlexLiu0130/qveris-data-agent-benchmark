@@ -79,6 +79,11 @@ class ExecutionEvidence:
     tool_executions: int
     structured_outputs: int
     tools_used: tuple[str, ...]
+    # Private adapter observations. They are deliberately omitted from the
+    # public response and persisted execution projection.
+    semantic_ms: float | None = None
+    tool_ms: float | None = None
+    total_ms: float | None = None
 
 
 @dataclass(frozen=True)
@@ -145,19 +150,39 @@ def _normalize_tool_name(value: Any) -> str:
     return _TOOL_ALIASES[normalized]
 
 
-def _evidence_projection(value: Any, expected_identity: Mapping[str, Any]) -> dict[str, Any]:
+def _required_execution_evidence(status: Any, terminal_reason: Any = None) -> tuple[int, int, int, list[str]]:
+    """Return the only permitted runtime counts for a public result status."""
+    if status in {"needs_clarification", "unsupported"} or (status == "error" and type(terminal_reason) is str and terminal_reason.startswith("semantic_")):
+        return 1, 0, 1, []
+    return 1, 1, 1, ["get"]
+
+
+def _validate_execution_evidence(evidence: Mapping[str, Any], expected_identity: Mapping[str, Any], status: Any, field: str, terminal_reason: Any = None) -> None:
+    identity = _validate_variant_identity({name: evidence.get(name) for name in _VARIANT_IDENTITY_FIELDS}, field + " identity")
+    expected = _validate_variant_identity(_variant_identity(expected_identity), "terminal variant identity")
+    if identity != expected:
+        raise RunBackendError(field + " identity mismatch")
+    expected = _required_execution_evidence(status, terminal_reason)
+    actual = (evidence.get("agent_invocations"), evidence.get("tool_executions"), evidence.get("structured_outputs"), evidence.get("tools_used"))
+    if actual != expected:
+        raise RunBackendError(field + " violates runtime discipline")
+
+
+def _evidence_projection(value: Any, expected_identity: Mapping[str, Any], status: Any, terminal_reason: Any = None) -> dict[str, Any]:
     if type(value) is not ExecutionEvidence:
         raise RunBackendError("GET result requires trusted ExecutionEvidence")
     identity = _validate_variant_identity({field: getattr(value, field) for field in _VARIANT_IDENTITY_FIELDS}, "execution evidence")
     if identity != _variant_identity(expected_identity):
         raise RunBackendError("execution evidence identity does not match manifest variant")
     counts = (value.agent_invocations, value.tool_executions, value.structured_outputs)
-    if any(type(count) is not int or isinstance(count, bool) or count != 1 for count in counts):
-        raise RunBackendError("execution evidence requires exactly one agent, tool, and structured output")
-    tools = tuple(_normalize_tool_name(item) for item in value.tools_used) if type(value.tools_used) is tuple else ()
-    if tools != ("get",):
-        raise RunBackendError("execution evidence requires exactly one public get tool")
-    return {**identity, "agent_invocations": 1, "tool_executions": 1, "structured_outputs": 1, "tools_used": ["get"]}
+    if any(type(count) is not int or isinstance(count, bool) for count in counts):
+        raise RunBackendError("execution evidence counts are invalid")
+    if type(value.tools_used) is not tuple:
+        raise RunBackendError("execution evidence tools_used must be a tuple")
+    tools = tuple(_normalize_tool_name(item) for item in value.tools_used)
+    projected = {**identity, "agent_invocations": value.agent_invocations, "tool_executions": value.tool_executions, "structured_outputs": value.structured_outputs, "tools_used": list(tools)}
+    _validate_execution_evidence(projected, expected_identity, status, "execution evidence", terminal_reason)
+    return projected
 
 
 def _reject_sensitive(value: Any, path: str = "") -> None:
@@ -728,11 +753,8 @@ def _validate_event(event: Any, run_id: str, sequence: int, manifest_hash: str) 
         if event.get("transport_status") == "completed":
             if type(evidence) is not dict:
                 raise RunBackendError("completed terminal requires execution evidence")
-            identity = _validate_variant_identity({field: evidence.get(field) for field in _VARIANT_IDENTITY_FIELDS}, "terminal execution evidence")
-            if identity != _validate_variant_identity(event["variant_identity"], "terminal variant identity"):
-                raise RunBackendError("terminal execution evidence identity mismatch")
-            if (evidence.get("agent_invocations"), evidence.get("tool_executions"), evidence.get("structured_outputs"), evidence.get("tools_used")) != (1, 1, 1, ["get"]):
-                raise RunBackendError("terminal execution evidence violates runtime discipline")
+            status = response.get("status") if isinstance(response, Mapping) else None
+            _validate_execution_evidence(evidence, event["variant_identity"], status, "terminal execution evidence", response.get("terminal_reason") if isinstance(response, Mapping) else None)
         elif evidence is not None:
             raise RunBackendError("non-completed terminal cannot carry execution evidence")
     if event["event_type"] in {"reference_before", "reference_after"}:
@@ -906,6 +928,9 @@ def _validate_journal(manifest: Mapping[str, Any], events: list[dict[str, Any]])
             evidence = event.get("execution_evidence")
             if event.get("transport_status") == "completed" and (not isinstance(evidence, Mapping) or {field: evidence.get(field) for field in _VARIANT_IDENTITY_FIELDS} != expected_identity):
                 raise RunBackendError("terminal evidence does not bind to manifest variant")
+            if event.get("transport_status") == "completed" and isinstance(evidence, Mapping):
+                response = event.get("public_response")
+                _validate_execution_evidence(evidence, expected_identity, response.get("status") if isinstance(response, Mapping) else None, "terminal execution evidence", response.get("terminal_reason") if isinstance(response, Mapping) else None)
             reference_unavailable = reference_required and event.get("transport_status") == "reference_unavailable" and event.get("error_class") in {"reference_before_unavailable", "reference_after_unavailable", "reference_contract_mismatch", "reference_contract_unavailable"}
             if "terminal" in entry or ("intent" not in entry and not reference_unavailable):
                 raise RunBackendError("terminal lacks a dispatch intent")
@@ -1140,7 +1165,7 @@ class RunService:
             try:
                 projected, usage, evidence = self._project_result(result, variant, strict_response_contract=manifest.get("schema_version") == _V2_MANIFEST_SCHEMA, suite=case["suite"])
             except RunBackendError:
-                projected, usage, transport, error = {"schema_version": "qveris-get-response/v1", "status": "invalid_public_response"}, "unknown", "failed", "runtime_evidence_invalid"
+                projected, usage, transport, error = {"schema_version": "get-response/v1", "status": "invalid_public_response"}, "unknown", "failed", "runtime_evidence_invalid"
         else:
             projected, usage = None, "unknown"
         result_status = projected.get("status") if projected is not None else None
@@ -1207,8 +1232,8 @@ class RunService:
     def _project_result(result: Any, variant: Mapping[str, Any], *, strict_response_contract: bool = False, suite: str | None = None) -> tuple[dict[str, Any] | None, Mapping[str, Any] | str, dict[str, Any]]:
         if type(result) is not PublicGetResult:
             raise RunBackendError("GET adapter must return PublicGetResult, not a bare response")
-        evidence = _evidence_projection(result.execution_evidence, variant)
         response, usage = RunService._project_response(result.public_response, strict_response_contract=strict_response_contract, suite=suite)
+        evidence = _evidence_projection(result.execution_evidence, variant, response.get("status") if response is not None else None, response.get("terminal_reason") if response is not None else None)
         return response, usage, evidence
 
     @staticmethod
@@ -1237,18 +1262,18 @@ class RunService:
                 if "meta" in response and (not isinstance(response["meta"], Mapping) or set(response["meta"]) != {"usage"}):
                     raise RunBackendError("invalid public GET response")
             except (RunBackendError, ResponseContractError):
-                projected = {"schema_version": "qveris-get-response/v1", "status": "invalid_public_response"}
+                projected = {"schema_version": "get-response/v1", "status": "invalid_public_response"}
             meta = response.get("meta")
             usage_raw = meta.get("usage") if isinstance(meta, Mapping) and set(meta) == {"usage"} else None
         else:
-            return {"schema_version": "qveris-get-response/v1", "status": "invalid_public_response"}, "unknown"
+            return {"schema_version": "get-response/v1", "status": "invalid_public_response"}, "unknown"
         try:
             _reject_sensitive({key: value for key, value in projected.items() if key != "meta"})
             if "data" in projected:
                 RunService._validate_public_data(projected["data"])
             _canonical(projected)
         except RunBackendError:
-            projected = {"schema_version": "qveris-get-response/v1", "status": "invalid_public_response"}
+            projected = {"schema_version": "get-response/v1", "status": "invalid_public_response"}
         usage = {}
         if isinstance(usage_raw, Mapping) and set(usage_raw).issubset(_USAGE):
             for key, value in usage_raw.items():

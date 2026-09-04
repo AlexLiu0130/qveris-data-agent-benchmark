@@ -16,13 +16,15 @@ Natural-language query -> one public get -> structured response -> scorer
 
 历史行情 v2 不声称供应商授权、再分发权或官方交易所地位；严格双源授权核对是后续升级项。单一完整、可追溯的公开来源可构成一个候选变体；若完整来源之间存在差异，保留各自完整且来源一致的变体，不平均也不跨源拼接。
 
-本地确定性 Runner、Scorer 和只读 Arena HTTP/SSE 投影已实现。`v2_compiler` 会将 v0.2 candidate 与 v2 Oracle 编译为 `run-manifest-template.v2.json` 和 `oracle-bundle.v2.json`；提供真实的 Variant 身份及 realtime reference contract 后才可生成可运行的 v2 Manifest。`v1` 独立 Manifest / `oracle-bundle/v1` 仅作 legacy 兼容。真实 QVeris Gateway 尚未接入或验证，因此尚未对本 300 题产生正式评测、Case Pass 或榜单，亦不构成生产部署。
+本地确定性 Runner、Scorer 和只读 Arena HTTP/SSE 投影已实现。`v2_compiler` 会将 v0.2 candidate 与 v2 Oracle 编译为 `run-manifest-template.v2.json` 和 `oracle-bundle.v2.json`；提供真实的 Variant 身份及 realtime reference contract 后才可生成可运行的 v2 Manifest。QVeris Model Gateway 与 Tool client 已接入；AAPL quote 已完成一次单次 live smoke（一次模型调用、一次 Tool execution、严格结构化响应）。该单样本不证明三条开放路由稳定，不证明历史行情或财报已获 runtime 准入，也不构成本 300 题的正式评测、Case Pass、榜单或生产部署。`v1` 独立 Manifest / `oracle-bundle/v1` 仅作 legacy 兼容。
+
+84 格工具盘点中的 `financial.direct_line_items.specified_period.v1` 只在已有规范化回包的边界内做确定性字段投影：语义层先将用户用语解析为规范字段和唯一所属三表，再只调用一项相应 Tool；跨三表请求必须拒绝，投影层不猜字段别名、不透传原始供应商字段。当前仅 SZSE 三表和 HKEX 的 FIU 13 个利润表字段有该投影证据；港股仅限 00700.HK FY2024，其他市场仍是待补 mapper 的 `gap`，均未运行时接入。
 
 ## 运行合同
 
 - 每个 evaluation cell：`agent_variant × get_variant × case × trial`。
 - 每个 cell 仅一个 Agent、一次公开 `get`、一个结构化输出；禁止 `Search` 与 `Inspect`。
-- `get` 内部模型调用必须走 QVeris Gateway；这是设计要求，当前仓库尚未实现或验证此门禁。
+- `get` 内部模型调用必须走 QVeris Gateway；固定模型配置与禁止静默 provider fallback 已接入。AAPL quote 的一次单次 live smoke 验证了该路径，但不构成三条开放路由稳定性或正式 benchmark 完成的证明。
 - 合法响应状态：`success`、`partial`、`needs_clarification`、`unsupported`、`no_data`、`error`。`error` 不能是正确预期。
 
 ## 四项指标
@@ -42,7 +44,7 @@ Benchmark、Runner、Scorer 与 Arena 统一公开指标名为 `end_to_end_laten
 
 - [`benchmarks/`](benchmarks/README.md)：候选题库、版本清单和题库验证说明。
 - [`runner/`](runner/README.md)：已实现的本地 Runner、Scorer 和 Arena 的运行与记录合同。
-- [`get/`](get/README.md)：未来自研公开 `get` 的响应合同；自研 `get` 尚未实现。
+- [`get/`](get/README.md)：已实现的 injected public `get` adapter 与响应合同；QVeris Model Gateway 与 Tool client 已接入，且 AAPL quote 已有一次单次 live smoke。
 - [`docs/architecture.md`](docs/architecture.md)：责任边界与完整数据流。
 
 禁止提交凭据、token、原始供应商响应、原始运行结果、私有 Oracle 快照，或任何 paid pilot / provider probe 资产。
