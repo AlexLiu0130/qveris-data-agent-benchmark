@@ -1,0 +1,11 @@
+{
+  "schema_version": "query-resolution-policy/v2",
+  "purpose": "Score natural-language user queries without converting ordinary entity recognition into avoidable clarification.",
+  "rules": {
+    "common_entity_default": "Resolve a well-known issuer to its common primary listing unless the query names a conflicting market or code.",
+    "multi_market": "When multiple market interpretations are equally reasonable, retain each complete source-coherent answer as an accepted variant.",
+    "needs_clarification": "Use only when no concrete entity/time/meaning can be resolved without a material assumption.",
+    "historical_month_k": "Month-K takes precedence. Query dates locate the containing natural month; Oracle discloses resolved full-month window.",
+    "financial": "Success cases request 1-6 directly reported fields from the same issuer, report, statement, period, consolidation scope, currency, and unit family. No cross-statement combination, complete statement, comparison, ratio, growth, calculation, or inference."
+  }
+}

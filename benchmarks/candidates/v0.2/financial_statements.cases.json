@@ -1,0 +1,1676 @@
+[
+  {
+    "case_id": "FS-001",
+    "suite": "financial_statements",
+    "query": "贵州茅台 2024 年的营业收入和营业总成本分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-600519-fy2024-consolidated-income-statement",
+      "assertion_ids": [
+        "is-002",
+        "is-004"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-002",
+    "suite": "financial_statements",
+    "query": "宁德时代 2024 年末货币资金、交易性金融资产和应收账款分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-300750-fy2024-consolidated-balance-sheet",
+      "assertion_ids": [
+        "bs-001",
+        "bs-002",
+        "bs-004"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-003",
+    "suite": "financial_statements",
+    "query": "美的集团 2024 年销售商品、提供劳务收到的现金、收到的税费返还、收到其他与经营活动有关的现金和经营活动现金流入小计分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-000333-fy2024-consolidated-cash-flow-statement",
+      "assertion_ids": [
+        "cf-001",
+        "cf-005",
+        "cf-006",
+        "cf-007"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-004",
+    "suite": "financial_statements",
+    "query": "贵州茅台 2024 年的营业总成本、营业成本和税金及附加分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-600519-fy2024-consolidated-income-statement",
+      "assertion_ids": [
+        "is-004",
+        "is-005",
+        "is-008"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-005",
+    "suite": "financial_statements",
+    "query": "宁德时代 2024 年末应收账款、应收款项融资和存货分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-300750-fy2024-consolidated-balance-sheet",
+      "assertion_ids": [
+        "bs-004",
+        "bs-005",
+        "bs-009"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-006",
+    "suite": "financial_statements",
+    "query": "美的集团 2024 年经营活动现金流入小计、购买商品和接受劳务支付的现金、支付给职工以及为职工支付的现金、支付的各项税费和支付其他与经营活动有关的现金分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-000333-fy2024-consolidated-cash-flow-statement",
+      "assertion_ids": [
+        "cf-007",
+        "cf-008",
+        "cf-011",
+        "cf-012",
+        "cf-013"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-007",
+    "suite": "financial_statements",
+    "query": "贵州茅台 2024 年的营业成本、销售费用、管理费用和研发费用分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-600519-fy2024-consolidated-income-statement",
+      "assertion_ids": [
+        "is-005",
+        "is-009",
+        "is-010",
+        "is-011"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-008",
+    "suite": "financial_statements",
+    "query": "宁德时代 2024 年末存货、合同资产和其他流动资产分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-300750-fy2024-consolidated-balance-sheet",
+      "assertion_ids": [
+        "bs-009",
+        "bs-010",
+        "bs-012"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-009",
+    "suite": "financial_statements",
+    "query": "美的集团 2024 年经营活动现金流入小计、经营活动现金流出小计和经营活动产生的现金流量净额分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-000333-fy2024-consolidated-cash-flow-statement",
+      "assertion_ids": [
+        "cf-007",
+        "cf-014",
+        "cf-015"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-010",
+    "suite": "financial_statements",
+    "query": "贵州茅台 2024 年销售费用和管理费用分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-600519-fy2024-consolidated-income-statement",
+      "assertion_ids": [
+        "is-009",
+        "is-010"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-011",
+    "suite": "financial_statements",
+    "query": "宁德时代 2024 年末流动资产合计、非流动资产合计和资产总计分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-300750-fy2024-consolidated-balance-sheet",
+      "assertion_ids": [
+        "bs-013",
+        "bs-026",
+        "bs-027"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-012",
+    "suite": "financial_statements",
+    "query": "美的集团 2024 年收回投资收到的现金、取得投资收益所收到的现金、处置固定资产和无形资产等长期资产收回的现金净额、处置子公司及其他营业单位收到的现金净额分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-000333-fy2024-consolidated-cash-flow-statement",
+      "assertion_ids": [
+        "cf-016",
+        "cf-017",
+        "cf-018",
+        "cf-019"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-013",
+    "suite": "financial_statements",
+    "query": "贵州茅台 2024 年管理费用、研发费用和财务费用分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-600519-fy2024-consolidated-income-statement",
+      "assertion_ids": [
+        "is-010",
+        "is-011",
+        "is-012"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-014",
+    "suite": "financial_statements",
+    "query": "宁德时代 2024 年末短期借款、长期借款和应付债券分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-300750-fy2024-consolidated-balance-sheet",
+      "assertion_ids": [
+        "bs-028",
+        "bs-040",
+        "bs-041"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-015",
+    "suite": "financial_statements",
+    "query": "美的集团 2024 年收回投资收到的现金、取得投资收益所收到的现金、投资活动现金流入小计和投资支付的现金分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-000333-fy2024-consolidated-cash-flow-statement",
+      "assertion_ids": [
+        "cf-016",
+        "cf-017",
+        "cf-021",
+        "cf-023"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-016",
+    "suite": "financial_statements",
+    "query": "贵州茅台 2024 年研发费用、其他收益和投资收益分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-600519-fy2024-consolidated-income-statement",
+      "assertion_ids": [
+        "is-011",
+        "is-015",
+        "is-016"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-017",
+    "suite": "financial_statements",
+    "query": "宁德时代 2024 年末应付票据、应付账款、合同负债和应付职工薪酬分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-300750-fy2024-consolidated-balance-sheet",
+      "assertion_ids": [
+        "bs-030",
+        "bs-031",
+        "bs-032",
+        "bs-033"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-018",
+    "suite": "financial_statements",
+    "query": "美的集团 2024 年取得借款收到的现金、偿还债务支付的现金、分配股利、利润或偿付利息支付的现金和筹资活动产生或使用的现金流量净额分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-000333-fy2024-consolidated-cash-flow-statement",
+      "assertion_ids": [
+        "cf-029",
+        "cf-032",
+        "cf-033",
+        "cf-037"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-019",
+    "suite": "financial_statements",
+    "query": "贵州茅台 2024 年净利润、归属于母公司股东的净利润和少数股东损益分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-600519-fy2024-consolidated-income-statement",
+      "assertion_ids": [
+        "is-025",
+        "is-027",
+        "is-028"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-020",
+    "suite": "financial_statements",
+    "query": "宁德时代 2024 年末流动负债合计、非流动负债合计和负债合计分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-300750-fy2024-consolidated-balance-sheet",
+      "assertion_ids": [
+        "bs-039",
+        "bs-048",
+        "bs-049"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-021",
+    "suite": "financial_statements",
+    "query": "美的集团 2024 年年初现金及现金等价物余额、现金及现金等价物净减少或增加额、汇率变动对现金及现金等价物的影响和年末现金及现金等价物余额分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-000333-fy2024-consolidated-cash-flow-statement",
+      "assertion_ids": [
+        "cf-040",
+        "cf-039",
+        "cf-038",
+        "cf-041"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-022",
+    "suite": "financial_statements",
+    "query": "贵州茅台 2024 年基本每股收益和稀释每股收益分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-600519-fy2024-consolidated-income-statement",
+      "assertion_ids": [
+        "is-036",
+        "is-037"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-023",
+    "suite": "financial_statements",
+    "query": "宁德时代 2024 年末股本、资本公积、未分配利润和归属于母公司所有者权益合计分别是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-300750-fy2024-consolidated-balance-sheet",
+      "assertion_ids": [
+        "bs-050",
+        "bs-051",
+        "bs-056",
+        "bs-057"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-024",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年现金产生自经营活动、支付的所得税和经营活动产生的现金流量净额分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-cash-flows",
+      "assertion_ids": [
+        "cf-001",
+        "cf-002",
+        "cf-003"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-025",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年增值服务收入、营销服务收入、金融科技及企业服务收入和其他业务收入分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-income-statement",
+      "assertion_ids": [
+        "is-001",
+        "is-002",
+        "is-003",
+        "is-004"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-026",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年末现金及现金等价物、流动定期存款、受限制现金和流动资产分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-statement-of-financial-position",
+      "assertion_ids": [
+        "bs-024",
+        "bs-022",
+        "bs-023",
+        "bs-025"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-027",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年购建物业、设备及相关预付款支付的现金、购建无形资产及相关预付款支付的现金、购入联营公司投资支付的现金和定期存款到期收到的现金分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-cash-flows",
+      "assertion_ids": [
+        "cf-006",
+        "cf-008",
+        "cf-010",
+        "cf-022"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-028",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年营业收入、营业成本和毛利分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-income-statement",
+      "assertion_ids": [
+        "is-005",
+        "is-006",
+        "is-007"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-029",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年末流动资产、非流动资产和总资产分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-statement-of-financial-position",
+      "assertion_ids": [
+        "bs-025",
+        "bs-015",
+        "bs-026"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-030",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年取得短期借款收到的现金、偿还短期借款支付的现金、取得长期借款收到的现金、偿还长期借款支付的现金和筹资活动所用现金流量净额分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-cash-flows",
+      "assertion_ids": [
+        "cf-027",
+        "cf-028",
+        "cf-029",
+        "cf-030",
+        "cf-044"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-031",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年销售及市场推广开支、一般及行政开支和营业利润分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-income-statement",
+      "assertion_ids": [
+        "is-008",
+        "is-009",
+        "is-011"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-032",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年末存货、应收账款、预付款项、按金及其他资产和以公允价值计量且其变动计入损益的流动金融资产分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-statement-of-financial-position",
+      "assertion_ids": [
+        "bs-016",
+        "bs-017",
+        "bs-018",
+        "bs-020"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-033",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年年初现金及现金等价物、现金及现金等价物净增加额、汇兑损失和年末现金及现金等价物分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-cash-flows",
+      "assertion_ids": [
+        "cf-046",
+        "cf-045",
+        "cf-047",
+        "cf-048"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-034",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年除税前利润、所得税费用、年度利润和归属于公司权益持有人的利润分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-income-statement",
+      "assertion_ids": [
+        "is-016",
+        "is-017",
+        "is-018",
+        "is-019"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-035",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年末流动负债、非流动负债、负债总额和权益总额分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-statement-of-financial-position",
+      "assertion_ids": [
+        "bs-053",
+        "bs-043",
+        "bs-054",
+        "bs-035"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-036",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年末现金及现金等价物余额是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-cash-flows",
+      "assertion_ids": [
+        "cf-048"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-037",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年基本每股收益和稀释每股收益分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-income-statement",
+      "assertion_ids": [
+        "is-022",
+        "is-023"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-038",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年末物业、设备及器材、无形资产、联营公司投资和非流动定期存款分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-statement-of-financial-position",
+      "assertion_ids": [
+        "bs-001",
+        "bs-006",
+        "bs-007",
+        "bs-014"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-039",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年支付的所得税、支付的利息、向公司股东支付的股息和向非控制性权益持有人支付的股息分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-cash-flows",
+      "assertion_ids": [
+        "cf-002",
+        "cf-034",
+        "cf-042",
+        "cf-043"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-040",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年投资及其他收益净额、利息收入、财务成本和应占联营公司及合营公司利润净额分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-income-statement",
+      "assertion_ids": [
+        "is-012",
+        "is-013",
+        "is-014",
+        "is-015"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-041",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年末短期借款、应付票据、应付账款和其他应付款及应计费用分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-statement-of-financial-position",
+      "assertion_ids": [
+        "bs-046",
+        "bs-047",
+        "bs-044",
+        "bs-045"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-042",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年购建物业、设备及相关预付款支付的现金、购建无形资产及相关预付款支付的现金、购入联营公司投资支付的现金和存入三个月以上定期存款支付的现金分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-cash-flows",
+      "assertion_ids": [
+        "cf-006",
+        "cf-008",
+        "cf-010",
+        "cf-023"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-043",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年增值服务收入是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-income-statement",
+      "assertion_ids": [
+        "is-001"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-044",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年末归属于公司权益持有人的权益、非控制性权益和权益总额分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-statement-of-financial-position",
+      "assertion_ids": [
+        "bs-033",
+        "bs-034",
+        "bs-035"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-045",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年向公司股东支付的股息、回购股份支付的现金、行使购股权发行普通股收到的现金和筹资活动所用现金流量净额分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-cash-flows",
+      "assertion_ids": [
+        "cf-042",
+        "cf-035",
+        "cf-036",
+        "cf-044"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-081",
+    "suite": "financial_statements",
+    "query": "帮我查贵州茅台的营业收入，按 A 股口径。",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "needs_clarification",
+    "evaluation_mode": "state_only",
+    "data_oracle": {
+      "state": "needs_clarification"
+    }
+  },
+  {
+    "case_id": "FS-082",
+    "suite": "financial_statements",
+    "query": "帮我查腾讯 2024 年的资产总计，按 A 股口径。",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "needs_clarification",
+    "evaluation_mode": "state_only",
+    "data_oracle": {
+      "state": "needs_clarification"
+    }
+  },
+  {
+    "case_id": "FS-083",
+    "suite": "financial_statements",
+    "query": "请给我贵州茅台 2027 年经营活动产生的现金流量净额。",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "no_data",
+    "evaluation_mode": "state_only",
+    "data_oracle": {
+      "state": "no_data"
+    }
+  },
+  {
+    "case_id": "FS-084",
+    "suite": "financial_statements",
+    "query": "贵州茅台 2024 年销售费用是多少？",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "cn-600519-fy2024-consolidated-income-statement",
+      "assertion_ids": [
+        "is-009"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-085",
+    "suite": "financial_statements",
+    "query": "帮我查星河智造科技有限公司 2024 年营业收入。",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "no_data",
+    "evaluation_mode": "state_only",
+    "data_oracle": {
+      "state": "no_data"
+    }
+  },
+  {
+    "case_id": "FS-086",
+    "suite": "financial_statements",
+    "query": "帮我查宁德时代的资产总计。",
+    "language": "zh-CN",
+    "market": "CN",
+    "expected_status": "needs_clarification",
+    "evaluation_mode": "state_only",
+    "data_oracle": {
+      "state": "needs_clarification"
+    }
+  },
+  {
+    "case_id": "FS-087",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年末总资产和负债及权益总额分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-statement-of-financial-position",
+      "assertion_ids": [
+        "bs-026",
+        "bs-055"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-088",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2027 年经营活动产生的现金流量净额是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "no_data",
+    "evaluation_mode": "state_only",
+    "data_oracle": {
+      "state": "no_data"
+    }
+  },
+  {
+    "case_id": "FS-089",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年营业收入、营业成本、毛利和营业利润分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-income-statement",
+      "assertion_ids": [
+        "is-005",
+        "is-006",
+        "is-007",
+        "is-011"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-090",
+    "suite": "financial_statements",
+    "query": "帮我查恒星量子医疗有限公司 2024 年末存货是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "no_data",
+    "evaluation_mode": "state_only",
+    "data_oracle": {
+      "state": "no_data"
+    }
+  },
+  {
+    "case_id": "FS-091",
+    "suite": "financial_statements",
+    "query": "腾讯控股的营业收入是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "needs_clarification",
+    "evaluation_mode": "state_only",
+    "data_oracle": {
+      "state": "needs_clarification"
+    }
+  },
+  {
+    "case_id": "FS-092",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年末现金及现金等价物、流动定期存款和非流动定期存款分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-statement-of-financial-position",
+      "assertion_ids": [
+        "bs-024",
+        "bs-022",
+        "bs-014"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-097",
+    "suite": "financial_statements",
+    "query": "腾讯控股 2025 年末短期借款、长期借款和应付票据分别是多少？",
+    "language": "zh-CN",
+    "market": "HK",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-hk-0700-fy2025-statement-of-financial-position",
+      "assertion_ids": [
+        "bs-046",
+        "bs-036",
+        "bs-047"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-046",
+    "suite": "financial_statements",
+    "query": "苹果 FY2025 利润表里的产品销售、服务销售、总销售额和毛利分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "financial-statements-us-aapl-fy2025-income-statement-v1",
+      "assertion_ids": [
+        "aapl-is-2025-products",
+        "aapl-is-2025-services",
+        "aapl-is-2025-total-net-sales",
+        "aapl-is-2025-gross-margin"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-047",
+    "suite": "financial_statements",
+    "query": "微软截至 2026 年 6 月 30 日资产负债表中的现金及现金等价物、短期投资、应收账款净额和存货分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-us-msft-fy2026-balance-sheet-v2",
+      "assertion_ids": [
+        "bs26-cash",
+        "bs26-sti",
+        "bs26-ar",
+        "bs26-inventory"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-048",
+    "suite": "financial_statements",
+    "query": "特斯拉 2025 年现金流量表中的净利润、折旧摊销及减值、股份薪酬和经营活动现金流量净额分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "FS-US-TSLA-FY2025-CONSOLIDATED-CASH-FLOW-STATEMENT",
+      "assertion_ids": [
+        "cf-001",
+        "cf-002",
+        "cf-003",
+        "cf-015"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-049",
+    "suite": "financial_statements",
+    "query": "英伟达截至 2026 年 1 月 25 日财年的利润表中，营收、营业成本、毛利、研发费用和营业利润分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "FS-NVDA-FY2026-consolidated-income",
+      "assertion_ids": [
+        "is-01",
+        "is-02",
+        "is-03",
+        "is-04",
+        "is-07"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-050",
+    "suite": "financial_statements",
+    "query": "苹果截至 2025 年 9 月 27 日资产负债表中的现金及现金等价物、流动有价证券、应收账款净额和存货分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "financial-statements-us-aapl-fy2025-balance-sheet-v1",
+      "assertion_ids": [
+        "aapl-bs-2025-cash",
+        "aapl-bs-2025-marketable-securities-current",
+        "aapl-bs-2025-ar",
+        "aapl-bs-2025-inventories"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-051",
+    "suite": "financial_statements",
+    "query": "微软 FY2026 现金流量表里的经营活动、投资活动和筹资活动现金流量净额分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-us-msft-fy2026-cash-flow-statement-v2",
+      "assertion_ids": [
+        "cf26-cfo",
+        "cf26-cfi",
+        "cf26-cff"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-052",
+    "suite": "financial_statements",
+    "query": "特斯拉 2025 年利润表里汽车销售收入、汽车监管积分收入、汽车租赁收入、汽车业务收入合计和能源发电及储能收入分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "FS-US-TSLA-FY2025-CONSOLIDATED-INCOME-STATEMENT",
+      "assertion_ids": [
+        "is-001",
+        "is-002",
+        "is-003",
+        "is-004",
+        "is-005"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-053",
+    "suite": "financial_statements",
+    "query": "英伟达截至 2026 年 1 月 25 日资产负债表中的现金及现金等价物、有价及权益证券、应收账款净额和存货分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "FS-NVDA-FY2026-consolidated-balance-sheet",
+      "assertion_ids": [
+        "bs-01",
+        "bs-02",
+        "bs-03",
+        "bs-04"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-054",
+    "suite": "financial_statements",
+    "query": "苹果 FY2025 现金流量表中经营活动产生的现金、购置不动产厂房和设备支付的现金、支付的股利和回购普通股分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "financial-statements-us-aapl-fy2025-cash-flow-statement-v1",
+      "assertion_ids": [
+        "aapl-cf-2025-cfo",
+        "aapl-cf-2025-ppe",
+        "aapl-cf-2025-dividends",
+        "aapl-cf-2025-repurchase"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-055",
+    "suite": "financial_statements",
+    "query": "微软 FY2026 利润表中的收入、收入成本、毛利和营业利润分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-us-msft-fy2026-income-statement-v2",
+      "assertion_ids": [
+        "is26-revenue",
+        "is26-cost",
+        "is26-gross",
+        "is26-op"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-056",
+    "suite": "financial_statements",
+    "query": "特斯拉截至 2025 年末资产负债表中的存货、流动资产合计和资产总计分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "FS-US-TSLA-FY2025-CONSOLIDATED-BALANCE-SHEET",
+      "assertion_ids": [
+        "bs-004",
+        "bs-006",
+        "bs-014"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-057",
+    "suite": "financial_statements",
+    "query": "英伟达截至 2026 年 1 月 25 日财年的现金流量表中，经营活动、投资活动和筹资活动现金流量净额分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "FS-NVDA-FY2026-consolidated-cash-flow",
+      "assertion_ids": [
+        "cf-13",
+        "cf-23",
+        "cf-31"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-058",
+    "suite": "financial_statements",
+    "query": "苹果 FY2025 利润表中的研发费用、销售管理费用和营业费用合计分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "financial-statements-us-aapl-fy2025-income-statement-v1",
+      "assertion_ids": [
+        "aapl-is-2025-rnd",
+        "aapl-is-2025-sga",
+        "aapl-is-2025-total-opex"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-059",
+    "suite": "financial_statements",
+    "query": "微软截至 2026 年 6 月 30 日资产负债表中的应收账款净额、不动产和设备净额及资产总计分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-us-msft-fy2026-balance-sheet-v2",
+      "assertion_ids": [
+        "bs26-ar",
+        "bs26-ppe",
+        "bs26-assets"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-060",
+    "suite": "financial_statements",
+    "query": "特斯拉 2025 年现金流量表中购置不动产和设备、购买投资、投资到期收回和投资活动现金流量净额分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "FS-US-TSLA-FY2025-CONSOLIDATED-CASH-FLOW-STATEMENT",
+      "assertion_ids": [
+        "cf-016",
+        "cf-017",
+        "cf-018",
+        "cf-021"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-061",
+    "suite": "financial_statements",
+    "query": "英伟达 FY2026 利润表中的研发费用、销售管理费用和营业费用合计分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "FS-NVDA-FY2026-consolidated-income",
+      "assertion_ids": [
+        "is-04",
+        "is-05",
+        "is-06"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-062",
+    "suite": "financial_statements",
+    "query": "苹果截至 2025 年 9 月 27 日资产负债表中的流动资产合计、不动产厂房和设备净额、资产总计、负债总计、股东权益总计和负债及股东权益总计分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "financial-statements-us-aapl-fy2025-balance-sheet-v1",
+      "assertion_ids": [
+        "aapl-bs-2025-total-current-assets",
+        "aapl-bs-2025-ppe",
+        "aapl-bs-2025-total-assets",
+        "aapl-bs-2025-total-liabilities",
+        "aapl-bs-2025-total-equity",
+        "aapl-bs-2025-total-liabilities-and-equity"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-063",
+    "suite": "financial_statements",
+    "query": "微软 FY2026 现金流量表中购置不动产和设备、收购及其他资产、购买投资和出售投资所得现金分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-us-msft-fy2026-cash-flow-statement-v2",
+      "assertion_ids": [
+        "cf26-capex",
+        "cf26-acquisitions",
+        "cf26-purchases",
+        "cf26-sales"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-064",
+    "suite": "financial_statements",
+    "query": "特斯拉 2025 年利润表中的总收入、收入成本、毛利、研发费用、销售管理费用和净利润分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "FS-US-TSLA-FY2025-CONSOLIDATED-INCOME-STATEMENT",
+      "assertion_ids": [
+        "is-007",
+        "is-013",
+        "is-014",
+        "is-015",
+        "is-016",
+        "is-025"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-065",
+    "suite": "financial_statements",
+    "query": "英伟达截至 2026 年 1 月 25 日的存货是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "FS-NVDA-FY2026-consolidated-balance-sheet",
+      "assertion_ids": [
+        "bs-04"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-066",
+    "suite": "financial_statements",
+    "query": "苹果 FY2025 现金流量表中的支付股利、发行定期债务所得现金和偿还定期债务分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "financial-statements-us-aapl-fy2025-cash-flow-statement-v1",
+      "assertion_ids": [
+        "aapl-cf-2025-dividends",
+        "aapl-cf-2025-term-debt-issued",
+        "aapl-cf-2025-term-debt-repaid"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-067",
+    "suite": "financial_statements",
+    "query": "微软 FY2026 利润表中的研发费用、销售和市场营销费用及一般和行政费用分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-us-msft-fy2026-income-statement-v2",
+      "assertion_ids": [
+        "is26-rd",
+        "is26-sm",
+        "is26-ga"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-068",
+    "suite": "financial_statements",
+    "query": "特斯拉截至 2025 年末资产负债表中的负债总计、股东权益总计和负债及权益总计分别是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "FS-US-TSLA-FY2025-CONSOLIDATED-BALANCE-SHEET",
+      "assertion_ids": [
+        "bs-023",
+        "bs-030",
+        "bs-032"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-093",
+    "suite": "financial_statements",
+    "query": "苹果 FY2027 经营活动产生的现金流量净额是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "no_data",
+    "evaluation_mode": "state_only",
+    "data_oracle": {
+      "state": "no_data"
+    }
+  },
+  {
+    "case_id": "FS-094",
+    "suite": "financial_statements",
+    "query": "苹果 FY2025 的研发费用是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "financial-statements-us-aapl-fy2025-income-statement-v1",
+      "assertion_ids": [
+        "aapl-is-2025-rnd"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-095",
+    "suite": "financial_statements",
+    "query": "星河智造科技有限公司 2024 年营业收入是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "no_data",
+    "evaluation_mode": "state_only",
+    "data_oracle": {
+      "state": "no_data"
+    }
+  },
+  {
+    "case_id": "FS-096",
+    "suite": "financial_statements",
+    "query": "苹果的营业收入是多少？",
+    "language": "zh-CN",
+    "market": "US",
+    "expected_status": "needs_clarification",
+    "evaluation_mode": "state_only",
+    "data_oracle": {
+      "state": "needs_clarification"
+    }
+  },
+  {
+    "case_id": "FS-069",
+    "suite": "financial_statements",
+    "query": "丰田汽车 FY2026 财年的经营、投资和筹资活动产生的现金流量净额分别是多少？",
+    "language": "zh-CN",
+    "market": "JP",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement",
+      "assertion_ids": [
+        "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-19",
+        "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-29",
+        "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-37"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-070",
+    "suite": "financial_statements",
+    "query": "丰田汽车 FY2026 财年的产品销售、金融服务收入和销售及其他收入分别是多少？",
+    "language": "zh-CN",
+    "market": "JP",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-jp-toyota-7203-fy2026-income-statement",
+      "assertion_ids": [
+        "fs-jp-toyota-7203-fy2026-income-statement-row-01",
+        "fs-jp-toyota-7203-fy2026-income-statement-row-02",
+        "fs-jp-toyota-7203-fy2026-income-statement-row-03"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-071",
+    "suite": "financial_statements",
+    "query": "丰田汽车截至 2026 年 3 月 31 日的现金及现金等价物、应收账款及其他应收款、存货和资产总额分别是多少？",
+    "language": "zh-CN",
+    "market": "JP",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-jp-toyota-7203-fy2026-balance-sheet",
+      "assertion_ids": [
+        "fs-jp-toyota-7203-fy2026-balance-sheet-row-01",
+        "fs-jp-toyota-7203-fy2026-balance-sheet-row-02",
+        "fs-jp-toyota-7203-fy2026-balance-sheet-row-05",
+        "fs-jp-toyota-7203-fy2026-balance-sheet-row-27"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-072",
+    "suite": "financial_statements",
+    "query": "丰田汽车 FY2026 财年购置固定资产（不含租赁给他人的设备）、购置租赁给他人的设备和购置无形资产的支出分别是多少？",
+    "language": "zh-CN",
+    "market": "JP",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement",
+      "assertion_ids": [
+        "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-20",
+        "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-21",
+        "fs-jp-toyota-7203-fy2026-cash-flow-statement-row-24"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-073",
+    "suite": "financial_statements",
+    "query": "壳牌 2025 年的营业收入、收入及其他收入合计和税前利润分别是多少？",
+    "language": "zh-CN",
+    "market": "GB",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "FS-GB-SHEL-2025-income",
+      "assertion_ids": [
+        "income-revenue",
+        "income-total-revenue-other-income",
+        "income-before-tax"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-074",
+    "suite": "financial_statements",
+    "query": "壳牌截至 2025 年末的现金及现金等价物、存货、流动贸易及其他应收款和资产总额分别是多少？",
+    "language": "zh-CN",
+    "market": "GB",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "FS-GB-SHEL-2025-balance-sheet",
+      "assertion_ids": [
+        "bs-cash",
+        "bs-inventories",
+        "bs-current-receivables",
+        "bs-total-assets"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-075",
+    "suite": "financial_statements",
+    "query": "壳牌 2025 年经营、投资和筹资活动产生的现金流量分别是多少？",
+    "language": "zh-CN",
+    "market": "GB",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "FS-GB-SHEL-2025-cash-flow",
+      "assertion_ids": [
+        "cf-operating",
+        "cf-investing",
+        "cf-financing"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-076",
+    "suite": "financial_statements",
+    "query": "壳牌 2025 年年报中披露的研发费用、勘探费用和折旧、耗竭及摊销费用分别是多少？",
+    "language": "zh-CN",
+    "market": "GB",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "FS-GB-SHEL-2025-income",
+      "assertion_ids": [
+        "income-research-development",
+        "income-exploration",
+        "income-dda"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-077",
+    "suite": "financial_statements",
+    "query": "SAP 截至 2025 年末的现金及现金等价物、流动资产总额和资产总额分别是多少？",
+    "language": "zh-CN",
+    "market": "DE",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "sap-de-fy2025-consolidated-financial-position",
+      "assertion_ids": [
+        "position.cash_and_cash_equivalents",
+        "position.total_current_assets",
+        "position.total_assets"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-078",
+    "suite": "financial_statements",
+    "query": "SAP 2025 年经营、投资和筹资活动产生的现金流量净额分别是多少？",
+    "language": "zh-CN",
+    "market": "DE",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "sap-de-fy2025-consolidated-cash-flow-statement",
+      "assertion_ids": [
+        "cash_flow.operating",
+        "cash_flow.investing",
+        "cash_flow.financing"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-079",
+    "suite": "financial_statements",
+    "query": "SAP 2025 年的云业务收入、软件许可证收入和软件支持收入分别是多少？",
+    "language": "zh-CN",
+    "market": "DE",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "sap-de-fy2025-consolidated-income-statement",
+      "assertion_ids": [
+        "income.cloud",
+        "income.software_licenses",
+        "income.software_support"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-080",
+    "suite": "financial_statements",
+    "query": "SAP 截至 2025 年末的流动合同负债、非流动合同负债、负债总额和权益总额分别是多少？",
+    "language": "zh-CN",
+    "market": "DE",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "sap-de-fy2025-consolidated-financial-position",
+      "assertion_ids": [
+        "position.current_contract_liabilities",
+        "position.noncurrent_contract_liabilities",
+        "position.total_liabilities",
+        "position.total_equity"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-098",
+    "suite": "financial_statements",
+    "query": "丰田汽车 FY2027 财年的产品销售、金融服务收入和销售及其他收入分别是多少？",
+    "language": "zh-CN",
+    "market": "JP",
+    "expected_status": "no_data",
+    "evaluation_mode": "state_only",
+    "data_oracle": {
+      "state": "no_data"
+    }
+  },
+  {
+    "case_id": "FS-099",
+    "suite": "financial_statements",
+    "query": "壳牌截至 2025 年末归属于 Shell plc 股东的权益、权益总额和负债总额分别是多少？",
+    "language": "zh-CN",
+    "market": "GB",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "FS-GB-SHEL-2025-balance-sheet",
+      "assertion_ids": [
+        "bs-shell-equity",
+        "bs-total-equity",
+        "bs-total-liabilities"
+      ]
+    }
+  },
+  {
+    "case_id": "FS-100",
+    "suite": "financial_statements",
+    "query": "SAP 2025 年持续经营业务的税前利润、所得税费用、税后利润和归属于母公司股东的利润分别是多少？",
+    "language": "zh-CN",
+    "market": "DE",
+    "expected_status": "success",
+    "evaluation_mode": "reported_fact_set",
+    "data_oracle": {
+      "oracle_id": "sap-de-fy2025-consolidated-income-statement",
+      "assertion_ids": [
+        "income.profit_before_tax_from_continuing_operations",
+        "income.income_tax_expense",
+        "income.profit_after_tax",
+        "income.total_attributable_to_owners"
+      ]
+    }
+  }
+]

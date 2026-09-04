@@ -1,0 +1,44 @@
+{
+  "schema_version": "benchmark-v2-manifest/v1",
+  "suite": "historical_price",
+  "status": "query_quality_v2_draft_review_blockers_corrected",
+  "candidate_files": [
+    {
+      "path": "candidates/v0.2/historical_price.cases.json",
+      "sha256": "3311198af2316c0cd11225a9d462d4948c6a3e4de2b29ce7d9e9ec974c17bb68"
+    },
+    {
+      "path": "oracles/v2/outputs/historical_price/oracles.json",
+      "sha256": "de23b72f280b7c45f83bf90841ce3568906b6964c3f9481f43013008462bef05"
+    },
+    {
+      "path": "oracles/v2/outputs/historical_price/evidence-receipts.json",
+      "sha256": "c6d91d5e7bf41b5a50d3dc500ac721950ab394b81d839b82034ca6ccc7a5964d"
+    },
+    {
+      "path": "oracles/v2/outputs/historical_price/review-ledger.json",
+      "sha256": "e84a01b187152d856f9c0b52c624a5a8d9245978d404065161716dfe40b47b1e"
+    }
+  ],
+  "policy_files": [
+    {
+      "path": "oracles/v2/query-resolution-policy.v2.json",
+      "sha256": "008c7435abf50ff7adb06b3a55b5e23e7b5ded018e8749ffc9292169a8db5364"
+    }
+  ],
+  "v1_bindings": [
+    {
+      "path": "oracles/v1/outputs/financial_statements/manifest.json",
+      "sha256": "585f410ad11ff3602742b5f5eb1fe56a0e7e325f1c98e325dc4db641589af1de"
+    },
+    {
+      "path": "oracles/v1/outputs/historical_price/oracles.json",
+      "sha256": "00b62c761d8bf27e9cae7fdc780ab9289dc6874d3b615c9f7e1b1c369024c5a6"
+    },
+    {
+      "path": "oracles/v1/outputs/realtime_quote/oracles.json",
+      "sha256": "f66cffd6531d1b2eac153b5a5244727114ae2691918716570a939bab279b8e6f"
+    }
+  ],
+  "oracle_receipt_policy": "Every accepted variant is source-coherent. Cross-market variants are independently bound to instrument, MIC, currency, price unit, and receipt; values must never be averaged or cross-listing-spliced."
+}

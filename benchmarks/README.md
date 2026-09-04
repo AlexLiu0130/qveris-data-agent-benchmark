@@ -1,6 +1,15 @@
 # Benchmark candidates
 
-`candidates/v0.1/` 是可审阅、可机读的 300 题候选包，不是已冻结的正式 Benchmark。
+`candidates/v0.2/` 是推荐检查版本：三个 Suite 各 100 题，且由 `oracles/v2/` 的最小 Oracle 投影/合同覆盖。`v0.1/` 与 `oracles/v1/` 保持不可变，作为 v2 引用的冻结基线，不应就地修改。
+
+- 财报 v2 每题问同一家公司、同一张表和同一报告期的 1–6 个原始报表直接字段；88 成功题逐一绑定已有 v1 assertion 的值、期间、币种和单位。
+- 历史行情 v2 将常见公司名按主上市地自动解析；82 成功题有数值变体，真正无法确定的场景才澄清。月 K 优先，日期只定位所在自然月并披露完整区间。
+- 实时行情 v2 的 90 成功题只冻结请求/语义合同，运行时再冻结动态数据；10 状态题有冻结答案。
+- `oracles/v2/validate_v2.py` 同时运行 v1 校验、检查 v0.1/v1 不变性、candidate/Oracle/manifest 哈希链、财报字段投影、历史来源和期间合同，以及实时运行时回执合同。
+
+`v0.2` 仍未接入 candidate 编译层、真实 QVeris Gateway 或正式榜单。
+
+## v0.1 archive
 
 - `historical_price.cases.json`：100 道历史行情题；v1 已冻结其中 50 道数值题（55 个公开可追溯、来源一致的完整变体）与 50 道状态 Oracle。数值冲突保留完整变体，禁止平均或跨源拼接；状态题不进入 Data Accuracy 分母。
 - `financial_statements.cases.json`：100 道财务报表题；80 道正常题映射至 27 条已冻结的 Data Oracle 记录（1,198 条断言），复签账本与 suite manifest 均已验证，可用于 Data Accuracy 数据评分；20 道边界题仅保留状态规则，不进入数值数据评分分母。本地 Runner/Scorer 框架已实现，但尚未接入候选题编译层与真实 QVeris Gateway，尚未产生正式评测分数或榜单。

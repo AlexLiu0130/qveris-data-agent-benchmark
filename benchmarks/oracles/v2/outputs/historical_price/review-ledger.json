@@ -1,0 +1,19 @@
+{
+  "schema_version": "review-ledger/v2",
+  "suite": "historical_price",
+  "status": "draft_v2_query_quality_review_blockers_corrected",
+  "decision": "Historical v2 Oracle corrections bind every accepted cross-market variant to its own instrument contract and receipt, reduce each month-K answer to one deterministic bar, complete JPX per-session evidence, and disclose Tencent lot-to-share conversion. Independent re-review remains required before formal release.",
+  "reviewed_at": "2026-09-04T08:56:00Z",
+  "artifact_bindings": {
+    "candidate_sha256": "3311198af2316c0cd11225a9d462d4948c6a3e4de2b29ce7d9e9ec974c17bb68",
+    "oracle_sha256": "de23b72f280b7c45f83bf90841ce3568906b6964c3f9481f43013008462bef05",
+    "evidence_receipts_sha256": "c6d91d5e7bf41b5a50d3dc500ac721950ab394b81d839b82034ca6ccc7a5964d",
+    "query_resolution_policy_sha256": "008c7435abf50ff7adb06b3a55b5e23e7b5ded018e8749ffc9292169a8db5364",
+    "review_scope": [
+      "cross_market_variant_binding",
+      "monthly_k_aggregation",
+      "jpx_daily_receipt_coverage",
+      "tencent_volume_unit_normalization"
+    ]
+  }
+}

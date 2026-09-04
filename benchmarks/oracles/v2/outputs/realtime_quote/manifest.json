@@ -1,0 +1,39 @@
+{
+  "schema_version": "benchmark-v2-manifest/v1",
+  "suite": "realtime_quote",
+  "status": "query_quality_v2_draft",
+  "candidate_files": [
+    {
+      "path": "candidates/v0.2/realtime_quote.cases.json",
+      "sha256": "c00ff1d79e147460c304c6c5764fd7802e172a9589314a09afda4c9de41c4085"
+    },
+    {
+      "path": "oracles/v2/outputs/realtime_quote/oracles.json",
+      "sha256": "04b39489f7220c0ff662606ccb3b6c7a1b3dbb04f4710d1dd21d4760b6399f76"
+    },
+    {
+      "path": "oracles/v2/schemas/realtime-runtime-receipt.v1.schema.json",
+      "sha256": "bb3d29eb92aa4e6d266757b1936b7710fab81c73a2cf231af2951820a8214ce0"
+    }
+  ],
+  "policy_files": [
+    {
+      "path": "oracles/v2/query-resolution-policy.v2.json",
+      "sha256": "008c7435abf50ff7adb06b3a55b5e23e7b5ded018e8749ffc9292169a8db5364"
+    }
+  ],
+  "v1_bindings": [
+    {
+      "path": "oracles/v1/outputs/financial_statements/manifest.json",
+      "sha256": "585f410ad11ff3602742b5f5eb1fe56a0e7e325f1c98e325dc4db641589af1de"
+    },
+    {
+      "path": "oracles/v1/outputs/historical_price/oracles.json",
+      "sha256": "00b62c761d8bf27e9cae7fdc780ab9289dc6874d3b615c9f7e1b1c369024c5a6"
+    },
+    {
+      "path": "oracles/v1/outputs/realtime_quote/oracles.json",
+      "sha256": "f66cffd6531d1b2eac153b5a5244727114ae2691918716570a939bab279b8e6f"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "realtime-runtime-receipt/v1",
+  "title": "Realtime v2 runtime receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "case_id",
+    "get_execution",
+    "accepted_variant_id",
+    "source",
+    "captured_at",
+    "fields"
+  ],
+  "properties": {
+    "case_id": { "type": "string" },
+    "get_execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count"],
+      "properties": {
+        "count": { "const": 1 },
+        "execution_id": { "type": "string" }
+      }
+    },
+    "accepted_variant_id": { "type": "string" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "url", "quote_timestamp", "as_of"],
+      "properties": {
+        "name": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "quote_timestamp": { "type": "string", "format": "date-time" },
+        "as_of": { "type": "string", "format": "date-time" },
+        "response_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "captured_at": { "type": "string", "format": "date-time" },
+    "fields": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "value", "unit", "as_of"],
+        "properties": {
+          "name": { "type": "string" },
+          "value": {},
+          "unit": { "type": "string" },
+          "as_of": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}

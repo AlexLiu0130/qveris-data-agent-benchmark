@@ -1,0 +1,2303 @@
+[
+  {
+    "case_id": "hist-A股-01",
+    "suite": "historical_price",
+    "query": "查一下贵州茅台 2026 年 8 月 24 日 到 2026 年 8 月 28 日 的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-001"
+  },
+  {
+    "case_id": "hist-A股-02",
+    "suite": "historical_price",
+    "query": "平安银行（000001.SZ）2026 年 7 月 27 日 至 2026 年 8 月 7 日 每天的开盘、最高、最低、收盘价和成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-002"
+  },
+  {
+    "case_id": "hist-A股-03",
+    "suite": "historical_price",
+    "query": "帮我取 万科A 2026 年 8 月 3 日 到 2026 年 8 月 7 日 的前复权收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-003"
+  },
+  {
+    "case_id": "hist-A股-04",
+    "suite": "historical_price",
+    "query": "宁德时代 在 2026 年 7 月 6 日 到 2026 年 7 月 10 日 每天的成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "宁德时代",
+        "symbol": "300750.SZ",
+        "exchange": "Shenzhen Stock Exchange",
+        "mic": "XSHE",
+        "currency": "CNY",
+        "price_unit": "CNY_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Shanghai"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "volume"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-07-06",
+          "end_date": "2026-07-10"
+        },
+        "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+        "bar": "daily"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-A股-04/XSHE/300750.SZ/D/2026-07-06_2026-07-10/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-A股-05",
+    "suite": "historical_price",
+    "query": "中国平安 2026 年 6 月 1 日 到 2026 年 6 月 5 日 的周K线（开高低收和成交量）。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "中国平安",
+        "symbol": "601318.SH",
+        "exchange": "Shanghai Stock Exchange",
+        "mic": "XSHG",
+        "currency": "CNY",
+        "price_unit": "CNY_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Shanghai"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-06-01",
+          "end_date": "2026-06-05"
+        },
+        "resolution": "weekly K requested; return one weekly bar spanning the stated calendar week",
+        "bar": "weekly"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-A股-05/XSHG/601318.SH/W/2026-06-01_2026-06-05/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-A股-06",
+    "suite": "historical_price",
+    "query": "招商银行 2026 年 5 月 11 日 到 2026 年 5 月 15 日 每天的开盘价和收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "招商银行",
+        "symbol": "600036.SH",
+        "exchange": "Shanghai Stock Exchange",
+        "mic": "XSHG",
+        "currency": "CNY",
+        "price_unit": "CNY_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Shanghai"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "open",
+        "close"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-05-11",
+          "end_date": "2026-05-15"
+        },
+        "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+        "bar": "daily"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-A股-06/XSHG/600036.SH/D/2026-05-11_2026-05-15/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-A股-07",
+    "suite": "historical_price",
+    "query": "五粮液 2026 年 4 月 13 日 到 2026 年 4 月 17 日 的最高价和最低价分别是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-004"
+  },
+  {
+    "case_id": "hist-A股-08",
+    "suite": "historical_price",
+    "query": "比亚迪 2026 年 3 月 9 日 到 2026 年 3 月 13 日 的前复权开高低收。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "比亚迪",
+        "symbol": "002594.SZ",
+        "exchange": "Shenzhen Stock Exchange",
+        "mic": "XSHE",
+        "currency": "CNY",
+        "price_unit": "CNY_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Shanghai"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "adj_open",
+        "adj_high",
+        "adj_low",
+        "adj_close"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-03-09",
+          "end_date": "2026-03-13"
+        },
+        "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+        "bar": "daily"
+      },
+      "adjustment": {
+        "basis": "forward_adjusted",
+        "policy": "use source-defined forward-adjusted historical bars; no evaluator-side recomputation"
+      },
+      "data_collection_key": "historical-v2/hist-A股-08/XSHE/002594.SZ/D/2026-03-09_2026-03-13/forward",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-A股-09",
+    "suite": "historical_price",
+    "query": "贵州茅台 2026 年 1 月 12 日 到 2026 年 1 月 16 日 的月K线收盘价和成交量。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "贵州茅台",
+        "symbol": "600519.SH",
+        "exchange": "Shanghai Stock Exchange",
+        "mic": "XSHG",
+        "currency": "CNY",
+        "price_unit": "CNY_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Shanghai"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "close",
+        "volume"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-01-12",
+          "end_date": "2026-01-16"
+        },
+        "resolution": "month_k_priority; query dates locate the containing natural month; disclose resolved full month",
+        "resolved_month": "2026-01-01",
+        "resolved_month_end": "2026-01-31",
+        "bar": "monthly"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-A股-09/XSHG/600519.SH/M/2026-01-12_2026-01-16/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-A股-10",
+    "suite": "historical_price",
+    "query": "平安银行 到 2026 年 8 月 28 日 为止往前 5 个交易日的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-005"
+  },
+  {
+    "case_id": "hist-A股-11",
+    "suite": "historical_price",
+    "query": "查一下万科A 2026 年 7 月 27 日 到 2026 年 8 月 7 日 的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-006"
+  },
+  {
+    "case_id": "hist-A股-12",
+    "suite": "historical_price",
+    "query": "宁德时代（300750.SZ）2026 年 8 月 3 日 至 2026 年 8 月 7 日 每天的开盘、最高、最低、收盘价和成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-007"
+  },
+  {
+    "case_id": "hist-A股-13",
+    "suite": "historical_price",
+    "query": "帮我取 中国平安 2026 年 7 月 6 日 到 2026 年 7 月 10 日 的前复权收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "中国平安",
+        "symbol": "601318.SH",
+        "exchange": "Shanghai Stock Exchange",
+        "mic": "XSHG",
+        "currency": "CNY",
+        "price_unit": "CNY_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Shanghai"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "adj_close"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-07-06",
+          "end_date": "2026-07-10"
+        },
+        "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+        "bar": "daily"
+      },
+      "adjustment": {
+        "basis": "forward_adjusted",
+        "policy": "use source-defined forward-adjusted historical bars; no evaluator-side recomputation"
+      },
+      "data_collection_key": "historical-v2/hist-A股-13/XSHG/601318.SH/D/2026-07-06_2026-07-10/forward",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-A股-14",
+    "suite": "historical_price",
+    "query": "招商银行 在 2026 年 6 月 1 日 到 2026 年 6 月 5 日 每天的成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "招商银行",
+        "symbol": "600036.SH",
+        "exchange": "Shanghai Stock Exchange",
+        "mic": "XSHG",
+        "currency": "CNY",
+        "price_unit": "CNY_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Shanghai"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "volume"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-06-01",
+          "end_date": "2026-06-05"
+        },
+        "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+        "bar": "daily"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-A股-14/XSHG/600036.SH/D/2026-06-01_2026-06-05/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-A股-15",
+    "suite": "historical_price",
+    "query": "五粮液 2026 年 5 月 11 日 到 2026 年 5 月 15 日 的周K线（开高低收和成交量）。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-008"
+  },
+  {
+    "case_id": "hist-A股-16",
+    "suite": "historical_price",
+    "query": "比亚迪 2026 年 4 月 13 日 到 2026 年 4 月 17 日 每天的开盘价和收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "比亚迪",
+        "symbol": "002594.SZ",
+        "exchange": "Shenzhen Stock Exchange",
+        "mic": "XSHE",
+        "currency": "CNY",
+        "price_unit": "CNY_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Shanghai"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "open",
+        "close"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-04-13",
+          "end_date": "2026-04-17"
+        },
+        "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+        "bar": "daily"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-A股-16/XSHE/002594.SZ/D/2026-04-13_2026-04-17/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-A股-17",
+    "suite": "historical_price",
+    "query": "贵州茅台 2026 年 2 月 9 日 到 2026 年 2 月 13 日 的最高价和最低价分别是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-009"
+  },
+  {
+    "case_id": "hist-A股-18",
+    "suite": "historical_price",
+    "query": "平安银行 2026 年 1 月 12 日 到 2026 年 1 月 16 日 的前复权开高低收。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-010"
+  },
+  {
+    "case_id": "hist-A股-19",
+    "suite": "historical_price",
+    "query": "万科A 2026 年 8 月 24 日 到 2026 年 8 月 28 日 的月K线收盘价和成交量。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "万科A",
+        "symbol": "000002.SZ",
+        "exchange": "Shenzhen Stock Exchange",
+        "mic": "XSHE",
+        "currency": "CNY",
+        "price_unit": "CNY_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Shanghai"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "close",
+        "volume"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-08-24",
+          "end_date": "2026-08-28"
+        },
+        "resolution": "month_k_priority; query dates locate the containing natural month; disclose resolved full month",
+        "resolved_month": "2026-08-01",
+        "resolved_month_end": "2026-08-31",
+        "bar": "monthly"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-A股-19/XSHE/000002.SZ/M/2026-08-24_2026-08-28/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-A股-20",
+    "suite": "historical_price",
+    "query": "宁德时代 到 2026 年 8 月 7 日 为止往前 5 个交易日的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "宁德时代",
+        "symbol": "300750.SZ",
+        "exchange": "Shenzhen Stock Exchange",
+        "mic": "XSHE",
+        "currency": "CNY",
+        "price_unit": "CNY_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Shanghai"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "close"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-08-03",
+          "end_date": "2026-08-07"
+        },
+        "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+        "bar": "daily"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-A股-20/XSHE/300750.SZ/D/2026-08-03_2026-08-07/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-A股-21",
+    "suite": "historical_price",
+    "query": "查一下中国平安 2026 年 8 月 3 日 到 2026 年 8 月 7 日 的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "中国平安",
+        "symbol": "601318.SH",
+        "exchange": "Shanghai Stock Exchange",
+        "mic": "XSHG",
+        "currency": "CNY",
+        "price_unit": "CNY_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Shanghai"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "close"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-08-03",
+          "end_date": "2026-08-07"
+        },
+        "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+        "bar": "daily"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-A股-21/XSHG/601318.SH/D/2026-08-03_2026-08-07/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-A股-22",
+    "suite": "historical_price",
+    "query": "招商银行（600036.SH）2026 年 7 月 6 日 至 2026 年 7 月 10 日 每天的开盘、最高、最低、收盘价和成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-011"
+  },
+  {
+    "case_id": "hist-A股-23",
+    "suite": "historical_price",
+    "query": "帮我取 五粮液 2026 年 6 月 1 日 到 2026 年 6 月 5 日 的前复权收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-012"
+  },
+  {
+    "case_id": "hist-A股-b01",
+    "suite": "historical_price",
+    "query": "万科A 2026 年 8 月 8 日（周六）当天的成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "no_data",
+    "evaluation_mode": "state_only",
+    "action": "inherit_v1_state_contract",
+    "contract": null,
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-A股-b02",
+    "suite": "historical_price",
+    "query": "帮我查沪深300指数 2026 年 7 月 27 日到 8 月 7 日的日K线。",
+    "language": "zh-CN",
+    "expected_status": "unsupported",
+    "evaluation_mode": "state_only",
+    "action": "inherit_v1_state_contract",
+    "contract": null,
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-A股-b03",
+    "suite": "historical_price",
+    "query": "贵州茅台和五粮液 2026 年 7 月 27 日到 8 月 7 日每天的收盘价对比一下。",
+    "language": "zh-CN",
+    "expected_status": "unsupported",
+    "evaluation_mode": "state_only",
+    "action": "inherit_v1_state_contract",
+    "contract": null,
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-A股-b04",
+    "suite": "historical_price",
+    "query": "帮我查一下贵州茅台调整后的历史收盘价。",
+    "language": "zh-CN",
+    "expected_status": "needs_clarification",
+    "evaluation_mode": "state_only",
+    "action": "retain_true_adjustment_ambiguity",
+    "contract": null,
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-A股-b05",
+    "suite": "historical_price",
+    "query": "平安银行 2026 年 6 月的每日换手率历史数据。",
+    "language": "zh-CN",
+    "expected_status": "unsupported",
+    "evaluation_mode": "state_only",
+    "action": "inherit_v1_state_contract",
+    "contract": null,
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-A股-b06",
+    "suite": "historical_price",
+    "query": "贵州茅台 2025 年 10 月 1 日（国庆节）当天的收盘价是多少？",
+    "language": "zh-CN",
+    "expected_status": "no_data",
+    "evaluation_mode": "state_only",
+    "action": "inherit_v1_state_contract",
+    "contract": null,
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-港股-01",
+    "suite": "historical_price",
+    "query": "查一下腾讯控股 2026 年 7 月 6 日 到 2026 年 7 月 10 日 的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-013"
+  },
+  {
+    "case_id": "hist-港股-02",
+    "suite": "historical_price",
+    "query": "阿里巴巴-W（09988.HK）2026 年 6 月 1 日 至 2026 年 6 月 5 日 每天的开盘、最高、最低、收盘价和成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-014"
+  },
+  {
+    "case_id": "hist-港股-03",
+    "suite": "historical_price",
+    "query": "帮我取 美团-W 2026 年 5 月 4 日 到 2026 年 5 月 8 日 的前复权收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-015"
+  },
+  {
+    "case_id": "hist-港股-04",
+    "suite": "historical_price",
+    "query": "小米集团-W 在 2026 年 4 月 7 日 到 2026 年 4 月 10 日 每天的成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-016"
+  },
+  {
+    "case_id": "hist-港股-05",
+    "suite": "historical_price",
+    "query": "中国移动 2026 年 3 月 2 日 到 2026 年 3 月 6 日 的周K线（开高低收和成交量）。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "中国移动",
+        "symbol": "00941.HK",
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG",
+        "currency": "HKD",
+        "price_unit": "HKD_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Hong_Kong"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-03-02",
+          "end_date": "2026-03-06"
+        },
+        "resolution": "weekly K requested; return one weekly bar spanning the stated calendar week",
+        "bar": "weekly"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-港股-05/XHKG/00941.HK/W/2026-03-02_2026-03-06/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-港股-06",
+    "suite": "historical_price",
+    "query": "汇丰控股 2026 年 2 月 9 日 到 2026 年 2 月 13 日 每天的开盘价和收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "entity_resolution": {
+        "mode": "multi_market_accepted_variants",
+        "evidence_requirement": "Each accepted listing has its own complete public source receipt. Select one listing only; do not average or splice across listings."
+      },
+      "accepted_variants": [
+        {
+          "variant_id": "hk_yahoo_0005",
+          "instrument": {
+            "issuer": "汇丰控股",
+            "symbol": "00005.HK",
+            "exchange": "Hong Kong Stock Exchange",
+            "mic": "XHKG",
+            "currency": "HKD",
+            "price_unit": "HKD_per_share",
+            "volume_unit": "shares",
+            "timezone": "Asia/Hong_Kong"
+          },
+          "fields": [
+            "open",
+            "close"
+          ],
+          "date_and_aggregation": {
+            "requested_dates": {
+              "start_date": "2026-02-09",
+              "end_date": "2026-02-13"
+            },
+            "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+            "bar": "daily"
+          },
+          "adjustment": {
+            "basis": "raw_unadjusted",
+            "policy": "use source-reported raw historical bars"
+          },
+          "data_collection_key": "historical-v2/hist-港股-06/XHKG/00005.HK/D/2026-02-09_2026-02-13/none"
+        },
+        {
+          "variant_id": "hsba_l_yahoo",
+          "instrument": {
+            "issuer": "汇丰控股",
+            "symbol": "HSBA.L",
+            "exchange": "London Stock Exchange",
+            "mic": "XLON",
+            "currency": "GBP",
+            "quote_currency": "GBX",
+            "price_unit": "GBX_per_share",
+            "volume_unit": "shares",
+            "timezone": "Europe/London"
+          },
+          "fields": [
+            "open",
+            "close"
+          ],
+          "date_and_aggregation": {
+            "requested_dates": {
+              "start_date": "2026-02-09",
+              "end_date": "2026-02-13"
+            },
+            "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+            "bar": "daily"
+          },
+          "adjustment": {
+            "basis": "raw_unadjusted",
+            "policy": "use source-reported raw historical bars"
+          },
+          "data_collection_key": "historical-v2/hist-港股-06/XLON/HSBA.L/D/2026-02-09_2026-02-13/none"
+        }
+      ],
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-港股-07",
+    "suite": "historical_price",
+    "query": "中国平安 2026 年 1 月 5 日 到 2026 年 1 月 9 日 的最高价和最低价分别是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "中国平安",
+        "symbol": "02318.HK",
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG",
+        "currency": "HKD",
+        "price_unit": "HKD_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Hong_Kong"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "high",
+        "low"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-01-05",
+          "end_date": "2026-01-09"
+        },
+        "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+        "bar": "daily"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-港股-07/XHKG/02318.HK/D/2026-01-05_2026-01-09/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-港股-08",
+    "suite": "historical_price",
+    "query": "友邦保险 2025 年 12 月 1 日 到 2025 年 12 月 5 日 的前复权开高低收。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-017"
+  },
+  {
+    "case_id": "hist-港股-09",
+    "suite": "historical_price",
+    "query": "腾讯控股 2025 年 10 月 6 日 到 2025 年 10 月 10 日 的月K线收盘价和成交量。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "腾讯控股",
+        "symbol": "00700.HK",
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG",
+        "currency": "HKD",
+        "price_unit": "HKD_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Hong_Kong"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "close",
+        "volume"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2025-10-06",
+          "end_date": "2025-10-10"
+        },
+        "resolution": "month_k_priority; query dates locate the containing natural month; disclose resolved full month",
+        "resolved_month": "2025-10-01",
+        "resolved_month_end": "2025-10-31",
+        "bar": "monthly"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-港股-09/XHKG/00700.HK/M/2025-10-06_2025-10-10/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-港股-10",
+    "suite": "historical_price",
+    "query": "阿里巴巴-W 到 2026 年 7 月 10 日 为止往前 5 个交易日的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-018"
+  },
+  {
+    "case_id": "hist-港股-11",
+    "suite": "historical_price",
+    "query": "查一下美团-W 2026 年 6 月 1 日 到 2026 年 6 月 5 日 的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-019"
+  },
+  {
+    "case_id": "hist-港股-12",
+    "suite": "historical_price",
+    "query": "小米集团-W（01810.HK）2026 年 5 月 4 日 至 2026 年 5 月 8 日 每天的开盘、最高、最低、收盘价和成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-020"
+  },
+  {
+    "case_id": "hist-港股-13",
+    "suite": "historical_price",
+    "query": "帮我取 中国移动 2026 年 4 月 7 日 到 2026 年 4 月 10 日 的前复权收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "中国移动",
+        "symbol": "00941.HK",
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG",
+        "currency": "HKD",
+        "price_unit": "HKD_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Hong_Kong"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "adj_close"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-04-07",
+          "end_date": "2026-04-10"
+        },
+        "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+        "bar": "daily"
+      },
+      "adjustment": {
+        "basis": "forward_adjusted",
+        "policy": "use source-defined forward-adjusted historical bars; no evaluator-side recomputation"
+      },
+      "data_collection_key": "historical-v2/hist-港股-13/XHKG/00941.HK/D/2026-04-07_2026-04-10/forward",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-港股-14",
+    "suite": "historical_price",
+    "query": "汇丰控股 在 2026 年 3 月 2 日 到 2026 年 3 月 6 日 每天的成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "entity_resolution": {
+        "mode": "multi_market_accepted_variants",
+        "evidence_requirement": "Each accepted listing has its own complete public source receipt. Select one listing only; do not average or splice across listings."
+      },
+      "accepted_variants": [
+        {
+          "variant_id": "hk_yahoo_0005",
+          "instrument": {
+            "issuer": "汇丰控股",
+            "symbol": "00005.HK",
+            "exchange": "Hong Kong Stock Exchange",
+            "mic": "XHKG",
+            "currency": "HKD",
+            "price_unit": "HKD_per_share",
+            "volume_unit": "shares",
+            "timezone": "Asia/Hong_Kong"
+          },
+          "fields": [
+            "volume"
+          ],
+          "date_and_aggregation": {
+            "requested_dates": {
+              "start_date": "2026-03-02",
+              "end_date": "2026-03-06"
+            },
+            "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+            "bar": "daily"
+          },
+          "adjustment": {
+            "basis": "raw_unadjusted",
+            "policy": "use source-reported raw historical bars"
+          },
+          "data_collection_key": "historical-v2/hist-港股-14/XHKG/00005.HK/D/2026-03-02_2026-03-06/none"
+        },
+        {
+          "variant_id": "hsba_l_yahoo",
+          "instrument": {
+            "issuer": "汇丰控股",
+            "symbol": "HSBA.L",
+            "exchange": "London Stock Exchange",
+            "mic": "XLON",
+            "currency": "GBP",
+            "quote_currency": "GBX",
+            "price_unit": "GBX_per_share",
+            "volume_unit": "shares",
+            "timezone": "Europe/London"
+          },
+          "fields": [
+            "volume"
+          ],
+          "date_and_aggregation": {
+            "requested_dates": {
+              "start_date": "2026-03-02",
+              "end_date": "2026-03-06"
+            },
+            "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+            "bar": "daily"
+          },
+          "adjustment": {
+            "basis": "raw_unadjusted",
+            "policy": "use source-reported raw historical bars"
+          },
+          "data_collection_key": "historical-v2/hist-港股-14/XLON/HSBA.L/D/2026-03-02_2026-03-06/none"
+        }
+      ],
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-港股-15",
+    "suite": "historical_price",
+    "query": "中国平安 2026 年 2 月 9 日 到 2026 年 2 月 13 日 的周K线（开高低收和成交量）。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "中国平安",
+        "symbol": "02318.HK",
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG",
+        "currency": "HKD",
+        "price_unit": "HKD_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Hong_Kong"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-02-09",
+          "end_date": "2026-02-13"
+        },
+        "resolution": "weekly K requested; return one weekly bar spanning the stated calendar week",
+        "bar": "weekly"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-港股-15/XHKG/02318.HK/W/2026-02-09_2026-02-13/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-港股-16",
+    "suite": "historical_price",
+    "query": "友邦保险 2026 年 1 月 5 日 到 2026 年 1 月 9 日 每天的开盘价和收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-021"
+  },
+  {
+    "case_id": "hist-港股-17",
+    "suite": "historical_price",
+    "query": "腾讯控股 2025 年 11 月 3 日 到 2025 年 11 月 7 日 的最高价和最低价分别是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-022"
+  },
+  {
+    "case_id": "hist-港股-18",
+    "suite": "historical_price",
+    "query": "阿里巴巴-W 2025 年 10 月 6 日 到 2025 年 10 月 10 日 的前复权开高低收。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-023"
+  },
+  {
+    "case_id": "hist-港股-19",
+    "suite": "historical_price",
+    "query": "美团-W 2026 年 7 月 6 日 到 2026 年 7 月 10 日 的月K线收盘价和成交量。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "美团-W",
+        "symbol": "03690.HK",
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG",
+        "currency": "HKD",
+        "price_unit": "HKD_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Hong_Kong"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "close",
+        "volume"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-07-06",
+          "end_date": "2026-07-10"
+        },
+        "resolution": "month_k_priority; query dates locate the containing natural month; disclose resolved full month",
+        "resolved_month": "2026-07-01",
+        "resolved_month_end": "2026-07-31",
+        "bar": "monthly"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-港股-19/XHKG/03690.HK/M/2026-07-06_2026-07-10/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-港股-20",
+    "suite": "historical_price",
+    "query": "小米集团-W 到 2026 年 6 月 5 日 为止往前 5 个交易日的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-024"
+  },
+  {
+    "case_id": "hist-港股-21",
+    "suite": "historical_price",
+    "query": "查一下中国移动 2026 年 5 月 4 日 到 2026 年 5 月 8 日 的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "中国移动",
+        "symbol": "00941.HK",
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG",
+        "currency": "HKD",
+        "price_unit": "HKD_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Hong_Kong"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "close"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-05-04",
+          "end_date": "2026-05-08"
+        },
+        "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+        "bar": "daily"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-港股-21/XHKG/00941.HK/D/2026-05-04_2026-05-08/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-港股-22",
+    "suite": "historical_price",
+    "query": "汇丰控股（00005.HK）2026 年 4 月 7 日 至 2026 年 4 月 10 日 每天的开盘、最高、最低、收盘价和成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-025"
+  },
+  {
+    "case_id": "hist-港股-b01",
+    "suite": "historical_price",
+    "query": "腾讯控股 2026 年 5 月 16 日（周六）当天的收盘价是多少？",
+    "language": "zh-CN",
+    "expected_status": "no_data",
+    "evaluation_mode": "state_only",
+    "action": "inherit_v1_state_contract",
+    "contract": null,
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-港股-b02",
+    "suite": "historical_price",
+    "query": "查一下阿里巴巴 2026 年 8 月 28 日的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_with_cross_market_accepted_variants",
+    "contract": {
+      "entity_resolution": {
+        "mode": "multi_market_accepted_variants",
+        "evidence_requirement": "collect public listing-resolution evidence for both variants before freeze"
+      },
+      "accepted_variants": [
+        {
+          "instrument": {
+            "issuer": "Alibaba Group",
+            "symbol": "09988.HK",
+            "exchange": "Hong Kong Stock Exchange",
+            "mic": "XHKG",
+            "currency": "HKD",
+            "price_unit": "HKD_per_share",
+            "volume_unit": "shares",
+            "timezone": "Asia/Hong_Kong"
+          },
+          "fields": [
+            "close"
+          ],
+          "date_and_aggregation": {
+            "requested_dates": {
+              "start_date": "2026-08-28",
+              "end_date": "2026-08-28"
+            },
+            "bar": "daily",
+            "resolution": "one eligible HKEX session close"
+          },
+          "adjustment": {
+            "basis": "raw_unadjusted",
+            "policy": "use source-reported raw close"
+          },
+          "data_collection_key": "historical-v2/hist-港股-b02/XHKG/09988.HK/D/2026-08-28_2026-08-28/none",
+          "variant_id": "hk_0"
+        },
+        {
+          "instrument": {
+            "issuer": "Alibaba Group Holding Limited",
+            "symbol": "BABA",
+            "exchange": "New York Stock Exchange",
+            "mic": "XNYS",
+            "currency": "USD",
+            "price_unit": "USD_per_share",
+            "volume_unit": "shares",
+            "timezone": "America/New_York"
+          },
+          "fields": [
+            "close"
+          ],
+          "date_and_aggregation": {
+            "requested_dates": {
+              "start_date": "2026-08-28",
+              "end_date": "2026-08-28"
+            },
+            "bar": "daily",
+            "resolution": "one eligible NYSE session close"
+          },
+          "adjustment": {
+            "basis": "raw_unadjusted",
+            "policy": "use source-reported raw close"
+          },
+          "data_collection_key": "historical-v2/hist-港股-b02/XNYS/BABA/D/2026-08-28_2026-08-28/none",
+          "variant_id": "us_0"
+        }
+      ],
+      "output_policy": "each variant is independently complete and acceptable; do not average or cross-market splice values"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-港股-b03",
+    "suite": "historical_price",
+    "query": "帮我取恒生指数最近 5 个交易日的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "unsupported",
+    "evaluation_mode": "state_only",
+    "action": "inherit_v1_state_contract",
+    "contract": null,
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-港股-b04",
+    "suite": "historical_price",
+    "query": "腾讯控股和美团 2026 年 7 月 6 日到 10 日的收盘价做对比。",
+    "language": "zh-CN",
+    "expected_status": "unsupported",
+    "evaluation_mode": "state_only",
+    "action": "inherit_v1_state_contract",
+    "contract": null,
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-港股-b05",
+    "suite": "historical_price",
+    "query": "帮我查中国移动的复权收盘价（2026 年 7 月 6 日到 10 日）。",
+    "language": "zh-CN",
+    "expected_status": "needs_clarification",
+    "evaluation_mode": "state_only",
+    "action": "retain_true_adjustment_ambiguity",
+    "contract": null,
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-港股-b06",
+    "suite": "historical_price",
+    "query": "友邦保险 2025 年 12 月 25 日（圣诞节）的成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "no_data",
+    "evaluation_mode": "state_only",
+    "action": "inherit_v1_state_contract",
+    "contract": null,
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-美股-01",
+    "suite": "historical_price",
+    "query": "查一下苹果 2026 年 7 月 6 日 到 2026 年 7 月 10 日 的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-026"
+  },
+  {
+    "case_id": "hist-美股-02",
+    "suite": "historical_price",
+    "query": "微软（MSFT）2026 年 6 月 1 日 至 2026 年 6 月 5 日 每天的开盘、最高、最低、收盘价和成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-027"
+  },
+  {
+    "case_id": "hist-美股-03",
+    "suite": "historical_price",
+    "query": "帮我取 英伟达 2026 年 5 月 4 日 到 2026 年 5 月 8 日 的前复权收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-028"
+  },
+  {
+    "case_id": "hist-美股-04",
+    "suite": "historical_price",
+    "query": "特斯拉 在 2026 年 4 月 13 日 到 2026 年 4 月 17 日 每天的成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-029"
+  },
+  {
+    "case_id": "hist-美股-05",
+    "suite": "historical_price",
+    "query": "亚马逊 2026 年 3 月 2 日 到 2026 年 3 月 6 日 的周K线（开高低收和成交量）。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-030"
+  },
+  {
+    "case_id": "hist-美股-06",
+    "suite": "historical_price",
+    "query": "谷歌A 2026 年 2 月 9 日 到 2026 年 2 月 13 日 每天的开盘价和收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-031"
+  },
+  {
+    "case_id": "hist-美股-07",
+    "suite": "historical_price",
+    "query": "Meta 2026 年 1 月 5 日 到 2026 年 1 月 9 日 的最高价和最低价分别是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-032"
+  },
+  {
+    "case_id": "hist-美股-08",
+    "suite": "historical_price",
+    "query": "超威半导体 2025 年 12 月 1 日 到 2025 年 12 月 5 日 的前复权开高低收。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-033"
+  },
+  {
+    "case_id": "hist-美股-09",
+    "suite": "historical_price",
+    "query": "摩根大通 2025 年 11 月 3 日 到 2025 年 11 月 7 日 的月K线收盘价和成交量。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "摩根大通",
+        "symbol": "JPM",
+        "exchange": "New York Stock Exchange",
+        "mic": "XNYS",
+        "currency": "USD",
+        "price_unit": "USD_per_share",
+        "volume_unit": "shares",
+        "timezone": "America/New_York"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "close",
+        "volume"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2025-11-03",
+          "end_date": "2025-11-07"
+        },
+        "resolution": "month_k_priority; query dates locate the containing natural month; disclose resolved full month",
+        "resolved_month": "2025-11-01",
+        "resolved_month_end": "2025-11-30",
+        "bar": "monthly"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-美股-09/XNYS/JPM/M/2025-11-03_2025-11-07/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-美股-10",
+    "suite": "historical_price",
+    "query": "可口可乐 到 2025 年 10 月 10 日 为止往前 5 个交易日的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-034"
+  },
+  {
+    "case_id": "hist-美股-11",
+    "suite": "historical_price",
+    "query": "查一下苹果 2026 年 6 月 1 日 到 2026 年 6 月 5 日 的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-035"
+  },
+  {
+    "case_id": "hist-美股-12",
+    "suite": "historical_price",
+    "query": "微软（MSFT）2026 年 5 月 4 日 至 2026 年 5 月 8 日 每天的开盘、最高、最低、收盘价和成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-036"
+  },
+  {
+    "case_id": "hist-美股-13",
+    "suite": "historical_price",
+    "query": "帮我取 英伟达 2026 年 4 月 13 日 到 2026 年 4 月 17 日 的前复权收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-037"
+  },
+  {
+    "case_id": "hist-美股-14",
+    "suite": "historical_price",
+    "query": "特斯拉 在 2026 年 3 月 2 日 到 2026 年 3 月 6 日 每天的成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-038"
+  },
+  {
+    "case_id": "hist-美股-15",
+    "suite": "historical_price",
+    "query": "亚马逊 2026 年 2 月 9 日 到 2026 年 2 月 13 日 的周K线（开高低收和成交量）。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-039"
+  },
+  {
+    "case_id": "hist-美股-16",
+    "suite": "historical_price",
+    "query": "谷歌A 2026 年 1 月 5 日 到 2026 年 1 月 9 日 每天的开盘价和收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-040"
+  },
+  {
+    "case_id": "hist-美股-17",
+    "suite": "historical_price",
+    "query": "Meta 2025 年 12 月 1 日 到 2025 年 12 月 5 日 的最高价和最低价分别是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-041"
+  },
+  {
+    "case_id": "hist-美股-18",
+    "suite": "historical_price",
+    "query": "超威半导体 2025 年 11 月 3 日 到 2025 年 11 月 7 日 的前复权开高低收。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-042"
+  },
+  {
+    "case_id": "hist-美股-19",
+    "suite": "historical_price",
+    "query": "摩根大通 2025 年 10 月 6 日 到 2025 年 10 月 10 日 的月K线收盘价和成交量。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "摩根大通",
+        "symbol": "JPM",
+        "exchange": "New York Stock Exchange",
+        "mic": "XNYS",
+        "currency": "USD",
+        "price_unit": "USD_per_share",
+        "volume_unit": "shares",
+        "timezone": "America/New_York"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "close",
+        "volume"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2025-10-06",
+          "end_date": "2025-10-10"
+        },
+        "resolution": "month_k_priority; query dates locate the containing natural month; disclose resolved full month",
+        "resolved_month": "2025-10-01",
+        "resolved_month_end": "2025-10-31",
+        "bar": "monthly"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-美股-19/XNYS/JPM/M/2025-10-06_2025-10-10/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-美股-20",
+    "suite": "historical_price",
+    "query": "可口可乐 到 2026 年 7 月 10 日 为止往前 5 个交易日的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-043"
+  },
+  {
+    "case_id": "hist-美股-21",
+    "suite": "historical_price",
+    "query": "查一下苹果 2026 年 5 月 4 日 到 2026 年 5 月 8 日 的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-044"
+  },
+  {
+    "case_id": "hist-美股-22",
+    "suite": "historical_price",
+    "query": "微软（MSFT）2026 年 4 月 13 日 至 2026 年 4 月 17 日 每天的开盘、最高、最低、收盘价和成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-045"
+  },
+  {
+    "case_id": "hist-美股-23",
+    "suite": "historical_price",
+    "query": "帮我取 英伟达 2026 年 3 月 2 日 到 2026 年 3 月 6 日 的前复权收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-046"
+  },
+  {
+    "case_id": "hist-美股-b01",
+    "suite": "historical_price",
+    "query": "苹果 AAPL 2025 年 7 月 4 日（美国独立日）的收盘价是多少？",
+    "language": "zh-CN",
+    "expected_status": "no_data",
+    "evaluation_mode": "state_only",
+    "action": "inherit_v1_state_contract",
+    "contract": null,
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-美股-b02",
+    "suite": "historical_price",
+    "query": "查标普500指数 2026 年 3 月 2 日到 6 日的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "unsupported",
+    "evaluation_mode": "state_only",
+    "action": "inherit_v1_state_contract",
+    "contract": null,
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-美股-b03",
+    "suite": "historical_price",
+    "query": "帮我查苹果调整后的历史收盘价（2026 年 1 月 5 日到 9 日）。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "苹果",
+        "symbol": "AAPL",
+        "exchange": "NASDAQ",
+        "mic": "XNAS",
+        "currency": "USD",
+        "price_unit": "USD_per_share",
+        "volume_unit": "shares",
+        "timezone": "America/New_York"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "adj_close"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-01-05",
+          "end_date": "2026-01-09"
+        },
+        "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+        "bar": "daily"
+      },
+      "adjustment": {
+        "basis": "source_standard_adjusted_close",
+        "policy": "use source-provided adjusted close; no evaluator-side recomputation"
+      },
+      "data_collection_key": "historical-v2/hist-美股-b03/XNAS/AAPL/D/2026-01-05_2026-01-09/source_standard_adjusted_close",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-美股-b04",
+    "suite": "historical_price",
+    "query": "特斯拉 2025 财年的市盈率是多少？",
+    "language": "zh-CN",
+    "expected_status": "unsupported",
+    "evaluation_mode": "state_only",
+    "action": "inherit_v1_state_contract",
+    "contract": null,
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-美股-b05",
+    "suite": "historical_price",
+    "query": "英伟达 2026 年 5 月 25 日（阵亡将士纪念日）的成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "no_data",
+    "evaluation_mode": "state_only",
+    "action": "inherit_v1_state_contract",
+    "contract": null,
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-日本-01",
+    "suite": "historical_price",
+    "query": "查一下丰田汽车 2026 年 7 月 6 日 到 2026 年 7 月 10 日 的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "丰田汽车",
+        "symbol": "7203.T",
+        "exchange": "Tokyo Stock Exchange",
+        "mic": "XTKS",
+        "currency": "JPY",
+        "price_unit": "JPY_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Tokyo"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "close"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-07-06",
+          "end_date": "2026-07-10"
+        },
+        "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+        "bar": "daily"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-日本-01/XTKS/7203.T/D/2026-07-06_2026-07-10/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-日本-02",
+    "suite": "historical_price",
+    "query": "索尼（6758.T）2026 年 6 月 1 日 至 2026 年 6 月 5 日 每天的开盘、最高、最低、收盘价和成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-047"
+  },
+  {
+    "case_id": "hist-日本-03",
+    "suite": "historical_price",
+    "query": "帮我取 东京电子 2026 年 5 月 11 日 到 2026 年 5 月 15 日 的前复权收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-048"
+  },
+  {
+    "case_id": "hist-日本-04",
+    "suite": "historical_price",
+    "query": "软银集团 在 2026 年 4 月 13 日 到 2026 年 4 月 17 日 每天的成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "软银集团",
+        "symbol": "9984.T",
+        "exchange": "Tokyo Stock Exchange",
+        "mic": "XTKS",
+        "currency": "JPY",
+        "price_unit": "JPY_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Tokyo"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "volume"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-04-13",
+          "end_date": "2026-04-17"
+        },
+        "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+        "bar": "daily"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-日本-04/XTKS/9984.T/D/2026-04-13_2026-04-17/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-日本-b01",
+    "suite": "historical_price",
+    "query": "帮我查日经225指数最近 5 个交易日的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "unsupported",
+    "evaluation_mode": "state_only",
+    "action": "inherit_v1_state_contract",
+    "contract": null,
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-英国-01",
+    "suite": "historical_price",
+    "query": "查一下壳牌 2026 年 7 月 6 日 到 2026 年 7 月 10 日 的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "壳牌",
+        "symbol": "SHEL.L",
+        "exchange": "London Stock Exchange",
+        "mic": "XLON",
+        "currency": "GBP",
+        "price_unit": "GBX_per_share",
+        "volume_unit": "shares",
+        "timezone": "Europe/London"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "close"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-07-06",
+          "end_date": "2026-07-10"
+        },
+        "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+        "bar": "daily"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-英国-01/XLON/SHEL.L/D/2026-07-06_2026-07-10/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-英国-02",
+    "suite": "historical_price",
+    "query": "阿斯利康（AZN.L）2026 年 6 月 1 日 至 2026 年 6 月 5 日 每天的开盘、最高、最低、收盘价和成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-049"
+  },
+  {
+    "case_id": "hist-英国-03",
+    "suite": "historical_price",
+    "query": "帮我取 汇丰控股 2026 年 5 月 11 日 到 2026 年 5 月 15 日 的前复权收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "entity_resolution": {
+        "mode": "multi_market_accepted_variants",
+        "evidence_requirement": "Each accepted listing has its own complete public source receipt. Select one listing only; do not average or splice across listings."
+      },
+      "accepted_variants": [
+        {
+          "variant_id": "hsba_l_yahoo",
+          "instrument": {
+            "issuer": "汇丰控股",
+            "symbol": "HSBA.L",
+            "exchange": "London Stock Exchange",
+            "mic": "XLON",
+            "currency": "GBP",
+            "quote_currency": "GBX",
+            "price_unit": "GBX_per_share",
+            "volume_unit": "shares",
+            "timezone": "Europe/London"
+          },
+          "fields": [
+            "adj_close"
+          ],
+          "date_and_aggregation": {
+            "requested_dates": {
+              "start_date": "2026-05-11",
+              "end_date": "2026-05-15"
+            },
+            "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+            "bar": "daily"
+          },
+          "adjustment": {
+            "basis": "forward_adjusted",
+            "policy": "use source-defined forward-adjusted historical bars; no evaluator-side recomputation"
+          },
+          "data_collection_key": "historical-v2/hist-英国-03/XLON/HSBA.L/D/2026-05-11_2026-05-15/forward"
+        },
+        {
+          "variant_id": "hk_yahoo_0005",
+          "instrument": {
+            "issuer": "汇丰控股",
+            "symbol": "00005.HK",
+            "exchange": "Hong Kong Stock Exchange",
+            "mic": "XHKG",
+            "currency": "HKD",
+            "price_unit": "HKD_per_share",
+            "volume_unit": "shares",
+            "timezone": "Asia/Hong_Kong"
+          },
+          "fields": [
+            "adj_close"
+          ],
+          "date_and_aggregation": {
+            "requested_dates": {
+              "start_date": "2026-05-11",
+              "end_date": "2026-05-15"
+            },
+            "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+            "bar": "daily"
+          },
+          "adjustment": {
+            "basis": "forward_adjusted",
+            "policy": "use source-defined forward-adjusted historical bars; no evaluator-side recomputation"
+          },
+          "data_collection_key": "historical-v2/hist-英国-03/XHKG/00005.HK/D/2026-05-11_2026-05-15/forward"
+        }
+      ],
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-英国-04",
+    "suite": "historical_price",
+    "query": "沃达丰 在 2026 年 4 月 13 日 到 2026 年 4 月 17 日 每天的成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "沃达丰",
+        "symbol": "VOD.L",
+        "exchange": "London Stock Exchange",
+        "mic": "XLON",
+        "currency": "GBP",
+        "price_unit": "GBX_per_share",
+        "volume_unit": "shares",
+        "timezone": "Europe/London"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "volume"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-04-13",
+          "end_date": "2026-04-17"
+        },
+        "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+        "bar": "daily"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-英国-04/XLON/VOD.L/D/2026-04-13_2026-04-17/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-英国-b01",
+    "suite": "historical_price",
+    "query": "查富时100指数 2026 年 6 月 1 日到 5 日的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "unsupported",
+    "evaluation_mode": "state_only",
+    "action": "inherit_v1_state_contract",
+    "contract": null,
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-德国-01",
+    "suite": "historical_price",
+    "query": "查一下SAP 2026 年 7 月 6 日 到 2026 年 7 月 10 日 的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "SAP",
+        "symbol": "SAP.DE",
+        "exchange": "Xetra",
+        "mic": "XETR",
+        "currency": "EUR",
+        "price_unit": "EUR_per_share",
+        "volume_unit": "shares",
+        "timezone": "Europe/Berlin"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "close"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-07-06",
+          "end_date": "2026-07-10"
+        },
+        "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+        "bar": "daily"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-德国-01/XETR/SAP.DE/D/2026-07-06_2026-07-10/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-德国-02",
+    "suite": "historical_price",
+    "query": "西门子（SIE.DE）2026 年 6 月 1 日 至 2026 年 6 月 5 日 每天的开盘、最高、最低、收盘价和成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "inherit_v1_numeric_contract",
+    "contract": null,
+    "inherit_ref": "historical-price-numeric-050"
+  },
+  {
+    "case_id": "hist-德国-03",
+    "suite": "historical_price",
+    "query": "帮我取 安联保险 2026 年 5 月 11 日 到 2026 年 5 月 15 日 的前复权收盘价。",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "安联保险",
+        "symbol": "ALV.DE",
+        "exchange": "Xetra",
+        "mic": "XETR",
+        "currency": "EUR",
+        "price_unit": "EUR_per_share",
+        "volume_unit": "shares",
+        "timezone": "Europe/Berlin"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "adj_close"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-05-11",
+          "end_date": "2026-05-15"
+        },
+        "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+        "bar": "daily"
+      },
+      "adjustment": {
+        "basis": "forward_adjusted",
+        "policy": "use source-defined forward-adjusted historical bars; no evaluator-side recomputation"
+      },
+      "data_collection_key": "historical-v2/hist-德国-03/XETR/ALV.DE/D/2026-05-11_2026-05-15/forward",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-德国-04",
+    "suite": "historical_price",
+    "query": "巴斯夫 在 2026 年 4 月 13 日 到 2026 年 4 月 17 日 每天的成交量是多少？",
+    "language": "zh-CN",
+    "expected_status": "success",
+    "evaluation_mode": "numeric_or_variant",
+    "action": "promote_to_success_via_entity_resolution",
+    "contract": {
+      "instrument": {
+        "issuer": "巴斯夫",
+        "symbol": "BAS.DE",
+        "exchange": "Xetra",
+        "mic": "XETR",
+        "currency": "EUR",
+        "price_unit": "EUR_per_share",
+        "volume_unit": "shares",
+        "timezone": "Europe/Berlin"
+      },
+      "entity_resolution": {
+        "mode": "common_issuer_default",
+        "evidence_requirement": "collect independent public listing-resolution evidence before freeze; do not use candidate hidden market/symbol as proof"
+      },
+      "fields": [
+        "volume"
+      ],
+      "date_and_aggregation": {
+        "requested_dates": {
+          "start_date": "2026-04-13",
+          "end_date": "2026-04-17"
+        },
+        "resolution": "one bar per eligible exchange trading date in the closed inclusive requested window",
+        "bar": "daily"
+      },
+      "adjustment": {
+        "basis": "raw_unadjusted",
+        "policy": "use source-reported raw historical bars"
+      },
+      "data_collection_key": "historical-v2/hist-德国-04/XETR/BAS.DE/D/2026-04-13_2026-04-17/none",
+      "output_policy": "return only requested directly-reported bar fields; no comparison, ranking, return, ratio, or other derived calculation"
+    },
+    "inherit_ref": null
+  },
+  {
+    "case_id": "hist-德国-b01",
+    "suite": "historical_price",
+    "query": "查 DAX 指数 2026 年 6 月 1 日到 5 日的收盘价。",
+    "language": "zh-CN",
+    "expected_status": "unsupported",
+    "evaluation_mode": "state_only",
+    "action": "inherit_v1_state_contract",
+    "contract": null,
+    "inherit_ref": null
+  }
+]

@@ -1,0 +1,860 @@
+{
+  "schema_version": "historical-price-evidence-receipts/v2",
+  "suite": "historical_price",
+  "raw_payload_policy": "Raw responses remain outside repository; this file stores only traceability metadata.",
+  "receipts": [
+    {
+      "receipt_id": "v2-hist-A股-04-tencent_source",
+      "case_id": "hist-A股-04",
+      "variant_id": "tencent_source",
+      "source_id": "Tencent Finance Kline",
+      "source_name": "Tencent Finance Kline",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz300750,day,2026-01-01,2026-08-31,320,none",
+      "content_sha256": "357595f29874dd72e43af621ca28c02a9b30a254257174b2518dca0e18dbf35b",
+      "retrieved_at": "2026-09-04T02:57:35Z",
+      "traceability": "complete",
+      "raw_payload_committed": false,
+      "volume_normalization": {
+        "source_unit": "lot",
+        "lot_size_shares": 100,
+        "target_unit": "shares",
+        "formula": "volume_shares = Tencent_Kline_volume_lots * 100",
+        "source_field": "data.sz300750.day[].5",
+        "source_values_lots": [
+          "216480",
+          "208486",
+          "270519",
+          "377942",
+          "556014"
+        ]
+      }
+    },
+    {
+      "receipt_id": "v2-hist-A股-05-tencent_source",
+      "case_id": "hist-A股-05",
+      "variant_id": "tencent_source",
+      "source_id": "Tencent Finance Kline",
+      "source_name": "Tencent Finance Kline",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh601318,day,2026-01-01,2026-08-31,320,none",
+      "content_sha256": "75c7322f97027662580cc742911a36bb8d9c74d166a2de3d55e43b3ac89fd755",
+      "retrieved_at": "2026-09-04T02:57:35Z",
+      "traceability": "complete",
+      "raw_payload_committed": false,
+      "volume_normalization": {
+        "source_unit": "lot",
+        "lot_size_shares": 100,
+        "target_unit": "shares",
+        "formula": "volume_shares = Tencent_Kline_volume_lots * 100",
+        "source_field": "data.sh601318.day[].5",
+        "source_values_lots": [
+          "775307",
+          "784941",
+          "625066",
+          "576226",
+          "937165"
+        ]
+      }
+    },
+    {
+      "receipt_id": "v2-hist-A股-06-tencent_source",
+      "case_id": "hist-A股-06",
+      "variant_id": "tencent_source",
+      "source_id": "Tencent Finance Kline",
+      "source_name": "Tencent Finance Kline",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh600036,day,2026-01-01,2026-08-31,320,none",
+      "content_sha256": "9a39dd5fe17073b571b7219d73ee1e770b9b5c46bcefe46a003bb4b69c407871",
+      "retrieved_at": "2026-09-04T02:57:35Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-A股-08-tencent_source",
+      "case_id": "hist-A股-08",
+      "variant_id": "tencent_source",
+      "source_id": "Tencent Finance Kline",
+      "source_name": "Tencent Finance Kline",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz002594,day,2026-01-01,2026-08-31,320,qfq",
+      "content_sha256": "03e888fcaed6b2ce3882180da6bca1cf76156053753d50aed5d2fedaeb45666c",
+      "retrieved_at": "2026-09-04T02:57:35Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-A股-09-source_1",
+      "case_id": "hist-A股-09",
+      "variant_id": "source_1",
+      "source_id": "public historical collection",
+      "source_name": "public historical collection",
+      "url": "https://finance.sina.com.cn/realstock/company/sh600519/hisdata_klc2/klc_kl.js",
+      "content_sha256": "db55a0b3275772192963926c6aad141b2b0864c7b24dfaf2ce43d680a9a65e2a",
+      "retrieved_at": "2026-09-04T07:49:48Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-A股-13-tencent_source",
+      "case_id": "hist-A股-13",
+      "variant_id": "tencent_source",
+      "source_id": "Tencent Finance Kline",
+      "source_name": "Tencent Finance Kline",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh601318,day,2026-01-01,2026-08-31,320,qfq",
+      "content_sha256": "4046eeb48cc5b914e5bd646f813ceea91211071ed68d72ef83b888c6f811d594",
+      "retrieved_at": "2026-09-04T02:57:35Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-A股-14-tencent_source",
+      "case_id": "hist-A股-14",
+      "variant_id": "tencent_source",
+      "source_id": "Tencent Finance Kline",
+      "source_name": "Tencent Finance Kline",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh600036,day,2026-01-01,2026-08-31,320,none",
+      "content_sha256": "9a39dd5fe17073b571b7219d73ee1e770b9b5c46bcefe46a003bb4b69c407871",
+      "retrieved_at": "2026-09-04T02:57:35Z",
+      "traceability": "complete",
+      "raw_payload_committed": false,
+      "volume_normalization": {
+        "source_unit": "lot",
+        "lot_size_shares": 100,
+        "target_unit": "shares",
+        "formula": "volume_shares = Tencent_Kline_volume_lots * 100",
+        "source_field": "data.sh600036.day[].5",
+        "source_values_lots": [
+          "961379",
+          "1256970",
+          "881275",
+          "738841",
+          "778709"
+        ]
+      }
+    },
+    {
+      "receipt_id": "v2-hist-A股-16-tencent_source",
+      "case_id": "hist-A股-16",
+      "variant_id": "tencent_source",
+      "source_id": "Tencent Finance Kline",
+      "source_name": "Tencent Finance Kline",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz002594,day,2026-01-01,2026-08-31,320,none",
+      "content_sha256": "69f8e3adb9e3e4e9e6ebb0f0890c2d83c7c8142541eba4d488c1d250491eff0d",
+      "retrieved_at": "2026-09-04T02:57:35Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-A股-19-source_1",
+      "case_id": "hist-A股-19",
+      "variant_id": "source_1",
+      "source_id": "public historical collection",
+      "source_name": "public historical collection",
+      "url": "https://finance.sina.com.cn/realstock/company/sz000002/hisdata_klc2/klc_kl.js",
+      "content_sha256": "f7a2840d0e84ab486530eef4271e5541baf22c610f3ccb04aceabe0a0654ac5f",
+      "retrieved_at": "2026-09-04T07:49:48Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-A股-20-tencent_source",
+      "case_id": "hist-A股-20",
+      "variant_id": "tencent_source",
+      "source_id": "Tencent Finance Kline",
+      "source_name": "Tencent Finance Kline",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz300750,day,2026-01-01,2026-08-31,320,none",
+      "content_sha256": "357595f29874dd72e43af621ca28c02a9b30a254257174b2518dca0e18dbf35b",
+      "retrieved_at": "2026-09-04T02:57:35Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-A股-21-tencent_source",
+      "case_id": "hist-A股-21",
+      "variant_id": "tencent_source",
+      "source_id": "Tencent Finance Kline",
+      "source_name": "Tencent Finance Kline",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh601318,day,2026-01-01,2026-08-31,320,none",
+      "content_sha256": "75c7322f97027662580cc742911a36bb8d9c74d166a2de3d55e43b3ac89fd755",
+      "retrieved_at": "2026-09-04T02:57:35Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-港股-05-source_1",
+      "case_id": "hist-港股-05",
+      "variant_id": "source_1",
+      "source_id": "public historical collection",
+      "source_name": "public historical collection",
+      "url": "https://finance.sina.com.cn/stock/hkstock/00941/klc2_kl.js",
+      "content_sha256": "a59e659b11f00aec4b42ce3918c501899f94b9b2790768ba3a63640eaa048b1d",
+      "retrieved_at": "2026-09-04T07:49:48Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-港股-06-hsba_l_yahoo",
+      "case_id": "hist-港股-06",
+      "variant_id": "hsba_l_yahoo",
+      "source_id": "Yahoo Finance chart API",
+      "source_name": "Yahoo Finance chart API",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/HSBA.L?period1=1770595200&period2=1771113600&interval=1d&events=div%2Csplits",
+      "content_sha256": "45f55c501cb2e29e3dafffe28b3c07edb86b5ef42775699989ba4cc7fdfdc9d6",
+      "retrieved_at": "2026-09-04T07:40:27Z",
+      "traceability": "complete",
+      "raw_payload_committed": false,
+      "instrument": {
+        "issuer": "汇丰控股",
+        "symbol": "HSBA.L",
+        "exchange": "London Stock Exchange",
+        "mic": "XLON",
+        "currency": "GBP",
+        "quote_currency": "GBX",
+        "price_unit": "GBX_per_share",
+        "volume_unit": "shares",
+        "timezone": "Europe/London"
+      }
+    },
+    {
+      "receipt_id": "v2-hist-港股-07-hk_yahoo_1",
+      "case_id": "hist-港股-07",
+      "variant_id": "hk_yahoo_1",
+      "source_id": "Yahoo Finance chart API",
+      "source_name": "Yahoo Finance chart API",
+      "url": "https://query2.finance.yahoo.com/v8/finance/chart/2318.HK?period1=1759276800&period2=1785628800&interval=1d&events=div%2Csplits",
+      "content_sha256": "6386a8dee312437c8e2918f3d2c1453a2a592269859b6d62c4f2e258d9411ef5",
+      "retrieved_at": "2026-09-04T03:32:00Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-港股-09-source_1",
+      "case_id": "hist-港股-09",
+      "variant_id": "source_1",
+      "source_id": "public historical collection",
+      "source_name": "public historical collection",
+      "url": "https://finance.sina.com.cn/stock/hkstock/00700/klc2_kl.js",
+      "content_sha256": "8693320d76a747db348defbff23c3d4d50438052780c7e42f9a184d83cdd673c",
+      "retrieved_at": "2026-09-04T07:49:48Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-港股-13-source_1",
+      "case_id": "hist-港股-13",
+      "variant_id": "source_1",
+      "source_id": "public historical collection",
+      "source_name": "public historical collection",
+      "url": "https://finance.sina.com.cn/stock/hkstock/00941/klc2_kl.js",
+      "content_sha256": "a59e659b11f00aec4b42ce3918c501899f94b9b2790768ba3a63640eaa048b1d",
+      "retrieved_at": "2026-09-04T07:49:48Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-港股-14-hsba_l_yahoo",
+      "case_id": "hist-港股-14",
+      "variant_id": "hsba_l_yahoo",
+      "source_id": "Yahoo Finance chart API",
+      "source_name": "Yahoo Finance chart API",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/HSBA.L?period1=1772409600&period2=1772841600&interval=1d&events=div%2Csplits",
+      "content_sha256": "98119ea308bff3b1009f4e28c57bf80b7290ccf370e3347f5807fc6846fec2c0",
+      "retrieved_at": "2026-09-04T07:41:18Z",
+      "traceability": "complete",
+      "raw_payload_committed": false,
+      "instrument": {
+        "issuer": "汇丰控股",
+        "symbol": "HSBA.L",
+        "exchange": "London Stock Exchange",
+        "mic": "XLON",
+        "currency": "GBP",
+        "quote_currency": "GBX",
+        "price_unit": "GBX_per_share",
+        "volume_unit": "shares",
+        "timezone": "Europe/London"
+      }
+    },
+    {
+      "receipt_id": "v2-hist-港股-15-source_1",
+      "case_id": "hist-港股-15",
+      "variant_id": "source_1",
+      "source_id": "public historical collection",
+      "source_name": "public historical collection",
+      "url": "https://finance.sina.com.cn/stock/hkstock/02318/klc2_kl.js",
+      "content_sha256": "579539e1c041fe22afa93bcc3dfa869a8442aedb40694a2536e94772262fba6e",
+      "retrieved_at": "2026-09-04T07:49:48Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-港股-19-source_1",
+      "case_id": "hist-港股-19",
+      "variant_id": "source_1",
+      "source_id": "public historical collection",
+      "source_name": "public historical collection",
+      "url": "https://finance.sina.com.cn/stock/hkstock/03690/klc2_kl.js",
+      "content_sha256": "8ae649d351a1ce6d0fee775d4dc3ba101ad37042949720400efff7cd69d280c4",
+      "retrieved_at": "2026-09-04T07:49:48Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-港股-21-hk_yahoo_1",
+      "case_id": "hist-港股-21",
+      "variant_id": "hk_yahoo_1",
+      "source_id": "Yahoo Finance chart API",
+      "source_name": "Yahoo Finance chart API",
+      "url": "https://query2.finance.yahoo.com/v8/finance/chart/0941.HK?period1=1759276800&period2=1785628800&interval=1d&events=div%2Csplits",
+      "content_sha256": "85d8e5d43dddb86e995a0730d546b5648e71997f6befcf7d92752e942bb1ce4d",
+      "retrieved_at": "2026-09-04T03:32:00Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-港股-b02-hk_0",
+      "case_id": "hist-港股-b02",
+      "variant_id": "hk_0",
+      "source_id": "StockAnalysis",
+      "source_name": "StockAnalysis",
+      "url": "https://stockanalysis.com/quote/hkg/9988/history/?p=all",
+      "content_sha256": "efb4c48c509a0dcf41db2b285310c362ce0619628e56f0cf974f07c7ec65613c",
+      "retrieved_at": "2026-09-04T08:00:00Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-港股-b02-us_0",
+      "case_id": "hist-港股-b02",
+      "variant_id": "us_0",
+      "source_id": "StockAnalysis",
+      "source_name": "StockAnalysis",
+      "url": "https://stockanalysis.com/stocks/baba/history/?p=all",
+      "content_sha256": "a05659d801a031eefc58e2974dd80d91bab8ae36cd77a037a9a09c3f09eca236",
+      "retrieved_at": "2026-09-04T08:00:00Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-美股-09-public_us_1",
+      "case_id": "hist-美股-09",
+      "variant_id": "public_us_1",
+      "source_id": "StockAnalysis",
+      "source_name": "StockAnalysis",
+      "url": "https://stockanalysis.com/stocks/jpm/history/",
+      "content_sha256": "6380ac1669fba1f52d5cb198ac5dd0a5c01ad62731198007ed4ea505c0f93f4c",
+      "retrieved_at": "2026-09-04T07:52:28Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-美股-19-public_us_1",
+      "case_id": "hist-美股-19",
+      "variant_id": "public_us_1",
+      "source_id": "StockAnalysis",
+      "source_name": "StockAnalysis",
+      "url": "https://stockanalysis.com/stocks/jpm/history/",
+      "content_sha256": "4c06b13cccd45d7710cd0a8f8d1a8fd62b94bc2a080b137f5f2f7f1d052d2305",
+      "retrieved_at": "2026-09-04T07:52:28Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-美股-b03-public_us_1",
+      "case_id": "hist-美股-b03",
+      "variant_id": "public_us_1",
+      "source_id": "StockAnalysis",
+      "source_name": "StockAnalysis",
+      "url": "https://stockanalysis.com/stocks/aapl/history/",
+      "content_sha256": "801b20cc48b2147accb087b49575f86a2ff8d4131002c7ad477bb17416a0b21d",
+      "retrieved_at": "2026-09-04T07:52:28Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-英国-01-gb_public_source",
+      "case_id": "hist-英国-01",
+      "variant_id": "gb_public_source",
+      "source_id": "Yahoo Finance chart API",
+      "source_name": "Yahoo Finance chart API",
+      "url": "https://query2.finance.yahoo.com/v8/finance/chart/SHEL.L?period1=1783296000&period2=1783728000&interval=1d&events=div%2Csplits",
+      "content_sha256": "49618ab497f2a20edc007027fb8d87ee502a2db456bc8d790fb039f1dc5084ae",
+      "retrieved_at": "2026-09-04T03:00:00Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-英国-03-hk_yahoo_0005",
+      "case_id": "hist-英国-03",
+      "variant_id": "hk_yahoo_0005",
+      "source_id": "Yahoo Finance chart API",
+      "source_name": "Yahoo Finance chart API",
+      "url": "https://query2.finance.yahoo.com/v8/finance/chart/0005.HK?period1=1778457600&period2=1787270400&interval=1d&events=div%2Csplits",
+      "content_sha256": "4d31acba23aabf0132f01d6d7c83b57ed0a92d476e3a13d637842a1d8e1a9077",
+      "retrieved_at": "2026-09-04T07:43:09Z",
+      "traceability": "complete",
+      "raw_payload_committed": false,
+      "instrument": {
+        "issuer": "汇丰控股",
+        "symbol": "00005.HK",
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG",
+        "currency": "HKD",
+        "price_unit": "HKD_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Hong_Kong"
+      }
+    },
+    {
+      "receipt_id": "v2-hist-英国-04-gb_public_source",
+      "case_id": "hist-英国-04",
+      "variant_id": "gb_public_source",
+      "source_id": "Yahoo Finance chart API",
+      "source_name": "Yahoo Finance chart API",
+      "url": "https://query2.finance.yahoo.com/v8/finance/chart/VOD.L?period1=1776038400&period2=1776470400&interval=1d&events=div%2Csplits",
+      "content_sha256": "781d7daac175a051d7cc9fc09497611910d0014640efb6c28ccf2b0141b72eef",
+      "retrieved_at": "2026-09-04T03:00:00Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-德国-01-de_public_source",
+      "case_id": "hist-德国-01",
+      "variant_id": "de_public_source",
+      "source_id": "Yahoo Finance chart API",
+      "source_name": "Yahoo Finance chart API",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/SAP.DE?period1=1783296000&period2=1783728000&interval=1d&events=div%2Csplits&includeAdjustedClose=true",
+      "content_sha256": "abb7a37eb01dfa5f5543492818da800e90324abb621f3c5ed1172a12f20ac8b3",
+      "retrieved_at": "2026-09-04T02:55:59.291Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-德国-03-de_public_source",
+      "case_id": "hist-德国-03",
+      "variant_id": "de_public_source",
+      "source_id": "Yahoo Finance chart API",
+      "source_name": "Yahoo Finance chart API",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/ALV.DE?period1=1778457600&period2=1778889600&interval=1d&events=div%2Csplits&includeAdjustedClose=true",
+      "content_sha256": "8d736fed7f62074066582b0714c480d5c9048271603eecbec00dcbf21b36932d",
+      "retrieved_at": "2026-09-04T02:55:59.291Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-德国-04-de_public_source",
+      "case_id": "hist-德国-04",
+      "variant_id": "de_public_source",
+      "source_id": "Yahoo Finance chart API",
+      "source_name": "Yahoo Finance chart API",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/BAS.DE?period1=1776038400&period2=1776470400&interval=1d&events=div%2Csplits&includeAdjustedClose=true",
+      "content_sha256": "0d11f70be5f238f43b64e4030996249656f2842541cb7b5983946470d77785bb",
+      "retrieved_at": "2026-09-04T02:55:59.291Z",
+      "traceability": "complete",
+      "raw_payload_committed": false
+    },
+    {
+      "receipt_id": "v2-hist-港股-06-hk_yahoo_0005",
+      "case_id": "hist-港股-06",
+      "variant_id": "hk_yahoo_0005",
+      "source_id": "Yahoo Finance chart API",
+      "source_name": "Yahoo Finance chart API",
+      "url": "https://query2.finance.yahoo.com/v8/finance/chart/0005.HK?period1=1770595200&period2=1771113600&interval=1d&events=div%2Csplits",
+      "content_sha256": "dba6d5923de4b71421e92861a2149a7bb85135ed699d3e5a4f20c7b9474e3da8",
+      "retrieved_at": "2026-09-04T08:56:00Z",
+      "traceability": "complete",
+      "raw_payload_committed": false,
+      "instrument": {
+        "issuer": "汇丰控股",
+        "symbol": "00005.HK",
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG",
+        "currency": "HKD",
+        "price_unit": "HKD_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Hong_Kong"
+      }
+    },
+    {
+      "receipt_id": "v2-hist-港股-14-hk_yahoo_0005",
+      "case_id": "hist-港股-14",
+      "variant_id": "hk_yahoo_0005",
+      "source_id": "Yahoo Finance chart API",
+      "source_name": "Yahoo Finance chart API",
+      "url": "https://query2.finance.yahoo.com/v8/finance/chart/0005.HK?period1=1772409600&period2=1772841600&interval=1d&events=div%2Csplits",
+      "content_sha256": "0e2bfb181bf33cbfabe8ff4031ac401ceedb0f4083b21b638f9325aa7de25a68",
+      "retrieved_at": "2026-09-04T08:56:00Z",
+      "traceability": "complete",
+      "raw_payload_committed": false,
+      "instrument": {
+        "issuer": "汇丰控股",
+        "symbol": "00005.HK",
+        "exchange": "Hong Kong Stock Exchange",
+        "mic": "XHKG",
+        "currency": "HKD",
+        "price_unit": "HKD_per_share",
+        "volume_unit": "shares",
+        "timezone": "Asia/Hong_Kong"
+      }
+    },
+    {
+      "receipt_id": "v2-hist-英国-03-hsba_l_yahoo",
+      "case_id": "hist-英国-03",
+      "variant_id": "hsba_l_yahoo",
+      "source_id": "Yahoo Finance chart API",
+      "source_name": "Yahoo Finance chart API",
+      "url": "https://query2.finance.yahoo.com/v8/finance/chart/HSBA.L?period1=1778457600&period2=1778889600&interval=1d&events=div%2Csplits",
+      "content_sha256": "dc334fa4e7288ff4aaf52e4160110926068da4274966ac7fde46c5e4b643438f",
+      "retrieved_at": "2026-09-04T08:56:00Z",
+      "traceability": "complete",
+      "raw_payload_committed": false,
+      "instrument": {
+        "issuer": "汇丰控股",
+        "symbol": "HSBA.L",
+        "exchange": "London Stock Exchange",
+        "mic": "XLON",
+        "currency": "GBP",
+        "quote_currency": "GBX",
+        "price_unit": "GBX_per_share",
+        "volume_unit": "shares",
+        "timezone": "Europe/London"
+      }
+    },
+    {
+      "receipt_id": "v2-hist-日本-01-jpx-2026-07-06",
+      "case_id": "hist-日本-01",
+      "variant_id": "jpx_daily_report",
+      "source_id": "Japan Exchange Group Daily Report",
+      "source_name": "Japan Exchange Group Daily Report",
+      "url": "https://www.jpx.co.jp/english/markets/statistics-equities/daily/vk0khi000001t1p9-att/stq_20260706.pdf",
+      "content_sha256": "ff15eb6d0de6770b03adc4033b8d4c67a5196d1e1f465137bebd69588013bd98",
+      "retrieved_at": "2026-09-04T08:55:41Z",
+      "traceability": "complete",
+      "raw_payload_committed": false,
+      "observed_date": "2026-07-06",
+      "coverage": {
+        "fields": [
+          "close"
+        ],
+        "instrument": {
+          "issuer": "丰田汽车",
+          "symbol": "7203.T",
+          "exchange": "Tokyo Stock Exchange",
+          "mic": "XTKS",
+          "currency": "JPY",
+          "price_unit": "JPY_per_share",
+          "volume_unit": "shares",
+          "timezone": "Asia/Tokyo"
+        }
+      },
+      "numeric_format": {
+        "source_display_thousands_separator": "removed for machine-readable decimal string; no numeric scaling"
+      }
+    },
+    {
+      "receipt_id": "v2-hist-日本-01-jpx-2026-07-07",
+      "case_id": "hist-日本-01",
+      "variant_id": "jpx_daily_report",
+      "source_id": "Japan Exchange Group Daily Report",
+      "source_name": "Japan Exchange Group Daily Report",
+      "url": "https://www.jpx.co.jp/english/markets/statistics-equities/daily/vk0khi000001t3ic-att/stq_20260707.pdf",
+      "content_sha256": "bee63667560b62da050f987ca544a922e33bd0e9ac388cce4dc40f35ae704b0e",
+      "retrieved_at": "2026-09-04T08:55:41Z",
+      "traceability": "complete",
+      "raw_payload_committed": false,
+      "observed_date": "2026-07-07",
+      "coverage": {
+        "fields": [
+          "close"
+        ],
+        "instrument": {
+          "issuer": "丰田汽车",
+          "symbol": "7203.T",
+          "exchange": "Tokyo Stock Exchange",
+          "mic": "XTKS",
+          "currency": "JPY",
+          "price_unit": "JPY_per_share",
+          "volume_unit": "shares",
+          "timezone": "Asia/Tokyo"
+        }
+      },
+      "numeric_format": {
+        "source_display_thousands_separator": "removed for machine-readable decimal string; no numeric scaling"
+      }
+    },
+    {
+      "receipt_id": "v2-hist-日本-01-jpx-2026-07-08",
+      "case_id": "hist-日本-01",
+      "variant_id": "jpx_daily_report",
+      "source_id": "Japan Exchange Group Daily Report",
+      "source_name": "Japan Exchange Group Daily Report",
+      "url": "https://www.jpx.co.jp/english/markets/statistics-equities/daily/vk0khi000001vbww-att/stq_20260708.pdf",
+      "content_sha256": "be9e13b05133c8809f672ebfd3801f32f67466d498e9f6b79a22b8218f13d4f8",
+      "retrieved_at": "2026-09-04T08:55:41Z",
+      "traceability": "complete",
+      "raw_payload_committed": false,
+      "observed_date": "2026-07-08",
+      "coverage": {
+        "fields": [
+          "close"
+        ],
+        "instrument": {
+          "issuer": "丰田汽车",
+          "symbol": "7203.T",
+          "exchange": "Tokyo Stock Exchange",
+          "mic": "XTKS",
+          "currency": "JPY",
+          "price_unit": "JPY_per_share",
+          "volume_unit": "shares",
+          "timezone": "Asia/Tokyo"
+        }
+      },
+      "numeric_format": {
+        "source_display_thousands_separator": "removed for machine-readable decimal string; no numeric scaling"
+      }
+    },
+    {
+      "receipt_id": "v2-hist-日本-01-jpx-2026-07-09",
+      "case_id": "hist-日本-01",
+      "variant_id": "jpx_daily_report",
+      "source_id": "Japan Exchange Group Daily Report",
+      "source_name": "Japan Exchange Group Daily Report",
+      "url": "https://www.jpx.co.jp/english/markets/statistics-equities/daily/vk0khi000001vdzm-att/stq_20260709.pdf",
+      "content_sha256": "e75c588170ff0d9b319a14a686b0cabf3f284215760e232c1624e31f41ea833b",
+      "retrieved_at": "2026-09-04T08:55:41Z",
+      "traceability": "complete",
+      "raw_payload_committed": false,
+      "observed_date": "2026-07-09",
+      "coverage": {
+        "fields": [
+          "close"
+        ],
+        "instrument": {
+          "issuer": "丰田汽车",
+          "symbol": "7203.T",
+          "exchange": "Tokyo Stock Exchange",
+          "mic": "XTKS",
+          "currency": "JPY",
+          "price_unit": "JPY_per_share",
+          "volume_unit": "shares",
+          "timezone": "Asia/Tokyo"
+        }
+      },
+      "numeric_format": {
+        "source_display_thousands_separator": "removed for machine-readable decimal string; no numeric scaling"
+      }
+    },
+    {
+      "receipt_id": "v2-hist-日本-01-jpx-2026-07-10",
+      "case_id": "hist-日本-01",
+      "variant_id": "jpx_daily_report",
+      "source_id": "Japan Exchange Group Daily Report",
+      "source_name": "Japan Exchange Group Daily Report",
+      "url": "https://www.jpx.co.jp/english/markets/statistics-equities/daily/vk0khi000001vg1y-att/stq_20260710.pdf",
+      "content_sha256": "8ce8ae580ca168159bc311c32cb9f5ba6bb775ca7b34ce64fd0fcbbbeb28b85d",
+      "retrieved_at": "2026-09-04T08:55:41Z",
+      "traceability": "complete",
+      "raw_payload_committed": false,
+      "observed_date": "2026-07-10",
+      "coverage": {
+        "fields": [
+          "close"
+        ],
+        "instrument": {
+          "issuer": "丰田汽车",
+          "symbol": "7203.T",
+          "exchange": "Tokyo Stock Exchange",
+          "mic": "XTKS",
+          "currency": "JPY",
+          "price_unit": "JPY_per_share",
+          "volume_unit": "shares",
+          "timezone": "Asia/Tokyo"
+        }
+      },
+      "numeric_format": {
+        "source_display_thousands_separator": "removed for machine-readable decimal string; no numeric scaling"
+      }
+    },
+    {
+      "receipt_id": "v2-hist-日本-04-jpx-2026-04-13",
+      "case_id": "hist-日本-04",
+      "variant_id": "jpx_daily_report",
+      "source_id": "Japan Exchange Group Daily Report",
+      "source_name": "Japan Exchange Group Daily Report",
+      "url": "https://www.jpx.co.jp/english/markets/statistics-equities/daily/vk0khi0000017vyt-att/stq_20260413.pdf",
+      "content_sha256": "c65788117222833bec32805674b9fdeb8f51ad49074c7aae433850712cc7740b",
+      "retrieved_at": "2026-09-04T08:55:41Z",
+      "traceability": "complete",
+      "raw_payload_committed": false,
+      "observed_date": "2026-04-13",
+      "coverage": {
+        "fields": [
+          "volume"
+        ],
+        "instrument": {
+          "issuer": "软银集团",
+          "symbol": "9984.T",
+          "exchange": "Tokyo Stock Exchange",
+          "mic": "XTKS",
+          "currency": "JPY",
+          "price_unit": "JPY_per_share",
+          "volume_unit": "shares",
+          "timezone": "Asia/Tokyo"
+        }
+      },
+      "numeric_format": {
+        "source_display_thousands_separator": "removed for machine-readable decimal string; no numeric scaling"
+      },
+      "volume_normalization": {
+        "source_unit": "thousand_shares",
+        "multiplier_to_shares": 1000,
+        "target_unit": "shares",
+        "formula": "volume_shares = JPX_reported_trading_volume_thousand_shares * 1000"
+      }
+    },
+    {
+      "receipt_id": "v2-hist-日本-04-jpx-2026-04-14",
+      "case_id": "hist-日本-04",
+      "variant_id": "jpx_daily_report",
+      "source_id": "Japan Exchange Group Daily Report",
+      "source_name": "Japan Exchange Group Daily Report",
+      "url": "https://www.jpx.co.jp/english/markets/statistics-equities/daily/vk0khi0000017ykr-att/stq_20260414.pdf",
+      "content_sha256": "8ac07f0b5d7413b9da260102c217d32c14cb6ebb2f004deaa011fca14f9505bb",
+      "retrieved_at": "2026-09-04T08:55:41Z",
+      "traceability": "complete",
+      "raw_payload_committed": false,
+      "observed_date": "2026-04-14",
+      "coverage": {
+        "fields": [
+          "volume"
+        ],
+        "instrument": {
+          "issuer": "软银集团",
+          "symbol": "9984.T",
+          "exchange": "Tokyo Stock Exchange",
+          "mic": "XTKS",
+          "currency": "JPY",
+          "price_unit": "JPY_per_share",
+          "volume_unit": "shares",
+          "timezone": "Asia/Tokyo"
+        }
+      },
+      "numeric_format": {
+        "source_display_thousands_separator": "removed for machine-readable decimal string; no numeric scaling"
+      },
+      "volume_normalization": {
+        "source_unit": "thousand_shares",
+        "multiplier_to_shares": 1000,
+        "target_unit": "shares",
+        "formula": "volume_shares = JPX_reported_trading_volume_thousand_shares * 1000"
+      }
+    },
+    {
+      "receipt_id": "v2-hist-日本-04-jpx-2026-04-15",
+      "case_id": "hist-日本-04",
+      "variant_id": "jpx_daily_report",
+      "source_id": "Japan Exchange Group Daily Report",
+      "source_name": "Japan Exchange Group Daily Report",
+      "url": "https://www.jpx.co.jp/english/markets/statistics-equities/daily/vk0khi00000180z2-att/stq_20260415.pdf",
+      "content_sha256": "a8e2b62574bcc6647937fcb8b151851c6111707985137182da7113a38929fa80",
+      "retrieved_at": "2026-09-04T08:55:41Z",
+      "traceability": "complete",
+      "raw_payload_committed": false,
+      "observed_date": "2026-04-15",
+      "coverage": {
+        "fields": [
+          "volume"
+        ],
+        "instrument": {
+          "issuer": "软银集团",
+          "symbol": "9984.T",
+          "exchange": "Tokyo Stock Exchange",
+          "mic": "XTKS",
+          "currency": "JPY",
+          "price_unit": "JPY_per_share",
+          "volume_unit": "shares",
+          "timezone": "Asia/Tokyo"
+        }
+      },
+      "numeric_format": {
+        "source_display_thousands_separator": "removed for machine-readable decimal string; no numeric scaling"
+      },
+      "volume_normalization": {
+        "source_unit": "thousand_shares",
+        "multiplier_to_shares": 1000,
+        "target_unit": "shares",
+        "formula": "volume_shares = JPX_reported_trading_volume_thousand_shares * 1000"
+      }
+    },
+    {
+      "receipt_id": "v2-hist-日本-04-jpx-2026-04-16",
+      "case_id": "hist-日本-04",
+      "variant_id": "jpx_daily_report",
+      "source_id": "Japan Exchange Group Daily Report",
+      "source_name": "Japan Exchange Group Daily Report",
+      "url": "https://www.jpx.co.jp/english/markets/statistics-equities/daily/vk0khi00000183a0-att/stq_20260416.pdf",
+      "content_sha256": "fa4563d1ecbb64c4c77b6399a2e71441513138493bae26c4748f76852eda9bbf",
+      "retrieved_at": "2026-09-04T08:55:41Z",
+      "traceability": "complete",
+      "raw_payload_committed": false,
+      "observed_date": "2026-04-16",
+      "coverage": {
+        "fields": [
+          "volume"
+        ],
+        "instrument": {
+          "issuer": "软银集团",
+          "symbol": "9984.T",
+          "exchange": "Tokyo Stock Exchange",
+          "mic": "XTKS",
+          "currency": "JPY",
+          "price_unit": "JPY_per_share",
+          "volume_unit": "shares",
+          "timezone": "Asia/Tokyo"
+        }
+      },
+      "numeric_format": {
+        "source_display_thousands_separator": "removed for machine-readable decimal string; no numeric scaling"
+      },
+      "volume_normalization": {
+        "source_unit": "thousand_shares",
+        "multiplier_to_shares": 1000,
+        "target_unit": "shares",
+        "formula": "volume_shares = JPX_reported_trading_volume_thousand_shares * 1000"
+      }
+    },
+    {
+      "receipt_id": "v2-hist-日本-04-jpx-2026-04-17",
+      "case_id": "hist-日本-04",
+      "variant_id": "jpx_daily_report",
+      "source_id": "Japan Exchange Group Daily Report",
+      "source_name": "Japan Exchange Group Daily Report",
+      "url": "https://www.jpx.co.jp/english/markets/statistics-equities/daily/vk0khi00000185f0-att/stq_20260417.pdf",
+      "content_sha256": "99042a388137e494a85f508dd114733ed644de2e99761cc867f5616501dfbbf5",
+      "retrieved_at": "2026-09-04T08:55:41Z",
+      "traceability": "complete",
+      "raw_payload_committed": false,
+      "observed_date": "2026-04-17",
+      "coverage": {
+        "fields": [
+          "volume"
+        ],
+        "instrument": {
+          "issuer": "软银集团",
+          "symbol": "9984.T",
+          "exchange": "Tokyo Stock Exchange",
+          "mic": "XTKS",
+          "currency": "JPY",
+          "price_unit": "JPY_per_share",
+          "volume_unit": "shares",
+          "timezone": "Asia/Tokyo"
+        }
+      },
+      "numeric_format": {
+        "source_display_thousands_separator": "removed for machine-readable decimal string; no numeric scaling"
+      },
+      "volume_normalization": {
+        "source_unit": "thousand_shares",
+        "multiplier_to_shares": 1000,
+        "target_unit": "shares",
+        "formula": "volume_shares = JPX_reported_trading_volume_thousand_shares * 1000"
+      }
+    }
+  ]
+}
