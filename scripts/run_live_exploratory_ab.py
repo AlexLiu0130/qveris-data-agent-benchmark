@@ -27,6 +27,7 @@ from qveris_benchmark.financial_diagnostic import compile_with_digest
 from qveris_benchmark.model_gateway import ModelGatewayClient
 from qveris_benchmark.qveris_search import DEFAULT_TIMEOUT_SECONDS as QVERIS_TRANSPORT_TIMEOUT_SECONDS, QVerisSearchClient
 from qveris_benchmark.run_backend import RunService, RunStore, _digest
+from qveris_benchmark.tls import resolve_ca_file
 from qveris_benchmark.runner_gateway_agent import (
     AGENT_VERSION,
     MODEL_ID,
@@ -67,7 +68,6 @@ ABSOLUTE_EXECUTE_COST_CAP_CONTRACT = {
 }
 ABSOLUTE_EXECUTE_COST_CAP_DIGEST = _digest(ABSOLUTE_EXECUTE_COST_CAP_CONTRACT)
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
-_SYSTEM_CA_BUNDLE = Path("/etc/ssl/cert.pem")
 
 
 class PreflightError(ValueError):
@@ -75,11 +75,8 @@ class PreflightError(ValueError):
 
 
 def _ca_bundle(environment_name: str) -> str | None:
-    """Prefer an explicit bundle, then the verified system bundle available here."""
-    configured = os.environ.get(environment_name) or os.environ.get("SSL_CERT_FILE")
-    if configured:
-        return configured
-    return str(_SYSTEM_CA_BUNDLE) if _SYSTEM_CA_BUNDLE.is_file() else None
+    """Use the same CA resolution order as the direct HTTPS clients."""
+    return resolve_ca_file(ca_file=None, environment_ca_file=environment_name)
 
 
 def _utc_now() -> datetime:

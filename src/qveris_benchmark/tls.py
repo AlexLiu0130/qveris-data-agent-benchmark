@@ -9,6 +9,16 @@ from typing import Any
 from urllib.request import HTTPRedirectHandler, HTTPSHandler, ProxyHandler, Request, build_opener
 
 
+# Ordered from the local macOS bundle to common Linux distributions.  Missing
+# paths are ignored; validation still happens before a chosen bundle is used.
+SYSTEM_CA_BUNDLE_PATHS = (
+    "/etc/ssl/cert.pem",
+    "/etc/ssl/certs/ca-certificates.crt",
+    "/etc/pki/tls/certs/ca-bundle.crt",
+    "/etc/ssl/ca-bundle.pem",
+)
+
+
 class _NoRedirect(HTTPRedirectHandler):
     def redirect_request(self, req: Request, fp: Any, code: int, msg: str, headers: Any, newurl: str) -> None:
         return None
@@ -48,7 +58,7 @@ def verified_ssl_context(
         if ssl_context.verify_mode != ssl.CERT_REQUIRED or not ssl_context.check_hostname:
             raise ValueError("ssl_context must require certificate and hostname verification")
         return ssl_context
-    selected = ca_file if ca_file is not None else os.environ.get(environment_ca_file) or os.environ.get("SSL_CERT_FILE")
+    selected = resolve_ca_file(ca_file=ca_file, environment_ca_file=environment_ca_file)
     if selected is None:
         return ssl.create_default_context()
     if type(selected) is not str or not selected:
@@ -63,3 +73,14 @@ def verified_ssl_context(
         return ssl.create_default_context(cafile=str(bundle))
     except (OSError, ssl.SSLError) as exc:
         raise ValueError("ca_file is not a usable certificate bundle") from exc
+
+
+def resolve_ca_file(*, ca_file: str | None, environment_ca_file: str) -> str | None:
+    """Resolve a CA bundle without ever weakening certificate verification."""
+    selected = ca_file if ca_file is not None else os.environ.get(environment_ca_file) or os.environ.get("SSL_CERT_FILE")
+    if selected is not None:
+        return selected
+    for candidate in SYSTEM_CA_BUNDLE_PATHS:
+        if Path(candidate).is_file():
+            return candidate
+    return None
