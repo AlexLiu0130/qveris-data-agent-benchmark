@@ -1,0 +1,67 @@
+[
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "receipt-hkex-0700-fy2025-annual-report",
+    "source_id": "HKEXnews:00700:2026040901231",
+    "source_class": "exchange",
+    "independence_group": "hkexnews",
+    "published_at": "2026-04-08T17:52:00+08:00",
+    "retrieved_at": "2026-09-03T09:28:16Z",
+    "authoritative_origin_id": "hk-0700-hk-fy2025-authoritative-report",
+    "timestamp_precision": "minute",
+    "source_lineage": {
+      "origin_id": "hk-0700-hk-fy2025-authoritative-report",
+      "delivery_channel": "hkexnews_official_hosted_pdf",
+      "extraction_method": "pypdf_page_text",
+      "chain": [
+        "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0409/2026040901231.pdf"
+      ]
+    },
+    "content_sha256": "2a7547168077c3d9994af673125e77612e8656bc0f17ad189371d7e4088f4e98",
+    "display_nil_evidence": [
+      {
+        "assertion_id": "bs-027",
+        "raw_display": "–",
+        "evidence_locator": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0409/2026040901231.pdf ; PDF p.133 / printed p.132, Consolidated Statement of Financial Position, Share capital row, 2025 column",
+        "confirmed_nil": true
+      }
+    ],
+    "evidence_locator": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0409/2026040901231.pdf ; Consolidated Income Statement p.129, Consolidated Statement of Financial Position PDF pp.132-134 (printed pp.131-133; Share capital row raw display U+2013 en dash `–`), Consolidated Statement of Cash Flows pp.138-139",
+    "source_document_id": "HKEXnews annual-report filing 2026040901231",
+    "notes": "PIT: HKEXnews title search records release at 2026-04-08T17:52:00+08:00 for stock 00700, Annual Report 2025. Currency and unit: RMB million except EPS rows (RMB per share). Accounting framework: audited consolidated financial statements under IFRS Accounting Standards; auditor opinion pp.120-121. Lineage: public HKEXnews PDF fetched without credentials, SHA-256 calculated from the response stream, rows transcribed from the stated report pages as decimal strings; original PDF is not retained. bs-027 normalization: the Share capital cell displays U+2013 en dash `–`, confirmed as a nil value by adversarial review; canonical numeric value is `0` only under `canonical_zero_from_display_nil`.",
+    "same_authoritative_origin": true
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "receipt-tencent-ir-0700-fy2025-annual-report",
+    "source_id": "Tencent-IR:2025-annual-report",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "tencent-ir",
+    "published_at": "2026-04-09T00:00:00+08:00",
+    "retrieved_at": "2026-09-03T09:28:16Z",
+    "authoritative_origin_id": "hk-0700-hk-fy2025-authoritative-report",
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "hk-0700-hk-fy2025-authoritative-report",
+      "delivery_channel": "tencent_ir_official_hosted_pdf",
+      "extraction_method": "pypdf_page_text",
+      "chain": [
+        "https://www.tencent.com/investors/financial-reports/",
+        "https://static.www.tencent.com/uploads/2026/04/09/62d786fcf3d3c8cb7e54791ee95439ac.pdf"
+      ]
+    },
+    "content_sha256": "2a7547168077c3d9994af673125e77612e8656bc0f17ad189371d7e4088f4e98",
+    "display_nil_evidence": [
+      {
+        "assertion_id": "bs-027",
+        "raw_display": "–",
+        "evidence_locator": "https://static.www.tencent.com/uploads/2026/04/09/62d786fcf3d3c8cb7e54791ee95439ac.pdf ; PDF p.133 / printed p.132, Consolidated Statement of Financial Position, Share capital row, 2025 column",
+        "confirmed_nil": true
+      }
+    ],
+    "evidence_locator": "https://www.tencent.com/investors/financial-reports/ ; 2025 Annual Report -> https://static.www.tencent.com/uploads/2026/04/09/62d786fcf3d3c8cb7e54791ee95439ac.pdf ; p.129, PDF pp.132-134 (printed pp.131-133; Share capital row raw display U+2013 en dash `–`), pp.138-139",
+    "source_document_id": "Tencent IR 2025 Annual Report",
+    "notes": "PIT: Tencent IR page publicly lists the 2025 Annual Report; the static asset path is dated 2026-04-09. The exact Tencent IR publication time is not exposed by the page, so the midnight timestamp is a date-only placeholder and MUST NOT be used as PIT proof; the HKEX receipt is the PIT authority. Same-origin independent delivery: this is a separately retrieved issuer IR delivery, but its SHA-256 exactly matches the HKEX filing, so it is not independent content provenance and cannot support frozen status alone. Currency/unit, IFRS, pages and extraction lineage are identical to the HKEX receipt; original PDF is not retained. bs-027 independently shows raw U+2013 en dash `–`; adversarial review confirms the display is nil, normalized to canonical numeric `0` only under `canonical_zero_from_display_nil`.",
+    "same_authoritative_origin": true
+  }
+]

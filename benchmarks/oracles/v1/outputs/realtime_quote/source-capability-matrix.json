@@ -1,0 +1,27 @@
+{
+  "package_schema_version": "realtime-quote-source-capability-matrix/v1",
+  "suite": "realtime_quote",
+  "status": "not_frozen",
+  "data_accuracy": "not_scored",
+  "source_candidate": {
+    "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+    "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+  },
+  "admission_rule": {
+    "live_bracketed_requires": [
+      "Two distinct licensed market-data providers with documented internal benchmark storage/use permission and distinct independence groups.",
+      "For each comparison, provider quote timestamps, evaluator captured_at, market session, timezone, currency, and unit.",
+      "A pre-bound staleness limit, cross-source skew limit, and tick tolerance; none may be inferred after capture.",
+      "A declared before/after or dual-reference capture method, preserved in evidence receipts and independently reviewed."
+    ],
+    "replay_fixture_rule": "A replay fixture may support deterministic regression only. It must use snapshot_mode=replay_fixture and evaluation_use=non_formal_replay_only; it never contributes to formal data_accuracy or rankings.",
+    "hard_scoring_exclusion": "Candidate provider tool parameters are not a hard-scoring target."
+  },
+  "capability_status": {
+    "live_bracketed_dual_provider": "not_admitted",
+    "license_evidence": "not_admitted",
+    "reference_capture_contract": "unbound",
+    "replay_fixture": "not_collected_non_formal_only"
+  },
+  "conclusion": "No authorized dual-provider realtime reference source or pre-bound capture policy is present in this package. No case is admitted for formal realtime value-oracle freezing."
+}

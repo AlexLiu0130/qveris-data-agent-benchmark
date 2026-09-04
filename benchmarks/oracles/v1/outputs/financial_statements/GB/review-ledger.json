@@ -1,0 +1,278 @@
+{
+  "review_ledgers": [
+    {
+      "schema_version": "review-ledger/v1",
+      "oracle_id": "FS-GB-SHEL-2025-income",
+      "oracle_file_sha256": "6b76d839f32bcca4274aae708815bebf007668e140b57ae8ee8f794f0e8626c0",
+      "reviews": [
+        {
+          "review_id": "review-gb-income-20260903",
+          "role": "data_reviewer",
+          "reviewer_id": "/root/ledger_review_financial_jp_gb_de",
+          "decision": "approved",
+          "reviewed_at": "2026-09-03T11:20:24Z",
+          "notes": "Current-hash data review approved: 19/19 rows link to both official receipts; FY2025, IFRS, USD million with the two contract-declared USD-per-share EPS exceptions, current-column presentation, PIT, record same-authoritative-origin, and official multi-delivery checks pass. Oracle promotion metadata is now frozen; only the absent suite manifest remains a package-release control."
+        },
+        {
+          "review_id": "semantic-review-gb-income-20260903",
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_signoff_jp_gb_de",
+          "decision": "approved",
+          "reviewed_at": "2026-09-03T11:20:24Z",
+          "notes": "Current-hash semantic sign-off approved: FY2025 duration, IFRS, USD million with contract-declared USD-per-share EPS exceptions, as-filed current-column presentation, and same-origin official multi-delivery are semantically correct."
+        }
+      ],
+      "conflicts": [
+        {
+          "conflict_id": "GB-003-income-freeze-contract-completeness",
+          "status": "resolved",
+          "description": "The linked evidence-collected oracle and receipts previously lacked frozen-contract metadata, per-assertion receipt links, and a manifest entry.",
+          "opened_at": "2026-09-03T10:22:25Z",
+          "resolved_at": "2026-09-03T10:35:06Z",
+        "resolution": "Fact contract, receipt provenance, both receipt links, and record-level origin/same-authoritative-origin flags are present for every income assertion. Package promotion controls are recorded separately."
+        },
+        {
+          "conflict_id": "GB-004-income-manifest-release-state",
+        "status": "resolved",
+        "description": "The oracle now has record.origin but still omits explicit record.same_authoritative_origin; the data review is changes_requested, and no manifest binds the current oracle, receipts, and review-ledger hashes; freeze/scoring release cannot close.",
+        "opened_at": "2026-09-03T10:35:06Z",
+        "resolved_at": "2026-09-03T11:04:14Z",
+        "resolution": "Current Oracle bytes explicitly set origin equal to authoritative_origin_id and same_authoritative_origin=true; all 19 linked assertions, current hash, PIT, IFRS, period/unit, presentation scope, and declared EPS unit exceptions verify, and data plus semantic reviews are approved. The Oracle is now frozen; only the absent suite manifest remains a package-release control, not an open evidence conflict."
+        }
+      ]
+    },
+    {
+      "schema_version": "review-ledger/v1",
+      "oracle_id": "FS-GB-SHEL-2025-balance-sheet",
+      "oracle_file_sha256": "6b76d839f32bcca4274aae708815bebf007668e140b57ae8ee8f794f0e8626c0",
+      "reviews": [
+        {
+          "review_id": "review-gb-balance-sheet-20260903",
+          "role": "data_reviewer",
+          "reviewer_id": "/root/ledger_review_financial_jp_gb_de",
+          "decision": "approved",
+          "reviewed_at": "2026-09-03T11:20:24Z",
+          "notes": "Current-hash data review approved: 42/42 rows link to both official receipts; 2025-12-31 instant, IFRS, USD million, current-column presentation, PIT, record same-authoritative-origin, and official multi-delivery checks pass. Oracle promotion metadata is now frozen; only the absent suite manifest remains a package-release control."
+        },
+        {
+          "review_id": "semantic-review-gb-balance-sheet-20260903",
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_signoff_jp_gb_de",
+          "decision": "approved",
+          "reviewed_at": "2026-09-03T11:20:24Z",
+          "notes": "Current-hash semantic sign-off approved: 2025-12-31 instant, IFRS, USD-million, as-filed current-column presentation, and same-origin official multi-delivery are semantically correct."
+        }
+      ],
+      "conflicts": [
+        {
+          "conflict_id": "GB-003-balance-sheet-freeze-contract-completeness",
+          "status": "resolved",
+          "description": "The linked evidence-collected oracle and receipts previously lacked frozen-contract metadata, per-assertion receipt links, and a manifest entry.",
+          "opened_at": "2026-09-03T10:22:25Z",
+          "resolved_at": "2026-09-03T10:35:06Z",
+        "resolution": "Fact contract, receipt provenance, both receipt links, and record-level origin/same-authoritative-origin flags are present for every balance-sheet assertion. Package promotion controls are recorded separately."
+        },
+        {
+          "conflict_id": "GB-004-balance-sheet-manifest-release-state",
+        "status": "resolved",
+        "description": "The oracle now has record.origin but still omits explicit record.same_authoritative_origin; the data review is changes_requested, and no manifest binds the current oracle, receipts, and review-ledger hashes; freeze/scoring release cannot close.",
+        "opened_at": "2026-09-03T10:35:06Z",
+        "resolved_at": "2026-09-03T11:04:14Z",
+        "resolution": "Current Oracle bytes explicitly set origin equal to authoritative_origin_id and same_authoritative_origin=true; all 42 linked assertions, current hash, PIT, IFRS, period/unit, and as-filed instant presentation scope verify, and data plus semantic reviews are approved. The Oracle is now frozen; only the absent suite manifest remains a package-release control, not an open evidence conflict."
+        }
+      ]
+    },
+    {
+      "schema_version": "review-ledger/v1",
+      "oracle_id": "FS-GB-SHEL-2025-cash-flow",
+      "oracle_file_sha256": "6b76d839f32bcca4274aae708815bebf007668e140b57ae8ee8f794f0e8626c0",
+      "reviews": [
+        {
+          "review_id": "review-gb-cash-flow-20260903",
+          "role": "data_reviewer",
+          "reviewer_id": "/root/ledger_review_financial_jp_gb_de",
+          "decision": "approved",
+          "reviewed_at": "2026-09-03T11:20:24Z",
+          "notes": "Current-hash data review approved: 42/42 rows link to both official receipts; FY2025, IFRS, USD million, current-column presentation, PIT, record same-authoritative-origin, and official multi-delivery checks pass. Oracle promotion metadata is now frozen; only the absent suite manifest remains a package-release control."
+        },
+        {
+          "review_id": "semantic-review-gb-cash-flow-20260903",
+          "role": "semantic_reviewer",
+          "reviewer_id": "/root/semantic_signoff_jp_gb_de",
+          "decision": "approved",
+          "reviewed_at": "2026-09-03T11:20:24Z",
+          "notes": "Current-hash semantic sign-off approved: FY2025 duration, IFRS, USD-million, as-filed current-column presentation, and same-origin official multi-delivery are semantically correct."
+        }
+      ],
+      "conflicts": [
+        {
+          "conflict_id": "GB-003-cash-flow-freeze-contract-completeness",
+          "status": "resolved",
+          "description": "The linked evidence-collected oracle and receipts previously lacked frozen-contract metadata, per-assertion receipt links, and a manifest entry.",
+          "opened_at": "2026-09-03T10:22:25Z",
+          "resolved_at": "2026-09-03T10:35:06Z",
+        "resolution": "Fact contract, receipt provenance, both receipt links, and record-level origin/same-authoritative-origin flags are present for every cash-flow assertion. Package promotion controls are recorded separately."
+        },
+        {
+          "conflict_id": "GB-004-cash-flow-manifest-release-state",
+        "status": "resolved",
+        "description": "The oracle now has record.origin but still omits explicit record.same_authoritative_origin; the data review is changes_requested, and no manifest binds the current oracle, receipts, and review-ledger hashes; freeze/scoring release cannot close.",
+        "opened_at": "2026-09-03T10:35:06Z",
+        "resolved_at": "2026-09-03T11:04:14Z",
+        "resolution": "Current Oracle bytes explicitly set origin equal to authoritative_origin_id and same_authoritative_origin=true; all 42 linked assertions, current hash, PIT, IFRS, period/unit, and as-filed duration presentation scope verify, and data plus semantic reviews are approved. The Oracle is now frozen; only the absent suite manifest remains a package-release control, not an open evidence conflict."
+        }
+      ]
+    }
+  ],
+  "package_review": {
+  "task_name": "ledger_review_financial_jp_gb_de/review_gb",
+  "role": "independent_data_reviewer",
+    "reviewed_at": "2026-09-03T11:47:41Z",
+  "scope": {
+    "directory": "outputs/financial_statements/GB",
+    "entity": "Shell plc",
+    "basis": "as_reported",
+    "reporting_framework": "IFRS as issued by IASB",
+    "reporting_currency": "USD",
+    "reporting_unit": "USD millions except EPS in USD per share",
+    "periods_checked": ["FY2025", "2025-12-31"],
+    "comparative_columns_checked": ["2024", "2023 for income and cash flow"],
+    "same_authoritative_origin": true,
+    "same_authoritative_origin_conclusion": "The Shell-hosted PDF and SEC-hosted Form 20-F are distinct deliveries, but both report Shell plc's issuer-prepared FY2025 audited consolidated statements; they are not independent-origin accounting evidence."
+  },
+  "source_verification": {
+    "primary": {
+      "receipt_id": "SHEL-AR2025-CFS",
+      "authoritative_source": "Shell plc Annual Report and Accounts 2025 — Consolidated Financial Statements",
+      "url": "https://www.shell.com/investors/results-and-reporting/annual-report/_jcr_content/root/main/section_2113846431/link_list/links/item4.stream/1773292255440/bc68032ad3986f04e8401c7f1d4d20885e16c950/consolidated-financial-statements-ar25.pdf",
+      "statement_locations": "Consolidated Statement of Income p.214; Consolidated Balance Sheet p.215; Consolidated Statement of Cash Flows p.217",
+      "expected_sha256": "a97d13136097d9e8e303d3361c5194ec861cd08ca33f3e4b100a9c6fed5d0e34",
+      "observed_sha256": "a97d13136097d9e8e303d3361c5194ec861cd08ca33f3e4b100a9c6fed5d0e34",
+      "hash_status": "pass"
+    },
+    "corroborating_distribution": {
+      "receipt_id": "SEC-20F-2025",
+      "authoritative_source": "SEC EDGAR Form 20-F accession 0001628280-26-017024, accepted 2026-03-12T08:06:26Z",
+      "url": "https://www.sec.gov/Archives/edgar/data/1306965/000162828026017024/shel-20251231.htm",
+      "statement_locations": "Consolidated Statement of Income p.214; Consolidated Balance Sheet p.215; Consolidated Statement of Cash Flows p.217",
+      "expected_sha256": "964866953ee25cc6827fa10d16ed9b2a395170e173e6258957b139d05eb79a99",
+      "observed_sha256": "964866953ee25cc6827fa10d16ed9b2a395170e173e6258957b139d05eb79a99",
+      "hash_status": "pass"
+    },
+    "ifrs_evidence": "Form 20-F 2025, Consolidated Financial Statements, Note 1 (p.217) states the statements are prepared under UK-adopted international accounting standards and that there are no material differences from IFRS as issued by IASB."
+  },
+  "assertion_results": [
+    {
+      "oracle_id": "FS-GB-SHEL-2025-income",
+      "case_ids": ["FS-073", "FS-076"],
+      "statement": "Consolidated Statement of Income",
+      "source_column": "2025",
+      "assertions": 19,
+      "pass": 19,
+      "fail": 0,
+      "hold": 0,
+      "conclusion": "All 19 expected signed values, USD-million declarations, and USD-per-share EPS declarations exactly match the FY2025 column."
+    },
+    {
+      "oracle_id": "FS-GB-SHEL-2025-balance-sheet",
+      "case_ids": ["FS-074"],
+      "statement": "Consolidated Balance Sheet",
+      "source_column": "Dec 31, 2025",
+      "assertions": 42,
+      "pass": 42,
+      "fail": 0,
+      "hold": 0,
+      "conclusion": "All 42 expected signed values and USD-million declarations exactly match the 2025-12-31 column, including shares held in trust (847)."
+    },
+    {
+      "oracle_id": "FS-GB-SHEL-2025-cash-flow",
+      "case_ids": ["FS-075"],
+      "statement": "Consolidated Statement of Cash Flows",
+      "source_column": "2025",
+      "assertions": 42,
+      "pass": 42,
+      "fail": 0,
+      "hold": 0,
+      "conclusion": "All 42 expected signed values and USD-million declarations exactly match the FY2025 column."
+    }
+  ],
+  "counts": {
+    "assertions": 103,
+    "pass": 103,
+    "fail": 0,
+    "hold": 0,
+    "receipt_hashes_pass": 2,
+    "receipt_hashes_fail": 0,
+    "package_release_decision": "approved",
+    "row_level_decision": "pass",
+    "package_evidence_decision": "approved",
+    "release_readiness": "released"
+  },
+  "reconciliations": {
+    "exact": [
+      "Income: revenue plus joint-venture/associate profit plus interest/other income equals total revenue and other income; expenditure, tax, and shareholder/non-controlling-interest attribution bridges all agree exactly.",
+      "Balance sheet: non-current assets plus current assets plus held-for-sale assets equals total assets; liabilities and equity bridges agree exactly.",
+      "Cash flow: operating, investing, financing, and FX totals bridge exactly to net cash change; opening cash plus net change equals closing cash and the balance-sheet cash value; cash capital expenditure equals the three disclosed investment components."
+    ],
+    "presentation_rounding": [],
+    "conclusion": "No SAP one-million rounding exception applies. All reported assertion values and these displayed-statement bridges are exact."
+  },
+  "conflicts": [
+    {
+      "conflict_id": "GB-001-same-authoritative-origin",
+      "status": "resolved",
+      "scope": "package provenance",
+      "description": "The two receipts have different delivery hosts, but their authoritative accounting facts originate with Shell's issuer-prepared audited statements.",
+      "conclusion": "Under the current financial-statements policy, one issuer/regulator fact source plus a second official delivery and distinct semantic/data review is sufficient; non-independent fact production remains a disclosed limitation, not a release blocker.",
+      "resolved_at": "2026-09-03T10:22:25Z",
+      "resolution": "Resolved under README Machine contract and corroboration: Shell PDF and SEC EDGAR are distinct official delivery channels for the same Shell-origin audited facts."
+    },
+    {
+      "conflict_id": "GB-002-primary-pit-publication-time",
+      "status": "resolved",
+      "scope": "package provenance",
+      "description": "The issuer receipt assigns 2026-03-12T23:59:59Z because Shell's announcement supplies a date but no publication time; SEC acceptance is exact at 2026-03-12T08:06:26Z.",
+      "conclusion": "SEC acceptance at 2026-03-12T08:06:26Z establishes that the reported facts were public before the asserted 2026-03-12T23:59:59Z availability time. The unknown issuer-host upload time remains disclosed but is not a PIT violation.",
+      "resolved_at": "2026-09-03T10:22:25Z",
+      "resolution": "Resolved as fact-level PIT: the regulator-hosted official filing precedes the asserted availability bound."
+    },
+    {
+      "conflict_id": "GB-003-freeze-contract-completeness",
+      "status": "resolved",
+      "scope": "frozen release contract",
+      "description": "All three oracles and both receipts previously lacked machine-contract metadata and assertion-to-receipt links.",
+      "conclusion": "The enriched records now provide fact contracts, receipt same-origin multi-delivery lineage, timestamp precision, both receipt links for all 103 assertions, and record-level origin flags.",
+      "resolved_at": "2026-09-03T10:35:06Z",
+      "resolution": "Resolved by current enriched oracle and receipt records; package-promotion controls remain separately recorded."
+    },
+    {
+      "conflict_id": "GB-004-manifest-release-state",
+      "status": "resolved",
+      "scope": "frozen release contract",
+      "description": "Each Oracle now has record.origin equal to authoritative_origin_id but omits explicit record.same_authoritative_origin required by the current origin gate; all three data reviews are changes_requested while the parent-confirmed semantic reviews are approved; and no suite manifest binds the current oracle, both receipts, this ledger, and the financial fact-contract registry hashes.",
+      "conclusion": "All 103 assertion facts, period/IFRS/currency-unit declarations, presentation scope and declared unit exceptions, PIT bound, record origin/same-authoritative-origin, and official multi-delivery evidence verify. The data and semantic reviews are approved, and all three Oracles are frozen. Scoring release remains hold only until the owner creates the required suite manifest.",
+      "resolved_at": "2026-09-03T11:04:14Z",
+      "resolution": "Resolved as an evidence conflict: current Oracle bytes explicitly set same_authoritative_origin=true, all three data reviews are approved, and all three Oracles are frozen. The historical description is retained; the missing manifest alone is controlled under promotion_readiness rather than treated as a data-evidence conflict."
+    }
+  ],
+  "review_decision": {
+    "row_level": "pass",
+    "package_evidence": "approved",
+    "package_release": "released",
+    "decision": "approved",
+    "reason": "All 103 assertion rows, both receipt links, period/IFRS/currency-unit declarations, presentation scope/unit exceptions, PIT bound, record origin/same-authoritative-origin, official multi-delivery, current recorded file hashes, both approved review roles, and the frozen suite manifest verify."
+  },
+  "release_readiness": {
+    "decision": "released",
+    "blockers": [],
+    "conclusion": "Evidence, both review roles, Oracle frozen status, and the frozen suite manifest are approved for scoring release."
+  },
+  "validation": {
+    "json_parse": "pass",
+    "assertion_count_match": "pass: 103 oracle assertions matched to 103 source-table current-column values; 0 mismatches",
+    "declarations": "pass: currency USD on 103/103; units million or per_share on 103/103; periods FY2025 or 2025-12-31 on 103/103",
+    "oracle_file_sha256": "6b76d839f32bcca4274aae708815bebf007668e140b57ae8ee8f794f0e8626c0"
+  },
+  "schema_note": "The review_ledgers wrapper contains one review-ledger/v1 record per oracle; package_review retains directory-level evidence, counts, conflicts, and release decision that the v1 record schema does not represent."
+  }
+}

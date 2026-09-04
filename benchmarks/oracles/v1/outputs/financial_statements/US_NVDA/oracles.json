@@ -1,0 +1,1290 @@
+[
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "FS-NVDA-FY2026-consolidated-income",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-049",
+      "FS-061"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2026-02-25T21:42:19Z",
+      "source_published_at": "2026-02-25T21:42:19Z",
+      "retrieved_at": "2026-09-03T09:29:47Z",
+      "as_of": "2026-01-25T00:00:00Z"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "SEC-NVDA-10K-0001045810-26-000021",
+      "corroborating_receipt_ids": [
+        "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "is-01",
+        "field": "consolidated_income/us-gaap:Revenues",
+        "expected": "215938",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "is-02",
+        "field": "consolidated_income/us-gaap:CostOfRevenue",
+        "expected": "62475",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "is-03",
+        "field": "consolidated_income/us-gaap:GrossProfit",
+        "expected": "153463",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "is-04",
+        "field": "consolidated_income/us-gaap:ResearchAndDevelopmentExpense",
+        "expected": "18497",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "is-05",
+        "field": "consolidated_income/us-gaap:SellingGeneralAndAdministrativeExpense",
+        "expected": "4579",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "is-06",
+        "field": "consolidated_income/us-gaap:OperatingExpenses",
+        "expected": "23076",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "is-07",
+        "field": "consolidated_income/us-gaap:OperatingIncomeLoss",
+        "expected": "130387",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "is-08",
+        "field": "consolidated_income/us-gaap:InvestmentIncomeInterest",
+        "expected": "2300",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "is-09",
+        "field": "consolidated_income/us-gaap:InterestExpenseNonoperating",
+        "expected": "-259",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "is-10",
+        "field": "consolidated_income/us-gaap:OtherNonoperatingIncomeExpense",
+        "expected": "9022",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "is-11",
+        "field": "consolidated_income/us-gaap:NonoperatingIncomeExpense",
+        "expected": "11063",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "is-12",
+        "field": "consolidated_income/us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+        "expected": "141450",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "is-13",
+        "field": "consolidated_income/us-gaap:IncomeTaxExpenseBenefit",
+        "expected": "21383",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "is-14",
+        "field": "consolidated_income/us-gaap:NetIncomeLoss",
+        "expected": "120067",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "is-15",
+        "field": "consolidated_income/us-gaap:EarningsPerShareBasic",
+        "expected": "4.93",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_per_share",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "is-16",
+        "field": "consolidated_income/us-gaap:EarningsPerShareDiluted",
+        "expected": "4.90",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_per_share",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "is-17",
+        "field": "consolidated_income/us-gaap:WeightedAverageNumberOfSharesOutstandingBasic",
+        "expected": "24359",
+        "comparison": "exact_normalized",
+        "currency": "N/A",
+        "unit": "shares_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "is-18",
+        "field": "consolidated_income/us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding",
+        "expected": "24514",
+        "comparison": "exact_normalized",
+        "currency": "N/A",
+        "unit": "shares_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-us-nvda-fy2026-income_statement-v1",
+    "fact_contract": {
+      "entity": "NVIDIA Corporation",
+      "symbol": "NVDA",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "SEC accession 0001045810-26-000021; FY ended 2026-01-25",
+      "period_end": "2026-01-25",
+      "duration_or_instant": "duration",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "reported_currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2026 ended 2026-01-25",
+          "label": "FY2026",
+          "period_end": "2026-01-25"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      },
+      "field_unit_exceptions": [
+        {
+          "currency": "USD",
+          "unit_scale": "USD_per_share",
+          "assertion_ids": [
+            "is-15",
+            "is-16"
+          ],
+          "fields": [
+            "consolidated_income/us-gaap:EarningsPerShareBasic",
+            "consolidated_income/us-gaap:EarningsPerShareDiluted"
+          ]
+        },
+        {
+          "currency": "N/A",
+          "unit_scale": "shares_millions",
+          "assertion_ids": [
+            "is-17",
+            "is-18"
+          ],
+          "fields": [
+            "consolidated_income/us-gaap:WeightedAverageNumberOfSharesOutstandingBasic",
+            "consolidated_income/us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding"
+          ]
+        }
+      ]
+    },
+    "authoritative_origin_id": "us-nvda-fy2026-authoritative-report",
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "us-nvda-fy2026-authoritative-report",
+      "delivery_channel": "SEC EDGAR inline XBRL",
+      "extraction_method": "SEC rendered statement tables R3.htm, R5.htm, R9.htm",
+      "chain": [
+        "SEC accession 0001045810-26-000021",
+        "FilingSummary rendered statement table",
+        "atomic assertion"
+      ]
+    },
+    "origin": "us-nvda-fy2026-authoritative-report",
+    "same_authoritative_origin": true
+  },
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "FS-NVDA-FY2026-consolidated-balance-sheet",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-053",
+      "FS-065"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2026-02-25T21:42:19Z",
+      "source_published_at": "2026-02-25T21:42:19Z",
+      "retrieved_at": "2026-09-03T09:29:47Z",
+      "as_of": "2026-01-25T00:00:00Z"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "SEC-NVDA-10K-0001045810-26-000021",
+      "corroborating_receipt_ids": [
+        "SEC-COMPANYFACTS-NVDA-0001045810-26-000021",
+        "SEC-NVDA-10K-R5-PARSED-0001045810-26-000021"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "bs-01",
+        "field": "consolidated_balance_sheet/us-gaap:CashAndCashEquivalentsAtCarryingValue",
+        "expected": "10605",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-02",
+        "field": "consolidated_balance_sheet/nvda:MarketableSecuritiesAndEquitySecuritiesFVNI",
+        "expected": "51951",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-NVDA-10K-R5-PARSED-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-03",
+        "field": "consolidated_balance_sheet/us-gaap:AccountsReceivableNetCurrent",
+        "expected": "38466",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-04",
+        "field": "consolidated_balance_sheet/us-gaap:InventoryNet",
+        "expected": "21403",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-05",
+        "field": "consolidated_balance_sheet/us-gaap:PrepaidExpenseAndOtherAssetsCurrent",
+        "expected": "3180",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-06",
+        "field": "consolidated_balance_sheet/us-gaap:AssetsCurrent",
+        "expected": "125605",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-07",
+        "field": "consolidated_balance_sheet/us-gaap:PropertyPlantAndEquipmentNet",
+        "expected": "10383",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-08",
+        "field": "consolidated_balance_sheet/us-gaap:OperatingLeaseRightOfUseAsset",
+        "expected": "2867",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-09",
+        "field": "consolidated_balance_sheet/us-gaap:Goodwill",
+        "expected": "20832",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-10",
+        "field": "consolidated_balance_sheet/us-gaap:IntangibleAssetsNetExcludingGoodwill",
+        "expected": "3306",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-11",
+        "field": "consolidated_balance_sheet/us-gaap:DeferredIncomeTaxAssetsNet",
+        "expected": "13258",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-12",
+        "field": "consolidated_balance_sheet/us-gaap:EquitySecuritiesFVNINoncurrent",
+        "expected": "22251",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-13",
+        "field": "consolidated_balance_sheet/us-gaap:OtherAssetsNoncurrent",
+        "expected": "8301",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-14",
+        "field": "consolidated_balance_sheet/us-gaap:Assets",
+        "expected": "206803",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-15",
+        "field": "consolidated_balance_sheet/us-gaap:AccountsPayableCurrent",
+        "expected": "9812",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-16",
+        "field": "consolidated_balance_sheet/us-gaap:AccruedLiabilitiesCurrent",
+        "expected": "21352",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-17",
+        "field": "consolidated_balance_sheet/us-gaap:DebtCurrent",
+        "expected": "999",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-18",
+        "field": "consolidated_balance_sheet/us-gaap:LiabilitiesCurrent",
+        "expected": "32163",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-19",
+        "field": "consolidated_balance_sheet/us-gaap:LongTermDebtNoncurrent",
+        "expected": "7469",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-20",
+        "field": "consolidated_balance_sheet/us-gaap:OperatingLeaseLiabilityNoncurrent",
+        "expected": "2572",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-21",
+        "field": "consolidated_balance_sheet/us-gaap:OtherLiabilitiesNoncurrent",
+        "expected": "7306",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-22",
+        "field": "consolidated_balance_sheet/us-gaap:Liabilities",
+        "expected": "49510",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-23",
+        "field": "consolidated_balance_sheet/us-gaap:PreferredStockValueOutstanding",
+        "expected": "0",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-24",
+        "field": "consolidated_balance_sheet/us-gaap:CommonStockValue",
+        "expected": "24",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-25",
+        "field": "consolidated_balance_sheet/us-gaap:AdditionalPaidInCapital",
+        "expected": "10118",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-26",
+        "field": "consolidated_balance_sheet/us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax",
+        "expected": "178",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-27",
+        "field": "consolidated_balance_sheet/us-gaap:RetainedEarningsAccumulatedDeficit",
+        "expected": "146973",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-28",
+        "field": "consolidated_balance_sheet/us-gaap:StockholdersEquity",
+        "expected": "157293",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "bs-29",
+        "field": "consolidated_balance_sheet/us-gaap:LiabilitiesAndStockholdersEquity",
+        "expected": "206803",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "instant 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-us-nvda-fy2026-balance_sheet-v1",
+    "fact_contract": {
+      "entity": "NVIDIA Corporation",
+      "symbol": "NVDA",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "SEC accession 0001045810-26-000021; FY ended 2026-01-25",
+      "period_end": "2026-01-25",
+      "duration_or_instant": "instant",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "reported_currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "instant 2026-01-25",
+          "label": "FY2026",
+          "period_end": "2026-01-25"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    "authoritative_origin_id": "us-nvda-fy2026-authoritative-report",
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "us-nvda-fy2026-authoritative-report",
+      "delivery_channel": "SEC EDGAR inline XBRL",
+      "extraction_method": "SEC rendered statement tables R3.htm, R5.htm, R9.htm",
+      "chain": [
+        "SEC accession 0001045810-26-000021",
+        "FilingSummary rendered statement table",
+        "atomic assertion"
+      ]
+    },
+    "origin": "us-nvda-fy2026-authoritative-report",
+    "same_authoritative_origin": true
+  },
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "FS-NVDA-FY2026-consolidated-cash-flow",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-057"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2026-02-25T21:42:19Z",
+      "source_published_at": "2026-02-25T21:42:19Z",
+      "retrieved_at": "2026-09-03T09:29:47Z",
+      "as_of": "2026-01-25T00:00:00Z"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "SEC-NVDA-10K-0001045810-26-000021",
+      "corroborating_receipt_ids": [
+        "SEC-COMPANYFACTS-NVDA-0001045810-26-000021",
+        "SEC-NVDA-10K-R9-PARSED-0001045810-26-000021"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "cf-01",
+        "field": "consolidated_cash_flow/us-gaap:NetIncomeLoss",
+        "expected": "120067",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-02",
+        "field": "consolidated_cash_flow/us-gaap:ShareBasedCompensation",
+        "expected": "6386",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-03",
+        "field": "consolidated_cash_flow/us-gaap:DepreciationDepletionAndAmortization",
+        "expected": "2843",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-04",
+        "field": "consolidated_cash_flow/us-gaap:GainLossOnInvestments",
+        "expected": "-8918",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-05",
+        "field": "consolidated_cash_flow/us-gaap:DeferredIncomeTaxExpenseBenefit",
+        "expected": "-1424",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-06",
+        "field": "consolidated_cash_flow/us-gaap:OtherNoncashIncomeExpense",
+        "expected": "-287",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-07",
+        "field": "consolidated_cash_flow/us-gaap:IncreaseDecreaseInAccountsReceivable",
+        "expected": "-15399",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-08",
+        "field": "consolidated_cash_flow/us-gaap:IncreaseDecreaseInInventories",
+        "expected": "-11324",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-09",
+        "field": "consolidated_cash_flow/us-gaap:IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets",
+        "expected": "577",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-10",
+        "field": "consolidated_cash_flow/us-gaap:IncreaseDecreaseInAccountsPayable",
+        "expected": "3096",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-11",
+        "field": "consolidated_cash_flow/us-gaap:IncreaseDecreaseInAccruedLiabilitiesAndOtherOperatingLiabilities",
+        "expected": "5257",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-12",
+        "field": "consolidated_cash_flow/us-gaap:IncreaseDecreaseInOtherNoncurrentLiabilities",
+        "expected": "1844",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-13",
+        "field": "consolidated_cash_flow/us-gaap:NetCashProvidedByUsedInOperatingActivities",
+        "expected": "102718",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-14",
+        "field": "consolidated_cash_flow/us-gaap:ProceedsFromSaleOfAvailableForSaleSecuritiesDebt",
+        "expected": "15157",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-15",
+        "field": "consolidated_cash_flow/us-gaap:ProceedsFromMaturitiesPrepaymentsAndCallsOfAvailableForSaleSecurities",
+        "expected": "11226",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-16",
+        "field": "consolidated_cash_flow/us-gaap:ProceedsFromSaleOfEquitySecuritiesFvNi",
+        "expected": "84",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-17",
+        "field": "consolidated_cash_flow/us-gaap:PaymentsToAcquireAvailableForSaleSecuritiesDebt",
+        "expected": "-40616",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-18",
+        "field": "consolidated_cash_flow/us-gaap:PaymentsToAcquireEquitySecuritiesFvNi",
+        "expected": "-17502",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-19",
+        "field": "consolidated_cash_flow/us-gaap:PaymentsToAcquireBusinessTwoNetOfCashAcquired",
+        "expected": "-13000",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-20",
+        "field": "consolidated_cash_flow/us-gaap:PaymentsToAcquireProductiveAssets",
+        "expected": "-6042",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-21",
+        "field": "consolidated_cash_flow/us-gaap:PaymentsToAcquireBusinessesNetOfCashAcquired",
+        "expected": "-1535",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-22",
+        "field": "consolidated_cash_flow/us-gaap:PaymentsForProceedsFromOtherInvestingActivities",
+        "expected": "0",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-23",
+        "field": "consolidated_cash_flow/us-gaap:NetCashProvidedByUsedInInvestingActivities",
+        "expected": "-52228",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-24",
+        "field": "consolidated_cash_flow/us-gaap:ProceedsFromStockPlans",
+        "expected": "644",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-25",
+        "field": "consolidated_cash_flow/us-gaap:PaymentsForRepurchaseOfCommonStock",
+        "expected": "-40086",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-26",
+        "field": "consolidated_cash_flow/us-gaap:PaymentsRelatedToTaxWithholdingForShareBasedCompensation",
+        "expected": "-7948",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-27",
+        "field": "consolidated_cash_flow/us-gaap:PaymentsOfDividends",
+        "expected": "-974",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-28",
+        "field": "consolidated_cash_flow/nvda:PaymentsForFinancedPropertyPlantAndEquipmentAndIntangibleAssetsFinancingActivities",
+        "expected": "-101",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-NVDA-10K-R9-PARSED-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-29",
+        "field": "consolidated_cash_flow/us-gaap:RepaymentsOfDebt",
+        "expected": "0",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-30",
+        "field": "consolidated_cash_flow/us-gaap:ProceedsFromPaymentsForOtherFinancingActivities",
+        "expected": "-9",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-31",
+        "field": "consolidated_cash_flow/us-gaap:NetCashProvidedByUsedInFinancingActivities",
+        "expected": "-48474",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-32",
+        "field": "consolidated_cash_flow/us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect",
+        "expected": "2016",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-33",
+        "field": "consolidated_cash_flow/us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents/beginning",
+        "expected": "8589",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-34",
+        "field": "consolidated_cash_flow/us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents/ending",
+        "expected": "10605",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      },
+      {
+        "assertion_id": "cf-35",
+        "field": "consolidated_cash_flow/us-gaap:IncomeTaxesPaidNet",
+        "expected": "20288",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "USD_millions",
+        "period": "FY2026 ended 2026-01-25",
+        "receipt_ids": [
+          "SEC-NVDA-10K-0001045810-26-000021",
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-us-nvda-fy2026-cash_flow_statement-v1",
+    "fact_contract": {
+      "entity": "NVIDIA Corporation",
+      "symbol": "NVDA",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "SEC accession 0001045810-26-000021; FY ended 2026-01-25",
+      "period_end": "2026-01-25",
+      "duration_or_instant": "duration",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "reported_currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2026 ended 2026-01-25",
+          "label": "FY2026",
+          "period_end": "2026-01-25"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    "authoritative_origin_id": "us-nvda-fy2026-authoritative-report",
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "us-nvda-fy2026-authoritative-report",
+      "delivery_channel": "SEC EDGAR inline XBRL",
+      "extraction_method": "SEC rendered statement tables R3.htm, R5.htm, R9.htm",
+      "chain": [
+        "SEC accession 0001045810-26-000021",
+        "FilingSummary rendered statement table",
+        "atomic assertion"
+      ]
+    },
+    "origin": "us-nvda-fy2026-authoritative-report",
+    "same_authoritative_origin": true
+  }
+]

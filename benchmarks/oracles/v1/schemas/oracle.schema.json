@@ -1,0 +1,546 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qveris.example/schemas/oracle/v1",
+  "title": "QVeris frozen data oracle v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "oracle_id",
+    "suite",
+    "case_ids",
+    "status",
+    "basis",
+    "frozen_at",
+    "point_in_time",
+    "evidence",
+    "atomic_assertions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "oracle/v1"
+    },
+    "oracle_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "suite": {
+      "enum": [
+        "historical_price",
+        "financial_statements",
+        "realtime_quote"
+      ]
+    },
+    "case_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "evidence_collected",
+        "under_review",
+        "conflict",
+        "frozen",
+        "rejected",
+        "superseded"
+      ]
+    },
+    "basis": {
+      "type": "string",
+      "enum": [
+        "as_reported",
+        "adjusted",
+        "restated"
+      ],
+      "default": "as_reported"
+    },
+    "frozen_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "fact_contract_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fact_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entity",
+        "symbol",
+        "exchange",
+        "form",
+        "accession",
+        "period_end",
+        "duration_or_instant",
+        "consolidation_scope",
+        "accounting_standard",
+        "reported_currency",
+        "unit_scale",
+        "complete_statement_schema_id"
+      ],
+      "properties": {
+        "entity": {
+          "type": "string",
+          "minLength": 1
+        },
+        "symbol": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exchange": {
+          "type": "string",
+          "minLength": 1
+        },
+        "form": {
+          "type": "string",
+          "minLength": 1
+        },
+        "accession": {
+          "type": "string",
+          "minLength": 1
+        },
+        "period_end": {
+          "type": "string",
+          "minLength": 1
+        },
+        "duration_or_instant": {
+          "enum": [
+            "duration",
+            "instant"
+          ]
+        },
+        "consolidation_scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "accounting_standard": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reported_currency": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit_scale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "complete_statement_schema_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "presentation_scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "primary_period",
+            "comparative_periods",
+            "required_as_filed"
+          ],
+          "properties": {
+            "primary_period": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "assertion_period",
+                "label",
+                "period_end"
+              ],
+              "properties": {
+                "assertion_period": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "period_end": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "comparative_periods": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required_as_filed": {
+              "type": "boolean"
+            }
+          }
+        },
+        "field_unit_exceptions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "currency",
+              "unit_scale",
+              "assertion_ids",
+              "fields"
+            ],
+            "properties": {
+              "currency": {
+                "type": "string",
+                "minLength": 1
+              },
+              "unit_scale": {
+                "type": "string",
+                "minLength": 1
+              },
+              "assertion_ids": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "fields": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "quote_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "snapshot_mode",
+        "evaluation_use",
+        "status_expectation",
+        "reference_timing",
+        "capture_metadata",
+        "tolerances",
+        "scoring_exclusions",
+        "block_reasons"
+      ],
+      "properties": {
+        "snapshot_mode": {"enum": ["live_bracketed", "replay_fixture"]},
+        "evaluation_use": {"enum": ["formal_data_accuracy", "non_formal_replay_only"]},
+        "status_expectation": {"type": "string", "minLength": 1},
+        "reference_timing": {"enum": ["before_after", "dual_reference", "before_after_or_dual_reference"]},
+        "capture_metadata": {
+          "type": "array",
+          "minItems": 6,
+          "uniqueItems": true,
+          "items": {"enum": ["provider_quote_timestamp", "captured_at", "market_session", "timezone", "currency", "unit"]}
+        },
+        "tolerances": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["staleness", "cross_source_skew", "tick"],
+          "properties": {
+            "staleness": {"$ref": "#/$defs/quote_tolerance"},
+            "cross_source_skew": {"$ref": "#/$defs/quote_tolerance"},
+            "tick": {"$ref": "#/$defs/quote_tolerance"}
+          }
+        },
+        "scoring_exclusions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"enum": ["provider_tool_parameters"]}
+        },
+        "block_reasons": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"enum": ["blocked_reference_snapshot", "blocked_source_license", "blocked_semantic_status"]}
+        }
+      }
+    },
+    "authoritative_origin_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "origin": {
+      "type": "string",
+      "minLength": 1
+    },
+    "same_authoritative_origin": {
+      "type": "boolean"
+    },
+    "corroboration_scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timestamp_precision": {
+      "enum": [
+        "date",
+        "minute",
+        "second",
+        "millisecond"
+      ]
+    },
+    "source_lineage": {
+      "$ref": "#/$defs/source_lineage"
+    },
+    "supersedes": {
+      "type": "string",
+      "minLength": 1
+    },
+    "point_in_time": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "information_available_at",
+        "source_published_at"
+      ],
+      "properties": {
+        "information_available_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source_published_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "retrieved_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "as_of": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "authoritative_receipt_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "corroborating_receipt_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "primary_receipt_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "independent_receipt_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "atomic_assertions": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "assertion_id",
+          "field",
+          "expected",
+          "comparison",
+          "currency",
+          "unit"
+        ],
+        "properties": {
+          "assertion_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "field": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expected": {
+            "type": [
+              "string",
+              "number",
+              "integer",
+              "boolean",
+              "null"
+            ]
+          },
+          "comparison": {
+            "enum": [
+              "exact_normalized",
+              "exact",
+              "numeric_tolerance",
+              "canonical_zero_from_display_nil"
+            ]
+          },
+          "tolerance": {
+            "type": "number",
+            "minimum": 0
+          },
+          "raw_display": {
+            "type": "string",
+            "minLength": 1
+          },
+          "currency": {
+            "type": "string",
+            "minLength": 1
+          },
+          "unit": {
+            "type": "string",
+            "minLength": 1
+          },
+          "period": {
+            "type": "string",
+            "minLength": 1
+          },
+          "basis": {
+            "enum": [
+              "as_reported",
+              "adjusted",
+              "restated"
+            ]
+          },
+          "case_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "receipt_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "comparison": {
+                  "const": "numeric_tolerance"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "tolerance"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "comparison": {
+                  "const": "canonical_zero_from_display_nil"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "raw_display",
+                "receipt_ids"
+              ],
+              "properties": {
+                "raw_display": {
+                  "const": "–"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "expected": {
+                  "type": "null"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "raw_display",
+                "receipt_ids"
+              ],
+              "properties": {
+                "comparison": {
+                  "const": "exact"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "quote_tolerance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state"],
+      "properties": {
+        "state": {"enum": ["unbound_must_bind_before_capture", "bound"]},
+        "value": {"type": "number", "minimum": 0},
+        "unit": {"type": "string", "minLength": 1}
+      },
+      "allOf": [{
+        "if": {"properties": {"state": {"const": "bound"}}},
+        "then": {"required": ["value", "unit"]}
+      }]
+    },
+    "source_lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "origin_id",
+        "delivery_channel",
+        "extraction_method"
+      ],
+      "properties": {
+        "origin_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "delivery_channel": {
+          "type": "string",
+          "minLength": 1
+        },
+        "extraction_method": {
+          "type": "string",
+          "minLength": 1
+        },
+        "chain": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

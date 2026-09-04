@@ -1,0 +1,94 @@
+[
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "sec-10k-msft-fy2026",
+    "source_id": "SEC-EDGAR",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "microsoft_issuer_disclosure",
+    "published_at": "2026-07-29T00:00:00Z",
+    "retrieved_at": "2026-09-03T09:28:14Z",
+    "content_sha256": "4bcf2da2871acc19e32c5a62f36f6d83d6aae03cdc4aaa9a86a9a21ee8223f02",
+    "evidence_locator": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm ; iXBRL FilingSummary.xml MyReports: INCOME STATEMENTS=R2.htm, BALANCE SHEETS=R4.htm, CASH FLOWS STATEMENTS=R6.htm",
+    "source_document_id": "Microsoft Corporation Form 10-K accession 0001193125-26-323660; fiscal year ended 2026-06-30; filed_at 2026-07-29",
+    "notes": "Primary, as-reported SEC filing. Rendered statement-table hashes: R2.htm=1e4999f383f16cfa45c0d8269fcda2ab8fc4b0207e34780ff30a3775cc6135a9; R4.htm=fc5c3a51e3977735a8700482ef07928550a51e649a76505b1649167bbc85c745; R6.htm=7b2fcef0810a6e7c13c686347fa1830b238246b9cc330a28e1f036e12a5cacaa. SEC submissions report filingDate but no time-of-day; published_at is date-normalized. Oracle PIT availability is conservatively next UTC day. Lineage: SEC accession -> FilingSummary MyReports -> rendered table -> assertion field. relationship=same_authoritative_origin; role=authoritative delivery.",
+    "authoritative_origin_id": "us-msft-fy2026-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "us-msft-fy2026-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction"
+    }
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "microsoft-ir-fy2026-q4-release",
+    "source_id": "MICROSOFT-INVESTOR-RELATIONS",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "microsoft_issuer_disclosure",
+    "published_at": "2026-07-29T00:00:00Z",
+    "retrieved_at": "2026-09-03T09:28:14Z",
+    "content_sha256": "c0b0f4494f1b4f5c0fe448a3ee04e61b30915573417992ff284c2e69ab279ebb",
+    "evidence_locator": "https://www.microsoft.com/en-us/investor/earnings/fy-2026-q4/press-release-webcast#income-statements ; #balance-sheets ; #cash-flows",
+    "source_document_id": "Microsoft FY2026 Q4 earnings press release; fiscal year ended 2026-06-30; published_at 2026-07-29",
+    "notes": "Issuer-hosted delivery/parse corroboration, not an independent authoritative origin. content_sha256 is the SHA-256 of a deterministic UTF-8 canonical JSON extraction, not the dynamic page bytes: {income_statements: table at #income-statements, balance_sheets: table at #balance-sheets, cash_flows: table at #cash-flows}; table cells are HTML-decoded, whitespace-collapsed, retained in source row/cell order, then JSON-serialized with ensure_ascii=false and separators=(',',':'). The extract was 6,685 bytes at retrieved_at. It reports FY2026 GAAP income, balance sheet, and cash-flow tables in USD millions (EPS per share). Its cash-flow presentation combines the 90-days-or-less debt-maturities line and does not separately display the SEC zero-valued proceeds-from-issuance-of-debt line. Lineage: Microsoft IR release -> canonical table extract -> assertion field. relationship=same_authoritative_origin; role=delivery_or_parse_only.",
+    "authoritative_origin_id": "us-msft-fy2026-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "us-msft-fy2026-authoritative-report",
+      "delivery_channel": "issuer_or_regulator_public_delivery",
+      "extraction_method": "reported_table_transcription"
+    }
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "sec-companyfacts-msft-fy2026",
+    "source_id": "SEC-COMPANYFACTS",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "microsoft_issuer_disclosure",
+    "published_at": "2026-07-29T00:00:00Z",
+    "retrieved_at": "2026-09-03T09:28:14Z",
+    "content_sha256": "f8aae2965b20ad0df44bdf7ccbedf797d275b6b8dc030154a7a311361bb7246f",
+    "evidence_locator": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json ; select units whose form=10-K, fy=2026, fp=FY, filed=2026-07-29, end=2026-06-30",
+    "source_document_id": "SEC companyfacts CIK0000789019; FY2026 facts sourced from accession 0001193125-26-323660",
+    "notes": "Supplemental SEC cross-check only. It is another SEC delivery/parse surface for the same Microsoft issuer disclosure, not an independent authoritative origin. It contains standardized US-GAAP facts but not every presentation-specific line; no assertion is derived solely from it. relationship=same_authoritative_origin; role=delivery_or_parse_only.",
+    "authoritative_origin_id": "us-msft-fy2026-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "us-msft-fy2026-authoritative-report",
+      "delivery_channel": "sec_companyfacts_api",
+      "extraction_method": "structured_fact_filter"
+    }
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "microsoft-ir-fy2026-annual-form-10k-docx",
+    "source_id": "MICROSOFT-INVESTOR-RELATIONS",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "microsoft_issuer_disclosure",
+    "published_at": "2026-07-30T00:00:00Z",
+    "retrieved_at": "2026-09-03T10:04:10Z",
+    "content_sha256": "55b3613c22faaa1c99377003cf1d56a0d8a65c1e25f649d82b2fd03c3bd1996a",
+    "evidence_locator": "Microsoft Investor Relations SEC Filings page https://www.microsoft.com/en-us/investor/sec-filings labels https://aka.ms/MSFT_FY26Q4_10k as FY26 Annual Form 10K; its official fixed download resolves to https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/MSFT_FY26Q4_10K.docx ; OOXML word/document.xml body child table indexes 590=Income Statements, 600=Balance Sheets, 604=Cash Flows Statements; full assertion-to-row locator catalog is in collector-notes.md.",
+    "source_document_id": "Microsoft Investor Relations FY26 Annual Form 10K Word delivery; MSFT_FY26Q4_10K.docx; fiscal year ended 2026-06-30",
+    "authoritative_origin_id": "us-msft-fy2026-authoritative-report",
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "us-msft-fy2026-authoritative-report",
+      "delivery_channel": "Microsoft Investor Relations fixed DOCX download",
+      "extraction_method": "OOXML word/document.xml table extraction with NFKC, whitespace collapse, and retained table-row-cell order",
+      "chain": [
+        "Microsoft Investor Relations SEC Filings page",
+        "aka.ms/MSFT_FY26Q4_10k redirect",
+        "cdn-dynmedia-1.microsoft.com MSFT_FY26Q4_10K.docx",
+        "word/document.xml statement tables",
+        "canonical table extract",
+        "atomic assertion"
+      ]
+    },
+    "notes": "Official Microsoft fixed-download delivery and independent parse channel for the same FY2026 Form 10-K disclosure; it is not an independent factual origin. The raw DOCX byte SHA-256 is content_sha256. A deterministic three-table canonical extract is 13,371 UTF-8 bytes and SHA-256=09b1804b6270c5a5dab78286443eeef196cb56b41d8ae105ce5a3be49d861d94. Canonicalization: select only word/document.xml body child tables 590, 600, 604; concatenate w:t within each cell; NFKC; collapse Unicode whitespace to one ASCII space; strip; preserve table, row, cell order including empty cells; serialize UTF-8 JSON with ensure_ascii=false and separators=(\",\",\":\"). Independent replay matched all 213/213 existing atomic assertion value strings: 45 income-statement, 66 balance-sheet, 102 cash-flow. relationship=same_authoritative_origin; role=delivery_or_parse_only. The CDN HTTP Last-Modified header was 2026-07-30T22:30:40Z; it is retained only as delivery metadata, not asserted as an exact first-publication time.",
+    "same_authoritative_origin": true
+  }
+]

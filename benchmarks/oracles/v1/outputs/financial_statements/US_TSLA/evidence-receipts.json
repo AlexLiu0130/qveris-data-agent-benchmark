@@ -1,0 +1,44 @@
+[
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "sec-10k-2025-ixbrl",
+    "source_id": "sec-edgar-0001628280-26-003952",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "sec_edgar",
+    "published_at": "2026-01-28T20:55:03-05:00",
+    "retrieved_at": "2026-09-03T09:28:34Z",
+    "content_sha256": "90d5d2bc4057df41c645f85dcebe575af9b0953a6a1902d189297bec17fd440a",
+    "evidence_locator": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm ; Consolidated Balance Sheets filing p.49 / HTML table 21; Consolidated Statements of Operations filing p.50 / HTML table 22; Consolidated Statements of Cash Flows filing p.53 / HTML table 25. Dash-to-zero audit: table 21 ix:nonFraction id=f-112; table 25 ids=f-414, f-417, f-447.",
+    "source_document_id": "SEC accession 0001628280-26-003952; tsla-20251231.htm",
+    "notes": "Primary iXBRL source. Values are copied as reported, in USD millions except per-share data. Each assertion field preserves the XBRL concept, contextRef, and HTML table number. PIT evidence: SEC filing header lists ACCEPTANCE-DATETIME 20260128205503 and filed-as-of date 20260129; timestamp normalized to US Eastern time. Strict dash-to-zero audit: bs-025 uses us-gaap:PreferredStockValue/c-4/id=f-112; cf-019 uses us-gaap:ProceedsFromSaleOfShortTermInvestments/c-1/id=f-414; cf-020 uses us-gaap:PaymentsToAcquireBusinessesNetOfCashAcquired/c-1/id=f-417; cf-030 uses tsla:PaymentsForBuyOutsOfNoncontrollingInterestsInSubsidiaries/c-1/id=f-447. Every displayed glyph is Unicode U+2014 EM DASH, each fact declares format=ixt:fixed-zero and scale=6, and none declares xsi:nil (confirmed_nil=false). Therefore each normalized expected decimal string 0 is supported by an explicit XBRL zero format, not a nil inference.",
+    "authoritative_origin_id": "us-tsla-fy2025-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "us-tsla-fy2025-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction"
+    }
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "tesla-ir-2025-10k-pdf",
+    "source_id": "tesla-investor-relations-2025-10k-pdf",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "tesla_investor_relations",
+    "published_at": "2026-01-28T20:55:03-05:00",
+    "retrieved_at": "2026-09-03T09:28:34Z",
+    "content_sha256": "65dd654744c3d7cfad92dbee66706a6f7e808b59adbb213cdffcdedeb968135a",
+    "evidence_locator": "https://ir.tesla.com/_flysystem/s3/sec/000162828026003952/tsla-20251231-gen.pdf ; filing pp.49 (balance sheet), 50 (operations), 53 (cash flows); independently parsed PDF physical p.51 line 1882 (preferred stock) and p.55 lines 2054-2055 and 2066 (three cash-flow facts).",
+    "source_document_id": "Tesla Investor Relations PDF for SEC accession 0001628280-26-003952",
+    "notes": "Cross-check copy hosted by Tesla Investor Relations. An independent PDF text extraction confirmed U+2014 EM DASH in the 2025 columns for bs-025 (preferred stock), cf-019 (proceeds from sales of investments), cf-020 (business combinations, net of cash acquired), and cf-030 (payments for buy-outs of noncontrolling interests). Together with the SEC iXBRL ixt:fixed-zero facts, this confirms decimal 0 rather than nil for all four assertions. It is a separately retrieved issuer-hosted copy of the same filed 10-K, not an independent calculation; this limitation prevents frozen status until an independent reviewer resolves the package-level evidence policy. Tesla IR's filing list identifies the 10-K dated Jan. 28, 2026.",
+    "authoritative_origin_id": "us-tsla-fy2025-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "us-tsla-fy2025-authoritative-report",
+      "delivery_channel": "issuer_or_regulator_public_delivery",
+      "extraction_method": "reported_table_transcription"
+    }
+  }
+]

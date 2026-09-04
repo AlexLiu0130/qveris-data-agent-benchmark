@@ -1,0 +1,123 @@
+[
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "SEC-NVDA-10K-0001045810-26-000021",
+    "source_id": "SEC-EDGAR-ARCHIVE-NVDA-10K",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "nvidia_issuer_disclosure",
+    "published_at": "2026-02-25T21:42:19Z",
+    "retrieved_at": "2026-09-03T09:29:47Z",
+    "content_sha256": "73d81f5a111abcf72426c840871e76f5f5edc9631f436d495a86b6f87306d58b",
+    "evidence_locator": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+    "source_document_id": "SEC accession 0001045810-26-000021; FY ended 2026-01-25",
+    "authoritative_origin_id": "us-nvda-fy2026-authoritative-report",
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "us-nvda-fy2026-authoritative-report",
+      "delivery_channel": "SEC EDGAR inline XBRL",
+      "extraction_method": "SEC rendered statement tables R3.htm, R5.htm, R9.htm",
+      "chain": [
+        "SEC accession 0001045810-26-000021",
+        "FilingSummary rendered statement table",
+        "atomic assertion"
+      ]
+    },
+    "notes": "Primary as-reported SEC 10-K inline XBRL filing. Rendered-statement hashes: R3.htm=09b4d06ac2f8d95f74ddc8ebaa86d29772bb0074610d33fa1cf7a6b05c97f0af; R5.htm=304309cb19c0e19df6971cb0475161f5b90d595c5dcca8de517865ed630ea6e2; R9.htm=a693ff13a72b24f6e00f0b8c64ad0404735cf995fa7537a019ab49303461ca5d. Statement table locators and line-level XBRL tags are in collector-notes.md; no raw filing was retained. relationship=same_authoritative_origin; role=authoritative_delivery.",
+    "same_authoritative_origin": true
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "SEC-COMPANYFACTS-NVDA-0001045810-26-000021",
+    "source_id": "SEC-DATA-COMPANYFACTS-CIK0001045810",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "nvidia_issuer_disclosure",
+    "published_at": "2026-02-25T21:42:19Z",
+    "retrieved_at": "2026-09-03T09:29:47Z",
+    "content_sha256": "19ef503a5770f5660964b3c3aea6937579d9b359da344afe6a9adf59c63d26ff",
+    "evidence_locator": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001045810.json",
+    "source_document_id": "CIK 0001045810; filtered to accession 0001045810-26-000021, form 10-K, FY 2026",
+    "authoritative_origin_id": "us-nvda-fy2026-authoritative-report",
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "us-nvda-fy2026-authoritative-report",
+      "delivery_channel": "SEC Companyfacts API",
+      "extraction_method": "accession/form/fiscal-period filtered structured facts",
+      "chain": [
+        "SEC accession 0001045810-26-000021",
+        "SEC Companyfacts CIK0001045810",
+        "atomic assertion cross-check"
+      ]
+    },
+    "notes": "Supplemental SEC representation of the same issuer disclosure, not an independent factual origin. It lacks the issuer-extension facts nvda:MarketableSecuritiesAndEquitySecuritiesFVNI and nvda:PaymentsForFinancedPropertyPlantAndEquipmentAndIntangibleAssetsFinancingActivities, and does not preserve R-table display-sign semantics for the designated sign-sensitive rows. R3/R5/R9 govern as_reported presentation. relationship=same_authoritative_origin; role=delivery_or_parse_only.",
+    "same_authoritative_origin": true
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "NVIDIA-NEWSROOM-FY2026-Q4-RESULTS-PDF",
+    "source_id": "NVIDIA-NEWSROOM-FY2026-Q4-RESULTS-PDF",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "nvidia_issuer_disclosure",
+    "published_at": "2026-02-25T00:00:00Z",
+    "retrieved_at": "2026-09-03T10:13:58Z",
+    "content_sha256": "89de999d7155649197672bf490c519607f1abbcdc96e2e4c6718bf6ecbb13564",
+    "evidence_locator": "https://nvidianews.nvidia.com/_gallery/download_pdf/699f6ab43d6332ccaa689907/ ; https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026 ; https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Fourth-Quarter-and-Fiscal-2026/",
+    "source_document_id": "NVIDIA Announces Financial Results for Fourth Quarter and Fiscal 2026; issuer results release dated 2026-02-25; filed as SEC 8-K exhibit 99.1 in accession 0001045810-26-000019",
+    "authoritative_origin_id": "us-nvda-fy2026-authoritative-report",
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "us-nvda-fy2026-authoritative-report",
+      "delivery_channel": "NVIDIA Newsroom official FY2026 results-release PDF and HTML presentation",
+      "extraction_method": "independent_parser",
+      "chain": [
+        "NVIDIA issuer FY2026 results release",
+        "condensed three-statement table presentation",
+        "independent row-and-period parse",
+        "atomic assertion cross-check"
+      ]
+    },
+    "notes": "Separately downloaded official NVIDIA results-release PDF; this SHA-256 is the fetched PDF bytes, not a hash supplied by the publisher. Its official Newsroom HTML presentation was independently row/period parsed against the FY2026 column. It reproduces all 18 income assertions, 22 of 29 balance-sheet assertions, and all 35 cash-flow assertions (75/82); the seven omitted balance-sheet components are separately covered by the independent parse of SEC R5. This source is a second delivery/parse channel, not an independently authored accounting source: it is NVIDIA's own FY2026 release, is unaudited, and shares the authoritative origin with the 10-K. relationship=same_authoritative_origin; role=delivery_or_parse_only.",
+    "same_authoritative_origin": true
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "SEC-NVDA-10K-R5-PARSED-0001045810-26-000021",
+    "source_id": "SEC-EDGAR-RENDERED-XBRL-R5",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "nvidia_issuer_disclosure",
+    "published_at": "2026-02-25T21:42:19Z",
+    "retrieved_at": "2026-09-03T10:13:58Z",
+    "content_sha256": "304309cb19c0e19df6971cb0475161f5b90d595c5dcca8de517865ed630ea6e2",
+    "evidence_locator": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/R5.htm",
+    "source_document_id": "SEC accession 0001045810-26-000021; R5.htm; Consolidated Balance Sheets; instant 2026-01-25",
+    "authoritative_origin_id": "us-nvda-fy2026-authoritative-report",
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "us-nvda-fy2026-authoritative-report",
+      "delivery_channel": "SEC EDGAR rendered XBRL statement table R5.htm",
+      "extraction_method": "independent_parser"
+    },
+    "notes": "Exact corroborating parse for bs-02 only: R5.htm row 'Marketable securities', Jan. 25, 2026 column, XBRL concept nvda:MarketableSecuritiesAndEquitySecuritiesFVNI, displayed value 51,951 USD millions. Companyfacts does not expose this issuer extension. This is a distinct parse/delivery channel but shares the 10-K's authoritative origin; relationship=same_authoritative_origin; role=delivery_or_parse_only.",
+    "same_authoritative_origin": true
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "SEC-NVDA-10K-R9-PARSED-0001045810-26-000021",
+    "source_id": "SEC-EDGAR-RENDERED-XBRL-R9",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "nvidia_issuer_disclosure",
+    "published_at": "2026-02-25T21:42:19Z",
+    "retrieved_at": "2026-09-03T10:13:58Z",
+    "content_sha256": "a693ff13a72b24f6e00f0b8c64ad0404735cf995fa7537a019ab49303461ca5d",
+    "evidence_locator": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/R9.htm",
+    "source_document_id": "SEC accession 0001045810-26-000021; R9.htm; Consolidated Statements of Cash Flows; FY ended 2026-01-25",
+    "authoritative_origin_id": "us-nvda-fy2026-authoritative-report",
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "us-nvda-fy2026-authoritative-report",
+      "delivery_channel": "SEC EDGAR rendered XBRL statement table R9.htm",
+      "extraction_method": "independent_parser"
+    },
+    "notes": "Exact corroborating parse for cf-28 only: R9.htm row 'Principal payments on property and equipment and intangible assets', FY ended Jan. 25, 2026 column, XBRL concept nvda:PaymentsForFinancedPropertyPlantAndEquipmentAndIntangibleAssetsFinancingActivities, displayed value (101) USD millions. Companyfacts does not expose this issuer extension. This is a distinct parse/delivery channel but shares the 10-K's authoritative origin; relationship=same_authoritative_origin; role=delivery_or_parse_only.",
+    "same_authoritative_origin": true
+  }
+]

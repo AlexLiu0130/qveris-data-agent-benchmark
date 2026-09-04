@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qveris.example/schemas/review-ledger/v1",
+  "title": "QVeris oracle review ledger v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "oracle_id", "oracle_file_sha256", "reviews", "conflicts"],
+  "properties": {
+    "schema_version": {"const": "review-ledger/v1"}, "oracle_id": {"type": "string", "minLength": 1}, "oracle_file_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "reviews": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["review_id", "role", "reviewer_id", "decision", "reviewed_at"], "properties": {"review_id": {"type": "string", "minLength": 1}, "role": {"enum": ["case_author", "semantic_reviewer", "data_reviewer"]}, "reviewer_id": {"type": "string", "minLength": 1}, "decision": {"enum": ["approved", "changes_requested", "rejected"]}, "reviewed_at": {"type": "string", "format": "date-time"}, "notes": {"type": "string"}}}},
+    "canonical_zero_approvals": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["assertion_id", "comparison", "decision", "reviewer_id", "reviewed_at"], "properties": {"assertion_id": {"type": "string", "minLength": 1}, "comparison": {"const": "canonical_zero_from_display_nil"}, "decision": {"const": "approved"}, "reviewer_id": {"type": "string", "minLength": 1}, "reviewed_at": {"type": "string", "format": "date-time"}, "notes": {"type": "string"}}}},
+    "conflicts": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["conflict_id", "status", "description", "opened_at"], "properties": {"conflict_id": {"type": "string", "minLength": 1}, "status": {"enum": ["open", "resolved", "rejected"]}, "description": {"type": "string", "minLength": 1}, "opened_at": {"type": "string", "format": "date-time"}, "resolved_at": {"type": "string", "format": "date-time"}, "resolution": {"type": "string"}}}}
+  }
+}

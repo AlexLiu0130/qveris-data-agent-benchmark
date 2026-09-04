@@ -1,0 +1,102 @@
+[
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "toyota-fy2026-sec-20f",
+    "source_id": "sec:0001193125-26-264811:d101983d20f.htm",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "same_authoritative_origin:toyota-fy2026-annual-report",
+    "published_at": "2026-06-10T06:02:59Z",
+    "retrieved_at": "2026-09-03T09:28:10Z",
+    "content_sha256": "8fbb128f423883e8778035ddcf2d0adc6aae3198e875556feec40cd5303a936a",
+    "evidence_locator": "https://www.sec.gov/Archives/edgar/data/1094517/000119312526264811/d101983d20f.htm#fin101983_2 (financial position, F-4 to F-5); #fin101983_3 (income, F-6); #fin101983_6 (cash flows, F-10)",
+    "source_document_id": "SEC accession 0001193125-26-264811, Form 20-F, period ended 2026-03-31",
+    "notes": "Authority delivery/parse channel for the Toyota FY2026 annual report. It is not an independent factual origin. Primary audited statutory 20-F. IFRS as issued by IASB; monetary rows in yen millions except EPS in yen. Lineage: audited consolidated statements -> normalized decimal-string assertions; no conversion, adjustment, or restatement.",
+    "authoritative_origin_id": "jp-7203-t-fy2026-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "jp-7203-t-fy2026-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction",
+      "chain": [
+        "Toyota FY2026 annual report consolidated financial statements",
+        "Authority delivery/parse channel for the Toyota FY2026 annual report. It is not an independent factual origin."
+      ]
+    }
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "toyota-fy2026-jpx-summary",
+    "source_id": "jpx:72030:140120260506517375",
+    "source_class": "exchange",
+    "independence_group": "same_authoritative_origin:jp-7203-t-fy2026-authoritative-report:jpx_parser",
+    "published_at": "2026-05-08T00:00:00Z",
+    "retrieved_at": "2026-09-03T09:28:10Z",
+    "content_sha256": "a4f657bb1d27f214d7a256cb4ce4f18c27a6751af5ae5c3d1d6519548b0db985",
+    "evidence_locator": "https://www2.jpx.co.jp/disc/72030/140120260506517375.pdf (pp. 7-12: consolidated financial position, income, cash flows)",
+    "source_document_id": "JPX timely disclosure 140120260506517375, FY2026 Consolidated Financial Results",
+    "notes": "Exchange delivery/parse channel for Toyota FY2026 reported facts. It shares the Toyota FY2026 annual-report authoritative origin and is not an independent factual origin; it contains the complete three consolidated statement tables used for corroboration. IFRS; amounts rounded to nearest million yen. Every FY2026 amount-bearing line agrees with the primary 20-F. Published time is date-level only; midnight UTC is a schema-compatible placeholder, not intraday PIT evidence.",
+    "authoritative_origin_id": "jp-7203-t-fy2026-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "jp-7203-t-fy2026-authoritative-report",
+      "delivery_channel": "jpx_timely_disclosure",
+      "extraction_method": "reported_table_transcription",
+      "chain": [
+        "Toyota FY2026 annual report consolidated financial statements",
+        "JPX delivery channel; independently parsed table transcription of the same authoritative origin, not an independent factual origin."
+      ]
+    }
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "toyota-fy2026-toyota-ir-20f",
+    "source_id": "toyota-ir:20-F_202603_final.pdf",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "same_authoritative_origin:toyota-fy2026-annual-report",
+    "published_at": "2026-06-10T06:02:59Z",
+    "retrieved_at": "2026-09-03T09:28:10Z",
+    "content_sha256": "d87fcafd973de0774c79b887e104688faad2170112bd2754ec923567e5616483",
+    "evidence_locator": "https://global.toyota/pages/global_toyota/ir/library/sec/20-F_202603_final.pdf (F-4 to F-6 and F-10)",
+    "source_document_id": "Toyota IR FY2026 Form 20-F PDF",
+    "notes": "Issuer IR delivery/parse channel for the Toyota FY2026 annual report. It is not an independent factual origin. Issuer-hosted copy of the audited Form 20-F; disclosure-availability corroboration, not an independent receipt.",
+    "authoritative_origin_id": "jp-7203-t-fy2026-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "jp-7203-t-fy2026-authoritative-report",
+      "delivery_channel": "toyota_ir",
+      "extraction_method": "reported_table_transcription",
+      "chain": [
+        "Toyota FY2026 annual report consolidated financial statements",
+        "Issuer IR delivery/parse channel for the Toyota FY2026 annual report. It is not an independent factual origin."
+      ]
+    }
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "toyota-fy2026-edinet-s100y8ny",
+    "source_id": "edinet:E02144:S100Y8NY",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "same_authoritative_origin:toyota-fy2026-annual-report",
+    "published_at": "2026-06-10T06:33:00Z",
+    "retrieved_at": "2026-09-03T09:28:10Z",
+    "content_sha256": "ffbaaf52c5b2f07e1664cceeb14816e97518f0f1f4ad70a091c00204ef0cb12a",
+    "evidence_locator": "https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100Y8NY.pdf (Japanese statutory annual securities report; consolidated financial statements section)",
+    "source_document_id": "EDINET E02144, S100Y8NY, Annual Securities Report, period 2025-04-01 to 2026-03-31",
+    "notes": "Japanese statutory filing delivery/parse channel for Toyota FY2026 reported facts. It is not an independent factual origin. Japanese statutory filing corroborating legal filing identity and IFRS consolidated-report lineage. Stored time is date-level only, not the oracle PIT gate. Schema gap: evidence-receipt/v1 has no structured lineage/table-location fields beyond locator/notes.",
+    "authoritative_origin_id": "toyota-fy2026-edinet-annual-securities-report",
+    "same_authoritative_origin": false,
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "toyota-fy2026-edinet-annual-securities-report",
+      "delivery_channel": "edinet_filing",
+      "extraction_method": "filed_statement_table_extraction",
+      "chain": [
+        "Toyota FY2026 annual report consolidated financial statements",
+        "Japanese statutory filing delivery/parse channel for Toyota FY2026 reported facts. It is not an independent factual origin."
+      ]
+    }
+  }
+]

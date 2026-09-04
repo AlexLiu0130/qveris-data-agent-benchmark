@@ -1,0 +1,81 @@
+[
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "aapl-fy2025-sec-10k-primary",
+    "source_id": "SEC EDGAR",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "us-sec-edgar-regulator",
+    "published_at": "2025-10-31T06:01:26-04:00",
+    "retrieved_at": "2026-09-03T09:28:21Z",
+    "content_sha256": "548ae59778cf08ee0f2ee088e7ece20d947076c3c01f74d2d65db4c2777e436a",
+    "evidence_locator": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm ; Item 8; Consolidated Statements of Operations HTML lines 890-928 / page 29, Consolidated Balance Sheets lines 969-1016 / page 31, Consolidated Statements of Cash Flows lines 1066-1116 / page 33; nil-audit cell: Cash Flows line 1105/page 33, row Proceeds from issuance of term debt, net, FY2024 column",
+    "source_document_id": "SEC accession 0000320193-25-000079; CIK 0000320193; form 10-K; fiscal year ended 2025-09-27",
+    "notes": "Primary as-reported iXBRL rendering. authoritative_origin_id=SEC accession 0000320193-25-000079. SEC submission header identifies period 20250927, filed date 20251031, and ACCEPTANCE-DATETIME 20251031060126. filed_at is recorded as 2025-10-31T06:01:26-04:00 (EDGAR acceptance time, Eastern daylight time). All monetary amounts are USD millions unless the assertion declares USD/share or shares thousands. Parentheses in the filing are normalized to leading minus signs only. Nil audit for aapl-cf-2024-term-debt-issued: the SEC delivery cell at Cash Flows line 1105/page 33 decodes to U+2014 EM DASH; raw HTML encoding is &#8212;. confirmed_nil=false under the strict canonical rule: the presentation glyph alone is not a canonical numeric zero. Lineage for every assertion: this receipt -> the named Item 8 table/page/HTML-line range -> row label -> reported column period -> decimal-string expected value. Content hash is of the SEC HTML URL above, not a locally retained raw response.",
+    "display_nil_evidence": [
+      {
+        "assertion_id": "aapl-cf-2024-term-debt-issued",
+        "raw_display": "—",
+        "evidence_locator": "SEC EDGAR https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm ; Item 8, Consolidated Statements of Cash Flows, page 33, HTML line 1105, row Proceeds from issuance of term debt, net, FY2024 column",
+        "confirmed_nil": false
+      }
+    ],
+    "authoritative_origin_id": "us-aapl-fy2025-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "us-aapl-fy2025-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction"
+    }
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "aapl-fy2025-apple-ir-repost",
+    "source_id": "Apple Investor Relations",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "apple-inc-issuer-hosted-ir",
+    "published_at": "2025-10-31T06:01:26-04:00",
+    "retrieved_at": "2026-09-03T09:28:23Z",
+    "content_sha256": "eb08113db1fa3b847936c68ddf7bd9c31b5d708c14794c94355fd38ac3846850",
+    "evidence_locator": "https://investor.apple.com/sec-filings/sec-filings-details/default.aspx?FilingId=18880179 ; HTML download https://d18rn0p25nwr6d.cloudfront.net/CIK-0000320193/c636d8a7-8025-47d2-9b13-bcf5465343b3.html ; Form 10-K shown as received 2025-10-31 06:07:30; same Item 8 tables/pages 29, 31, 33; nil-audit cell: Cash Flows line 1105/page 33, row Proceeds from issuance of term debt, net, FY2024 column",
+    "source_document_id": "Apple IR FilingId 18880179; SEC accession 0000320193-25-000079; form 10-K",
+    "notes": "Corroborating issuer-hosted rendering: authoritative_origin_id=SEC accession 0000320193-25-000079; corroboration_scope=delivery_or_parse_only; independent_authoritative_origin=false. It displays the same accession and the full iXBRL report. It has a distinct hosting/custody group from SEC EDGAR, but it is not independently authored financial evidence because Apple is the filer. Separately fetched and parsed nil-audit cell for aapl-cf-2024-term-debt-issued decodes to U+2014 EM DASH; raw HTML encoding is &#8212;, matching the SEC delivery. This is a separate delivery/parse check, not independent authoritative evidence. The oracle uses this receipt in the schema-required second receipt field only as a separately retrieved reproduction; it must not be represented as a substantive independent financial-data source. Content hash is of the Apple IR HTML download URL, not a locally retained raw response.",
+    "display_nil_evidence": [
+      {
+        "assertion_id": "aapl-cf-2024-term-debt-issued",
+        "raw_display": "—",
+        "evidence_locator": "Apple IR HTML https://d18rn0p25nwr6d.cloudfront.net/CIK-0000320193/c636d8a7-8025-47d2-9b13-bcf5465343b3.html ; Item 8, Consolidated Statements of Cash Flows, page 33, HTML line 1105, row Proceeds from issuance of term debt, net, FY2024 column",
+        "confirmed_nil": false
+      }
+    ],
+    "authoritative_origin_id": "us-aapl-fy2025-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "us-aapl-fy2025-authoritative-report",
+      "delivery_channel": "issuer_or_regulator_public_delivery",
+      "extraction_method": "reported_table_transcription"
+    }
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "aapl-fy2025-sec-companyfacts-crosscheck",
+    "source_id": "SEC data.sec.gov companyfacts",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "us-sec-companyfacts-derived",
+    "published_at": "2025-10-31T06:01:26-04:00",
+    "retrieved_at": "2026-09-03T09:28:27Z",
+    "content_sha256": "73a86c6aedc31f77cac2ea4df5f80f0b3bd7e6eb58bb4e01444fbedf3afb9c43",
+    "evidence_locator": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json ; CIK0000320193; select FY=2025, fp=FY, form=10-K, filed=2025-10-31 and accession 0000320193-25-000079 for tagged standard facts",
+    "source_document_id": "SEC companyfacts CIK0000320193 snapshot; underlying accession 0000320193-25-000079",
+    "notes": "Cross-check only. authoritative_origin_id=SEC accession 0000320193-25-000079; corroboration_scope=delivery_or_parse_only; independent_authoritative_origin=false. Companyfacts is a regulator-operated derived XBRL endpoint and does not preserve the statement's complete presentation or every Apple extension; primary row completeness remains the Item 8 tables in the SEC 10-K. Its ProceedsFromIssuanceOfLongTermDebt FY2024 fact is numeric 0 for this accession and period, but this derived parser value conflicts with the primary table's U+2014 presentation under the strict canonical rule and does not authorize dash-to-zero conversion. published_at refers to the 2025-10-31T06:01:26-04:00 availability time of the referenced FY2025 filing facts, not a fixed endpoint-release timestamp. This dynamic endpoint hash identifies the retrieved snapshot and may change on later SEC refreshes. It is not an independent underlying source from the filed 10-K.",
+    "authoritative_origin_id": "us-aapl-fy2025-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "second",
+    "source_lineage": {
+      "origin_id": "us-aapl-fy2025-authoritative-report",
+      "delivery_channel": "sec_companyfacts_api",
+      "extraction_method": "structured_fact_filter"
+    }
+  }
+]

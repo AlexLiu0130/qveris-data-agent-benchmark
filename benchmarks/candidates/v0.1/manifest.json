@@ -1,13 +1,13 @@
 {
   "benchmark_id": "qveris-data-agent-benchmark-v0.1-candidate",
-  "status": "candidate_200_of_300_not_formal",
+  "status": "candidate_300_of_300_not_formal",
   "subject": "black_box_public_get",
   "suite_inventory": {
     "historical_price": 100,
     "financial_statements": 100,
-    "realtime_quote": 0,
+    "realtime_quote": 100,
     "target_total": 300,
-    "available_total": 200
+    "available_total": 300
   },
   "files": [
     {
@@ -24,20 +24,47 @@
     {
       "suite": "financial_statements",
       "path": "financial_statements.cases.json",
-      "sha256": "a9da2324411179f18dfe5a4bc98c4869bbe6012562d8cddcfe07a126bdb74d38",
+      "sha256": "0d9ee28b9e60eb802a676eaeacc2b1e4df9822daf4878829d3000b06165e878c",
       "schema_version": "source_implicit_financial_v0.1",
       "case_id_field": "id",
       "query_field": "query (prompt retained as source-compatible duplicate)",
-      "data_oracle_reference_field": "data_oracle.reference_key",
+      "data_oracle_reference_field": "fact_contract_ref",
       "state_oracle_shape": "object with optional evidence",
-      "data_accuracy": "not_scored_single_source"
+      "data_accuracy": "frozen_27_record_contract_for_80_normal_cases_data_scoreable"
+    },
+    {
+      "suite": "realtime_quote",
+      "path": "realtime_quote.cases.json",
+      "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc",
+      "schema_version": "realtime_quote_candidate/v0.1",
+      "case_id_field": "case_id",
+      "query_field": "query",
+      "data_oracle_reference_field": "data_oracle",
+      "state_oracle_shape": "expected_status or status_conflict",
+      "source": {
+        "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+        "revision_id": 15
+      },
+      "data_accuracy": "not_scored_reference_snapshot_required"
+    }
+  ],
+  "oracle_assets": [
+    {
+      "suite": "financial_statements",
+      "path": "../../oracles/v1/fact-contracts.financial.v1.json",
+      "sha256": "16bc1df58f3620906a6321ef268a899fb5537e60f4ec05ca118e6798bdd5fc93",
+      "contract_count": 27,
+      "status": "frozen_manifest_validated_ledger_resigned_80_normal_cases_data_scoreable"
     }
   ],
   "runtime_contract": {
     "agents_per_cell": 1,
     "public_get_executions_per_cell": 1,
     "structured_outputs_per_cell": 1,
-    "forbidden_capabilities": ["Search", "Inspect"]
+    "forbidden_capabilities": [
+      "Search",
+      "Inspect"
+    ]
   },
   "metrics": [
     "semantic_accuracy",

@@ -1,0 +1,67 @@
+{
+  "package_schema_version": "historical-source-capability-matrix/v1",
+  "suite": "historical_price",
+  "status": "not_frozen",
+  "data_accuracy": "not_scored",
+  "source_candidate": {
+    "path": "benchmarks/candidates/v0.1/historical_price.cases.json",
+    "sha256": "9ecc5ed1eefe7bab1bd90083a885b8d27f6ef3aa029862e39957b2ee7de2a279"
+  },
+  "admission_rule": {
+    "requires": [
+      "An exact-case primary source with documented internal benchmark storage/use permission.",
+      "An independent exact-case secondary source for adversarial reconciliation.",
+      "Explicit identity, exchange, date/session, raw-or-adjusted basis, currency, units, and revision handling."
+    ],
+    "not_sufficient": [
+      "Public accessibility alone.",
+      "A schema probe or pilot plan.",
+      "A source without evidence of permitted benchmark storage/use."
+    ]
+  },
+  "markets": [
+    {
+      "market": "CN",
+      "candidate_case_count": 29,
+      "primary_source_status": "not_admitted",
+      "independent_secondary_status": "not_admitted",
+      "license_evidence_status": "not_admitted"
+    },
+    {
+      "market": "HK",
+      "candidate_case_count": 28,
+      "primary_source_status": "not_admitted",
+      "independent_secondary_status": "not_admitted",
+      "license_evidence_status": "not_admitted"
+    },
+    {
+      "market": "US",
+      "candidate_case_count": 28,
+      "primary_source_status": "not_admitted",
+      "independent_secondary_status": "not_admitted",
+      "license_evidence_status": "not_admitted"
+    },
+    {
+      "market": "JP",
+      "candidate_case_count": 5,
+      "primary_source_status": "not_admitted",
+      "independent_secondary_status": "not_admitted",
+      "license_evidence_status": "not_admitted"
+    },
+    {
+      "market": "GB",
+      "candidate_case_count": 5,
+      "primary_source_status": "not_admitted",
+      "independent_secondary_status": "not_admitted",
+      "license_evidence_status": "not_admitted"
+    },
+    {
+      "market": "DE",
+      "candidate_case_count": 5,
+      "primary_source_status": "not_admitted",
+      "independent_secondary_status": "not_admitted",
+      "license_evidence_status": "not_admitted"
+    }
+  ],
+  "conclusion": "No market is admitted for candidate value-oracle freezing in this package."
+}

@@ -1,0 +1,1761 @@
+{
+  "package_schema_version": "realtime-quote-blocked-package/v1",
+  "purpose": "Candidate-case blocker inventory. This package deliberately contains no realtime market values, provider quote captures, or frozen oracle records.",
+  "suite": "realtime_quote",
+  "status": "not_frozen",
+  "data_accuracy": "not_scored",
+  "source_candidate": {
+    "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+    "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc",
+    "case_count": 100
+  },
+  "quote_freeze_contract": {
+    "snapshot_mode": "live_bracketed",
+    "evaluation_use": "formal_data_accuracy",
+    "status_expectation": "case_specific_or_unresolved",
+    "reference_timing": "before_after_or_dual_reference",
+    "capture_metadata": [
+      "provider_quote_timestamp",
+      "captured_at",
+      "market_session",
+      "timezone",
+      "currency",
+      "unit"
+    ],
+    "tolerances": {
+      "staleness": {
+        "state": "unbound_must_bind_before_capture"
+      },
+      "cross_source_skew": {
+        "state": "unbound_must_bind_before_capture"
+      },
+      "tick": {
+        "state": "unbound_must_bind_before_capture"
+      }
+    },
+    "scoring_exclusions": [
+      "provider_tool_parameters"
+    ],
+    "block_reasons": [
+      "blocked_reference_snapshot",
+      "blocked_source_license",
+      "blocked_semantic_status"
+    ]
+  },
+  "validator_interop": {
+    "oracle_v1_records": 0,
+    "reason": "The oracle/v1 record schema is for evidence-bearing values. This 100-case package is blocked before live reference capture, so its explicit empty oracles array prevents fabricated timestamps, prices, tolerances, or source receipts."
+  },
+  "primary_rejection_counts": {
+    "blocked_reference_snapshot": 96,
+    "blocked_semantic_status": 4
+  },
+  "applicable_rejection_counts": {
+    "blocked_reference_snapshot": 100,
+    "blocked_source_license": 100,
+    "blocked_semantic_status": 4
+  },
+  "oracles": [],
+  "blocked_cases": [
+    {
+      "case_id": "RTQ-001",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "needs_clarification"
+    },
+    {
+      "case_id": "RTQ-002",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "needs_clarification"
+    },
+    {
+      "case_id": "RTQ-003",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "needs_clarification"
+    },
+    {
+      "case_id": "RTQ-004",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "needs_clarification"
+    },
+    {
+      "case_id": "RTQ-005",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "needs_clarification"
+    },
+    {
+      "case_id": "RTQ-006",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "needs_clarification"
+    },
+    {
+      "case_id": "RTQ-007",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "needs_clarification"
+    },
+    {
+      "case_id": "RTQ-008",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "needs_clarification"
+    },
+    {
+      "case_id": "RTQ-009",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "needs_clarification"
+    },
+    {
+      "case_id": "RTQ-010",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "needs_clarification"
+    },
+    {
+      "case_id": "RTQ-011",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-012",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-013",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-014",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-015",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-016",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-017",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-018",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-019",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-020",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-021",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-022",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-023",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-024",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-025",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-026",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-027",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-028",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-029",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-030",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-031",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-032",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-033",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-034",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-035",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-036",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-037",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-038",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-039",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_status",
+      "applicable_rejection_codes": [
+        "blocked_semantic_status",
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      }
+    },
+    {
+      "case_id": "RTQ-040",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-041",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-042",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-043",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-044",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-045",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-046",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_status",
+      "applicable_rejection_codes": [
+        "blocked_semantic_status",
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      }
+    },
+    {
+      "case_id": "RTQ-047",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "needs_clarification"
+    },
+    {
+      "case_id": "RTQ-048",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "no_data"
+    },
+    {
+      "case_id": "RTQ-049",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "needs_clarification"
+    },
+    {
+      "case_id": "RTQ-050",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "unsupported"
+    },
+    {
+      "case_id": "RTQ-051",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-052",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-053",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-054",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-055",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-056",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-057",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-058",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-059",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-060",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-061",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-062",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-063",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-064",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-065",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-066",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-067",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-068",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-069",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-070",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-071",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "needs_clarification"
+    },
+    {
+      "case_id": "RTQ-072",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "needs_clarification"
+    },
+    {
+      "case_id": "RTQ-073",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-074",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-075",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-076",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "unsupported"
+    },
+    {
+      "case_id": "RTQ-077",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "unsupported"
+    },
+    {
+      "case_id": "RTQ-078",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-079",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-080",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-081",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-082",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-083",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-084",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-085",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-086",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-087",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-088",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-089",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-090",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-091",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-092",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_status",
+      "applicable_rejection_codes": [
+        "blocked_semantic_status",
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      }
+    },
+    {
+      "case_id": "RTQ-093",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-094",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-095",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-096",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-097",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-098",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_semantic_status",
+      "applicable_rejection_codes": [
+        "blocked_semantic_status",
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      }
+    },
+    {
+      "case_id": "RTQ-099",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "success"
+    },
+    {
+      "case_id": "RTQ-100",
+      "case_type": "candidate",
+      "oracle_state": "not_frozen",
+      "semantic_accuracy": "not_scored",
+      "data_accuracy": "not_scored",
+      "primary_rejection_code": "blocked_reference_snapshot",
+      "applicable_rejection_codes": [
+        "blocked_reference_snapshot",
+        "blocked_source_license"
+      ],
+      "case_ref": {
+        "path": "benchmarks/candidates/v0.1/realtime_quote.cases.json",
+        "sha256": "2084804b053c52f7efbc001462f42ce84d0645540093bfef4c82b74fcc9035dc"
+      },
+      "expected_status": "unsupported"
+    }
+  ]
+}

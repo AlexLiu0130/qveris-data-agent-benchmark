@@ -1,0 +1,3001 @@
+[
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "fs-us-msft-fy2026-income-statement-v2",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-055",
+      "FS-067"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "source_published_at": "2026-07-29T00:00:00Z",
+      "information_available_at": "2026-07-30T00:00:00Z",
+      "retrieved_at": "2026-09-03T09:28:14Z",
+      "as_of": "2026-06-30T00:00:00Z"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "sec-10k-msft-fy2026",
+      "corroborating_receipt_ids": [
+        "microsoft-ir-fy2026-annual-form-10k-docx"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "is26-revenue",
+        "field": "income_statement.revenue",
+        "expected": "331839",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is26-cost",
+        "field": "income_statement.cost_of_revenue",
+        "expected": "106374",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is26-gross",
+        "field": "income_statement.gross_margin",
+        "expected": "225465",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is26-rd",
+        "field": "income_statement.research_and_development",
+        "expected": "35562",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is26-sm",
+        "field": "income_statement.sales_and_marketing",
+        "expected": "26710",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is26-ga",
+        "field": "income_statement.general_and_administrative",
+        "expected": "7956",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is26-op",
+        "field": "income_statement.operating_income",
+        "expected": "155237",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is26-other",
+        "field": "income_statement.other_income_expense_net",
+        "expected": "10697",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is26-pretax",
+        "field": "income_statement.income_before_income_taxes",
+        "expected": "165934",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is26-tax",
+        "field": "income_statement.provision_for_income_taxes",
+        "expected": "32185",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is26-net",
+        "field": "income_statement.net_income",
+        "expected": "133749",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is26-eps-basic",
+        "field": "income_statement.basic_earnings_per_share",
+        "expected": "18.00",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "per_share",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is26-eps-diluted",
+        "field": "income_statement.diluted_earnings_per_share",
+        "expected": "17.95",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "per_share",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is26-shares-basic",
+        "field": "income_statement.basic_weighted_average_shares_outstanding",
+        "expected": "7429",
+        "comparison": "exact_normalized",
+        "currency": "N/A",
+        "unit": "millions_of_shares",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is26-shares-diluted",
+        "field": "income_statement.diluted_weighted_average_shares_outstanding",
+        "expected": "7453",
+        "comparison": "exact_normalized",
+        "currency": "N/A",
+        "unit": "millions_of_shares",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is25-revenue",
+        "field": "income_statement.revenue",
+        "expected": "281724",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is25-cost",
+        "field": "income_statement.cost_of_revenue",
+        "expected": "87831",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is25-gross",
+        "field": "income_statement.gross_margin",
+        "expected": "193893",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is25-rd",
+        "field": "income_statement.research_and_development",
+        "expected": "32488",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is25-sm",
+        "field": "income_statement.sales_and_marketing",
+        "expected": "25654",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is25-ga",
+        "field": "income_statement.general_and_administrative",
+        "expected": "7223",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is25-op",
+        "field": "income_statement.operating_income",
+        "expected": "128528",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is25-other",
+        "field": "income_statement.other_income_expense_net",
+        "expected": "-4901",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is25-pretax",
+        "field": "income_statement.income_before_income_taxes",
+        "expected": "123627",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is25-tax",
+        "field": "income_statement.provision_for_income_taxes",
+        "expected": "21795",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is25-net",
+        "field": "income_statement.net_income",
+        "expected": "101832",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is25-eps-basic",
+        "field": "income_statement.basic_earnings_per_share",
+        "expected": "13.70",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "per_share",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is25-eps-diluted",
+        "field": "income_statement.diluted_earnings_per_share",
+        "expected": "13.64",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "per_share",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is25-shares-basic",
+        "field": "income_statement.basic_weighted_average_shares_outstanding",
+        "expected": "7433",
+        "comparison": "exact_normalized",
+        "currency": "N/A",
+        "unit": "millions_of_shares",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is25-shares-diluted",
+        "field": "income_statement.diluted_weighted_average_shares_outstanding",
+        "expected": "7465",
+        "comparison": "exact_normalized",
+        "currency": "N/A",
+        "unit": "millions_of_shares",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is24-revenue",
+        "field": "income_statement.revenue",
+        "expected": "245122",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is24-cost",
+        "field": "income_statement.cost_of_revenue",
+        "expected": "74114",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is24-gross",
+        "field": "income_statement.gross_margin",
+        "expected": "171008",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is24-rd",
+        "field": "income_statement.research_and_development",
+        "expected": "29510",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is24-sm",
+        "field": "income_statement.sales_and_marketing",
+        "expected": "24456",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is24-ga",
+        "field": "income_statement.general_and_administrative",
+        "expected": "7609",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is24-op",
+        "field": "income_statement.operating_income",
+        "expected": "109433",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is24-other",
+        "field": "income_statement.other_income_expense_net",
+        "expected": "-1646",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is24-pretax",
+        "field": "income_statement.income_before_income_taxes",
+        "expected": "107787",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is24-tax",
+        "field": "income_statement.provision_for_income_taxes",
+        "expected": "19651",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is24-net",
+        "field": "income_statement.net_income",
+        "expected": "88136",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is24-eps-basic",
+        "field": "income_statement.basic_earnings_per_share",
+        "expected": "11.86",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "per_share",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is24-eps-diluted",
+        "field": "income_statement.diluted_earnings_per_share",
+        "expected": "11.80",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "per_share",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is24-shares-basic",
+        "field": "income_statement.basic_weighted_average_shares_outstanding",
+        "expected": "7431",
+        "comparison": "exact_normalized",
+        "currency": "N/A",
+        "unit": "millions_of_shares",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "is24-shares-diluted",
+        "field": "income_statement.diluted_weighted_average_shares_outstanding",
+        "expected": "7469",
+        "comparison": "exact_normalized",
+        "currency": "N/A",
+        "unit": "millions_of_shares",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-us-msft-fy2026-income_statement-v1",
+    "fact_contract": {
+      "entity": "Microsoft Corporation",
+      "symbol": "MSFT",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "Microsoft Corporation Form 10-K accession 0001193125-26-323660; fiscal year ended 2026-06-30; filed_at 2026-07-29",
+      "period_end": "2026-06-30",
+      "duration_or_instant": "duration",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "reported_currency": "USD",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2026",
+          "label": "FY2026",
+          "period_end": "2026-06-30"
+        },
+        "comparative_periods": [
+          "FY2025",
+          "FY2024"
+        ],
+        "required_as_filed": true
+      },
+      "field_unit_exceptions": [
+        {
+          "currency": "USD",
+          "unit_scale": "per_share",
+          "assertion_ids": [
+            "is26-eps-basic",
+            "is26-eps-diluted",
+            "is25-eps-basic",
+            "is25-eps-diluted",
+            "is24-eps-basic",
+            "is24-eps-diluted"
+          ],
+          "fields": [
+            "income_statement.basic_earnings_per_share",
+            "income_statement.diluted_earnings_per_share",
+            "income_statement.basic_earnings_per_share",
+            "income_statement.diluted_earnings_per_share",
+            "income_statement.basic_earnings_per_share",
+            "income_statement.diluted_earnings_per_share"
+          ]
+        },
+        {
+          "currency": "N/A",
+          "unit_scale": "millions_of_shares",
+          "assertion_ids": [
+            "is26-shares-basic",
+            "is26-shares-diluted",
+            "is25-shares-basic",
+            "is25-shares-diluted",
+            "is24-shares-basic",
+            "is24-shares-diluted"
+          ],
+          "fields": [
+            "income_statement.basic_weighted_average_shares_outstanding",
+            "income_statement.diluted_weighted_average_shares_outstanding",
+            "income_statement.basic_weighted_average_shares_outstanding",
+            "income_statement.diluted_weighted_average_shares_outstanding",
+            "income_statement.basic_weighted_average_shares_outstanding",
+            "income_statement.diluted_weighted_average_shares_outstanding"
+          ]
+        }
+      ]
+    },
+    "authoritative_origin_id": "us-msft-fy2026-authoritative-report",
+    "same_authoritative_origin": true,
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "us-msft-fy2026-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction"
+    },
+    "origin": "us-msft-fy2026-authoritative-report"
+  },
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "fs-us-msft-fy2026-balance-sheet-v2",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-047",
+      "FS-059"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "source_published_at": "2026-07-29T00:00:00Z",
+      "information_available_at": "2026-07-30T00:00:00Z",
+      "retrieved_at": "2026-09-03T09:28:14Z",
+      "as_of": "2026-06-30T00:00:00Z"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "sec-10k-msft-fy2026",
+      "corroborating_receipt_ids": [
+        "microsoft-ir-fy2026-annual-form-10k-docx"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "bs26-cash",
+        "field": "balance_sheet.cash_and_cash_equivalents",
+        "expected": "20935",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-sti",
+        "field": "balance_sheet.short_term_investments",
+        "expected": "55908",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-cash-total",
+        "field": "balance_sheet.total_cash_cash_equivalents_and_short_term_investments",
+        "expected": "76843",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-ar",
+        "field": "balance_sheet.accounts_receivable_net",
+        "expected": "80876",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-inventory",
+        "field": "balance_sheet.inventories",
+        "expected": "1397",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-oca",
+        "field": "balance_sheet.other_current_assets",
+        "expected": "48594",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-tca",
+        "field": "balance_sheet.total_current_assets",
+        "expected": "207710",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-ppe",
+        "field": "balance_sheet.property_and_equipment_net",
+        "expected": "313076",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-rou",
+        "field": "balance_sheet.operating_lease_right_of_use_assets",
+        "expected": "24177",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-investments",
+        "field": "balance_sheet.equity_and_other_investments",
+        "expected": "36348",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-goodwill",
+        "field": "balance_sheet.goodwill",
+        "expected": "119651",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-intangibles",
+        "field": "balance_sheet.intangible_assets_net",
+        "expected": "18609",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-olta",
+        "field": "balance_sheet.other_long_term_assets",
+        "expected": "38805",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-assets",
+        "field": "balance_sheet.total_assets",
+        "expected": "758376",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-ap",
+        "field": "balance_sheet.accounts_payable",
+        "expected": "42416",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-current-debt",
+        "field": "balance_sheet.current_portion_of_long_term_debt",
+        "expected": "9227",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-accrued-comp",
+        "field": "balance_sheet.accrued_compensation",
+        "expected": "14945",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-st-tax",
+        "field": "balance_sheet.short_term_income_taxes",
+        "expected": "2534",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-st-unearned",
+        "field": "balance_sheet.short_term_unearned_revenue",
+        "expected": "72965",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-ocl",
+        "field": "balance_sheet.other_current_liabilities",
+        "expected": "26738",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-tcl",
+        "field": "balance_sheet.total_current_liabilities",
+        "expected": "168825",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-ltd",
+        "field": "balance_sheet.long_term_debt",
+        "expected": "31067",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-lt-tax",
+        "field": "balance_sheet.long_term_income_taxes",
+        "expected": "28647",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-lt-unearned",
+        "field": "balance_sheet.long_term_unearned_revenue",
+        "expected": "2747",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-deferred-tax",
+        "field": "balance_sheet.deferred_income_taxes",
+        "expected": "3054",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-lease-liab",
+        "field": "balance_sheet.operating_lease_liabilities",
+        "expected": "16532",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-oltl",
+        "field": "balance_sheet.other_long_term_liabilities",
+        "expected": "65117",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-liab",
+        "field": "balance_sheet.total_liabilities",
+        "expected": "315989",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-capital",
+        "field": "balance_sheet.common_stock_and_paid_in_capital",
+        "expected": "117406",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-re",
+        "field": "balance_sheet.retained_earnings",
+        "expected": "328265",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-aoci",
+        "field": "balance_sheet.accumulated_other_comprehensive_loss",
+        "expected": "-3284",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-equity",
+        "field": "balance_sheet.total_stockholders_equity",
+        "expected": "442387",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs26-liab-equity",
+        "field": "balance_sheet.total_liabilities_and_stockholders_equity",
+        "expected": "758376",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-cash",
+        "field": "balance_sheet.cash_and_cash_equivalents",
+        "expected": "30242",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-sti",
+        "field": "balance_sheet.short_term_investments",
+        "expected": "64323",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-cash-total",
+        "field": "balance_sheet.total_cash_cash_equivalents_and_short_term_investments",
+        "expected": "94565",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-ar",
+        "field": "balance_sheet.accounts_receivable_net",
+        "expected": "69905",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-inventory",
+        "field": "balance_sheet.inventories",
+        "expected": "938",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-oca",
+        "field": "balance_sheet.other_current_assets",
+        "expected": "25723",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-tca",
+        "field": "balance_sheet.total_current_assets",
+        "expected": "191131",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-ppe",
+        "field": "balance_sheet.property_and_equipment_net",
+        "expected": "204966",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-rou",
+        "field": "balance_sheet.operating_lease_right_of_use_assets",
+        "expected": "24823",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-investments",
+        "field": "balance_sheet.equity_and_other_investments",
+        "expected": "15405",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-goodwill",
+        "field": "balance_sheet.goodwill",
+        "expected": "119509",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-intangibles",
+        "field": "balance_sheet.intangible_assets_net",
+        "expected": "22604",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-olta",
+        "field": "balance_sheet.other_long_term_assets",
+        "expected": "40565",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-assets",
+        "field": "balance_sheet.total_assets",
+        "expected": "619003",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-ap",
+        "field": "balance_sheet.accounts_payable",
+        "expected": "27724",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-current-debt",
+        "field": "balance_sheet.current_portion_of_long_term_debt",
+        "expected": "2999",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-accrued-comp",
+        "field": "balance_sheet.accrued_compensation",
+        "expected": "13709",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-st-tax",
+        "field": "balance_sheet.short_term_income_taxes",
+        "expected": "7211",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-st-unearned",
+        "field": "balance_sheet.short_term_unearned_revenue",
+        "expected": "64555",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-ocl",
+        "field": "balance_sheet.other_current_liabilities",
+        "expected": "25020",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-tcl",
+        "field": "balance_sheet.total_current_liabilities",
+        "expected": "141218",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-ltd",
+        "field": "balance_sheet.long_term_debt",
+        "expected": "40152",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-lt-tax",
+        "field": "balance_sheet.long_term_income_taxes",
+        "expected": "25986",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-lt-unearned",
+        "field": "balance_sheet.long_term_unearned_revenue",
+        "expected": "2710",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-deferred-tax",
+        "field": "balance_sheet.deferred_income_taxes",
+        "expected": "2835",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-lease-liab",
+        "field": "balance_sheet.operating_lease_liabilities",
+        "expected": "17437",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-oltl",
+        "field": "balance_sheet.other_long_term_liabilities",
+        "expected": "45186",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-liab",
+        "field": "balance_sheet.total_liabilities",
+        "expected": "275524",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-capital",
+        "field": "balance_sheet.common_stock_and_paid_in_capital",
+        "expected": "109095",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-re",
+        "field": "balance_sheet.retained_earnings",
+        "expected": "237731",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-aoci",
+        "field": "balance_sheet.accumulated_other_comprehensive_loss",
+        "expected": "-3347",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-equity",
+        "field": "balance_sheet.total_stockholders_equity",
+        "expected": "343479",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "bs25-liab-equity",
+        "field": "balance_sheet.total_liabilities_and_stockholders_equity",
+        "expected": "619003",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-us-msft-fy2026-balance_sheet-v1",
+    "fact_contract": {
+      "entity": "Microsoft Corporation",
+      "symbol": "MSFT",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "Microsoft Corporation Form 10-K accession 0001193125-26-323660; fiscal year ended 2026-06-30; filed_at 2026-07-29",
+      "period_end": "2026-06-30",
+      "duration_or_instant": "instant",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "reported_currency": "USD",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2026",
+          "label": "FY2026",
+          "period_end": "2026-06-30"
+        },
+        "comparative_periods": [
+          "FY2025"
+        ],
+        "required_as_filed": true
+      }
+    },
+    "authoritative_origin_id": "us-msft-fy2026-authoritative-report",
+    "same_authoritative_origin": true,
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "us-msft-fy2026-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction"
+    },
+    "origin": "us-msft-fy2026-authoritative-report"
+  },
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "fs-us-msft-fy2026-cash-flow-statement-v2",
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-051",
+      "FS-063"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "source_published_at": "2026-07-29T00:00:00Z",
+      "information_available_at": "2026-07-30T00:00:00Z",
+      "retrieved_at": "2026-09-03T09:28:14Z",
+      "as_of": "2026-06-30T00:00:00Z"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "sec-10k-msft-fy2026",
+      "corroborating_receipt_ids": [
+        "microsoft-ir-fy2026-annual-form-10k-docx"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "cf26-net",
+        "field": "cash_flow.net_income",
+        "expected": "133749",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-da",
+        "field": "cash_flow.depreciation_amortization_and_other",
+        "expected": "38534",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-sbc",
+        "field": "cash_flow.stock_based_compensation_expense",
+        "expected": "12405",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-gains",
+        "field": "cash_flow.net_recognized_losses_gains_on_investments_and_derivatives",
+        "expected": "-11047",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-deferred-tax",
+        "field": "cash_flow.deferred_income_taxes",
+        "expected": "14189",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-ar",
+        "field": "cash_flow.accounts_receivable",
+        "expected": "-12737",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-inventory",
+        "field": "cash_flow.inventories",
+        "expected": "-461",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-oca",
+        "field": "cash_flow.other_current_assets",
+        "expected": "-2627",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-olta",
+        "field": "cash_flow.other_long_term_assets",
+        "expected": "-3964",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-ap",
+        "field": "cash_flow.accounts_payable",
+        "expected": "5268",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-unearned",
+        "field": "cash_flow.unearned_revenue",
+        "expected": "9361",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-tax",
+        "field": "cash_flow.income_taxes",
+        "expected": "-1875",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-ocl",
+        "field": "cash_flow.other_current_liabilities",
+        "expected": "6847",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-oltl",
+        "field": "cash_flow.other_long_term_liabilities",
+        "expected": "-4707",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-cfo",
+        "field": "cash_flow.net_cash_from_operations",
+        "expected": "182935",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-debt-short",
+        "field": "cash_flow.debt_maturities_90_days_or_less_net",
+        "expected": "0",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-debt-proceeds",
+        "field": "cash_flow.proceeds_from_issuance_of_debt",
+        "expected": "0",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-debt-repay",
+        "field": "cash_flow.repayments_of_debt",
+        "expected": "-3000",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-stock-issued",
+        "field": "cash_flow.common_stock_issued",
+        "expected": "2009",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-buyback",
+        "field": "cash_flow.common_stock_repurchased",
+        "expected": "-22271",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-dividends",
+        "field": "cash_flow.common_stock_cash_dividends_paid",
+        "expected": "-26445",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-other-fin",
+        "field": "cash_flow.other_financing_net",
+        "expected": "-2839",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-cff",
+        "field": "cash_flow.net_cash_used_in_financing",
+        "expected": "-52546",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-capex",
+        "field": "cash_flow.additions_to_property_and_equipment",
+        "expected": "-115948",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-acquisitions",
+        "field": "cash_flow.acquisitions_and_other_assets",
+        "expected": "-1743",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-purchases",
+        "field": "cash_flow.purchases_of_investments",
+        "expected": "-58351",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-maturities",
+        "field": "cash_flow.maturities_of_investments",
+        "expected": "34605",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-sales",
+        "field": "cash_flow.sales_of_investments",
+        "expected": "21798",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-other-inv",
+        "field": "cash_flow.other_investing_net",
+        "expected": "-19861",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-cfi",
+        "field": "cash_flow.net_cash_used_in_investing",
+        "expected": "-139500",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-fx",
+        "field": "cash_flow.effect_of_foreign_exchange_rates_on_cash",
+        "expected": "-196",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-change",
+        "field": "cash_flow.net_change_in_cash_and_cash_equivalents",
+        "expected": "-9307",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-begin-cash",
+        "field": "cash_flow.cash_and_cash_equivalents_beginning_of_period",
+        "expected": "30242",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf26-end-cash",
+        "field": "cash_flow.cash_and_cash_equivalents_end_of_period",
+        "expected": "20935",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2026",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-net",
+        "field": "cash_flow.net_income",
+        "expected": "101832",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-da",
+        "field": "cash_flow.depreciation_amortization_and_other",
+        "expected": "29433",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-sbc",
+        "field": "cash_flow.stock_based_compensation_expense",
+        "expected": "11974",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-gains",
+        "field": "cash_flow.net_recognized_losses_gains_on_investments_and_derivatives",
+        "expected": "5329",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-deferred-tax",
+        "field": "cash_flow.deferred_income_taxes",
+        "expected": "-7056",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-ar",
+        "field": "cash_flow.accounts_receivable",
+        "expected": "-10581",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-inventory",
+        "field": "cash_flow.inventories",
+        "expected": "309",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-oca",
+        "field": "cash_flow.other_current_assets",
+        "expected": "-3044",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-olta",
+        "field": "cash_flow.other_long_term_assets",
+        "expected": "-2950",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-ap",
+        "field": "cash_flow.accounts_payable",
+        "expected": "569",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-unearned",
+        "field": "cash_flow.unearned_revenue",
+        "expected": "5438",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-tax",
+        "field": "cash_flow.income_taxes",
+        "expected": "-38",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-ocl",
+        "field": "cash_flow.other_current_liabilities",
+        "expected": "5922",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-oltl",
+        "field": "cash_flow.other_long_term_liabilities",
+        "expected": "-975",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-cfo",
+        "field": "cash_flow.net_cash_from_operations",
+        "expected": "136162",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-debt-short",
+        "field": "cash_flow.debt_maturities_90_days_or_less_net",
+        "expected": "-5746",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-debt-proceeds",
+        "field": "cash_flow.proceeds_from_issuance_of_debt",
+        "expected": "0",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-debt-repay",
+        "field": "cash_flow.repayments_of_debt",
+        "expected": "-3216",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-stock-issued",
+        "field": "cash_flow.common_stock_issued",
+        "expected": "2056",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-buyback",
+        "field": "cash_flow.common_stock_repurchased",
+        "expected": "-18420",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-dividends",
+        "field": "cash_flow.common_stock_cash_dividends_paid",
+        "expected": "-24082",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-other-fin",
+        "field": "cash_flow.other_financing_net",
+        "expected": "-2291",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-cff",
+        "field": "cash_flow.net_cash_used_in_financing",
+        "expected": "-51699",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-capex",
+        "field": "cash_flow.additions_to_property_and_equipment",
+        "expected": "-64551",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-acquisitions",
+        "field": "cash_flow.acquisitions_and_other_assets",
+        "expected": "-5978",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-purchases",
+        "field": "cash_flow.purchases_of_investments",
+        "expected": "-29775",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-maturities",
+        "field": "cash_flow.maturities_of_investments",
+        "expected": "16079",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-sales",
+        "field": "cash_flow.sales_of_investments",
+        "expected": "9309",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-other-inv",
+        "field": "cash_flow.other_investing_net",
+        "expected": "2317",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-cfi",
+        "field": "cash_flow.net_cash_used_in_investing",
+        "expected": "-72599",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-fx",
+        "field": "cash_flow.effect_of_foreign_exchange_rates_on_cash",
+        "expected": "63",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-change",
+        "field": "cash_flow.net_change_in_cash_and_cash_equivalents",
+        "expected": "11927",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-begin-cash",
+        "field": "cash_flow.cash_and_cash_equivalents_beginning_of_period",
+        "expected": "18315",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf25-end-cash",
+        "field": "cash_flow.cash_and_cash_equivalents_end_of_period",
+        "expected": "30242",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2025",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-net",
+        "field": "cash_flow.net_income",
+        "expected": "88136",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-da",
+        "field": "cash_flow.depreciation_amortization_and_other",
+        "expected": "20958",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-sbc",
+        "field": "cash_flow.stock_based_compensation_expense",
+        "expected": "10734",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-gains",
+        "field": "cash_flow.net_recognized_losses_gains_on_investments_and_derivatives",
+        "expected": "1634",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-deferred-tax",
+        "field": "cash_flow.deferred_income_taxes",
+        "expected": "-4738",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-ar",
+        "field": "cash_flow.accounts_receivable",
+        "expected": "-7191",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-inventory",
+        "field": "cash_flow.inventories",
+        "expected": "1284",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-oca",
+        "field": "cash_flow.other_current_assets",
+        "expected": "-1648",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-olta",
+        "field": "cash_flow.other_long_term_assets",
+        "expected": "-6817",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-ap",
+        "field": "cash_flow.accounts_payable",
+        "expected": "3545",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-unearned",
+        "field": "cash_flow.unearned_revenue",
+        "expected": "5348",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-tax",
+        "field": "cash_flow.income_taxes",
+        "expected": "1687",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-ocl",
+        "field": "cash_flow.other_current_liabilities",
+        "expected": "4867",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-oltl",
+        "field": "cash_flow.other_long_term_liabilities",
+        "expected": "749",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-cfo",
+        "field": "cash_flow.net_cash_from_operations",
+        "expected": "118548",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-debt-short",
+        "field": "cash_flow.debt_maturities_90_days_or_less_net",
+        "expected": "5250",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-debt-proceeds",
+        "field": "cash_flow.proceeds_from_issuance_of_debt",
+        "expected": "24395",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-debt-repay",
+        "field": "cash_flow.repayments_of_debt",
+        "expected": "-29070",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-stock-issued",
+        "field": "cash_flow.common_stock_issued",
+        "expected": "2002",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-buyback",
+        "field": "cash_flow.common_stock_repurchased",
+        "expected": "-17254",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-dividends",
+        "field": "cash_flow.common_stock_cash_dividends_paid",
+        "expected": "-21771",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-other-fin",
+        "field": "cash_flow.other_financing_net",
+        "expected": "-1309",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-cff",
+        "field": "cash_flow.net_cash_used_in_financing",
+        "expected": "-37757",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-capex",
+        "field": "cash_flow.additions_to_property_and_equipment",
+        "expected": "-44477",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-acquisitions",
+        "field": "cash_flow.acquisitions_and_other_assets",
+        "expected": "-69132",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-purchases",
+        "field": "cash_flow.purchases_of_investments",
+        "expected": "-17732",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-maturities",
+        "field": "cash_flow.maturities_of_investments",
+        "expected": "24775",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-sales",
+        "field": "cash_flow.sales_of_investments",
+        "expected": "10894",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-other-inv",
+        "field": "cash_flow.other_investing_net",
+        "expected": "-1298",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-cfi",
+        "field": "cash_flow.net_cash_used_in_investing",
+        "expected": "-96970",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-fx",
+        "field": "cash_flow.effect_of_foreign_exchange_rates_on_cash",
+        "expected": "-210",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-change",
+        "field": "cash_flow.net_change_in_cash_and_cash_equivalents",
+        "expected": "-16389",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-begin-cash",
+        "field": "cash_flow.cash_and_cash_equivalents_beginning_of_period",
+        "expected": "34704",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      },
+      {
+        "assertion_id": "cf24-end-cash",
+        "field": "cash_flow.cash_and_cash_equivalents_end_of_period",
+        "expected": "18315",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "millions",
+        "period": "FY2024",
+        "receipt_ids": [
+          "sec-10k-msft-fy2026",
+          "microsoft-ir-fy2026-annual-form-10k-docx"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-us-msft-fy2026-cash_flow_statement-v1",
+    "fact_contract": {
+      "entity": "Microsoft Corporation",
+      "symbol": "MSFT",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "Microsoft Corporation Form 10-K accession 0001193125-26-323660; fiscal year ended 2026-06-30; filed_at 2026-07-29",
+      "period_end": "2026-06-30",
+      "duration_or_instant": "duration",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "reported_currency": "USD",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2026",
+          "label": "FY2026",
+          "period_end": "2026-06-30"
+        },
+        "comparative_periods": [
+          "FY2025",
+          "FY2024"
+        ],
+        "required_as_filed": true
+      }
+    },
+    "authoritative_origin_id": "us-msft-fy2026-authoritative-report",
+    "same_authoritative_origin": true,
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "us-msft-fy2026-authoritative-report",
+      "delivery_channel": "sec_edgar",
+      "extraction_method": "filed_statement_table_extraction"
+    },
+    "origin": "us-msft-fy2026-authoritative-report"
+  }
+]

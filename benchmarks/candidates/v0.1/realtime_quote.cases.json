@@ -1,0 +1,4888 @@
+[
+  {
+    "case_id": "RTQ-001",
+    "source_case_id": "A08-001",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "000001 现在多少钱？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "ambiguity"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "候选：平安银行 000001.SZ；上证指数 000001.SH"
+      }
+    ],
+    "required_fields": [
+      "candidate_securities",
+      "clarification_question"
+    ],
+    "reference_snapshot_required": false,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-001"
+    },
+    "authoring_notes": {
+      "source_heading": "个股、指数与市场消歧",
+      "source_terminal_status": "ambiguous",
+      "source_call_strategy": "identity_only",
+      "source_oracle_note": "状态 ambiguous；候选至少含 000001.SZ 与 000001.SH；不得调用行情",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/no_numeric_snapshot",
+      "frozen": false
+    },
+    "expected_status": "needs_clarification"
+  },
+  {
+    "case_id": "RTQ-002",
+    "source_case_id": "A08-002",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询比亚迪当前每股价格。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "cross_market",
+      "ambiguity"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "候选：比亚迪 002594.SZ；比亚迪股份 01211.HK"
+      }
+    ],
+    "required_fields": [
+      "candidate_securities",
+      "clarification_question"
+    ],
+    "reference_snapshot_required": false,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-002"
+    },
+    "authoring_notes": {
+      "source_heading": "A 股/H 股缺失",
+      "source_terminal_status": "ambiguous",
+      "source_call_strategy": "identity_only",
+      "source_oracle_note": "状态 ambiguous；候选为 002594.SZ、01211.HK；要求选择市场",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/no_numeric_snapshot",
+      "frozen": false
+    },
+    "expected_status": "needs_clarification"
+  },
+  {
+    "case_id": "RTQ-003",
+    "source_case_id": "A08-003",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "阿里巴巴现在股价多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "cross_market",
+      "ambiguity"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "候选：阿里巴巴-W 09988.HK；Alibaba ADR BABA"
+      }
+    ],
+    "required_fields": [
+      "candidate_securities",
+      "clarification_question"
+    ],
+    "reference_snapshot_required": false,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-003"
+    },
+    "authoring_notes": {
+      "source_heading": "港股/美股缺失",
+      "source_terminal_status": "ambiguous",
+      "source_call_strategy": "identity_only",
+      "source_oracle_note": "状态 ambiguous；候选为 09988.HK、BABA；要求选择市场/证券类型",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/no_numeric_snapshot",
+      "frozen": false
+    },
+    "expected_status": "needs_clarification"
+  },
+  {
+    "case_id": "RTQ-004",
+    "source_case_id": "A08-004",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询 Alphabet 当前股价。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "ambiguity"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "候选：Alphabet A 类 GOOGL；C 类 GOOG｜NASDAQ"
+      }
+    ],
+    "required_fields": [
+      "candidate_securities",
+      "share_class",
+      "clarification_question"
+    ],
+    "reference_snapshot_required": false,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-004"
+    },
+    "authoring_notes": {
+      "source_heading": "GOOG/GOOGL 类别缺失",
+      "source_terminal_status": "ambiguous",
+      "source_call_strategy": "identity_only",
+      "source_oracle_note": "状态 ambiguous；候选为 GOOGL、GOOG；要求选择股份类别",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/no_numeric_snapshot",
+      "frozen": false
+    },
+    "expected_status": "needs_clarification"
+  },
+  {
+    "case_id": "RTQ-005",
+    "source_case_id": "A08-005",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "中国移动目前多少钱一股？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "cross_market",
+      "ambiguity"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "候选：中国移动 600941.SH；00941.HK"
+      }
+    ],
+    "required_fields": [
+      "candidate_securities",
+      "clarification_question"
+    ],
+    "reference_snapshot_required": false,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-005"
+    },
+    "authoring_notes": {
+      "source_heading": "A 股/H 股缺失",
+      "source_terminal_status": "ambiguous",
+      "source_call_strategy": "identity_only",
+      "source_oracle_note": "状态 ambiguous；候选为 600941.SH、00941.HK",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/no_numeric_snapshot",
+      "frozen": false
+    },
+    "expected_status": "needs_clarification"
+  },
+  {
+    "case_id": "RTQ-006",
+    "source_case_id": "A08-006",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询建设银行当日涨跌幅。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "cross_market",
+      "ambiguity"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "候选：建设银行 601939.SH；00939.HK"
+      }
+    ],
+    "required_fields": [
+      "candidate_securities",
+      "clarification_question"
+    ],
+    "reference_snapshot_required": false,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-006"
+    },
+    "authoring_notes": {
+      "source_heading": "A 股/H 股缺失",
+      "source_terminal_status": "ambiguous",
+      "source_call_strategy": "identity_only",
+      "source_oracle_note": "状态 ambiguous；候选为 601939.SH、00939.HK",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/no_numeric_snapshot",
+      "frozen": false
+    },
+    "expected_status": "needs_clarification"
+  },
+  {
+    "case_id": "RTQ-007",
+    "source_case_id": "A08-007",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询代码 700 对应证券的当前价格。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "ambiguity"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "候选含 00700.HK；输入未明确交易所"
+      }
+    ],
+    "required_fields": [
+      "candidate_securities",
+      "clarification_question"
+    ],
+    "reference_snapshot_required": false,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-007"
+    },
+    "authoring_notes": {
+      "source_heading": "前导零、市场缺失",
+      "source_terminal_status": "ambiguous",
+      "source_call_strategy": "identity_only",
+      "source_oracle_note": "状态 ambiguous；可列 00700.HK，但不得直接假定市场并取价",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/no_numeric_snapshot",
+      "frozen": false
+    },
+    "expected_status": "needs_clarification"
+  },
+  {
+    "case_id": "RTQ-008",
+    "source_case_id": "A08-008",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询百度当日涨跌幅。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "cross_market",
+      "ambiguity"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "候选：百度集团 09888.HK；Baidu ADR BIDU"
+      }
+    ],
+    "required_fields": [
+      "candidate_securities",
+      "clarification_question"
+    ],
+    "reference_snapshot_required": false,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-008"
+    },
+    "authoring_notes": {
+      "source_heading": "港股/美股缺失",
+      "source_terminal_status": "ambiguous",
+      "source_call_strategy": "identity_only",
+      "source_oracle_note": "状态 ambiguous；候选为 09888.HK、BIDU",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/no_numeric_snapshot",
+      "frozen": false
+    },
+    "expected_status": "needs_clarification"
+  },
+  {
+    "case_id": "RTQ-009",
+    "source_case_id": "A08-009",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "华能现在多少钱？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "ambiguity"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "“华能”对应多个上市主体"
+      }
+    ],
+    "required_fields": [
+      "candidate_securities",
+      "clarification_question"
+    ],
+    "reference_snapshot_required": false,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-009"
+    },
+    "authoring_notes": {
+      "source_heading": "简称对应多个主体",
+      "source_terminal_status": "ambiguous",
+      "source_call_strategy": "identity_only",
+      "source_oracle_note": "状态 ambiguous；返回受控候选集和澄清问题",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/no_numeric_snapshot",
+      "frozen": false
+    },
+    "expected_status": "needs_clarification"
+  },
+  {
+    "case_id": "RTQ-010",
+    "source_case_id": "A08-010",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "联通今天的价格是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "ambiguity"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "候选：中国联通 600050.SH；中国联通 00762.HK 等"
+      }
+    ],
+    "required_fields": [
+      "candidate_securities",
+      "clarification_question"
+    ],
+    "reference_snapshot_required": false,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-010"
+    },
+    "authoring_notes": {
+      "source_heading": "公司简称歧义",
+      "source_terminal_status": "ambiguous",
+      "source_call_strategy": "identity_only",
+      "source_oracle_note": "状态 ambiguous；不得默认选择 600050.SH",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/no_numeric_snapshot",
+      "frozen": false
+    },
+    "expected_status": "needs_clarification"
+  },
+  {
+    "case_id": "RTQ-011",
+    "source_case_id": "A08-011",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "贵州茅台现在多少钱一股？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "贵州茅台｜600519.SH｜SSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "currency",
+      "trade_date",
+      "trade_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-011"
+    },
+    "authoring_notes": {
+      "source_heading": "当前价格",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "仅比较同币种、同单位和对应报价时点的最新价",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-012",
+    "source_case_id": "A08-012",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询宁德时代当前价、涨跌额和涨跌幅。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "宁德时代｜300750.SZ｜SZSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "change",
+      "change_ratio",
+      "trade_date",
+      "trade_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-012"
+    },
+    "authoring_notes": {
+      "source_heading": "价格与涨跌字段",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "最新价、涨跌额、涨跌幅及时间字段成组对齐",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-013",
+    "source_case_id": "A08-013",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "比亚迪 A 股今天开盘价和最新价分别是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "比亚迪｜002594.SZ｜SZSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "open",
+      "latest",
+      "trade_date",
+      "trade_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-013"
+    },
+    "authoring_notes": {
+      "source_heading": "明确市场、开盘与最新价",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "开盘价和最新价来自同一交易日",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-014",
+    "source_case_id": "A08-014",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询平安银行当日最高价、最低价和成交量。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "平安银行｜000001.SZ｜SZSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "high",
+      "low",
+      "volume",
+      "trade_date",
+      "trade_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-014"
+    },
+    "authoring_notes": {
+      "source_heading": "日内高低、成交量",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "高低价和成交量来自同一证券、同一交易日",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-015",
+    "source_case_id": "A08-015",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "工商银行 A 股最新价是多少，数据更新时间是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "工商银行｜601398.SH｜SSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "trade_date",
+      "trade_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-015"
+    },
+    "authoring_notes": {
+      "source_heading": "价格、时间戳",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "必须返回可核验更新时间，价格与快照对齐",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-016",
+    "source_case_id": "A08-016",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询五粮液当日成交额和当前涨跌幅。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "五粮液｜000858.SZ｜SZSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "amount",
+      "change_ratio",
+      "trade_date",
+      "trade_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-016"
+    },
+    "authoring_notes": {
+      "source_heading": "成交额、涨跌幅",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "成交额单位与涨跌幅口径一致",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-017",
+    "source_case_id": "A08-017",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "中芯国际 A 股当前价格和昨收价是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "中芯国际｜688981.SH｜SSE STAR｜CNY"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "pre_close",
+      "trade_date",
+      "trade_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-017"
+    },
+    "authoring_notes": {
+      "source_heading": "当前价、昨收",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "最新价与昨收来自同一报价快照",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-018",
+    "source_case_id": "A08-018",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询腾讯控股当前价格，返回币种和报价时间。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "腾讯控股｜00700.HK｜HKEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "currency",
+      "trade_date",
+      "trade_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-018"
+    },
+    "authoring_notes": {
+      "source_heading": "港股价格、币种",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "币种为 HKD，报价时间可核验",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-019",
+    "source_case_id": "A08-019",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "小米集团现在的价格、涨跌额和成交量是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "小米集团-W｜01810.HK｜HKEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "change",
+      "volume",
+      "trade_date",
+      "trade_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-019"
+    },
+    "authoring_notes": {
+      "source_heading": "港股一级行情",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "价格、涨跌额与成交量字段同源或时间一致",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-020",
+    "source_case_id": "A08-020",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询美团当日开盘价和当前价格。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "美团-W｜03690.HK｜HKEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "open",
+      "latest",
+      "trade_date",
+      "trade_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-020"
+    },
+    "authoring_notes": {
+      "source_heading": "开盘、最新价",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "开盘价和当前价来自同一交易日",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-021",
+    "source_case_id": "A08-021",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "香港交易所当前最高价、最低价和涨跌幅是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "香港交易所｜00388.HK｜HKEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "high",
+      "low",
+      "change_ratio",
+      "trade_date",
+      "trade_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-021"
+    },
+    "authoring_notes": {
+      "source_heading": "日内高低、涨跌幅",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "高低价和涨跌幅匹配快照",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-022",
+    "source_case_id": "A08-022",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询阿里巴巴港股当前价格和报价时间。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "阿里巴巴-W｜09988.HK｜HKEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "trade_date",
+      "trade_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-022"
+    },
+    "authoring_notes": {
+      "source_heading": "明确港股、时间戳",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "当前价格必须带报价时间",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-023",
+    "source_case_id": "A08-023",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "中国移动 H 股当前价格和成交额是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "中国移动｜00941.HK｜HKEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "amount",
+      "trade_date",
+      "trade_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-023"
+    },
+    "authoring_notes": {
+      "source_heading": "H 股、成交额",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "价格与成交额的币种、单位和交易日明确",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-024",
+    "source_case_id": "A08-024",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询汇丰控股当前价格、报价币种和报价时间。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "汇丰控股｜00005.HK｜HKEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "currency",
+      "trade_date",
+      "trade_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-024"
+    },
+    "authoring_notes": {
+      "source_heading": "价格、币种、时间",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "价格、HKD 与报价时间匹配",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-025",
+    "source_case_id": "A08-025",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "苹果当前正常交易时段价格是多少美元？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "Apple Inc.｜AAPL｜NASDAQ｜USD"
+      }
+    ],
+    "required_fields": [
+      "regular_market_price",
+      "currency",
+      "quote_time",
+      "market_state"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-025"
+    },
+    "authoring_notes": {
+      "source_heading": "美股价格、时段、币种",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "使用常规交易时段口径，不混入盘前盘后",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-026",
+    "source_case_id": "A08-026",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询微软当前价格、涨跌额和报价时间。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "Microsoft Corp.｜MSFT｜NASDAQ｜USD"
+      }
+    ],
+    "required_fields": [
+      "regular_market_price",
+      "regular_market_change",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-026"
+    },
+    "authoring_notes": {
+      "source_heading": "价格、涨跌、时间",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "价格、涨跌额与报价时间匹配",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-027",
+    "source_case_id": "A08-027",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "英伟达今天开盘价、最高价和最新价分别是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "NVIDIA Corp.｜NVDA｜NASDAQ｜USD"
+      }
+    ],
+    "required_fields": [
+      "regular_market_open",
+      "regular_market_day_high",
+      "regular_market_price",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-027"
+    },
+    "authoring_notes": {
+      "source_heading": "OHLC 当前字段",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "OHLC 当前字段属于同一美股交易日",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-028",
+    "source_case_id": "A08-028",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询特斯拉当日涨跌幅和成交量。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "Tesla Inc.｜TSLA｜NASDAQ｜USD"
+      }
+    ],
+    "required_fields": [
+      "regular_market_change_percent",
+      "regular_market_volume",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-028"
+    },
+    "authoring_notes": {
+      "source_heading": "涨跌、成交量",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "涨跌幅和成交量口径为常规交易时段",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-029",
+    "source_case_id": "A08-029",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "AMD 当前价格和昨收价是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "Advanced Micro Devices｜AMD｜NASDAQ｜USD"
+      }
+    ],
+    "required_fields": [
+      "regular_market_price",
+      "regular_market_previous_close",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-029"
+    },
+    "authoring_notes": {
+      "source_heading": "当前价、昨收",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "最新价与昨收匹配同一证券和报价口径",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-030",
+    "source_case_id": "A08-030",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询 JPM 当前价格、报价时间和实时/延迟状态。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "JPMorgan Chase｜JPM｜NYSE｜USD"
+      }
+    ],
+    "required_fields": [
+      "regular_market_price",
+      "quote_time",
+      "delay_status"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-030"
+    },
+    "authoring_notes": {
+      "source_heading": "价格、延迟状态",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "价格必须同时具备报价时间和延迟状态",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-031",
+    "source_case_id": "A08-031",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "BRK.B 当前价格、报价时间和交易状态是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "Berkshire Hathaway Class B｜BRK.B（供应商符号 BRK-B）｜NYSE｜USD"
+      }
+    ],
+    "required_fields": [
+      "regular_market_price",
+      "quote_time",
+      "market_state"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-031"
+    },
+    "authoring_notes": {
+      "source_heading": "股份类别、时间、状态",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "先验证股份类别映射，再比较动态行情",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-032",
+    "source_case_id": "A08-032",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "获取苹果当前可用行情，返回价格、报价时间、市场状态和实时/延迟标记。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "MARKET_SESSION_QUOTE",
+    "entities": [
+      {
+        "source_description": "Apple Inc.｜AAPL｜NASDAQ｜USD"
+      }
+    ],
+    "required_fields": [
+      "available_price",
+      "price_type",
+      "quote_time",
+      "market_state",
+      "delay_status"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-032"
+    },
+    "authoring_notes": {
+      "source_heading": "盘前与上次收盘",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "价格类型必须与 as_of 所处交易阶段一致",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-033",
+    "source_case_id": "A08-033",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "港股午休呢，腾讯现在这个价格是上午最后一笔吗？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "MARKET_SESSION_QUOTE",
+    "entities": [
+      {
+        "source_description": "腾讯控股｜00700.HK｜HKEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "trade_date",
+      "trade_time",
+      "market_state",
+      "price_type"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-033"
+    },
+    "authoring_notes": {
+      "source_heading": "午休、报价时间",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "午休场景中标注非连续交易，并说明报价对应上午最后有效时点",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-034",
+    "source_case_id": "A08-034",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "获取贵州茅台收盘后的当前可用行情，返回价格类型、报价时间和市场状态。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "MARKET_SESSION_QUOTE",
+    "entities": [
+      {
+        "source_description": "贵州茅台｜600519.SH｜SSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "available_price",
+      "price_type",
+      "trade_date",
+      "trade_time",
+      "market_state"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-034"
+    },
+    "authoring_notes": {
+      "source_heading": "收盘状态",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "收盘后返回最近有效价并明确 closed/close 口径",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-035",
+    "source_case_id": "A08-035",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "周末了，特斯拉现在显示的还是哪天的价格？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "MARKET_SESSION_QUOTE",
+    "entities": [
+      {
+        "source_description": "Tesla Inc.｜TSLA｜NASDAQ｜USD"
+      }
+    ],
+    "required_fields": [
+      "available_price",
+      "price_type",
+      "quote_time",
+      "market_state",
+      "last_trading_date"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-035"
+    },
+    "authoring_notes": {
+      "source_heading": "非交易日最近有效值",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "周末不得标成实时盘中价；交易日由日历确定",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-036",
+    "source_case_id": "A08-036",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "获取腾讯控股在港股休市日的最近有效行情，返回价格、报价时间和对应交易日。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "MARKET_SESSION_QUOTE",
+    "entities": [
+      {
+        "source_description": "腾讯控股｜00700.HK｜HKEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "available_price",
+      "quote_time",
+      "last_trading_date",
+      "market_state"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-036"
+    },
+    "authoring_notes": {
+      "source_heading": "节假日、最近交易日",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "休市日返回最近有效交易日与报价时间",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-037",
+    "source_case_id": "A08-037",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查一下 600519.SH 现在是不是停牌；如果停牌了，页面上的价格到底是哪天的？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "MARKET_SESSION_QUOTE",
+    "entities": [
+      {
+        "source_description": "贵州茅台｜600519.SH｜SSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "trade_date",
+      "trade_time",
+      "market_state",
+      "suspension_flag"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-037"
+    },
+    "authoring_notes": {
+      "source_heading": "停牌、陈旧数据",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "证券必须为 600519.SH；停牌时返回最近有效价及日期，未停牌时不得捏造停牌状态",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-038",
+    "source_case_id": "A08-038",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询 AAPL 当前行情；若候选供应商的报价时间相差十五分钟，按认证与新鲜度策略选择一个结果，并返回供应商、报价时间和延迟状态。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "VERIFIED_REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "Apple Inc.｜AAPL｜NASDAQ｜USD"
+      }
+    ],
+    "required_fields": [
+      "regular_market_price",
+      "provider",
+      "quote_time",
+      "delay_status",
+      "freshness"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-038"
+    },
+    "authoring_notes": {
+      "source_heading": "延迟状态、来源选择",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "选择满足认证与新鲜度 policy 的结果，并保留实际来源",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-039",
+    "source_case_id": "A08-039",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查一下 300750.SZ 的最新价和成交量；如果两边时间戳不一样，别拼成一份最新行情。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "QUOTE_FIELD_COHERENCE",
+    "entities": [
+      {
+        "source_description": "宁德时代｜300750.SZ｜SZSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "volume",
+      "trade_date",
+      "trade_time",
+      "field_time_consistency"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-039"
+    },
+    "authoring_notes": {
+      "source_heading": "字段时间一致性",
+      "source_terminal_status": "success/unverifiable",
+      "source_call_strategy": "required",
+      "source_oracle_note": "字段时间一致时 success；不一致时不得合并，并返回 field_time_mismatch 或 unverifiable",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "status_conflict": {
+      "state": "blocked_semantic_status",
+      "source_status": "success/unverifiable",
+      "reason": "The source prompt combines conditional data-coherence/freshness behaviour with a success-shaped Golden; no single terminal status is defined for scoring.",
+      "required_resolution": "Split success and conflict paths, or freeze a terminal-status precedence rule."
+    }
+  },
+  {
+    "case_id": "RTQ-040",
+    "source_case_id": "A08-040",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "分别获取 NVDA 常规交易时段收盘行情和盘后行情，返回各自价格、涨跌幅、报价时间和交易阶段。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "EXTENDED_HOURS_QUOTE",
+    "entities": [
+      {
+        "source_description": "NVIDIA Corp.｜NVDA｜NASDAQ｜USD"
+      }
+    ],
+    "required_fields": [
+      "regular_close",
+      "regular_change_ratio",
+      "regular_quote_time",
+      "post_market_price",
+      "post_market_change_ratio",
+      "post_market_time",
+      "market_phase"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-040"
+    },
+    "authoring_notes": {
+      "source_heading": "盘后口径",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "常规收盘与盘后字段必须分槽返回，不得混合计算",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-041",
+    "source_case_id": "A08-041",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "我今天早上看到的苹果股价，算美国哪天的？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "TRADING_DATE_RESOLUTION",
+    "entities": [
+      {
+        "source_description": "Apple Inc.｜AAPL｜NASDAQ｜USD"
+      }
+    ],
+    "required_fields": [
+      "quote_time",
+      "exchange_timezone",
+      "trading_date",
+      "as_of"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-041"
+    },
+    "authoring_notes": {
+      "source_heading": "跨时区交易日",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "按交易所时区将北京时间映射到正确美股交易日",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-042",
+    "source_case_id": "A08-042",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "获取宁德时代午休期间的当前可用行情，返回价格、报价时间和市场状态。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "MARKET_SESSION_QUOTE",
+    "entities": [
+      {
+        "source_description": "宁德时代｜300750.SZ｜SZSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "available_price",
+      "trade_date",
+      "trade_time",
+      "market_state"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-042"
+    },
+    "authoring_notes": {
+      "source_heading": "A 股午休、时间戳",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "午休场景返回上午最近有效行情并标注市场状态",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-043",
+    "source_case_id": "A08-043",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "苹果盘前价和昨天收盘价都给我，别混在一起。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "EXTENDED_HOURS_QUOTE",
+    "entities": [
+      {
+        "source_description": "Apple Inc.｜AAPL｜NASDAQ｜USD"
+      }
+    ],
+    "required_fields": [
+      "pre_market_price",
+      "pre_market_time",
+      "regular_previous_close",
+      "market_phase"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-043"
+    },
+    "authoring_notes": {
+      "source_heading": "盘前与常规时段分离",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "盘前价与上一常规交易日收盘价分别标注",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-044",
+    "source_case_id": "A08-044",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "获取腾讯控股复牌后的当前行情，返回最新成交价、报价时间和市场状态。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "MARKET_SESSION_QUOTE",
+    "entities": [
+      {
+        "source_description": "腾讯控股｜00700.HK｜HKEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "trade_date",
+      "trade_time",
+      "market_state",
+      "suspension_flag"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-044"
+    },
+    "authoring_notes": {
+      "source_heading": "复牌、报价新鲜度",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "复牌后行情时间不得早于复牌时点",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-045",
+    "source_case_id": "A08-045",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "美国刚切夏令时，英伟达现在是盘前、盘中还是盘后？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session"
+    ],
+    "intent": "MARKET_SESSION",
+    "entities": [
+      {
+        "source_description": "NVIDIA Corp.｜NVDA｜NASDAQ｜America/New_York"
+      }
+    ],
+    "required_fields": [
+      "market_phase",
+      "exchange_timezone",
+      "as_of",
+      "dst_status"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-045"
+    },
+    "authoring_notes": {
+      "source_heading": "夏令时、交易时段",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "使用 IANA 时区/DST 规则判定盘前、盘中或盘后，不用固定 UTC 偏移",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-046",
+    "source_case_id": "A08-046",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询 AAPL 当前行情；仅当结果包含报价时间和实时/延迟标记时返回成功，否则返回不可验证状态。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution"
+    ],
+    "intent": "VERIFIED_REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "Apple Inc.｜AAPL｜NASDAQ｜USD"
+      }
+    ],
+    "required_fields": [
+      "regular_market_price",
+      "quote_time",
+      "delay_status",
+      "provider"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-046"
+    },
+    "authoring_notes": {
+      "source_heading": "当前事实最低证据",
+      "source_terminal_status": "success/unverifiable",
+      "source_call_strategy": "required",
+      "source_oracle_note": "字段齐全才 success；缺 quote_time 或 delay_status 必须为 unverifiable",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "status_conflict": {
+      "state": "blocked_semantic_status",
+      "source_status": "success/unverifiable",
+      "reason": "The source prompt combines conditional data-coherence/freshness behaviour with a success-shaped Golden; no single terminal status is defined for scoring.",
+      "required_resolution": "Split success and conflict paths, or freeze a terminal-status precedence rule."
+    }
+  },
+  {
+    "case_id": "RTQ-047",
+    "source_case_id": "A08-047",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查一下这只股票现在多少钱。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "ambiguity"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "未提供证券实体"
+      }
+    ],
+    "required_fields": [
+      "clarification_question"
+    ],
+    "reference_snapshot_required": false,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-047"
+    },
+    "authoring_notes": {
+      "source_heading": "缺少证券实体",
+      "source_terminal_status": "ambiguous",
+      "source_call_strategy": "forbidden",
+      "source_oracle_note": "状态 ambiguous；返回缺失字段 security，不调用供应商",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/no_numeric_snapshot",
+      "frozen": false
+    },
+    "expected_status": "needs_clarification"
+  },
+  {
+    "case_id": "RTQ-048",
+    "source_case_id": "A08-048",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询证券代码 999999.SH 的当前价格。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "boundary_or_failure"
+    ],
+    "intent": "REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "999999.SH｜SSE 形式合法但无对应证券"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "quote_time"
+    ],
+    "reference_snapshot_required": false,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-048"
+    },
+    "authoring_notes": {
+      "source_heading": "无效证券代码",
+      "source_terminal_status": "not_found",
+      "source_call_strategy": "required",
+      "source_oracle_note": "状态 not_found；不得返回近似代码的行情",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/no_numeric_snapshot",
+      "frozen": false
+    },
+    "expected_status": "no_data"
+  },
+  {
+    "case_id": "RTQ-049",
+    "source_case_id": "A08-049",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询指定证券当前价格；即使结果缺少报价时间，也将其标记为最新价。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "boundary_or_failure",
+      "freshness_or_session"
+    ],
+    "intent": "VERIFIED_REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "未提供证券实体；且请求绕过时间证据"
+      }
+    ],
+    "required_fields": [
+      "validation_errors",
+      "clarification_question"
+    ],
+    "reference_snapshot_required": false,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-049"
+    },
+    "authoring_notes": {
+      "source_heading": "缺时间戳不得伪装为当前",
+      "source_terminal_status": "invalid_request",
+      "source_call_strategy": "forbidden",
+      "source_oracle_note": "状态 invalid_request；拒绝“缺时间也标最新”的指令",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/no_numeric_snapshot",
+      "frozen": false
+    },
+    "expected_status": "needs_clarification"
+  },
+  {
+    "case_id": "RTQ-050",
+    "source_case_id": "A08-050",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询 AAPL 在明日 15:00 的准确价格。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "boundary_or_failure"
+    ],
+    "intent": "FUTURE_QUOTE",
+    "entities": [
+      {
+        "source_description": "Apple Inc.｜AAPL｜NASDAQ｜USD｜未来时点"
+      }
+    ],
+    "required_fields": [
+      "requested_future_time",
+      "rejection_reason"
+    ],
+    "reference_snapshot_required": false,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-050"
+    },
+    "authoring_notes": {
+      "source_heading": "未来事实不可查询",
+      "source_terminal_status": "unsupported",
+      "source_call_strategy": "forbidden",
+      "source_oracle_note": "状态 unsupported；不得调用供应商或伪造未来价格",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/no_numeric_snapshot",
+      "frozen": false
+    },
+    "expected_status": "unsupported"
+  },
+  {
+    "case_id": "RTQ-051",
+    "source_case_id": "A08-051",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "比亚迪 A 股和港股代码各是啥？现在分别多少钱？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "cross_market",
+      "batch_or_index"
+    ],
+    "intent": "MULTI_LISTING_QUOTE",
+    "entities": [
+      {
+        "source_description": "比亚迪｜002594.SZ（CNY）；01211.HK（HKD）"
+      }
+    ],
+    "required_fields": [
+      "canonical_symbol",
+      "market",
+      "currency",
+      "latest",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-051"
+    },
+    "authoring_notes": {
+      "source_heading": "A/H 映射、价格",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "A/H 映射固定；两地价格分别按 CNY/HKD 快照比较",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-052",
+    "source_case_id": "A08-052",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询 9988.HK 与 BABA 的证券映射关系，返回各自当前价格。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "cross_market",
+      "batch_or_index"
+    ],
+    "intent": "MULTI_LISTING_QUOTE",
+    "entities": [
+      {
+        "source_description": "Alibaba｜09988.HK（普通股）；BABA（NYSE ADR）"
+      }
+    ],
+    "required_fields": [
+      "canonical_symbol",
+      "listing_type",
+      "relation",
+      "latest",
+      "currency",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-052"
+    },
+    "authoring_notes": {
+      "source_heading": "港美映射",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "证券关系固定；两地行情独立比较，不直接等价股价",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-053",
+    "source_case_id": "A08-053",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "中国移动 A 股和港股今天各涨了多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "cross_market",
+      "batch_or_index"
+    ],
+    "intent": "MULTI_LISTING_QUOTE",
+    "entities": [
+      {
+        "source_description": "中国移动｜600941.SH（CNY）；00941.HK（HKD）"
+      }
+    ],
+    "required_fields": [
+      "canonical_symbol",
+      "market",
+      "change",
+      "change_ratio",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-053"
+    },
+    "authoring_notes": {
+      "source_heading": "A/H 证券与行情",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "A/H 证券正确；涨跌字段各自使用本地昨收口径",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-054",
+    "source_case_id": "A08-054",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询紫金矿业 A 股和 H 股的标准代码、当前价格及交易币种。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "cross_market",
+      "batch_or_index"
+    ],
+    "intent": "MULTI_LISTING_QUOTE",
+    "entities": [
+      {
+        "source_description": "紫金矿业｜601899.SH（CNY）；02899.HK（HKD）"
+      }
+    ],
+    "required_fields": [
+      "canonical_symbol",
+      "market",
+      "currency",
+      "latest",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-054"
+    },
+    "authoring_notes": {
+      "source_heading": "A/H 映射、币种",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "标准代码、币种固定；行情分别对齐",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-055",
+    "source_case_id": "A08-055",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "京东港股、美股代码各是什么？现在各多少钱？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "cross_market",
+      "batch_or_index"
+    ],
+    "intent": "MULTI_LISTING_QUOTE",
+    "entities": [
+      {
+        "source_description": "JD.com｜09618.HK（普通股）；JD（NASDAQ ADR）"
+      }
+    ],
+    "required_fields": [
+      "canonical_symbol",
+      "listing_type",
+      "relation",
+      "latest",
+      "currency",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-055"
+    },
+    "authoring_notes": {
+      "source_heading": "港美双重上市",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "港美证券映射正确；动态值按各市场快照判断",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-056",
+    "source_case_id": "A08-056",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询百度港股与美股证券的映射关系，返回各自当前价格。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "cross_market",
+      "batch_or_index"
+    ],
+    "intent": "MULTI_LISTING_QUOTE",
+    "entities": [
+      {
+        "source_description": "Baidu｜09888.HK（普通股）；BIDU（NASDAQ ADR）"
+      }
+    ],
+    "required_fields": [
+      "canonical_symbol",
+      "listing_type",
+      "relation",
+      "latest",
+      "currency",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-056"
+    },
+    "authoring_notes": {
+      "source_heading": "港美映射、价格",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "港美映射正确；两地报价时间和币种不可混用",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-057",
+    "source_case_id": "A08-057",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "网易港股和美股现在分别多少钱？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "cross_market",
+      "batch_or_index"
+    ],
+    "intent": "MULTI_LISTING_QUOTE",
+    "entities": [
+      {
+        "source_description": "NetEase｜09999.HK（普通股）；NTES（NASDAQ ADR）"
+      }
+    ],
+    "required_fields": [
+      "canonical_symbol",
+      "listing_type",
+      "relation",
+      "latest",
+      "currency",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-057"
+    },
+    "authoring_notes": {
+      "source_heading": "港美证券映射",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "证券映射固定；行情按市场分别判定",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-058",
+    "source_case_id": "A08-058",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询伯克希尔 A 类股与 B 类股的标准代码、股份类别和当前价格。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "batch_or_index"
+    ],
+    "intent": "SHARE_CLASS_QUOTE",
+    "entities": [
+      {
+        "source_description": "Berkshire Hathaway｜BRK.A/BRK.B（供应商符号 BRK-A/BRK-B）｜NYSE"
+      }
+    ],
+    "required_fields": [
+      "canonical_symbol",
+      "share_class",
+      "issuer_relation",
+      "latest",
+      "currency",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-058"
+    },
+    "authoring_notes": {
+      "source_heading": "同发行人不同股份类别",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "同发行人不同股份类别；两只证券价格不得串位",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-059",
+    "source_case_id": "A08-059",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "GOOG 和 GOOGL 现在各多少钱？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "batch_or_index"
+    ],
+    "intent": "SHARE_CLASS_QUOTE",
+    "entities": [
+      {
+        "source_description": "Alphabet｜GOOG（C 类）；GOOGL（A 类）｜NASDAQ"
+      }
+    ],
+    "required_fields": [
+      "canonical_symbol",
+      "share_class",
+      "issuer_relation",
+      "latest",
+      "currency",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-059"
+    },
+    "authoring_notes": {
+      "source_heading": "股份类别",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "股份类别固定；两只证券行情分别匹配",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-060",
+    "source_case_id": "A08-060",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询中芯国际 A 股和 H 股的标准代码、当前价格及交易币种。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "cross_market",
+      "batch_or_index"
+    ],
+    "intent": "MULTI_LISTING_QUOTE",
+    "entities": [
+      {
+        "source_description": "中芯国际｜688981.SH（CNY）；00981.HK（HKD）"
+      }
+    ],
+    "required_fields": [
+      "canonical_symbol",
+      "market",
+      "currency",
+      "latest",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-060"
+    },
+    "authoring_notes": {
+      "source_heading": "A/H 映射、当前行情",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "A/H 映射固定；CNY/HKD 行情分别比较",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-061",
+    "source_case_id": "A08-061",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "把贵州茅台、宁德时代和五粮液的最新价、涨跌幅、成交量一次查回来。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "batch_or_index"
+    ],
+    "intent": "BATCH_REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "贵州茅台｜600519.SH｜SSE｜CNY；宁德时代｜300750.SZ｜SZSE｜CNY；五粮液｜000858.SZ｜SZSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "change_ratio",
+      "volume",
+      "trade_date",
+      "trade_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-061"
+    },
+    "authoring_notes": {
+      "source_heading": "A股三证券批量快照",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "三只证券逐只匹配同一批次快照，字段时间和代码不得串位。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-062",
+    "source_case_id": "A08-062",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "批量返回腾讯控股、阿里巴巴-SW、美团-W的最新价、涨跌额、成交量及行情时间。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "batch_or_index"
+    ],
+    "intent": "BATCH_REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "腾讯控股｜00700.HK｜HKEX｜HKD；阿里巴巴-W｜09988.HK｜HKEX｜HKD；美团-W｜03690.HK｜HKEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "change",
+      "volume",
+      "trade_date",
+      "trade_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-062"
+    },
+    "authoring_notes": {
+      "source_heading": "港股批量快照",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "港股代码补齐前导零；三只证券均以 HKD 和各自报价时间验证。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-063",
+    "source_case_id": "A08-063",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "苹果、微软、英伟达现在各多少钱？顺手把涨跌幅和报价时间一起给我。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "batch_or_index"
+    ],
+    "intent": "BATCH_REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "Apple Inc.｜AAPL｜NASDAQ｜USD；Microsoft Corp.｜MSFT｜NASDAQ｜USD；NVIDIA Corp.｜NVDA｜NASDAQ｜USD"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "change_ratio",
+      "quote_time",
+      "market_state",
+      "currency"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-063"
+    },
+    "authoring_notes": {
+      "source_heading": "美股三证券批量快照",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "三只美股分别核验 USD、市场时段和报价时间，不以单只结果代替整批。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-064",
+    "source_case_id": "A08-064",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询上证综合指数当前点位、涨跌幅、成交额与行情时间。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "batch_or_index"
+    ],
+    "intent": "INDEX_REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "上证综合指数｜000001.SH｜SSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "change_ratio",
+      "amount",
+      "trade_date",
+      "trade_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-064"
+    },
+    "authoring_notes": {
+      "source_heading": "上证综指实时点位",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "必须识别为指数而非平安银行；点位无货币价格语义，成交额需带单位。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-065",
+    "source_case_id": "A08-065",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "沪深300现在多少点，今天涨了还是跌了？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "batch_or_index"
+    ],
+    "intent": "INDEX_REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "沪深300指数｜000300.SH｜SSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "change",
+      "change_ratio",
+      "trade_date",
+      "trade_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-065"
+    },
+    "authoring_notes": {
+      "source_heading": "沪深300指数实时点位",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "必须识别沪深300指数而非 510300 ETF，并核验点位及时间。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-066",
+    "source_case_id": "A08-066",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "返回恒生指数的最新点位、日内高低、涨跌幅、市场状态和时间戳。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "batch_or_index"
+    ],
+    "intent": "INDEX_REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "恒生指数｜^HSI｜HK_INDEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "high",
+      "low",
+      "change_ratio",
+      "market_state",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-066"
+    },
+    "authoring_notes": {
+      "source_heading": "恒生指数实时行情",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "核验恒生指数身份、HKD 市场语境、状态与时间戳；不得按个股解析。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-067",
+    "source_case_id": "A08-067",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "标普500和纳指现在分别多少点？哪个今天涨得更多？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "batch_or_index"
+    ],
+    "intent": "BATCH_INDEX_REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "标普500指数｜^GSPC｜US_INDEX｜USD；纳斯达克综合指数｜^IXIC｜US_INDEX｜USD"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "change_ratio",
+      "quote_time",
+      "market_state"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-067"
+    },
+    "authoring_notes": {
+      "source_heading": "两指数批量比较",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "两指数在同一可比时点核验；比较使用涨跌幅，不直接比较点数差。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-068",
+    "source_case_id": "A08-068",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "同时查询比亚迪 A 股 002594.SZ 与 H 股 01211.HK 的最新价、涨跌幅、币种和报价时间。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "cross_market",
+      "batch_or_index"
+    ],
+    "intent": "MULTI_LISTING_QUOTE",
+    "entities": [
+      {
+        "source_description": "比亚迪｜002594.SZ｜SZSE｜CNY；比亚迪股份｜01211.HK｜HKEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "change_ratio",
+      "currency",
+      "trade_date",
+      "trade_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-068"
+    },
+    "authoring_notes": {
+      "source_heading": "A/H双上市批量快照",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "A/H 证券分别返回 CNY 与 HKD，不做未经请求的汇率换算。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-069",
+    "source_case_id": "A08-069",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查茅台、宁德时代、茅台的最新价；重复的别调两次。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "batch_or_index"
+    ],
+    "intent": "BATCH_REALTIME_QUOTE",
+    "entities": [
+      {
+        "source_description": "贵州茅台｜600519.SH｜SSE｜CNY；宁德时代｜300750.SZ｜SZSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "trade_date",
+      "trade_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-069"
+    },
+    "authoring_notes": {
+      "source_heading": "重复证券去重",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "输入重复证券只保留一次，结果顺序可规范化但不得重复计费调用。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-070",
+    "source_case_id": "A08-070",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "获取 600519.SH、00700.HK、AAPL 的最新价、币种、市场状态与报价时间。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "cross_market",
+      "batch_or_index"
+    ],
+    "intent": "CROSS_MARKET_BATCH_QUOTE",
+    "entities": [
+      {
+        "source_description": "贵州茅台｜600519.SH｜SSE｜CNY；腾讯控股｜00700.HK｜HKEX｜HKD；Apple Inc.｜AAPL｜NASDAQ｜USD"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "currency",
+      "market_state",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-070"
+    },
+    "authoring_notes": {
+      "source_heading": "跨供应商混合批量",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "允许按市场拆分供应商调用；三种币种、市场状态和时点必须逐证券归属。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-071",
+    "source_case_id": "A08-071",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "中国平安的市值是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "cross_market",
+      "ambiguity",
+      "units_currency_as_of"
+    ],
+    "intent": "MARKET_CAP",
+    "entities": [
+      {
+        "source_description": "候选：中国平安 601318.SH；02318.HK；且市值口径未指定"
+      }
+    ],
+    "required_fields": [
+      "candidate_securities",
+      "market_cap_scope",
+      "clarification_question"
+    ],
+    "reference_snapshot_required": false,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-071"
+    },
+    "authoring_notes": {
+      "source_heading": "市场与市值口径缺失",
+      "source_terminal_status": "ambiguous",
+      "source_call_strategy": "identity_only",
+      "source_oracle_note": "状态 ambiguous；同时指出 A/H 市场和总市值/流通市值口径缺失",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/no_numeric_snapshot",
+      "frozen": false
+    },
+    "expected_status": "needs_clarification"
+  },
+  {
+    "case_id": "RTQ-072",
+    "source_case_id": "A08-072",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "中信现在市值多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "ambiguity",
+      "units_currency_as_of"
+    ],
+    "intent": "MARKET_CAP",
+    "entities": [
+      {
+        "source_description": "“中信”对应中信证券、中信银行等，且市值口径未指定"
+      }
+    ],
+    "required_fields": [
+      "candidate_securities",
+      "market_cap_scope",
+      "clarification_question"
+    ],
+    "reference_snapshot_required": false,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-072"
+    },
+    "authoring_notes": {
+      "source_heading": "多个上市主体歧义",
+      "source_terminal_status": "ambiguous",
+      "source_call_strategy": "identity_only",
+      "source_oracle_note": "状态 ambiguous；指出主体与市值口径均不完整",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/no_numeric_snapshot",
+      "frozen": false
+    },
+    "expected_status": "needs_clarification"
+  },
+  {
+    "case_id": "RTQ-073",
+    "source_case_id": "A08-073",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "茅台现在总市值多大、总股本多少？数据是哪天的？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "units_currency_as_of"
+    ],
+    "intent": "CAPITALIZATION_SNAPSHOT",
+    "entities": [
+      {
+        "source_description": "贵州茅台｜600519.SH｜SSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "total_market_cap",
+      "total_shares",
+      "field_as_of",
+      "currency"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-073"
+    },
+    "authoring_notes": {
+      "source_heading": "市值、股本、时点探测",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "市值与股本分别记录字段时点；不得用当前价格配陈旧股本却省略日期",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-074",
+    "source_case_id": "A08-074",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询腾讯控股当前总市值、已发行股本及各字段数据时点。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "units_currency_as_of"
+    ],
+    "intent": "CAPITALIZATION_SNAPSHOT",
+    "entities": [
+      {
+        "source_description": "腾讯控股｜00700.HK｜HKEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "total_market_cap",
+      "issued_shares",
+      "field_as_of",
+      "currency"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-074"
+    },
+    "authoring_notes": {
+      "source_heading": "港股市值与股本探测",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "HKD、已发行股本口径与字段时点必须完整；参考源缺任一项则 Oracle incomplete",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-075",
+    "source_case_id": "A08-075",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "苹果现在市值多大？总股本和流通股本呢？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "units_currency_as_of"
+    ],
+    "intent": "CAPITALIZATION_SNAPSHOT",
+    "entities": [
+      {
+        "source_description": "Apple Inc.｜AAPL｜NASDAQ｜USD"
+      }
+    ],
+    "required_fields": [
+      "market_cap",
+      "shares_outstanding",
+      "float_shares",
+      "field_as_of",
+      "currency"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-075"
+    },
+    "authoring_notes": {
+      "source_heading": "美股市值与股本探测",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "USD、市值、总股本/流通股本口径分离；缺少权威字段不得推测",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-076",
+    "source_case_id": "A08-076",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询小米集团当前上市状态与交易状态。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "boundary_or_failure",
+      "units_currency_as_of"
+    ],
+    "intent": "LISTING_AND_TRADING_STATUS",
+    "entities": [
+      {
+        "source_description": "小米集团-W｜01810.HK｜HKEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "listing_status",
+      "trading_status",
+      "status_as_of"
+    ],
+    "reference_snapshot_required": false,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-076"
+    },
+    "authoring_notes": {
+      "source_heading": "上市与交易状态探测",
+      "source_terminal_status": "unverifiable",
+      "source_call_strategy": "required",
+      "source_oracle_note": "按当前能力表预期 unverifiable；可返回已验证交易状态，但不得把它当上市状态",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/no_numeric_snapshot",
+      "frozen": false
+    },
+    "expected_status": "unsupported"
+  },
+  {
+    "case_id": "RTQ-077",
+    "source_case_id": "A08-077",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "滴滴现在还在纽交所吗？现在还能交易哪个证券？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "boundary_or_failure",
+      "units_currency_as_of"
+    ],
+    "intent": "LISTING_HISTORY",
+    "entities": [
+      {
+        "source_description": "DiDi｜历史 NYSE ticker DIDI；当前 OTC DIDIY（待权威核验）"
+      }
+    ],
+    "required_fields": [
+      "former_listing",
+      "current_tradable_security",
+      "venue",
+      "status_as_of"
+    ],
+    "reference_snapshot_required": false,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-077"
+    },
+    "authoring_notes": {
+      "source_heading": "退市与证券变更探测",
+      "source_terminal_status": "unverifiable",
+      "source_call_strategy": "required",
+      "source_oracle_note": "按当前能力表预期 unverifiable；不得仅凭搜索结果断言退市/转板关系",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/no_numeric_snapshot",
+      "frozen": false
+    },
+    "expected_status": "unsupported"
+  },
+  {
+    "case_id": "RTQ-078",
+    "source_case_id": "A08-078",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "茅台现在总市值和流通市值各是多少？别把两个口径混在一起。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "units_currency_as_of"
+    ],
+    "intent": "CAPITALIZATION_SNAPSHOT",
+    "entities": [
+      {
+        "source_description": "贵州茅台｜600519.SH｜SSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "total_market_cap",
+      "float_market_cap",
+      "currency",
+      "unit",
+      "field_as_of"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-078"
+    },
+    "authoring_notes": {
+      "source_heading": "总市值与流通市值口径",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "总市值与流通市值分列，带 CNY、单位和字段时点。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-079",
+    "source_case_id": "A08-079",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询 600519.SH 当前总股本、流通股本及各字段生效日期。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "units_currency_as_of"
+    ],
+    "intent": "SHARE_CAPITAL_SNAPSHOT",
+    "entities": [
+      {
+        "source_description": "贵州茅台｜600519.SH｜SSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "total_shares",
+      "float_shares",
+      "effective_date",
+      "unit"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-079"
+    },
+    "authoring_notes": {
+      "source_heading": "总股本与流通股本口径",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "总股本与流通股本必须来自可追溯股本口径，记录生效日期和股数单位。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-080",
+    "source_case_id": "A08-080",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "腾讯现在市值多大、发行了多少股？都按港币说清楚是哪天的数据。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "units_currency_as_of"
+    ],
+    "intent": "CAPITALIZATION_SNAPSHOT",
+    "entities": [
+      {
+        "source_description": "腾讯控股｜00700.HK｜HKEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "total_market_cap",
+      "issued_shares",
+      "currency",
+      "unit",
+      "field_as_of"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-080"
+    },
+    "authoring_notes": {
+      "source_heading": "港股市值与已发行股本",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "市值与已发行股本口径分离，币种 HKD，分别保留字段时点。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-081",
+    "source_case_id": "A08-081",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "返回 AAPL 当前市值、shares outstanding、float shares、币种及字段时点。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "units_currency_as_of"
+    ],
+    "intent": "CAPITALIZATION_SNAPSHOT",
+    "entities": [
+      {
+        "source_description": "Apple Inc.｜AAPL｜NASDAQ｜USD"
+      }
+    ],
+    "required_fields": [
+      "market_cap",
+      "shares_outstanding",
+      "float_shares",
+      "currency",
+      "field_as_of"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-081"
+    },
+    "authoring_notes": {
+      "source_heading": "美股市值、总股本与流通股",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "市值、总股本、流通股分别验证；缺字段时不得用市值/价格反推并伪装为原始值。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-082",
+    "source_case_id": "A08-082",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "小米集团-W现在还是上市状态吗，今天能不能正常交易？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "units_currency_as_of"
+    ],
+    "intent": "LISTING_AND_TRADING_STATUS",
+    "entities": [
+      {
+        "source_description": "小米集团-W｜01810.HK｜HKEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "listing_status",
+      "trading_status",
+      "status_as_of"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-082"
+    },
+    "authoring_notes": {
+      "source_heading": "上市状态与交易状态分离",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "上市状态与当日交易状态分别验证；交易状态不能替代上市状态。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-083",
+    "source_case_id": "A08-083",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "分别返回紫金矿业 601899.SH 与 02899.HK 的当前市值、币种、单位和字段时点。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "cross_market",
+      "units_currency_as_of"
+    ],
+    "intent": "MULTI_LISTING_CAPITALIZATION",
+    "entities": [
+      {
+        "source_description": "紫金矿业｜601899.SH｜SSE｜CNY；紫金矿业｜02899.HK｜HKEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "market_cap",
+      "currency",
+      "unit",
+      "field_as_of"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-083"
+    },
+    "authoring_notes": {
+      "source_heading": "A/H市值分别计量",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "两地上市证券分别以 CNY/HKD 计量；不得直接相加或互相覆盖。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-084",
+    "source_case_id": "A08-084",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "宁德时代现在市值多少？把价格时间、股本日期和最终市值时间都列出来。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "units_currency_as_of"
+    ],
+    "intent": "CAPITALIZATION_SNAPSHOT",
+    "entities": [
+      {
+        "source_description": "宁德时代｜300750.SZ｜SZSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "shares_outstanding",
+      "market_cap",
+      "price_as_of",
+      "shares_effective_date",
+      "field_as_of"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-084"
+    },
+    "authoring_notes": {
+      "source_heading": "市值字段时点一致性",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "价格时间与股本生效日分别记录；派生市值要标计算时点，不得隐藏时点差。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-085",
+    "source_case_id": "A08-085",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询 688981.SH 的上市状态、当前交易状态、是否停牌以及状态更新时间。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session",
+      "units_currency_as_of"
+    ],
+    "intent": "LISTING_AND_TRADING_STATUS",
+    "entities": [
+      {
+        "source_description": "中芯国际｜688981.SH｜SSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "listing_status",
+      "trading_status",
+      "suspension_flag",
+      "status_as_of"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-085"
+    },
+    "authoring_notes": {
+      "source_heading": "上市与停复牌状态",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "上市、交易、停牌三个状态维度分离，并附可验证更新时间。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-086",
+    "source_case_id": "A08-086",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "茅台现在买一卖一各多少钱、各挂了多少手？行情时间也要。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "market_depth_or_intraday"
+    ],
+    "intent": "BEST_BID_ASK_SNAPSHOT",
+    "entities": [
+      {
+        "source_description": "贵州茅台｜600519.SH｜SSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "bid1",
+      "ask1",
+      "bid1_volume",
+      "ask1_volume",
+      "trade_date",
+      "trade_time",
+      "unit"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-086"
+    },
+    "authoring_notes": {
+      "source_heading": "最优买卖价量",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "买卖方向、价量单位和时间戳逐字段核验；不得把成交价当买一或卖一。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-087",
+    "source_case_id": "A08-087",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "返回 00700.HK 当前五档 bid/ask 价格与数量、盘口时间戳和市场状态。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "market_depth_or_intraday"
+    ],
+    "intent": "ORDER_BOOK_SNAPSHOT",
+    "entities": [
+      {
+        "source_description": "腾讯控股｜00700.HK｜HKEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "bid_levels",
+      "ask_levels",
+      "level_price",
+      "level_volume",
+      "quote_time",
+      "market_state"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-087"
+    },
+    "authoring_notes": {
+      "source_heading": "港股五档盘口",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "五档价格与数量按方向和档位成对校验；缺少任何档位必须显式标缺失，不得补造。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-088",
+    "source_case_id": "A08-088",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询 300750.SZ 当前五档买卖价格、委托量及盘口时间。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "market_depth_or_intraday"
+    ],
+    "intent": "ORDER_BOOK_SNAPSHOT",
+    "entities": [
+      {
+        "source_description": "宁德时代｜300750.SZ｜SZSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "bid_levels",
+      "ask_levels",
+      "level_price",
+      "level_volume",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-088"
+    },
+    "authoring_notes": {
+      "source_heading": "A股五档盘口",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "五档价量的方向、档位、单位和时间戳必须对应。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-089",
+    "source_case_id": "A08-089",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "腾讯现在买一卖一差多少？把两边价格、挂单量和时间给我。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "market_depth_or_intraday"
+    ],
+    "intent": "BEST_BID_ASK_SNAPSHOT",
+    "entities": [
+      {
+        "source_description": "腾讯控股｜00700.HK｜HKEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "bid1",
+      "ask1",
+      "bid1_volume",
+      "ask1_volume",
+      "spread",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-089"
+    },
+    "authoring_notes": {
+      "source_heading": "港股最优买卖价",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "spread=ask1-bid1；价量与时间来自同一盘口快照。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-090",
+    "source_case_id": "A08-090",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "返回 AAPL 当前 bid、ask、bid size、ask size、报价时间和延迟状态。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session",
+      "market_depth_or_intraday"
+    ],
+    "intent": "BEST_BID_ASK_SNAPSHOT",
+    "entities": [
+      {
+        "source_description": "Apple Inc.｜AAPL｜NASDAQ｜USD"
+      }
+    ],
+    "required_fields": [
+      "bid",
+      "ask",
+      "bid_size",
+      "ask_size",
+      "quote_time",
+      "delay_status"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-090"
+    },
+    "authoring_notes": {
+      "source_heading": "美股bid/ask与延迟",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "bid/ask 及 size 成对验证；必须披露美股报价时间和延迟状态。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-091",
+    "source_case_id": "A08-091",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "英伟达现在买卖价差多大？用同一个时间点的 bid 和 ask 算。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "market_depth_or_intraday"
+    ],
+    "intent": "BID_ASK_SPREAD",
+    "entities": [
+      {
+        "source_description": "NVIDIA Corp.｜NVDA｜NASDAQ｜USD"
+      }
+    ],
+    "required_fields": [
+      "bid",
+      "ask",
+      "spread",
+      "quote_time",
+      "market_state"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-091"
+    },
+    "authoring_notes": {
+      "source_heading": "买卖价差计算",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "只允许用同一时间点、同一市场阶段的 ask-bid 计算价差。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-092",
+    "source_case_id": "A08-092",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "获取 600519.SH 买一卖一和最新成交价；若字段时间不一致，返回冲突状态而不是拼接。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session",
+      "market_depth_or_intraday"
+    ],
+    "intent": "ORDER_BOOK_COHERENCE",
+    "entities": [
+      {
+        "source_description": "贵州茅台｜600519.SH｜SSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "bid1",
+      "ask1",
+      "field_time_consistency",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-092"
+    },
+    "authoring_notes": {
+      "source_heading": "盘口字段时间一致性",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "最新价与盘口字段必须来自一致快照；冲突时不得伪装成功。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "status_conflict": {
+      "state": "blocked_semantic_status",
+      "source_status": "success",
+      "reason": "The source prompt combines conditional data-coherence/freshness behaviour with a success-shaped Golden; no single terminal status is defined for scoring.",
+      "required_resolution": "Split success and conflict paths, or freeze a terminal-status precedence rule."
+    }
+  },
+  {
+    "case_id": "RTQ-093",
+    "source_case_id": "A08-093",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "如果茅台停牌了，买一卖一没数据就直接说没有，别拿旧盘口顶上。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session",
+      "market_depth_or_intraday"
+    ],
+    "intent": "ORDER_BOOK_SNAPSHOT",
+    "entities": [
+      {
+        "source_description": "贵州茅台｜600519.SH｜SSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "bid1",
+      "ask1",
+      "trading_status",
+      "quote_time",
+      "stale_flag"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-093"
+    },
+    "authoring_notes": {
+      "source_heading": "停牌时盘口空值",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "停牌或无盘口时保留空值与状态，不得用历史盘口伪装当前。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-094",
+    "source_case_id": "A08-094",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "批量查询 600519.SH 与 300750.SZ 的买一、卖一、对应委托量和盘口时间。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "multi_security",
+      "market_depth_or_intraday"
+    ],
+    "intent": "BATCH_ORDER_BOOK_SNAPSHOT",
+    "entities": [
+      {
+        "source_description": "贵州茅台｜600519.SH｜SSE｜CNY；宁德时代｜300750.SZ｜SZSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "bid1",
+      "ask1",
+      "bid1_volume",
+      "ask1_volume",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-094"
+    },
+    "authoring_notes": {
+      "source_heading": "两证券批量盘口",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "两只证券的价量字段逐证券归属，禁止串位或只返回一只。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-095",
+    "source_case_id": "A08-095",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "茅台集合竞价时的买一卖一和撮合状态现在是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "market_depth_or_intraday"
+    ],
+    "intent": "AUCTION_BOOK_SNAPSHOT",
+    "entities": [
+      {
+        "source_description": "贵州茅台｜600519.SH｜SSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "bid1",
+      "ask1",
+      "auction_state",
+      "quote_time",
+      "market_state"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-095"
+    },
+    "authoring_notes": {
+      "source_heading": "集合竞价盘口阶段",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "必须标明集合竞价市场阶段，不能把竞价盘口当连续交易成交价。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-096",
+    "source_case_id": "A08-096",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "查询 AAPL 盘后 bid/ask、价量、quote time，并与常规时段盘口明确分离。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "freshness_or_session",
+      "market_depth_or_intraday"
+    ],
+    "intent": "EXTENDED_HOURS_BOOK_SNAPSHOT",
+    "entities": [
+      {
+        "source_description": "Apple Inc.｜AAPL｜NASDAQ｜USD"
+      }
+    ],
+    "required_fields": [
+      "bid",
+      "ask",
+      "bid_size",
+      "ask_size",
+      "quote_time",
+      "market_state"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-096"
+    },
+    "authoring_notes": {
+      "source_heading": "盘后bid/ask分离",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "盘后与常规时段盘口不可混合，必须附 market_state 与各自时间。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-097",
+    "source_case_id": "A08-097",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "宁德时代买一挂了多少？告诉我是股还是手，别只给个数字。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "market_depth_or_intraday"
+    ],
+    "intent": "BEST_BID_ASK_SNAPSHOT",
+    "entities": [
+      {
+        "source_description": "宁德时代｜300750.SZ｜SZSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "bid1",
+      "bid1_volume",
+      "volume_unit",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-097"
+    },
+    "authoring_notes": {
+      "source_heading": "委托量单位",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "委托量必须带股/手单位及换算口径，不能省略单位。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-098",
+    "source_case_id": "A08-098",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "返回 600519.SH 五档盘口并校验买价递减、卖价递增；异常时标记数据不一致。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "market_depth_or_intraday"
+    ],
+    "intent": "ORDER_BOOK_VALIDATION",
+    "entities": [
+      {
+        "source_description": "贵州茅台｜600519.SH｜SSE｜CNY"
+      }
+    ],
+    "required_fields": [
+      "bid_levels",
+      "ask_levels",
+      "price_order_consistency",
+      "quote_time"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-098"
+    },
+    "authoring_notes": {
+      "source_heading": "盘口价序一致性",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "买档价格应由高到低、卖档由低到高；异常不得静默修正。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "status_conflict": {
+      "state": "blocked_semantic_status",
+      "source_status": "success",
+      "reason": "The source prompt combines conditional data-coherence/freshness behaviour with a success-shaped Golden; no single terminal status is defined for scoring.",
+      "required_resolution": "Split success and conflict paths, or freeze a terminal-status precedence rule."
+    }
+  },
+  {
+    "case_id": "RTQ-099",
+    "source_case_id": "A08-099",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "腾讯最新成交价是在买一和卖一之间吗？把三者和同一时刻都给我。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "口语",
+    "tags": [
+      "security_resolution",
+      "market_depth_or_intraday"
+    ],
+    "intent": "TRADE_BOOK_RELATION",
+    "entities": [
+      {
+        "source_description": "腾讯控股｜00700.HK｜HKEX｜HKD"
+      }
+    ],
+    "required_fields": [
+      "latest",
+      "bid1",
+      "ask1",
+      "quote_time",
+      "field_time_consistency"
+    ],
+    "reference_snapshot_required": true,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-099"
+    },
+    "authoring_notes": {
+      "source_heading": "盘口与成交价关系",
+      "source_terminal_status": "success",
+      "source_call_strategy": "required",
+      "source_oracle_note": "成交价与 bid/ask 需同一快照；只报告关系，不强制成交价必在价差内。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/reference_snapshot_required",
+      "frozen": false
+    },
+    "expected_status": "success"
+  },
+  {
+    "case_id": "RTQ-100",
+    "source_case_id": "A08-100",
+    "suite": "realtime_quote",
+    "case_type": "candidate",
+    "query": "返回 AAPL 当前完整 Level 2 全市场深度和所有交易所逐笔队列。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "专业",
+    "tags": [
+      "security_resolution",
+      "boundary_or_failure",
+      "market_depth_or_intraday"
+    ],
+    "intent": "LEVEL2_FULL_DEPTH",
+    "entities": [
+      {
+        "source_description": "Apple Inc.｜AAPL｜NASDAQ｜USD"
+      }
+    ],
+    "required_fields": [
+      "full_depth",
+      "venue_queue",
+      "quote_time"
+    ],
+    "reference_snapshot_required": false,
+    "scoring_status": "not_scored",
+    "source_doc": {
+      "url": "https://zxoriiwxds4.feishu.cn/docx/H7qMdIUM9onP2hxRcxFcmslCnpb",
+      "revision_id": 15,
+      "source_case_id": "A08-100"
+    },
+    "authoring_notes": {
+      "source_heading": "Level 2能力边界",
+      "source_terminal_status": "unsupported",
+      "source_call_strategy": "forbidden",
+      "source_oracle_note": "当前认证工具范围不支持完整 Level 2 全市场逐笔队列；必须在供应商调用前返回 unsupported。",
+      "black_box_limit": "At runtime, one public GET execution only; source provider and multi-call examples are authoring material, not a scoring contract."
+    },
+    "data_oracle": {
+      "oracle_status": "candidate/no_numeric_snapshot",
+      "frozen": false
+    },
+    "expected_status": "unsupported"
+  }
+]

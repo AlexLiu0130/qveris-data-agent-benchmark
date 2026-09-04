@@ -1,0 +1,145 @@
+{
+  "review_ledgers": [
+    {
+      "schema_version": "review-ledger/v1",
+      "oracle_id": "fs-hk-0700-fy2025-income-statement",
+      "oracle_file_sha256": "a44698804e5373f72644284b5fe45965524af14a9d468e5012ca2fa5cd7901ea",
+      "reviews": [
+        {
+          "review_id": "data-review-hk-0700-income-fy2025-20260903",
+          "role": "data_reviewer",
+          "reviewer_id": "/root/ledger_review_financial_cn_hk",
+        "decision": "approved",
+        "reviewed_at": "2026-09-03T18:52:44+08:00",
+        "notes": "full_assertion_count=23; passed=23; failed=0. Independent table review and accounting reconciliation remain exact. HKEXnews and Tencent IR share the Tencent-specific authoritative origin and use distinct official delivery channels; this is same-authoritative-origin multi-delivery, not independent fact production. Current Oracle origin equals authoritative_origin_id and source_lineage.origin_id. conclusion=APPROVED; frozen-byte re-signature verified. Release readiness remains subject to the suite manifest gate, not an evidence conflict."
+        },
+        {
+          "review_id": "semantic-review-hk-0700-income-fy2025-20260903-enriched",
+          "role": "semantic_reviewer",
+        "reviewer_id": "/root/semantic_signoff_cn_hk",
+          "decision": "approved",
+          "reviewed_at": "2026-09-03T18:35:26+08:00",
+          "notes": "Semantic gate: resolved fact_contract_ref maps to the same Oracle, seven case IDs, issuer/symbol/exchange, FY2025 period end, consolidated IFRS scope, RMB million unit, and complete income-statement schema. All 23 assertions link the authoritative HKEXnews and Tencent IR corroborating receipts. Both receipts share the declared Tencent authoritative origin and use distinct official delivery channels; approved as same-authoritative-origin multi-delivery, not as independent fact production."
+        }
+      ],
+      "conflicts": [
+        {
+          "conflict_id": "CONFLICT-HK-0700-INCOME-ORACLE-ORIGIN-MISSING",
+          "status": "resolved",
+          "description": "Current validate_freeze requires a non-empty literal Oracle origin field; authoritative_origin_id alone does not satisfy the machine contract.",
+          "opened_at": "2026-09-03T18:52:44+08:00",
+          "resolved_at": "2026-09-03T18:52:44+08:00",
+          "resolution": "Current Oracle now supplies origin equal to authoritative_origin_id and source_lineage.origin_id; current validator no longer reports the missing-origin machine-contract gap."
+        }
+      ]
+    },
+    {
+      "schema_version": "review-ledger/v1",
+      "oracle_id": "fs-hk-0700-fy2025-statement-of-financial-position",
+      "oracle_file_sha256": "a44698804e5373f72644284b5fe45965524af14a9d468e5012ca2fa5cd7901ea",
+      "reviews": [
+        {
+          "review_id": "data-review-hk-0700-financial-position-fy2025-20260903",
+          "role": "data_reviewer",
+          "reviewer_id": "/root/ledger_review_financial_cn_hk",
+        "decision": "approved",
+        "reviewed_at": "2026-09-03T18:52:44+08:00",
+        "notes": "full_assertion_count=55; passed=55; failed=0. Independent balance-sheet review and accounting reconciliation remain exact. bs-027 remains approved only under canonical_zero_from_display_nil with two direct U+2013 display-nil receipt cells. HKEXnews and Tencent IR share the Tencent-specific authoritative origin through distinct official delivery channels; Oracle origin equals authoritative_origin_id and source_lineage.origin_id. conclusion=APPROVED; frozen-byte re-signature verified. Release readiness remains subject to the suite manifest gate, not an evidence conflict."
+        },
+        {
+          "review_id": "semantic-review-hk-0700-financial-position-fy2025-20260903-enriched",
+          "role": "semantic_reviewer",
+        "reviewer_id": "/root/semantic_signoff_cn_hk",
+          "decision": "approved",
+          "reviewed_at": "2026-09-03T18:35:26+08:00",
+          "notes": "Semantic gate: resolved fact_contract_ref maps to the same Oracle, seven case IDs, issuer/symbol/exchange, FY2025 period end, consolidated IFRS scope, RMB million unit, and complete balance-sheet schema. All 55 assertions link the authoritative HKEXnews and Tencent IR corroborating receipts. Both receipts share the declared Tencent authoritative origin and distinct official delivery channels. The sole canonical-zero assertion bs-027 is restricted to U+2013 display nil, two linked receipt cells, and the approved data-reviewer entry; canonical_zero_gate independently passes."
+        }
+      ],
+      "canonical_zero_approvals": [
+        {
+          "assertion_id": "bs-027",
+          "comparison": "canonical_zero_from_display_nil",
+          "decision": "approved",
+          "reviewer_id": "/root/ledger_review_financial_cn_hk",
+          "reviewed_at": "2026-09-03T18:13:46+08:00",
+          "notes": "Verified each receipt's direct Share capital cell: raw U+2013 en dash, non-empty page/cell locator, and confirmed_nil=true. Oracle expected is numeric 0 under the schema's narrow canonical-zero comparison; both evidence delivery hashes equal 2a7547168077c3d9994af673125e77612e8656bc0f17ad189371d7e4088f4e98."
+        }
+      ],
+      "conflicts": [
+        {
+          "conflict_id": "CONFLICT-HK-0700-BS-ORACLE-ORIGIN-MISSING",
+          "status": "resolved",
+          "description": "Current validate_freeze requires a non-empty literal Oracle origin field; authoritative_origin_id alone does not satisfy the machine contract.",
+          "opened_at": "2026-09-03T18:52:44+08:00",
+          "resolved_at": "2026-09-03T18:52:44+08:00",
+          "resolution": "Current Oracle now supplies origin equal to authoritative_origin_id and source_lineage.origin_id; current validator no longer reports the missing-origin machine-contract gap."
+        },
+        {
+          "conflict_id": "CONFLICT-HK-0700-BS-027-DASH",
+          "status": "resolved",
+          "description": "Both independently downloaded official statement-table extracts show U+2013 en dash (–) in the 2025 Share capital cell.",
+          "opened_at": "2026-09-03T17:50:25+08:00",
+          "resolved_at": "2026-09-03T18:13:46+08:00",
+          "resolution": "The canonical_zero_from_display_nil rule records the raw U+2013 glyph, two receipt IDs, two cell locators, and two confirmed_nil attestations before permitting expected numeric zero."
+        },
+        {
+          "conflict_id": "CONFLICT-HK-0700-BS-027-SCHEMA-COMPARATOR",
+          "status": "resolved",
+          "description": "The earlier display_dash_means_zero comparison and raw field shape were unsupported by oracle/v1.",
+          "opened_at": "2026-09-03T18:06:44+08:00",
+          "resolved_at": "2026-09-03T18:13:46+08:00",
+          "resolution": "oracle/v1 now contains the narrowly gated canonical_zero_from_display_nil comparison and required raw-display/receipt links."
+        },
+        {
+          "conflict_id": "CONFLICT-HK-0700-BS-027-AS-REPORTED-ZERO",
+          "status": "resolved",
+          "description": "The former as_reported/exact_normalized contract had no declared dash-to-zero conversion.",
+          "opened_at": "2026-09-03T18:08:00+08:00",
+          "resolved_at": "2026-09-03T18:13:46+08:00",
+          "resolution": "The new comparison is explicit and restricts conversion to numeric zero from a U+2013 display nil supported by two linked receipts and an approved data reviewer."
+        },
+        {
+          "conflict_id": "CONFLICT-HK-0700-BS-027-CANONICAL-DELIVERY-LINEAGE",
+          "status": "resolved",
+          "description": "The initial dual receipt nil evidence lacked machine-readable delivery/extraction lineage, so canonical_zero_gate could not prove independent delivery or parsing.",
+          "opened_at": "2026-09-03T18:13:46+08:00",
+          "resolved_at": "2026-09-03T18:18:49+08:00",
+          "resolution": "Both receipts now supply distinct delivery_channel values and pypdf_page_text extraction_method. Independent canonical_zero_gate evaluation passes with the two raw display-nil cells, receipt links, and this approved data-reviewer decision."
+        }
+      ]
+    },
+    {
+      "schema_version": "review-ledger/v1",
+      "oracle_id": "fs-hk-0700-fy2025-cash-flows",
+      "oracle_file_sha256": "a44698804e5373f72644284b5fe45965524af14a9d468e5012ca2fa5cd7901ea",
+      "reviews": [
+        {
+          "review_id": "data-review-hk-0700-cash-flows-fy2025-20260903",
+          "role": "data_reviewer",
+          "reviewer_id": "/root/ledger_review_financial_cn_hk",
+        "decision": "approved",
+        "reviewed_at": "2026-09-03T18:52:44+08:00",
+        "notes": "full_assertion_count=48; passed=48; failed=0. Independent cash-flow review and accounting reconciliation remain exact. HKEXnews and Tencent IR share the Tencent-specific authoritative origin through distinct official delivery channels; Oracle origin equals authoritative_origin_id and source_lineage.origin_id. conclusion=APPROVED; frozen-byte re-signature verified. Release readiness remains subject to the suite manifest gate, not an evidence conflict."
+        },
+        {
+          "review_id": "semantic-review-hk-0700-cash-flows-fy2025-20260903-enriched",
+          "role": "semantic_reviewer",
+        "reviewer_id": "/root/semantic_signoff_cn_hk",
+          "decision": "approved",
+          "reviewed_at": "2026-09-03T18:35:26+08:00",
+          "notes": "Semantic gate: resolved fact_contract_ref maps to the same Oracle, eight case IDs, issuer/symbol/exchange, FY2025 period end, consolidated IFRS scope, RMB million unit, and complete cash-flow-statement schema. All 48 assertions link the authoritative HKEXnews and Tencent IR corroborating receipts. Both receipts share the declared Tencent authoritative origin and use distinct official delivery channels; approved as same-authoritative-origin multi-delivery, not as independent fact production."
+        }
+      ],
+      "conflicts": [
+        {
+          "conflict_id": "CONFLICT-HK-0700-CF-ORACLE-ORIGIN-MISSING",
+          "status": "resolved",
+          "description": "Current validate_freeze requires a non-empty literal Oracle origin field; authoritative_origin_id alone does not satisfy the machine contract.",
+          "opened_at": "2026-09-03T18:52:44+08:00",
+          "resolved_at": "2026-09-03T18:52:44+08:00",
+          "resolution": "Current Oracle now supplies origin equal to authoritative_origin_id and source_lineage.origin_id; current validator no longer reports the missing-origin machine-contract gap."
+        }
+      ]
+    }
+  ]
+}

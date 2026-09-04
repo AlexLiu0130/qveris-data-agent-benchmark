@@ -1,0 +1,128 @@
+[
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "receipt-cninfo-600519-fy2024-annual",
+    "source_id": "cninfo-1222993920",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "cninfo-designated-disclosure",
+    "published_at": "2025-04-03T23:59:59+08:00",
+    "retrieved_at": "2026-09-03T17:29:58+08:00",
+    "content_sha256": "5299f4940e2ce4e91084b73dc457d558b9d335fa76fbfee6227e4254eb7f4a30",
+    "evidence_locator": "https://static.cninfo.com.cn/finalpage/2025-04-03/1222993920.PDF#page=63-65",
+    "source_document_id": "1222993920",
+    "notes": "贵州茅台酒股份有限公司2024年年度报告；合并利润表位于 PDF 第63-65页（文件印刷页63-65），单位人民币元。CNINFO仅显示披露日期；PIT时点保守取该日期结束。",
+    "authoritative_origin_id": "cn-600519-sh-fy2024-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "cn-600519-sh-fy2024-authoritative-report",
+      "delivery_channel": "cninfo_designated_disclosure",
+      "extraction_method": "reported_table_transcription"
+    }
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "receipt-issuer-600519-fy2024-annual",
+    "source_id": "moutai-ir-f1d5484ad59943f580d9b1edb6aa1475",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "issuer-moutai-ir",
+    "published_at": "2025-04-08T23:59:59+08:00",
+    "retrieved_at": "2026-09-03T17:29:58+08:00",
+    "content_sha256": "5299f4940e2ce4e91084b73dc457d558b9d335fa76fbfee6227e4254eb7f4a30",
+    "evidence_locator": "https://www.moutai.com.cn/mtgf/articleFileDir/2025-04/08/f1d5484ad59943f580d9b1edb6aa1475.pdf#page=63-65",
+    "source_document_id": "f1d5484ad59943f580d9b1edb6aa1475",
+    "notes": "公司投资者关系官方分发；与主源下载文件 SHA-256 一致，复核合并利润表 PDF 第63-65页。网站路径显示日期，PIT时点保守取该日期结束。",
+    "authoritative_origin_id": "cn-600519-sh-fy2024-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "cn-600519-sh-fy2024-authoritative-report",
+      "delivery_channel": "issuer_or_regulator_public_delivery",
+      "extraction_method": "reported_table_transcription"
+    }
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "receipt-cninfo-300750-fy2024-annual",
+    "source_id": "cninfo-1222806982",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "cninfo-designated-disclosure",
+    "published_at": "2025-03-15T23:59:59+08:00",
+    "retrieved_at": "2026-09-03T17:29:58+08:00",
+    "content_sha256": "b4f1713d7b821eb076c102711d177fe942ccc2bc8dd171ae5d7a95799a65b0ad",
+    "evidence_locator": "https://static.cninfo.com.cn/finalpage/2025-03-15/1222806982.PDF#page=114-116",
+    "source_document_id": "1222806982",
+    "notes": "宁德时代新能源科技股份有限公司2024年年度报告全文；合并资产负债表位于 PDF 第114-116页，单位人民币千元。CNINFO仅显示披露日期；PIT时点保守取该日期结束。",
+    "authoritative_origin_id": "cn-300750-sz-fy2024-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "cn-300750-sz-fy2024-authoritative-report",
+      "delivery_channel": "cninfo_designated_disclosure",
+      "extraction_method": "reported_table_transcription"
+    }
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "receipt-issuer-300750-fy2024-annual",
+    "source_id": "catl-ir-20250317094543-6ig9e0mwng",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "issuer-catl-ir",
+    "published_at": "2025-03-17T23:59:59+08:00",
+    "retrieved_at": "2026-09-03T17:29:58+08:00",
+    "content_sha256": "b4f1713d7b821eb076c102711d177fe942ccc2bc8dd171ae5d7a95799a65b0ad",
+    "evidence_locator": "https://www.catl.com/uploads/1/file/public/202503/20250317094543_6ig9e0mwng.pdf#page=114-116",
+    "source_document_id": "20250317094543_6ig9e0mwng",
+    "notes": "公司官网投资者关系官方分发；与主源下载文件 SHA-256 一致，复核合并资产负债表 PDF 第114-116页。路径日期为2025-03-17，PIT时点保守取该日期结束。",
+    "authoritative_origin_id": "cn-300750-sz-fy2024-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "cn-300750-sz-fy2024-authoritative-report",
+      "delivery_channel": "issuer_or_regulator_public_delivery",
+      "extraction_method": "reported_table_transcription"
+    }
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "receipt-cninfo-000333-fy2024-annual",
+    "source_id": "cninfo-1222951181",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "cninfo-designated-disclosure",
+    "published_at": "2025-03-29T23:59:59+08:00",
+    "retrieved_at": "2026-09-03T17:29:58+08:00",
+    "content_sha256": "b17a9b9b84bca1d2a4e4a3cadc5dd5ba5c85e3f1fd2d758acd3315b5b040ecd9",
+    "evidence_locator": "https://static.cninfo.com.cn/finalpage/2025-03-29/1222951181.PDF#page=160",
+    "source_document_id": "1222951181",
+    "notes": "美的集团股份有限公司2024年年度报告；合并现金流量表位于 PDF 第160页（文件印刷页159），单位人民币千元。CNINFO仅显示披露日期；PIT时点保守取该日期结束。",
+    "authoritative_origin_id": "cn-000333-sz-fy2024-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "cn-000333-sz-fy2024-authoritative-report",
+      "delivery_channel": "cninfo_designated_disclosure",
+      "extraction_method": "reported_table_transcription"
+    }
+  },
+  {
+    "schema_version": "evidence-receipt/v1",
+    "receipt_id": "receipt-issuer-000333-fy2024-annual",
+    "source_id": "midea-ir-2024-annual-report",
+    "source_class": "issuer_or_regulator",
+    "independence_group": "issuer-midea-ir",
+    "published_at": "2025-03-29T23:59:59+08:00",
+    "retrieved_at": "2026-09-03T17:29:58+08:00",
+    "content_sha256": "bc82a1be9e09101ed2c2772844a44b8a356c87a4dbdc0fa44a55eeeabaf94455",
+    "evidence_locator": "https://www.midea.com.cn/content/dam/mideacn-aem/%E6%8A%95%E8%B5%84%E8%80%85%E5%85%B3%E7%B3%BB/%E6%8A%95%E8%B5%84%E8%80%85%E5%85%B3%E7%B3%BB%E6%96%87%E4%BB%B6%E6%80%BB%E8%A7%88/2024%E6%96%87%E4%BB%B6/%E7%BE%8E%E7%9A%84%E9%9B%86%E5%9B%A2-2024%E5%B9%B4%E5%B9%B4%E5%BA%A6%E6%8A%A5%E5%91%8A.PDF.coredownload.inline.pdf#page=160",
+    "source_document_id": "midea-2024-annual-report",
+    "notes": "公司官网投资者关系官方分发；表格文本与CNINFO主源 PDF 第160页一致，但文件容器 SHA-256 不同。网页与公告均显示2025-03-29，PIT时点保守取该日期结束。",
+    "authoritative_origin_id": "cn-000333-sz-fy2024-authoritative-report",
+    "same_authoritative_origin": true,
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "cn-000333-sz-fy2024-authoritative-report",
+      "delivery_channel": "issuer_or_regulator_public_delivery",
+      "extraction_method": "reported_table_transcription"
+    }
+  }
+]

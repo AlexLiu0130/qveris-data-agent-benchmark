@@ -1,0 +1,1654 @@
+{
+  "schema_version": "financial-statement-fact-contract/v1",
+  "suite": "financial_statements",
+  "status": "frozen",
+  "description": "Frozen semantic fact contracts that bind normal cases to statement identity and presentation; atomic values remain in the referenced frozen Oracle records.",
+  "contract_count": 27,
+  "contracts": [
+    {
+      "fact_contract_id": "financial-statements-cn-600519-sh-fy2024-income_statement-v1",
+      "case_ids": [
+        "FS-001",
+        "FS-004",
+        "FS-007",
+        "FS-010",
+        "FS-013",
+        "FS-016",
+        "FS-019",
+        "FS-022"
+      ],
+      "entity": {
+        "name": "贵州茅台酒股份有限公司",
+        "symbol": "600519.SH"
+      },
+      "market": "CN",
+      "statement_type": "income_statement",
+      "period": {
+        "label": "FY2024",
+        "period_end": "2024-12-31"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "yuan",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1",
+      "source_oracle": {
+        "oracle_id": "cn-600519-fy2024-consolidated-income-statement",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/CN/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "receipt-cninfo-600519-fy2024-annual",
+        "corroboration_receipt_id": "receipt-issuer-600519-fy2024-annual"
+      },
+      "review_status": "frozen",
+      "exchange": "SSE",
+      "form": "annual_report",
+      "accession": "1222993920",
+      "duration_or_instant": "duration",
+      "reported_currency": "CNY",
+      "point_in_time": {
+        "information_available_at": "2025-04-03T23:59:59+08:00",
+        "source_published_at": "2025-04-03T23:59:59+08:00",
+        "retrieved_at": "2026-09-03T17:29:58+08:00",
+        "as_of": "2024-12-31T23:59:59+08:00"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2024",
+          "label": "FY2024",
+          "period_end": "2024-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      },
+      "field_unit_exceptions": [
+        {
+          "currency": "CNY",
+          "unit_scale": "yuan_per_share",
+          "assertion_ids": [
+            "is-036",
+            "is-037"
+          ],
+          "fields": [
+            "consolidated_income_statement.基本每股收益",
+            "consolidated_income_statement.稀释每股收益"
+          ]
+        }
+      ]
+    },
+    {
+      "fact_contract_id": "financial-statements-cn-300750-sz-fy2024-balance_sheet-v1",
+      "case_ids": [
+        "FS-002",
+        "FS-005",
+        "FS-008",
+        "FS-011",
+        "FS-014",
+        "FS-017",
+        "FS-020",
+        "FS-023"
+      ],
+      "entity": {
+        "name": "宁德时代新能源科技股份有限公司",
+        "symbol": "300750.SZ"
+      },
+      "market": "CN",
+      "statement_type": "balance_sheet",
+      "period": {
+        "label": "FY2024",
+        "period_end": "2024-12-31"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "thousand_yuan",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1",
+      "source_oracle": {
+        "oracle_id": "cn-300750-fy2024-consolidated-balance-sheet",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/CN/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "receipt-cninfo-300750-fy2024-annual",
+        "corroboration_receipt_id": "receipt-issuer-300750-fy2024-annual"
+      },
+      "review_status": "frozen",
+      "exchange": "SZSE",
+      "form": "annual_report",
+      "accession": "1222806982",
+      "duration_or_instant": "instant",
+      "reported_currency": "CNY",
+      "point_in_time": {
+        "information_available_at": "2025-03-15T23:59:59+08:00",
+        "source_published_at": "2025-03-15T23:59:59+08:00",
+        "retrieved_at": "2026-09-03T17:29:58+08:00",
+        "as_of": "2024-12-31T23:59:59+08:00"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "2024-12-31",
+          "label": "FY2024",
+          "period_end": "2024-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    {
+      "fact_contract_id": "financial-statements-cn-000333-sz-fy2024-cash_flow_statement-v1",
+      "case_ids": [
+        "FS-003",
+        "FS-006",
+        "FS-009",
+        "FS-012",
+        "FS-015",
+        "FS-018",
+        "FS-021"
+      ],
+      "entity": {
+        "name": "美的集团股份有限公司",
+        "symbol": "000333.SZ"
+      },
+      "market": "CN",
+      "statement_type": "cash_flow_statement",
+      "period": {
+        "label": "FY2024",
+        "period_end": "2024-12-31"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "Chinese Accounting Standards for Business Enterprises",
+      "currency": "CNY",
+      "unit_scale": "thousand_yuan",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1",
+      "source_oracle": {
+        "oracle_id": "cn-000333-fy2024-consolidated-cash-flow-statement",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/CN/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "receipt-cninfo-000333-fy2024-annual",
+        "corroboration_receipt_id": "receipt-issuer-000333-fy2024-annual"
+      },
+      "review_status": "frozen",
+      "exchange": "SZSE",
+      "form": "annual_report",
+      "accession": "1222951181",
+      "duration_or_instant": "duration",
+      "reported_currency": "CNY",
+      "point_in_time": {
+        "information_available_at": "2025-03-29T23:59:59+08:00",
+        "source_published_at": "2025-03-29T23:59:59+08:00",
+        "retrieved_at": "2026-09-03T17:29:58+08:00",
+        "as_of": "2024-12-31T23:59:59+08:00"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2024",
+          "label": "FY2024",
+          "period_end": "2024-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    {
+      "fact_contract_id": "financial-statements-hk-0700-hk-fy2025-cash_flow_statement-v1",
+      "case_ids": [
+        "FS-024",
+        "FS-027",
+        "FS-030",
+        "FS-033",
+        "FS-036",
+        "FS-039",
+        "FS-042",
+        "FS-045"
+      ],
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "statement_type": "cash_flow_statement",
+      "period": {
+        "label": "FY2025",
+        "period_end": "2025-12-31"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1",
+      "source_oracle": {
+        "oracle_id": "fs-hk-0700-fy2025-cash-flows",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/HK/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "receipt-hkex-0700-fy2025-annual-report",
+        "corroboration_receipt_id": "receipt-tencent-ir-0700-fy2025-annual-report"
+      },
+      "review_status": "frozen",
+      "exchange": "HKEX",
+      "form": "annual_report",
+      "accession": "HKEXnews annual-report filing 2026040901231",
+      "duration_or_instant": "duration",
+      "reported_currency": "RMB",
+      "point_in_time": {
+        "information_available_at": "2026-04-08T17:52:00+08:00",
+        "source_published_at": "2026-04-08T17:52:00+08:00",
+        "retrieved_at": "2026-09-03T09:28:16Z",
+        "as_of": "2025-12-31T23:59:59+08:00"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2025",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    {
+      "fact_contract_id": "financial-statements-hk-0700-hk-fy2025-income_statement-v1",
+      "case_ids": [
+        "FS-025",
+        "FS-028",
+        "FS-031",
+        "FS-034",
+        "FS-037",
+        "FS-040",
+        "FS-043"
+      ],
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "statement_type": "income_statement",
+      "period": {
+        "label": "FY2025",
+        "period_end": "2025-12-31"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1",
+      "source_oracle": {
+        "oracle_id": "fs-hk-0700-fy2025-income-statement",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/HK/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "receipt-hkex-0700-fy2025-annual-report",
+        "corroboration_receipt_id": "receipt-tencent-ir-0700-fy2025-annual-report"
+      },
+      "review_status": "frozen",
+      "exchange": "HKEX",
+      "form": "annual_report",
+      "accession": "HKEXnews annual-report filing 2026040901231",
+      "duration_or_instant": "duration",
+      "reported_currency": "RMB",
+      "point_in_time": {
+        "information_available_at": "2026-04-08T17:52:00+08:00",
+        "source_published_at": "2026-04-08T17:52:00+08:00",
+        "retrieved_at": "2026-09-03T09:28:16Z",
+        "as_of": "2025-12-31T23:59:59+08:00"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2025",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      },
+      "field_unit_exceptions": [
+        {
+          "currency": "RMB",
+          "unit_scale": "per_share",
+          "assertion_ids": [
+            "is-022",
+            "is-023"
+          ],
+          "fields": [
+            "consolidated_income_statement.basic_eps",
+            "consolidated_income_statement.diluted_eps"
+          ]
+        }
+      ]
+    },
+    {
+      "fact_contract_id": "financial-statements-hk-0700-hk-fy2025-balance_sheet-v1",
+      "case_ids": [
+        "FS-026",
+        "FS-029",
+        "FS-032",
+        "FS-035",
+        "FS-038",
+        "FS-041",
+        "FS-044"
+      ],
+      "entity": {
+        "name": "Tencent Holdings Limited",
+        "symbol": "0700.HK"
+      },
+      "market": "HK",
+      "statement_type": "balance_sheet",
+      "period": {
+        "label": "FY2025",
+        "period_end": "2025-12-31"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "RMB",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1",
+      "source_oracle": {
+        "oracle_id": "fs-hk-0700-fy2025-statement-of-financial-position",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/HK/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "receipt-hkex-0700-fy2025-annual-report",
+        "corroboration_receipt_id": "receipt-tencent-ir-0700-fy2025-annual-report"
+      },
+      "review_status": "frozen",
+      "exchange": "HKEX",
+      "form": "annual_report",
+      "accession": "HKEXnews annual-report filing 2026040901231",
+      "duration_or_instant": "instant",
+      "reported_currency": "RMB",
+      "point_in_time": {
+        "information_available_at": "2026-04-08T17:52:00+08:00",
+        "source_published_at": "2026-04-08T17:52:00+08:00",
+        "retrieved_at": "2026-09-03T09:28:16Z",
+        "as_of": "2025-12-31T23:59:59+08:00"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "2025-12-31",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    {
+      "fact_contract_id": "financial-statements-us-aapl-fy2025-income_statement-v1",
+      "case_ids": [
+        "FS-046",
+        "FS-058"
+      ],
+      "entity": {
+        "name": "Apple Inc.",
+        "symbol": "AAPL"
+      },
+      "market": "US",
+      "statement_type": "income_statement",
+      "period": {
+        "label": "FY2025",
+        "period_end": "2025-09-27"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1",
+      "source_oracle": {
+        "oracle_id": "financial-statements-us-aapl-fy2025-income-statement-v1",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/US_AAPL/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "aapl-fy2025-sec-10k-primary",
+        "corroboration_receipt_id": "aapl-fy2025-apple-ir-repost"
+      },
+      "review_status": "frozen",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "SEC accession 0000320193-25-000079; CIK 0000320193; form 10-K; fiscal year ended 2025-09-27",
+      "duration_or_instant": "duration",
+      "reported_currency": "USD",
+      "point_in_time": {
+        "information_available_at": "2025-10-31T06:01:26-04:00",
+        "source_published_at": "2025-10-31T06:01:26-04:00",
+        "retrieved_at": "2026-09-03T09:28:21Z",
+        "as_of": "2025-09-27T00:00:00Z"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2025",
+          "label": "FY2025",
+          "period_end": "2025-09-27"
+        },
+        "comparative_periods": [
+          "FY2024",
+          "FY2023"
+        ],
+        "required_as_filed": true
+      },
+      "field_unit_exceptions": [
+        {
+          "currency": "USD",
+          "unit_scale": "USD_per_share",
+          "assertion_ids": [
+            "aapl-is-2025-basic-eps",
+            "aapl-is-2025-diluted-eps",
+            "aapl-is-2024-basic-eps",
+            "aapl-is-2024-diluted-eps",
+            "aapl-is-2023-basic-eps",
+            "aapl-is-2023-diluted-eps"
+          ],
+          "fields": [
+            "consolidated_statements_of_operations.earnings_per_share.basic",
+            "consolidated_statements_of_operations.earnings_per_share.diluted",
+            "consolidated_statements_of_operations.earnings_per_share.basic",
+            "consolidated_statements_of_operations.earnings_per_share.diluted",
+            "consolidated_statements_of_operations.earnings_per_share.basic",
+            "consolidated_statements_of_operations.earnings_per_share.diluted"
+          ]
+        },
+        {
+          "currency": "N/A",
+          "unit_scale": "shares_thousands",
+          "assertion_ids": [
+            "aapl-is-2025-basic-shares",
+            "aapl-is-2025-diluted-shares",
+            "aapl-is-2024-basic-shares",
+            "aapl-is-2024-diluted-shares",
+            "aapl-is-2023-basic-shares",
+            "aapl-is-2023-diluted-shares"
+          ],
+          "fields": [
+            "consolidated_statements_of_operations.shares_used_in_computing_eps.basic",
+            "consolidated_statements_of_operations.shares_used_in_computing_eps.diluted",
+            "consolidated_statements_of_operations.shares_used_in_computing_eps.basic",
+            "consolidated_statements_of_operations.shares_used_in_computing_eps.diluted",
+            "consolidated_statements_of_operations.shares_used_in_computing_eps.basic",
+            "consolidated_statements_of_operations.shares_used_in_computing_eps.diluted"
+          ]
+        }
+      ]
+    },
+    {
+      "fact_contract_id": "financial-statements-us-msft-fy2026-balance_sheet-v1",
+      "case_ids": [
+        "FS-047",
+        "FS-059"
+      ],
+      "entity": {
+        "name": "Microsoft Corporation",
+        "symbol": "MSFT"
+      },
+      "market": "US",
+      "statement_type": "balance_sheet",
+      "period": {
+        "label": "FY2026",
+        "period_end": "2026-06-30"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1",
+      "source_oracle": {
+        "oracle_id": "fs-us-msft-fy2026-balance-sheet-v2",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/US_MSFT/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "sec-10k-msft-fy2026",
+        "corroboration_receipt_id": "microsoft-ir-fy2026-annual-form-10k-docx"
+      },
+      "review_status": "frozen",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "Microsoft Corporation Form 10-K accession 0001193125-26-323660; fiscal year ended 2026-06-30; filed_at 2026-07-29",
+      "duration_or_instant": "instant",
+      "reported_currency": "USD",
+      "point_in_time": {
+        "source_published_at": "2026-07-29T00:00:00Z",
+        "information_available_at": "2026-07-30T00:00:00Z",
+        "retrieved_at": "2026-09-03T09:28:14Z",
+        "as_of": "2026-06-30T00:00:00Z"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2026",
+          "label": "FY2026",
+          "period_end": "2026-06-30"
+        },
+        "comparative_periods": [
+          "FY2025"
+        ],
+        "required_as_filed": true
+      }
+    },
+    {
+      "fact_contract_id": "financial-statements-us-tsla-fy2025-cash_flow_statement-v1",
+      "case_ids": [
+        "FS-048",
+        "FS-060"
+      ],
+      "entity": {
+        "name": "Tesla, Inc.",
+        "symbol": "TSLA"
+      },
+      "market": "US",
+      "statement_type": "cash_flow_statement",
+      "period": {
+        "label": "FY2025",
+        "period_end": "2025-12-31"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1",
+      "source_oracle": {
+        "oracle_id": "FS-US-TSLA-FY2025-CONSOLIDATED-CASH-FLOW-STATEMENT",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/US_TSLA/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "sec-10k-2025-ixbrl",
+        "corroboration_receipt_id": "tesla-ir-2025-10k-pdf"
+      },
+      "review_status": "frozen",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "SEC accession 0001628280-26-003952; tsla-20251231.htm",
+      "duration_or_instant": "duration",
+      "reported_currency": "USD",
+      "point_in_time": {
+        "information_available_at": "2026-01-28T20:55:03-05:00",
+        "source_published_at": "2026-01-28T20:55:03-05:00",
+        "retrieved_at": "2026-09-03T09:28:34Z",
+        "as_of": "2025-12-31T00:00:00-05:00"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2025",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    {
+      "fact_contract_id": "financial-statements-us-nvda-fy2026-income_statement-v1",
+      "case_ids": [
+        "FS-049",
+        "FS-061"
+      ],
+      "entity": {
+        "name": "NVIDIA Corporation",
+        "symbol": "NVDA"
+      },
+      "market": "US",
+      "statement_type": "income_statement",
+      "period": {
+        "label": "FY2026",
+        "period_end": "2026-01-25"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1",
+      "source_oracle": {
+        "oracle_id": "FS-NVDA-FY2026-consolidated-income",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/US_NVDA/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "SEC-NVDA-10K-0001045810-26-000021",
+        "corroboration_receipt_id": "SEC-COMPANYFACTS-NVDA-0001045810-26-000021"
+      },
+      "review_status": "frozen",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "SEC accession 0001045810-26-000021; FY ended 2026-01-25",
+      "duration_or_instant": "duration",
+      "reported_currency": "USD",
+      "point_in_time": {
+        "information_available_at": "2026-02-25T21:42:19Z",
+        "source_published_at": "2026-02-25T21:42:19Z",
+        "retrieved_at": "2026-09-03T09:29:47Z",
+        "as_of": "2026-01-25T00:00:00Z"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2026 ended 2026-01-25",
+          "label": "FY2026",
+          "period_end": "2026-01-25"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      },
+      "field_unit_exceptions": [
+        {
+          "currency": "USD",
+          "unit_scale": "USD_per_share",
+          "assertion_ids": [
+            "is-15",
+            "is-16"
+          ],
+          "fields": [
+            "consolidated_income/us-gaap:EarningsPerShareBasic",
+            "consolidated_income/us-gaap:EarningsPerShareDiluted"
+          ]
+        },
+        {
+          "currency": "N/A",
+          "unit_scale": "shares_millions",
+          "assertion_ids": [
+            "is-17",
+            "is-18"
+          ],
+          "fields": [
+            "consolidated_income/us-gaap:WeightedAverageNumberOfSharesOutstandingBasic",
+            "consolidated_income/us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding"
+          ]
+        }
+      ]
+    },
+    {
+      "fact_contract_id": "financial-statements-us-aapl-fy2025-balance_sheet-v1",
+      "case_ids": [
+        "FS-050",
+        "FS-062"
+      ],
+      "entity": {
+        "name": "Apple Inc.",
+        "symbol": "AAPL"
+      },
+      "market": "US",
+      "statement_type": "balance_sheet",
+      "period": {
+        "label": "FY2025",
+        "period_end": "2025-09-27"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1",
+      "source_oracle": {
+        "oracle_id": "financial-statements-us-aapl-fy2025-balance-sheet-v1",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/US_AAPL/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "aapl-fy2025-sec-10k-primary",
+        "corroboration_receipt_id": "aapl-fy2025-apple-ir-repost"
+      },
+      "review_status": "frozen",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "SEC accession 0000320193-25-000079; CIK 0000320193; form 10-K; fiscal year ended 2025-09-27",
+      "duration_or_instant": "instant",
+      "reported_currency": "USD",
+      "point_in_time": {
+        "information_available_at": "2025-10-31T06:01:26-04:00",
+        "source_published_at": "2025-10-31T06:01:26-04:00",
+        "retrieved_at": "2026-09-03T09:28:21Z",
+        "as_of": "2025-09-27T00:00:00Z"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "2025-09-27",
+          "label": "FY2025",
+          "period_end": "2025-09-27"
+        },
+        "comparative_periods": [
+          "2024-09-28"
+        ],
+        "required_as_filed": true
+      }
+    },
+    {
+      "fact_contract_id": "financial-statements-us-msft-fy2026-cash_flow_statement-v1",
+      "case_ids": [
+        "FS-051",
+        "FS-063"
+      ],
+      "entity": {
+        "name": "Microsoft Corporation",
+        "symbol": "MSFT"
+      },
+      "market": "US",
+      "statement_type": "cash_flow_statement",
+      "period": {
+        "label": "FY2026",
+        "period_end": "2026-06-30"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1",
+      "source_oracle": {
+        "oracle_id": "fs-us-msft-fy2026-cash-flow-statement-v2",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/US_MSFT/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "sec-10k-msft-fy2026",
+        "corroboration_receipt_id": "microsoft-ir-fy2026-annual-form-10k-docx"
+      },
+      "review_status": "frozen",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "Microsoft Corporation Form 10-K accession 0001193125-26-323660; fiscal year ended 2026-06-30; filed_at 2026-07-29",
+      "duration_or_instant": "duration",
+      "reported_currency": "USD",
+      "point_in_time": {
+        "source_published_at": "2026-07-29T00:00:00Z",
+        "information_available_at": "2026-07-30T00:00:00Z",
+        "retrieved_at": "2026-09-03T09:28:14Z",
+        "as_of": "2026-06-30T00:00:00Z"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2026",
+          "label": "FY2026",
+          "period_end": "2026-06-30"
+        },
+        "comparative_periods": [
+          "FY2025",
+          "FY2024"
+        ],
+        "required_as_filed": true
+      }
+    },
+    {
+      "fact_contract_id": "financial-statements-us-tsla-fy2025-income_statement-v1",
+      "case_ids": [
+        "FS-052",
+        "FS-064"
+      ],
+      "entity": {
+        "name": "Tesla, Inc.",
+        "symbol": "TSLA"
+      },
+      "market": "US",
+      "statement_type": "income_statement",
+      "period": {
+        "label": "FY2025",
+        "period_end": "2025-12-31"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1",
+      "source_oracle": {
+        "oracle_id": "FS-US-TSLA-FY2025-CONSOLIDATED-INCOME-STATEMENT",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/US_TSLA/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "sec-10k-2025-ixbrl",
+        "corroboration_receipt_id": "tesla-ir-2025-10k-pdf"
+      },
+      "review_status": "frozen",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "SEC accession 0001628280-26-003952; tsla-20251231.htm",
+      "duration_or_instant": "duration",
+      "reported_currency": "USD",
+      "point_in_time": {
+        "information_available_at": "2026-01-28T20:55:03-05:00",
+        "source_published_at": "2026-01-28T20:55:03-05:00",
+        "retrieved_at": "2026-09-03T09:28:34Z",
+        "as_of": "2025-12-31T00:00:00-05:00"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2025",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      },
+      "field_unit_exceptions": [
+        {
+          "currency": "USD",
+          "unit_scale": "USD_per_share",
+          "assertion_ids": [
+            "is-028",
+            "is-029"
+          ],
+          "fields": [
+            "consolidated_statements_of_operations.basic_earnings_per_share|ixbrl=us-gaap:EarningsPerShareBasic|context=c-1|table=22",
+            "consolidated_statements_of_operations.diluted_earnings_per_share|ixbrl=us-gaap:EarningsPerShareDiluted|context=c-1|table=22"
+          ]
+        },
+        {
+          "currency": "N/A",
+          "unit_scale": "shares_millions",
+          "assertion_ids": [
+            "is-030",
+            "is-031"
+          ],
+          "fields": [
+            "consolidated_statements_of_operations.weighted_average_basic_shares|ixbrl=us-gaap:WeightedAverageNumberOfSharesOutstandingBasic|context=c-1|table=22",
+            "consolidated_statements_of_operations.weighted_average_diluted_shares|ixbrl=us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding|context=c-1|table=22"
+          ]
+        }
+      ]
+    },
+    {
+      "fact_contract_id": "financial-statements-us-nvda-fy2026-balance_sheet-v1",
+      "case_ids": [
+        "FS-053",
+        "FS-065"
+      ],
+      "entity": {
+        "name": "NVIDIA Corporation",
+        "symbol": "NVDA"
+      },
+      "market": "US",
+      "statement_type": "balance_sheet",
+      "period": {
+        "label": "FY2026",
+        "period_end": "2026-01-25"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1",
+      "source_oracle": {
+        "oracle_id": "FS-NVDA-FY2026-consolidated-balance-sheet",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/US_NVDA/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "SEC-NVDA-10K-0001045810-26-000021",
+        "corroboration_receipt_ids": [
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021",
+          "SEC-NVDA-10K-R5-PARSED-0001045810-26-000021"
+        ]
+      },
+      "review_status": "frozen",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "SEC accession 0001045810-26-000021; FY ended 2026-01-25",
+      "duration_or_instant": "instant",
+      "reported_currency": "USD",
+      "point_in_time": {
+        "information_available_at": "2026-02-25T21:42:19Z",
+        "source_published_at": "2026-02-25T21:42:19Z",
+        "retrieved_at": "2026-09-03T09:29:47Z",
+        "as_of": "2026-01-25T00:00:00Z"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "instant 2026-01-25",
+          "label": "FY2026",
+          "period_end": "2026-01-25"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    {
+      "fact_contract_id": "financial-statements-us-aapl-fy2025-cash_flow_statement-v1",
+      "case_ids": [
+        "FS-054",
+        "FS-066"
+      ],
+      "entity": {
+        "name": "Apple Inc.",
+        "symbol": "AAPL"
+      },
+      "market": "US",
+      "statement_type": "cash_flow_statement",
+      "period": {
+        "label": "FY2025",
+        "period_end": "2025-09-27"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1",
+      "source_oracle": {
+        "oracle_id": "financial-statements-us-aapl-fy2025-cash-flow-statement-v1",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/US_AAPL/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "aapl-fy2025-sec-10k-primary",
+        "corroboration_receipt_id": "aapl-fy2025-apple-ir-repost"
+      },
+      "review_status": "frozen",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "SEC accession 0000320193-25-000079; CIK 0000320193; form 10-K; fiscal year ended 2025-09-27",
+      "duration_or_instant": "duration",
+      "reported_currency": "USD",
+      "point_in_time": {
+        "information_available_at": "2025-10-31T06:01:26-04:00",
+        "source_published_at": "2025-10-31T06:01:26-04:00",
+        "retrieved_at": "2026-09-03T09:28:21Z",
+        "as_of": "2025-09-27T00:00:00Z"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2025",
+          "label": "FY2025",
+          "period_end": "2025-09-27"
+        },
+        "comparative_periods": [
+          "FY2024",
+          "FY2023"
+        ],
+        "required_as_filed": true
+      }
+    },
+    {
+      "fact_contract_id": "financial-statements-us-msft-fy2026-income_statement-v1",
+      "case_ids": [
+        "FS-055",
+        "FS-067"
+      ],
+      "entity": {
+        "name": "Microsoft Corporation",
+        "symbol": "MSFT"
+      },
+      "market": "US",
+      "statement_type": "income_statement",
+      "period": {
+        "label": "FY2026",
+        "period_end": "2026-06-30"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1",
+      "source_oracle": {
+        "oracle_id": "fs-us-msft-fy2026-income-statement-v2",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/US_MSFT/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "sec-10k-msft-fy2026",
+        "corroboration_receipt_id": "microsoft-ir-fy2026-annual-form-10k-docx"
+      },
+      "review_status": "frozen",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "Microsoft Corporation Form 10-K accession 0001193125-26-323660; fiscal year ended 2026-06-30; filed_at 2026-07-29",
+      "duration_or_instant": "duration",
+      "reported_currency": "USD",
+      "point_in_time": {
+        "source_published_at": "2026-07-29T00:00:00Z",
+        "information_available_at": "2026-07-30T00:00:00Z",
+        "retrieved_at": "2026-09-03T09:28:14Z",
+        "as_of": "2026-06-30T00:00:00Z"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2026",
+          "label": "FY2026",
+          "period_end": "2026-06-30"
+        },
+        "comparative_periods": [
+          "FY2025",
+          "FY2024"
+        ],
+        "required_as_filed": true
+      },
+      "field_unit_exceptions": [
+        {
+          "currency": "USD",
+          "unit_scale": "per_share",
+          "assertion_ids": [
+            "is26-eps-basic",
+            "is26-eps-diluted",
+            "is25-eps-basic",
+            "is25-eps-diluted",
+            "is24-eps-basic",
+            "is24-eps-diluted"
+          ],
+          "fields": [
+            "income_statement.basic_earnings_per_share",
+            "income_statement.diluted_earnings_per_share",
+            "income_statement.basic_earnings_per_share",
+            "income_statement.diluted_earnings_per_share",
+            "income_statement.basic_earnings_per_share",
+            "income_statement.diluted_earnings_per_share"
+          ]
+        },
+        {
+          "currency": "N/A",
+          "unit_scale": "millions_of_shares",
+          "assertion_ids": [
+            "is26-shares-basic",
+            "is26-shares-diluted",
+            "is25-shares-basic",
+            "is25-shares-diluted",
+            "is24-shares-basic",
+            "is24-shares-diluted"
+          ],
+          "fields": [
+            "income_statement.basic_weighted_average_shares_outstanding",
+            "income_statement.diluted_weighted_average_shares_outstanding",
+            "income_statement.basic_weighted_average_shares_outstanding",
+            "income_statement.diluted_weighted_average_shares_outstanding",
+            "income_statement.basic_weighted_average_shares_outstanding",
+            "income_statement.diluted_weighted_average_shares_outstanding"
+          ]
+        }
+      ]
+    },
+    {
+      "fact_contract_id": "financial-statements-us-tsla-fy2025-balance_sheet-v1",
+      "case_ids": [
+        "FS-056",
+        "FS-068"
+      ],
+      "entity": {
+        "name": "Tesla, Inc.",
+        "symbol": "TSLA"
+      },
+      "market": "US",
+      "statement_type": "balance_sheet",
+      "period": {
+        "label": "FY2025",
+        "period_end": "2025-12-31"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1",
+      "source_oracle": {
+        "oracle_id": "FS-US-TSLA-FY2025-CONSOLIDATED-BALANCE-SHEET",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/US_TSLA/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "sec-10k-2025-ixbrl",
+        "corroboration_receipt_id": "tesla-ir-2025-10k-pdf"
+      },
+      "review_status": "frozen",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "SEC accession 0001628280-26-003952; tsla-20251231.htm",
+      "duration_or_instant": "instant",
+      "reported_currency": "USD",
+      "point_in_time": {
+        "information_available_at": "2026-01-28T20:55:03-05:00",
+        "source_published_at": "2026-01-28T20:55:03-05:00",
+        "retrieved_at": "2026-09-03T09:28:34Z",
+        "as_of": "2025-12-31T00:00:00-05:00"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "2025-12-31",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    {
+      "fact_contract_id": "financial-statements-us-nvda-fy2026-cash_flow_statement-v1",
+      "case_ids": [
+        "FS-057"
+      ],
+      "entity": {
+        "name": "NVIDIA Corporation",
+        "symbol": "NVDA"
+      },
+      "market": "US",
+      "statement_type": "cash_flow_statement",
+      "period": {
+        "label": "FY2026",
+        "period_end": "2026-01-25"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "US GAAP",
+      "currency": "USD",
+      "unit_scale": "USD_millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1",
+      "source_oracle": {
+        "oracle_id": "FS-NVDA-FY2026-consolidated-cash-flow",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/US_NVDA/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "SEC-NVDA-10K-0001045810-26-000021",
+        "corroboration_receipt_ids": [
+          "SEC-COMPANYFACTS-NVDA-0001045810-26-000021",
+          "SEC-NVDA-10K-R9-PARSED-0001045810-26-000021"
+        ]
+      },
+      "review_status": "frozen",
+      "exchange": "NASDAQ",
+      "form": "10-K",
+      "accession": "SEC accession 0001045810-26-000021; FY ended 2026-01-25",
+      "duration_or_instant": "duration",
+      "reported_currency": "USD",
+      "point_in_time": {
+        "information_available_at": "2026-02-25T21:42:19Z",
+        "source_published_at": "2026-02-25T21:42:19Z",
+        "retrieved_at": "2026-09-03T09:29:47Z",
+        "as_of": "2026-01-25T00:00:00Z"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2026 ended 2026-01-25",
+          "label": "FY2026",
+          "period_end": "2026-01-25"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    {
+      "fact_contract_id": "financial-statements-jp-7203-t-fy2026-cash_flow_statement-v1",
+      "case_ids": [
+        "FS-069",
+        "FS-072"
+      ],
+      "entity": {
+        "name": "Toyota Motor Corporation",
+        "symbol": "7203.T"
+      },
+      "market": "JP",
+      "statement_type": "cash_flow_statement",
+      "period": {
+        "label": "FY2026",
+        "period_end": "2026-03-31"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "JPY",
+      "unit_scale": "JPY_millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1",
+      "source_oracle": {
+        "oracle_id": "fs-jp-toyota-7203-fy2026-cash-flow-statement",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/JP/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "toyota-fy2026-sec-20f",
+        "corroboration_receipt_id": "toyota-fy2026-jpx-summary"
+      },
+      "review_status": "frozen",
+      "exchange": "TSE",
+      "form": "20-F",
+      "accession": "SEC accession 0001193125-26-264811, Form 20-F, period ended 2026-03-31",
+      "duration_or_instant": "duration",
+      "reported_currency": "JPY",
+      "point_in_time": {
+        "information_available_at": "2026-06-10T06:02:59Z",
+        "source_published_at": "2026-06-10T06:02:59Z",
+        "retrieved_at": "2026-09-03T09:28:10Z",
+        "as_of": "2026-03-31T23:59:59Z"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2026 (2025-04-01 to 2026-03-31)",
+          "label": "FY2026",
+          "period_end": "2026-03-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    {
+      "fact_contract_id": "financial-statements-jp-7203-t-fy2026-income_statement-v1",
+      "case_ids": [
+        "FS-070"
+      ],
+      "entity": {
+        "name": "Toyota Motor Corporation",
+        "symbol": "7203.T"
+      },
+      "market": "JP",
+      "statement_type": "income_statement",
+      "period": {
+        "label": "FY2026",
+        "period_end": "2026-03-31"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "JPY",
+      "unit_scale": "JPY_millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1",
+      "source_oracle": {
+        "oracle_id": "fs-jp-toyota-7203-fy2026-income-statement",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/JP/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "toyota-fy2026-sec-20f",
+        "corroboration_receipt_id": "toyota-fy2026-jpx-summary"
+      },
+      "review_status": "frozen",
+      "exchange": "TSE",
+      "form": "20-F",
+      "accession": "SEC accession 0001193125-26-264811, Form 20-F, period ended 2026-03-31",
+      "duration_or_instant": "duration",
+      "reported_currency": "JPY",
+      "point_in_time": {
+        "information_available_at": "2026-06-10T06:02:59Z",
+        "source_published_at": "2026-06-10T06:02:59Z",
+        "retrieved_at": "2026-09-03T09:28:10Z",
+        "as_of": "2026-03-31T23:59:59Z"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2026 (2025-04-01 to 2026-03-31)",
+          "label": "FY2026",
+          "period_end": "2026-03-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      },
+      "field_unit_exceptions": [
+        {
+          "currency": "JPY",
+          "unit_scale": "JPY",
+          "assertion_ids": [
+            "fs-jp-toyota-7203-fy2026-income-statement-row-20"
+          ],
+          "fields": [
+            "consolidated_statement_of_income.basic_and_diluted_earnings_per_share"
+          ]
+        }
+      ]
+    },
+    {
+      "fact_contract_id": "financial-statements-jp-7203-t-fy2026-balance_sheet-v1",
+      "case_ids": [
+        "FS-071"
+      ],
+      "entity": {
+        "name": "Toyota Motor Corporation",
+        "symbol": "7203.T"
+      },
+      "market": "JP",
+      "statement_type": "balance_sheet",
+      "period": {
+        "label": "FY2026",
+        "period_end": "2026-03-31"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "JPY",
+      "unit_scale": "JPY_millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1",
+      "source_oracle": {
+        "oracle_id": "fs-jp-toyota-7203-fy2026-balance-sheet",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/JP/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "toyota-fy2026-sec-20f",
+        "corroboration_receipt_id": "toyota-fy2026-jpx-summary"
+      },
+      "review_status": "frozen",
+      "exchange": "TSE",
+      "form": "20-F",
+      "accession": "SEC accession 0001193125-26-264811, Form 20-F, period ended 2026-03-31",
+      "duration_or_instant": "instant",
+      "reported_currency": "JPY",
+      "point_in_time": {
+        "information_available_at": "2026-06-10T06:02:59Z",
+        "source_published_at": "2026-06-10T06:02:59Z",
+        "retrieved_at": "2026-09-03T09:28:10Z",
+        "as_of": "2026-03-31T23:59:59Z"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2026 (2025-04-01 to 2026-03-31)",
+          "label": "FY2026",
+          "period_end": "2026-03-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    {
+      "fact_contract_id": "financial-statements-gb-shel-l-fy2025-income_statement-v1",
+      "case_ids": [
+        "FS-073",
+        "FS-076"
+      ],
+      "entity": {
+        "name": "Shell plc",
+        "symbol": "SHEL.L"
+      },
+      "market": "GB",
+      "statement_type": "income_statement",
+      "period": {
+        "label": "FY2025",
+        "period_end": "2025-12-31"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "USD",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1",
+      "source_oracle": {
+        "oracle_id": "FS-GB-SHEL-2025-income",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/GB/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "SHEL-AR2025-CFS",
+        "corroboration_receipt_id": "SEC-20F-2025"
+      },
+      "review_status": "frozen",
+      "exchange": "LSE",
+      "form": "annual_report",
+      "accession": "Shell plc Annual Report and Accounts 2025 — Consolidated Financial Statements",
+      "duration_or_instant": "duration",
+      "reported_currency": "USD",
+      "point_in_time": {
+        "information_available_at": "2026-03-12T23:59:59Z",
+        "source_published_at": "2026-03-12T23:59:59Z",
+        "retrieved_at": "2026-09-03T09:30:33Z",
+        "as_of": "2025-12-31T23:59:59Z"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2025",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      },
+      "field_unit_exceptions": [
+        {
+          "currency": "USD",
+          "unit_scale": "per_share",
+          "assertion_ids": [
+            "income-basic-eps",
+            "income-diluted-eps"
+          ],
+          "fields": [
+            "consolidated_statement_of_income.basic_earnings_per_share",
+            "consolidated_statement_of_income.diluted_earnings_per_share"
+          ]
+        }
+      ]
+    },
+    {
+      "fact_contract_id": "financial-statements-gb-shel-l-fy2025-balance_sheet-v1",
+      "case_ids": [
+        "FS-074"
+      ],
+      "entity": {
+        "name": "Shell plc",
+        "symbol": "SHEL.L"
+      },
+      "market": "GB",
+      "statement_type": "balance_sheet",
+      "period": {
+        "label": "FY2025",
+        "period_end": "2025-12-31"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "USD",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1",
+      "source_oracle": {
+        "oracle_id": "FS-GB-SHEL-2025-balance-sheet",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/GB/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "SHEL-AR2025-CFS",
+        "corroboration_receipt_id": "SEC-20F-2025"
+      },
+      "review_status": "frozen",
+      "exchange": "LSE",
+      "form": "annual_report",
+      "accession": "Shell plc Annual Report and Accounts 2025 — Consolidated Financial Statements",
+      "duration_or_instant": "instant",
+      "reported_currency": "USD",
+      "point_in_time": {
+        "information_available_at": "2026-03-12T23:59:59Z",
+        "source_published_at": "2026-03-12T23:59:59Z",
+        "retrieved_at": "2026-09-03T09:30:33Z",
+        "as_of": "2025-12-31T23:59:59Z"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "2025-12-31",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    {
+      "fact_contract_id": "financial-statements-gb-shel-l-fy2025-cash_flow_statement-v1",
+      "case_ids": [
+        "FS-075"
+      ],
+      "entity": {
+        "name": "Shell plc",
+        "symbol": "SHEL.L"
+      },
+      "market": "GB",
+      "statement_type": "cash_flow_statement",
+      "period": {
+        "label": "FY2025",
+        "period_end": "2025-12-31"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "USD",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1",
+      "source_oracle": {
+        "oracle_id": "FS-GB-SHEL-2025-cash-flow",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/GB/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "SHEL-AR2025-CFS",
+        "corroboration_receipt_id": "SEC-20F-2025"
+      },
+      "review_status": "frozen",
+      "exchange": "LSE",
+      "form": "annual_report",
+      "accession": "Shell plc Annual Report and Accounts 2025 — Consolidated Financial Statements",
+      "duration_or_instant": "duration",
+      "reported_currency": "USD",
+      "point_in_time": {
+        "information_available_at": "2026-03-12T23:59:59Z",
+        "source_published_at": "2026-03-12T23:59:59Z",
+        "retrieved_at": "2026-09-03T09:30:33Z",
+        "as_of": "2025-12-31T23:59:59Z"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2025",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    {
+      "fact_contract_id": "financial-statements-de-sap-de-fy2025-balance_sheet-v1",
+      "case_ids": [
+        "FS-077",
+        "FS-080"
+      ],
+      "entity": {
+        "name": "SAP SE",
+        "symbol": "SAP.DE"
+      },
+      "market": "DE",
+      "statement_type": "balance_sheet",
+      "period": {
+        "label": "FY2025",
+        "period_end": "2025-12-31"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "EUR",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1",
+      "source_oracle": {
+        "oracle_id": "sap-de-fy2025-consolidated-financial-position",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/DE/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "sec-20f-2025-0001104659-26-020058",
+        "corroboration_receipt_id": "sap-integrated-report-2025-pdf",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1000184/000110465926020058/sap-20251231x20f.htm#ConsolidatedIncomeStatementsofSAPGroupfo ; #ConsolidatedStatementsofFinancialPositio ; #ConsolidatedStatementsofCashFlowsofSAPGr (20-F accepted 2026-02-26T12:01:22Z)",
+        "content_sha256": "95017d7d5ea133ec3eaa11522a6b4a6661d99308394081735ae9e2efbc875151",
+        "source_published_at": "2026-02-26T12:01:22Z",
+        "retrieved_at": "2026-09-03T09:32:20Z"
+      },
+      "review_status": "frozen",
+      "exchange": "XETRA",
+      "form": "integrated_report",
+      "accession": "SEC accession 0001104659-26-020058, SAP SE 2025 Form 20-F",
+      "duration_or_instant": "instant",
+      "reported_currency": "EUR",
+      "point_in_time": {
+        "information_available_at": "2026-02-26T12:01:22Z",
+        "source_published_at": "2026-02-26T12:01:22Z",
+        "retrieved_at": "2026-09-03T09:32:20Z",
+        "as_of": "2025-12-31T00:00:00Z"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "2025-12-31",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    {
+      "fact_contract_id": "financial-statements-de-sap-de-fy2025-cash_flow_statement-v1",
+      "case_ids": [
+        "FS-078"
+      ],
+      "entity": {
+        "name": "SAP SE",
+        "symbol": "SAP.DE"
+      },
+      "market": "DE",
+      "statement_type": "cash_flow_statement",
+      "period": {
+        "label": "FY2025",
+        "period_end": "2025-12-31"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "EUR",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1",
+      "source_oracle": {
+        "oracle_id": "sap-de-fy2025-consolidated-cash-flow-statement",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/DE/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "sec-20f-2025-0001104659-26-020058",
+        "corroboration_receipt_id": "sap-integrated-report-2025-pdf",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1000184/000110465926020058/sap-20251231x20f.htm#ConsolidatedIncomeStatementsofSAPGroupfo ; #ConsolidatedStatementsofFinancialPositio ; #ConsolidatedStatementsofCashFlowsofSAPGr (20-F accepted 2026-02-26T12:01:22Z)",
+        "content_sha256": "95017d7d5ea133ec3eaa11522a6b4a6661d99308394081735ae9e2efbc875151",
+        "source_published_at": "2026-02-26T12:01:22Z",
+        "retrieved_at": "2026-09-03T09:32:20Z"
+      },
+      "review_status": "frozen",
+      "exchange": "XETRA",
+      "form": "integrated_report",
+      "accession": "SEC accession 0001104659-26-020058, SAP SE 2025 Form 20-F",
+      "duration_or_instant": "duration",
+      "reported_currency": "EUR",
+      "point_in_time": {
+        "information_available_at": "2026-02-26T12:01:22Z",
+        "source_published_at": "2026-02-26T12:01:22Z",
+        "retrieved_at": "2026-09-03T09:32:20Z",
+        "as_of": "2025-12-31T00:00:00Z"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2025",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    {
+      "fact_contract_id": "financial-statements-de-sap-de-fy2025-income_statement-v1",
+      "case_ids": [
+        "FS-079"
+      ],
+      "entity": {
+        "name": "SAP SE",
+        "symbol": "SAP.DE"
+      },
+      "market": "DE",
+      "statement_type": "income_statement",
+      "period": {
+        "label": "FY2025",
+        "period_end": "2025-12-31"
+      },
+      "reporting_basis": "as_reported",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "currency": "EUR",
+      "unit_scale": "millions",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1",
+      "source_oracle": {
+        "oracle_id": "sap-de-fy2025-consolidated-income-statement",
+        "path": "benchmarks/oracles/v1/outputs/financial_statements/DE/oracles.json",
+        "status": "frozen",
+        "primary_receipt_id": "sec-20f-2025-0001104659-26-020058",
+        "corroboration_receipt_id": "sap-integrated-report-2025-pdf",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1000184/000110465926020058/sap-20251231x20f.htm#ConsolidatedIncomeStatementsofSAPGroupfo ; #ConsolidatedStatementsofFinancialPositio ; #ConsolidatedStatementsofCashFlowsofSAPGr (20-F accepted 2026-02-26T12:01:22Z)",
+        "content_sha256": "95017d7d5ea133ec3eaa11522a6b4a6661d99308394081735ae9e2efbc875151",
+        "source_published_at": "2026-02-26T12:01:22Z",
+        "retrieved_at": "2026-09-03T09:32:20Z"
+      },
+      "review_status": "frozen",
+      "exchange": "XETRA",
+      "form": "integrated_report",
+      "accession": "SEC accession 0001104659-26-020058, SAP SE 2025 Form 20-F",
+      "duration_or_instant": "duration",
+      "reported_currency": "EUR",
+      "point_in_time": {
+        "information_available_at": "2026-02-26T12:01:22Z",
+        "source_published_at": "2026-02-26T12:01:22Z",
+        "retrieved_at": "2026-09-03T09:32:20Z",
+        "as_of": "2025-12-31T00:00:00Z"
+      },
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2025",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      },
+      "field_unit_exceptions": [
+        {
+          "currency": "EUR",
+          "unit_scale": "per_share",
+          "assertion_ids": [
+            "income.eps_basic_continuing",
+            "income.eps_basic",
+            "income.eps_diluted_continuing",
+            "income.eps_diluted"
+          ],
+          "fields": [
+            "consolidated_income_statement.earnings_per_share_basic_from_continuing_operations",
+            "consolidated_income_statement.earnings_per_share_basic",
+            "consolidated_income_statement.earnings_per_share_diluted_from_continuing_operations",
+            "consolidated_income_statement.earnings_per_share_diluted"
+          ]
+        }
+      ]
+    }
+  ]
+}

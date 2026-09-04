@@ -1,0 +1,1533 @@
+[
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "FS-GB-SHEL-2025-income",
+    "same_authoritative_origin": true,
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-073",
+      "FS-076"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2026-03-12T23:59:59Z",
+      "source_published_at": "2026-03-12T23:59:59Z",
+      "retrieved_at": "2026-09-03T09:30:33Z",
+      "as_of": "2025-12-31T23:59:59Z"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "SHEL-AR2025-CFS",
+      "corroborating_receipt_ids": [
+        "SEC-20F-2025"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "income-revenue",
+        "field": "consolidated_statement_of_income.revenue",
+        "expected": "266886",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "income-jv-associates-profit",
+        "field": "consolidated_statement_of_income.share_of_profit_of_joint_ventures_and_associates",
+        "expected": "1618",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "income-interest-other-income",
+        "field": "consolidated_statement_of_income.interest_and_other_income",
+        "expected": "5227",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "income-total-revenue-other-income",
+        "field": "consolidated_statement_of_income.total_revenue_and_other_income",
+        "expected": "273731",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "income-purchases",
+        "field": "consolidated_statement_of_income.purchases",
+        "expected": "177194",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "income-production-manufacturing-expenses",
+        "field": "consolidated_statement_of_income.production_and_manufacturing_expenses",
+        "expected": "21898",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "income-selling-distribution-admin-expenses",
+        "field": "consolidated_statement_of_income.selling_distribution_and_administrative_expenses",
+        "expected": "12607",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "income-research-development",
+        "field": "consolidated_statement_of_income.research_and_development",
+        "expected": "1170",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "income-exploration",
+        "field": "consolidated_statement_of_income.exploration",
+        "expected": "1136",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "income-dda",
+        "field": "consolidated_statement_of_income.depreciation_depletion_and_amortisation",
+        "expected": "25299",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "income-interest-expense",
+        "field": "consolidated_statement_of_income.interest_expense",
+        "expected": "4671",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "income-total-expenditure",
+        "field": "consolidated_statement_of_income.total_expenditure",
+        "expected": "243975",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "income-before-tax",
+        "field": "consolidated_statement_of_income.income_before_taxation",
+        "expected": "29756",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "income-tax-charge",
+        "field": "consolidated_statement_of_income.taxation_charge",
+        "expected": "11637",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "income-period",
+        "field": "consolidated_statement_of_income.income_for_the_period",
+        "expected": "18119",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "income-nci",
+        "field": "consolidated_statement_of_income.income_attributable_to_non_controlling_interest",
+        "expected": "282",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "income-shell-shareholders",
+        "field": "consolidated_statement_of_income.income_attributable_to_shell_plc_shareholders",
+        "expected": "17837",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "income-basic-eps",
+        "field": "consolidated_statement_of_income.basic_earnings_per_share",
+        "expected": "3.03",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "per_share",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "income-diluted-eps",
+        "field": "consolidated_statement_of_income.diluted_earnings_per_share",
+        "expected": "3.00",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "per_share",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-gb-shel-l-fy2025-income_statement-v1",
+    "fact_contract": {
+      "entity": "Shell plc",
+      "symbol": "SHEL.L",
+      "exchange": "LSE",
+      "form": "annual_report",
+      "accession": "Shell plc Annual Report and Accounts 2025 — Consolidated Financial Statements",
+      "period_end": "2025-12-31",
+      "duration_or_instant": "duration",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "reported_currency": "USD",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_income_statement/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2025",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      },
+      "field_unit_exceptions": [
+        {
+          "currency": "USD",
+          "unit_scale": "per_share",
+          "assertion_ids": [
+            "income-basic-eps",
+            "income-diluted-eps"
+          ],
+          "fields": [
+            "consolidated_statement_of_income.basic_earnings_per_share",
+            "consolidated_statement_of_income.diluted_earnings_per_share"
+          ]
+        }
+      ]
+    },
+    "authoritative_origin_id": "gb-shel-l-fy2025-authoritative-report",
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "gb-shel-l-fy2025-authoritative-report",
+      "delivery_channel": "issuer_or_regulator_public_delivery",
+      "extraction_method": "reported_table_transcription"
+    },
+    "origin": "gb-shel-l-fy2025-authoritative-report"
+  },
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "FS-GB-SHEL-2025-balance-sheet",
+    "same_authoritative_origin": true,
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-074"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2026-03-12T23:59:59Z",
+      "source_published_at": "2026-03-12T23:59:59Z",
+      "retrieved_at": "2026-09-03T09:30:33Z",
+      "as_of": "2025-12-31T23:59:59Z"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "SHEL-AR2025-CFS",
+      "corroborating_receipt_ids": [
+        "SEC-20F-2025"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "bs-goodwill",
+        "field": "consolidated_balance_sheet.goodwill",
+        "expected": "15662",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-other-intangibles",
+        "field": "consolidated_balance_sheet.other_intangible_assets",
+        "expected": "11010",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-ppe",
+        "field": "consolidated_balance_sheet.property_plant_and_equipment",
+        "expected": "185077",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-jv-associates",
+        "field": "consolidated_balance_sheet.joint_ventures_and_associates",
+        "expected": "27775",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-securities",
+        "field": "consolidated_balance_sheet.investments_in_securities",
+        "expected": "1557",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-deferred-tax-asset",
+        "field": "consolidated_balance_sheet.deferred_tax_assets",
+        "expected": "8173",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-retirement-asset",
+        "field": "consolidated_balance_sheet.retirement_benefits_assets",
+        "expected": "5052",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-noncurrent-receivables",
+        "field": "consolidated_balance_sheet.non_current_trade_and_other_receivables",
+        "expected": "8252",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-noncurrent-derivatives",
+        "field": "consolidated_balance_sheet.non_current_derivative_financial_instruments",
+        "expected": "619",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-noncurrent-assets-total",
+        "field": "consolidated_balance_sheet.total_non_current_assets",
+        "expected": "263177",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-inventories",
+        "field": "consolidated_balance_sheet.inventories",
+        "expected": "22216",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-current-receivables",
+        "field": "consolidated_balance_sheet.current_trade_and_other_receivables",
+        "expected": "44597",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-current-derivatives",
+        "field": "consolidated_balance_sheet.current_derivative_financial_instruments",
+        "expected": "9114",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-cash",
+        "field": "consolidated_balance_sheet.cash_and_cash_equivalents",
+        "expected": "30216",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-current-assets-total",
+        "field": "consolidated_balance_sheet.total_current_assets",
+        "expected": "106143",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-held-for-sale-assets",
+        "field": "consolidated_balance_sheet.assets_classified_as_held_for_sale",
+        "expected": "1030",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-current-assets-including-hfs",
+        "field": "consolidated_balance_sheet.total_current_assets_including_held_for_sale",
+        "expected": "107173",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-total-assets",
+        "field": "consolidated_balance_sheet.total_assets",
+        "expected": "370350",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-noncurrent-debt",
+        "field": "consolidated_balance_sheet.non_current_debt",
+        "expected": "66515",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-noncurrent-payables",
+        "field": "consolidated_balance_sheet.non_current_trade_and_other_payables",
+        "expected": "4463",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-noncurrent-derivative-liabilities",
+        "field": "consolidated_balance_sheet.non_current_derivative_financial_instruments_liabilities",
+        "expected": "1108",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-deferred-tax-liability",
+        "field": "consolidated_balance_sheet.deferred_tax_liabilities",
+        "expected": "11983",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-retirement-liability",
+        "field": "consolidated_balance_sheet.retirement_benefits_liabilities",
+        "expected": "7136",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-noncurrent-provisions",
+        "field": "consolidated_balance_sheet.non_current_decommissioning_and_other_provisions",
+        "expected": "21411",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-noncurrent-liabilities-total",
+        "field": "consolidated_balance_sheet.total_non_current_liabilities",
+        "expected": "112616",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-current-debt",
+        "field": "consolidated_balance_sheet.current_debt",
+        "expected": "9128",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-current-payables",
+        "field": "consolidated_balance_sheet.current_trade_and_other_payables",
+        "expected": "57770",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-current-derivative-liabilities",
+        "field": "consolidated_balance_sheet.current_derivative_financial_instruments_liabilities",
+        "expected": "5664",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-income-taxes-payable",
+        "field": "consolidated_balance_sheet.income_taxes_payable",
+        "expected": "3149",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-current-provisions",
+        "field": "consolidated_balance_sheet.current_decommissioning_and_other_provisions",
+        "expected": "5884",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-current-liabilities-total",
+        "field": "consolidated_balance_sheet.total_current_liabilities",
+        "expected": "81595",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-hfs-liabilities",
+        "field": "consolidated_balance_sheet.liabilities_associated_with_assets_held_for_sale",
+        "expected": "820",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-current-liabilities-including-hfs",
+        "field": "consolidated_balance_sheet.total_current_liabilities_including_held_for_sale",
+        "expected": "82415",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-total-liabilities",
+        "field": "consolidated_balance_sheet.total_liabilities",
+        "expected": "195031",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-share-capital",
+        "field": "consolidated_balance_sheet.share_capital",
+        "expected": "477",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-shares-held-trust",
+        "field": "consolidated_balance_sheet.shares_held_in_trust",
+        "expected": "-847",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-other-reserves",
+        "field": "consolidated_balance_sheet.other_reserves",
+        "expected": "21234",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-retained-earnings",
+        "field": "consolidated_balance_sheet.retained_earnings",
+        "expected": "153528",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-shell-equity",
+        "field": "consolidated_balance_sheet.equity_attributable_to_shell_plc_shareholders",
+        "expected": "174392",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-nci",
+        "field": "consolidated_balance_sheet.non_controlling_interest",
+        "expected": "927",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-total-equity",
+        "field": "consolidated_balance_sheet.total_equity",
+        "expected": "175319",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "bs-total-liabilities-equity",
+        "field": "consolidated_balance_sheet.total_liabilities_and_equity",
+        "expected": "370350",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "2025-12-31",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-gb-shel-l-fy2025-balance_sheet-v1",
+    "fact_contract": {
+      "entity": "Shell plc",
+      "symbol": "SHEL.L",
+      "exchange": "LSE",
+      "form": "annual_report",
+      "accession": "Shell plc Annual Report and Accounts 2025 — Consolidated Financial Statements",
+      "period_end": "2025-12-31",
+      "duration_or_instant": "instant",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "reported_currency": "USD",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_balance_sheet/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "2025-12-31",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    "authoritative_origin_id": "gb-shel-l-fy2025-authoritative-report",
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "gb-shel-l-fy2025-authoritative-report",
+      "delivery_channel": "issuer_or_regulator_public_delivery",
+      "extraction_method": "reported_table_transcription"
+    },
+    "origin": "gb-shel-l-fy2025-authoritative-report"
+  },
+  {
+    "schema_version": "oracle/v1",
+    "oracle_id": "FS-GB-SHEL-2025-cash-flow",
+    "same_authoritative_origin": true,
+    "suite": "financial_statements",
+    "case_ids": [
+      "FS-075"
+    ],
+    "status": "frozen",
+    "basis": "as_reported",
+    "frozen_at": "2026-09-03T11:15:43Z",
+    "point_in_time": {
+      "information_available_at": "2026-03-12T23:59:59Z",
+      "source_published_at": "2026-03-12T23:59:59Z",
+      "retrieved_at": "2026-09-03T09:30:33Z",
+      "as_of": "2025-12-31T23:59:59Z"
+    },
+    "evidence": {
+      "authoritative_receipt_id": "SHEL-AR2025-CFS",
+      "corroborating_receipt_ids": [
+        "SEC-20F-2025"
+      ]
+    },
+    "atomic_assertions": [
+      {
+        "assertion_id": "cf-income-before-tax",
+        "field": "consolidated_statement_of_cash_flows.income_before_taxation",
+        "expected": "29756",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-interest-net",
+        "field": "consolidated_statement_of_cash_flows.interest_expense_net",
+        "expected": "2714",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-dda",
+        "field": "consolidated_statement_of_cash_flows.depreciation_depletion_and_amortisation",
+        "expected": "25299",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-exploration-writeoffs",
+        "field": "consolidated_statement_of_cash_flows.exploration_well_write_offs",
+        "expected": "377",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-gain-sale",
+        "field": "consolidated_statement_of_cash_flows.net_gains_or_losses_on_sale_and_revaluation",
+        "expected": "-3190",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-jv-profit",
+        "field": "consolidated_statement_of_cash_flows.share_of_profit_of_joint_ventures_and_associates",
+        "expected": "-1618",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-jv-dividends",
+        "field": "consolidated_statement_of_cash_flows.dividends_received_from_joint_ventures_and_associates",
+        "expected": "4572",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-inventories",
+        "field": "consolidated_statement_of_cash_flows.decrease_in_inventories",
+        "expected": "1916",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-receivables",
+        "field": "consolidated_statement_of_cash_flows.decrease_in_current_receivables",
+        "expected": "2240",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-payables",
+        "field": "consolidated_statement_of_cash_flows.decrease_in_current_payables",
+        "expected": "-5959",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-derivatives-operating",
+        "field": "consolidated_statement_of_cash_flows.derivative_financial_instruments_operating",
+        "expected": "-98",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-retirement",
+        "field": "consolidated_statement_of_cash_flows.retirement_benefits",
+        "expected": "-341",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-provisions",
+        "field": "consolidated_statement_of_cash_flows.decommissioning_and_other_provisions",
+        "expected": "-1385",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-other",
+        "field": "consolidated_statement_of_cash_flows.other",
+        "expected": "218",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-tax-paid",
+        "field": "consolidated_statement_of_cash_flows.tax_paid",
+        "expected": "-11638",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-operating",
+        "field": "consolidated_statement_of_cash_flows.cash_flow_from_operating_activities",
+        "expected": "42863",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-cash-capex",
+        "field": "consolidated_statement_of_cash_flows.cash_capital_expenditure",
+        "expected": "-20915",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-capex",
+        "field": "consolidated_statement_of_cash_flows.capital_expenditure",
+        "expected": "-18947",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-jv-investments",
+        "field": "consolidated_statement_of_cash_flows.investments_in_joint_ventures_and_associates",
+        "expected": "-1886",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-securities-investments",
+        "field": "consolidated_statement_of_cash_flows.investments_in_equity_securities",
+        "expected": "-82",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-sale-ppe-businesses",
+        "field": "consolidated_statement_of_cash_flows.proceeds_from_sale_of_property_plant_equipment_and_businesses",
+        "expected": "1148",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-jv-sale",
+        "field": "consolidated_statement_of_cash_flows.proceeds_from_joint_ventures_and_associates_sale_capital_reduction_and_loan_repayment",
+        "expected": "1205",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-sale-securities",
+        "field": "consolidated_statement_of_cash_flows.proceeds_from_sale_of_equity_securities",
+        "expected": "33",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-interest-received",
+        "field": "consolidated_statement_of_cash_flows.interest_received",
+        "expected": "1956",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-other-investing-inflows",
+        "field": "consolidated_statement_of_cash_flows.other_investing_cash_inflows",
+        "expected": "2625",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-other-investing-outflows",
+        "field": "consolidated_statement_of_cash_flows.other_investing_cash_outflows",
+        "expected": "-2863",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-investing",
+        "field": "consolidated_statement_of_cash_flows.cash_flow_from_investing_activities",
+        "expected": "-16811",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-short-debt",
+        "field": "consolidated_statement_of_cash_flows.net_decrease_in_debt_maturity_within_three_months",
+        "expected": "-262",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-borrowings",
+        "field": "consolidated_statement_of_cash_flows.other_debt_new_borrowings",
+        "expected": "2920",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-debt-repayments",
+        "field": "consolidated_statement_of_cash_flows.other_debt_repayments",
+        "expected": "-11806",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-interest-paid",
+        "field": "consolidated_statement_of_cash_flows.interest_paid",
+        "expected": "-4104",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-derivatives-financing",
+        "field": "consolidated_statement_of_cash_flows.derivative_financial_instruments_financing",
+        "expected": "1256",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-nci-change",
+        "field": "consolidated_statement_of_cash_flows.change_in_non_controlling_interest",
+        "expected": "-18",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-shareholder-dividends",
+        "field": "consolidated_statement_of_cash_flows.cash_dividends_paid_to_shell_plc_shareholders",
+        "expected": "-8472",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-nci-dividends",
+        "field": "consolidated_statement_of_cash_flows.cash_dividends_paid_to_non_controlling_interest",
+        "expected": "-147",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-repurchases",
+        "field": "consolidated_statement_of_cash_flows.repurchases_of_shares",
+        "expected": "-13879",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-trust-shares",
+        "field": "consolidated_statement_of_cash_flows.shares_held_in_trust_net_purchases_and_dividends_received",
+        "expected": "-1300",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-financing",
+        "field": "consolidated_statement_of_cash_flows.cash_flow_from_financing_activities",
+        "expected": "-35812",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-fx",
+        "field": "consolidated_statement_of_cash_flows.effects_of_exchange_rate_changes_on_cash_and_cash_equivalents",
+        "expected": "866",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-cash-change",
+        "field": "consolidated_statement_of_cash_flows.decrease_or_increase_in_cash_and_cash_equivalents",
+        "expected": "-8894",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-opening-cash",
+        "field": "consolidated_statement_of_cash_flows.cash_and_cash_equivalents_at_beginning_of_year",
+        "expected": "39110",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      },
+      {
+        "assertion_id": "cf-closing-cash",
+        "field": "consolidated_statement_of_cash_flows.cash_and_cash_equivalents_at_end_of_year",
+        "expected": "30216",
+        "comparison": "exact_normalized",
+        "currency": "USD",
+        "unit": "million",
+        "period": "FY2025",
+        "receipt_ids": [
+          "SHEL-AR2025-CFS",
+          "SEC-20F-2025"
+        ]
+      }
+    ],
+    "fact_contract_ref": "financial-statements-gb-shel-l-fy2025-cash_flow_statement-v1",
+    "fact_contract": {
+      "entity": "Shell plc",
+      "symbol": "SHEL.L",
+      "exchange": "LSE",
+      "form": "annual_report",
+      "accession": "Shell plc Annual Report and Accounts 2025 — Consolidated Financial Statements",
+      "period_end": "2025-12-31",
+      "duration_or_instant": "duration",
+      "consolidation_scope": "consolidated",
+      "accounting_standard": "IFRS Accounting Standards",
+      "reported_currency": "USD",
+      "unit_scale": "million",
+      "complete_statement_schema_id": "financial_statements/complete_cash_flow_statement/v1",
+      "presentation_scope": {
+        "primary_period": {
+          "assertion_period": "FY2025",
+          "label": "FY2025",
+          "period_end": "2025-12-31"
+        },
+        "comparative_periods": [],
+        "required_as_filed": true
+      }
+    },
+    "authoritative_origin_id": "gb-shel-l-fy2025-authoritative-report",
+    "corroboration_scope": "same_authoritative_origin_multi_delivery",
+    "timestamp_precision": "date",
+    "source_lineage": {
+      "origin_id": "gb-shel-l-fy2025-authoritative-report",
+      "delivery_channel": "issuer_or_regulator_public_delivery",
+      "extraction_method": "reported_table_transcription"
+    },
+    "origin": "gb-shel-l-fy2025-authoritative-report"
+  }
+]
