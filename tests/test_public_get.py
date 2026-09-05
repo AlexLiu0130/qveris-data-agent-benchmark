@@ -5,7 +5,7 @@ import unittest
 
 sys.path.insert(0, str(pathlib.Path(__file__).parents[1] / "src"))
 
-from qveris_benchmark.public_get import PublicGetAdapter
+from qveris_benchmark.public_get import PublicGetAdapter, SemanticRequestError, _validated_semantic
 from qveris_benchmark.qveris_model_gateway import SemanticResolution
 from qveris_benchmark.qveris_model_gateway import SemanticGatewayError
 from qveris_benchmark.qveris_tool_gateway import ToolGatewayError
@@ -124,9 +124,9 @@ class PublicGetAdapterTests(unittest.TestCase):
         incomplete = hk_l1_request()
         incomplete["security"]["local_code"] = None
         unsupported = semantic({
-            "kind": "historical",
+            "kind": "market_quote",
             "security": {"asset_class": "equity", "venue": "US", "local_code": "AAPL"},
-            "operation": "corporate_actions", "start_date": "2024-01-01", "end_date": "2024-12-31",
+            "operation": "latest_trade",
         })
         for resolved, status in ((semantic(incomplete), "needs_clarification"), (unsupported, "unsupported")):
             with self.subTest(status=status):
@@ -140,7 +140,7 @@ class PublicGetAdapterTests(unittest.TestCase):
 
     def test_unsupported_keeps_model_usage_but_never_uses_data_gateway_usage(self):
         usage = {"receipt_id": "model-call", "measurement_version": "usage-v1", "cache_status": "not_reported", "request_id": "request-1", "issuer": "qveris_model_gateway", "input_tokens": 2, "output_tokens": 3, "total_tokens": 5}
-        unsupported = semantic({"kind": "historical", "security": {"asset_class": "equity", "venue": "US", "local_code": "AAPL"}, "operation": "corporate_actions", "start_date": "2024-01-01", "end_date": "2024-12-31"})
+        unsupported = semantic({"kind": "market_quote", "security": {"asset_class": "equity", "venue": "US", "local_code": "AAPL"}, "operation": "latest_trade"})
         gateway = Gateway({"raw": {"must": "not dispatch"}, "usage": {"input_tokens": 999}})
         result = self.execute_get(self.adapter(SemanticResolution(unsupported, usage), gateway))
         self.assertEqual(result.public_response["meta"]["usage"], usage)
@@ -155,19 +155,19 @@ class PublicGetAdapterTests(unittest.TestCase):
                 self.assertEqual((result.public_response["meta"]["usage"]["issuer"], result.public_response["meta"]["usage"]["total_tokens"]), ("unavailable", 0))
                 self.assert_public_contract(result)
 
-    def test_offline_only_fmp_contract_is_catalogued_but_never_dispatched(self):
+    def test_international_financial_candidate_returns_no_data_after_one_tool(self):
         request = {
             "kind": "financial_statement",
-            "security": {"asset_class": "equity", "venue": "US", "local_code": "TSLA"},
-            "statement": {"type": "income", "presentation": "as_reported", "period": {"kind": "specified_period", "fiscal_year": 2026, "fiscal_period": "Q2"}, "fields": ["revenue"]},
+            "security": {"asset_class": "equity", "venue": "DE", "local_code": "SAP"},
+            "statement": {"type": "income", "presentation": "standardized", "period": {"kind": "specified_period", "fiscal_year": 2026, "fiscal_period": "FY"}, "fields": ["revenue"]},
         }
         gateway = Gateway({"unexpected": "must not be read"})
         result = self.execute_get(self.adapter(semantic(request), gateway))
-        self.assertEqual((result.public_response["status"], result.public_response["terminal_reason"]), ("unsupported", "route_unsupported"))
-        self.assertEqual(gateway.calls, [])
+        self.assertEqual(result.public_response["status"], "no_data")
+        self.assertEqual(len(gateway.calls), 1)
         self.assert_public_contract(result)
 
-    def test_cross_statement_financial_fields_never_dispatch(self):
+    def test_cross_statement_financial_fields_fail_before_dispatch(self):
         request = {
             "kind": "financial_statement",
             "security": {"asset_class": "equity", "venue": "US", "local_code": "TSLA"},
@@ -175,7 +175,7 @@ class PublicGetAdapterTests(unittest.TestCase):
         }
         gateway = Gateway({"unexpected": "must not be read"})
         result = self.execute_get(self.adapter(semantic(request), gateway))
-        self.assertEqual((result.public_response["status"], result.public_response["terminal_reason"]), ("unsupported", "route_unsupported"))
+        self.assertEqual(result.public_response["status"], "error")
         self.assertEqual(gateway.calls, [])
         self.assert_public_contract(result)
 
@@ -224,29 +224,52 @@ class PublicGetAdapterTests(unittest.TestCase):
                 self.assertEqual(gateway.calls, [("alphavantage.global_quote.retrieve.v1.9b8a7c6d", {"function": "GLOBAL_QUOTE", "symbol": "AAPL", "entitlement": "realtime"}, "request-1", "key-1")])
                 self.assert_public_contract(result)
 
-    def test_sse_dividends_without_contract_proven_source_time_are_not_dispatched(self):
-        gateway = Gateway({
-            "raw": sse_dividend_raw(), "as_of": "2026-09-04T10:00:00Z", "source": "qveris",
-            "usage": {"input_tokens": 2, "output_tokens": 3},
-        })
-        result = self.execute_get(self.adapter(semantic(sse_dividend_request()), gateway))
-        self.assertEqual((result.public_response["status"], result.public_response["terminal_reason"]), ("unsupported", "route_unsupported"))
-        self.assertEqual(gateway.calls, [])
-        self.assertEqual(result.public_response["meta"]["usage"]["issuer"], "unavailable")
+    def test_batch_quote_uses_one_fixed_tool_and_v2_mixed_source_times(self):
+        request = {
+            "kind": "market_quote",
+            "securities": [
+                {"asset_class": "equity", "venue": "HKEX", "local_code": "00700"},
+                {"asset_class": "equity", "venue": "HKEX", "local_code": "00941"},
+            ],
+            "operation": "batch_quote_snapshot",
+        }
+        def row(code, timestamp):
+            return {"stockCode": code, "tradingTimestamp": timestamp, "currency": "HKD", "tradeStatus": "NORMAL", "openPrice": "1", "highPrice": "2", "lowPrice": "0.5", "latestPrice": "1.5", "prevClosePrice": "1.2", "turnoverVolumeLot": "3", "turnoverValue": "4"}
+        gateway = Gateway({"raw": {"data": {"data": {"rows": [row("00700", "2026-09-04T10:00:00Z"), row("00941", "2026-09-04T10:00:01Z")]}}}})
+        result = self.execute_get(self.adapter(semantic(request), gateway))
+        self.assertEqual((result.public_response["schema_version"], result.public_response["status"], result.public_response["as_of"], result.public_response["as_of_status"]), ("get-response/v2", "success", None, "mixed"))
+        self.assertEqual(set(result.public_response["data"]["quotes"]), {"00700.HK", "00941.HK"})
+        self.assertEqual(len(gateway.calls), 1)
+        self.assertEqual(result.execution_evidence.tool_executions, 1)
         self.assert_public_contract(result)
 
-    def test_hkex_calendar_without_contract_proven_source_time_is_not_dispatched(self):
-        request = {
-            "kind": "historical",
-            "security": {"asset_class": "equity", "venue": "HKEX", "local_code": "00700"},
-            "operation": "trading_calendar", "start_date": "2024-01-02", "end_date": "2024-01-05",
-        }
-        raw = {"time": ["2024-01-02", "2024-01-03"], "metadata": {"marketcode": "212200", "date_type": "0", "has_results": True}}
-        gateway = Gateway({"raw": raw, "as_of": "2024-01-05T00:00:00Z", "source": "qveris"})
-        result = self.execute_get(self.adapter(semantic(request), gateway))
-        self.assertEqual((result.public_response["status"], result.public_response["terminal_reason"]), ("unsupported", "route_unsupported"))
-        self.assertEqual(gateway.calls, [])
-        self.assert_public_contract(result)
+    def test_historical_semantics_normalize_legacy_and_international_symbols(self):
+        historical, venue, operation, _, _ = _validated_semantic(semantic({
+            "kind": "historical", "security": {"asset_class": "equity", "venue": "US", "local_code": "AAPL"},
+            "operation": "weekly_bars", "start_date": "2026-08-01", "end_date": "2026-08-31",
+        }))
+        self.assertEqual((venue, operation, historical["interval"], historical["adjustment"]), ("US", "daily_bars", "weekly", "unadjusted"))
+        financial, _, _, _, _ = _validated_semantic(semantic({
+            "kind": "financial_statement", "security": {"asset_class": "equity", "venue": "DE", "local_code": "SAP.DE"},
+            "statement": {"type": "income", "presentation": "standardized", "period": {"kind": "specified_period", "fiscal_year": 2026, "fiscal_period": "FY"}, "fields": ["revenue"]},
+        }))
+        self.assertEqual(financial["security"], {"asset_class": "equity", "venue": "DE", "symbol": "SAP.DE"})
+        with self.assertRaises(SemanticRequestError):
+            _validated_semantic(semantic({"kind": "historical", "security": {"asset_class": "equity", "venue": "US", "local_code": "AAPL"}, "operation": "corporate_actions", "interval": "daily", "start_date": "2026-08-01", "end_date": "2026-08-31"}))
+
+    def test_quote_requested_fields_are_operation_bound(self):
+        value, _, _, _, _ = _validated_semantic(semantic({"kind": "market_quote", "security": {"asset_class": "equity", "venue": "US", "local_code": "AAPL"}, "operation": "volume_turnover_snapshot", "requested_fields": ["volume"]}))
+        self.assertEqual(value["requested_fields"], ["volume"])
+        with self.assertRaises(SemanticRequestError):
+            _validated_semantic(semantic({"kind": "market_quote", "security": {"asset_class": "equity", "venue": "US", "local_code": "AAPL"}, "operation": "last_price", "requested_fields": ["volume"]}))
+
+    def test_financial_latest_requires_a_basis_and_frequency_without_fiscal_period(self):
+        value, _, _, _, _ = _validated_semantic(semantic({"kind": "financial_statement", "security": {"asset_class": "equity", "venue": "US", "local_code": "AAPL"}, "statement": {"type": "income", "presentation": "standardized", "period": {"kind": "latest", "basis": "filed", "frequency": "annual"}, "fields": ["revenue"]}}))
+        self.assertEqual(value["statement"]["period"], {"kind": "latest", "basis": "filed", "frequency": "annual"})
+        with self.assertRaises(SemanticRequestError):
+            _validated_semantic(semantic({"kind": "financial_statement", "security": {"asset_class": "equity", "venue": "US", "local_code": "AAPL"}, "statement": {"type": "income", "presentation": "standardized", "period": {"kind": "latest", "basis": "report"}, "fields": ["revenue"]}}))
+        cash_flow, _, _, _, _ = _validated_semantic(semantic({"kind": "financial_statement", "security": {"asset_class": "equity", "venue": "US", "local_code": "AAPL"}, "statement": {"type": "cash_flow", "presentation": "standardized", "period": {"kind": "specified_period", "fiscal_year": 2024, "fiscal_period": "FY"}, "fields": ["operating_cash_flow"]}}))
+        self.assertEqual(cash_flow["statement"]["fields"], ["net_cash_from_operating"])
 
     def test_stage_errors_use_only_safe_codes_and_private_timing(self):
         gateway = Gateway(hk_l1_raw())
@@ -268,6 +291,13 @@ class PublicGetAdapterTests(unittest.TestCase):
         self.assertNotIn("http_429", json.dumps(result.public_response).replace("tool_http_429", ""))
         self.assertIsNotNone(result.execution_evidence.tool_ms)
         self.assert_public_contract(result)
+
+    def test_semantic_failure_keeps_a_verified_model_usage_receipt(self):
+        usage = {"receipt_id": "receipt-1", "measurement_version": "usage-v1", "cache_status": "not_reported", "request_id": "request-1", "issuer": "qveris_model_gateway", "input_tokens": 12, "output_tokens": 1024, "total_tokens": 1036}
+        resolver = lambda _query, **_kwargs: (_ for _ in ()).throw(SemanticGatewayError("semantic_completion_truncated", usage=usage))
+        result = self.execute_get(PublicGetAdapter(resolver, Gateway(hk_l1_raw()), **IDENTITY))
+        self.assertEqual((result.public_response["terminal_reason"], result.public_response["meta"]["usage"]), ("semantic_completion_truncated", usage))
+        self.assertEqual(result.execution_evidence.tool_executions, 0)
 
 
 if __name__ == "__main__":

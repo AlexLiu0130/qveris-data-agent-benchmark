@@ -9,19 +9,28 @@ import os
 import socket
 from typing import Any
 from urllib.error import HTTPError, URLError
-from urllib.parse import urlencode
+from urllib.parse import urlencode, urlsplit
 from urllib.request import Request, urlopen
+
+from .tls import DirectHTTPSOpener
 
 
 TOOL_GATEWAY_BASE_URL = "https://qveris.ai/api/v1"
 TOOL_GATEWAY_MAX_REQUEST_BYTES = 64 * 1024
 TOOL_GATEWAY_MAX_RESPONSE_BYTES = 1024 * 1024
 TOOL_GATEWAY_TIMEOUT_SECONDS = 15.0
+_ALPHA_POINTER_TOOL_IDS = frozenset({
+    "alphavantage.income_statement.retrieve.v1.7aca3c4a",
+    "alphavantage.balance_sheet.retrieve.v1.467a92c0",
+    "alphavantage.cash_flow.retrieve.v1.7aca3c4a",
+})
+_ALPHA_POINTER_DOWNLOAD_HOST = "oss.qveris.ai"
 _HTTP_CODES = {400, 401, 402, 429, 503}
 TOOL_GATEWAY_ERROR_CODES = frozenset({
     "http_400", "http_401", "http_402", "http_429", "http_503", "http_other",
     "invalid_json", "response_shape_invalid", "timeout", "response_too_large",
-    "transport_error", "request_invalid", "request_too_large", "rejected",
+    "transport_error", "request_invalid", "request_too_large", "rejected", "download_rejected",
+    "download_invalid_json", "download_timeout", "download_too_large", "download_transport_error",
     "receipt_record_failed", "internal_error",
 })
 
@@ -73,6 +82,27 @@ def _read(response: Any) -> bytes:
     return value
 
 
+def _alpha_pointer_url(value: Any) -> str | None:
+    if type(value) is not dict or set(value) != {"status_code", "message", "full_content_file_url", "truncated_content", "content_schema"}:
+        return None
+    if value["status_code"] != 200 or type(value["message"]) is not str or type(value["truncated_content"]) is not str or type(value["content_schema"]) is not dict:
+        return None
+    url = value["full_content_file_url"]
+    if type(url) is not str or not url:
+        return None
+    return url
+
+
+def _validate_alpha_download_url(url: str) -> None:
+    try:
+        parsed = urlsplit(url)
+        port = parsed.port
+    except ValueError as exc:
+        raise ToolGatewayError("download_rejected") from exc
+    if parsed.scheme != "https" or parsed.hostname != _ALPHA_POINTER_DOWNLOAD_HOST or parsed.username is not None or parsed.password is not None or parsed.fragment or port not in {None, 443}:
+        raise ToolGatewayError("download_rejected")
+
+
 def _credit(value: Any) -> int | float | None:
     if type(value) in {int, float} and not isinstance(value, bool) and value >= 0:
         return value
@@ -90,7 +120,7 @@ class QVerisToolGateway:
     It never affects model usage or the public GET response.
     """
 
-    def __init__(self, *, api_key: str, timeout_seconds: float = TOOL_GATEWAY_TIMEOUT_SECONDS, receipt_sink: Callable[[ToolCreditReceipt], None] | None = None, opener: Callable[[Request, float], Any] | None = None) -> None:
+    def __init__(self, *, api_key: str, timeout_seconds: float = TOOL_GATEWAY_TIMEOUT_SECONDS, receipt_sink: Callable[[ToolCreditReceipt], None] | None = None, opener: Callable[[Request, float], Any] | None = None, download_opener: Callable[[Request, float], Any] | None = None) -> None:
         if type(api_key) is not str or not api_key:
             raise ValueError("QVeris Tool Gateway API key is required")
         if type(timeout_seconds) not in {int, float} or isinstance(timeout_seconds, bool) or timeout_seconds <= 0:
@@ -98,6 +128,11 @@ class QVerisToolGateway:
         self._api_key, self._timeout = api_key, float(timeout_seconds)
         self._receipt_sink = receipt_sink
         self._open = opener or (lambda request, timeout: urlopen(request, timeout=timeout))
+        self._download_open = download_opener or DirectHTTPSOpener(
+            ssl_context=None,
+            ca_file=None,
+            environment_ca_file="QVERIS_TOOL_RESULT_CA_BUNDLE",
+        )
 
     @classmethod
     def from_environment(cls, **kwargs: Any) -> "QVerisToolGateway":
@@ -105,6 +140,31 @@ class QVerisToolGateway:
         if not api_key:
             raise ValueError("QVERIS_API_KEY is required")
         return cls(api_key=api_key, **kwargs)
+
+    def _download_alpha_pointer(self, url: str) -> Mapping[str, Any]:
+        _validate_alpha_download_url(url)
+        request = Request(url, headers={"Accept": "application/json"})
+        try:
+            with self._download_open(request, self._timeout) as response:
+                status, body = getattr(response, "status", None), _read(response)
+        except ToolGatewayError as exc:
+            if exc.code == "response_too_large":
+                raise ToolGatewayError("download_too_large") from exc
+            raise
+        except HTTPError:
+            raise ToolGatewayError("download_rejected") from None
+        except (socket.timeout, TimeoutError):
+            raise ToolGatewayError("download_timeout") from None
+        except URLError:
+            raise ToolGatewayError("download_transport_error") from None
+        except OSError:
+            raise ToolGatewayError("download_transport_error") from None
+        if status != 200:
+            raise ToolGatewayError("download_rejected")
+        value = _json(body, "download_invalid_json")
+        if type(value) is not dict:
+            raise ToolGatewayError("response_shape_invalid")
+        return value
 
     def __call__(self, tool_id: str, parameters: Mapping[str, Any], *, request_id: str, idempotency_key: str) -> Mapping[str, Any]:
         if type(tool_id) is not str or not tool_id or type(parameters) is not dict or type(request_id) is not str or not request_id or type(idempotency_key) is not str or not idempotency_key:
@@ -147,8 +207,15 @@ class QVerisToolGateway:
         if response.get("error") is not None:
             raise ToolGatewayError("response_shape_invalid")
         result = response.get("result")
-        if type(result) is not dict or "data" not in result or result["data"] is None:
+        if type(result) is not dict:
             raise ToolGatewayError("response_shape_invalid")
+        pointer_url = _alpha_pointer_url(result) if tool_id in _ALPHA_POINTER_TOOL_IDS else None
+        if pointer_url is None:
+            if "data" not in result or result["data"] is None:
+                raise ToolGatewayError("response_shape_invalid")
+            raw = result["data"]
+            if tool_id in _ALPHA_POINTER_TOOL_IDS:
+                pointer_url = _alpha_pointer_url(raw)
         as_of = response.get("as_of")
         if as_of is None:
             as_of = result.get("as_of")
@@ -163,9 +230,11 @@ class QVerisToolGateway:
                 self._receipt_sink(receipt)
             except Exception as exc:
                 raise ToolGatewayError("receipt_record_failed") from exc
+        if pointer_url is not None:
+            raw = self._download_alpha_pointer(pointer_url)
         # This private envelope is consumed by PublicGetAdapter; no receipt or raw
         # payload is copied into its public response.
-        return {"raw": result["data"], "as_of": as_of}
+        return {"raw": raw, "as_of": as_of}
 
 
 __all__ = [

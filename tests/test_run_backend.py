@@ -715,6 +715,18 @@ class RunBackendTests(unittest.TestCase):
             with self.subTest(invalid=invalid):
                 self.assertEqual(RunService._project_response(dict(response, source=invalid))[0]["status"], "invalid_public_response")
 
+    def test_v2_projection_keeps_null_as_of_provenance_and_unknown_usage(self):
+        response = {
+            "schema_version": "get-response/v2", "status": "partial",
+            "resolved_request": {"suite": "historical_price", "accepted_variant_id": "variant-1"},
+            "data": {"kind": "market_calendar", "venue": "US", "dates": ["2026-09-04"], "range": {"start_date": "2026-09-04", "end_date": "2026-09-04"}, "time_basis": "coverage_range"},
+            "as_of": None, "as_of_status": "unavailable", "source": "official",
+            "clarification": None, "terminal_reason": None,
+            "coverage": {"complete": False, "missing_fields": ["as_of"]},
+        }
+        projected, usage = RunService._project_response(response, strict_response_contract=True, suite="historical_price")
+        self.assertEqual((projected["schema_version"], projected["as_of"], projected["as_of_status"], projected["coverage"], usage), ("get-response/v2", None, "unavailable", {"complete": False, "missing_fields": ["as_of"]}, "unknown"))
+
     def test_terminal_usage_must_exactly_match_public_meta_receipt(self):
         response = {"schema_version": "get-response/v1", "status": "success", "resolved_request": {}, "data": {}, "as_of": "t", "source": "s", "meta": {"usage": {"receipt_id": "r", "measurement_version": "v", "cache_status": "miss", "request_id": "a", "issuer": "runner", "input_tokens": 1, "output_tokens": 2, "total_tokens": 3}}}
         for source, forged_usage in (("public_meta_usage", dict(response["meta"]["usage"], total_tokens=4)), ("public_meta_usage", "unknown"), ("unknown", "unknown")):

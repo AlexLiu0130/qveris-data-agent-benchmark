@@ -2,9 +2,13 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from types import MappingProxyType
 from typing import Literal
+
+from .domain_routes_financial import SUPPORTED_KEYS as _FINANCIAL_ROUTE_TOOLS
+from .domain_routes_historical import SUPPORTED_KEYS as _HISTORICAL_ROUTE_TOOLS
+from .domain_routes_realtime import SUPPORTED_KEYS as _REALTIME_ROUTE_TOOLS
 
 
 CatalogDisposition = Literal[
@@ -145,8 +149,8 @@ _ENTRIES = (
     ),
     RuntimeCatalogEntry(
         market='SSE', scenario='financial.direct_line_items.specified_period.v1', registry_state='gap',
-        disposition='gap', tool_ids=(), processors=('fiu_sse_balance_sheet_v1', 'fiu_sse_cash_flow_v1', 'fiu_sse_income_statement_v1'),
-        reason='FIU SSE receipt raw payload is not retained in this workspace; parser candidates exist but are not admitted without raw-receipt replay', evidence=None,
+        disposition='gap', tool_ids=('fiu_mcp_server.postapihsf10financeincome.create.v2.6f98cc58', 'fiu_mcp_server.postapihsf10financebalance.create.v2.481102ad', 'fiu_mcp_server.postapihsf10financecash.create.v2.93172fa6'), processors=('fiu_sse_balance_sheet_v1', 'fiu_sse_cash_flow_v1', 'fiu_sse_income_statement_v1'),
+        reason='one selected FIU standard statement tool is projected into requested direct fields', evidence='three owner-only 600519.SH annual-category receipts: single-row envelope with symbol/reportDate/reportType/reportKind/currency and validated core income, balance, or cash-flow keys; unit remains unknown',
     ),
     RuntimeCatalogEntry(
         market='SSE', scenario='financial.income_statement.as_reported.specified_period.v1', registry_state='gap',
@@ -450,7 +454,84 @@ _ENTRIES = (
     ),
 )
 
-RUNTIME_CATALOG = MappingProxyType({(entry.market, entry.scenario): entry for entry in _ENTRIES})
+BASELINE_ENTRY_COUNT = 84
+
+# These are explicit runtime outcomes for candidate capabilities outside the
+# four-market frozen matrix.  They carry no inferred provider/tool contract.
+_UNMAPPED_EXTENSION_MARKETS = ("JP", "GB", "DE")
+_UNMAPPED_EXTENSION_SCENARIOS = (
+    "historical.daily_bars.unadjusted.v1",
+    "historical.daily_bars.adjusted.v1",
+    "financial.income_statement.standard.specified_period.v1",
+    "financial.balance_sheet.standard.specified_period.v1",
+    "financial.cash_flow.standard.specified_period.v1",
+    "financial.direct_line_items.specified_period.v1",
+    "financial.latest_filed.direct_metric.v1",
+)
+_UNMAPPED_CADENCE_MARKETS = ("SSE", "SZSE", "HKEX", "US")
+_UNMAPPED_CADENCE_SCENARIOS = (
+    "historical.weekly_bars.unadjusted.v1",
+    "historical.monthly_bars.unadjusted.v1",
+)
+_EXTENSION_ENTRIES = tuple(
+    RuntimeCatalogEntry(market, scenario, "unverified", "unsupported", (), (), "route_unmapped", None)
+    for markets, scenarios in (
+        (_UNMAPPED_EXTENSION_MARKETS, _UNMAPPED_EXTENSION_SCENARIOS),
+        (_UNMAPPED_CADENCE_MARKETS, _UNMAPPED_CADENCE_SCENARIOS),
+    )
+    for market in markets
+    for scenario in scenarios
+)
+EXTENSION_ENTRY_COUNT = len(_EXTENSION_ENTRIES)
+
+
+def _tool_ids(value: str | tuple[str, ...]) -> tuple[str, ...]:
+    if type(value) is str:
+        return (value,)
+    if type(value) is tuple and value and all(type(item) is str and item for item in value):
+        return value
+    raise ValueError("domain route tool contract is invalid")
+
+
+_DOMAIN_ROUTE_TOOLS = MappingProxyType({
+    key: _tool_ids(value)
+    for routes in (_FINANCIAL_ROUTE_TOOLS, _HISTORICAL_ROUTE_TOOLS, _REALTIME_ROUTE_TOOLS)
+    for key, value in routes.items()
+})
+DISPATCHABLE_ENTRY_COUNT = len(_DOMAIN_ROUTE_TOOLS)
+
+
+def _runtime_entry(entry: RuntimeCatalogEntry) -> RuntimeCatalogEntry:
+    tools = _DOMAIN_ROUTE_TOOLS.get((entry.market, entry.scenario))
+    if tools is None:
+        return entry
+    evidence = entry.evidence
+    if evidence is None and entry.scenario in _UNMAPPED_CADENCE_SCENARIOS:
+        evidence = "fixed daily route with provider row identity/date/OHLCV validation; deterministic Monday-Sunday or natural-month aggregation; partial when the requested range lacks a full aggregate period; no extra Tool call"
+    if evidence is None and entry.market in _UNMAPPED_EXTENSION_MARKETS and entry.scenario == "historical.daily_bars.unadjusted.v1":
+        evidence = "live FMP historical EOD schema: top-level rows with symbol/date/open/high/low/close/volume/change/changePercent/vwap; identity, in-range ISO date, numeric, and OHLCV gates; adjustment basis, currency, unit, pagination, and source as_of remain unreported"
+    if evidence is None and entry.market in _UNMAPPED_EXTENSION_MARKETS and entry.scenario in {
+        "financial.income_statement.standard.specified_period.v1",
+        "financial.balance_sheet.standard.specified_period.v1",
+        "financial.cash_flow.standard.specified_period.v1",
+        "financial.direct_line_items.specified_period.v1",
+    }:
+        evidence = "live FMP annual statement schema: rows with symbol/reportedCurrency/date/fiscalYear/period; FY identity and currency are validated, while unit, pagination, and source as_of remain unreported"
+    if evidence is None and entry.scenario == "financial.latest_filed.direct_metric.v1":
+        evidence = "FMP statement projection admits latest-filed only when one selected provider row carries an unambiguous filingDate; absent or ambiguous filingDate terminalizes no_data"
+    return replace(
+        entry,
+        disposition="dispatchable",
+        tool_ids=tools,
+        reason="fixed public GET domain route and evidence schema admitted for runtime",
+        evidence=evidence,
+    )
+
+
+RUNTIME_CATALOG = MappingProxyType({
+    (entry.market, entry.scenario): _runtime_entry(entry)
+    for entry in (*_ENTRIES, *_EXTENSION_ENTRIES)
+})
 
 
 def catalog_entry(market: str, scenario: str) -> RuntimeCatalogEntry | None:

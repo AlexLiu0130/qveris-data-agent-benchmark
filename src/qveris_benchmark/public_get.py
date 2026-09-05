@@ -9,18 +9,14 @@ most one injected Gateway call.
 from __future__ import annotations
 
 from collections.abc import Callable, Mapping
-from dataclasses import dataclass
 from datetime import datetime
 import re
 import time
 from typing import Any
 
-from .provider_payload import (
-    ALPHAVANTAGE_GLOBAL_QUOTE_V1,
-    HANGSENG_HK_L1_V1,
-    ProviderPayloadParseError,
-    parse_provider_payload,
-)
+from .domain_route_contract import RoutePlan, RouteProjection
+from . import domain_routes_financial, domain_routes_historical, domain_routes_realtime
+from .provider_payload import ProviderPayloadParseError
 from .response_contract import normalize_response
 from .run_backend import ExecutionEvidence, PublicGetResult
 from .qveris_model_gateway import SemanticGatewayError
@@ -32,12 +28,35 @@ _DATE = re.compile(r"[0-9]{4}-[0-9]{2}-[0-9]{2}\Z")
 _US = re.compile(r"[A-Z][A-Z0-9.-]{0,31}\Z")
 _CN = re.compile(r"[0-9]{6}\Z")
 _HK = re.compile(r"[0-9]{5}\Z")
-_VENUES = frozenset({"US", "SSE", "SZSE", "HKEX"})
+_JP = re.compile(r"[0-9]{4}\Z")
+_GB_DE = re.compile(r"[A-Z][A-Z0-9-]{0,30}\Z")
+_VENUES = frozenset({"US", "SSE", "SZSE", "HKEX", "JP", "GB", "DE"})
 _QUOTE_OPS = frozenset({
     "quote_snapshot", "last_price", "bid_ask_l1", "volume_turnover_snapshot",
     "latest_trade", "extended_hours_price", "trading_status", "batch_quote_snapshot",
 })
-_HISTORICAL_OPS = frozenset({"daily_bars", "intraday_bars", "corporate_actions", "adjustment_factors", "trading_calendar"})
+_QUOTE_FIELDS = {
+    "quote_snapshot": frozenset({"open", "high", "low", "last_price", "previous_close", "change", "change_percent", "volume", "amount"}),
+    "batch_quote_snapshot": frozenset({"open", "high", "low", "last_price", "previous_close", "change", "change_percent", "volume", "amount"}),
+    "last_price": frozenset({"last_price"}),
+    "latest_trade": frozenset({"last_price"}),
+    "bid_ask_l1": frozenset({"bid", "ask", "bid_size", "ask_size"}),
+    "volume_turnover_snapshot": frozenset({"volume", "amount"}),
+    "extended_hours_price": frozenset({"extended_hours_price"}),
+    "trading_status": frozenset({"trading_status"}),
+}
+_HISTORICAL_OPS = frozenset({"daily_bars", "weekly_bars", "monthly_bars", "intraday_bars", "corporate_actions", "adjustment_factors", "trading_calendar"})
+_BAR_OPS = frozenset({"daily_bars", "weekly_bars", "monthly_bars", "intraday_bars"})
+_FINANCIAL_FIELD_ALIASES = {
+    "operating_cash_flow": "net_cash_from_operating",
+    "investing_cash_flow": "net_cash_from_investing",
+    "financing_cash_flow": "net_cash_from_financing",
+}
+_FINANCIAL_FIELDS = {
+    "income": frozenset({"revenue", "cost_of_revenue", "gross_profit", "research_and_development_expense", "selling_general_and_administrative_expense", "operating_income", "income_before_tax", "income_tax_expense", "net_income"}),
+    "balance": frozenset({"total_assets", "total_liabilities", "total_equity"}),
+    "cash_flow": frozenset({"net_cash_from_operating", "net_cash_from_investing", "net_cash_from_financing", "net_increase_in_cash", "cash_and_cash_equivalents_at_end"}),
+}
 
 
 class SemanticRequestError(ValueError):
@@ -47,24 +66,6 @@ class SemanticRequestError(ValueError):
         self.code = "request_incomplete" if needs_clarification else "semantic_schema_invalid"
         self.needs_clarification = needs_clarification
         super().__init__(self.code)
-
-
-@dataclass(frozen=True)
-class _Route:
-    scenario_id: str
-    tool_id: str
-    parser_id: str
-    source: str
-
-
-# This is deliberately small.  The complete static 84-cell catalog lives in
-# runtime_catalog.py; only rows with a closed renderer+parser contract appear
-# here.  There is no runtime registry lookup or provider fallback.
-_DISPATCHABLE = {
-    ("US", "quote_snapshot"): _Route("realtime.equity.quote_snapshot.v1", "alphavantage.global_quote.retrieve.v1.9b8a7c6d", ALPHAVANTAGE_GLOBAL_QUOTE_V1, "Alpha Vantage"),
-    ("US", "last_price"): _Route("realtime.equity.last_price.v1", "alphavantage.global_quote.retrieve.v1.9b8a7c6d", ALPHAVANTAGE_GLOBAL_QUOTE_V1, "Alpha Vantage"),
-    ("HKEX", "bid_ask_l1"): _Route("realtime.equity.bid_ask_l1.v1", "hangseng_polysource.quote.hkshares.live.v2.dec427af", HANGSENG_HK_L1_V1, "Hang Seng"),
-}
 
 
 def _exact_mapping(value: Any, fields: set[str], label: str) -> Mapping[str, Any]:
@@ -94,6 +95,18 @@ def _security(value: Any) -> tuple[str, str]:
         return venue, code + (".SH" if venue == "SSE" else ".SZ")
     if venue == "HKEX" and _HK.fullmatch(code):
         return venue, code + ".HK"
+    if venue == "JP":
+        local = code.removesuffix(".T")
+        if _JP.fullmatch(local):
+            return venue, local + ".T"
+    if venue == "GB":
+        local = code.removesuffix(".L")
+        if _GB_DE.fullmatch(local):
+            return venue, local + ".L"
+    if venue == "DE":
+        local = code.removesuffix(".DE")
+        if _GB_DE.fullmatch(local):
+            return venue, local + ".DE"
     raise SemanticRequestError(needs_clarification=True)
 
 
@@ -107,30 +120,82 @@ def _validated_semantic(value: Any) -> tuple[dict[str, Any], str, str, str, dict
         raise SemanticRequestError("semantic request is invalid")
     kind = request["kind"]
     if kind == "market_quote":
-        item = _exact_mapping(request, {"kind", "security", "operation"}, "market quote")
-        venue, symbol = _security(item["security"])
+        if type(request) is not dict or set(request) not in ({"kind", "security", "operation"}, {"kind", "security", "operation", "requested_fields"}, {"kind", "securities", "operation"}, {"kind", "securities", "operation", "requested_fields"}):
+            raise SemanticRequestError("market quote has an invalid schema")
+        item = request
         operation = item["operation"]
         if type(operation) is not str or operation not in _QUOTE_OPS:
             raise SemanticRequestError("market quote operation is invalid")
-        public = {"kind": kind, "security": {"asset_class": "equity", "venue": venue, "symbol": symbol}, "operation": operation}
-        return public, venue, operation, symbol, {}
+        requested_fields = item.get("requested_fields")
+        if requested_fields is not None and (type(requested_fields) is not list or not requested_fields or len(requested_fields) != len(set(requested_fields)) or any(type(field) is not str or field not in _QUOTE_FIELDS[operation] for field in requested_fields)):
+            raise SemanticRequestError("market quote requested_fields is invalid")
+        if "security" in item:
+            if operation == "batch_quote_snapshot":
+                raise SemanticRequestError("batch quote requires securities")
+            venue, symbol = _security(item["security"])
+            public = {"kind": kind, "security": {"asset_class": "equity", "venue": venue, "symbol": symbol}, "operation": operation}
+            if requested_fields is not None:
+                public["requested_fields"] = list(requested_fields)
+            return public, venue, operation, symbol, {}
+        if operation != "batch_quote_snapshot" or type(item["securities"]) is not list or not 1 <= len(item["securities"]) <= 50:
+            raise SemanticRequestError("batch quote request is invalid")
+        resolved = [_security(security) for security in item["securities"]]
+        venue = resolved[0][0] if resolved else ""
+        if any(item_venue != venue for item_venue, _ in resolved) or len({symbol for _, symbol in resolved}) != len(resolved):
+            raise SemanticRequestError("batch quote securities are invalid")
+        public = {"kind": kind, "securities": [{"asset_class": "equity", "venue": item_venue, "symbol": symbol} for item_venue, symbol in resolved], "operation": operation}
+        if requested_fields is not None:
+            public["requested_fields"] = list(requested_fields)
+        return public, venue, operation, "", {}
     if kind == "historical":
-        item = _exact_mapping(request, {"kind", "security", "operation", "start_date", "end_date"}, "historical request")
+        required = {"kind", "security", "operation", "start_date", "end_date"}
+        if type(request) is not dict or not required.issubset(request) or not set(request).issubset(required | {"adjustment", "interval"}):
+            raise SemanticRequestError("historical request has an invalid schema")
+        item = request
         venue, symbol = _security(item["security"])
-        operation, start, end = item["operation"], _iso_date(item["start_date"], "start_date"), _iso_date(item["end_date"], "end_date")
-        if type(operation) is not str or operation not in _HISTORICAL_OPS or start > end:
+        requested_operation, start, end = item["operation"], _iso_date(item["start_date"], "start_date"), _iso_date(item["end_date"], "end_date")
+        if type(requested_operation) is not str or requested_operation not in _HISTORICAL_OPS or start > end:
             raise SemanticRequestError("historical request is invalid")
-        public = {"kind": kind, "security": {"asset_class": "equity", "venue": venue, "symbol": symbol}, "operation": operation, "start_date": start, "end_date": end}
-        return public, venue, operation, symbol, {"start_date": start, "end_date": end}
+        operation = "daily_bars" if requested_operation in {"weekly_bars", "monthly_bars"} else requested_operation
+        expected_interval = {"weekly_bars": "weekly", "monthly_bars": "monthly"}.get(requested_operation)
+        interval = item.get("interval", expected_interval or ("daily" if operation == "daily_bars" else "intraday" if operation == "intraday_bars" else None))
+        if operation == "daily_bars":
+            if interval not in {"daily", "weekly", "monthly"} or expected_interval is not None and interval != expected_interval:
+                raise SemanticRequestError("historical interval is invalid")
+        elif operation == "intraday_bars":
+            if interval not in {"intraday", "5min", "15min", "30min", "60min"}:
+                raise SemanticRequestError("historical interval is invalid")
+        elif "interval" in item:
+            raise SemanticRequestError("historical interval is invalid")
+        adjustment = item.get("adjustment", "unadjusted" if operation in _BAR_OPS else "not_applicable")
+        if type(adjustment) is not str or (operation in _BAR_OPS and adjustment not in {"adjusted", "unadjusted"}) or (operation not in _BAR_OPS and adjustment != "not_applicable"):
+            raise SemanticRequestError("historical adjustment is invalid")
+        public = {"kind": kind, "security": {"asset_class": "equity", "venue": venue, "symbol": symbol}, "operation": operation, "adjustment": adjustment, "start_date": start, "end_date": end}
+        if interval is not None:
+            public["interval"] = interval
+        return public, venue, operation, symbol, {"start_date": start, "end_date": end, "adjustment": adjustment, "interval": interval}
     if kind == "financial_statement":
         item = _exact_mapping(request, {"kind", "security", "statement"}, "financial statement")
         venue, symbol = _security(item["security"])
         statement = _exact_mapping(item["statement"], {"type", "presentation", "period", "fields"}, "statement")
-        period = _exact_mapping(statement["period"], {"kind", "fiscal_year", "fiscal_period"}, "statement period")
-        if statement["type"] not in {"income", "balance", "cash_flow"} or statement["presentation"] not in {"standardized", "as_reported"} or (statement["presentation"] == "as_reported" and statement["type"] != "income") or period["kind"] != "specified_period" or type(period["fiscal_year"]) is not int or type(period["fiscal_period"]) is not str or type(statement["fields"]) is not list or not statement["fields"] or not all(type(field) is str and field for field in statement["fields"]) or len(statement["fields"]) != len(set(statement["fields"])):
+        if type(statement["period"]) is not dict or set(statement["period"]) not in ({"kind", "fiscal_year", "fiscal_period"}, {"kind", "basis", "frequency"}):
+            raise SemanticRequestError("statement period has an invalid schema")
+        period = statement["period"]
+        if statement["type"] not in {"income", "balance", "cash_flow"} or statement["presentation"] not in {"standardized", "as_reported"} or (statement["presentation"] == "as_reported" and statement["type"] != "income") or type(statement["fields"]) is not list or not statement["fields"] or not all(type(field) is str and field for field in statement["fields"]):
+            raise SemanticRequestError("financial statement is invalid")
+        fields = [_FINANCIAL_FIELD_ALIASES.get(field, field) for field in statement["fields"]]
+        if len(fields) != len(set(fields)) or not set(fields).issubset(_FINANCIAL_FIELDS[statement["type"]]):
+            raise SemanticRequestError("financial statement fields are invalid")
+        if period["kind"] == "specified_period":
+            if type(period["fiscal_year"]) is not int or type(period["fiscal_period"]) is not str:
+                raise SemanticRequestError("financial statement is invalid")
+        elif period["kind"] == "latest":
+            if set(period) != {"kind", "basis", "frequency"} or period["basis"] not in {"filed", "report"} or period["frequency"] not in {"annual", "quarter"}:
+                raise SemanticRequestError("financial statement is invalid")
+        else:
             raise SemanticRequestError("financial statement is invalid")
         operation = "financial_statement"
-        public = {"kind": kind, "security": {"asset_class": "equity", "venue": venue, "symbol": symbol}, "statement": {"type": statement["type"], "presentation": statement["presentation"], "period": dict(period), "fields": list(statement["fields"])}}
+        public = {"kind": kind, "security": {"asset_class": "equity", "venue": venue, "symbol": symbol}, "statement": {"type": statement["type"], "presentation": statement["presentation"], "period": dict(period), "fields": fields}}
         return public, venue, operation, symbol, {}
     raise SemanticRequestError("semantic request kind is unsupported")
 
@@ -141,7 +206,8 @@ def _scenario_id(semantic: Mapping[str, Any]) -> str:
     if kind == "market_quote":
         return "realtime.equity.%s.v1" % semantic["operation"]
     if kind == "historical":
-        return "historical.%s.v1" % semantic["operation"]
+        operation = semantic["operation"]
+        return "historical.%s.%s.v1" % (operation, semantic["adjustment"]) if operation in _BAR_OPS else "historical.%s.v1" % operation
     statement = semantic["statement"]
     if statement["presentation"] == "as_reported":
         return "financial.income_statement.as_reported.specified_period.v1"
@@ -152,14 +218,6 @@ def _scenario_id(semantic: Mapping[str, Any]) -> str:
         "balance": "financial.balance_sheet.standard.specified_period.v1",
         "cash_flow": "financial.cash_flow.standard.specified_period.v1",
     }[statement["type"]]
-
-
-def _render(route: _Route, symbol: str, details: Mapping[str, Any]) -> dict[str, Any]:
-    if route.parser_id == ALPHAVANTAGE_GLOBAL_QUOTE_V1:
-        return {"function": "GLOBAL_QUOTE", "symbol": symbol, "entitlement": "realtime"}
-    if route.parser_id == HANGSENG_HK_L1_V1:
-        return {"stockObject": [symbol], "pageNo": 1, "pageSize": 1}
-    raise AssertionError("unrenderable fixed route")
 
 
 def _gateway_envelope(value: Any) -> tuple[Any, str | None]:
@@ -195,38 +253,12 @@ def _public_usage(value: Mapping[str, Any] | None, request_id: str) -> dict[str,
     return {"receipt_id": "unavailable", "measurement_version": "not_measured", "cache_status": "unavailable", "request_id": request_id if type(request_id) is str and request_id else "unavailable", "issuer": "unavailable", "input_tokens": 0, "output_tokens": 0, "total_tokens": 0}
 
 
-def _public_data(route: _Route, parsed: Mapping[str, Any]) -> tuple[dict[str, Any], str]:
-    """Project the two admitted quote shapes into get-response/v1 data."""
-    if route.parser_id == ALPHAVANTAGE_GLOBAL_QUOTE_V1:
-        values = (("last_price", "close", "USD_per_share"),) if route.scenario_id.endswith("last_price.v1") else (
-            ("open", "open", "USD_per_share"), ("high", "high", "USD_per_share"),
-            ("low", "low", "USD_per_share"), ("close", "close", "USD_per_share"),
-            ("volume", "volume", "shares"), ("previous_close", "previous_close", "USD_per_share"),
-            ("change", "change", "USD_per_share"), ("change_percent", "change_percent", "percent"),
-        )
-        as_of = parsed["trade_date"]
-        return {
-            "kind": "realtime_quote",
-            "quote": {
-                "instrument": {"symbol": parsed["symbol"], "market": "US"},
-                "fields": {name: {"value": parsed[key], "unit": unit, "as_of": as_of, "nil": False} for name, key, unit in values},
-            },
-        }, as_of
-    if route.parser_id == HANGSENG_HK_L1_V1:
-        as_of = parsed["timestamp"]
-        return {
-            "kind": "realtime_quote",
-            "quote": {
-                "instrument": {"symbol": parsed["symbol"], "market": "HKEX"},
-                "fields": {
-                    "bid": {"value": parsed["bid"], "unit": "HKD_per_share", "as_of": as_of, "nil": False},
-                    "ask": {"value": parsed["ask"], "unit": "HKD_per_share", "as_of": as_of, "nil": False},
-                    "bid_size": {"value": parsed["bid_size"], "unit": "lots", "as_of": as_of, "nil": False},
-                    "ask_size": {"value": parsed["ask_size"], "unit": "lots", "as_of": as_of, "nil": False},
-                },
-            },
-        }, as_of
-    raise AssertionError("unprojectable fixed route")
+def _domain_module(semantic: Mapping[str, Any]) -> Any:
+    return {
+        "market_quote": domain_routes_realtime,
+        "historical": domain_routes_historical,
+        "financial_statement": domain_routes_financial,
+    }[semantic["kind"]]
 
 
 class PublicGetAdapter:
@@ -263,39 +295,55 @@ class PublicGetAdapter:
             semantic, venue, operation, symbol, details = _validated_semantic(semantic_value)
         except SemanticGatewayError as exc:
             reason = exc.code if exc.code.startswith("semantic_") else "semantic_" + exc.code
-            return PublicGetResult(self._terminal("error", reason, request_id=request_id), self._evidence(0, semantic_ms=self._ms(semantic_started), tool_ms=tool_ms, total_ms=self._ms(started)))
+            return PublicGetResult(self._terminal("error", reason, exc.usage, request_id), self._evidence(0, semantic_ms=self._ms(semantic_started), tool_ms=tool_ms, total_ms=self._ms(started)))
         except SemanticRequestError as exc:
             status = "needs_clarification" if exc.needs_clarification else "error"
             return PublicGetResult(self._terminal(status, exc.code, request_id=request_id), self._evidence(0, semantic_ms=self._ms(semantic_started), tool_ms=tool_ms, total_ms=self._ms(started)))
         except Exception:
             return PublicGetResult(self._terminal("error", "semantic_internal_error", request_id=request_id), self._evidence(0, semantic_ms=self._ms(semantic_started), tool_ms=tool_ms, total_ms=self._ms(started)))
         semantic_ms = self._ms(semantic_started)
-        entry = catalog_entry(venue, _scenario_id(semantic))
-        route = _DISPATCHABLE.get((venue, operation))
-        if entry is None or entry.disposition != "dispatchable" or route is None:
+        domain = _domain_module(semantic)
+        try:
+            plan = domain.resolve(semantic)
+        except Exception:
+            return PublicGetResult(self._terminal("error", "route_render_invalid", model_usage, request_id), self._evidence(0, semantic_ms=semantic_ms, tool_ms=tool_ms, total_ms=self._ms(started)))
+        if type(plan) is not RoutePlan:
+            entry = catalog_entry(venue, _scenario_id(semantic))
             return PublicGetResult(self._terminal("unsupported", "route_%s" % (entry.disposition if entry is not None else "unmapped"), model_usage, request_id), self._evidence(0, semantic_ms=semantic_ms, tool_ms=tool_ms, total_ms=self._ms(started)))
         tool_started = time.monotonic_ns()
         try:
-            private = self.gateway_execute(route.tool_id, _render(route, symbol, details), request_id=request_id, idempotency_key=idempotency_key)
+            private = self.gateway_execute(plan.tool_id, plan.params, request_id=request_id, idempotency_key=idempotency_key)
             tool_ms = self._ms(tool_started)
-            raw, _gateway_as_of = _gateway_envelope(private)
-            parsed = parse_provider_payload(route.parser_id, raw, expected_symbol=symbol)
-            data, parsed_as_of = _public_data(route, parsed)
         except ToolGatewayError as exc:
             tool_ms = self._ms(tool_started)
             return PublicGetResult(self._terminal("error", "tool_" + exc.code, model_usage, request_id), self._evidence(1, semantic_ms=semantic_ms, tool_ms=tool_ms, total_ms=self._ms(started)))
+        except Exception:
+            tool_ms = self._ms(tool_started)
+            return PublicGetResult(self._terminal("error", "tool_gateway_internal_error", model_usage, request_id), self._evidence(1, semantic_ms=semantic_ms, tool_ms=tool_ms, total_ms=self._ms(started)))
+        try:
+            raw, _gateway_as_of = _gateway_envelope(private)
+        except Exception:
+            return PublicGetResult(self._terminal("error", "tool_gateway_payload_invalid", model_usage, request_id), self._evidence(1, semantic_ms=semantic_ms, tool_ms=tool_ms, total_ms=self._ms(started)))
+        try:
+            projection = domain.project(plan, raw)
+            if type(projection) is not RouteProjection:
+                raise ValueError("route projection is invalid")
         except ProviderPayloadParseError:
             return PublicGetResult(self._terminal("error", "provider_payload_invalid", model_usage, request_id), self._evidence(1, semantic_ms=semantic_ms, tool_ms=tool_ms, total_ms=self._ms(started)))
         except Exception:
-            return PublicGetResult(self._terminal("error", "tool_internal_error", model_usage, request_id), self._evidence(1, semantic_ms=semantic_ms, tool_ms=tool_ms, total_ms=self._ms(started)))
-        # Tool envelopes do not yet carry a contract-proven source-data timestamp.
-        # The raw parser is authoritative only for the two routes that contain one.
-        source_as_of = parsed_as_of
-        if not source_as_of:
-            return PublicGetResult(self._terminal("error", "source_time_missing", model_usage, request_id), self._evidence(1, semantic_ms=semantic_ms, tool_ms=tool_ms, total_ms=self._ms(started)))
-        response: dict[str, Any] = {"schema_version": "get-response/v1", "status": "success", "resolved_request": {"suite": "realtime_quote", "accepted_variant_id": route.scenario_id.replace(".", "-").replace("_", "-")}, "data": data, "as_of": source_as_of, "source": route.source, "clarification": None, "terminal_reason": None}
+            return PublicGetResult(self._terminal("error", "route_project_invalid", model_usage, request_id), self._evidence(1, semantic_ms=semantic_ms, tool_ms=tool_ms, total_ms=self._ms(started)))
+        if plan.suite == "financial_statements" and not projection.data.get("facts"):
+            return PublicGetResult(self._terminal("no_data", "provider_no_matching_period", model_usage, request_id), self._evidence(1, semantic_ms=semantic_ms, tool_ms=tool_ms, total_ms=self._ms(started)))
+        response: dict[str, Any] = {"schema_version": projection.schema_version, "status": projection.status, "resolved_request": {"suite": plan.suite, "accepted_variant_id": plan.accepted_variant_id}, "data": dict(projection.data), "as_of": projection.as_of, "source": plan.source, "clarification": None, "terminal_reason": None}
+        if projection.schema_version == "get-response/v2":
+            response["as_of_status"] = projection.as_of_status
+            response["coverage"] = {"complete": projection.status == "success", "missing_fields": list(projection.missing_fields)}
         response["meta"] = {"usage": _public_usage(model_usage, request_id)}
-        return PublicGetResult(normalize_response(response), self._evidence(1, semantic_ms=semantic_ms, tool_ms=tool_ms, total_ms=self._ms(started)))
+        try:
+            public_response = normalize_response(response, suite=plan.suite)
+        except Exception:
+            public_response = self._terminal("error", "route_projection_invalid", model_usage, request_id)
+        return PublicGetResult(public_response, self._evidence(1, semantic_ms=semantic_ms, tool_ms=tool_ms, total_ms=self._ms(started)))
 
 
 __all__ = ["PublicGetAdapter", "SemanticRequestError"]

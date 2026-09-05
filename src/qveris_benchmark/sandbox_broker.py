@@ -13,18 +13,29 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qs, urlsplit
 from urllib.request import Request
 
-from .qveris_model_gateway import MODEL_GATEWAY_BASE_URL, MODEL_GATEWAY_CHAT_ENDPOINT, MODEL_GATEWAY_MAX_REQUEST_BYTES, MODEL_GATEWAY_MAX_RESPONSE_BYTES, MODEL_GATEWAY_TIMEOUT_SECONDS
-from .qveris_tool_gateway import TOOL_GATEWAY_BASE_URL, TOOL_GATEWAY_MAX_REQUEST_BYTES, TOOL_GATEWAY_MAX_RESPONSE_BYTES, TOOL_GATEWAY_TIMEOUT_SECONDS
+from . import domain_routes_financial, domain_routes_historical, domain_routes_realtime
+from .domain_route_contract import RoutePlan
+from .public_get import _domain_module, _validated_semantic
+from .qveris_model_gateway import MODEL_GATEWAY_BASE_URL, MODEL_GATEWAY_CHAT_ENDPOINT, MODEL_GATEWAY_MAX_REQUEST_BYTES, MODEL_GATEWAY_MAX_RESPONSE_BYTES, MODEL_GATEWAY_MAX_TOKENS, MODEL_GATEWAY_TIMEOUT_SECONDS, SemanticGatewayError, _semantic_json
+from .qveris_tool_gateway import QVerisToolGateway, TOOL_GATEWAY_BASE_URL, TOOL_GATEWAY_MAX_REQUEST_BYTES, TOOL_GATEWAY_MAX_RESPONSE_BYTES, TOOL_GATEWAY_TIMEOUT_SECONDS, ToolGatewayError, _ALPHA_POINTER_TOOL_IDS, _alpha_pointer_url, _validate_alpha_download_url
 from .tls import DirectHTTPSOpener
 
 
 SCHEMA_VERSION = "sandbox-http-broker/v1"
 _ID = __import__("re").compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$")
 _MAX_BODY = 1024 * 1024
-_TOOL_IDS = frozenset({
-    "alphavantage.global_quote.retrieve.v1.9b8a7c6d",
-    "hangseng_polysource.quote.hkshares.live.v2.dec427af",
-})
+
+def _tool_ids() -> frozenset[str]:
+    """Load every frozen domain tool ID; never accept a sandbox-selected ID."""
+    values = (
+        *domain_routes_realtime.SUPPORTED_KEYS.values(),
+        *domain_routes_historical.SUPPORTED_KEYS.values(),
+        *domain_routes_financial.SUPPORTED_KEYS.values(),
+    )
+    return frozenset(tool_id for value in values for tool_id in (value if type(value) is tuple else (value,)))
+
+
+_TOOL_IDS = _tool_ids()
 
 
 class SandboxBrokerError(ValueError):
@@ -81,7 +92,9 @@ def _frame(value: Any, request_id: str) -> tuple[str, str, str, dict[str, str], 
     fields = {"schema_version", "kind", "request_id", "method", "url", "headers", "body_b64", "timeout_ms"}
     if type(value) is not dict or set(value) != fields or value.get("schema_version") != SCHEMA_VERSION:
         raise SandboxBrokerError("broker request schema is invalid")
-    if _safe_id(value["request_id"], "request_id") != request_id or value["kind"] not in {"model", "tool"} or value["method"] != "POST" or type(value["url"]) is not str:
+    if _safe_id(value["request_id"], "request_id") != request_id or value["kind"] not in {"model", "tool", "result_download"} or type(value["url"]) is not str:
+        raise SandboxBrokerError("broker request is invalid")
+    if (value["kind"] in {"model", "tool"} and value["method"] != "POST") or (value["kind"] == "result_download" and value["method"] != "GET"):
         raise SandboxBrokerError("broker request is invalid")
     timeout = value["timeout_ms"]
     if type(timeout) is not int or isinstance(timeout, bool) or timeout <= 0:
@@ -108,14 +121,21 @@ def _json_object(body: bytes) -> dict[str, Any]:
     return value
 
 
-def _allowed_tool_parameters(tool_id: str, body: bytes) -> bool:
-    value = _json_object(body)
-    if set(value) != {"parameters"} or type(value["parameters"]) is not dict:
-        return False
-    parameters = value["parameters"]
-    if tool_id == "alphavantage.global_quote.retrieve.v1.9b8a7c6d":
-        return set(parameters) == {"function", "symbol", "entitlement"} and parameters.get("function") == "GLOBAL_QUOTE" and parameters.get("entitlement") == "realtime" and type(parameters.get("symbol")) is str and _ID.fullmatch(parameters["symbol"]) is not None
-    return set(parameters) == {"stockObject", "pageNo", "pageSize"} and type(parameters.get("stockObject")) is list and len(parameters["stockObject"]) == 1 and type(parameters["stockObject"][0]) is str and _ID.fullmatch(parameters["stockObject"][0]) is not None and parameters.get("pageNo") == 1 and parameters.get("pageSize") == 1
+def _expected_plan(body: bytes) -> RoutePlan | None:
+    """Mirror the fixed semantic-to-route path before a sandbox may execute it."""
+    try:
+        response = _json_object(body)
+        choices = response["choices"]
+        if type(choices) is not list or len(choices) != 1 or type(choices[0]) is not dict:
+            return None
+        message = choices[0]["message"]
+        if choices[0].get("finish_reason") != "stop" or type(message) is not dict or message.get("role") != "assistant" or type(message.get("content")) is not str:
+            return None
+        canonical, _venue, _operation, _symbol, _details = _validated_semantic(_semantic_json(message["content"]))
+        plan = _domain_module(canonical).resolve(canonical)
+    except (KeyError, TypeError, ValueError, json.JSONDecodeError, SemanticGatewayError):
+        return None
+    return plan if type(plan) is RoutePlan and plan.tool_id in _TOOL_IDS else None
 
 
 class SandboxBrokerOpener:
@@ -128,7 +148,7 @@ class SandboxBrokerOpener:
         if type(timeout) not in (int, float) or timeout <= 0 or timeout > 60:
             raise URLError("transport_error")
         url = request.full_url
-        kind = "model" if url == MODEL_GATEWAY_BASE_URL + MODEL_GATEWAY_CHAT_ENDPOINT else "tool"
+        kind = "model" if url == MODEL_GATEWAY_BASE_URL + MODEL_GATEWAY_CHAT_ENDPOINT else "result_download" if request.get_method() == "GET" else "tool"
         frame = {
             "schema_version": SCHEMA_VERSION, "kind": kind, "request_id": self.request_id,
             "method": request.get_method(), "url": url, "headers": _request_headers(request),
@@ -159,7 +179,7 @@ class SandboxBrokerOpener:
 class SandboxBroker:
     """Host-owned, fixed-destination broker. It never returns secret request headers."""
 
-    def __init__(self, request_id: str, *, query: str | None = None, model_identifier: str | None = None, model_api_key: str | None = None, tool_api_key: str | None = None, model_opener: Callable[[Request, float], Any] | None = None, tool_opener: Callable[[Request, float], Any] | None = None) -> None:
+    def __init__(self, request_id: str, *, query: str | None = None, model_identifier: str | None = None, model_api_key: str | None = None, tool_api_key: str | None = None, model_opener: Callable[[Request, float], Any] | None = None, tool_opener: Callable[[Request, float], Any] | None = None, result_download_opener: Callable[[Request, float], Any] | None = None) -> None:
         self.request_id = _safe_id(request_id, "request_id")
         if query is not None and (type(query) is not str or not query):
             raise SandboxBrokerError("query is invalid")
@@ -167,8 +187,12 @@ class SandboxBroker:
         self.model_identifier = None if model_identifier is None else _safe_id(model_identifier, "model_identifier")
         self.model_api_key, self.tool_api_key = model_api_key, tool_api_key
         self.model_opener, self.tool_opener = model_opener, tool_opener
+        self._pointer_downloader = QVerisToolGateway(api_key=tool_api_key or "sandbox-broker", timeout_seconds=TOOL_GATEWAY_TIMEOUT_SECONDS, download_opener=result_download_opener)
+        self._expected_tool: RoutePlan | None = None
+        self._pointer_url: str | None = None
         self.model_dispatches = self.model_completions = 0
         self.tool_dispatches = self.tool_completions = 0
+        self.result_download_dispatches = self.result_download_completions = 0
 
     @classmethod
     def from_environment(cls, request_id: str, *, query: str | None = None, model_identifier: str | None = None, environ: Mapping[str, str] | None = None, model_opener: Callable[[Request, float], Any] | None = None, tool_opener: Callable[[Request, float], Any] | None = None) -> "SandboxBroker":
@@ -186,10 +210,21 @@ class SandboxBroker:
     def reply(self, value: Mapping[str, Any]) -> dict[str, Any]:
         try:
             kind, url, _method, headers, body, timeout = _frame(value, self.request_id)
+            if kind == "result_download":
+                if self.result_download_dispatches or self._pointer_url is None or url != self._pointer_url or headers != {"accept": "application/json"} or body or timeout != int(TOOL_GATEWAY_TIMEOUT_SECONDS * 1000):
+                    raise SandboxBrokerError("result download route is denied")
+                self.result_download_dispatches += 1
+                try:
+                    downloaded = self._pointer_downloader._download_alpha_pointer(url)
+                    response_body = json.dumps(downloaded, ensure_ascii=False, separators=(",", ":"), allow_nan=False).encode("utf-8")
+                except Exception:
+                    return {"schema_version": SCHEMA_VERSION, "request_id": self.request_id, "error": "transport_error"}
+                self.result_download_completions += 1
+                return {"schema_version": SCHEMA_VERSION, "request_id": self.request_id, "status": 200, "headers": {}, "body_b64": base64.b64encode(response_body).decode("ascii")}
             if kind == "model":
                 payload = _json_object(body)
                 messages = payload.get("messages")
-                if self.model_dispatches or len(body) > MODEL_GATEWAY_MAX_REQUEST_BYTES or self.model_identifier is None or self.query is None or url != MODEL_GATEWAY_BASE_URL + MODEL_GATEWAY_CHAT_ENDPOINT or headers != {"content-type": "application/json", "x-request-id": self.request_id, "x-qveris-source": "qveris-benchmark-public-get"} or timeout != int(MODEL_GATEWAY_TIMEOUT_SECONDS * 1000) or payload.get("model") != self.model_identifier or payload.get("stream") is not False or payload.get("temperature") != 0 or payload.get("max_tokens") != 512 or type(messages) is not list or len(messages) != 2 or any(type(message) is not dict for message in messages) or messages[0].get("role") != "system" or type(messages[0].get("content")) is not str or not messages[0]["content"] or messages[1] != {"role": "user", "content": self.query}:
+                if self.model_dispatches or len(body) > MODEL_GATEWAY_MAX_REQUEST_BYTES or self.model_identifier is None or self.query is None or url != MODEL_GATEWAY_BASE_URL + MODEL_GATEWAY_CHAT_ENDPOINT or headers != {"content-type": "application/json", "x-request-id": self.request_id, "x-qveris-source": "qveris-benchmark-public-get"} or timeout != int(MODEL_GATEWAY_TIMEOUT_SECONDS * 1000) or payload.get("model") != self.model_identifier or payload.get("stream") is not False or payload.get("temperature") != 0 or payload.get("max_tokens") != MODEL_GATEWAY_MAX_TOKENS or type(messages) is not list or len(messages) != 2 or any(type(message) is not dict for message in messages) or messages[0].get("role") != "system" or type(messages[0].get("content")) is not str or not messages[0]["content"] or messages[1] != {"role": "user", "content": self.query}:
                     raise SandboxBrokerError("model route is denied")
                 key, opener = self.model_api_key, self.model_opener
                 outgoing_headers = {"Authorization": "Bearer " + (key or ""), "Content-Type": "application/json", "X-Request-ID": self.request_id, "X-Qveris-Source": "qveris-benchmark-public-get"}
@@ -198,7 +233,7 @@ class SandboxBroker:
                 query = parse_qs(parsed.query, keep_blank_values=True)
                 tool_id = query.get("tool_id", [None])[0]
                 expected = {"accept": "application/json", "content-type": "application/json", "idempotency-key": headers.get("idempotency-key"), "x-request-id": self.request_id}
-                if self.tool_dispatches or self.model_completions != 1 or len(body) > TOOL_GATEWAY_MAX_REQUEST_BYTES or (parsed.scheme, parsed.netloc, parsed.path, query) != ("https", "qveris.ai", "/api/v1/tools/execute", {"tool_id": [tool_id]}) or tool_id not in _TOOL_IDS or headers != expected or headers["idempotency-key"] != "idem-" + self.request_id or not _allowed_tool_parameters(tool_id, body) or timeout != int(TOOL_GATEWAY_TIMEOUT_SECONDS * 1000):
+                if self.tool_dispatches or self.model_completions != 1 or self._expected_tool is None or len(body) > TOOL_GATEWAY_MAX_REQUEST_BYTES or (parsed.scheme, parsed.netloc, parsed.path, query) != ("https", "qveris.ai", "/api/v1/tools/execute", {"tool_id": [tool_id]}) or tool_id != self._expected_tool.tool_id or tool_id not in _TOOL_IDS or headers != expected or headers["idempotency-key"] != "idem-" + self.request_id or _json_object(body) != {"parameters": self._expected_tool.params} or timeout != int(TOOL_GATEWAY_TIMEOUT_SECONDS * 1000):
                     raise SandboxBrokerError("tool route is denied")
                 key, opener = self.tool_api_key, self.tool_opener
                 outgoing_headers = {"Authorization": "Bearer " + (key or ""), "Accept": "application/json", "Content-Type": "application/json", "Idempotency-Key": headers["idempotency-key"], "X-Request-ID": self.request_id}
@@ -224,8 +259,19 @@ class SandboxBroker:
                 return {"schema_version": SCHEMA_VERSION, "request_id": self.request_id, "error": "transport_error"}
             if kind == "model" and 200 <= status < 300:
                 self.model_completions += 1
+                self._expected_tool = _expected_plan(response_body)
             elif kind == "tool":
                 self.tool_completions += 1
+                if status == 200 and tool_id in _ALPHA_POINTER_TOOL_IDS:
+                    try:
+                        tool_response = _json_object(response_body)
+                        result = tool_response.get("result") if tool_response.get("success") is True else None
+                        pointer = _alpha_pointer_url(result) or (_alpha_pointer_url(result.get("data")) if type(result) is dict else None)
+                        if pointer is not None:
+                            _validate_alpha_download_url(pointer)
+                        self._pointer_url = pointer
+                    except (SandboxBrokerError, ToolGatewayError):
+                        self._pointer_url = None
             call_id = response_headers.get("X-QVeris-Call-ID") if hasattr(response_headers, "get") else None
             returned_headers = {"X-QVeris-Call-ID": call_id} if type(call_id) is str and call_id else {}
             return {"schema_version": SCHEMA_VERSION, "request_id": self.request_id, "status": status, "headers": returned_headers, "body_b64": base64.b64encode(response_body).decode("ascii")}
@@ -237,6 +283,7 @@ class SandboxBroker:
         return {
             "model_dispatches": self.model_dispatches, "model_completions": self.model_completions,
             "tool_dispatches": self.tool_dispatches, "tool_completions": self.tool_completions,
+            "result_download_dispatches": self.result_download_dispatches, "result_download_completions": self.result_download_completions,
         }
 
 

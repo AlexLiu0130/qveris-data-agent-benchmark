@@ -48,7 +48,7 @@ def run_stdio(descriptor_path: str, input_stream: Any = sys.stdin, output_stream
     opener = SandboxBrokerOpener(incoming["request_id"], input_stream, output_stream)
     adapter = PublicGetAdapter(
         QVerisModelGatewaySemanticResolver(api_key="sandbox", model=descriptor["model"], opener=opener),
-        QVerisToolGateway(api_key="sandbox", opener=opener),
+        QVerisToolGateway(api_key="sandbox", opener=opener, download_opener=opener),
         agent_variant_id=descriptor["agent_variant_id"], agent_version=descriptor["agent_version"],
         get_variant_id=descriptor["get_variant_id"], get_version=descriptor["get_version"],
         model_identifier=descriptor["model"], model_version=descriptor["model_version"],

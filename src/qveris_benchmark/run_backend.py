@@ -36,7 +36,7 @@ _USAGE_TOKENS = frozenset({"input_tokens", "output_tokens", "total_tokens"})
 _USAGE_AUDIT = frozenset({"receipt_id", "measurement_version", "cache_status", "request_id", "issuer"})
 _USAGE = _USAGE_TOKENS | _USAGE_AUDIT
 _EVENTS = frozenset({"run_started", "model_preflight", "dispatch_intent", "stage_intent", "stage_complete", "reference_before", "reference_after", "reference_after_unavailable", "terminal", "run_finished"})
-_GET_RESPONSE_FIELDS = frozenset({"schema_version", "status", "resolved_request", "data", "as_of", "source", "clarification", "terminal_reason", "meta"})
+_GET_RESPONSE_FIELDS = frozenset({"schema_version", "status", "resolved_request", "data", "as_of", "as_of_status", "source", "clarification", "terminal_reason", "coverage", "meta"})
 _GET_DATA_FORBIDDEN = frozenset({"provider", "provider_response", "provider_payload", "raw_response", "receipt", "execution_id"})
 _CANONICAL_RESPONSE_STATUSES = frozenset({"success", "partial", "needs_clarification", "unsupported", "no_data", "error"})
 _SCORE_CASE_STATUSES = frozenset({"success", "needs_clarification", "unsupported", "no_data"})
@@ -1869,7 +1869,7 @@ class RunService:
                 _reject_sensitive({key: value for key, value in response.items() if key not in {"usage", "meta"}})
                 if not set(response).issubset(_GET_RESPONSE_FIELDS) or type(response.get("status")) is not str or response["status"] not in _CANONICAL_RESPONSE_STATUSES:
                     raise RunBackendError("invalid public GET response")
-                projected = {key: response[key] for key in ("schema_version", "status", "resolved_request", "data", "as_of", "source", "clarification", "terminal_reason", "meta") if key in response}
+                projected = {key: response[key] for key in ("schema_version", "status", "resolved_request", "data", "as_of", "as_of_status", "source", "clarification", "terminal_reason", "coverage", "meta") if key in response}
                 for field in ("data", "resolved_request"):
                     if field in projected:
                         RunService._validate_public_data(projected[field])

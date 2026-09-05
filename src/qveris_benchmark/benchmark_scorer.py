@@ -23,6 +23,7 @@ _LEGACY_RANK_KEYS = ("case_pass_rate", "data_accuracy", "semantic_accuracy", "e2
 _RANK_DIRECTIONS = ("desc", "desc", "desc", "asc", "asc")
 _RECEIPT_FIELDS = ("receipt_id", "measurement_version", "cache_status", "request_id", "issuer", "input_tokens", "output_tokens", "total_tokens")
 _RESPONSE_STATUSES = frozenset({"success", "partial", "needs_clarification", "unsupported", "no_data", "error"})
+_V2_RESPONSE_SCHEMA = "get-response/v2"
 SCORER_VERSION = "qveris-benchmark-scorer/v2"
 SCORER_DIGEST = __import__("hashlib").sha256(Path(__file__).read_bytes()).hexdigest()
 _POLICY_KEYS = frozenset({"schema_version", "metric_names", "percentile_method", "assertion_operators", "operator_registry", "case_pass_gate", "completeness", "response_schema_version", "response_status_contracts", "max_reference_window_seconds", "error", "timeout_latency_treatment", "usage_receipt_required_fields", "trusted_receipt_issuers", "eligibility", "ranking"})
@@ -36,6 +37,45 @@ _ASSERTION_BASE_KEYS = frozenset({"operator", "expected", "tolerance", "weight",
 _ASSERTION_PATH_KEYS = frozenset({"path"})
 _ASSERTION_FIELD_KEYS = frozenset({"response_root", "assertion_id", "field", "currency", "unit", "period"})
 _ASSERTION_OPERATORS = frozenset({"exact", "within_abs", "exact_normalized", "canonical_zero_from_display_nil"})
+# Frozen public-field aliases only.  These are accounting-equivalent labels;
+# ambiguous labels (notably net income versus attributable profit) stay absent.
+_V2_FINANCIAL_FIELD_ALIASES = {
+    "consolidated_income_statement.营业收入": "revenue",
+    "consolidated_income_statement.revenues": "revenue",
+    "consolidated_statement_of_income.revenue": "revenue",
+    "income_statement.revenue": "revenue",
+    "consolidated_income/us-gaap:Revenues": "revenue",
+    "consolidated_income_statement.cost_of_revenues": "cost_of_revenue",
+    "consolidated_income/us-gaap:CostOfRevenue": "cost_of_revenue",
+    "consolidated_income_statement.gross_profit": "gross_profit",
+    "consolidated_income/us-gaap:GrossProfit": "gross_profit",
+    "consolidated_income_statement.income_tax_expense": "income_tax_expense",
+    "consolidated_income_statement.operating_profit": "operating_income",
+    "consolidated_income/us-gaap:OperatingIncomeLoss": "operating_income",
+    "consolidated_income/us-gaap:ResearchAndDevelopmentExpense": "research_and_development_expense",
+    "consolidated_income/us-gaap:SellingGeneralAndAdministrativeExpense": "selling_general_and_administrative_expense",
+    "balance_sheet.total_assets": "total_assets",
+    "consolidated_balance_sheet.total_assets": "total_assets",
+    "consolidated_balance_sheet.资产总计": "total_assets",
+    "consolidated_financial_position.total_assets": "total_assets",
+    "consolidated_statement_of_financial_position.total_assets": "total_assets",
+    "consolidated_balance_sheet.total_liabilities": "total_liabilities",
+    "consolidated_balance_sheet.负债合计": "total_liabilities",
+    "consolidated_financial_position.total_liabilities": "total_liabilities",
+    "consolidated_statement_of_financial_position.total_liabilities": "total_liabilities",
+    "consolidated_balance_sheet.total_equity": "total_equity",
+    "consolidated_financial_position.total_equity": "total_equity",
+    "consolidated_statement_of_financial_position.total_equity": "total_equity",
+    "cash_flow.net_cash_from_operations": "net_cash_from_operating",
+    "consolidated_cash_flow_statement.net_cash_flows_from_operating_activities": "net_cash_from_operating",
+    "consolidated_cash_flow/us-gaap:NetCashProvidedByUsedInOperatingActivities": "net_cash_from_operating",
+    "cash_flow.net_cash_used_in_investing": "net_cash_from_investing",
+    "consolidated_cash_flow_statement.net_cash_flows_from_investing_activities": "net_cash_from_investing",
+    "consolidated_cash_flow/us-gaap:NetCashProvidedByUsedInInvestingActivities": "net_cash_from_investing",
+    "cash_flow.net_cash_used_in_financing": "net_cash_from_financing",
+    "consolidated_cash_flow_statement.net_cash_flows_from_financing_activities": "net_cash_from_financing",
+    "consolidated_cash_flow/us-gaap:NetCashProvidedByUsedInFinancingActivities": "net_cash_from_financing",
+}
 _STATUS_CONTRACTS = {
     "success": {"required_non_null_paths": ("resolved_request", "data", "as_of", "source"), "required_null_paths": ("clarification", "terminal_reason")},
     "partial": {"required_non_null_paths": ("resolved_request", "data", "as_of", "source"), "required_null_paths": ("clarification", "terminal_reason")},
@@ -212,6 +252,24 @@ def _fact_value(response: Mapping[str, Any], assertion: Mapping[str, Any]) -> tu
     if assertion["operator"] == "exact" and assertion["expected"] is None and fact.get("raw_display") != assertion["raw_display"]:
         return False, None
     return True, fact["value"]
+
+
+def _v2_financial_fact_value(response: Mapping[str, Any], assertion: Mapping[str, Any]) -> tuple[bool, Any] | None:
+    """Map a public canonical fact to its frozen external assertion, if exact."""
+    if response.get("schema_version") != _V2_RESPONSE_SCHEMA or not isinstance(assertion.get("path"), str) or not assertion["path"].startswith("data.facts.") or not isinstance(assertion.get("expected"), Mapping):
+        return None
+    expected = assertion["expected"]
+    if set(expected) != {"assertion_id", "field", "value", "period", "currency", "unit", "nil"}:
+        return None
+    canonical = _V2_FINANCIAL_FIELD_ALIASES.get(expected.get("field"))
+    facts = response.get("data", {}).get("facts") if isinstance(response.get("data"), Mapping) else None
+    actual = facts.get(canonical) if canonical and isinstance(facts, Mapping) else None
+    if not isinstance(actual, Mapping) or set(actual) != {"value", "period", "currency", "unit", "nil"}:
+        return False, None
+    # The output key, period, currency, and unit form the identity.  The
+    # Oracle-only id/label are restored solely inside the scorer for its exact
+    # comparison and never become public response fields.
+    return True, {"assertion_id": expected["assertion_id"], "field": expected["field"], **actual}
 
 
 def _validate_policy(value: Any) -> dict[str, Any]:
@@ -509,9 +567,13 @@ class BenchmarkScorer:
     def _response_valid(response: Any, policy: Mapping[str, Any]) -> bool:
         if type(response) is not dict or response.get("schema_version") != policy["response_schema_version"] or response.get("status") not in _RESPONSE_STATUSES:
             return False
+        v2 = response["schema_version"] == _V2_RESPONSE_SCHEMA
         contract = policy["response_status_contracts"][response["status"]]
         for path in contract["required_non_null_paths"]:
             exists, value = _path_value(response, path)
+            if v2 and path == "as_of" and response["status"] in {"success", "partial"} and response.get("as_of_status") in {"mixed", "unavailable"}:
+                if exists and value is None:
+                    continue
             if not exists or value is None or value == "" or value == {} or value == []:
                 return False
         for path in contract["required_null_paths"]:
@@ -519,8 +581,14 @@ class BenchmarkScorer:
             if exists and value not in (None, {}, []):
                 return False
         source = response.get("source")
-        if response["status"] in {"success", "partial"} and not (type(response.get("resolved_request")) is dict and type(response.get("data")) is dict and type(response.get("as_of")) is str and type(source) is str and bool(source)):
+        if response["status"] in {"success", "partial"} and not (type(response.get("resolved_request")) is dict and type(response.get("data")) is dict and (type(response.get("as_of")) is str or (v2 and response.get("as_of") is None)) and type(source) is str and bool(source)):
             return False
+        if v2 and response["status"] in {"success", "partial"}:
+            status, as_of, coverage = response.get("as_of_status"), response.get("as_of"), response.get("coverage")
+            if status not in {"known", "mixed", "unavailable"} or (status == "known") != isinstance(as_of, str) or type(coverage) is not dict or set(coverage) != {"complete", "missing_fields"} or type(coverage["complete"]) is not bool or type(coverage["missing_fields"]) is not list or not all(type(item) is str and item for item in coverage["missing_fields"]):
+                return False
+            if coverage["complete"] != (response["status"] == "success") or bool(coverage["missing_fields"]) != (response["status"] == "partial"):
+                return False
         if response["status"] == "needs_clarification" and not (type(response.get("clarification")) is str and bool(response["clarification"])):
             return False
         if response["status"] in {"unsupported", "no_data", "error"} and not (type(response.get("terminal_reason")) is str and bool(response["terminal_reason"])):
@@ -532,7 +600,8 @@ class BenchmarkScorer:
         summary = []
         for assertion in assertions:
             is_fact = "assertion_id" in assertion
-            exists, actual = _fact_value(response, assertion) if is_fact else _path_value(response, assertion["path"])
+            mapped = _v2_financial_fact_value(response, assertion) if not is_fact else None
+            exists, actual = _fact_value(response, assertion) if is_fact else mapped if mapped is not None else _path_value(response, assertion["path"])
             passed = exists and _assertion_pass(actual, assertion)
             item = {"assertion_id": assertion["assertion_id"]} if is_fact else {"path": assertion["path"]}
             item.update({"operator": assertion["operator"], "passed": passed, "weight": str(_decimal(assertion["weight"], "weight")), "fatal": assertion["fatal"], "exists": exists})

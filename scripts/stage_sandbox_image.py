@@ -15,6 +15,7 @@ MODULES = (
     "__init__.py", "sandbox_get_entry.py", "sandbox_broker.py", "public_get.py",
     "qveris_model_gateway.py", "qveris_tool_gateway.py", "provider_payload.py",
     "response_contract.py", "run_backend.py", "runtime_catalog.py", "tls.py",
+    "domain_route_contract.py", "domain_routes_financial.py", "domain_routes_historical.py", "domain_routes_realtime.py",
 )
 RUNTIME_CONFIG_FIELDS = {
     "schema_version", "model", "agent_variant_id", "agent_version",

@@ -2,8 +2,10 @@ import io
 import json
 import pathlib
 import socket
+import ssl
 import sys
 import unittest
+from unittest.mock import patch
 from urllib.error import HTTPError, URLError
 
 sys.path.insert(0, str(pathlib.Path(__file__).parents[1] / "src"))
@@ -16,6 +18,18 @@ _IDENTITY = {
     "agent_variant_id": "semantic-agent", "agent_version": "v1", "get_variant_id": "public-get",
     "get_version": "v1", "model_identifier": "test-model", "model_version": "v1",
     "model_config_digest": "a" * 64,
+}
+_ALPHA_POINTER_TOOL_IDS = (
+    "alphavantage.income_statement.retrieve.v1.7aca3c4a",
+    "alphavantage.balance_sheet.retrieve.v1.467a92c0",
+    "alphavantage.cash_flow.retrieve.v1.7aca3c4a",
+)
+_ALPHA_POINTER = {
+    "status_code": 200,
+    "message": "content is available",
+    "full_content_file_url": "https://oss.qveris.ai/private-result.json?redacted=1",
+    "truncated_content": "{}",
+    "content_schema": {},
 }
 
 
@@ -47,8 +61,8 @@ class Opener:
 
 
 class QVerisToolGatewayTests(unittest.TestCase):
-    def call(self, gateway):
-        return gateway("fiu.quote.v1", {"symbol": "AAPL.US"}, request_id="request-1", idempotency_key="key-1")
+    def call(self, gateway, tool_id="fiu.quote.v1"):
+        return gateway(tool_id, {"symbol": "AAPL.US"}, request_id="request-1", idempotency_key="key-1")
 
     def test_posts_fixed_tool_contract_and_returns_only_private_data_envelope(self):
         opener, receipts = Opener(Response(json.dumps({"success": True, "result": {"data": {"price": 1}, "as_of": "2026-09-04T10:00:00Z"}, "execution_id": "private-execution", "actual_credits": 2}).encode())), []
@@ -65,6 +79,12 @@ class QVerisToolGatewayTests(unittest.TestCase):
         self.assertEqual((receipts[0].tool_id, receipts[0].request_id, receipts[0].execution_id, receipts[0].actual_credits), ("fiu.quote.v1", "request-1", "private-execution", 2))
         self.assertEqual((receipts[0].correlation_id, receipts[0].server_correlated), ("request-1", True))
         self.assertNotIn("actual_credits", result)
+
+    def test_uses_verified_direct_tls_for_default_pointer_downloads(self):
+        with patch("qveris_benchmark.qveris_tool_gateway.DirectHTTPSOpener") as transport:
+            gateway = QVerisToolGateway(api_key="test-key")
+        transport.assert_called_once_with(ssl_context=None, ca_file=None, environment_ca_file="QVERIS_TOOL_RESULT_CA_BUNDLE")
+        self.assertIs(gateway._download_open, transport.return_value)
 
     def test_rejects_non_success_and_malformed_result_without_returning_payload(self):
         for body, code in (
@@ -110,7 +130,36 @@ class QVerisToolGatewayTests(unittest.TestCase):
             "kind": "market_quote", "security": {"asset_class": "equity", "venue": "US", "local_code": "AAPL"}, "operation": "quote_snapshot",
         }}
         result = PublicGetAdapter(lambda _query, **_kwargs: semantic, tool, **_IDENTITY).run("AAPL quote", request_id="request-1", idempotency_key="key-1")
-        self.assertEqual((result.public_response["status"], result.public_response["data"]["quote"]["fields"]["close"]["value"]), ("success", "1.5"))
+        self.assertEqual((result.public_response["status"], result.public_response["data"]["quote"]["fields"]["last_price"]["value"]), ("success", "1.5"))
+
+    def test_downloads_frozen_alpha_pointers_once_without_authorization(self):
+        for tool_id in _ALPHA_POINTER_TOOL_IDS:
+            with self.subTest(tool_id=tool_id):
+                final = {"symbol": "AAPL", "annualReports": [], "quarterlyReports": []}
+                execute, download, receipts = Opener(Response(json.dumps({"success": True, "result": _ALPHA_POINTER, "execution_id": "private-execution", "actual_credits": 1}).encode())), Opener(Response(json.dumps(final).encode())), []
+                result = self.call(QVerisToolGateway(api_key="test-key", timeout_seconds=3, receipt_sink=receipts.append, opener=execute, download_opener=download), tool_id)
+                request, timeout = download.calls[0]
+                self.assertEqual((result, timeout, len(execute.calls), len(download.calls)), ({"raw": final, "as_of": None}, 3.0, 1, 1))
+                self.assertIsNone(request.get_header("Authorization"))
+                self.assertEqual(request.get_header("Accept"), "application/json")
+                self.assertEqual((receipts[0].tool_id, receipts[0].actual_credits), (tool_id, 1))
+
+    def test_rejects_alpha_pointer_from_other_tools_private_hosts_and_redirects(self):
+        cases = (
+            ("fiu.quote.v1", _ALPHA_POINTER, None, "response_shape_invalid"),
+            (_ALPHA_POINTER_TOOL_IDS[0], {**_ALPHA_POINTER, "full_content_file_url": "https://example.com/result.json"}, None, "download_rejected"),
+            (_ALPHA_POINTER_TOOL_IDS[0], {**_ALPHA_POINTER, "full_content_file_url": "https://127.0.0.1/result.json"}, None, "download_rejected"),
+            (_ALPHA_POINTER_TOOL_IDS[0], {**_ALPHA_POINTER, "full_content_file_url": "https://oss.qveris.ai.example.com/result.json"}, None, "download_rejected"),
+            (_ALPHA_POINTER_TOOL_IDS[0], _ALPHA_POINTER, HTTPError("https://oss.qveris.ai/redirect", 302, "redirect", {}, io.BytesIO()), "download_rejected"),
+            (_ALPHA_POINTER_TOOL_IDS[0], _ALPHA_POINTER, URLError(ssl.SSLCertVerificationError(20, "certificate rejected")), "download_transport_error"),
+        )
+        for tool_id, pointer, error, code in cases:
+            with self.subTest(code=code):
+                execute, download = Opener(Response(json.dumps({"success": True, "result": pointer}).encode())), Opener(error=error)
+                with self.assertRaisesRegex(ToolGatewayError, "^" + code + "$"):
+                    self.call(QVerisToolGateway(api_key="test-key", opener=execute, download_opener=download), tool_id)
+                self.assertEqual(len(execute.calls), 1)
+                self.assertEqual(len(download.calls), 0 if error is None else 1)
 
 
 if __name__ == "__main__":

@@ -124,7 +124,7 @@ class BenchmarkScorerTests(unittest.TestCase):
         p, o = policy(ranked=False), bundle()
         oracle = o["oracles"]["oracle-one"]
         oracle["semantic_assertions"] = [{"path": "resolved_request.accepted_variant_id", "operator": "exact", "expected": "realtime-equity-quote-snapshot-v1", "tolerance": None, "weight": 1, "fatal": True}]
-        oracle["data_assertions"][0].update({"path": "data.quote.fields.close.value", "expected": "1.5"})
+        oracle["data_assertions"][0].update({"path": "data.quote.fields.last_price.value", "expected": "1.5"})
         value = manifest(p, o); value["scoring_contract"] = scoring_contract(p, o)
         store = RunStore(self.tmp.name)
         service = RunService(store, {"variant-a": AdapterClient("variant-a"), "variant-b": AdapterClient("variant-b")})
@@ -567,6 +567,19 @@ class BenchmarkScorerTests(unittest.TestCase):
         p, o = policy(), bundle()
         store = RunStore(self.tmp.name + "-canonical"); service = RunService(store, clients(response(), response())); service.create_run(manifest(p, o)); service.execute("score-run")
         self.assertEqual(self.scorer(store, p, o).score("score-run")["variants"][0]["metrics"]["data_accuracy"]["value"], 1.0)
+
+    def test_v2_financial_alias_mapping_keeps_null_as_of_and_never_uses_oracle_ids(self):
+        p, o = policy(ranked=False), bundle()
+        p["response_schema_version"] = "get-response/v2"
+        expected = {"assertion_id": "oracle-only-id", "field": "consolidated_income_statement.营业收入", "value": "10", "period": "FY2024", "currency": "CNY", "unit": "yuan", "nil": False}
+        o["oracles"]["oracle-one"]["data_assertions"] = [{"path": "data.facts.oracle_only_id", "operator": "exact", "expected": expected, "tolerance": None, "weight": 2, "fatal": True}]
+        value = manifest(p, o); value["cases"][0]["suite"] = "financial_statements"; value["scoring_contract"] = scoring_contract(p, o)
+        answer = {"schema_version": "get-response/v2", "status": "success", "resolved_request": {"suite": "financial_statements", "accepted_variant_id": "abc"}, "data": {"kind": "financial_statement", "instrument": {"symbol": "600519.SH", "market": "SSE"}, "statement_type": "income_statement", "presentation": "standardized", "facts": {"revenue": {"value": "10", "period": "FY2024", "currency": "CNY", "unit": "yuan", "nil": False}}}, "as_of": None, "as_of_status": "unavailable", "source": "official", "clarification": None, "terminal_reason": None, "coverage": {"complete": True, "missing_fields": []}, "meta": {"usage": {"receipt_id": "receipt-1", "measurement_version": "usage-v1", "cache_status": "miss", "request_id": "pending", "issuer": "runner", "input_tokens": 2, "output_tokens": 3, "total_tokens": 5}}}
+        store = RunStore(self.tmp.name + "-v2-financial"); service = RunService(store, clients(answer, answer)); service.create_run(value); service.execute("score-run")
+        result = self.scorer(store, p, o).score("score-run")
+        self.assertEqual(result["variants"][0]["case_pass_rate"]["value"], 1.0)
+        ambiguous = dict(expected, field="consolidated_income_statement.归属于母公司股东的净利润")
+        self.assertFalse(BenchmarkScorer._assertions(answer, [{"path": "data.facts.oracle_only_id", "operator": "exact", "expected": ambiguous, "tolerance": None, "weight": 1, "fatal": True}])["summary"][0]["exists"])
 
 
 if __name__ == "__main__": unittest.main()

@@ -68,6 +68,7 @@ class RunBenchmarkTests(unittest.TestCase):
             subprocess.run([sys.executable, str(ROOT / "scripts" / "stage_sandbox_image.py"), "--output-dir", str(staged), "--runtime-config", str(config_path)], check=True, capture_output=True, text=True)
             names = {path.relative_to(staged).as_posix() for path in staged.rglob("*")}
             self.assertIn("qveris_benchmark/sandbox_get_entry.py", names)
+            self.assertTrue({"qveris_benchmark/domain_route_contract.py", "qveris_benchmark/domain_routes_financial.py", "qveris_benchmark/domain_routes_historical.py", "qveris_benchmark/domain_routes_realtime.py"}.issubset(names))
             self.assertNotIn("benchmarks", names)
             self.assertFalse(any("oracle" in name for name in names))
 

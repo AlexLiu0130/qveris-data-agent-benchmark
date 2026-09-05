@@ -9,7 +9,7 @@ from urllib.error import HTTPError
 sys.path.insert(0, str(pathlib.Path(__file__).parents[1] / "src"))
 
 from qveris_benchmark.public_get import PublicGetAdapter
-from qveris_benchmark.qveris_model_gateway import _SYSTEM_PROMPT, QVerisModelGatewaySemanticResolver, SEMANTIC_GATEWAY_ERROR_CODES, SemanticGatewayError
+from qveris_benchmark.qveris_model_gateway import MODEL_GATEWAY_MAX_TOKENS, _SYSTEM_PROMPT, QVerisModelGatewaySemanticResolver, SEMANTIC_GATEWAY_ERROR_CODES, SemanticGatewayError
 
 
 def semantic():
@@ -65,7 +65,7 @@ class QVerisModelGatewayTests(unittest.TestCase):
         self.assertEqual((request.full_url, request.get_method(), timeout), ("https://aigateway.qveris.ai/v1/chat/completions", "POST", 60.0))
         self.assertEqual(request.get_header("Authorization"), "Bearer sk-test-key")
         payload = json.loads(request.data)
-        self.assertEqual((payload["model"], payload["stream"], payload["temperature"], payload["max_tokens"]), ("public-model", False, 0, 512))
+        self.assertEqual((payload["model"], payload["stream"], payload["temperature"], payload["max_tokens"]), ("public-model", False, 0, MODEL_GATEWAY_MAX_TOKENS))
 
     def test_gateway_error_code_is_stable_and_has_no_response_body(self):
         error = HTTPError("https://aigateway.qveris.ai/v1/chat/completions", 402, "payment", {}, io.BytesIO(b'{"error":{"code":"insufficient_credits"}}'))
@@ -100,18 +100,38 @@ class QVerisModelGatewayTests(unittest.TestCase):
         invalid["request"]["tool_id"] = "model-cannot-set-this"
         body = {"choices": [{"finish_reason": "stop", "message": {"role": "assistant", "content": json.dumps(invalid)}}]}
         with self.assertRaisesRegex(SemanticGatewayError, "^semantic_schema_invalid$"):
-            self.resolver(lambda _request, _timeout: Response(json.dumps(body).encode()))("AAPL", request_id="request-1")
+                self.resolver(lambda _request, _timeout: Response(json.dumps(body).encode()))("AAPL", request_id="request-1")
+
+    def test_accepts_one_complete_json_fence_but_not_surrounding_prose(self):
+        call_id = "call-1"
+        base = {"usage": {"prompt_tokens": 1, "completion_tokens": 2, "total_tokens": 3}, "qveris_billing": {"call_id": call_id, "usage_estimated": False}}
+        fenced = {**base, "choices": [{"finish_reason": "stop", "message": {"role": "assistant", "content": "```json\n" + json.dumps(semantic()) + "\n```"}}]}
+        self.assertEqual(self.resolver(lambda _request, _timeout: Response(json.dumps(fenced).encode(), {"X-QVeris-Call-ID": call_id}))("AAPL", request_id="request-1").semantic, semantic())
+        prose = {**base, "choices": [{"finish_reason": "stop", "message": {"role": "assistant", "content": "Here is JSON: " + json.dumps(semantic())}}]}
+        with self.assertRaisesRegex(SemanticGatewayError, "^semantic_json_invalid$"):
+            self.resolver(lambda _request, _timeout: Response(json.dumps(prose).encode(), {"X-QVeris-Call-ID": call_id}))("AAPL", request_id="request-1")
 
     def test_prompt_schema_version_matches_the_router_validator(self):
         self.assertIn('"schema_version":"public-get.semantic/v1"', _SYSTEM_PROMPT)
         self.assertNotIn("public-get.semantic.v1", _SYSTEM_PROMPT)
 
     def test_prompt_contract_includes_exact_routable_shapes_and_examples(self):
-        self.assertIn('"kind":"market_quote","security":{"asset_class":"equity","venue":"US|SSE|SZSE|HKEX","local_code":"string"}', _SYSTEM_PROMPT)
-        self.assertIn('"operation":"quote_snapshot|last_price|bid_ask_l1|volume_turnover_snapshot|latest_trade|extended_hours_price|trading_status|batch_quote_snapshot"', _SYSTEM_PROMPT)
+        self.assertIn('"kind":"market_quote","security":{"asset_class":"equity","venue":"US|SSE|SZSE|HKEX|JP|GB|DE","local_code":"string"}', _SYSTEM_PROMPT)
+        self.assertIn('For batch_quote_snapshot use securities instead of security', _SYSTEM_PROMPT)
+        self.assertIn('You may add requested_fields only when the user explicitly names fields.', _SYSTEM_PROMPT)
         self.assertIn('"security":{"asset_class":"equity","venue":"US","local_code":"AAPL"},"operation":"quote_snapshot"', _SYSTEM_PROMPT)
-        self.assertIn('"operation":"corporate_actions","start_date":"2024-01-01","end_date":"2024-12-31"', _SYSTEM_PROMPT)
-        self.assertIn('"operation":"trading_calendar","start_date":"2024-01-02","end_date":"2024-01-05"', _SYSTEM_PROMPT)
+        self.assertIn('"adjustment":"adjusted|unadjusted|not_applicable","interval":"daily|weekly|monthly|intraday|5min|15min|30min|60min"', _SYSTEM_PROMPT)
+        self.assertIn('"operation":"corporate_actions","adjustment":"not_applicable","start_date":"2024-01-01","end_date":"2024-12-31"', _SYSTEM_PROMPT)
+        self.assertIn('"operation":"trading_calendar","adjustment":"not_applicable","start_date":"2024-01-02","end_date":"2024-01-05"', _SYSTEM_PROMPT)
+        self.assertIn('{"kind":"latest","basis":"filed|report","frequency":"annual|quarter"}', _SYSTEM_PROMPT)
+        self.assertIn('cash_flow=net_cash_from_operating,net_cash_from_investing,net_cash_from_financing', _SYSTEM_PROMPT)
+
+    def test_every_standalone_json_prompt_example_is_parseable(self):
+        examples = [line for line in _SYSTEM_PROMPT.splitlines() if line.startswith("{")]
+        self.assertGreater(len(examples), 3)
+        for example in examples:
+            with self.subTest(example=example):
+                self.assertIsInstance(json.loads(example), dict)
         self.assertIn("never manufacture a ticker, venue, date, fiscal period,", _SYSTEM_PROMPT)
 
     def test_resolver_to_adapter_routes_aapl_quote(self):
@@ -144,6 +164,17 @@ class QVerisModelGatewayTests(unittest.TestCase):
             with self.subTest(code=code):
                 with self.assertRaisesRegex(SemanticGatewayError, "^" + code + "$"):
                     self.resolver(lambda _request, _timeout, body=body: Response(json.dumps(body).encode()))("AAPL", request_id="request-1")
+
+    def test_truncated_completion_preserves_valid_usage_without_parsing_partial_json(self):
+        call_id = "call-1"
+        body = {
+            "choices": [{"finish_reason": "length", "message": {"role": "assistant", "content": '{"schema_version"'}}],
+            "usage": {"prompt_tokens": 12, "completion_tokens": 1024, "total_tokens": 1036},
+            "qveris_billing": {"call_id": call_id, "usage_estimated": False},
+        }
+        with self.assertRaisesRegex(SemanticGatewayError, "^semantic_completion_truncated$") as raised:
+            self.resolver(lambda _request, _timeout: Response(json.dumps(body).encode(), {"X-QVeris-Call-ID": call_id}))("AAPL", request_id="request-1")
+        self.assertEqual(raised.exception.usage["total_tokens"], 1036)
 
     def test_models_preflight_is_explicit_read_only_and_does_not_select_a_model(self):
         seen = []

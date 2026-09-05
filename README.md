@@ -12,11 +12,13 @@ Natural-language query -> one public get -> structured response -> scorer
 
 推荐审阅入口为 `benchmarks/candidates/v0.2/` 与 `benchmarks/oracles/v2/`：三个 Suite 各 100 题。财报改为同一张原始报表、同一报告期内的 1–6 个直接披露字段（88 成功、5 澄清、7 无数据），不再要求完整报表或计算；历史行情以常见实体默认解析（82 成功、2 澄清、6 无数据、10 不支持），多市场场景保留来源一致的完整可接受变体；实时行情为 90 个运行时快照合同和 10 个冻结状态题。`v0.1` 与 `oracles/v1` 是不可变基线，仍保留用于 v2 的来源绑定。
 
-`oracles/v2/validate_v2.py` 已校验 v2 的候选/Oracle 对齐、v1 绑定及哈希链、财报原始字段投影、历史的来源和 K 线期间、以及实时运行时回执合同；这仅是内容完整性门禁，不代表已运行真实评测。
+`oracles/v2/validate_v2.py` 已校验 v2 的候选/Oracle 对齐、v1 绑定及哈希链、财报原始字段投影、历史的来源和 K 线期间、以及实时运行时回执合同；这仅是内容完整性门禁，不代表已运行真实评测。Oracle 始终在 Runner/Scorer 一侧，与 public `get` 隔离。
 
 历史行情 v2 不声称供应商授权、再分发权或官方交易所地位；严格双源授权核对是后续升级项。单一完整、可追溯的公开来源可构成一个候选变体；若完整来源之间存在差异，保留各自完整且来源一致的变体，不平均也不跨源拼接。
 
-本地确定性 Runner、Scorer 和只读 Arena HTTP/SSE 投影已实现。`v2_compiler` 会将 v0.2 candidate 与 v2 Oracle 编译为 `run-manifest-template.v2.json` 和 `oracle-bundle.v2.json`；真实 Variant 与 realtime reference contract 可生成正式 ready Manifest。也可用下面的 300 题 diagnostic 入口检查任意公开 GET 插件的全链装配：它会执行三套各 100 题，但 realtime 的动态数据准确率会明确标为 `not_scored`，不产生排名或正式 Case Pass。QVeris Model Gateway 与 Tool client 已接入；AAPL quote 已完成一次单次 live smoke（一次模型调用、一次 Tool execution、严格结构化响应）。该单样本不证明三条开放路由稳定，不证明历史行情或财报已获 runtime 准入，也不构成本 300 题的正式评测、Case Pass、榜单或生产部署。`v1` 独立 Manifest / `oracle-bundle/v1` 仅作 legacy 兼容。
+本地确定性 Runner、Scorer 和只读 Arena HTTP/SSE 投影已实现。`v2_compiler` 会将 v0.2 candidate 与 v2 Oracle 编译为 `run-manifest-template.v2.json` 和 `oracle-bundle.v2.json`；真实 Variant 与 realtime reference contract 可生成正式 ready Manifest。当前静态 catalog 有 113 格，86 格已由固定 domain route 接线（财报 33、历史 29、实时 24）；其余 27 格及原因见 [`docs/get-route-coverage.md`](docs/get-route-coverage.md)。这包含原始 84 格和新增的 JP/GB/DE、weekly/monthly 覆盖，不能倒推为每格 live 成功。
+
+已完成 provider-direct schema 与单工具路径验证；六个代表性真实请求已分别成功：AAPL FY2024 的 revenue、assets、operating cash flow 三个单字段，CN 与 HK 各一个日线请求，以及 7203.T FY2024 revenue。每次均为一个模型调用和一个 Tool 调用；这些修复后的新请求不等同于 86 格验收。正式 600 次（3 个配置模型 × 200）尚未执行。每个模型由显式 `QVERIS_MODEL_GATEWAY_MODEL` 配置形成独立 Variant，运行时不把模型名锁为 Terra。`v1` 独立 Manifest / `oracle-bundle/v1` 仅作 legacy 兼容；`v2` 是当前编译/运行合同。
 
 ## 300 题 GET 插件装配
 
@@ -29,7 +31,7 @@ python scripts/run_benchmark.py --get-client your_module:make_client --output-di
 
 ## OCI sandbox GET
 
-`--sandbox-image` 不导入候选插件：每个 Case 启动一个固定 digest 的 Docker image，只有 `request_id` 与 Query 经 stdin 进入；无 repo、Oracle、socket、host 环境或 bind mount，且强制 nonroot、read-only、capability drop、资源上限和 `--network none`。image 通过受限 stdio broker 请求当前固定 Gateway/Tool URL；host 才持有凭据。broker 至多接受一次固定模型请求和一次固定 Tool 请求，记录 host-observed dispatch；这不是 image 内部推理/调用的自证，也不能用于 official run。
+`--sandbox-image` 不导入候选插件：每个 Case 启动一个固定 digest 的 Docker image，只有 `request_id` 与 Query 经 stdin 进入；无 repo、Oracle、socket、host 环境或 bind mount，且强制 nonroot、read-only、capability drop、资源上限和 `--network none`。image 通过受限 stdio broker 请求当前固定 Gateway/Tool URL；host 才持有凭据。broker 至多接受一次固定模型请求和一次固定 Tool 请求，记录 host-observed dispatch；绑定结果 URL 只可在 Tool 后由 host 进行一次受控下载与解析，不成为 image 的网络能力。`sandbox_get_entry`/broker 已通过历史行情与 Alpha pointer 的完整 JSONL 离线 model→tool→download 链路检查；该检查仍隔离 Oracle，且不构成 official run。
 
 先以显式 runtime config 创建不含题库的 build context，再以 Docker 返回的 immutable digest 执行；不要以仓库根目录作为 Docker context：
 
@@ -43,13 +45,13 @@ python scripts/run_benchmark.py --sandbox-image sha256:... --sandbox-variant /pr
 
 The checked-in `runner/sandbox-fixture/` is network-free and only for a one-container isolation smoke; no 300-container sandbox run or paid Gateway call is included.
 
-84 格工具盘点中的 `financial.direct_line_items.specified_period.v1` 只在已有规范化回包的边界内做确定性字段投影：语义层先将用户用语解析为规范字段和唯一所属三表，再只调用一项相应 Tool；跨三表请求必须拒绝，投影层不猜字段别名、不透传原始供应商字段。当前仅 SZSE 三表和 HKEX 的 FIU 13 个利润表字段有该投影证据；港股仅限 00700.HK FY2024，其他市场仍是待补 mapper 的 `gap`，均未运行时接入。
+财报 `financial.direct_line_items.specified_period.v1` 只做确定性字段投影：语义层先将用户用语解析为规范字段和唯一所属三表，再只调用一项相应 Tool；跨三表请求必须拒绝，投影层不猜字段别名、不透传原始供应商字段。实际运行时准入与未准入边界以 [`docs/get-route-coverage.md`](docs/get-route-coverage.md) 的 113 格 catalog 为准。
 
 ## 运行合同
 
 - 每个 evaluation cell：`agent_variant × get_variant × case × trial`。
 - 每个 cell 仅一个 Agent、一次公开 `get`、一个结构化输出；禁止 `Search` 与 `Inspect`。
-- `get` 内部模型调用必须走 QVeris Gateway；固定模型配置与禁止静默 provider fallback 已接入。AAPL quote 的一次单次 live smoke 验证了该路径，但不构成三条开放路由稳定性或正式 benchmark 完成的证明。
+- `get` 内部模型调用必须走 QVeris Gateway；固定 Variant 模型配置与禁止静默 provider fallback 已接入。已接线与 schema 验证不构成任一 catalog 路由的 live 稳定性或正式 benchmark 完成证明。
 - 合法响应状态：`success`、`partial`、`needs_clarification`、`unsupported`、`no_data`、`error`。`error` 不能是正确预期。
 
 ## 四项指标
@@ -69,7 +71,7 @@ Benchmark、Runner、Scorer 与 Arena 统一公开指标名为 `end_to_end_laten
 
 - [`benchmarks/`](benchmarks/README.md)：候选题库、版本清单和题库验证说明。
 - [`runner/`](runner/README.md)：已实现的本地 Runner、Scorer 和 Arena 的运行与记录合同。
-- [`get/`](get/README.md)：已实现的 injected public `get` adapter 与响应合同；QVeris Model Gateway 与 Tool client 已接入，且 AAPL quote 已有一次单次 live smoke。
+- [`get/`](get/README.md)：injected public `get` adapter、factory、响应和执行证据合同。
 - [`docs/architecture.md`](docs/architecture.md)：责任边界与完整数据流。
 
 禁止提交凭据、token、原始供应商响应、原始运行结果、私有 Oracle 快照，或任何 paid pilot / provider probe 资产。

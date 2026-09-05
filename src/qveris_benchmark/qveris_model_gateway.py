@@ -26,20 +26,36 @@ The exact top-level shape is {\"schema_version\":\"public-get.semantic/v1\",\"re
 
 `request` must be exactly one of these objects (no extra or omitted keys):
 1. market quote:
-{\"kind\":\"market_quote\",\"security\":{\"asset_class\":\"equity\",\"venue\":\"US|SSE|SZSE|HKEX\",\"local_code\":\"string\"},\"operation\":\"quote_snapshot|last_price|bid_ask_l1|volume_turnover_snapshot|latest_trade|extended_hours_price|trading_status|batch_quote_snapshot\"}
+{\"kind\":\"market_quote\",\"security\":{\"asset_class\":\"equity\",\"venue\":\"US|SSE|SZSE|HKEX|JP|GB|DE\",\"local_code\":\"string\"},\"operation\":\"quote_snapshot|last_price|bid_ask_l1|volume_turnover_snapshot|latest_trade|extended_hours_price|trading_status\"}
+For batch_quote_snapshot use securities instead of security: an array of 1 to 50
+same-venue security objects, with no duplicate local_code.
+You may add requested_fields only when the user explicitly names fields. It is a
+nonempty unique list restricted by operation: quote/batch fields are
+open, high, low, last_price, previous_close, change, change_percent, volume, amount;
+last_price/latest_trade: last_price; bid_ask_l1: bid, ask, bid_size, ask_size;
+volume_turnover_snapshot: volume, amount; extended_hours_price: extended_hours_price;
+trading_status: trading_status. Omit it when the user asks for the whole operation.
 Example for “AAPL latest quote”:
 {\"schema_version\":\"public-get.semantic/v1\",\"request\":{\"kind\":\"market_quote\",\"security\":{\"asset_class\":\"equity\",\"venue\":\"US\",\"local_code\":\"AAPL\"},\"operation\":\"quote_snapshot\"}}
 2. historical:
-{\"kind\":\"historical\",\"security\":{\"asset_class\":\"equity\",\"venue\":\"US|SSE|SZSE|HKEX\",\"local_code\":\"string\"},\"operation\":\"daily_bars|intraday_bars|corporate_actions|adjustment_factors|trading_calendar\",\"start_date\":\"YYYY-MM-DD\",\"end_date\":\"YYYY-MM-DD\"}
+{\"kind\":\"historical\",\"security\":{\"asset_class\":\"equity\",\"venue\":\"US|SSE|SZSE|HKEX|JP|GB|DE\",\"local_code\":\"string\"},\"operation\":\"daily_bars|intraday_bars|corporate_actions|adjustment_factors|trading_calendar\",\"adjustment\":\"adjusted|unadjusted|not_applicable\",\"interval\":\"daily|weekly|monthly|intraday|5min|15min|30min|60min\",\"start_date\":\"YYYY-MM-DD\",\"end_date\":\"YYYY-MM-DD\"}
+For weekly or monthly bars use daily_bars with interval weekly or monthly. For non-bar
+operations omit interval and use adjustment not_applicable.
 For dividends use operation `corporate_actions`; example:
-{\"schema_version\":\"public-get.semantic/v1\",\"request\":{\"kind\":\"historical\",\"security\":{\"asset_class\":\"equity\",\"venue\":\"SSE\",\"local_code\":\"600519\"},\"operation\":\"corporate_actions\",\"start_date\":\"2024-01-01\",\"end_date\":\"2024-12-31\"}}
+{\"schema_version\":\"public-get.semantic/v1\",\"request\":{\"kind\":\"historical\",\"security\":{\"asset_class\":\"equity\",\"venue\":\"SSE\",\"local_code\":\"600519\"},\"operation\":\"corporate_actions\",\"adjustment\":\"not_applicable\",\"start_date\":\"2024-01-01\",\"end_date\":\"2024-12-31\"}}
 For trading days use operation `trading_calendar`; example:
-{\"schema_version\":\"public-get.semantic/v1\",\"request\":{\"kind\":\"historical\",\"security\":{\"asset_class\":\"equity\",\"venue\":\"HKEX\",\"local_code\":\"00700\"},\"operation\":\"trading_calendar\",\"start_date\":\"2024-01-02\",\"end_date\":\"2024-01-05\"}}
+{\"schema_version\":\"public-get.semantic/v1\",\"request\":{\"kind\":\"historical\",\"security\":{\"asset_class\":\"equity\",\"venue\":\"HKEX\",\"local_code\":\"00700\"},\"operation\":\"trading_calendar\",\"adjustment\":\"not_applicable\",\"start_date\":\"2024-01-02\",\"end_date\":\"2024-01-05\"}}
 3. financial statement:
-{\"kind\":\"financial_statement\",\"security\":{\"asset_class\":\"equity\",\"venue\":\"US|SSE|SZSE|HKEX\",\"local_code\":\"string\"},\"statement\":{\"type\":\"income|balance|cash_flow\",\"presentation\":\"standardized|as_reported\",\"period\":{\"kind\":\"specified_period\",\"fiscal_year\":2024,\"fiscal_period\":\"FY|Q1|Q2|Q3|Q4\"},\"fields\":[\"field_name\"]}}
+{\"kind\":\"financial_statement\",\"security\":{\"asset_class\":\"equity\",\"venue\":\"US|SSE|SZSE|HKEX|JP|GB|DE\",\"local_code\":\"string\"},\"statement\":{\"type\":\"income|balance|cash_flow\",\"presentation\":\"standardized|as_reported\",\"period\":{\"kind\":\"specified_period\",\"fiscal_year\":2024,\"fiscal_period\":\"FY|Q1|Q2|Q3|Q4\"},\"fields\":[\"field_name\"]}}
+Latest period object (never add fiscal_year or fiscal_period):
+{\"kind\":\"latest\",\"basis\":\"filed|report\",\"frequency\":\"annual|quarter\"}
+Fields: income=revenue,cost_of_revenue,gross_profit,research_and_development_expense,selling_general_and_administrative_expense,operating_income,income_before_tax,income_tax_expense,net_income; balance=total_assets,total_liabilities,total_equity; cash_flow=net_cash_from_operating,net_cash_from_investing,net_cash_from_financing,net_increase_in_cash,cash_and_cash_equivalents_at_end.
+For cash-flow fields use net_cash_from_operating, net_cash_from_investing, or
+net_cash_from_financing (not operating_cash_flow, investing_cash_flow, or financing_cash_flow).
 
 Classify only the ticker, venue, and requested operation from the user's words and the
-enums above. Preserve the exchange-local code: strip only `.SH`, `.SZ`, or `.HK` when
+enums above. Preserve the exchange-local code: strip only `.SH`, `.SZ`, `.HK`, `.T`,
+`.L`, or `.DE` when
 the query supplies that suffix; never manufacture a ticker, venue, date, fiscal period,
 field, price, or any other financial fact. If a required value is absent, use an empty
 string only for `local_code`; do not invent a replacement."""
@@ -47,7 +63,7 @@ _HTTP_CODES = {400, 401, 402, 429, 503}
 SEMANTIC_GATEWAY_ERROR_CODES = frozenset({
     "http_400", "http_401", "http_402", "http_429", "http_503", "http_other",
     "invalid_json", "completion_shape_invalid", "semantic_json_invalid",
-    "semantic_schema_invalid", "usage_missing", "usage_invalid", "timeout",
+    "semantic_schema_invalid", "semantic_completion_truncated", "semantic_completion_incomplete", "usage_missing", "usage_invalid", "timeout",
     "response_too_large", "transport_error", "request_invalid", "request_too_large",
     "model_preflight_request_invalid", "model_preflight_http_400",
     "model_preflight_http_401", "model_preflight_http_402",
@@ -62,8 +78,9 @@ SEMANTIC_GATEWAY_ERROR_CODES = frozenset({
 class SemanticGatewayError(RuntimeError):
     """Stable failure code for the model boundary; never contains response content."""
 
-    def __init__(self, code: str) -> None:
+    def __init__(self, code: str, *, usage: Mapping[str, Any] | None = None) -> None:
         self.code = code if code in SEMANTIC_GATEWAY_ERROR_CODES else "internal_error"
+        self.usage = usage
         super().__init__(self.code)
 
 
@@ -108,6 +125,14 @@ def _read(response: Any) -> bytes:
     if len(value) > MODEL_GATEWAY_MAX_RESPONSE_BYTES:
         raise SemanticGatewayError("response_too_large")
     return value
+
+
+def _semantic_json(value: str) -> Any:
+    """Parse JSON, accepting only one complete fenced JSON document."""
+    text = value.strip()
+    if text.startswith("```json\n") and text.endswith("\n```"):
+        text = text[8:-4].strip()
+    return _json(text.encode("utf-8"), "semantic_json_invalid")
 
 
 def _model_usage(value: Any, headers: Any, request_id: str) -> dict[str, Any]:
@@ -196,19 +221,36 @@ class QVerisModelGatewaySemanticResolver:
         except OSError:
             raise SemanticGatewayError("transport_error") from None
         response = _json(body, "invalid_json")
-        if type(response) is not dict or type(response.get("choices")) is not list or len(response["choices"]) != 1:
+        if type(response) is not dict:
             raise SemanticGatewayError("completion_shape_invalid")
+        try:
+            usage = _model_usage(response, headers, request_id)
+        except SemanticGatewayError as exc:
+            usage, usage_error = None, exc
+        else:
+            usage_error = None
+        if type(response.get("choices")) is not list or len(response["choices"]) != 1:
+            raise SemanticGatewayError("completion_shape_invalid", usage=usage)
         choice = response["choices"][0]
-        if type(choice) is not dict or choice.get("finish_reason") != "stop" or type(choice.get("message")) is not dict or choice["message"].get("role") != "assistant" or type(choice["message"].get("content")) is not str:
-            raise SemanticGatewayError("completion_shape_invalid")
-        semantic = _json(choice["message"]["content"].encode("utf-8"), "semantic_json_invalid")
+        if type(choice) is not dict or type(choice.get("message")) is not dict or choice["message"].get("role") != "assistant" or type(choice["message"].get("content")) is not str:
+            raise SemanticGatewayError("completion_shape_invalid", usage=usage)
+        if choice.get("finish_reason") == "length":
+            raise SemanticGatewayError("semantic_completion_truncated", usage=usage)
+        if choice.get("finish_reason") != "stop":
+            raise SemanticGatewayError("semantic_completion_incomplete", usage=usage)
+        try:
+            semantic = _semantic_json(choice["message"]["content"])
+        except SemanticGatewayError as exc:
+            raise SemanticGatewayError(exc.code, usage=usage) from None
         # Keep model output validation at the same contract boundary as routing.
         from .public_get import SemanticRequestError, _validated_semantic
         try:
             _validated_semantic(semantic)
         except SemanticRequestError as exc:
-            raise SemanticGatewayError("semantic_schema_invalid") from exc
-        return SemanticResolution(semantic=semantic, usage=_model_usage(response, headers, request_id))
+            raise SemanticGatewayError("semantic_schema_invalid", usage=usage) from exc
+        if usage_error is not None:
+            raise usage_error
+        return SemanticResolution(semantic=semantic, usage=usage)
 
     def preflight_models(self, *, request_id: str) -> ModelGatewayPreflight:
         """List advertised model IDs once on explicit caller request.
