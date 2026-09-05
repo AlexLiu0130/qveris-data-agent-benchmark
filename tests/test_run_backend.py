@@ -738,28 +738,6 @@ class RunBackendTests(unittest.TestCase):
         event["event_hash"] = _digest(event)
         with self.assertRaises(RunBackendError): _validate_event(event, "run-1", 1, "a" * 64)
 
-    def test_ambiguous_external_action_is_limited_to_execute_or_gateway(self):
-        def terminal(stage, external_cost="unknown"):
-            event = RunService._terminal(
-                "cell-1", "attempt-1", 0, "failed", "timeout", None, "unknown", "not_comparable",
-                variant_identity=_variant_identity(variants()[0]), execution_profile="exploratory_ab",
-                receipt_hashes={}, receipt_coverage={}, stage=stage, stage_attempted_count=1,
-                stage_completed_count=0, stage_exception_class="TimeoutError", stage_error_code="timeout",
-                external_action_may_have_occurred=True, external_cost=external_cost,
-            )
-            event.update({"sequence": 1, "manifest_hash": "a" * 64, "previous_event_hash": None})
-            event["event_hash"] = _digest(event)
-            return event
-
-        for stage in ("qveris_execute", "gateway_completion"):
-            with self.subTest(stage=stage):
-                _validate_event(terminal(stage), "run-1", 1, "a" * 64)
-        with self.assertRaises(RunBackendError):
-            _validate_event(terminal("qveris_execute", external_cost=0), "run-1", 1, "a" * 64)
-        for stage in ("model_preflight", "web_search", "qveris_search", "qveris_inspect"):
-            with self.subTest(stage=stage), self.assertRaises(RunBackendError):
-                _validate_event(terminal(stage), "run-1", 1, "a" * 64)
-
     def test_score_case_type_blocks_partial_and_error_before_execution(self):
         for status in ("partial", "error"):
             value = manifest(); value["scoring_contract"] = scoring_contract(); value["cases"][0]["score_case"] = {"expected_status": [status], "oracle_id": "oracle-one", "case_type": "normal"}

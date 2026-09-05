@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run all frozen v2 cases through one explicit public-GET plugin.
+"""Run all frozen v0.3/v3 cases through one explicit public-GET plugin.
 
 The worker process receives only case_id, suite, and query as agent input.
 The parent alone compiles and scores with the frozen Oracle bundle.  This is
@@ -231,7 +231,14 @@ def _run(args: argparse.Namespace) -> int:
     output.mkdir(mode=0o700, parents=True, exist_ok=True)
     os.chmod(output, 0o700)
     compiled = Path(mkdtemp(prefix="compiled-", dir=output))
-    result = compile_v2(ROOT / "benchmarks", compiled, run_id=args.run_id, mode="diagnostic")
+    result = compile_v2(
+        ROOT / "benchmarks",
+        compiled,
+        run_id=args.run_id,
+        mode="diagnostic",
+        candidate_revision="v0.3",
+        oracle_revision="v3",
+    )
     template, bundle = _json(result["run_manifest"]), _json(result["oracle_bundle"])
     policy = _json(ROOT / "benchmarks/oracles/v2/runner-score-policy.v2.json")
     sandboxed = args.sandbox_image is not None

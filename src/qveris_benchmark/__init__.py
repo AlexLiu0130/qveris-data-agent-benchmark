@@ -1,1 +1,1 @@
-"""Deterministic local Runner, Scorer, and read-only Arena for QVeris benchmarks."""
+"""Deterministic Runner and Scorer for QVeris benchmarks."""
