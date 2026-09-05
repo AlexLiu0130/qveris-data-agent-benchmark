@@ -440,13 +440,23 @@ class BenchmarkScorer:
                 cell_id = "cell-" + _digest([manifest["run_id"], variant["variant_id"], case["case_id"], 1])[:48]
                 comparable = True
                 if case["suite"] == "realtime_quote":
-                    evidence = oracles[case["score_case"]["oracle_id"]]["reference_evidence"]
-                    reference_contract = case["reference_contract"]
-                    comparable = self._realtime_comparable(before.get(cell_id), terminals.get(cell_id), after.get(cell_id), evidence, reference_contract, policy)
-                result.append(self._record(variant, case, cell_id, dispatch.get(cell_id), terminals.get(cell_id), comparable, oracles[case["score_case"]["oracle_id"]], policy))
+                    diagnostic_without_reference = (
+                        manifest["mode"] == "diagnostic"
+                        and case.get("reference_contract_status") == "blocked_not_scored_until_runtime_reference_contract"
+                        and "reference_contract" not in case
+                    )
+                    if "reference_contract" in case:
+                        evidence = oracles[case["score_case"]["oracle_id"]]["reference_evidence"]
+                        reference_contract = case["reference_contract"]
+                        comparable = self._realtime_comparable(before.get(cell_id), terminals.get(cell_id), after.get(cell_id), evidence, reference_contract, policy)
+                    elif diagnostic_without_reference:
+                        comparable = False
+                    else:
+                        _fail("realtime scoring requires a reference contract")
+                result.append(self._record(manifest, variant, case, cell_id, dispatch.get(cell_id), terminals.get(cell_id), comparable, oracles[case["score_case"]["oracle_id"]], policy))
         return result
 
-    def _record(self, variant: Mapping[str, Any], case: Mapping[str, Any], cell_id: str, dispatch: Mapping[str, Any] | None, terminal: Mapping[str, Any] | None, comparable: bool, oracle: Mapping[str, Any], policy: Mapping[str, Any]) -> dict[str, Any]:
+    def _record(self, manifest: Mapping[str, Any], variant: Mapping[str, Any], case: Mapping[str, Any], cell_id: str, dispatch: Mapping[str, Any] | None, terminal: Mapping[str, Any] | None, comparable: bool, oracle: Mapping[str, Any], policy: Mapping[str, Any]) -> dict[str, Any]:
         variant_id, identity = variant["variant_id"], _variant_identity(variant)
         if dispatch is not None and dispatch.get("variant_identity") != identity:
             _fail("dispatch identity does not bind to manifest variant")
@@ -461,7 +471,15 @@ class BenchmarkScorer:
         status = response.get("status") if schema_valid else None
         status_correct = schema_valid and status in case["score_case"]["expected_status"]
         timeout = bool(terminal and terminal.get("transport_status") == "timeout")
-        execution_complete = terminal is not None and terminal.get("transport_status") == "completed" and not timeout and (case["suite"] != "realtime_quote" or comparable)
+        # Only the explicit diagnostic no-reference path may complete without
+        # realtime comparability.  Formal/reference-bound runs keep the gate.
+        diagnostic_without_reference = (
+            manifest["mode"] == "diagnostic"
+            and case.get("reference_contract_status") == "blocked_not_scored_until_runtime_reference_contract"
+            and "reference_contract" not in case
+        )
+        reference_required = case["suite"] == "realtime_quote" and not diagnostic_without_reference
+        execution_complete = terminal is not None and terminal.get("transport_status") == "completed" and not timeout and (not reference_required or comparable)
         assertion_sets = self._assertion_set_results(response or {}, _oracle_assertion_sets(oracle))
         selected = self._select_assertion_set(assertion_sets)
         coherent = next((item for item in assertion_sets if item["all_passed"]), None)

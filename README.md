@@ -16,7 +16,16 @@ Natural-language query -> one public get -> structured response -> scorer
 
 历史行情 v2 不声称供应商授权、再分发权或官方交易所地位；严格双源授权核对是后续升级项。单一完整、可追溯的公开来源可构成一个候选变体；若完整来源之间存在差异，保留各自完整且来源一致的变体，不平均也不跨源拼接。
 
-本地确定性 Runner、Scorer 和只读 Arena HTTP/SSE 投影已实现。`v2_compiler` 会将 v0.2 candidate 与 v2 Oracle 编译为 `run-manifest-template.v2.json` 和 `oracle-bundle.v2.json`；提供真实的 Variant 身份及 realtime reference contract 后才可生成可运行的 v2 Manifest。QVeris Model Gateway 与 Tool client 已接入；AAPL quote 已完成一次单次 live smoke（一次模型调用、一次 Tool execution、严格结构化响应）。该单样本不证明三条开放路由稳定，不证明历史行情或财报已获 runtime 准入，也不构成本 300 题的正式评测、Case Pass、榜单或生产部署。`v1` 独立 Manifest / `oracle-bundle/v1` 仅作 legacy 兼容。
+本地确定性 Runner、Scorer 和只读 Arena HTTP/SSE 投影已实现。`v2_compiler` 会将 v0.2 candidate 与 v2 Oracle 编译为 `run-manifest-template.v2.json` 和 `oracle-bundle.v2.json`；真实 Variant 与 realtime reference contract 可生成正式 ready Manifest。也可用下面的 300 题 diagnostic 入口检查任意公开 GET 插件的全链装配：它会执行三套各 100 题，但 realtime 的动态数据准确率会明确标为 `not_scored`，不产生排名或正式 Case Pass。QVeris Model Gateway 与 Tool client 已接入；AAPL quote 已完成一次单次 live smoke（一次模型调用、一次 Tool execution、严格结构化响应）。该单样本不证明三条开放路由稳定，不证明历史行情或财报已获 runtime 准入，也不构成本 300 题的正式评测、Case Pass、榜单或生产部署。`v1` 独立 Manifest / `oracle-bundle/v1` 仅作 legacy 兼容。
+
+## 300 题 GET 插件装配
+
+```bash
+python scripts/run_benchmark.py --fixture --output-dir /private/tmp/qveris-benchmark-300
+python scripts/run_benchmark.py --get-client your_module:make_client --output-dir /private/tmp/qveris-benchmark-300
+```
+
+插件 factory 必须返回 `{"variant": ..., "client": PublicGetClient}`；没有 `--fixture` 或 `--get-client` 不会默认使用 mock。Runner 子进程只把 `case_id`、`suite` 与 `query` 交给 GET；冻结 Oracle 与 Scorer 留在父进程。此为模块/子进程边界，并非同一 OS 账户下的绝对 sandbox；输出目录必须在仓库外。入口使用的 `runner-score-policy.v2.json` 仅限 diagnostic non-ranking；fixture 只验证 300 次调用和合同，不是模型得分，也不会发出 Provider 请求。
 
 84 格工具盘点中的 `financial.direct_line_items.specified_period.v1` 只在已有规范化回包的边界内做确定性字段投影：语义层先将用户用语解析为规范字段和唯一所属三表，再只调用一项相应 Tool；跨三表请求必须拒绝，投影层不猜字段别名、不透传原始供应商字段。当前仅 SZSE 三表和 HKEX 的 FIU 13 个利润表字段有该投影证据；港股仅限 00700.HK FY2024，其他市场仍是待补 mapper 的 `gap`，均未运行时接入。
 

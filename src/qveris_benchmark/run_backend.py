@@ -632,7 +632,14 @@ def _validate_manifest(raw: Mapping[str, Any]) -> dict[str, Any]:
             raise RunBackendError("source_case_id must be a non-empty read-only string")
         if case["suite"] == "realtime_quote" and not _is_diagnostic_public_get_profile(profile):
             if _is_v2(manifest):
-                _reference_contract_is_complete(case.get("reference_contract"))
+                # A 300-case diagnostic run may exercise public GET without a
+                # realtime reference.  It is explicitly non-ranking and the
+                # scorer will leave that suite's dynamic data unscored.
+                if not _reference_contract_is_complete(case.get("reference_contract")) and not (
+                    manifest["mode"] == "diagnostic"
+                    and case.get("reference_contract_status") == "blocked_not_scored_until_runtime_reference_contract"
+                ):
+                    _reference_contract_is_complete(case.get("reference_contract"))
             else:
                 _validate_reference_contract(case.get("reference_contract"))
         score_case = case.get("score_case")
@@ -1582,7 +1589,12 @@ class RunService:
         cell_events = [event for event in events if event.get("cell_id") == cell_id]
         terminal = any(event["event_type"] == "terminal" for event in cell_events)
         reference_after = any(event["event_type"] in {"reference_after", "reference_after_unavailable"} for event in cell_events)
-        reference_required = profile == "public_get" and case["suite"] == "realtime_quote"
+        diagnostic_without_reference = (
+            manifest["mode"] == "diagnostic"
+            and case.get("reference_contract_status") == "blocked_not_scored_until_runtime_reference_contract"
+            and not _reference_contract_is_complete(case.get("reference_contract"))
+        )
+        reference_required = profile == "public_get" and case["suite"] == "realtime_quote" and not diagnostic_without_reference
         if terminal:
             if reference_required and not reference_after:
                 self._append(manifest["run_id"], {"event_type": "reference_after_unavailable", "cell_id": cell_id, "attempt_id": attempt_id})
