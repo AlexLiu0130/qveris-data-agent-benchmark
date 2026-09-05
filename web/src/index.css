@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+/* Design tokens read off the Figma prototype (file xyBKrsu6wDc9THIPzbaKU0).
+   Status colors always ship with text + icon; color is never the only signal. */
+@theme {
+  --color-ink: #1d1d1f;
+  --color-ink-2: #6e6e73;
+  --color-ink-3: #86868b;
+  --color-accent: #0071e3;
+  --color-pass: #34c759;
+  --color-fail: #ff3b30;
+  --color-incomplete: #ff9500;
+  --color-hairline: rgba(0, 0, 0, 0.08);
+  --color-surface: #ffffff;
+  --color-canvas: #f4f3f8;
+  --color-fill: rgba(244, 243, 248, 0.8);
+  --color-chip: #e9e7ed;
+  --color-chip-2: #eeedf3;
+  --color-chip-3: #e0dfe4;
+  --color-track: #e3e2e7;
+  --color-ink-4: #414753;
+  --color-logo: #1a1b1f;
+
+  --radius-card: 12px;
+  --radius-control: 8px;
+
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "PingFang SC", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Numbers, ids and hashes are always tabular so lanes never jitter as counts tick. */
+.tnum {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Sheet transition. Reduced motion gets a cross-fade instead of the slide. */
+@keyframes sheet-in {
+  from { transform: translateX(24px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+@keyframes sheet-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+dialog.sheet {
+  animation: sheet-in 220ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+dialog.sheet::backdrop {
+  background: rgba(0, 0, 0, 0.28);
+  animation: sheet-fade 220ms ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  dialog.sheet {
+    animation: sheet-fade 1ms linear;
+  }
+}
