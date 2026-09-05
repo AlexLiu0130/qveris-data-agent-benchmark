@@ -27,6 +27,22 @@ python scripts/run_benchmark.py --get-client your_module:make_client --output-di
 
 插件 factory 必须返回 `{"variant": ..., "client": PublicGetClient}`；没有 `--fixture` 或 `--get-client` 不会默认使用 mock。Runner 子进程只把 `case_id`、`suite` 与 `query` 交给 GET；冻结 Oracle 与 Scorer 留在父进程。此为模块/子进程边界，并非同一 OS 账户下的绝对 sandbox；输出目录必须在仓库外。入口使用的 `runner-score-policy.v2.json` 仅限 diagnostic non-ranking；fixture 只验证 300 次调用和合同，不是模型得分，也不会发出 Provider 请求。
 
+## OCI sandbox GET
+
+`--sandbox-image` 不导入候选插件：每个 Case 启动一个固定 digest 的 Docker image，只有 `request_id` 与 Query 经 stdin 进入；无 repo、Oracle、socket、host 环境或 bind mount，且强制 nonroot、read-only、capability drop、资源上限和 `--network none`。image 通过受限 stdio broker 请求当前固定 Gateway/Tool URL；host 才持有凭据。broker 至多接受一次固定模型请求和一次固定 Tool 请求，记录 host-observed dispatch；这不是 image 内部推理/调用的自证，也不能用于 official run。
+
+先以显式 runtime config 创建不含题库的 build context，再以 Docker 返回的 immutable digest 执行；不要以仓库根目录作为 Docker context：
+
+```bash
+python scripts/stage_sandbox_image.py --runtime-config /private/tmp/sandbox-runtime-config.json --output-dir /private/tmp/qveris-sandbox-context
+docker build -t qveris-sandbox /private/tmp/qveris-sandbox-context
+docker image inspect --format '{{.Id}}' qveris-sandbox
+# use the resulting local sha256:... ID (or repository@sha256:...) plus a parent-only sandbox-get-descriptor/v1
+python scripts/run_benchmark.py --sandbox-image sha256:... --sandbox-variant /private/tmp/sandbox-variant.json --output-dir /private/tmp/qveris-sandbox-run
+```
+
+The checked-in `runner/sandbox-fixture/` is network-free and only for a one-container isolation smoke; no 300-container sandbox run or paid Gateway call is included.
+
 84 格工具盘点中的 `financial.direct_line_items.specified_period.v1` 只在已有规范化回包的边界内做确定性字段投影：语义层先将用户用语解析为规范字段和唯一所属三表，再只调用一项相应 Tool；跨三表请求必须拒绝，投影层不猜字段别名、不透传原始供应商字段。当前仅 SZSE 三表和 HKEX 的 FIU 13 个利润表字段有该投影证据；港股仅限 00700.HK FY2024，其他市场仍是待补 mapper 的 `gap`，均未运行时接入。
 
 ## 运行合同

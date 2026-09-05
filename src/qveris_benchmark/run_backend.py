@@ -124,6 +124,7 @@ class ExecutionEvidence:
     semantic_ms: float | None = None
     tool_ms: float | None = None
     total_ms: float | None = None
+    assurance: str = "trusted_adapter"
 
 
 @dataclass(frozen=True)
@@ -252,8 +253,10 @@ def _evidence_projection(value: Any, expected_identity: Mapping[str, Any], statu
         raise RunBackendError("execution evidence counts are invalid")
     if type(value.tools_used) is not tuple:
         raise RunBackendError("execution evidence tools_used must be a tuple")
+    if value.assurance not in {"trusted_adapter", "host_observed_sandbox"}:
+        raise RunBackendError("execution evidence assurance is invalid")
     tools = tuple(_normalize_tool_name(item) for item in value.tools_used)
-    projected = {**identity, "agent_invocations": value.agent_invocations, "tool_executions": value.tool_executions, "structured_outputs": value.structured_outputs, "tools_used": list(tools)}
+    projected = {**identity, "agent_invocations": value.agent_invocations, "tool_executions": value.tool_executions, "structured_outputs": value.structured_outputs, "tools_used": list(tools), "assurance": value.assurance}
     _validate_execution_evidence(projected, expected_identity, status, "execution evidence", terminal_reason)
     return projected
 

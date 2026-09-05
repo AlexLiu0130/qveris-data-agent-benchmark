@@ -1,0 +1,14 @@
+{
+  "schema_version": "sandbox-get-descriptor/v1",
+  "variant": {
+    "variant_id": "sandbox-fixture-get",
+    "stable_display_order": 1,
+    "agent_variant_id": "sandbox-fixture-agent",
+    "agent_version": "fixture-v1",
+    "get_variant_id": "sandbox-fixture-get",
+    "get_version": "fixture-v1",
+    "model_identifier": "fixture-model",
+    "model_version": "fixture-v1",
+    "model_config_digest": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+  }
+}
