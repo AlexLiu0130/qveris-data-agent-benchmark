@@ -1,0 +1,20 @@
+{
+  "schema_version": "candidate-manifest/v0.3",
+  "status": "final_test_frozen",
+  "suites": [
+    {"suite": "financial_statements", "cases": 100, "expected_status_counts": {"success": 88, "needs_clarification": 5, "no_data": 7}},
+    {"suite": "historical_price", "cases": 100, "expected_status_counts": {"success": 82, "needs_clarification": 2, "no_data": 6, "unsupported": 10}},
+    {"suite": "realtime_quote", "cases": 100, "expected_status_counts": {"success": 90, "needs_clarification": 6, "no_data": 2, "unsupported": 2}}
+  ],
+  "files": [
+    {"path": "candidates/v0.3/financial_statements.cases.json", "sha256": "95487bf1cbeea816094c4dcf10a3f7b9ea5142a6f65e20fe8c3585190ed415ac"},
+    {"path": "candidates/v0.3/historical_price.cases.json", "sha256": "e49ec44a0224138b2dbc1ca0c9aebbf119ec8edfcf94cb6eb8c2dfb9fdd53293"},
+    {"path": "candidates/v0.3/realtime_quote.cases.json", "sha256": "8e9e232e877e3b0b2937cca952882a777d05df7ec297e8d9bc2407152623ab24"}
+  ],
+  "suite_oracle_manifests": [
+    {"path": "oracles/v3/outputs/financial_statements/manifest.json", "sha256": "45519307dd3d16ea5edfa6681f64b9f9c8672a0f02e2fda3cacd71f103c82016"},
+    {"path": "oracles/v3/outputs/historical_price/manifest.json", "sha256": "485bf92c0e0a3d16ba6f032143924a1921cf9de1607a8c9928a9912fda9e4872"},
+    {"path": "oracles/v3/outputs/realtime_quote/manifest.json", "sha256": "22c2a264ab57ab8f5a79d5dbefe471ec3a5d88e8ca6e3148fed21b7256f28d2b"}
+  ],
+  "metrics": ["semantic_accuracy", "data_accuracy", "end_to_end_latency", "token_usage"]
+}

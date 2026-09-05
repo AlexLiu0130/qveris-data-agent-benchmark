@@ -1,0 +1,15 @@
+{
+  "schema_version": "benchmark-v3-manifest/v1",
+  "suite": "financial_statements",
+  "status": "final_test_frozen",
+  "candidate_files": [
+    {"path": "candidates/v0.3/financial_statements.cases.json", "sha256": "95487bf1cbeea816094c4dcf10a3f7b9ea5142a6f65e20fe8c3585190ed415ac"},
+    {"path": "oracles/v3/outputs/financial_statements/oracles.json", "sha256": "c661cdc5a7ae6ff2d9df10d69dfdc6153d046914e571ef1c51eba3dc5d7b5e5a"}
+  ],
+  "policy_files": [
+    {"path": "oracles/v2/query-resolution-policy.v2.json", "sha256": "008c7435abf50ff7adb06b3a55b5e23e7b5ded018e8749ffc9292169a8db5364"}
+  ],
+  "v2_bindings": [
+    {"path": "oracles/v2/outputs/financial_statements/manifest.json", "sha256": "c97b88428ec923adb78d007dd155d5fdf57c033eed9117efe5fae1599288e770"}
+  ]
+}

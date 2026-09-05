@@ -1,0 +1,16 @@
+{
+  "schema_version": "benchmark-v3-manifest/v1",
+  "suite": "realtime_quote",
+  "status": "final_test_contract_frozen",
+  "candidate_files": [
+    {"path": "candidates/v0.3/realtime_quote.cases.json", "sha256": "8e9e232e877e3b0b2937cca952882a777d05df7ec297e8d9bc2407152623ab24"},
+    {"path": "oracles/v3/outputs/realtime_quote/oracles.json", "sha256": "b178c1553163be1bc06885644ed48a3767a01829791301cbac5a4bc72769c75e"},
+    {"path": "oracles/v2/schemas/realtime-runtime-receipt.v1.schema.json", "sha256": "bb3d29eb92aa4e6d266757b1936b7710fab81c73a2cf231af2951820a8214ce0"}
+  ],
+  "policy_files": [
+    {"path": "oracles/v2/query-resolution-policy.v2.json", "sha256": "008c7435abf50ff7adb06b3a55b5e23e7b5ded018e8749ffc9292169a8db5364"}
+  ],
+  "v2_bindings": [
+    {"path": "oracles/v2/outputs/realtime_quote/manifest.json", "sha256": "0489839841e8305610be40d825a86baa35507114223e87cc3daeb6b9514f91e5"}
+  ]
+}

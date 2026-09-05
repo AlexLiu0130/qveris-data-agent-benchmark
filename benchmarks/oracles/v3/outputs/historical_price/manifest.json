@@ -1,0 +1,15 @@
+{
+  "schema_version": "benchmark-v3-manifest/v1",
+  "suite": "historical_price",
+  "status": "final_test_frozen",
+  "candidate_files": [
+    {"path": "candidates/v0.3/historical_price.cases.json", "sha256": "e49ec44a0224138b2dbc1ca0c9aebbf119ec8edfcf94cb6eb8c2dfb9fdd53293"},
+    {"path": "oracles/v3/outputs/historical_price/oracles.json", "sha256": "4c415a3f0012d6f4163b424fa3fd23bf5f64ee51d90896e20368493343508f86"}
+  ],
+  "policy_files": [
+    {"path": "oracles/v2/query-resolution-policy.v2.json", "sha256": "008c7435abf50ff7adb06b3a55b5e23e7b5ded018e8749ffc9292169a8db5364"}
+  ],
+  "v2_bindings": [
+    {"path": "oracles/v2/outputs/historical_price/manifest.json", "sha256": "d860433f4d13e34a5f8b60923811097e5bab883e4a36ee86cc495f556da66e8c"}
+  ]
+}

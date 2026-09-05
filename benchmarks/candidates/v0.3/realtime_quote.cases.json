@@ -1,0 +1,1942 @@
+[
+  {
+    "case_id": "RTQ3-001",
+    "suite": "realtime_quote",
+    "query": "贵州茅台现在多少钱？把报价时间、交易状态和交易阶段一起带上。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "currency",
+      "quote_time",
+      "market_status",
+      "market_phase"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-002",
+    "suite": "realtime_quote",
+    "query": "宁德时代今天涨跌幅多少，最新价是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "change_percent",
+      "last_price",
+      "quote_time",
+      "market_status"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-003",
+    "suite": "realtime_quote",
+    "query": "中国平安这会儿开盘价、最高价和最新价分别是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "open",
+      "high",
+      "last_price",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-004",
+    "suite": "realtime_quote",
+    "query": "五粮液今天最低价和成交量给我看下。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "low",
+      "volume",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-005",
+    "suite": "realtime_quote",
+    "query": "中国联通当前成交额和涨跌额是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "turnover",
+      "change_amount",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-006",
+    "suite": "realtime_quote",
+    "query": "工商银行现在价格和昨收价是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "previous_close",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-007",
+    "suite": "realtime_quote",
+    "query": "紫金矿业今天最高价、最低价和涨跌幅是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "high",
+      "low",
+      "change_percent",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-008",
+    "suite": "realtime_quote",
+    "query": "中芯国际现在交易正常吗？最新价是什么时候更新的？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "quote_time",
+      "market_status"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-009",
+    "suite": "realtime_quote",
+    "query": "比亚迪A股当前价和当日成交量是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "volume",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-010",
+    "suite": "realtime_quote",
+    "query": "平安银行现在的价格类型是什么，行情时间呢？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "price_type",
+      "quote_time",
+      "market_status"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-011",
+    "suite": "realtime_quote",
+    "query": "腾讯控股现在多少钱一股？报价是否延迟？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "currency",
+      "quote_time",
+      "delay_status"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-012",
+    "suite": "realtime_quote",
+    "query": "阿里巴巴港股最新价、涨跌额和市场状态是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "change_amount",
+      "quote_time",
+      "market_status"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-013",
+    "suite": "realtime_quote",
+    "query": "小米集团今天开盘价和最新价分别是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "open",
+      "last_price",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-014",
+    "suite": "realtime_quote",
+    "query": "美团当前最高价、最低价和成交额是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "high",
+      "low",
+      "turnover",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-015",
+    "suite": "realtime_quote",
+    "query": "比亚迪股份港股今天涨跌幅和成交量是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "change_percent",
+      "volume",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-016",
+    "suite": "realtime_quote",
+    "query": "香港交易所当前价是什么？现在处于哪个交易阶段？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "quote_time",
+      "market_phase",
+      "market_status"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-017",
+    "suite": "realtime_quote",
+    "query": "汇丰控股最新价和昨收价给我，标明币种。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "previous_close",
+      "currency",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-018",
+    "suite": "realtime_quote",
+    "query": "中国移动港股现在涨了还是跌了？给最新价和涨跌幅。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "change_percent",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-019",
+    "suite": "realtime_quote",
+    "query": "苹果现在股价多少？是实时还是延迟报价？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "currency",
+      "quote_time",
+      "delay_status"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-020",
+    "suite": "realtime_quote",
+    "query": "微软当前价格、当日涨跌额和市场状态是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "change_amount",
+      "quote_time",
+      "market_status"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-021",
+    "suite": "realtime_quote",
+    "query": "英伟达今天开盘价、最高价和成交量分别是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "open",
+      "high",
+      "volume",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-022",
+    "suite": "realtime_quote",
+    "query": "特斯拉现在价格对应哪个交易日？当前交易状态呢？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "trade_date",
+      "quote_time",
+      "market_status"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-023",
+    "suite": "realtime_quote",
+    "query": "AMD当前最新价和昨收价是多少？报价是否延迟？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "previous_close",
+      "quote_time",
+      "delay_status"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-024",
+    "suite": "realtime_quote",
+    "query": "摩根大通现在多少钱？报价时间和交易阶段也说一下。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "currency",
+      "quote_time",
+      "market_phase"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-025",
+    "suite": "realtime_quote",
+    "query": "伯克希尔B当前价格和涨跌幅是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "change_percent",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-026",
+    "suite": "realtime_quote",
+    "query": "600519.SH的最新价、涨跌额和成交额是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "change_amount",
+      "turnover",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-027",
+    "suite": "realtime_quote",
+    "query": "300750.SZ今天最高价和最低价是多少，什么时候更新？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "high",
+      "low",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-028",
+    "suite": "realtime_quote",
+    "query": "601318.SH当前成交量和市场状态是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "volume",
+      "quote_time",
+      "market_status"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-029",
+    "suite": "realtime_quote",
+    "query": "000858.SZ现在多少钱？数据属于哪个交易日？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "trade_date",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-030",
+    "suite": "realtime_quote",
+    "query": "600050.SH今天的最新价和涨跌幅给我。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "change_percent",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-031",
+    "suite": "realtime_quote",
+    "query": "601398.SH当前开盘价、昨收价和最新价分别是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "open",
+      "previous_close",
+      "last_price",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-032",
+    "suite": "realtime_quote",
+    "query": "601899.SH现在的价格、成交额和报价时间是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "turnover",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-033",
+    "suite": "realtime_quote",
+    "query": "688981.SH现在是不是停牌？如果不是，最新价是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "trading_status",
+      "last_price",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-034",
+    "suite": "realtime_quote",
+    "query": "002594.SZ当前价格和当日最高价是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "high",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-035",
+    "suite": "realtime_quote",
+    "query": "000001.SZ今天涨跌额和涨跌幅分别是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "change_amount",
+      "change_percent",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-036",
+    "suite": "realtime_quote",
+    "query": "00700.HK当前成交量、成交额和行情时间是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "volume",
+      "turnover",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-037",
+    "suite": "realtime_quote",
+    "query": "09988.HK的最新价、开盘价和市场状态是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "open",
+      "quote_time",
+      "market_status"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-038",
+    "suite": "realtime_quote",
+    "query": "01810.HK今天最高价和涨跌幅是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "high",
+      "change_percent",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-039",
+    "suite": "realtime_quote",
+    "query": "03690.HK现在的价格和昨收价各是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "previous_close",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-040",
+    "suite": "realtime_quote",
+    "query": "01211.HK当前交易阶段、最新价和报价时间是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "market_phase",
+      "last_price",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-041",
+    "suite": "realtime_quote",
+    "query": "00388.HK今天成交量和成交额是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "volume",
+      "turnover",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-042",
+    "suite": "realtime_quote",
+    "query": "AAPL当前价和当前市场状态是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "quote_time",
+      "market_status"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-043",
+    "suite": "realtime_quote",
+    "query": "MSFT今天的最高价、最低价和涨跌幅给我。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "high",
+      "low",
+      "change_percent",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-044",
+    "suite": "realtime_quote",
+    "query": "NVDA现在交易阶段是什么，最新价多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "market_phase",
+      "last_price",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-045",
+    "suite": "realtime_quote",
+    "query": "帮我看下这只股票现在多少钱。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "needs_clarification",
+    "required_fields": [
+      "clarification_question"
+    ],
+    "evaluation_mode": "state_only"
+  },
+  {
+    "case_id": "RTQ3-046",
+    "suite": "realtime_quote",
+    "query": "代码700当前价格是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "needs_clarification",
+    "required_fields": [
+      "clarification_question"
+    ],
+    "evaluation_mode": "state_only"
+  },
+  {
+    "case_id": "RTQ3-047",
+    "suite": "realtime_quote",
+    "query": "中国平安现在多少钱一股？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "needs_clarification",
+    "required_fields": [
+      "clarification_question"
+    ],
+    "evaluation_mode": "state_only"
+  },
+  {
+    "case_id": "RTQ3-048",
+    "suite": "realtime_quote",
+    "query": "999999.SH现在的最新价是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "no_data",
+    "required_fields": [
+      "not_found_message"
+    ],
+    "evaluation_mode": "state_only"
+  },
+  {
+    "case_id": "RTQ3-049",
+    "suite": "realtime_quote",
+    "query": "苹果明天下午的股价会是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "unsupported",
+    "required_fields": [
+      "unsupported_message"
+    ],
+    "evaluation_mode": "state_only"
+  },
+  {
+    "case_id": "RTQ3-050",
+    "suite": "realtime_quote",
+    "query": "给我苹果今天每一笔成交的完整明细。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A2",
+      "name": "A2 单证券实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "unsupported",
+    "required_fields": [
+      "unsupported_message"
+    ],
+    "evaluation_mode": "state_only"
+  },
+  {
+    "case_id": "RTQ3-051",
+    "suite": "realtime_quote",
+    "query": "上证指数现在多少点？报价时间和交易状态是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "quote_time",
+      "market_status"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-052",
+    "suite": "realtime_quote",
+    "query": "沪深300今天涨跌幅和成交额是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "change_percent",
+      "turnover",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-053",
+    "suite": "realtime_quote",
+    "query": "恒生指数当前点位、最高点和最低点分别是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "high",
+      "low",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-054",
+    "suite": "realtime_quote",
+    "query": "标普500现在多少点？这是哪个交易日的数据？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "trade_date",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-055",
+    "suite": "realtime_quote",
+    "query": "纳斯达克综合指数现在处于什么交易状态，点位多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "market_status",
+      "last_price",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-056",
+    "suite": "realtime_quote",
+    "query": "000001.SH今天开盘点位和当前点位分别是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "open",
+      "last_price",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-057",
+    "suite": "realtime_quote",
+    "query": "000300.SH当前最高点、最低点和涨跌幅是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "high",
+      "low",
+      "change_percent",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-058",
+    "suite": "realtime_quote",
+    "query": "恒生指数今天成交额和当前市场阶段是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "turnover",
+      "market_phase",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-059",
+    "suite": "realtime_quote",
+    "query": "标普500最新点位和昨收点位是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "previous_close",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-060",
+    "suite": "realtime_quote",
+    "query": "纳斯达克综合指数今天开盘点位和最高点是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "open",
+      "high",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-061",
+    "suite": "realtime_quote",
+    "query": "上证指数当前涨跌额和成交量是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "change_amount",
+      "volume",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-062",
+    "suite": "realtime_quote",
+    "query": "沪深300现在多少点？报价是否延迟？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "quote_time",
+      "delay_status"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-063",
+    "suite": "realtime_quote",
+    "query": "恒生指数的最新点位和涨跌额给我。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "change_amount",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-064",
+    "suite": "realtime_quote",
+    "query": "标普500当前市场阶段和点位是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "market_phase",
+      "last_price",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-065",
+    "suite": "realtime_quote",
+    "query": "纳斯达克综合指数今天涨跌幅、成交量和报价时间是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "change_percent",
+      "volume",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-066",
+    "suite": "realtime_quote",
+    "query": "000001.SH当前点位、最高点和成交额是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "high",
+      "turnover",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-067",
+    "suite": "realtime_quote",
+    "query": "000300.SH现在的点位属于哪个交易日？市场开着吗？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "trade_date",
+      "quote_time",
+      "market_status"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-068",
+    "suite": "realtime_quote",
+    "query": "^HSI当前点位和报价时间是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-069",
+    "suite": "realtime_quote",
+    "query": "帮我看下这个指数现在多少点。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "needs_clarification",
+    "required_fields": [
+      "clarification_question"
+    ],
+    "evaluation_mode": "state_only"
+  },
+  {
+    "case_id": "RTQ3-070",
+    "suite": "realtime_quote",
+    "query": "不存在的银河指数现在多少点？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A3",
+      "name": "A3 批量或指数实时行情"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "no_data",
+    "required_fields": [
+      "not_found_message"
+    ],
+    "evaluation_mode": "state_only"
+  },
+  {
+    "case_id": "RTQ3-071",
+    "suite": "realtime_quote",
+    "query": "贵州茅台当前总市值和总股本是多少？请标明字段时点。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "market_cap",
+      "market_cap_type",
+      "shares_outstanding",
+      "currency",
+      "market_cap_as_of",
+      "shares_effective_date"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-072",
+    "suite": "realtime_quote",
+    "query": "宁德时代现在市值多大？价格时间和市值时间分别是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "market_cap",
+      "currency",
+      "price_quote_time",
+      "market_cap_as_of"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-073",
+    "suite": "realtime_quote",
+    "query": "中国平安A股当前流通市值和流通股本是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "market_cap",
+      "market_cap_type",
+      "float_shares",
+      "currency",
+      "as_of"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-074",
+    "suite": "realtime_quote",
+    "query": "五粮液当前总股本、流通股本和股本数据的生效日期是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "shares_outstanding",
+      "float_shares",
+      "shares_effective_date"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-075",
+    "suite": "realtime_quote",
+    "query": "中国联通现在还是上市状态吗？当前能正常交易吗？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "listing_status",
+      "trading_status",
+      "status_updated_at"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-076",
+    "suite": "realtime_quote",
+    "query": "工商银行当前市值和已发行股本是多少？用什么币种，数据什么时候的？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "market_cap",
+      "shares_outstanding",
+      "currency",
+      "market_cap_as_of",
+      "shares_effective_date"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-077",
+    "suite": "realtime_quote",
+    "query": "紫金矿业A股当前总市值是什么口径，字段时点是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "market_cap",
+      "market_cap_type",
+      "currency",
+      "as_of"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-078",
+    "suite": "realtime_quote",
+    "query": "中芯国际A股当前上市状态、交易状态和停牌状态是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "listing_status",
+      "trading_status",
+      "halt_status",
+      "status_updated_at"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-079",
+    "suite": "realtime_quote",
+    "query": "比亚迪A股当前市值和流通股本是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "market_cap",
+      "float_shares",
+      "currency",
+      "as_of"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-080",
+    "suite": "realtime_quote",
+    "query": "腾讯控股现在市值多大？已发行股本和市值时间也告诉我。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "market_cap",
+      "shares_outstanding",
+      "currency",
+      "market_cap_as_of",
+      "shares_effective_date"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-081",
+    "suite": "realtime_quote",
+    "query": "阿里巴巴港股当前总市值和总股本是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "market_cap",
+      "shares_outstanding",
+      "currency",
+      "as_of"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-082",
+    "suite": "realtime_quote",
+    "query": "小米集团当前上市状态和交易状态是否正常？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "listing_status",
+      "trading_status",
+      "status_updated_at"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-083",
+    "suite": "realtime_quote",
+    "query": "美团当前市值、流通股本和字段时点是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "market_cap",
+      "float_shares",
+      "currency",
+      "market_cap_as_of",
+      "shares_effective_date"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-084",
+    "suite": "realtime_quote",
+    "query": "苹果当前市值和总股本是多少？市值按什么时间计算？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "market_cap",
+      "shares_outstanding",
+      "currency",
+      "market_cap_as_of"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-085",
+    "suite": "realtime_quote",
+    "query": "英伟达现在的总市值、流通股本和股本日期是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A4",
+      "name": "A4 市值、股本与上市状态"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "market_cap",
+      "float_shares",
+      "currency",
+      "shares_effective_date"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-086",
+    "suite": "realtime_quote",
+    "query": "贵州茅台现在买一卖一各是多少？挂单量和盘口时间也要。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "bid1",
+      "ask1",
+      "bid1_size",
+      "ask1_size",
+      "order_book_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-087",
+    "suite": "realtime_quote",
+    "query": "宁德时代当前五档买卖价格和委托量是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "bid_levels",
+      "ask_levels",
+      "order_book_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-088",
+    "suite": "realtime_quote",
+    "query": "中国平安A股最新成交价、买一、卖一和各自时间是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "last_price",
+      "bid1",
+      "ask1",
+      "last_trade_time",
+      "bid_ask_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-089",
+    "suite": "realtime_quote",
+    "query": "五粮液买一和卖一分别挂了多少？单位是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "bid1",
+      "ask1",
+      "bid1_size",
+      "ask1_size",
+      "size_unit",
+      "order_book_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-090",
+    "suite": "realtime_quote",
+    "query": "中国联通当前五档盘口和市场状态是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "bid_levels",
+      "ask_levels",
+      "order_book_time",
+      "market_status"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-091",
+    "suite": "realtime_quote",
+    "query": "中芯国际A股现在买一卖一和最新成交价是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "bid1",
+      "ask1",
+      "last_price",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-092",
+    "suite": "realtime_quote",
+    "query": "腾讯控股当前买一卖一、两边数量和盘口时间是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "bid1",
+      "ask1",
+      "bid1_size",
+      "ask1_size",
+      "order_book_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-093",
+    "suite": "realtime_quote",
+    "query": "阿里巴巴港股现在五档买卖盘给我，带上时间。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "bid_levels",
+      "ask_levels",
+      "order_book_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-094",
+    "suite": "realtime_quote",
+    "query": "小米集团当前买一卖一价格、挂单量和市场阶段是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "bid1",
+      "ask1",
+      "bid1_size",
+      "ask1_size",
+      "market_phase",
+      "order_book_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-095",
+    "suite": "realtime_quote",
+    "query": "美团现在买一卖一和报价时间是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "bid1",
+      "ask1",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-096",
+    "suite": "realtime_quote",
+    "query": "AAPL当前bid、ask、两边数量和报价时间是多少？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "bid",
+      "ask",
+      "bid_size",
+      "ask_size",
+      "quote_time"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-097",
+    "suite": "realtime_quote",
+    "query": "MSFT现在买卖价和延迟状态是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "bid",
+      "ask",
+      "quote_time",
+      "delay_status"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-098",
+    "suite": "realtime_quote",
+    "query": "NVDA当前bid、ask和市场阶段是什么？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "success",
+    "required_fields": [
+      "bid",
+      "ask",
+      "quote_time",
+      "market_phase"
+    ],
+    "evaluation_mode": "runtime_snapshot"
+  },
+  {
+    "case_id": "RTQ3-099",
+    "suite": "realtime_quote",
+    "query": "帮我看下这只股票的盘口。",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "口语",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "needs_clarification",
+    "required_fields": [
+      "clarification_question"
+    ],
+    "evaluation_mode": "state_only"
+  },
+  {
+    "case_id": "RTQ3-100",
+    "suite": "realtime_quote",
+    "query": "这家公司现在买盘怎么样？",
+    "language": "zh-CN",
+    "category": {
+      "code": "A5",
+      "name": "A5 盘口、买卖盘与分时快照"
+    },
+    "style": "专业",
+    "intent": "REALTIME_QUOTE",
+    "expected_status": "needs_clarification",
+    "required_fields": [
+      "clarification_question"
+    ],
+    "evaluation_mode": "state_only"
+  }
+]

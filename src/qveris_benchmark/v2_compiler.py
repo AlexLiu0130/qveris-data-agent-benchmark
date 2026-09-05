@@ -1,4 +1,4 @@
-"""Compile the frozen v0.2 benchmark sources into runner-facing v2 artifacts.
+"""Compile frozen benchmark sources into runner-facing v2 artifacts.
 
 This is deliberately an offline, deterministic transform.  It never calls a
 provider and never writes raw source responses.  A runtime adapter supplies
@@ -366,6 +366,8 @@ def compile_v2(
     reference_contract: Mapping[str, Any] | None = None,
     timeout_ms: int = 30000,
     mode: str = "diagnostic",
+    candidate_revision: str = "v0.2",
+    oracle_revision: str = "v2",
 ) -> dict[str, Path]:
     """Verify the frozen sources then atomically emit a bundle and run template.
 
@@ -379,12 +381,17 @@ def compile_v2(
     _assert(type(run_id) is str and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._:-]{0,127}", run_id) is not None, "run_id is invalid")
     _assert(type(timeout_ms) is int and not isinstance(timeout_ms, bool) and timeout_ms > 0, "timeout_ms must be positive")
     _assert(mode in {"diagnostic", "official"}, "mode must be diagnostic or official")
+    _assert(type(candidate_revision) is str and re.fullmatch(r"v0\.[0-9]+", candidate_revision) is not None, "candidate_revision is invalid")
+    _assert(type(oracle_revision) is str and re.fullmatch(r"v[0-9]+", oracle_revision) is not None, "oracle_revision is invalid")
     hashes: dict[str, str] = {}
-    candidate_manifest_path = root / "candidates/v0.2/manifest.json"
+    candidate_prefix = "candidates/%s" % candidate_revision
+    oracle_prefix = "oracles/%s" % oracle_revision
+    candidate_manifest_rel = "%s/manifest.json" % candidate_prefix
+    candidate_manifest_path = root / candidate_manifest_rel
     candidate_manifest = _json(candidate_manifest_path)
-    _assert(type(candidate_manifest) is dict and candidate_manifest.get("schema_version") == "candidate-manifest/v0.2", "candidate root manifest is invalid")
+    _assert(type(candidate_manifest) is dict and candidate_manifest.get("schema_version") == "candidate-manifest/%s" % candidate_revision, "candidate root manifest is invalid")
     _assert(tuple(candidate_manifest.get("metrics", ())) == _METRICS, "candidate metrics must be the four approved v2 metrics")
-    hashes["candidates/v0.2/manifest.json"] = _file_digest(candidate_manifest_path)
+    hashes[candidate_manifest_rel] = _file_digest(candidate_manifest_path)
     suite_specs = {item.get("suite"): item for item in candidate_manifest.get("suites", []) if type(item) is dict}
     _assert(set(suite_specs) == set(_SUITES), "candidate root manifest must declare all three suites")
     root_candidate_files = {entry.get("path"): entry for entry in candidate_manifest.get("files", []) if type(entry) is dict}
@@ -392,26 +399,39 @@ def compile_v2(
     compiled: dict[str, dict[str, Any]] = {}
     source_to_runner: dict[tuple[str, str], tuple[str, str]] = {}
     expected_status_counts: dict[str, dict[str, int]] = {}
+    policy_entries: dict[str, dict[str, Any]] = {}
     v1_numeric_path = root / "oracles/v1/outputs/historical_price/oracles.json"
     v1_numeric_document = _json(v1_numeric_path)
     v1_numeric = {item.get("oracle_id"): item for item in v1_numeric_document.get("numeric_oracles", []) if type(item) is dict}
     for suite in _SUITES:
         candidate_name = "%s.cases.json" % suite
-        candidate_rel = "candidates/v0.2/%s" % candidate_name
-        suite_manifest_rel = "oracles/v2/outputs/%s/manifest.json" % suite
-        _assert(candidate_name in root_candidate_files and suite_manifest_rel in root_suite_manifests, "candidate root manifest is missing %s bindings" % suite)
-        candidate_path = _verify_entry(root, {"path": candidate_rel, "sha256": root_candidate_files[candidate_name]["sha256"]}, hashes)
+        candidate_rel = "%s/%s" % (candidate_prefix, candidate_name)
+        suite_manifest_rel = "%s/outputs/%s/manifest.json" % (oracle_prefix, suite)
+        candidate_entry = root_candidate_files.get(candidate_rel)
+        if candidate_entry is None and candidate_revision == "v0.2":
+            legacy_entry = root_candidate_files.get(candidate_name)
+            candidate_entry = None if legacy_entry is None else {"path": candidate_rel, "sha256": legacy_entry.get("sha256")}
+        _assert(candidate_entry is not None and suite_manifest_rel in root_suite_manifests, "candidate root manifest is missing %s bindings" % suite)
+        candidate_path = _verify_entry(root, candidate_entry, hashes)
         suite_manifest_path = _verify_entry(root, root_suite_manifests[suite_manifest_rel], hashes)
         suite_manifest = _json(suite_manifest_path)
-        _assert(type(suite_manifest) is dict and suite_manifest.get("suite") == suite and suite_manifest.get("schema_version") == "benchmark-v2-manifest/v1", "%s suite manifest is invalid" % suite)
-        for group in ("candidate_files", "policy_files", "v1_bindings"):
+        _assert(type(suite_manifest) is dict and suite_manifest.get("suite") == suite and suite_manifest.get("schema_version") == "benchmark-%s-manifest/v1" % oracle_revision, "%s suite manifest is invalid" % suite)
+        for group in ("candidate_files", "policy_files"):
             entries = suite_manifest.get(group)
             _assert(type(entries) is list and entries, "%s manifest lacks %s" % (suite, group))
             for entry in entries:
                 _verify_entry(root, entry, hashes)
+                if group == "policy_files":
+                    policy_entries[entry["path"]] = entry
+        for group, entries in suite_manifest.items():
+            if group.endswith("_bindings"):
+                _assert(type(entries) is list and entries, "%s manifest lacks %s" % (suite, group))
+                for entry in entries:
+                    _verify_entry(root, entry, hashes)
         candidate_document = _json(candidate_path)
-        oracle_path = root / ("oracles/v2/outputs/%s/oracles.json" % suite)
-        oracle_entry = next((entry for entry in suite_manifest["candidate_files"] if entry.get("path") == "oracles/v2/outputs/%s/oracles.json" % suite), None)
+        oracle_rel = "%s/outputs/%s/oracles.json" % (oracle_prefix, suite)
+        oracle_path = root / oracle_rel
+        oracle_entry = next((entry for entry in suite_manifest["candidate_files"] if entry.get("path") == oracle_rel), None)
         _assert(oracle_entry is not None, "%s manifest lacks its Oracle file" % suite)
         _verify_entry(root, oracle_entry, hashes)
         oracle_document = _json(oracle_path)
@@ -423,7 +443,7 @@ def compile_v2(
             status_counts[status] = status_counts.get(status, 0) + 1
         _assert(status_counts == suite_specs[suite].get("expected_status_counts"), "%s expected status counts differ from root manifest" % suite)
         expected_status_counts[suite] = status_counts
-        source_ref = "oracles/v2/outputs/%s/oracles.json" % suite
+        source_ref = oracle_rel
         for case_id in sorted(case_map):
             case, oracle = case_map[case_id], oracle_map[case_id]
             if suite == "financial_statements":
@@ -441,14 +461,15 @@ def compile_v2(
             compiled[runner_oracle_id] = record
             source_to_runner[(suite, case_id)] = (runner_case_id, runner_oracle_id)
     _assert(len(compiled) == 300, "compiler must produce exactly 300 Oracle records")
-    policy_path = root / "oracles/v2/query-resolution-policy.v2.json"
+    _assert(len(policy_entries) == 1, "suite manifests must bind exactly one shared query policy")
+    policy_path = _relative_path(root, next(iter(policy_entries)))
     policy = _json(policy_path)
     policy_digest = _digest(policy)
     compiler_digest = _file_digest(Path(__file__).resolve())
     compiled_oracle_content_digest = _digest(compiled)
     source_manifest_hashes = {
-        "candidate_manifest": hashes["candidates/v0.2/manifest.json"],
-        **{"%s_manifest" % suite: hashes["oracles/v2/outputs/%s/manifest.json" % suite] for suite in _SUITES},
+        "candidate_manifest": hashes[candidate_manifest_rel],
+        **{"%s_manifest" % suite: hashes["%s/outputs/%s/manifest.json" % (oracle_prefix, suite)] for suite in _SUITES},
     }
     freeze_digest = _digest({"candidate_manifest": source_manifest_hashes["candidate_manifest"], "suite_manifests": {suite: source_manifest_hashes["%s_manifest" % suite] for suite in _SUITES}, "compiler_module_sha256": compiler_digest, "compiled_oracle_content_digest": compiled_oracle_content_digest, "policy_digest": policy_digest})
     bundle = {
@@ -469,7 +490,7 @@ def compile_v2(
     ready = bool(variants) and supplied_reference is not None
     cases: list[dict[str, Any]] = []
     for suite in _SUITES:
-        candidate_document = _json(root / ("candidates/v0.2/%s.cases.json" % suite))
+        candidate_document = _json(root / ("%s/%s.cases.json" % (candidate_prefix, suite)))
         for case in candidate_document:
             status = case["expected_status"]
             runner_case_id, runner_oracle_id = source_to_runner[(suite, case["case_id"])]
@@ -516,13 +537,15 @@ def _main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--run-id", default="compiled-v2")
     parser.add_argument("--timeout-ms", type=int, default=30000)
     parser.add_argument("--mode", choices=("diagnostic", "official"), default="diagnostic")
+    parser.add_argument("--candidate-revision", default="v0.2", help="candidate revision under candidates/ (default: v0.2)")
+    parser.add_argument("--oracle-revision", default="v2", help="Oracle revision under oracles/ (default: v2)")
     parser.add_argument("--variant-json", action="append", default=[], help="path to one concrete runner variant identity JSON object; repeat for each variant")
     parser.add_argument("--reference-contract-json", help="path to runtime reference {source_contract_hash,window_rule_version}; required to emit a ready realtime manifest")
     args = parser.parse_args(argv)
     variants = [_json(Path(path)) for path in args.variant_json]
     reference = _json(Path(args.reference_contract_json)) if args.reference_contract_json else None
     try:
-        result = compile_v2(args.benchmark_root, args.output_dir, run_id=args.run_id, variants=variants, reference_contract=reference, timeout_ms=args.timeout_ms, mode=args.mode)
+        result = compile_v2(args.benchmark_root, args.output_dir, run_id=args.run_id, variants=variants, reference_contract=reference, timeout_ms=args.timeout_ms, mode=args.mode, candidate_revision=args.candidate_revision, oracle_revision=args.oracle_revision)
     except CompileError as exc:
         parser.error(str(exc))
     print(json.dumps({key: str(value) for key, value in result.items()}, ensure_ascii=False, sort_keys=True))

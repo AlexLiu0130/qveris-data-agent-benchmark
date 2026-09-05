@@ -190,6 +190,45 @@ class V2CompilerTests(unittest.TestCase):
             self.assertEqual((left / "oracle-bundle.v2.json").read_bytes(), (right / "oracle-bundle.v2.json").read_bytes())
             self.assertEqual((left / "run-manifest-template.v2.json").read_bytes(), (right / "run-manifest-template.v2.json").read_bytes())
 
+    def test_v3_compiles_its_final_300_cases(self):
+        with tempfile.TemporaryDirectory() as temp:
+            result = compile_v2(ROOT, Path(temp) / "out", candidate_revision="v0.3", oracle_revision="v3")
+            bundle = json.loads(result["oracle_bundle"].read_text(encoding="utf-8"))
+            manifest = json.loads(result["run_manifest"].read_text(encoding="utf-8"))
+        self.assertEqual(len(bundle["oracles"]), 300)
+        self.assertEqual(manifest["schema_version"], "runner-run-manifest-template/v2")
+        self.assertEqual({oracle["source_case_id"][:3] for oracle in bundle["oracles"].values()}, {"FS3", "HIS", "RTQ"})
+
+    def test_v3_tamper_duplicate_and_status_mismatch_fail(self):
+        with tempfile.TemporaryDirectory() as temp:
+            copied = Path(temp) / "benchmarks"
+            shutil.copytree(ROOT, copied)
+            candidate = copied / "candidates/v0.3/financial_statements.cases.json"
+            cases = json.loads(candidate.read_text(encoding="utf-8"))
+            cases[1]["case_id"] = cases[0]["case_id"]
+            _write(candidate, cases)
+            manifest_path = copied / "candidates/v0.3/manifest.json"
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            next(item for item in manifest["files"] if item["path"] == "candidates/v0.3/financial_statements.cases.json")["sha256"] = _digest(candidate)
+            suite_manifest_path = copied / "oracles/v3/outputs/financial_statements/manifest.json"
+            suite_manifest = json.loads(suite_manifest_path.read_text(encoding="utf-8"))
+            next(item for item in suite_manifest["candidate_files"] if item["path"] == "candidates/v0.3/financial_statements.cases.json")["sha256"] = _digest(candidate)
+            _write(suite_manifest_path, suite_manifest)
+            next(item for item in manifest["suite_oracle_manifests"] if item["path"] == "oracles/v3/outputs/financial_statements/manifest.json")["sha256"] = _digest(suite_manifest_path)
+            _write(manifest_path, manifest)
+            with self.assertRaisesRegex(CompileError, "duplicate candidate"):
+                compile_v2(copied, Path(temp) / "out", candidate_revision="v0.3", oracle_revision="v3")
+            cases[1]["case_id"] = "FS3-002"
+            cases[0]["expected_status"] = "no_data"
+            _write(candidate, cases)
+            next(item for item in manifest["files"] if item["path"] == "candidates/v0.3/financial_statements.cases.json")["sha256"] = _digest(candidate)
+            next(item for item in suite_manifest["candidate_files"] if item["path"] == "candidates/v0.3/financial_statements.cases.json")["sha256"] = _digest(candidate)
+            _write(suite_manifest_path, suite_manifest)
+            next(item for item in manifest["suite_oracle_manifests"] if item["path"] == "oracles/v3/outputs/financial_statements/manifest.json")["sha256"] = _digest(suite_manifest_path)
+            _write(manifest_path, manifest)
+            with self.assertRaisesRegex(CompileError, "expected_status differs"):
+                compile_v2(copied, Path(temp) / "out", candidate_revision="v0.3", oracle_revision="v3")
+
 
 if __name__ == "__main__":
     unittest.main()
